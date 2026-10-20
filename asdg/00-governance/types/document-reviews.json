@@ -11259,6 +11259,21 @@
         "visible_review_markers": [],
         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "08074e1c35b9d5c5e9a3dd7ee927cc11259eeecbdee2f95ad6002b344104f124",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:24:13.638503+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Simplify documented setup to default new project initialization"
+      },
+      "previous_state": {
+        "sha256": "2d2b35ee5507dacce4c3ca3736e189f25c2025f7710a5a83e8638a0510648515",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

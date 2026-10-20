@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "events": [
+    {
+      "path": ".agents/skills/asdg-documentation/SKILL.md",
+      "sha256": "3f48e9311915e02b8dd9d0d760148fb29d3eef0775e6638ccb0e6b91a7f546d7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus/SKILL.md",
+      "sha256": "58ae914bb1473ed1f0234a87a4fc457bb655ebb1a45475e190944b8cd7223bd8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-01-context/SKILL.md",
+      "sha256": "cfa689c401b98d7aef28a8ea958dd77309b0a0173c0640f1ef57568e1adeafcf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-02-purpose/SKILL.md",
+      "sha256": "f3e8150d8175ea18183d242af8a07276dbee1f353f0fcb7923863d2f69743d62",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-03-use-cases/SKILL.md",
+      "sha256": "4d453093e7bce3650ab5b84a23fdeefafecfae5881fc572d7fac44fb3bfdcd47",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-04-test-strategy/SKILL.md",
+      "sha256": "cfc256c7f03ea84f5d9a59f407f2fdcecc1e685430b9dc66a97c26479d158c6e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-05-architecture/SKILL.md",
+      "sha256": "348b3f5ca466536d9afaa746db7a6c2f335e7439670c3b5a486797d1038e87eb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-06-poc/SKILL.md",
+      "sha256": "9cf691b66707db8c9dd66370678356b761058f0aaf2992c6b6c74635a900408c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-07-planning/SKILL.md",
+      "sha256": "d79a0d7a3afa5c63696009f10f90aa4569bf3f7c79de4c60f5067137a779c0e0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-08-low-level-design/SKILL.md",
+      "sha256": "33ca875654782dfeb38e3db91d24d95ed24e6a3505bd3a909255f855cf7ea22c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-09-build-test/SKILL.md",
+      "sha256": "499361317cae22fb25fdafd26772e853d1dbb7139690fdbd7597d8aa59d75ae1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-10-review-release/SKILL.md",
+      "sha256": "0880cbecb4eed93f2ce04a0e251a943de7da29c2566f20f943df72b88d9251bf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-11-operations/SKILL.md",
+      "sha256": "2de3413a1ca7a8f3ddb17cba10212f73c6a6f0036e62562e10f5d539f04dd2fa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-12-insights/SKILL.md",
+      "sha256": "a2d6802c71ba4e1ec132b3030b159fc73858df025a885949645fc8f4c1687d26",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-init/SKILL.md",
+      "sha256": "666e9006bdbcf25444e61ef24902f372a68de039cc3af99b5bfb12466d46bb44",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-status/SKILL.md",
+      "sha256": "564cef6fb0e119be9e10b6d4e7f84512d2c48c808acd660265f3046b20d73d00",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "46ec9fcac356ae4035733d92a8721ec2664466f7d0caa761fec90d3865194d34",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/README.md",
+      "sha256": "ace3c6367dbc93fc4bdcd890b0d98dbd5a89496f479e88655cd292959dcd957b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/00-governance/README.md",
+      "sha256": "8d78726e187a7a6c812dddae3f16ff82498a3060f802ad3ba2b258bb5520b95c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/01-context-and-domain-analysis/README.md",
+      "sha256": "7cb45f61cc5c0500862402662d41bfc6a739a66a2bda301796523663434e8f85",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "99fad89cdb767782f26d30c245fc9f2aed24e9198329674595d94c5a97e92837",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/README.md",
+      "sha256": "fb48ad33e9b9fcd8d766b80dacb2b6f5ae67159cfee8846938dc2f003dd53472",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "bdcad3e9735f423480012953fc611e259183a87ad12775a5c4f6b9c8d2d0cea5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/README.md",
+      "sha256": "a9306b631e97e862dbe1088a920e3e2eea9760f316a79dc52d83e6b517c0542c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/06-viable-proof-of-concept/README.md",
+      "sha256": "eba42b52fec74a1ea210a0b307c85cf59f8097ba4ed91715a6bc10c9397ee85c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "a2500fa27e06591ab1f6138dd42175d8641c330eb50a73ffb4e3eb7a3063795f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/README.md",
+      "sha256": "9c65be514127d2ec6367a1c051ce6235bb6ddceff58addcdff75dda6f813f4e7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/09-build-and-test-cycle/README.md",
+      "sha256": "38ee32616d4c15ba3f496fbee62193fe2b5bd3ef53314674938bedabc901110b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/10-document-review-and-release/README.md",
+      "sha256": "d955b76a7223d45e8604123cd2411ba4d717dccc056326c178a7f81bf5f4d952",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/11-operational-reality-devops-and-user-acceptance/README.md",
+      "sha256": "3d98f1d270ef1907f613550679117fa064ef4c0aec1d97eccbef337a2ea5b1ed",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/12-observability-insights-and-learning/README.md",
+      "sha256": "377cef6c99da793615be2a4e996108848e8471d0174521ab2f720aaee54c8aee",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:22:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    }
+  ]
+}

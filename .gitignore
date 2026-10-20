@@ -1,0 +1,7 @@
+# ASDG generated files: BEGIN
+/logs/
+/asdg/**/__pycache__/
+/asdg/**/*.pyc
+/.asdg/backups/
+/.asdg/cache/
+# ASDG generated files: END

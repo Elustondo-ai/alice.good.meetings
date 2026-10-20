@@ -27,12 +27,12 @@ Python 3.9+ and Git are required. Bootstrap uses the standard library and makes 
 For the fresh Speaker Coach project, run from its root:
 
 ```sh
-python3 asdg/scripts/init.py --project-status defining
+python3 asdg/scripts/init.py
 ```
 
 If you prefer to hand setup to Codex, copy the [Codex setup prompt](CODEX-PROMPT.md) into a chat opened in this project.
 
-This sets up local project instructions and state with the project marked as defining; no sprint is started.
+This sets up local project instructions and state with the project marked as new; no sprint is started.
 See [installation details](docs/installation.md) for optional previews, checks and other starting states.
 
 ## Included
