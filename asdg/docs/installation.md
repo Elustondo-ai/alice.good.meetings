@@ -18,7 +18,17 @@ Nothing changes outside the selected client repository; no shell startup file or
 | `docs/asdg/` | Client evidence and stage README scaffolds; existing documents are preserved |
 | `logs/` | Ignored disposable records, centralized by session and child instance |
 
-Run the [README commands](../README.md), or give Codex [the installation prompt](../CODEX-PROMPT.md).
+Run the [README setup command](../README.md), or give Codex [the installation prompt](../CODEX-PROMPT.md).
+Optional commands, run from the project root:
+
+```sh
+python3 asdg/scripts/init.py --project-status defining --dry-run  # Preview setup without writing
+python3 asdg/scripts/cli.py status --facts-only  # Inspect recorded project state
+python3 asdg/scripts/cli.py verify  # Check project structure and integration
+```
+
+For a new project, omitting `--project-status` selects `new` instead of `defining`.
+Use the project-local CLI; a global `asdg` command may point to an older checkout.
 The dry run validates all destinations and reports planned writes. A conflict causes no planned file writes.
 Initialization refuses existing conflicting hooks, Codex config or adapters; it never resets them.
 Existing instructions and ignore rules are retained; an edited ASDG managed block requires review.

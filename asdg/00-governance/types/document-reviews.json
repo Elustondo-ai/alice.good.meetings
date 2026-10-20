@@ -11198,6 +11198,67 @@
         "visible_review_markers": [],
         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "24039c376e1badf9f4ddbf96f2fb8fa3a12dce141b511c6aeb1bc1d8b3841a69",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T20:49:19.531028+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add user-selected main presentations and optional reading",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "ea00f992f167067bf2458e21d0844cb44e964aadb25bc1e82c336d19c9a2bbf5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "28eeca3c4d8feae81fb974029af7b5163163cc00800a44e41fd5878213c24ca9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:09:23.951276+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Simplify README setup and move optional commands to installation guide"
+      },
+      "previous_state": {
+        "sha256": "24039c376e1badf9f4ddbf96f2fb8fa3a12dce141b511c6aeb1bc1d8b3841a69",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "sha256": "b0cb1e973ac89589f24fef87e4b6d0b93d2d46ef42e24b4cb3e3876a7e8b0c7f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:09:23.951831+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Simplify README setup and move optional commands to installation guide"
+      },
+      "previous_state": {
+        "sha256": "fe1a12593dc4f13f8b181f18aedfeea7ecea85414e0048a6595d32741e97db67",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "2d2b35ee5507dacce4c3ca3736e189f25c2025f7710a5a83e8638a0510648515",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:11:41.330831+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Place Codex setup alternative immediately after direct initializer command"
+      },
+      "previous_state": {
+        "sha256": "28eeca3c4d8feae81fb974029af7b5163163cc00800a44e41fd5878213c24ca9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

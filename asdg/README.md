@@ -1,8 +1,24 @@
 # ASDG Distribution — portable pilot 0.2.0-pilot.2
 
-ASDG is Agentic Software Development Lifecycle Governance: twelve stages, specialist responsibilities,
-evidence rules and sprint controls carried inside your client repository.
+ASDG is Agentic Software Development Lifecycle Governance: twelve stages, specialist responsibilities, evidence rules and sprint controls carried inside your client repository.
 This pilot is an iteration baseline, not a claim of production enforcement or approved methodology.
+
+## Learn about ASDG
+
+Start with these three presentations (PowerPoint):
+
+1. [ASDG introduction](../../agentic-sdlc-governance/docs/presentations/asdg-introduction/build/asdlc-introduction.pptx) — the ideas behind the method; [detailed version](../../agentic-sdlc-governance/docs/presentations/asdg-introduction/build/asdlc-introduction-detailed.pptx).
+2. [Formalization Gradient](../../agentic-sdlc-governance/docs/presentations/formalization-gradient/build/formalization-gradient.pptx) — choosing how much structure a project needs.
+3. [Codex agents, skills and adapters](../../agentic-sdlc-governance/docs/presentations/codex-agent-skills-and-adapters/build/codex-agent-skills-and-adapters.pptx) — how the method maps to development tools.
+
+Optional extra material:
+
+- [Coding-agent architecture](../../agentic-sdlc-governance/docs/presentations/coding-agents-architecture-article/build/coding-agents-architecture-article-detailed.pptx) — context, planning, tools and feedback loops.
+- [ASDG Sprint Governance](../../agentic-sdlc-governance/docs/presentations/asdg-sprint-governance-review/build/asdlc-sprint-governance-review-detailed.pptx) — proposed sprint gates and human decisions.
+- [Spec-Driven Development deep dive](../../agentic-sdlc-governance/docs/presentations/spec-driven-development-deep-dive/build/spec-driven-development-deep-dive.pptx) — a single research-reference slide.
+- [Agentic AI](../../agentic-sdlc-governance/docs/presentations/agentic-ai/build/agentic-ai.pptx) — development-time and runtime agents.
+
+These links require the sibling `agentic-sdlc-governance` working copy and its generated `build/` files. Presentations provide background; review drafts and historical terminology do not override this package's current contracts.
 
 ## Start
 
@@ -11,16 +27,13 @@ Python 3.9+ and Git are required. Bootstrap uses the standard library and makes 
 For the fresh Speaker Coach project, run from its root:
 
 ```sh
-python3 asdg/scripts/init.py --project-status defining --dry-run
 python3 asdg/scripts/init.py --project-status defining
-python3 asdg/scripts/cli.py status --facts-only
-python3 asdg/scripts/cli.py verify
 ```
 
-The status declaration is explicit: project defining, release none, sprint inactive, evidence unregistered.
-For a truly new project, omit `--project-status`; its initial project state is `new`.
-Repeat initialization preserves state and refuses conflicting configuration.
-Use this local CLI path; an existing global `asdg` command may still point to the old checkout.
+If you prefer to hand setup to Codex, copy the [Codex setup prompt](CODEX-PROMPT.md) into a chat opened in this project.
+
+This sets up local project instructions and state with the project marked as defining; no sprint is started.
+See [installation details](docs/installation.md) for optional previews, checks and other starting states.
 
 ## Included
 
