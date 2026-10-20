@@ -1,0 +1,6 @@
+interface:
+  display_name: "ASDG focus 01 context"
+  short_description: "Use the local ASDG focus workflow"
+  default_prompt: "Use $asdg-focus-01-context for this project."
+policy:
+  allow_implicit_invocation: false
