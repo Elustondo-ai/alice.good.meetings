@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting Helper</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    #panel {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: green;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+      font-size: min(8rem, 20vw, 20vh);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    #controls {
+      position: fixed;
+      bottom: min(8px, 1vmin);
+      right: min(8px, 1vmin);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      max-width: 100%;
+      gap: min(4px, 0.5vmin);
+    }
+    #controls button {
+      max-width: 100%;
+      padding: min(2px, 0.5vmin) min(6px, 1vmin);
+      font-size: min(11px, 2vmin);
+      cursor: pointer;
+    }
+    #debug {
+      position: fixed;
+      top: min(8px, 1vmin);
+      left: min(8px, 1vmin);
+      max-width: calc(100% - 2 * min(8px, 1vmin));
+      max-height: calc(100% - 2 * min(8px, 1vmin));
+      margin: 0;
+      overflow: hidden;
+      overflow-wrap: anywhere;
+      padding: min(8px, 1vmin) min(16px, 2vmin);
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      font-family: monospace;
+      font-size: min(24px, 2.5vmin);
+      border-radius: min(8px, 1vmin);
+    }
+  </style>
+</head>
+<body>
+  <div id="panel">GOOD</div>
+  <pre id="debug"></pre>
+  <div id="controls">
+    <button id="listen">Start Listening</button>
+    <button data-state="good">Good</button>
+    <button data-state="land">Land it</button>
+    <button data-state="stop">Stop</button>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
