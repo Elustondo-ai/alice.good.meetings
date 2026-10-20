@@ -1,4 +1,4 @@
-# ASDG Distribution — portable pilot 0.2.0-pilot.1
+# ASDG Distribution — portable pilot 0.2.0-pilot.2
 
 ASDG is Agentic Software Development Lifecycle Governance: twelve stages, specialist responsibilities,
 evidence rules and sprint controls carried inside your client repository.
@@ -11,10 +11,10 @@ Python 3.9+ and Git are required. Bootstrap uses the standard library and makes 
 For the fresh Speaker Coach project, run from its root:
 
 ```sh
-python3 asdg/init.py --project-status defining --dry-run
-python3 asdg/init.py --project-status defining
-python3 asdg/cli.py status --facts-only
-python3 asdg/cli.py verify
+python3 asdg/scripts/init.py --project-status defining --dry-run
+python3 asdg/scripts/init.py --project-status defining
+python3 asdg/scripts/cli.py status --facts-only
+python3 asdg/scripts/cli.py verify
 ```
 
 The status declaration is explicit: project defining, release none, sprint inactive, evidence unregistered.
@@ -36,8 +36,9 @@ Presentation/video production, historical work reports and the external-source b
 - [Workflow usage](docs/usage.md): focus, status, sprint scope and optional advice.
 - [Lifecycle baseline](docs/lifecycle-baseline.md): exact twelve-stage order.
 - [Review loop](docs/review-loop.md): the embedded folder evolves through bounded local iterations.
-- [Verification](VERIFICATION.md): executed checks and remaining native-runtime work.
+- [Verification](docs/verification.md): executed checks and remaining native-runtime work.
 - [Source and changes](docs/provenance.md): selected snapshot, exclusions and adaptations.
 
+Runtime Python lives in `scripts/`, package records in `metadata/`, and verification in `docs/`.
 Keep `asdg/`, `.asdg/`, discovery adapters and engineering documents in Git; ignore disposable `logs/`.
 No sprint, release, human approval, specialist session or hook trust is created by extraction.

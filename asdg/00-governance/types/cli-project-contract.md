@@ -1,7 +1,7 @@
 # Embedded project contract — schema 1, pilot 0.2.0
 
 The client contains the full `asdg/` distribution. Python 3.9+ and Git are required.
-Run `python3 asdg/init.py` from that client Git root; no machine-wide installation is necessary.
+Run `python3 asdg/scripts/init.py` from that client Git root; no machine-wide installation is necessary.
 The resolved Git root must be the parent of this distribution; an external provider is rejected.
 The catalogue remains version 0.2, exactly governance 00 and stages 01–12.
 
@@ -11,7 +11,7 @@ The catalogue remains version 0.2, exactly governance 00 and stages 01–12.
 `init` creates missing binding, lifecycle/sprint state, stage README scaffolds and discovery adapters.
 `--project-status` explicitly declares first-install new/defining/defined; omitted defaults to new.
 Repeat initialization preserves existing status, release, sprint, evidence and review history.
-`python3 asdg/cli.py verify` inspects structure; `status --facts-only` and `status --json` do not call a model.
+`python3 asdg/scripts/cli.py verify` inspects structure; `status --facts-only` and `status --json` do not call a model.
 Plain status retains optional SDK advice; `--verbose` saves a bounded planning report and receipt.
 `agent list/describe` inspects definitions. `next` and `dashboard` reuse the same status engine.
 `sprint status/start/stop/check-implementation` preserves the authoritative sprint transition contract.

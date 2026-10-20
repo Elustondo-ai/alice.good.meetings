@@ -41,7 +41,7 @@ stronger because agents/users cannot disable them through the hook browser.
 
 ## Limits and verification
 
-See [current verification](../../VERIFICATION.md) for CLI, guard, engine and native tests.
+See [current verification](../../docs/verification.md) for CLI, guard, engine and native tests.
 This package does not run native trust bypasses; actual runtime enforcement requires local observation.
 Disabled/untrusted hooks, direct human writes, concurrent state/path changes, hook timeouts,
 and changes whose meaning violates the objective inside an allowed file remain gaps.

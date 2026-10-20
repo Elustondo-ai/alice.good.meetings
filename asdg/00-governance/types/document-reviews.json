@@ -10635,7 +10635,570 @@
         "visible_review_markers": [],
         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
+    },
+    {
+      "path": "asdg/00-governance/AGENTS.md",
+      "sha256": "31df2699ce865bd0eda2645f55f50837c9b251e5080dd60acbaa02a56af8afbd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/AGENTS.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "50d28ffbcb06b2a36e88a45ae1cdb3266fb5d96a921d0d3c16697fc1ae9124c9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/README.md",
+      "sha256": "009cd87073da5fc7ee59d1ab1c9b574d4595006df612fecf334f03d8dc4b5a32",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "3a3dfa9137c9737c4a178c44f69de600f0e106da47e3f51214a89c535043ebc6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/README.md",
+      "sha256": "95e6ac51dcb773424815e749618a56eca6e6cd042746c19ab28bcb9aa12c1be6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/docs/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "2c68515deaeccc35663824dc2f64874269e6c0d92a519b5da6a023d4ebacca3e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/lifecycle-evidence.md",
+      "sha256": "f76c884491f903198c1b414507c0be487291a144781b7154136c2a41a7ad8a34",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/docs/lifecycle-evidence.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "f13111451fea0f98d3fad0141512f37da679d29a16101dfb30b698d721782fba",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/session-logging.md",
+      "sha256": "e406b81650c120d0042cf9cfdd8147d231d6fe58a7b1edfc3312d1e5f8b80214",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/docs/session-logging.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "cee2995e8f64e26239c4838202285072cc93f484bfe08939a59ae881226244aa",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/sprint-gate.md",
+      "sha256": "889c711af66c05e48a974a597c6343d457494ab79c35d23477ddc99d648fa984",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/docs/sprint-gate.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "3b092e3f0d1be133d005294b46c1cf28d6235d91ed5deb40b3de8aaed865498f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/state-engine.md",
+      "sha256": "428fb3b3f490e2985536f478821595144e7b1007d38b751f62b4f49634cb16f0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/docs/state-engine.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "ac754ffb906b2d6eaf1a80825d77895a7b59c0d0de159f6d06455069f8746dd8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/types/cli-project-contract.md",
+      "sha256": "4fb8a6c13b4214da5b89167549f6abad4c62fa12b326f64bdb90255f379bc7af",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/types/cli-project-contract.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "05be3867f9a1ad03e6bf88fed741cc6f03a07c6b43ae4860b5d20282731cf582",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/types/contract.md",
+      "sha256": "b2509f93d871401b6f09cb5c975f92a02c67ac8c800334e447c20ae5f559f658",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/types/contract.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "1d8a07987b5c93b432ac20293feb8341a0db8f0fb9c80fa34600b21764958dd3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/01-context-and-domain-analysis/src/README.md",
+      "sha256": "a5f46c56006411a918c18d7d3e447b335aa67a928b29fb1e10075cb47fbe57a7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/01-context-and-domain-analysis/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "746e0190204649425f12b6a0e0d29e91d636d635478d6495c37acac4d0cdff83",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/src/README.md",
+      "sha256": "dbe943cbd96450a4c3a9ea0c5275b5aa833c29aee92e88e99c486a98473a59da",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/02-purpose/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "4bc287c779a2e988e478276e4274b15edea0277e7c864c83ffc9391f889da3b4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/03-system-model-and-use-cases/src/README.md",
+      "sha256": "b8a2321f01c053f93155ee6a6a23ab8c80647b8f28cf4cf570a39b30bc022bf1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/03-system-model-and-use-cases/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "f0119b235464def43a94d4323232d1c43a02ec63ecb4c0c575cf0997c1ceff2b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/04-benchmarks-and-eval-strategy/src/README.md",
+      "sha256": "e62f3b6e94c4ed7fcd9c4f89e371ca03e9de910429ac39a154988b536f00ef4d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/04-benchmarks-and-eval-strategy/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "c9b49384331b16ee4e3a6adeeb60a0942f34b2dd6d5d56f9747bc36e8f674f7e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/05-high-level-design-and-architecture/src/README.md",
+      "sha256": "bdeca9e14d32ac0f1d091aafeff819ea9dcfaa0f19fc9f16d1c6c59d227ba935",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/05-high-level-design-and-architecture/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "97aa2c7de8fb7bbfdffa8540a07ee49f1d025c449882431f06a0654b5c4640ce",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/06-viable-proof-of-concept/src/README.md",
+      "sha256": "a3f8f326847e68e5989f377f856760976368a2730de719b15d28395f5fb9b49d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/06-viable-proof-of-concept/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "d587735a831e663fa1f6b798e4cda17cf91e709b994e9a7744fa884d526e7b39",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/07-planning/src/README.md",
+      "sha256": "c0789eca4cded9eec46904bd0d2733a06afa6d71a44c7e741696cb9825c85a8c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/07-planning/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "85b638eb05428d3dbf937fc9b3ef00c76ed820b58665243707735c16d208357d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/08-low-level-design/src/README.md",
+      "sha256": "ce451143cc870d66af6528c9abb5ac905bba73701da8fff4f1bda51ad2f1c014",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/08-low-level-design/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "0487d60be81953b65966d658799045ae1f4016f71448b44319ee6964b684f6bf",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/src/README.md",
+      "sha256": "98d093a6f69b79151eff50f27e81d87b2428f53001992722e4d2e52f8c9ba133",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/09-build-and-test-cycle/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "8978f0b81b5b2925fdf8ddd446d713aabee94a358fbffcc4b4ad07527761f5ff",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/10-document-review-and-release/src/README.md",
+      "sha256": "8a36fb9c462f1d2dee327aba761ed2c08bc4f9183e89ddb9c9f7d72cef1e8dc1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/10-document-review-and-release/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "9744d7148fcc2de93b28a0a7759eb166c0dc00622544bd4ee4619380ebbd61e2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/11-operational-reality-devops-and-user-acceptance/src/README.md",
+      "sha256": "5142f0cdff76ee3719b74ac8b64d9db8b058fbba142475f02e3d8388db2c3667",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/11-operational-reality-devops-and-user-acceptance/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "fedbdf0661ba3f0d9527281d10ba32f8a0b4396b468b2ee0c48194f66fd7c233",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/12-observability-insights-and-learning/src/README.md",
+      "sha256": "0092563f7f157041af74361b12b2eb1f38d5d885372a15a243e7359bb8c58265",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/12-observability-insights-and-learning/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "5acb54af593dd308f6e9a43397832fd0e1c84f79d9b4cb58e3e97c22581100c8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "81976234383a2a00516d05dbb393f3a07f0f99e600d08fc299dc1b528b75c78a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/AGENTS.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "8b32a533f33f89cd3e656c2dd43206b0712aca458a3fd317bb55127abc891014",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/CODEX-PROMPT.md",
+      "sha256": "3c1801449c182385fecd7f6f77a95b25683e20ce725b8209ada584e495d99fa8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/CODEX-PROMPT.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "9f6e3ceb19d4f3537836fce55d3d5782941f8855c9641836a58e498448766324",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "8b0fe6ef3980d44afcf5a005bdb4c1051f0e05b6a804062c1baf030ec68c3001",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "e901766f281de283ffae80c4ee6abbc500e8e2ec95bf251dd959508444bb90aa",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "sha256": "fe1a12593dc4f13f8b181f18aedfeea7ecea85414e0048a6595d32741e97db67",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/docs/installation.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "76ddec11bb57d3bca68b29615a6bd3fc3038f5ba27ce547428340b6a3ceb154f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/provenance.md",
+      "sha256": "7a568067f0e28053c849bc0f65bbe08f7b9b1557f0dceba8f5be1bae8ac0a8c8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/docs/provenance.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "14cb1df8b7047f9de12a57b3497a1dc1bb040fe7c270bff33281c9d1265c6bd2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/root-layout.md",
+      "sha256": "193fa708c526837876e846d9e26fee32b15690782875c78c7e434c9803352784",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": null,
+        "distribution_version": "0.2.0-pilot.2"
+      }
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "sha256": "f3ea6fe609b78934bec06f5e8cf32ef7fb776ad56f030aba5d8504d43d416a9d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/docs/usage.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "682d71e5d6fed56c4bfad1129977f1ba7a80b5572578273c7bab439b895bf861",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/verification.md",
+      "sha256": "b709839cc52bdad46b8b9ea740056672c0fd4def009368fcbcf41f40e13d9467",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/VERIFICATION.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "b309901e7cb99f360328339b3957da0a06221dbc88db1d11b38e1e83f376a494",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/metadata/README.md",
+      "sha256": "f222acc2f3fd41a3ccea7da917f20f9a69b41bc92825dfaadd51c925b764ed2f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": null,
+        "distribution_version": "0.2.0-pilot.2"
+      }
+    },
+    {
+      "path": "asdg/scripts/README.md",
+      "sha256": "6f8de8bb3871a830979c5d3454fb411721ecc7516d6fe423b447117622f062ac",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": null,
+        "distribution_version": "0.2.0-pilot.2"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/README.md",
+      "sha256": "0b3fc52f9fa327553c63c14a2c00a4e96347adbb5f01aa672b03e274adcff35c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/src/README.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "1cc8f76144998750e7c1c23cbc1db6ab5e3e45fbae7d4c855a552969656faf1a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-init/SKILL.md",
+      "sha256": "719f5824b7782ac1458c7088109ca95d9a35c7189af0d85abe2ae66e32d30b71",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/skills/asdg-init/SKILL.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "0c0a50aee71d1af766830ae3b76aab382b578e23b0d4ac7c17424e83cb5a3fa4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/acceptance.md",
+      "sha256": "0c662e061c846b514030ab6704f3289831190072db411787ccba646943b8d872",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T16:17:54Z",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-authorized root layout refactor",
+        "previous_path": "asdg/00-governance/tests/acceptance.md",
+        "distribution_version": "0.2.0-pilot.2"
+      },
+      "previous_state": {
+        "sha256": "0c662e061c846b514030ab6704f3289831190072db411787ccba646943b8d872",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
     }
   ],
-  "distribution_version": "0.2.0-pilot.1"
+  "distribution_version": "0.2.0-pilot.2"
 }

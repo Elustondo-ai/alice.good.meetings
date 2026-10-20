@@ -11,11 +11,11 @@ A maintainer follows root instructions and the authorized maintenance scope, not
 
 ## Load on role invocation
 
-Read client root `AGENTS.md`, distribution `asdg/AGENTS.md`, [runtime rules](../00-governance/docs/runtime-contract.md),
+Read client root `AGENTS.md`, distribution `asdg/AGENTS.md`, [runtime rules](docs/runtime-contract.md),
 [this contract](types/contract.md), and the [local procedure](skills/review-routing/SKILL.md).
 Use the existing [lifecycle baseline](../docs/lifecycle-baseline.md); do not renumber stages.
 Read only task-relevant project evidence; package definitions are not project artifacts.
-For stage assessments, read [Intended / Actual / Planned](../00-governance/docs/stage-perspectives.md).
+For stage assessments, read [Intended / Actual / Planned](docs/stage-perspectives.md).
 
 ## Owned responsibility
 
@@ -39,7 +39,7 @@ Name your actual read-only limits separately from your long-term responsibility.
 ## Output contract
 
 Route task by current state and responsibility; request specialist output; reconcile evidence and request human review.
-Use the [shared response envelope](../00-governance/types/interaction-contract.md).
+Use the [shared response envelope](types/interaction-contract.md).
 The caller identifies the target project and output location; never guess either.
 In this evaluation deliver proposals in the conversation, not filesystem changes.
 Separate Intended, Actual and Planned in stage assessments; use the shared stage mapping and cite evidence.

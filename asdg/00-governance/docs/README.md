@@ -7,7 +7,7 @@ No project-specific requirements or sprint state are stored here by default.
 ## Shared references
 
 - [Lifecycle baseline](../../docs/lifecycle-baseline.md)
-- [Sprint controls](../../00-governance/docs/sprint-gate.md)
+- [Sprint controls](sprint-gate.md)
 - [Native integration](../../docs/native-integration.md)
 
 Presentation production is optional and is not included in this distribution.

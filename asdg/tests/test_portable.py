@@ -13,7 +13,7 @@ from unittest.mock import patch
 
 CORE = Path(__file__).resolve().parents[1]
 sys.dont_write_bytecode = True
-sys.path.insert(0, str(CORE / '00-governance/src'))
+sys.path.insert(0, str(CORE / 'scripts/lib'))
 from cli_files import apply, plan
 from cli_runtime_env import subprocess_environment
 from cli_advice import build_prompt
@@ -38,7 +38,7 @@ class PortableTests(unittest.TestCase):
         self.app = (self.root / 'app.js').read_bytes()
 
     def run_cli(self, *args, entry='cli.py', expect=0, cwd=None):
-        result = subprocess.run([sys.executable, '-B', str(self.root / 'asdg' / entry), *args],
+        result = subprocess.run([sys.executable, '-B', str(self.root / 'asdg/scripts' / entry), *args],
                                 cwd=cwd or self.root, capture_output=True, text=True, timeout=20)
         self.assertEqual(result.returncode, expect, result.stdout + result.stderr)
         return result
@@ -209,7 +209,7 @@ class PortableTests(unittest.TestCase):
 
     def test_protected_governance_traversal_and_symlink_scope_blocked(self):
         self.init()
-        for target in ('asdg/cli.py','.asdg/sprint.json','.codex/hooks.json','AGENTS.md','../outside','src/*'):
+        for target in ('asdg/scripts/cli.py','.asdg/sprint.json','.codex/hooks.json','AGENTS.md','../outside','src/*'):
             self.run_cli('sprint','start','--id','S1','--objective','x','--scope',target,'--acceptance','x',expect=1)
         outside=Path(self.area.name)/'target';outside.write_text('safe')
         (self.root/'linked').symlink_to(outside)
@@ -218,15 +218,15 @@ class PortableTests(unittest.TestCase):
 
     def test_guard_failure_fallback_and_unknown_tool(self):
         self.init();self.denied({'tool_name':'unknown','tool_input':{}})
-        (self.root/'asdg/hook.py').unlink()
+        (self.root/'asdg/scripts/hook.py').unlink()
         self.denied(self.payload(['app.js']))
 
     def test_guard_allows_only_local_factual_status(self):
         self.init()
         base={'tool_name':'Bash','cwd':str(self.root)}
-        self.assertEqual(self.hook(dict(base,tool_input={'command':'python3 asdg/cli.py status --json'})),{})
-        self.denied(dict(base,tool_input={'command':'python3 asdg/cli.py status --verbose'}))
-        self.denied(dict(base,tool_input={'command':'python3 asdg/cli.py sprint stop'}))
+        self.assertEqual(self.hook(dict(base,tool_input={'command':'python3 asdg/scripts/cli.py status --json'})),{})
+        self.denied(dict(base,tool_input={'command':'python3 asdg/scripts/cli.py status --verbose'}))
+        self.denied(dict(base,tool_input={'command':'python3 asdg/scripts/cli.py sprint stop'}))
 
     def test_logs_ignored_state_retained_and_no_raw_tool_data(self):
         self.init()

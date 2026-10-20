@@ -1,6 +1,6 @@
 # Authoritative lifecycle evidence index
 
-`python3 asdg/init.py` creates `.asdg/lifecycle.json` without advancing or approving any stage:
+`python3 asdg/scripts/init.py` creates `.asdg/lifecycle.json` without advancing or approving any stage:
 ```json
 {
   "schema_version": 1,

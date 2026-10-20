@@ -1,7 +1,7 @@
 # ASDG state engine: observe, guard, guide
 
 Reusable implementation is embedded in the client under `asdg/00-governance/`.
-`src/cli_status.py:project_status` evaluates authoritative project/sprint/evidence files.
+`asdg/scripts/lib/cli_status.py:project_status` evaluates authoritative project/sprint/evidence files.
 `cli_policy.py:implementation_permission` calculates permission for the CLI guard, hook and views.
 The deterministic engine owns facts/gates; `status` adds advisory coordinator output via the Codex SDK.
 
@@ -51,4 +51,4 @@ Runtime hook trust cannot be proven from files; local policy is not an adversari
 Evidence indexing checks presence, not semantic quality or human approval; registration is manual.
 This is a first ordered-cycle heuristic, not a complete product roadmap/sprint state machine.
 Later-stage 11/12 evidence requirements derive from the baseline; their role contracts are included.
-See [sprint gate](sprint-gate.md) for activation and tool coverage; [verification](../../VERIFICATION.md).
+See [sprint gate](sprint-gate.md) for activation and tool coverage; [verification](../../docs/verification.md).

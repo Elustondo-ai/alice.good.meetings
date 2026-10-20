@@ -1,13 +1,13 @@
 # Work with the embedded methodology
 
-Run commands from the client Git root. The project-local command is `python3 asdg/cli.py`.
+Run commands from the client Git root. The project-local command is `python3 asdg/scripts/cli.py`.
 An older globally installed `asdg` can point elsewhere; do not use it for this pilot without resolving it.
 
 ```sh
-python3 asdg/cli.py status --facts-only
-python3 asdg/cli.py status --json
-python3 asdg/cli.py agent list
-python3 asdg/cli.py sprint status
+python3 asdg/scripts/cli.py status --facts-only
+python3 asdg/scripts/cli.py status --json
+python3 asdg/scripts/cli.py agent list
+python3 asdg/scripts/cli.py sprint status
 ```
 
 These operations are deterministic; they do not call a model. Status reads the recorded project,
@@ -30,10 +30,10 @@ All named roles currently propose changes in conversation. File-writing speciali
 The human selects scope, objective and acceptance before starting a sprint in a terminal:
 
 ```sh
-python3 asdg/cli.py sprint start --id SPRINT-001 --objective 'Chosen improvement' \
+python3 asdg/scripts/cli.py sprint start --id SPRINT-001 --objective 'Chosen improvement' \
   --scope app.js --acceptance 'Observable acceptance criterion'
-python3 asdg/cli.py sprint check-implementation --path app.js
-python3 asdg/cli.py sprint stop
+python3 asdg/scripts/cli.py sprint check-implementation --path app.js
+python3 asdg/scripts/cli.py sprint stop
 ```
 
 An active sprint authorizes only its file scope and intended work, subject to independent role/runtime restrictions.

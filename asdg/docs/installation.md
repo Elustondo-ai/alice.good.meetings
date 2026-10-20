@@ -1,6 +1,6 @@
 # Install ASDG in a client repository
 
-Extract the zip once so the Git root contains `asdg/init.py`, alongside the existing application.
+Extract the zip once so the Git root contains `asdg/scripts/init.py`, alongside the existing application.
 Do not nest it inside another `asdg/` or run it from the old governance project.
 Use Python 3.9+ and Git on macOS/Linux. Windows and remote/cloud hook enforcement are unverified.
 Nothing changes outside the selected client repository; no shell startup file or Python environment is edited.
@@ -8,6 +8,8 @@ Nothing changes outside the selected client repository; no shell startup file or
 | Location | Ownership |
 | --- | --- |
 | `asdg/` | Local versioned methodology, scripts, contracts, templates and tests |
+| `asdg/scripts/` | Python entry points and supporting runtime modules |
+| `asdg/metadata/` | Distribution records; original delivery manifest retained under `deliveries/` |
 | `.asdg/` | Durable project/release/sprint/evidence state and document review history |
 | `.agents/skills/` | Generated skill discovery adapters; canonical instructions stay in `asdg/` |
 | `.codex/agents/` | Generated thirteen named-role adapters |
@@ -42,5 +44,5 @@ Repeat the same initializer to check/restore identical generated entries; valid 
 Deleting `logs/` loses observations only; it does not remove lifecycle or review history.
 Review package updates as diffs against this local working baseline; never replace the folder wholesale.
 Keep `.asdg/` across upgrades. Catalogue/version changes require a reviewed migration.
-`python3 asdg/check.py --integrity` compares package bytes to the delivered manifest; edits are visible.
+`python3 asdg/scripts/check.py --integrity` compares package bytes to the delivered manifest; edits are visible.
 Ordinary status/verify remains usable for intentional local changes if contracts and generated adapters agree.

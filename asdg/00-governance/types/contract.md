@@ -14,7 +14,7 @@ Proposals include assumptions, supporting evidence, limitations and unresolved r
 ## Invariants
 
 Do not perform specialist deliverables as a substitute for delegation; do not grant approval or modify state unilaterally.
-Use the shared [response envelope](../../00-governance/types/interaction-contract.md).
+Use the shared [response envelope](interaction-contract.md).
 One authoritative project/sprint state; do not create a second copy in this package.
 Evidence of a proposal, attempted execution, observed success and human approval are distinct.
 No type-language mandate; this Markdown is the initial contract notation.

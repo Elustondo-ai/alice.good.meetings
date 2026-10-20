@@ -11,19 +11,19 @@ The embedded `asdg/` is our evolving working baseline; do not resolve the old si
 Do not use a global `asdg` command, which may still point to the old installation.
 
 Read `asdg/README.md`, `asdg/AGENTS.md`, `asdg/docs/installation.md`,
-`asdg/docs/native-integration.md`, `asdg/docs/review-loop.md` and `asdg/VERIFICATION.md`.
+`asdg/docs/native-integration.md`, `asdg/docs/review-loop.md` and `asdg/docs/verification.md`.
 Inspect the actual repository, applicable instructions and Git status. Record application file hashes.
 Confirm the distribution is directly under this client's Git root; do not initialize another repository.
 
 Run these commands from the client root:
 
 ```sh
-python3 asdg/check.py --integrity
-python3 asdg/init.py --project-status defining --dry-run
-python3 asdg/init.py --project-status defining
-python3 asdg/cli.py verify --json
-python3 asdg/cli.py status --facts-only
-python3 asdg/init.py --project-status defining --json
+python3 asdg/scripts/check.py --integrity
+python3 asdg/scripts/init.py --project-status defining --dry-run
+python3 asdg/scripts/init.py --project-status defining
+python3 asdg/scripts/cli.py verify --json
+python3 asdg/scripts/cli.py status --facts-only
+python3 asdg/scripts/init.py --project-status defining --json
 ```
 
 The repeat run should report no managed changes. Record actual results, not expected outcomes.

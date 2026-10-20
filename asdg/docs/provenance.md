@@ -6,8 +6,9 @@ It is a captured working-tree snapshot, not a claimed Git commit or release of t
 The old October 17 local clone and the newer sibling `asdg` repository were not substituted as source.
 The attached earlier SDLC2 essays remain background; they do not override the current catalogue or user decisions.
 
-`source-manifest.json` records source file IDs, paths, modification times and SHA-256 hashes.
-`MANIFEST.json` records delivered bytes. Both are provenance, not signatures or approval.
+`metadata/source-manifest.json` records source file IDs, paths, modification times and SHA-256 hashes.
+`metadata/MANIFEST.json` records this working snapshot; `metadata/deliveries/0.2.0-pilot.1.json` retains original delivery hashes.
+These records establish provenance, not signatures or approval.
 The [Apache 2.0 license](../LICENSE) is retained from the source.
 Historical provider document-review events are preserved as history, not client evidence.
 New documentation changes receive separate hashes and no inferred human approval.
@@ -36,4 +37,4 @@ Legacy installation migration, arbitrary config merging and automated upgrades a
 Existing conflicting configuration is preserved and reported before planned writes.
 Native Mac trust/interception, live SDK advice, persisted-focus behavior and complete child-log callbacks
 must be verified in the target runtime. Configuration and local tests do not establish those outcomes.
-This package is the first local iteration; [review subsequent changes](review-loop.md) before promoting a new version.
+The [root-layout refactor](root-layout.md) is the first local revision; [review changes](review-loop.md) before promotion.
