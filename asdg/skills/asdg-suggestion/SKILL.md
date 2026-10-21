@@ -14,7 +14,8 @@ Read client `AGENTS.md`, [distribution instructions](../../AGENTS.md), [session 
 
 Identify the target project, latest user goal, constraints and explicit decisions from this conversation.
 Keep a current methodology-maintenance task distinct from the consuming application's next product step.
-Run `python3 asdg/scripts/cli.py status --json` from the client root; it is deterministic and needs no SDK.
+When called by Status, reuse its fresh CLI result and inspection evidence; otherwise run `python3 asdg/scripts/cli.py status --json`.
+Never call the Status skill back; inspect additional sources only when needed or evidence has changed. This workflow needs no SDK.
 Use recorded project/release/sprint facts separately from conversation focus and human authorization.
 The CLI's earliest-unmet-evidence recommendation is input, not the answer or a mandatory stage sequence.
 Inspect relevant client documents and source before deciding; scaffold READMEs and methodology definitions are not client evidence.
@@ -42,7 +43,7 @@ Lead with the suggested action and intended benefit, then explain why now using 
 Explain why it outranks the nearest plausible alternative when the choice is material; avoid a long menu or automatic twelve-stage plan.
 State the expected result or observation that would make the step worthwhile, plus the uncertainty that could change the recommendation.
 When a focused chat would help, name the existing selector from the catalogue/adapters and provide a short ready-to-use assignment.
-Describe current limits honestly: advisory roles can draft in conversation but cannot save project documents under this pilot.
+Read current role contracts before promising delivery: distinguish conversation-only roles from any bounded documentation/review allowance.
 Keep the response proportional; distinguish facts, user preferences and recommendations without repeating a full status report.
 Invite feedback on the premise or priority. Agreement is useful feedback, not proof of correctness, evidence approval or execution authority.
 Revise advice when new evidence warrants it; do not persist preferences, change this skill or claim learning across chats without authorization.

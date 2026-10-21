@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts/lib'))
 from cli_files import Conflict
-from cli_status import evidence_status, read_lifecycle, render_status
+from cli_status import evidence_status, read_lifecycle, recommendation, render_status
 from purpose_review import CRITERIA, DOCUMENTS, PREFIX, bundle_hashes, completion_status, validate_reviews
 
 
@@ -69,6 +69,59 @@ class PurposeReviewTests(unittest.TestCase):
                 path.write_bytes(before)
         self.assertEqual(len(self.entry['reviews']), 2)
         self.assertEqual(completion_status(self.root, self.entry)['status'], 'ACCEPTED')
+
+    def context_status(self, context=None):
+        rules = [{'number': 1, 'slug': '01-context-and-domain-analysis', 'name': 'Context'}, *self.rules,
+                 {'number': 3, 'slug': '03-system-model-and-use-cases', 'name': 'System Model and Use Cases',
+                  'action': 'Describe the use cases.', 'evidence': 'Use cases'}]
+        stages = {'02': self.entry}
+        if context is not None:
+            stages['01'] = context
+        return evidence_status(self.root, rules, {'stages': stages})
+
+    def test_empty_context_requires_current_human_purpose_acceptance(self):
+        self.assertEqual(self.context_status()[0]['readiness'], 'MISSING')
+        self.ready()
+        self.assertEqual(self.context_status()[0]['readiness'], 'MISSING')
+        self.accept()
+        stages = self.context_status()
+        self.assertEqual(stages[0]['readiness'], 'ACCEPTED_EMPTY')
+        self.assertEqual(stages[0]['artifacts'], [])
+        self.assertEqual(stages[0]['completion']['basis'], 'HUMAN_PURPOSE_ACCEPTANCE_RULE')
+        self.assertEqual(recommendation(stages, None, [])['stage']['number'], 3)
+        (self.folder / DOCUMENTS[1]).write_text('# Changed Purpose baseline\n')
+        self.assertEqual(self.context_status()[0]['readiness'], 'MISSING')
+
+    def test_registered_and_unregistered_context_are_not_replaced_by_empty_acceptance(self):
+        self.ready(); self.accept()
+        folder = self.root / 'docs/asdg/01-context-and-domain-analysis'
+        folder.mkdir()
+        artifact = folder / 'existing-system.md'
+        artifact.write_text('# Existing system context\n')
+        self.assertEqual(self.context_status()[0]['readiness'], 'MISSING')
+        entry = {'artifacts': [artifact.relative_to(self.root).as_posix()], 'not_applicable_reason': None}
+        stage = self.context_status(entry)[0]
+        self.assertEqual(stage['readiness'], 'ESTABLISHED')
+        self.assertNotIn('completion', stage)
+        self.assertEqual(artifact.read_text(), '# Existing system context\n')
+
+    def test_context_scaffold_is_empty_but_substantive_readme_and_symlink_are_not(self):
+        self.ready(); self.accept()
+        folder = self.root / 'docs/asdg/01-context-and-domain-analysis'
+        folder.mkdir()
+        scaffold = ('# Context and Domain Agent — project evidence\n\n'
+                    'No assessment has been recorded here yet.\n\n'
+                    'Use Intended / Actual / Planned; preserve sources, uncertainties and human decisions.\n'
+                    'Intended: desired outcomes and constraints. Actual: substantiated current evidence.\n'
+                    'Planned: selected next work, linked to the integrated Stage 07 plan.\n')
+        index = folder / 'README.md'
+        index.write_text(scaffold)
+        self.assertEqual(self.context_status()[0]['readiness'], 'ACCEPTED_EMPTY')
+        index.write_text(scaffold + '\nAn existing system requires integration.\n')
+        self.assertEqual(self.context_status()[0]['readiness'], 'MISSING')
+        index.write_text(scaffold)
+        (folder / 'linked-context').symlink_to(self.folder / DOCUMENTS[0])
+        self.assertEqual(self.context_status()[0]['readiness'], 'MISSING')
 
     def test_reassessment_requires_new_acceptance_and_preserves_history(self):
         self.ready(); self.accept()

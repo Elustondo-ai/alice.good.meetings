@@ -691,6 +691,78 @@
       "provenance": {
         "generator": "Required Purpose visual rule"
       }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "339ac44e391dd5731b48159e0cf1786cf5ab3b03594990920293a7a891e9ef5a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "072d3f7a11714cace557ea6f66559f807c43c95a730f13e848ebad4df55a7e5f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".asdg/lifecycle.json",
+      "sha256": "ff187041b86cd7ff0d79a6fbd985204ab23b51a7d8991a39f88eb5801e965f86",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "0cd20e4a20006da17457e77386d4b72e065bb6fe70142d27eaec9146a078e021",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_02.toml",
+      "sha256": "a01829e87d2ad772592f22d22102072f5be025cf7d5c0211df970d314ec1b550",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "10e24706a7a3f485977a145ea905ff7ad137eff8145b4f2fde79b2272433dab5",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-19T14:15:33Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "82377c899ee4e4127c2a45a7e2ed3e2a20360c7f403c3bcc6fc8b2ec8dd42419",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "824ab8a2e0df0228af662a4011e1ebc8f11a16aa51002a94d806170c46828eeb",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/current/reviews/purpose-two-gate-completion.md",
+      "sha256": "b559d6be6a5a5da670c82792ebb464133ff6f0efdc21d82a829b1e67c024a356",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      }
     }
   ]
 }

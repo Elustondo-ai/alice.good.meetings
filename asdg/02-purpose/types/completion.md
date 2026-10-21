@@ -44,4 +44,7 @@ Actor labels are recorded provenance; structural validation does not authenticat
 Changed document, navigation or image bytes make the prior review stale and the current status `IN_PROGRESS`.
 Keep the earlier accepted version's hashes in history; reassess and seek acceptance of the revised baseline.
 Unchanged accepted bytes remain accepted; no regeneration or repeated acceptance is needed.
-These decisions concern Purpose documentation only; they do not start a sprint, approve implementation or close the project.
+When human Purpose acceptance is current and Context has no registered or substantive unregistered work, Stage 01 reports **Accepted — empty**.
+This is derived from the recorded human acceptance under this rule; it creates no Context document or separate approval event.
+Agent readiness alone never triggers it. Context work or a stale Purpose acceptance returns Context to its evidence-based status.
+Purpose acceptance and its derived empty-Context flag do not start a sprint, approve implementation or close the project.

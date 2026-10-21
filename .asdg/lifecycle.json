@@ -2,5 +2,51 @@
   "schema_version": 1,
   "project_status": "new",
   "release": null,
-  "stages": {}
+  "stages": {
+    "02": {
+      "artifacts": [
+        "docs/asdg/02-purpose/01-purpose.md",
+        "docs/asdg/02-purpose/02-current-capabilities.md",
+        "docs/asdg/02-purpose/03-planned-improvements.md"
+      ],
+      "not_applicable_reason": null,
+      "reviews": [
+        {
+          "decision": "READY_FOR_ACCEPTANCE",
+          "actor": "ASDG-02",
+          "recorded_at": "2026-10-21T00:14:20Z",
+          "artifacts": {
+            "docs/asdg/02-purpose/01-purpose.md": "2b288e476d331b96c7c269ae0f38daf87804e1c49015b0dcfc512b1b4b8601b0",
+            "docs/asdg/02-purpose/02-current-capabilities.md": "50164f379a178f32a2e5f82dd3c5c06f6adf0e87d052c0f8ef979d608f78f5d4",
+            "docs/asdg/02-purpose/03-planned-improvements.md": "5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f",
+            "docs/asdg/02-purpose/README.md": "82377c899ee4e4127c2a45a7e2ed3e2a20360c7f403c3bcc6fc8b2ec8dd42419",
+            "docs/asdg/02-purpose/images/speaker-coach-purpose.png": "260e373a121a9b7177a8936c9548e65b777f29b5faf5c6cd99f6c23c39fec758"
+          },
+          "criteria": {
+            "purpose": "01-purpose.md identifies attention, recall and structured answers as the product purpose; the User confirmed this direction in this conversation.",
+            "outcomes": "01-purpose.md lists delivery regulation, staying on topic and recalling relevant experience.",
+            "boundaries": "01-purpose.md prioritizes attention and brief visual guidance; 03-planned-improvements.md separates the next outcome from later answer suggestions and records feasibility/design uncertainties.",
+            "current_evidence": "02-current-capabilities.md attributes the timing-indicator value and audio-coaching limitations to User reports and explicitly states that code and runtime were not independently tested.",
+            "next_improvement": "03-planned-improvements.md records the confirmed priority: distinguish speakers, capture the question and keep it visible; it makes no implementation commitment.",
+            "acceptance_questions": "03-planned-improvements.md asks observable questions on speaker distinction, question fidelity, persistence and distraction; unresolved wording and feasibility remain explicit.",
+            "visual": "The local 1536x1024 image was inspected on generation. The User-supplied rendered screenshot shows it near the purpose opening with readable labels and a vision caption; the local embedded image link resolves.",
+            "documentation": "The three numbered concept files and README links pass local checks and the 50-nonblank-line standard. Product documents use User; assessment histories and reported-versus-verified distinctions are preserved."
+          }
+        },
+        {
+          "decision": "ACCEPTED",
+          "actor": "User",
+          "recorded_at": "2026-10-21T00:24:16Z",
+          "artifacts": {
+            "docs/asdg/02-purpose/01-purpose.md": "2b288e476d331b96c7c269ae0f38daf87804e1c49015b0dcfc512b1b4b8601b0",
+            "docs/asdg/02-purpose/02-current-capabilities.md": "50164f379a178f32a2e5f82dd3c5c06f6adf0e87d052c0f8ef979d608f78f5d4",
+            "docs/asdg/02-purpose/03-planned-improvements.md": "5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f",
+            "docs/asdg/02-purpose/README.md": "82377c899ee4e4127c2a45a7e2ed3e2a20360c7f403c3bcc6fc8b2ec8dd42419",
+            "docs/asdg/02-purpose/images/speaker-coach-purpose.png": "260e373a121a9b7177a8936c9548e65b777f29b5faf5c6cd99f6c23c39fec758"
+          },
+          "statement": "I accept Purpose as done for now."
+        }
+      ]
+    }
+  }
 }

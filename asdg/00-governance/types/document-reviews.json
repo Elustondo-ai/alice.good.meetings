@@ -12051,6 +12051,550 @@
         "visible_review_markers": [],
         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.py",
+      "sha256": "7366d1717fbc813f6f799a9cd1efa020c34ca7a45067a5c61caebf1a255c65dd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "19c541bc436319c0efa17caab0d6ca42e43c2413dd1d5c4c0cb5ee897a471b36",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "be8957eb1b4bfc93842a28899aab96dc18afcb6ebeffeea00b2ea067b044adb9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "6ba26bf8d9191e133c34b88019c4afafacb19fa25f20ee250d9daec6db4470fe",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "34a76ac42d2145dbf69f7f312e8c78a87b91f16d13eea1b4b50d0151141cb2fa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "9b60fb3a88631f1f2f2b58db122c6aa6445aaf0852f11e5643d5f5d93f0cf8bf",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "8750582c85486fb9b5afc4de6c2840d997478a175c1b7f4cab2c53884e577722",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "ec5f1cfafc088f0f56869aa33f3032cb39ab725e5b9d659c41128d5edd2c9f13",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/AGENTS.md",
+      "sha256": "20b5f443190b7286cb058cd0b7565e009f4f943022aea13923116bb002e6403a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "b8167902c1e2bbe3fad56ed25946037d8f23cb4f9f57c36348019f0df6231291",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/types/contract.md",
+      "sha256": "f77f0eae33f9824d75624174539993dd4417b0b50f9752d9eb5b5853d7e042d8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "a9583c6bab1ec08f4abc17082a8e7d14382dfbce414051b63b5bfa81e140d938",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/skills/elicit-purpose/SKILL.md",
+      "sha256": "983251feaf8eba63e535e1d99ca7ba4fc994cc0e8f6075db057603bc6022d8d7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "0df8b625a40ef14cce055748a6ee4ab80754a8e62d88daf3a29e574ccbbbb2de",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/tests/acceptance.md",
+      "sha256": "e15d81802cc5fc96edd9105bb9d617d54eb8de3f882bdf9c93764f4b56f82191",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "626784b80380f72ed50e5034ded34db064999e7220b422b5ede4ce5d98d20386",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/README.md",
+      "sha256": "cd9f2c9b70eb250948f13159031f9bce06aaed60dab1691b44eff6d6718415a0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "d37b5086fdc48856371f3341b80339006e4ad6f11f86acc0a020b649f0f592ac",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_02.toml",
+      "sha256": "a01829e87d2ad772592f22d22102072f5be025cf7d5c0211df970d314ec1b550",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "10e24706a7a3f485977a145ea905ff7ad137eff8145b4f2fde79b2272433dab5",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-19T14:15:33Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/types/completion.md",
+      "sha256": "3fb8d169e38b23487f8408a5e4b678615c145453bab86baa0de564dd055029d8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/purpose_review.py",
+      "sha256": "823c848c3a2778c62ddf0684274ff5813c91c61d1c4cb5bcaf12907a87d89197",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      }
+    },
+    {
+      "path": "asdg/tests/test_purpose_review.py",
+      "sha256": "b20ebb68855efa114779f15256b795d8e93f7d3c367a75ddab7c8b22d39a3ed9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_status.py",
+      "sha256": "62b990b1641e17b549684df6f607c56830942c46a6a9cd633bad5efdcd709e83",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "62b990b1641e17b549684df6f607c56830942c46a6a9cd633bad5efdcd709e83",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_dashboard.py",
+      "sha256": "02cdde1942dd4b1d99adf0dbe9b848f7517ca997bc8605e57be8167a48ab9e3d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:14:50Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose two-gate completion"
+      },
+      "previous_state": {
+        "sha256": "02cdde1942dd4b1d99adf0dbe9b848f7517ca997bc8605e57be8167a48ab9e3d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/SKILL.md",
+      "sha256": "e1be1834731886c391a15d9e8b8b73c9b67f824c00bf955df3acf7f9dfe5c215",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:15:00.448561+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Separate ASDG project/session status from current role explanation"
+      },
+      "previous_state": {
+        "sha256": "9316a06e179d59e28fc37d6720a6378e8d6693d61183b55c7f211c58c03af352",
+        "visible_review_markers": [
+          "AI-MODIFIED - 2026-10-19T02:40:42Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/status-format.md",
+      "sha256": "c87ff81eca8c2960a2f01bb1991b156ac4a25dcc95e811716851e4f7fa30b8ba",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:15:00.448754+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Separate ASDG project/session status from current role explanation"
+      },
+      "previous_state": {
+        "sha256": "d44c180ef2907c1e924b05e8aa5c192d76bad499debe427b0be9b46bd4fc0044",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-status/SKILL.md",
+      "sha256": "750c5fcf4864350a883c374000513c0170faf3b6426a2131805fcf824d604ab4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:15:00.448893+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Separate ASDG project/session status from current role explanation"
+      },
+      "previous_state": {
+        "sha256": "564cef6fb0e119be9e10b6d4e7f84512d2c48c808acd660265f3046b20d73d00",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-status/SKILL.md",
+      "sha256": "750c5fcf4864350a883c374000513c0170faf3b6426a2131805fcf824d604ab4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:15:00.449018+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Separate ASDG project/session status from current role explanation"
+      },
+      "previous_state": {
+        "sha256": "564cef6fb0e119be9e10b6d4e7f84512d2c48c808acd660265f3046b20d73d00",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "ae7a2b5dcf56e37ecfeaa3bedc661deaf0b8ee776098df0df193733dfc870dfe",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:15:00.449366+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Separate ASDG project/session status from current role explanation"
+      },
+      "previous_state": {
+        "sha256": "ba8d6690858c127974c74bc8a7cffa889f9553e1f235a36c05401ff8ddf5228b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "be8957eb1b4bfc93842a28899aab96dc18afcb6ebeffeea00b2ea067b044adb9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:15:00.449660+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Separate ASDG project/session status from current role explanation"
+      },
+      "previous_state": {
+        "sha256": "ad9b9ebbfc7ae51fc7576d41aab180d864daf4e38766f8e1822011998c99495f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-role/SKILL.md",
+      "sha256": "c58dc07763da281a480b7d80e9d5ec313dda932be45b3b6b147aa3c6355cfe47",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:15:00.449904+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Separate ASDG project/session status from current role explanation"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-role/SKILL.md",
+      "sha256": "e01a75c89793a4c5f0a78a215faba50da239ab70b0970005967b1520d9b9f796",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:15:00.450013+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Separate ASDG project/session status from current role explanation"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-role/SKILL.md",
+      "sha256": "e01a75c89793a4c5f0a78a215faba50da239ab70b0970005967b1520d9b9f796",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:15:00.450120+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Separate ASDG project/session status from current role explanation"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/SKILL.md",
+      "sha256": "29ed94fc3b1a2a7bae7f84e02a3c665ca37a6bfc1dd8762976d6c855ec40c6da",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:16:02.255302+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Finish ASDG Status with evidence-informed Suggestion"
+      },
+      "previous_state": {
+        "sha256": "e1be1834731886c391a15d9e8b8b73c9b67f824c00bf955df3acf7f9dfe5c215",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/status-format.md",
+      "sha256": "42f883d2a1263cc0efe7287ec8285167d810780e194a287c006c471d3916ab20",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:16:02.255911+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Finish ASDG Status with evidence-informed Suggestion"
+      },
+      "previous_state": {
+        "sha256": "c87ff81eca8c2960a2f01bb1991b156ac4a25dcc95e811716851e4f7fa30b8ba",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-suggestion/SKILL.md",
+      "sha256": "a347ae33c8a9b74083e0ba70ded2fbe3695eb28c4df7ec707629c7a6e545e1fa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:16:02.256261+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Finish ASDG Status with evidence-informed Suggestion"
+      },
+      "previous_state": {
+        "sha256": "5acc003f381f006ba55af728dc8a88f8928469518ebbb5259d67451b91183f28",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "e13308a234a89f5b5bc0504d2b08a34210319c1fd01bee44b918f2de2f574f55",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:16:02.256609+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Finish ASDG Status with evidence-informed Suggestion"
+      },
+      "previous_state": {
+        "sha256": "ae7a2b5dcf56e37ecfeaa3bedc661deaf0b8ee776098df0df193733dfc870dfe",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-status/SKILL.md",
+      "sha256": "65ac5c3f56f3509556990c21ffdae9cdd7c41ee0cb4498a719c94b0e8a79fde6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:16:02.256732+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Finish ASDG Status with evidence-informed Suggestion"
+      },
+      "previous_state": {
+        "sha256": "750c5fcf4864350a883c374000513c0170faf3b6426a2131805fcf824d604ab4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-status/SKILL.md",
+      "sha256": "65ac5c3f56f3509556990c21ffdae9cdd7c41ee0cb4498a719c94b0e8a79fde6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:16:02.256850+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Finish ASDG Status with evidence-informed Suggestion"
+      },
+      "previous_state": {
+        "sha256": "750c5fcf4864350a883c374000513c0170faf3b6426a2131805fcf824d604ab4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/SKILL.md",
+      "sha256": "6b5ee36e8106c214882ed41b29b1e0df88c461f399d7cf2a4f402364ef8b6961",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:31:13.400937+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Order Status as facts, suggestion, then observations and technical debt"
+      },
+      "previous_state": {
+        "sha256": "29ed94fc3b1a2a7bae7f84e02a3c665ca37a6bfc1dd8762976d6c855ec40c6da",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/status-format.md",
+      "sha256": "1299ca70daf3d13464b9e91363ffd9abe7a5bf22e54d8f94c1838b7a46c6491e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:31:13.401364+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Order Status as facts, suggestion, then observations and technical debt"
+      },
+      "previous_state": {
+        "sha256": "42f883d2a1263cc0efe7287ec8285167d810780e194a287c006c471d3916ab20",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "030d5fd21bc3a8d338734514e6d76459a3d75800667b975c9dcf4ea2fcf63f60",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:31:13.401408+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Order Status as facts, suggestion, then observations and technical debt"
+      },
+      "previous_state": {
+        "sha256": "e13308a234a89f5b5bc0504d2b08a34210319c1fd01bee44b918f2de2f574f55",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-status/SKILL.md",
+      "sha256": "1164d99c92bd8301c9b1f76a6949f32059422ed07e2b1b850708bfb533f15ce1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:31:13.401447+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Order Status as facts, suggestion, then observations and technical debt"
+      },
+      "previous_state": {
+        "sha256": "65ac5c3f56f3509556990c21ffdae9cdd7c41ee0cb4498a719c94b0e8a79fde6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-status/SKILL.md",
+      "sha256": "1164d99c92bd8301c9b1f76a6949f32059422ed07e2b1b850708bfb533f15ce1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:31:13.401482+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Order Status as facts, suggestion, then observations and technical debt"
+      },
+      "previous_state": {
+        "sha256": "65ac5c3f56f3509556990c21ffdae9cdd7c41ee0cb4498a719c94b0e8a79fde6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/types/completion.md",
+      "sha256": "78e0de270f1790ff97f492c07568f506cc6271df39982e48b91d43a9c7ab4b9c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:49:43.730897+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Accept empty Context through current human Purpose acceptance"
+      },
+      "previous_state": {
+        "sha256": "3fb8d169e38b23487f8408a5e4b678615c145453bab86baa0de564dd055029d8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/lifecycle-evidence.md",
+      "sha256": "52be07c98477c16df3e1a6b41cd158b175b67546356d2b0a3d566f6112b3c342",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:49:43.731061+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Accept empty Context through current human Purpose acceptance"
+      },
+      "previous_state": {
+        "sha256": "f76c884491f903198c1b414507c0be487291a144781b7154136c2a41a7ad8a34",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/state-engine.md",
+      "sha256": "fe220946f05f12bc77e6232da99ce553623877c2e579ef161e995e608fbbf6c7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:49:43.731107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Accept empty Context through current human Purpose acceptance"
+      },
+      "previous_state": {
+        "sha256": "428fb3b3f490e2985536f478821595144e7b1007d38b751f62b4f49634cb16f0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

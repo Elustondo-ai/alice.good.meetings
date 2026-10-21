@@ -25,6 +25,8 @@ References must be repository-relative files in the corresponding stage folder.
 Missing or empty referenced files leave the stage unmet. Unregistered files do not establish evidence.
 Generated README placeholders, symlinks, traversal and references outside the stage are rejected.
 Established means evidence is referenced and present; it does not mean complete or human-approved.
+Exception: empty Stage 01 is `ACCEPTED_EMPTY` when Stage 02 has current explicit human acceptance, under the [Purpose completion rule](../../02-purpose/types/completion.md).
+Status derives this flag without writing state; substantive Context work is preserved and is never auto-approved.
 A file may contain uncertain or unreviewed evidence; quality review remains a human/role responsibility.
 The index holds references, not a second copy of project context, intent or implementation content.
 

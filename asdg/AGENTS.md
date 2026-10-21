@@ -15,7 +15,7 @@ Read the selected role, its local procedure, runtime contract and response envel
 Use client sources as evidence; definitions in this folder never establish application behavior.
 Apply [Intended / Actual / Planned](00-governance/docs/stage-perspectives.md) to the stated client subject.
 Run `python3 asdg/scripts/cli.py status --json` from the client root for project/release/sprint facts.
-`$asdg-status` describes conversation focus; the CLI describes recorded project workflow.
+`$asdg-status` combines project facts with session progress; `$asdg-role` explains the current role's mandate.
 Use `docs/asdg/` for accepted client artifacts and `.asdg/` for durable state and review records.
 Use root `logs/` for disposable activity records; no role may claim complete logging without evidence.
 Check every implementation target through the sprint guard; hook trust is a separate runtime check.

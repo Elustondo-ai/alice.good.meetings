@@ -24,7 +24,7 @@ Evidence presence, execution, human approval and lifecycle completion remain dis
 ## Explicit recommendation rules
 
 1. Invalid structure/state/methodology rules: repair the reported error first.
-2. Otherwise select the earliest stage without registered, existing, non-empty evidence.
+2. Otherwise select the earliest unmet stage; empty Context is accepted when Purpose has current human acceptance.
 3. Stage 06 alone permits an explicit unnecessary-POC reason, as the canonical baseline allows.
 4. Stages 01–06: recommend the corresponding contract's work, in canonical order.
 5. From planning onward with no active sprint: define/review the plan and start scoped work.

@@ -76,6 +76,27 @@ def read_lifecycle(root: Path, rules: list[dict]) -> dict:
     return value
 
 
+def context_is_empty(root: Path, rule: dict) -> bool:
+    """Scaffolding is empty Context; unregistered substantive work is not."""
+    folder = safe_path(root, ARTIFACTS / rule['slug'])
+    scaffold = ('# Context and Domain Agent — project evidence\n\n'
+                'No assessment has been recorded here yet.\n\n'
+                'Use Intended / Actual / Planned; preserve sources, uncertainties and human decisions.\n'
+                'Intended: desired outcomes and constraints. Actual: substantiated current evidence.\n'
+                'Planned: selected next work, linked to the integrated Stage 07 plan.\n')
+    for path in folder.rglob('*'):
+        if path.is_symlink():
+            return False
+        if not path.is_file() or path.name in ('.gitkeep', '.DS_Store'):
+            continue
+        data = path.read_bytes()
+        if path == folder / 'README.md' and data == scaffold.encode():
+            continue
+        if data.strip():
+            return False
+    return True
+
+
 def evidence_status(root: Path, rules: list[dict], value: dict) -> list[dict]:
     stages = []
     for rule in rules:
@@ -93,6 +114,16 @@ def evidence_status(root: Path, rules: list[dict], value: dict) -> list[dict]:
                            not_applicable_reason=entry.get('not_applicable_reason')))
         if rule['number'] == 2:
             stages[-1]['completion'] = completion_status(root, entry)
+    context = next((stage for stage in stages if stage['number'] == 1), None)
+    purpose = next((stage for stage in stages if stage['number'] == 2), None)
+    if (context is not None and purpose is not None and not context['artifacts']
+            and purpose['completion']['user_accepted'] and context_is_empty(root, context)):
+        context['readiness'] = 'ACCEPTED_EMPTY'
+        context['completion'] = {
+            'status': 'ACCEPTED_EMPTY', 'user_accepted': True,
+            'basis': 'HUMAN_PURPOSE_ACCEPTANCE_RULE',
+            'recorded_at': purpose['completion']['recorded_at'],
+            'reason': 'Context is empty and accepted by the human Purpose-acceptance rule.'}
     return stages
 
 
@@ -185,6 +216,9 @@ def render_status(status: dict) -> str:
              status['recommendation']['action']]
     if status['project_status_basis'] == 'NOT_RECORDED' or status['release_status_basis'] == 'NOT_RECORDED':
         lines.extend(['', 'UNKNOWN means not recorded; status does not infer or change workflow state.'])
+    context = next((s for s in status['lifecycle_stages'] if s['number'] == 1), None)
+    if context and context.get('completion', {}).get('status') == 'ACCEPTED_EMPTY':
+        lines.extend(['', 'Context completion: ACCEPTED_EMPTY', context['completion']['reason']])
     purpose = next((s for s in status['lifecycle_stages'] if s['number'] == 2), None)
     if purpose:
         lines.extend(['', 'Purpose completion: ' + purpose['completion']['status'], purpose['completion']['reason']])
