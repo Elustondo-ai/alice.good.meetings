@@ -89,6 +89,28 @@ class PortableTests(unittest.TestCase):
         self.assertEqual(snapshot(self.root), before)
         self.assertEqual(json.loads(self.run_cli('status', '--json').stdout)['project_status'], 'new')
 
+    def test_governance_focus_installs_without_changing_lifecycle_or_authority(self):
+        self.init()
+        relative = Path('.agents/skills/asdg-focus-00-governance')
+        for name in ('SKILL.md', 'agents/openai.yaml'):
+            self.assertEqual((self.root / relative / name).read_bytes(),
+                             (self.root / 'asdg/templates' / relative / name).read_bytes())
+        self.assertEqual(len(list((self.root / '.agents/skills').glob('asdg-focus-*/SKILL.md'))), 13)
+        status = json.loads(self.run_cli('status', '--json').stdout)
+        self.assertEqual([s['number'] for s in status['lifecycle_stages']], list(range(1, 13)))
+        self.assertEqual(status['sprint_status'], 'inactive')
+        self.assertEqual(status['implementation_permission'], 'BLOCKED')
+        self.run_cli('verify')
+        before = snapshot(self.root)
+        self.init()
+        self.assertEqual(snapshot(self.root), before)
+
+    def test_missing_governance_focus_template_fails_before_any_writes(self):
+        shutil.rmtree(self.root / 'asdg/templates/.agents/skills/asdg-focus-00-governance')
+        before = snapshot(self.root)
+        self.init(expect=1)
+        self.assertEqual(snapshot(self.root), before)
+
     def test_advice_report_creates_planning_parents_without_changing_state(self):
         self.init('--project-status', 'defining')
         before = snapshot(self.root)

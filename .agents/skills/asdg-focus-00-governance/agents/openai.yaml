@@ -1,0 +1,6 @@
+interface:
+  display_name: "ASDG focus 00 governance"
+  short_description: "Focus on whole-project ASDG coordination"
+  default_prompt: "Use $asdg-focus-00-governance for this project."
+policy:
+  allow_implicit_invocation: false

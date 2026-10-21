@@ -21,6 +21,8 @@ def render_dashboard(status: dict) -> str:
 
     permission = escaped(status['implementation_permission'])
     next_action = status['recommendation']
+    purpose = next((s for s in status['lifecycle_stages'] if s['number'] == 2), {})
+    completion = purpose.get('completion', {'status': 'UNKNOWN', 'reason': 'Not recorded.'})
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="refresh" content="30"><title>ASDG — {escaped(status['project_name'])}</title>
@@ -55,6 +57,8 @@ footer{{font-size:13px;color:var(--muted);padding:4px 0 20px}}a{{color:var(--tea
 <section><div class="eyebrow">Sprint scope</div>{items(status['sprint_scope'])}
 <div class="eyebrow">Acceptance criteria</div>{items(status['acceptance_criteria'])}</section>
 <section><div class="eyebrow">Blockers</div>{items(status['blockers'])}</section>
+<section><div class="eyebrow">Purpose completion</div><h2>{escaped(completion['status'])}</h2>
+<p>{escaped(completion['reason'])}</p></section>
 <section><div class="eyebrow">Project binding</div><dl><dt>Provider</dt><dd>{escaped(status['provider'])}</dd>
 <dt>CLI version</dt><dd>{escaped(status['cli_version'])}</dd><dt>Hook config</dt><dd>{escaped(status['guard']['configuration'])}</dd>
 <dt>Hook trust</dt><dd>{escaped(status['guard']['runtime_trust'])}</dd></dl>

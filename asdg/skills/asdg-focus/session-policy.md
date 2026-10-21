@@ -7,7 +7,8 @@ Explicit native delegated assignments remain valid; these skills do not spawn or
 ## Selection
 
 A genuinely new conversation starts with no selected specialist; general repository guidance still applies.
-Explicitly selecting a named Focus skill, or a valid generic selector, requests one existing catalogue role, stages 01-12.
+Explicitly selecting a named Focus skill, or a valid generic selector, requests governance 00 or one specialist, stages 01-12.
+Governance selects ASDG-COORDINATOR: whole-project coordination, distinct from a general session with no selected role.
 Select the role only after the canonical definition and required sources were successfully read.
 Inspecting, maintaining, mentioning or reading a role package by itself NEVER activates that role.
 Status, another ordinary skill, a topic change or a directory change NEVER selects or clears focus.
@@ -35,7 +36,9 @@ Reread the canonical sources when retained context is insufficient or source cha
 Status reports what is known and may inspect necessary sources, but must not silently reactivate a role.
 Keep earlier reads distinct from reads performed for this status report.
 Apply the canonical out-of-scope and blocked-action rules; textual handoffs are not completed delivery.
-All current catalogue roles allow conversation proposals, not project-file mutations or lifecycle execution.
+Roles allow conversation proposals; ASDG-02 additionally saves Purpose documentation under its canonical contract.
+ASDG-02 may record its two-gate Purpose reviews under its completion contract; other lifecycle execution remains excluded.
+Its agent readiness never implies User acceptance or application implementation authority.
 Changing Codex Plan/Default mode or invoking a skill does not widen that authority.
 Never infer runtime permissions, human approval, effective hooks or successful tests from role instructions.
 

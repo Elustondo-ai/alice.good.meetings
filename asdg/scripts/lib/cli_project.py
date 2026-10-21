@@ -31,7 +31,8 @@ Only an explicit human sprint start/stop decision authorizes a transition; never
 Use scoped apply_patch edits. Arbitrary shell/REPL writes remain blocked by the guard.
 Do not edit state, hook definitions or ASDG policies as part of application implementation.
 Review and trust project hooks in Codex; configuration alone does not establish enforcement.
-All current named roles retain read-only evaluation; an active sprint does not widen their roles.
+Named roles retain read-only evaluation except ASDG-02 Purpose documentation under docs/asdg/02-purpose/.
+Purpose documentation and stage 02 review recording follow asdg/02-purpose/types/contract.md; a sprint does not widen role authority.
 Installation grants no approval, publication, commit, push, deployment or hook trust.
 {END}
 '''
@@ -129,8 +130,10 @@ def preflight_package(repo):
                 raise Conflict(f'Missing role input: {agent[key]}')
         if read_bytes(safe_path(repo, Path('asdg/templates') / agent['adapter'])) is None:
             raise Conflict(f'Missing role adapter: {agent["native_name"]}')
-    if len(list(safe_path(repo, 'asdg/templates/.agents/skills').glob('asdg-focus-*/SKILL.md'))) != 12:
-        raise Conflict('Expected twelve packaged focus adapters.')
+    focus_root = safe_path(repo, 'asdg/templates/.agents/skills')
+    if (len(list(focus_root.glob('asdg-focus-*/SKILL.md'))) != 13
+            or not (focus_root / 'asdg-focus-00-governance/SKILL.md').is_file()):
+        raise Conflict('Expected governance 00 and twelve specialist focus adapters.')
     return agents, digest
 
 

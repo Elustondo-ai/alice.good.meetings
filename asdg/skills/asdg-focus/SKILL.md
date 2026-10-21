@@ -1,6 +1,6 @@
 ---
 name: asdg-focus
-description: Explicitly focus this conversation on an existing ASDG stage 01-12, or clear focus. Shared activation workflow for the twelve picker entries; no delegation or project execution.
+description: Explicitly focus this conversation on ASDG governance 00 or a specialist stage 01-12, or clear focus. Shared activation workflow for thirteen picker entries; no delegation or project execution.
 ---
 
 # ASDG Focus — shared activation workflow v0.2
@@ -12,14 +12,15 @@ The generic skill remains a shortcut; trailing text is an instruction argument, 
 ## Resolve the selection
 
 Read [the existing catalogue](../../00-governance/types/agent-catalog.json) and [UI choices](focus-choices.md).
-A dedicated adapter supplies its fixed ASDG-NN selector; preserve its actual invocation in the receipt.
+A dedicated adapter supplies its fixed catalogue role ID; preserve its actual invocation in the receipt.
 Extra task text is context, not another selector. Conflicting explicit selections require clarification.
-Generic input accepts one trimmed, case-insensitive role ID, native name, 01-12, catalogue folder basename or listed alias.
-Missing generic input: direct the user to the twelve named Focus skills; keep focus unchanged and stop.
+Generic input accepts one trimmed, case-insensitive role ID, native name, 00-12, catalogue folder basename or listed alias.
+Missing generic input: direct the user to the thirteen named Focus skills; keep focus unchanged and stop.
 For `clear`, skip role loading, clear only conversation focus, then rename and report Status.
 Unknown, ambiguous or path-like input leaves focus unchanged.
-Resolve to exactly one catalogue entry, stage 01-12. Do not synthesize paths from user input.
-00 remains the coordinator, not a thirteenth lifecycle focus. Never create or renumber roles.
+Resolve to exactly one catalogue entry, governance 00 or stage 01-12. Do not synthesize paths from user input.
+00 selects ASDG-COORDINATOR / asdg_coordinator, an explicit management focus outside the twelve development stages.
+Governance is distinct from None; `clear` never selects it. Never create or renumber roles.
 
 ## Read before changing focus
 
@@ -38,7 +39,7 @@ Do not replace definitions with an older SDLC2 folder, remembered summary or ano
 
 After successful reads, replace THIS conversation's focus with the selected canonical role.
 Record actual source paths, available versions and the invoked skill; keep all canonical role/evaluation boundaries.
-The current catalogue is read-only evaluation: conversation proposals only, including Build/Test and Release roles.
+Roles retain evaluation boundaries; ASDG-02's contract additionally permits assigned Purpose documentation writes.
 Loading a procedure does not start its interview, execute its task or write artifacts; wait for an assignment.
 After successful activation or explicit clear, follow [the current-chat rename step](rename-chat.md).
 Renaming is the narrow chat-metadata exception; failure never undoes successful activation/clear.

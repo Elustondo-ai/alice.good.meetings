@@ -9,6 +9,7 @@ from cli_files import Conflict, read_bytes, safe_path
 from cli_model import ARTIFACTS, PROVIDER, REPO, VERSION, catalogue, now
 from cli_policy import implementation_permission
 from cli_project import inspect
+from purpose_review import completion_status, validate_reviews
 
 LIFECYCLE = Path('.asdg/lifecycle.json')
 EMPTY_LIFECYCLE = {'schema_version': 1, 'stages': {}}
@@ -54,8 +55,12 @@ def read_lifecycle(root: Path, rules: list[dict]) -> dict:
         raise Conflict('Invalid release; expected null or release_id and a supported status.')
     known = {f"{rule['number']:02d}": rule for rule in rules}
     for number, entry in value['stages'].items():
-        if number not in known or not isinstance(entry, dict) or set(entry) != {'artifacts', 'not_applicable_reason'}:
+        allowed = {'artifacts', 'not_applicable_reason'} | ({'reviews'} if number == '02' else set())
+        if (number not in known or not isinstance(entry, dict)
+                or not {'artifacts', 'not_applicable_reason'} <= set(entry) or set(entry) - allowed):
             raise Conflict(f'Invalid lifecycle evidence entry: {number}')
+        if 'reviews' in entry:
+            validate_reviews(entry['reviews'])
         files, reason = entry['artifacts'], entry['not_applicable_reason']
         if not isinstance(files, list) or any(not isinstance(p, str) or not p.strip() for p in files):
             raise Conflict(f'Invalid artifact list for stage {number}.')
@@ -86,6 +91,8 @@ def evidence_status(root: Path, rules: list[dict], value: dict) -> list[dict]:
         stages.append(dict(rule, readiness='NOT_APPLICABLE' if skipped else 'ESTABLISHED' if established else 'MISSING',
                            artifacts=files, missing_paths=absent,
                            not_applicable_reason=entry.get('not_applicable_reason')))
+        if rule['number'] == 2:
+            stages[-1]['completion'] = completion_status(root, entry)
     return stages
 
 
@@ -178,6 +185,9 @@ def render_status(status: dict) -> str:
              status['recommendation']['action']]
     if status['project_status_basis'] == 'NOT_RECORDED' or status['release_status_basis'] == 'NOT_RECORDED':
         lines.extend(['', 'UNKNOWN means not recorded; status does not infer or change workflow state.'])
+    purpose = next((s for s in status['lifecycle_stages'] if s['number'] == 2), None)
+    if purpose:
+        lines.extend(['', 'Purpose completion: ' + purpose['completion']['status'], purpose['completion']['reason']])
     if status['errors']:
         lines.extend(f'ERROR: {error}' for error in status['errors'])
     else:

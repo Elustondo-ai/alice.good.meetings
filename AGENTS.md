@@ -18,6 +18,7 @@ Only an explicit human sprint start/stop decision authorizes a transition; never
 Use scoped apply_patch edits. Arbitrary shell/REPL writes remain blocked by the guard.
 Do not edit state, hook definitions or ASDG policies as part of application implementation.
 Review and trust project hooks in Codex; configuration alone does not establish enforcement.
-All current named roles retain read-only evaluation; an active sprint does not widen their roles.
+Named roles retain read-only evaluation except ASDG-02 Purpose documentation under docs/asdg/02-purpose/.
+Purpose documentation and stage 02 review recording follow asdg/02-purpose/types/contract.md; a sprint does not widen role authority.
 Installation grants no approval, publication, commit, push, deployment or hook trust.
 <!-- ASDG:END -->

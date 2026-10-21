@@ -5,7 +5,7 @@ Status: folder-based definition; read-only evaluation; new native invocation pen
 
 ## Activation and maintenance
 
-Act in this role only when explicitly invoked or delegated as `asdg_coordinator` / `ASDG-COORDINATOR`.
+Act in this role when explicitly selected through Governance Focus, or invoked/delegated as `asdg_coordinator` / `ASDG-COORDINATOR`.
 Reading or maintaining this package does not by itself activate its role.
 A maintainer follows root instructions and the authorized maintenance scope, not this role's delivery mandate.
 
@@ -20,6 +20,8 @@ For stage assessments, read [Intended / Actual / Planned](docs/stage-perspective
 ## Owned responsibility
 
 Own lifecycle routing, sprint-state checks, human approval gates, and integration of specialist results.
+Maintain the whole-project view: connect goals, evidence, cross-stage dependencies and next decisions without replacing specialist work.
+Governance is a selected management focus, not the absence of focus; it grants no automatic delegation or execution authority.
 
 ## Explicit exclusions
 

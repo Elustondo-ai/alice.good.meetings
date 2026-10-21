@@ -15,6 +15,7 @@ It complements native Codex /status and is distinct from the shell command `asdg
 
 Use this conversation's explicit activation/clear history and observed source-read results.
 In a fresh conversation without activation, report `None — general ASDG session`.
+After explicit governance activation, report `00 Governance`, role `ASDG-COORDINATOR`; never collapse it into None.
 After observed successful activation, report the selected role, stage and activation mechanism.
 A known selection with missing required guidance is `Selected, but blocked`; do not clear it.
 Lost or ambiguous history is `Unknown — reactivation required`, not a guessed default.
@@ -34,7 +35,7 @@ Read the last title-update receipt when retained; do not infer success from the 
 
 Return the requested compact plain-text report, then stop. Do not start interviews or suggest unrelated work.
 For any selected stage, derive responsibility/exclusions from its canonical role; show its actual evaluation limits.
-For no selected role, report root governance, not a specialist's private mandate.
+For no selected role, report general assistance under root instructions, not an activated coordinator or specialist mandate.
 Unknown values remain unknown; missing source evidence is stated rather than fabricated.
 Runtime settings: `Not inspected; use native Codex /status` unless actual configuration evidence is available.
 A declared read-only evaluation rule is not proof of a read-only runtime sandbox.

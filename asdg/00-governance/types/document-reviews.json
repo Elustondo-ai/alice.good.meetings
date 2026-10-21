@@ -11274,6 +11274,783 @@
         "visible_review_markers": [],
         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
+    },
+    {
+      "path": "asdg/skills/asdg-suggestion/SKILL.md",
+      "sha256": "5acc003f381f006ba55af728dc8a88f8928469518ebbb5259d67451b91183f28",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:40:48.647736+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Create evidence-informed advisory ASDG Suggestion skill"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-suggestion/SKILL.md",
+      "sha256": "e7b01bf5c3fc42c708582f12dabee408e27d32c1d192c001669c744627a9724c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:40:48.647977+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Create evidence-informed advisory ASDG Suggestion skill"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-suggestion/SKILL.md",
+      "sha256": "e7b01bf5c3fc42c708582f12dabee408e27d32c1d192c001669c744627a9724c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:40:48.648098+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Create evidence-informed advisory ASDG Suggestion skill"
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "69924f7f0d5a7b5af2151b828331153e4878f18ea021d875df13f3bc5feea95d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T21:40:48.648341+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Create evidence-informed advisory ASDG Suggestion skill"
+      },
+      "previous_state": {
+        "sha256": "b723e6bb8398516eb0690e7a276c8a491a00657f22303cec26dd0909425c9792",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "6ba26bf8d9191e133c34b88019c4afafacb19fa25f20ee250d9daec6db4470fe",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "81976234383a2a00516d05dbb393f3a07f0f99e600d08fc299dc1b528b75c78a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "e838596681a50265269177f687dd937954fa03c664f5388cfb50480339aafb62",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "00ceb16a8fbede319955c0431d8806318cfecbbbc04116ac478ba089c4352e17",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/stage-perspectives.md",
+      "sha256": "0f618221cca610ea396dd30d136d1f0b5372f5e49cc63ce3ad0e56bf72feb573",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "866a72896537564023c811377b7a3d275e44d7d5c4d150cfb69226a84ac654c8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "abaca5d38eb13fbfbb563b07fcbaa24a214a04dec675ca3fda6bf2b05b92c2ce",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "5d5a8996a0968bdff73f34a33fe03485eb74f29773e314adba6a152a6ef7a22d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "sha256": "2175d518d0de96b8a1c60e2c85c5fbb3024a5975f3b54eab03f12e084c480489",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "a6406d5f1fd3b05bf88a34a8e934ce4ba64ff4bd029539bda5f843ad3eea3a99",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/review-loop.md",
+      "sha256": "c855e148fcd7f55bd9aef10f3990bda76a1def057f68c21af4fa2b3c4ea38080",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "31fb62fd9613e12f869affd89bb1d8d88bc12b122aef00316416914f44a871b5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/AGENTS.md",
+      "sha256": "fd6b6c0eefd837fd9e8e029edae17a298eeaf47eaa060089d18f58b009a06c57",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "cb7a671568fedf73bcde91a78a1439878f193cf197f5070190c69d311f81b4d0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/types/contract.md",
+      "sha256": "89425bdb9366da9a05adc80f821e15136f3db9a8b1ef4b5fb8556a7e128f7e79",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "94756a517f9d719430b3b84a156089425eb6f718f919d813cf7c409a135b9289",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/skills/elicit-purpose/SKILL.md",
+      "sha256": "57f9ff33542940506fc6b3c7dfb3dae07d48b70ab58e40854ed3b08a46e61441",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "22eac421c929b6db5038d3acb04389da19893d3332915203108f28dee6b889b4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/README.md",
+      "sha256": "c3d481c9b4f6e81132f6b567e5a8f8afeeba63e3d2d6632dcc1aeee0e860b88a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "8f7f0000317105b3ffd35f70ec63446afe5adbc7b1bf14f3d231df9d455c0079",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/tests/acceptance.md",
+      "sha256": "82e288a33760e0e37c5918862822ff4f8bb6f4902058cffc31605bc1c3cf12b2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "89543c30c13d8d841b9cda31471336f0b43f80094c01bf4be431d90dfd90f7f2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-02-purpose/SKILL.md",
+      "sha256": "03440ec7da9aa08ee41c3fbf1c10bc8f9c3b9998c09a9e594790ab66ddb84a29",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "f3e8150d8175ea18183d242af8a07276dbee1f353f0fcb7923863d2f69743d62",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_02.toml",
+      "sha256": "42ef82fe06ded7b6f199666e4769a4fab22d934debfb7e5c707862164f9d834a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "1db24f99b53eca82a1e70371f1f82e51bfeade04a9a9a2aab2c57dd54dcf5808",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-19T14:15:33Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.py",
+      "sha256": "b1edec267fee6570992bc1db87b809304eed462c88707014d541d4975a69df90",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "95c7165df9d51896ab7b66fb28c29ca6d2d1b85992606a6b27afee5e0e9c10d8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/focus-choices.md",
+      "sha256": "dbccf0a4a879f4b70452d3b2a3ff223ccde8e764adc4add76e6305f1fa5c7517",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "fc263e9e0ca94ea4715635c7a33c8a258250588a467c5c3e760af4c2154b94b4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/TRY-IT.md",
+      "sha256": "a05647c95fdd606e2da70f2094815dbafa0176f58db87b92f9ffd965431376ef",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "5b40378322b1acd12105f4ecd89c3dad6f679303ab9b10fa764ad2f5e16f78f7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/skills/elicit-purpose/SKILL.md",
+      "sha256": "22106b19859891056619eee6f17f4ab387cfb932adca0f302b284145f78e6cdc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:25:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose concept file reorganization"
+      },
+      "previous_state": {
+        "sha256": "57f9ff33542940506fc6b3c7dfb3dae07d48b70ab58e40854ed3b08a46e61441",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/types/contract.md",
+      "sha256": "b41cc8137c57e3c72e46a6f9f4f42d778dde4f2ce1e80fc33656531caef03b84",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:25:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose concept file reorganization"
+      },
+      "previous_state": {
+        "sha256": "89425bdb9366da9a05adc80f821e15136f3db9a8b1ef4b5fb8556a7e128f7e79",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/README.md",
+      "sha256": "78447688edd9a5d07a86d9f65ce398b4ef74f3f99354cd87f591c61dacd3b4d3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:25:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose concept file reorganization"
+      },
+      "previous_state": {
+        "sha256": "c3d481c9b4f6e81132f6b567e5a8f8afeeba63e3d2d6632dcc1aeee0e860b88a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/stage-perspectives.md",
+      "sha256": "79a235eb7b771b98950d4ef29737dd6138d67dbadedc8f0846065243b35b2296",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:25:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose concept file reorganization"
+      },
+      "previous_state": {
+        "sha256": "0f618221cca610ea396dd30d136d1f0b5372f5e49cc63ce3ad0e56bf72feb573",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/skills/elicit-purpose/SKILL.md",
+      "sha256": "5d2de95e5bbd55dcccc2b37b5c43d887d54563983006e9f2bdc33fe4250beccc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      },
+      "previous_state": {
+        "sha256": "22106b19859891056619eee6f17f4ab387cfb932adca0f302b284145f78e6cdc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/types/contract.md",
+      "sha256": "0ca18017ce1b87f3daf31991700835cb3fe2d938056241e517a74c9185535bdf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      },
+      "previous_state": {
+        "sha256": "b41cc8137c57e3c72e46a6f9f4f42d778dde4f2ce1e80fc33656531caef03b84",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/README.md",
+      "sha256": "31ca4e9b843fc9045689008f23fe017ac5e3fe5f45425077bdac754b2d5e1a6b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      },
+      "previous_state": {
+        "sha256": "78447688edd9a5d07a86d9f65ce398b4ef74f3f99354cd87f591c61dacd3b4d3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/AGENTS.md",
+      "sha256": "40eb484456bb6cdf74c489a6c5cc7333e25d206306e875c91dacfbc680df8fbd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      },
+      "previous_state": {
+        "sha256": "fd6b6c0eefd837fd9e8e029edae17a298eeaf47eaa060089d18f58b009a06c57",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "9b60fb3a88631f1f2f2b58db122c6aa6445aaf0852f11e5643d5f5d93f0cf8bf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      },
+      "previous_state": {
+        "sha256": "e838596681a50265269177f687dd937954fa03c664f5388cfb50480339aafb62",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/stage-perspectives.md",
+      "sha256": "1797191e606673cea41c3715bc879e2607f9d4b0de1a0552e302d9950486e870",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      },
+      "previous_state": {
+        "sha256": "79a235eb7b771b98950d4ef29737dd6138d67dbadedc8f0846065243b35b2296",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_02.toml",
+      "sha256": "10e24706a7a3f485977a145ea905ff7ad137eff8145b4f2fde79b2272433dab5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      },
+      "previous_state": {
+        "sha256": "42ef82fe06ded7b6f199666e4769a4fab22d934debfb7e5c707862164f9d834a",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-19T14:15:33Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/AGENTS.md",
+      "sha256": "b8167902c1e2bbe3fad56ed25946037d8f23cb4f9f57c36348019f0df6231291",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:56:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Required Purpose visual rule"
+      },
+      "previous_state": {
+        "sha256": "40eb484456bb6cdf74c489a6c5cc7333e25d206306e875c91dacfbc680df8fbd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/types/contract.md",
+      "sha256": "a9583c6bab1ec08f4abc17082a8e7d14382dfbce414051b63b5bfa81e140d938",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:56:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Required Purpose visual rule"
+      },
+      "previous_state": {
+        "sha256": "0ca18017ce1b87f3daf31991700835cb3fe2d938056241e517a74c9185535bdf",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/skills/elicit-purpose/SKILL.md",
+      "sha256": "0df8b625a40ef14cce055748a6ee4ab80754a8e62d88daf3a29e574ccbbbb2de",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:56:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Required Purpose visual rule"
+      },
+      "previous_state": {
+        "sha256": "5d2de95e5bbd55dcccc2b37b5c43d887d54563983006e9f2bdc33fe4250beccc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/tests/acceptance.md",
+      "sha256": "626784b80380f72ed50e5034ded34db064999e7220b422b5ede4ce5d98d20386",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:56:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Required Purpose visual rule"
+      },
+      "previous_state": {
+        "sha256": "82e288a33760e0e37c5918862822ff4f8bb6f4902058cffc31605bc1c3cf12b2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/README.md",
+      "sha256": "d37b5086fdc48856371f3341b80339006e4ad6f11f86acc0a020b649f0f592ac",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:56:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Required Purpose visual rule"
+      },
+      "previous_state": {
+        "sha256": "31ca4e9b843fc9045689008f23fe017ac5e3fe5f45425077bdac754b2d5e1a6b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-02-purpose/SKILL.md",
+      "sha256": "94ea0017e9f0e59eb3e98784bfb5cd60b0567ad7986998a9c86791c40d3449ec",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:56:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Required Purpose visual rule"
+      },
+      "previous_state": {
+        "sha256": "03440ec7da9aa08ee41c3fbf1c10bc8f9c3b9998c09a9e594790ab66ddb84a29",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "sha256": "15a5f4481c96acb47e5be31c804f9d75e9550e102a1fdec1ba022766b5017228",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.927720+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "2175d518d0de96b8a1c60e2c85c5fbb3024a5975f3b54eab03f12e084c480489",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "ec5f1cfafc088f0f56869aa33f3032cb39ab725e5b9d659c41128d5edd2c9f13",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.927887+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "abaca5d38eb13fbfbb563b07fcbaa24a214a04dec675ca3fda6bf2b05b92c2ce",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/focus-choices.md",
+      "sha256": "6873bac2289f067a0c0c45f8757bbd773038fc1ff92e184495b2fcafe46d54ef",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.927940+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "dbccf0a4a879f4b70452d3b2a3ff223ccde8e764adc4add76e6305f1fa5c7517",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/TRY-IT.md",
+      "sha256": "31b5499965848d556c5440fcd5819a41f4af7c0a4078f5899ea4758e974e1059",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.927987+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "a05647c95fdd606e2da70f2094815dbafa0176f58db87b92f9ffd965431376ef",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/SKILL.md",
+      "sha256": "9316a06e179d59e28fc37d6720a6378e8d6693d61183b55c7f211c58c03af352",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.928037+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "4963238e7723fd02ae974670bf11c711294544e6e66ce5b82efb76ca0584f2e3",
+        "visible_review_markers": [
+          "AI-MODIFIED - 2026-10-19T02:40:42Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "cfebc78001674c0658f3150e025d08e8ffb9c7e366db39efa030fa32173baa52",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.928078+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "69924f7f0d5a7b5af2151b828331153e4878f18ea021d875df13f3bc5feea95d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/AGENTS.md",
+      "sha256": "54e96229f6305fd88114a8a6b25fbfbb436f0614ba9c4ac630f98891db4b0bf8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.928120+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "31df2699ce865bd0eda2645f55f50837c9b251e5080dd60acbaa02a56af8afbd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus/SKILL.md",
+      "sha256": "f3b92e5172010d1184fa67d244678878e4b2279eecf0ddb58ce9bebab8eff8d7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.928167+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "58ae914bb1473ed1f0234a87a4fc457bb655ebb1a45475e190944b8cd7223bd8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus/SKILL.md",
+      "sha256": "f3b92e5172010d1184fa67d244678878e4b2279eecf0ddb58ce9bebab8eff8d7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.928202+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "58ae914bb1473ed1f0234a87a4fc457bb655ebb1a45475e190944b8cd7223bd8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "sha256": "279eb2456491078a6ed3672561380c25acbcb70082cfea35f0c5381a208c55fe",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.928240+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      },
+      "previous_state": {
+        "sha256": "f3ea6fe609b78934bec06f5e8cf32ef7fb776ad56f030aba5d8504d43d416a9d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-00-governance/SKILL.md",
+      "sha256": "09d9ed62ea5ced294ba31a281cf6ca6c3997a053d75836b8dea910d4679f71f2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.928282+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-00-governance/SKILL.md",
+      "sha256": "09d9ed62ea5ced294ba31a281cf6ca6c3997a053d75836b8dea910d4679f71f2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:00:58.928311+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add explicit Governance 00 conversation focus"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-view-dev/SKILL.md",
+      "sha256": "a8b1fda4f1ab995e57d9db36560bdb90ed52c0d068d91fac46bb3929cae8732a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:04:14.046375+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add ASDG development-view utility skill"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-view-dev/SKILL.md",
+      "sha256": "e553ff1ee4faf586a5c4e6f33152b6369e8167ada94a5c3a22e19da6d732cd30",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:04:14.046584+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add ASDG development-view utility skill"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-view-dev/SKILL.md",
+      "sha256": "e553ff1ee4faf586a5c4e6f33152b6369e8167ada94a5c3a22e19da6d732cd30",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:04:14.046695+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add ASDG development-view utility skill"
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "ba8d6690858c127974c74bc8a7cffa889f9553e1f235a36c05401ff8ddf5228b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T00:04:14.046967+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Add ASDG development-view utility skill"
+      },
+      "previous_state": {
+        "sha256": "cfebc78001674c0658f3150e025d08e8ffb9c7e366db39efa030fa32173baa52",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

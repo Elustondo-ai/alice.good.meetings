@@ -7,6 +7,7 @@ Each entry is a thin discovery adapter into the same shared [Focus workflow](SKI
 
 | Stage | Short display label | Picker skill | Canonical role | Generic short alias |
 | --- | --- | --- | --- | --- |
+| 00 | Governance | `asdg-focus-00-governance` | `ASDG-COORDINATOR` | `governance`, `coordinator`, `orchestrator`, `management` |
 | 01 | Context & Domain Analysis | `asdg-focus-01-context` | `ASDG-01` | `context` |
 | 02 | Purpose | `asdg-focus-02-purpose` | `ASDG-02` | `purpose`, `02-purpose`, `intent` |
 | 03 | System Model & Use Cases | `asdg-focus-03-use-cases` | `ASDG-03` | `use-cases` |
@@ -22,6 +23,7 @@ Each entry is a thin discovery adapter into the same shared [Focus workflow](SKI
 
 Prefer selecting the named skill in the native picker; it requires no parameter and no second menu.
 Generic numeric selectors, canonical role IDs/native names and catalogue folder basenames also work.
+`00`, `governance`, `ASDG-COORDINATOR` and `asdg_coordinator` select the same management focus; it is not None.
 `purpose` / `02-purpose` / `intent` / `02-purpose` / `02` / `ASDG-02` / `asdg_02` identify the same Purpose role.
 `asdg-focus clear` clears focus without granting permission or activating the coordinator.
-All twelve currently retain their canonical read-only evaluation limits; picker presence is not execution evidence.
+Roles retain canonical evaluation limits, with ASDG-02's bounded documentation allowance; picker presence is not execution evidence.

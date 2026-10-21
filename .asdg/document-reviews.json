@@ -310,6 +310,387 @@
       "provenance": {
         "generator": "asdg embedded init"
       }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "072d3f7a11714cace557ea6f66559f807c43c95a730f13e848ebad4df55a7e5f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "46ec9fcac356ae4035733d92a8721ec2664466f7d0caa761fec90d3865194d34",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-02-purpose/SKILL.md",
+      "sha256": "03440ec7da9aa08ee41c3fbf1c10bc8f9c3b9998c09a9e594790ab66ddb84a29",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "f3e8150d8175ea18183d242af8a07276dbee1f353f0fcb7923863d2f69743d62",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_02.toml",
+      "sha256": "42ef82fe06ded7b6f199666e4769a4fab22d934debfb7e5c707862164f9d834a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "1db24f99b53eca82a1e70371f1f82e51bfeade04a9a9a2aab2c57dd54dcf5808",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-19T14:15:33Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "599e0200dcb77fe7063d4cf0613b88a6bfab3cbde300714c598064a33b3abe3c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "99fad89cdb767782f26d30c245fc9f2aed24e9198329674595d94c5a97e92837",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/intended/purpose.md",
+      "sha256": "ac02928823deabd5883fd273b4421df927209a9545e623ee32d8a9c51b7afd44",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/current/evidence.md",
+      "sha256": "f5d600475f72dd72095cb968b8d04275c08ade114d64ed6def47b1bab40122d0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/planned/next-outcome.md",
+      "sha256": "08e20afa5035fe402c97c229d8766403af9469c0b56c405ac0d9b1430cbdb67d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/current/reviews/purpose-documentation-authoring.md",
+      "sha256": "a8cfb0e78f7f00494e1d9b1b59d134813c0a87bc1b23e3cfacb05ad5379c2c8d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:12:30Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose documentation authoring maintenance",
+        "authorization": "Explicit user request on 2026-10-20; no exact-byte human approval inferred"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "4159539c2c11429be0591273dabd8d7db3cdd460cc2f0b672f1e9ced4cabc0ce",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:25:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose concept file reorganization"
+      },
+      "previous_state": {
+        "sha256": "599e0200dcb77fe7063d4cf0613b88a6bfab3cbde300714c598064a33b3abe3c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/purpose.md",
+      "sha256": "d4058afa0dde60de539f5bb259bd9e4def4ba948777a1aecff7ea7b00114e817",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:25:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose concept file reorganization",
+        "previous_path": "docs/asdg/02-purpose/intended/purpose.md"
+      },
+      "previous_state": {
+        "sha256": "ac02928823deabd5883fd273b4421df927209a9545e623ee32d8a9c51b7afd44",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/current-capabilities.md",
+      "sha256": "67ef2cde8cefb8c3425442e80f6676d624ba2a4f7be6e1e2d4a32291c0988d00",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:25:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose concept file reorganization",
+        "previous_path": "docs/asdg/02-purpose/current/evidence.md"
+      },
+      "previous_state": {
+        "sha256": "f5d600475f72dd72095cb968b8d04275c08ade114d64ed6def47b1bab40122d0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/planned-improvements.md",
+      "sha256": "7975bf3c84ff73d374f95934ba49b390d61b6f52a0a902d6a811e545fc7e550c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:25:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose concept file reorganization",
+        "previous_path": "docs/asdg/02-purpose/planned/next-outcome.md"
+      },
+      "previous_state": {
+        "sha256": "08e20afa5035fe402c97c229d8766403af9469c0b56c405ac0d9b1430cbdb67d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/current/reviews/purpose-concept-files.md",
+      "sha256": "2db7a4a9bd97dea33354b6ab5f97a9a5fe52dda956a310166ab1f1fe08215543",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T22:25:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose concept file reorganization"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "d0d6cac5255c99b42a00726c9de4de5dc06a350b07860aeabea52b4851dc35de",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      },
+      "previous_state": {
+        "sha256": "4159539c2c11429be0591273dabd8d7db3cdd460cc2f0b672f1e9ced4cabc0ce",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_02.toml",
+      "sha256": "10e24706a7a3f485977a145ea905ff7ad137eff8145b4f2fde79b2272433dab5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      },
+      "previous_state": {
+        "sha256": "42ef82fe06ded7b6f199666e4769a4fab22d934debfb7e5c707862164f9d834a",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-19T14:15:33Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/01-purpose.md",
+      "sha256": "107afa51b31b6f386e875947d01560b31a9b09a5e0a5701fffb7a1fd08ba01e0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual",
+        "previous_path": "docs/asdg/02-purpose/purpose.md"
+      },
+      "previous_state": {
+        "sha256": "d4058afa0dde60de539f5bb259bd9e4def4ba948777a1aecff7ea7b00114e817",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/02-current-capabilities.md",
+      "sha256": "f079db44b31c0a44826159f64bdd5ce36982b93c243974b0a054498ca003a2fd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual",
+        "previous_path": "docs/asdg/02-purpose/current-capabilities.md"
+      },
+      "previous_state": {
+        "sha256": "67ef2cde8cefb8c3425442e80f6676d624ba2a4f7be6e1e2d4a32291c0988d00",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/03-planned-improvements.md",
+      "sha256": "93fd5d8ec413b5c7db08778705fba412ab9c91aa647765f14de19b376f19591b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual",
+        "previous_path": "docs/asdg/02-purpose/planned-improvements.md"
+      },
+      "previous_state": {
+        "sha256": "7975bf3c84ff73d374f95934ba49b390d61b6f52a0a902d6a811e545fc7e550c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/images/speaker-coach-purpose.png",
+      "sha256": "260e373a121a9b7177a8936c9548e65b777f29b5faf5c6cd99f6c23c39fec758",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual",
+        "generation_tool": "image_gen.imagegen",
+        "prompt_record": "docs/asdg/02-purpose/images/speaker-coach-purpose.json",
+        "visual_inspection": "Question, keywords, outcome labels and desired-experience composition inspected."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/images/speaker-coach-purpose.json",
+      "sha256": "3eb7ca31d6746dad33ee92e5b805a08b91380a98f4513ebb8fbbe0b81d8b078c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/current/reviews/purpose-order-and-visual.md",
+      "sha256": "6c742a60dfdfcf12c3b9cddeb66078c6a10943391df22447133dd88796300d19",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:52:31Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Purpose document ordering and visual"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "824ab8a2e0df0228af662a4011e1ebc8f11a16aa51002a94d806170c46828eeb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Use User in Purpose documentation"
+      },
+      "previous_state": {
+        "sha256": "d0d6cac5255c99b42a00726c9de4de5dc06a350b07860aeabea52b4851dc35de",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/01-purpose.md",
+      "sha256": "2b288e476d331b96c7c269ae0f38daf87804e1c49015b0dcfc512b1b4b8601b0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Use User in Purpose documentation"
+      },
+      "previous_state": {
+        "sha256": "107afa51b31b6f386e875947d01560b31a9b09a5e0a5701fffb7a1fd08ba01e0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/02-current-capabilities.md",
+      "sha256": "50164f379a178f32a2e5f82dd3c5c06f6adf0e87d052c0f8ef979d608f78f5d4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Use User in Purpose documentation"
+      },
+      "previous_state": {
+        "sha256": "f079db44b31c0a44826159f64bdd5ce36982b93c243974b0a054498ca003a2fd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/03-planned-improvements.md",
+      "sha256": "5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Use User in Purpose documentation"
+      },
+      "previous_state": {
+        "sha256": "93fd5d8ec413b5c7db08778705fba412ab9c91aa647765f14de19b376f19591b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-02-purpose/SKILL.md",
+      "sha256": "94ea0017e9f0e59eb3e98784bfb5cd60b0567ad7986998a9c86791c40d3449ec",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:56:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Required Purpose visual rule"
+      },
+      "previous_state": {
+        "sha256": "03440ec7da9aa08ee41c3fbf1c10bc8f9c3b9998c09a9e594790ab66ddb84a29",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/current/reviews/purpose-required-visual.md",
+      "sha256": "88bde8ff29de6082fb2ce904a9e0cf2c37d0caabb74a3edfc4de56eccaa8588b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-20T23:56:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Required Purpose visual rule"
+      }
     }
   ]
 }

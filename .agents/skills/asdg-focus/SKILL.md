@@ -1,6 +1,6 @@
 ---
 name: asdg-focus
-description: Explicitly select an existing ASDG stage 01-12 by alias, or clear focus. Prefer the twelve no-argument named Focus skills. Discovery adapter; not an execution or delegation workflow.
+description: Explicitly select ASDG governance 00 or a specialist stage 01-12 by alias, or clear focus. Prefer the thirteen no-argument named Focus skills. Discovery adapter; not an execution or delegation workflow.
 ---
 
 # asdg-focus — Codex discovery adapter

@@ -9,7 +9,8 @@ Use [the catalogue](00-governance/types/agent-catalog.json) for identities and p
 
 Read [the session policy](skills/asdg-focus/session-policy.md) on every turn.
 A new conversation has no specialist focus. Only explicit invocation activates a named role.
-Named roles and Focus retain read-only evaluation; do not turn an advisory request into execution.
+Named roles retain read-only evaluation except Purpose documentation and two-gate review recording under its contract.
+Focus activation alone performs no project work; assigned Purpose work produces saved client documentation.
 Read the selected role, its local procedure, runtime contract and response envelope in full.
 Use client sources as evidence; definitions in this folder never establish application behavior.
 Apply [Intended / Actual / Planned](00-governance/docs/stage-perspectives.md) to the stated client subject.

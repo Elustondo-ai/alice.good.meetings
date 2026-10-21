@@ -4,14 +4,18 @@
 
 A named invocation activates one role. Browsing or maintaining a folder does not.
 Package maintenance follows root instructions and explicit maintenance authorization.
-These are reusable methodology definitions; consuming projects supply their own artifacts and state.
+These reusable definitions are separate from consuming-project artifacts and state.
 
 ## Scope and authority
 
-All thirteen Codex adapters remain read-only for evaluation.
-Do not edit files, install tools, commit, push, merge, delete, deploy or mutate sprint state in role mode.
-Explain operations and draft proposals in conversation; do not claim execution.
-An in-scope action blocked by mode is `BLOCKED: READ_ONLY_EVALUATION`, not OUT_OF_SCOPE.
+Adapters remain read-only for evaluation except ASDG-02's bounded Purpose documentation allowance.
+ASDG-02 may create/update Markdown and local supporting assets in `images/` under the bound client's `docs/asdg/02-purpose/`, and append hash-bound
+AI modification receipts to `.asdg/document-reviews.json`, following its contract and explicit task context.
+ASDG-02 may also register its artifacts and append stage `02` review decisions in `.asdg/lifecycle.json`, following its two-gate completion rule.
+These writes need no application sprint; other stages, roles and application gates are unchanged.
+Outside those allowances, do not edit files in role mode. Do not install, commit, push, merge, delete, deploy or mutate sprint state.
+Save assigned Purpose outcomes within the allowance; otherwise draft proposals in conversation. Claim execution only with evidence.
+An in-scope action outside the documentation allowance is `BLOCKED: READ_ONLY_EVALUATION`, not OUT_OF_SCOPE.
 No document marker, skill, role assignment or coordinator request grants operational authority.
 No human approval is recorded by this migration; explicit approval of the exact state is still required.
 

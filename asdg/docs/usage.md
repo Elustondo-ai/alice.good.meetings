@@ -16,6 +16,9 @@ An existing code file or stage README never establishes accepted lifecycle evide
 
 ## A specialist conversation
 
+For whole-project management, select `$asdg-focus-00-governance`; its title is `00 Governance — <project>`.
+It selects the existing coordinator, distinct from a general chat with no focus; it grants no execution authority.
+
 Select `$asdg-focus-01-context` or `$asdg-focus-02-purpose` in Codex.
 Activation loads the role and reports focus; assign the review task in the following message.
 For example: “Read this project's existing code and purpose documents; explain the gaps and propose corrections.”
