@@ -35,6 +35,9 @@ If you prefer to hand setup to Codex, copy the [Codex setup prompt](CODEX-PROMPT
 This sets up local project instructions and state with the project marked as new; no sprint is started.
 See [installation details](docs/installation.md) for optional previews, checks and other starting states.
 
+In Codex, choose **[ASDG create team](skills/asdg-create-team/SKILL.md)** to set up governance and twelve specialist chats, reusing existing focused chats.
+Each chat loads its role and waits for your assignment; team setup does not start project work.
+
 ## Included
 
 Governance 00, all twelve stages, thirteen role definitions and local procedures, Focus/Status skills,

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+<title id="title">Different evidence for different decisions</title>
+<desc id="desc">Illustrative sequence: validate progressive replay and isolation, evaluate question handling and visible timing, test capture through speakers and microphone, and assess usefulness during live answering. These are proposed evaluations, not completed results.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#316d9c"/></marker></defs>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect width="900" height="520" fill="#f6f8fc"/>
+<text x="30" y="40" font-size="28" text-anchor="start" fill="#183249" font-weight="700"><tspan x="30" dy="0">Different evidence for different decisions</tspan></text>
+<text x="30" y="70" font-size="18" text-anchor="start" fill="#51677b" font-weight="400"><tspan x="30" dy="0">Proposed first progression · no execution or result claimed</tspan></text>
+<rect x="40" y="120" width="360" height="115" rx="14" fill="#eaf2fb" stroke="#c4d3e2" stroke-width="2"/>
+<text x="65" y="156" font-size="23" text-anchor="start" fill="#183249" font-weight="700"><tspan x="65" dy="0">1  Valid progressive replay</tspan></text>
+<text x="65" y="190" font-size="18" text-anchor="start" fill="#183249" font-weight="400"><tspan x="65" dy="0">Only elapsed input reaches analysis.</tspan><tspan x="65" dy="25.2">Meaningful output arrives before EOF.</tspan></text>
+<rect x="500" y="120" width="360" height="115" rx="14" fill="#eaf2fb" stroke="#c4d3e2" stroke-width="2"/>
+<text x="525" y="156" font-size="23" text-anchor="start" fill="#183249" font-weight="700"><tspan x="525" dy="0">2  Question handling</tspan></text>
+<text x="525" y="190" font-size="18" text-anchor="start" fill="#183249" font-weight="400"><tspan x="525" dy="0">Right question, stable display.</tspan><tspan x="525" dy="25.2">Measure actual visible timing.</tspan></text>
+<rect x="500" y="320" width="360" height="115" rx="14" fill="#eef5ef" stroke="#bdd4c1" stroke-width="2"/>
+<text x="525" y="356" font-size="23" text-anchor="start" fill="#28553c" font-weight="700"><tspan x="525" dy="0">3  Air QA</tspan></text>
+<text x="525" y="390" font-size="18" text-anchor="start" fill="#183249" font-weight="400"><tspan x="525" dy="0">Actual speakers and microphone.</tspan><tspan x="525" dy="25.2">Check capture and presentation.</tspan></text>
+<rect x="40" y="320" width="360" height="115" rx="14" fill="#eef5ef" stroke="#bdd4c1" stroke-width="2"/>
+<text x="65" y="356" font-size="23" text-anchor="start" fill="#28553c" font-weight="700"><tspan x="65" dy="0">4  Live usefulness</tspan></text>
+<text x="65" y="390" font-size="18" text-anchor="start" fill="#183249" font-weight="400"><tspan x="65" dy="0">Pablo answers fresh questions.</tspan><tspan x="65" dy="25.2">Does the display help attention?</tspan></text>
+<path d="M 400 175 L 496 175" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 680 235 L 680 316" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 500 375 L 404 375" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="450" y="480" font-size="18" text-anchor="middle" fill="#51677b" font-weight="400"><tspan x="450" dy="0">Air QA and live trials recur; replay success alone does not demonstrate user benefit.</tspan></text>
+</g>
+</svg>
+

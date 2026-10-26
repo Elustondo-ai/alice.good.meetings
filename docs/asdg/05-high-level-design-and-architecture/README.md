@@ -1,20 +1,24 @@
-# Architecture: how the pieces fit together
+# SpeakerCoach architecture
 
-This folder will explain the major parts of SpeakerCoach, their responsibilities and how information moves between them. It is where we compare designs against the intended behavior and practical constraints.
+SpeakerCoach should listen throughout an interview and keep the interviewer's question visible while Pablo answers.
+The proposed design adds a small service on his MacBook to the existing browser page, with cloud transcription and reasoning.
+This package records the architecture discussion of 25 October 2026. It is a draft proposal, not an implemented or formally accepted design.
 
-![Product behavior → Design alternatives → Components and trade-offs. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
+![The browser and session service run on the MacBook; cloud APIs return transcript text and proposed interview-state updates.](images/deployment.svg)
 
-## SpeakerCoach today
+## Read in order
 
-This stage currently contains no architecture assessment beyond its folder scaffolding. That does not mean the existing prototype has no structure; its structure still needs to be described and assessed here.
+| Document | What it explains |
+| --- | --- |
+| [01 Architecture](01-architecture.md) | Components, local/cloud placement and the agent's responsibilities. |
+| [01.1 Streaming and replay](01.1-streaming-and-replay.md) | Continuous audio, asynchronous advice, timing, recovery and evaluation isolation. |
+| [01.2 Interview state](01.2-interview-state.md) | Questions, answers, uncertain speaker observations and stable display behavior. |
+| [02 Current architecture](02-current-architecture.md) | What source inspection establishes today, and what offline experiments do not establish. |
+| [03 Planned decisions](03-planned-decisions.md) | Candidate choices, alternatives and the evidence needed before implementation. |
 
-## What belongs here as we develop
+The editable SVG diagrams live in `images/`. Each substantive document embeds its own explanation.
+The first outcome remains [question retention](../02-purpose/03-planned-improvements.md); contextual answer suggestions remain later work.
+Use the [system model](../03-system-model-and-use-cases/01-system-model.md) and accepted [evaluation strategy](../04-benchmarks-and-eval-strategy/01-evaluation-strategy.md) alongside this package.
 
-A useful first architecture document would show the path from conversation input to a visible cue, identify component boundaries and explain the trade-offs behind any proposed services or dependencies. Candidate designs must remain clearly distinguished from implemented behavior.
-
-## Explore
-
-- Start from the [system model](../03-system-model-and-use-cases/README.md) and [evaluation strategy](../04-benchmarks-and-eval-strategy/README.md).
-
-Read files in order: **01 Intended**, **02 Current**, **03 Planned**. Additional topics use dotted numbers such as `01.1` or `03.2`; release and sprint plans identify their horizon in the filename and text.
-See the [folder guide](../../../asdg/00-governance/docs/stage-layout.md) for consolidation at cycle closeout. Return to [project documentation](../README.md).
+No application sprint or release is active. Saving these documents does not record design acceptance, start a sprint or establish runtime performance.
+[Project documentation](../README.md)

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+<title id="title">Interview phases and retained question</title>
+<desc id="desc">Main proposed paths from started through optional greetings to question and answer. Clarification stays in the same exchange; a new question advances the exchange. Closing and ended are proposals. Silence and acknowledgements do not erase the question.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#316d9c"/></marker></defs>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect width="900" height="650" fill="#f6f8fc"/>
+<text x="30" y="40" font-size="28" text-anchor="start" fill="#183249" font-weight="700"><tspan x="30" dy="0">Track the exchange; retain the question</tspan></text>
+<text x="30" y="70" font-size="18" text-anchor="start" fill="#51677b" font-weight="400"><tspan x="30" dy="0">Candidate state model · i identifies a question–answer exchange</tspan></text>
+<rect x="40" y="140" width="220" height="80" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="150" y="173" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="150" dy="0">STARTED</tspan></text>
+<text x="150" y="201" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="150" dy="0">Session ready</tspan></text>
+<rect x="340" y="140" width="220" height="80" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="450" y="173" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="450" dy="0">GREETINGS</tspan></text>
+<text x="450" y="201" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="450" dy="0">Opening conversation</tspan></text>
+<rect x="640" y="140" width="220" height="80" rx="14" fill="#eaf2fb" stroke="#c4d3e2" stroke-width="2"/>
+<text x="750" y="173" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="750" dy="0">QUESTION(i)</tspan></text>
+<text x="750" y="201" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="750" dy="0">Question develops</tspan></text>
+<path d="M 260 180 L 336 180" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 560 180 L 636 180" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 150 140 L 150 112 L 750 112 L 750 136" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="450" y="105" font-size="17" text-anchor="middle" fill="#51677b" font-weight="400"><tspan x="450" dy="0">Greetings may be skipped</tspan></text>
+<rect x="640" y="340" width="220" height="100" rx="14" fill="#eef5ef" stroke="#bdd4c1" stroke-width="2"/>
+<text x="750" y="378" font-size="22" text-anchor="middle" fill="#28553c" font-weight="700"><tspan x="750" dy="0">ANSWER(i)</tspan></text>
+<text x="750" y="410" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="750" dy="0">Question stays visible</tspan></text>
+<path d="M 750 220 L 750 336" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="765" y="282" font-size="16" text-anchor="start" fill="#183249" font-weight="400"><tspan x="765" dy="0">Pablo answers</tspan></text>
+<path d="M 640 390 L 595 390 L 595 180 L 636 180" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="575" y="268" font-size="18" text-anchor="end" fill="#316d9c" font-weight="400"><tspan x="575" dy="0">Clarification: same i</tspan><tspan x="575" dy="25.2">New question: i+1</tspan></text>
+<rect x="40" y="333" width="505" height="107" rx="14" fill="#eaf2fb" stroke="#c4d3e2" stroke-width="2"/>
+<text x="65" y="369" font-size="22" text-anchor="start" fill="#183249" font-weight="700"><tspan x="65" dy="0">Hold the active question</tspan></text>
+<text x="65" y="401" font-size="18" text-anchor="start" fill="#183249" font-weight="400"><tspan x="65" dy="0">Pauses, acknowledgements and restatements</tspan><tspan x="65" dy="25.2">do not establish a new exchange.</tspan></text>
+<rect x="340" y="520" width="220" height="80" rx="14" fill="#fff5e9" stroke="#d9b88b" stroke-width="2"/>
+<text x="450" y="551" font-size="22" text-anchor="middle" fill="#765429" font-weight="700"><tspan x="450" dy="0">CLOSING</tspan></text>
+<text x="450" y="581" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="450" dy="0">Proposed phase</tspan></text>
+<rect x="640" y="520" width="220" height="80" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="750" y="551" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="750" dy="0">ENDED</tspan></text>
+<text x="750" y="581" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="750" dy="0">Capture stopped</tspan></text>
+<path d="M 750 440 L 750 479 L 450 479 L 450 516" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="590" y="469" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="590" dy="0">Wrap-up evidence</tspan></text>
+<path d="M 560 560 L 636 560" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="598" y="548" font-size="16" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="598" dy="0">Stop</tspan></text>
+<text x="30" y="632" font-size="18" text-anchor="start" fill="#51677b" font-weight="400"><tspan x="30" dy="0">Main paths shown. Explicit Stop can end any active session; closing can reopen.</tspan></text>
+</g>
+</svg>
+

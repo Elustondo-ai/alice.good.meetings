@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480" role="img" aria-labelledby="title desc">
+<title id="title">Current browser-only architecture</title>
+<desc id="desc">Source-inspected current behavior: microphone audio feeds Web Audio sound-level analysis and a turn timer. The timer and manual buttons update the color panel and debug display. No remote audio transport or agent exists in these application files.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#316d9c"/></marker></defs>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect width="900" height="480" fill="#f6f8fc"/>
+<text x="30" y="40" font-size="28" text-anchor="start" fill="#183249" font-weight="700"><tspan x="30" dy="0">Current implementation: browser only</tspan></text>
+<text x="30" y="70" font-size="18" text-anchor="start" fill="#51677b" font-weight="400"><tspan x="30" dy="0">Source inspection · app.js and index.html · no runtime test claimed</tspan></text>
+<rect x="20" y="110" width="860" height="300" rx="14" fill="#eaf2fb" stroke="#c4d3e2" stroke-width="2"/>
+<text x="44" y="145" font-size="22" text-anchor="start" fill="#183249" font-weight="700"><tspan x="44" dy="0">Existing web page</tspan></text>
+<rect x="40" y="190" width="220" height="100" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="150" y="227" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="150" dy="0">Microphone</tspan></text>
+<text x="150" y="259" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="150" dy="0">Browser audio capture</tspan></text>
+<rect x="340" y="190" width="220" height="100" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="450" y="227" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="450" dy="0">RMS + turn timer</tspan></text>
+<text x="450" y="259" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="450" dy="0">Sound level and duration</tspan></text>
+<rect x="640" y="190" width="220" height="100" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="750" y="227" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="750" dy="0">Panel + debug</tspan></text>
+<text x="750" y="259" font-size="16" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="750" dy="0">GOOD · LAND IT · STOP</tspan></text>
+<path d="M 260 240 L 336 240" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="298" y="226" font-size="15" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="298" dy="0">samples</tspan></text>
+<path d="M 560 240 L 636 240" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="598" y="226" font-size="15" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="598" dy="0">state</tspan></text>
+<text x="450" y="337" font-size="20" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="450" dy="0">100 ms sampling · LAND IT above 25 s · STOP above 35 s</tspan></text>
+<text x="450" y="374" font-size="18" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="450" dy="0">More than 2.5 s without threshold-crossing sound resets the timer.</tspan></text>
+<text x="30" y="449" font-size="18" text-anchor="start" fill="#51677b" font-weight="400"><tspan x="30" dy="0">This detects sound activity; speaker identity and interview meaning are not implemented.</tspan></text>
+</g>
+</svg>
+

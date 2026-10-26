@@ -5,6 +5,7 @@ Canonical workflows live here; native discovery adapters remain thin references.
 | Skill | Purpose |
 | --- | --- |
 | [Initialize](asdg-init/SKILL.md) | Bootstrap the explicitly identified client |
+| [Create team](asdg-create-team/SKILL.md) | Set up governance and twelve specialist chats, reusing existing focused chats |
 | [Focus](asdg-focus/SKILL.md) | Select governance 00 or one of twelve specialist focuses |
 | [Status](asdg-status/SKILL.md) | Show status, a suggested next step, then observations and technical debt |
 | [Role](asdg-role/SKILL.md) | Explain the selected role's responsibilities, outputs and boundaries |

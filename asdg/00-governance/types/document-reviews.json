@@ -15565,6 +15565,86 @@
         "visible_review_markers": [],
         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "8bea052f63a35120bc0e8b8f74850a305acac41df35c5e1c963f8315827df65f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:47:21.559541+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "ASDG create team skill and consistent picker presentation"
+      },
+      "previous_state": {
+        "sha256": "9fea1ebecb9e275428bc77b023add1a1898d16b783e776f1c7a17434f82c6954",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "5f2f102f6a73c87be1b3c87ae05ea778ae0be0c0dde2b295667806ca2a8d4299",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:47:21.559541+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "ASDG create team skill and consistent picker presentation"
+      },
+      "previous_state": {
+        "sha256": "08074e1c35b9d5c5e9a3dd7ee927cc11259eeecbdee2f95ad6002b344104f124",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "b6075dca13ad9160382d538132119c7174c4013ffc354942840fe9c6b3bcf6d8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:47:21.559541+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "ASDG create team skill and consistent picker presentation"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-create-team/SKILL.md",
+      "sha256": "457fa162e27a19ee5130600fda9e1dbbfd16f86643ecbed4c7c6085f2099e803",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:47:21.559541+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "ASDG create team skill and consistent picker presentation"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "c6add54c9e3fbd2b50621abaceb06a659deffea6262d0a9e7dfe3e4672f4aec4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:47:21.559541+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "ASDG create team skill and consistent picker presentation"
+      },
+      "previous_state": {
+        "sha256": "e08b134fcd5d7668ad737439db6486d750612c5fe9f3aa40ed565b470fed0886",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "121ad42ebab71f974c97987692e541d4d247e014b630afcc219057594f1c4c57",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:47:21.559541+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "ASDG create team skill and consistent picker presentation"
+      },
+      "previous_state": {
+        "sha256": "633badf6112a3cfb0bbb3188baebcaf27065ccd6079255d59be1f1b08d67a74a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

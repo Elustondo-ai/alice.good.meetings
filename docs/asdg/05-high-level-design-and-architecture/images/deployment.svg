@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+<title id="title">SpeakerCoach: where it runs</title>
+<desc id="desc">Proposed architecture: the MacBook contains the browser and a local session service. Separate cloud APIs provide live transcription and model reasoning. Audio and display updates flow in opposite directions.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#316d9c"/></marker></defs>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect width="900" height="620" fill="#f6f8fc"/>
+<text x="30" y="40" font-size="28" text-anchor="start" fill="#183249" font-weight="700"><tspan x="30" dy="0">SpeakerCoach: where it runs</tspan></text>
+<text x="30" y="70" font-size="18" text-anchor="start" fill="#51677b" font-weight="400"><tspan x="30" dy="0">Proposed architecture · one local service, one interview agent</tspan></text>
+<rect x="20" y="100" width="510" height="480" rx="14" fill="#eaf2fb" stroke="#c4d3e2" stroke-width="2"/>
+<rect x="575" y="100" width="305" height="480" rx="14" fill="#eef5ef" stroke="#bdd4c1" stroke-width="2"/>
+<text x="44" y="135" font-size="23" text-anchor="start" fill="#183249" font-weight="700"><tspan x="44" dy="0">Your MacBook</tspan></text>
+<text x="600" y="135" font-size="23" text-anchor="start" fill="#28553c" font-weight="700"><tspan x="600" dy="0">OpenAI cloud APIs</tspan></text>
+<rect x="44" y="165" width="462" height="90" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="275" y="198" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="275" dy="0">SpeakerCoach web page</tspan></text>
+<text x="275" y="230" font-size="18" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="275" dy="0">Microphone · P toggle · question display</tspan></text>
+<path d="M 145 255 L 145 325" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="132" y="287" font-size="17" text-anchor="end" fill="#183249" font-weight="400"><tspan x="132" dy="0">Audio + P</tspan></text>
+<path d="M 410 325 L 410 255" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="396" y="306" font-size="17" text-anchor="end" fill="#183249" font-weight="400"><tspan x="396" dy="0">Display updates</tspan></text>
+<rect x="44" y="330" width="462" height="225" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="68" y="365" font-size="22" text-anchor="start" fill="#183249" font-weight="700"><tspan x="68" dy="0">Local SpeakerCoach service</tspan></text>
+<text x="68" y="400" font-size="18" text-anchor="start" fill="#183249" font-weight="400"><tspan x="68" dy="0">Audio intake and transcription adapter</tspan></text>
+<text x="68" y="485" font-size="20" text-anchor="start" fill="#183249" font-weight="700"><tspan x="68" dy="0">Agents SDK + state controller</tspan></text>
+<text x="68" y="520" font-size="17" text-anchor="start" fill="#183249" font-weight="400"><tspan x="68" dy="0">Serves the page; owns accepted session state</tspan></text>
+<text x="727" y="205" font-size="19" text-anchor="middle" fill="#28553c" font-weight="700"><tspan x="727" dy="0">Separate cloud operations</tspan></text>
+<text x="727" y="238" font-size="17" text-anchor="middle" fill="#51677b" font-weight="400"><tspan x="727" dy="0">Audio and selected context</tspan><tspan x="727" dy="23.799999999999997">leave the Mac in this proposal.</tspan></text>
+<rect x="600" y="330" width="255" height="95" rx="14" fill="#ffffff" stroke="#bdd4c1" stroke-width="2"/>
+<text x="727" y="365" font-size="21" text-anchor="middle" fill="#28553c" font-weight="700"><tspan x="727" dy="0">Live transcription</tspan></text>
+<text x="727" y="395" font-size="18" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="727" dy="0">Speech → text</tspan></text>
+<path d="M 506 350 L 596 350" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="550" y="340" font-size="15" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="550" dy="0">audio</tspan></text>
+<path d="M 600 411 L 510 411" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="550" y="400" font-size="15" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="550" dy="0">text</tspan></text>
+<rect x="600" y="460" width="255" height="95" rx="14" fill="#ffffff" stroke="#bdd4c1" stroke-width="2"/>
+<text x="727" y="495" font-size="21" text-anchor="middle" fill="#28553c" font-weight="700"><tspan x="727" dy="0">Reasoning model</tspan></text>
+<text x="727" y="525" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="727" dy="0">Interprets the interview</tspan></text>
+<path d="M 506 480 L 596 480" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="550" y="470" font-size="15" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="550" dy="0">context</tspan></text>
+<path d="M 600 541 L 510 541" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="550" y="530" font-size="15" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="550" dy="0">proposal</tspan></text>
+<text x="30" y="605" font-size="18" text-anchor="start" fill="#51677b" font-weight="400"><tspan x="30" dy="0">The agent proposes a change; the local controller validates and publishes it.</tspan></text>
+</g>
+</svg>
+

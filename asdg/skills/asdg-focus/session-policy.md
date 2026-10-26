@@ -51,6 +51,11 @@ Successful Focus activation/clear also requests [native current-chat renaming](r
 This narrow metadata exception permits no file rename, deletion, internal-store edits or changes to another chat.
 A title displays focus; editing it never selects a role. Status never renames. Rename failure preserves focus.
 
+## Team setup
+
+Explicit human use of [Create team](../asdg-create-team/SKILL.md) permits native project-chat creation with initial Focus requests.
+It preserves the calling chat's focus, reuses confirmed peer chats without messaging them, and assigns no project work.
+
 ## Acceptance
 
 Run [the fresh-conversation exercise](TRY-IT.md); record observed successes and failures separately.

@@ -3,8 +3,7 @@
 ## Two contexts
 
 A named invocation activates one role. Browsing or maintaining a folder does not.
-Package maintenance follows root instructions and explicit maintenance authorization.
-These reusable definitions are separate from consuming-project artifacts and state.
+Package maintenance follows root instructions and explicit maintenance authorization; definitions are separate from client artifacts and state.
 
 ## Scope and authority
 
@@ -14,6 +13,7 @@ AI modification receipts to `.asdg/document-reviews.json`, following its contrac
 ASDG-02 may also register its artifacts and append stage `02` review decisions in `.asdg/lifecycle.json`, following its two-gate completion rule.
 These writes need no application sprint; other stages, roles and application gates are unchanged.
 Separately, explicit human use of [ASDG Approve](../../skills/asdg-approve/SKILL.md) authorizes only its bounded documentation-review recording workflow, without changing Focus or granting other role writes.
+Explicit human use of [Create team](../../skills/asdg-create-team/SKILL.md) permits native project-chat creation and initial Focus requests only; all project-action gates remain unchanged.
 Outside those allowances, do not edit files in role mode. Do not install, commit, push, merge, delete, deploy or mutate sprint state.
 Save assigned Purpose outcomes within the allowance; otherwise draft proposals in conversation. Claim execution only with evidence.
 An in-scope action outside the documentation allowance is `BLOCKED: READ_ONLY_EVALUATION`, not OUT_OF_SCOPE.

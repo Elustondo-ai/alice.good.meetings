@@ -2888,6 +2888,207 @@
         "previous_path": "eval-data/results/obs-2026-10-25/speaker-acoustic-evidence.json",
         "previous_sha256": "25d873eb853509e40fa7bf800bac51eff8bd5144c078de5aa19229e25b711f6b"
       }
+    },
+    {
+      "path": ".agents/skills/asdg-create-team/SKILL.md",
+      "sha256": "457fa162e27a19ee5130600fda9e1dbbfd16f86643ecbed4c7c6085f2099e803",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:47:21.559541+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "ASDG create team skill and consistent picker presentation"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/README.md",
+      "sha256": "c002bdcc0d3df689638d5fc36f2a90123b8c9eb211e4293b6e85c312378d5841",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested Stage 05 architecture documentation",
+        "role_id": "ASDG-05",
+        "decision_status": "Draft proposal; no human acceptance inferred",
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/images/deployment.svg",
+        "visual_explains": "Architecture navigation and local/cloud overview",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "Embedded visual inspected; representative complete documents inspected for 01 and 03"
+        }
+      },
+      "previous_state": {
+        "sha256": "2420c9d7f29201b5991acd0c2af385744f14b847532c93231684e29aee13263d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/01-architecture.md",
+      "sha256": "40061807932a7a431fce8a69889983e52d89c32365f8c90c8b501e60ec866868",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested Stage 05 architecture documentation",
+        "role_id": "ASDG-05",
+        "decision_status": "Draft proposal; no human acceptance inferred",
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/images/deployment.svg",
+        "visual_explains": "Browser, local service and cloud deployment boundaries",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "Embedded visual inspected; representative complete documents inspected for 01 and 03"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/01.1-streaming-and-replay.md",
+      "sha256": "a2fadf092b91e3df038f9a5e2cc5b8b6f7bce31c0ceeb66d96638a1676189c49",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested Stage 05 architecture documentation",
+        "role_id": "ASDG-05",
+        "decision_status": "Draft proposal; no human acceptance inferred",
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/images/streaming.svg",
+        "visual_explains": "Continuous audio, independent reasoning and private evaluation references",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "Embedded visual inspected; representative complete documents inspected for 01 and 03"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/01.2-interview-state.md",
+      "sha256": "ebed2f85ae618967f48a87f384d3a2885a752cb3a689e2e85de61b56b1b1cde4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested Stage 05 architecture documentation",
+        "role_id": "ASDG-05",
+        "decision_status": "Draft proposal; no human acceptance inferred",
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/images/interview-state.svg",
+        "visual_explains": "Interview phases, exchange changes and question persistence",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "Embedded visual inspected; representative complete documents inspected for 01 and 03"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/02-current-architecture.md",
+      "sha256": "a736860b886199ac114999bf2c2a80e3fc3f707b9121970cfa26805b4d00b250",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested Stage 05 architecture documentation",
+        "role_id": "ASDG-05",
+        "decision_status": "Draft proposal; no human acceptance inferred",
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/images/current-browser.svg",
+        "visual_explains": "Current microphone-level timing and display behavior",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "Embedded visual inspected; representative complete documents inspected for 01 and 03"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/03-planned-decisions.md",
+      "sha256": "8304b920741b04d9fd69eb24883ca24d45e65675dc2e67954eaa7e66fbf007ca",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested Stage 05 architecture documentation",
+        "role_id": "ASDG-05",
+        "decision_status": "Draft proposal; no human acceptance inferred",
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/images/decision-path.svg",
+        "visual_explains": "Separate evidence for replay validity, quality, physical capture and usefulness",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "Embedded visual inspected; representative complete documents inspected for 01 and 03"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/images/current-browser.svg",
+      "sha256": "f953099348a633eca3be68274fcbb5b12baf0b2c2662ea63e2a4bd744e7c6744",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested editable architecture visual",
+        "role_id": "ASDG-05",
+        "rendering_check": "PASS: inspected embedded at 720 px document width"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/images/decision-path.svg",
+      "sha256": "6e5ff2465a4bbe66c2e409b29d7a92dd870209ffa2bd0c78ae554e1108fc56b2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested editable architecture visual",
+        "role_id": "ASDG-05",
+        "rendering_check": "PASS: inspected embedded at 720 px document width"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/images/deployment.svg",
+      "sha256": "c29c30b2b99fe961e1fc07b369eebd4f41c5c6649438f2e5355686e18a7cd972",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested editable architecture visual",
+        "role_id": "ASDG-05",
+        "rendering_check": "PASS: inspected embedded at 720 px document width"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/images/interview-state.svg",
+      "sha256": "0441c6c4c722a0419ef7bf982d1cbc504805104d13ff766a83e00a44fc34d6bf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested editable architecture visual",
+        "role_id": "ASDG-05",
+        "rendering_check": "PASS: inspected embedded at 720 px document width"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/images/streaming.svg",
+      "sha256": "b50395484dc1ea0caa7cd963391e1d05c408b1ba9e44b5547f44be7e1584f1ef",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T01:53:52.708253+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested editable architecture visual",
+        "role_id": "ASDG-05",
+        "rendering_check": "PASS: inspected embedded at 720 px document width"
+      }
     }
   ]
 }

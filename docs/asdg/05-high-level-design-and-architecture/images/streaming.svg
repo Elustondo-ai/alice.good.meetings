@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="710" viewBox="0 0 900 710" role="img" aria-labelledby="title desc">
+<title id="title">Listen continuously; update independently</title>
+<desc id="desc">Microphone and paced replay enter the same timed-audio interface. The transcription stream supplies observations to an independent agent and state controller, which publishes display updates. Private evaluator references are inaccessible to analysis.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#316d9c"/></marker></defs>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect width="900" height="710" fill="#f6f8fc"/>
+<text x="30" y="40" font-size="28" text-anchor="start" fill="#183249" font-weight="700"><tspan x="30" dy="0">Listen continuously; update independently</tspan></text>
+<text x="30" y="70" font-size="18" text-anchor="start" fill="#51677b" font-weight="400"><tspan x="30" dy="0">Proposed flow · the audio stream never waits for the agent</tspan></text>
+<rect x="30" y="110" width="360" height="90" rx="14" fill="#eaf2fb" stroke="#c4d3e2" stroke-width="2"/>
+<text x="210" y="144" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="210" dy="0">Microphone</tspan></text>
+<text x="210" y="176" font-size="18" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="210" dy="0">Live interview or physical Air QA</tspan></text>
+<rect x="510" y="110" width="360" height="90" rx="14" fill="#eef5ef" stroke="#bdd4c1" stroke-width="2"/>
+<text x="690" y="144" font-size="22" text-anchor="middle" fill="#28553c" font-weight="700"><tspan x="690" dy="0">Paced replay controller</tspan></text>
+<text x="690" y="176" font-size="18" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="690" dy="0">Releases only elapsed audio</tspan></text>
+<path d="M 210 200 L 210 235 L 360 235 L 360 258" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 690 200 L 690 235 L 540 235 L 540 258" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="250" y="260" width="400" height="85" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="450" y="292" font-size="22" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="450" dy="0">Shared timed-audio boundary</tspan></text>
+<text x="450" y="322" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="450" dy="0">Sequence · source interval · arrival time</tspan></text>
+<path d="M 450 345 L 450 375 L 155 375 L 155 418" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="167" y="403" font-size="17" text-anchor="start" fill="#183249" font-weight="400"><tspan x="167" dy="0">Continuous packets</tspan></text>
+<rect x="30" y="420" width="250" height="105" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="155" y="455" font-size="21" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="155" dy="0">Live transcription</tspan></text>
+<text x="155" y="486" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="155" dy="0">Text arrives during speech</tspan></text>
+<rect x="325" y="420" width="250" height="105" rx="14" fill="#eaf2fb" stroke="#c4d3e2" stroke-width="2"/>
+<text x="450" y="451" font-size="21" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="450" dy="0">Agent + controller</tspan></text>
+<text x="450" y="480" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="450" dy="0">Bounded reasoning work</tspan><tspan x="450" dy="23.799999999999997">Versioned state proposals</tspan></text>
+<rect x="620" y="420" width="250" height="105" rx="14" fill="#ffffff" stroke="#c4d3e2" stroke-width="2"/>
+<text x="745" y="455" font-size="21" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="745" dy="0">Browser display</tspan></text>
+<text x="745" y="486" font-size="17" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="745" dy="0">Stable question and cues</tspan></text>
+<path d="M 280 470 L 321 470" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="302" y="451" font-size="14" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="302" dy="0">text</tspan></text>
+<path d="M 575 470 L 616 470" fill="none" stroke="#316d9c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="597" y="451" font-size="14" text-anchor="middle" fill="#183249" font-weight="400"><tspan x="597" dy="0">state</tspan></text>
+<text x="450" y="566" font-size="21" text-anchor="middle" fill="#183249" font-weight="700"><tspan x="450" dy="0">New audio continues while reasoning is pending.</tspan></text>
+<rect x="30" y="601" width="840" height="80" rx="14" fill="#fff5e9" stroke="#d9b88b" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="450" y="631" font-size="19" text-anchor="middle" fill="#765429" font-weight="700"><tspan x="450" dy="0">Evaluator-only: complete recording, transcript and reference labels</tspan></text>
+<text x="450" y="660" font-size="17" text-anchor="middle" fill="#765429" font-weight="400"><tspan x="450" dy="0">No future input or private-reference access from the analysis environment.</tspan></text>
+</g>
+</svg>
+
