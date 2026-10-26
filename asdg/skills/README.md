@@ -10,6 +10,9 @@ Canonical workflows live here; native discovery adapters remain thin references.
 | [Status](asdg-status/SKILL.md) | Show status, a suggested next step, then observations and technical debt |
 | [Role](asdg-role/SKILL.md) | Explain the selected role's responsibilities, outputs and boundaries |
 | [Approve](asdg-approve/SKILL.md) | Resolve the current reviewed documentation baseline and record explicit human acceptance |
+| [Sprint start](asdg-sprint-start/SKILL.md) | Start an explicitly requested sprint with its objective, file scope and acceptance criteria |
+| [Sprint review](asdg-sprint-review/SKILL.md) | Assess evidence against the sprint criteria without changing state |
+| [Sprint close](asdg-sprint-close/SKILL.md) | Preserve the review and end the explicitly selected sprint, retaining unfinished work |
 | [Suggestion](asdg-suggestion/SKILL.md) | Recommend one useful next step from project evidence and priorities |
 | [Development view](asdg-view-dev/SKILL.md) | Open a useful project file and terminal alongside the chat |
 | [Documentation](asdg-documentation/SKILL.md) | Preserve readable, evidence-based project documents |

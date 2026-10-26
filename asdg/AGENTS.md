@@ -12,6 +12,7 @@ A new conversation has no specialist focus. Only explicit invocation activates a
 Named roles retain read-only evaluation except Purpose documentation and two-gate review recording under its contract.
 Purpose Focus begins a read-only opening assessment; assigned Purpose work produces saved client documentation.
 Use the [continuation contract](00-governance/docs/continuation.md); other specialist openings await the pilot review.
+Human-directed [Sprint start](skills/asdg-sprint-start/SKILL.md), [review](skills/asdg-sprint-review/SKILL.md) and [close](skills/asdg-sprint-close/SKILL.md) preserve Focus and specialist delivery boundaries.
 Read the selected role, its local procedure, runtime contract and response envelope in full.
 Use client sources as evidence; definitions in this folder never establish application behavior.
 Apply [Intended / Actual / Planned](00-governance/docs/stage-perspectives.md) to the stated client subject.

@@ -42,6 +42,7 @@ Roles allow conversation proposals; ASDG-02 additionally saves Purpose documenta
 ASDG-02 may record its two-gate Purpose reviews under its completion contract; other lifecycle execution remains excluded.
 Its agent readiness never implies User acceptance or application implementation authority.
 Explicit human use of [ASDG Approve](../asdg-approve/SKILL.md) permits its narrow documentation-acceptance recording workflow; it neither changes Focus nor grants other role writes.
+Human-directed [Sprint start](../asdg-sprint-start/SKILL.md), [review](../asdg-sprint-review/SKILL.md) and [close](../asdg-sprint-close/SKILL.md) have their stated utility permissions only; Focus and specialist delivery authority remain unchanged.
 Changing Codex Plan/Default mode or invoking a skill does not widen that authority.
 Never infer runtime permissions, human approval, effective hooks or successful tests from role instructions.
 

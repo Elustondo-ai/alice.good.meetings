@@ -1,0 +1,4 @@
+interface:
+  display_name: "ASDG Sprint start"
+  short_description: "Start a human-authorized scoped sprint"
+  default_prompt: "Use $asdg-sprint-start to start the sprint we have defined in this chat."

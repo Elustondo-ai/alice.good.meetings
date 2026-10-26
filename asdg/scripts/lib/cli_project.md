@@ -36,6 +36,7 @@ Inputs are project/repository Paths and optional project_state (`new`, `defining
 ## Effects and failure behavior
 
 Conflicts stop initialization rather than overwriting edited integration. Existing lifecycle/sprint records are preserved. New setup records an inactive sprint; it grants no implementation permission.
+The managed instruction bridge points explicit human sprint requests to the start/close utilities; installation itself performs no transition and does not widen specialist authority.
 
 ## Example
 

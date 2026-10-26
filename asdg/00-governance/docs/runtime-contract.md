@@ -14,10 +14,11 @@ ASDG-02 may also register its artifacts and append stage `02` review decisions i
 These writes need no application sprint; other stages, roles and application gates are unchanged.
 Separately, explicit human use of [ASDG Approve](../../skills/asdg-approve/SKILL.md) authorizes only its bounded documentation-review recording workflow, without changing Focus or granting other role writes.
 Explicit human use of [Create team](../../skills/asdg-create-team/SKILL.md) permits native project-chat creation and initial Focus requests only; all project-action gates remain unchanged.
+Explicit human [Sprint start](../../skills/asdg-sprint-start/SKILL.md) or [close](../../skills/asdg-sprint-close/SKILL.md) requests permit the local transition and closeout receipt only; [review](../../skills/asdg-sprint-review/SKILL.md) is read-only.
 Outside those allowances, do not edit files in role mode. Do not install, commit, push, merge, delete, deploy or mutate sprint state.
 Save assigned Purpose outcomes within the allowance; otherwise draft proposals in conversation. Claim execution only with evidence.
 An in-scope action outside the documentation allowance is `BLOCKED: READ_ONLY_EVALUATION`, not OUT_OF_SCOPE.
-No document marker, skill, role assignment or coordinator request grants operational authority.
+Skill discovery, role assignment and coordinator requests grant no operational authority; human-directed utilities preserve specialist delivery limits and runtime denials.
 No human approval is recorded by this migration; explicit approval of the exact state is still required.
 
 ## Routing
@@ -45,8 +46,7 @@ A different reviewer identity is not proof of independent evidence; disclose sha
 ## Skills and outputs
 
 Load only this role's relevant local SKILL.md and any required shared capability.
-Local skill folders are explicit-load methods, not automatically registered skill-picker entries.
-Discovery adapters reuse canonical workflows; reading a package alone does not activate its role.
+Discovery adapters reuse canonical workflows; local role procedures require explicit loading, and reading them alone never activates a role.
 All twelve specialists write to the client's [flat numbered stage layout](stage-layout.md): `01` Intended, `02` Current, `03` Planned, with dotted topic extensions.
 Follow [the documentation standard](documentation-standard.md): at most 50 nonblank source lines per unit.
 Every role applies its human-audience, embedded-visual and source-companion rules and [review criteria](documentation-review.md) in every consuming project.

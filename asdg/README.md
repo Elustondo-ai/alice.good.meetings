@@ -37,6 +37,8 @@ See [installation details](docs/installation.md) for optional previews, checks a
 
 In Codex, choose **[ASDG create team](skills/asdg-create-team/SKILL.md)** to set up governance and twelve specialist chats, reusing existing focused chats.
 Each chat loads its role and waits for your assignment; team setup does not start project work.
+Use **[ASDG Sprint start](skills/asdg-sprint-start/SKILL.md)**, **[Sprint review](skills/asdg-sprint-review/SKILL.md)** and **[Sprint close](skills/asdg-sprint-close/SKILL.md)** for human-directed sprint events.
+Start defines active scope, review checks evidence, and close preserves the result before ending that scope; closure does not imply successful completion or release.
 
 ## Included
 

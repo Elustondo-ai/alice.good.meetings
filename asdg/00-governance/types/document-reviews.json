@@ -15645,6 +15645,211 @@
         "visible_review_markers": [],
         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "074a0b2c35424fdeae7b741dcb6f8c4dc1b02f60d46d257cbfb2650e0a7bd401",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      },
+      "previous_state": {
+        "sha256": "121ad42ebab71f974c97987692e541d4d247e014b630afcc219057594f1c4c57",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/sprint-gate.md",
+      "sha256": "0a19bc6a360e618636423a70ebd6814d5938a97051381e91183e569a90afb634",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      },
+      "previous_state": {
+        "sha256": "889c711af66c05e48a974a597c6343d457494ab79c35d23477ddc99d648fa984",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/sprint-state.md",
+      "sha256": "68ff95576032d1edbc5bc55f6f7ef6527c519912951a2943831299877c608705",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      },
+      "previous_state": {
+        "sha256": "0455b3fff51cc3c103a8b1f0a0129471b2f25db66587682680557ace0cdc1351",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "1515448ac34e6dcb6104facdcaa1cbe20f3d0a882a24b3da93dd7fd1e1b150cc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      },
+      "previous_state": {
+        "sha256": "a194a40a43fb335cefa54fe958f93c8705a9b639f58c52e0e112de67621a72bc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "e79abfb0567b52619d05c5b18591fd66f77ea410d676882f4f2e34fb5eaa4e47",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      },
+      "previous_state": {
+        "sha256": "5f2f102f6a73c87be1b3c87ae05ea778ae0be0c0dde2b295667806ca2a8d4299",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "sha256": "a429cfa2461a7cfb2b3990ad783c4f314d514182623fb801b8368c5b8b24775d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      },
+      "previous_state": {
+        "sha256": "05f5eca791f4492f86aa5fa4c7eb86112a8ab8061b3574a9703f36cb33fdef14",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "sha256": "81fdb45b67ecebd5ca88162f9b76e329f678829ab1c82def464c32b8fa4c16d3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      },
+      "previous_state": {
+        "sha256": "babe6db87bec77f07df67c5585d15a3a03052a2f830d8e26ee68f911ae8f752e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "33470ed44746e25c609adce6f89dc5105cc89caa0cb271b66bf4f1e71471f3d0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      },
+      "previous_state": {
+        "sha256": "8bea052f63a35120bc0e8b8f74850a305acac41df35c5e1c963f8315827df65f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "d1ebaf317925f4d02c0f5a1e270ab546f687001bb248f0c93cde415e0a6395ef",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      },
+      "previous_state": {
+        "sha256": "c6add54c9e3fbd2b50621abaceb06a659deffea6262d0a9e7dfe3e4672f4aec4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-close/SKILL.md",
+      "sha256": "1064c18b5cb7429d84d0294ed8f4ce52f8eaeaa487a0d070322d8adb663e7f75",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-close/recording.md",
+      "sha256": "4f876754001162497962ce34b05ee51a6d9b70b75f5d537b2966ac9367a97721",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-review/SKILL.md",
+      "sha256": "81c1b4f9099ea240222e3eacb3fd9a7d9e15c7de83506badc9f8e7fecdf89af7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-start/SKILL.md",
+      "sha256": "6a0c1ead2de93cbf02ec4a7cfe2b0d55f45584bdfbaaa7a924d068ddabc41671",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-sprint-close/SKILL.md",
+      "sha256": "1d127a79f3daeab96aaea99ebfb11c1b0c608d9b647eab713ffd9ba872d53e14",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-sprint-review/SKILL.md",
+      "sha256": "53979ce63fd664849496da1d8209e89b8343e9b272e6b38c0bb171f22984655d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-sprint-start/SKILL.md",
+      "sha256": "040b68d89dc6e26c913f18a274d7aad8302b8e5ae92ef15694d1968dcdadae31",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:28:19.582249+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG sprint start, review and close skills"
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

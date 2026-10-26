@@ -6,7 +6,7 @@ The agent treated a coding request as authorization; AGENTS.md alone did not sto
 and `.codex/hooks.json` plus `.codex/config.toml` enabling hooks. Repeat init preserves valid existing sprint state.
 Exact legacy bridges migrate; edited bridges/custom hook or config files are preserved as conflicts.
 
-A human starts and stops sprints in a terminal, never implicitly through an agent coding task:
+A human decides to start or close a sprint, either in a terminal or through an explicit [Sprint start](../../skills/asdg-sprint-start/SKILL.md) / [Sprint close](../../skills/asdg-sprint-close/SKILL.md) request; a coding task alone implies neither:
 ```sh
 asdg sprint status
 asdg sprint start --id SPRINT-001 --objective 'Hello endpoint' \
@@ -26,8 +26,9 @@ See [state format](sprint-state.md). This is file scope, not semantic proof of t
 The PreToolUse hook and CLI consume the SAME evaluator and permission function; see [engine](state-engine.md).
 It checks patch create/update/delete/rename targets BEFORE execution. It blocks arbitrary
 shell execution, REPL/MCP and unknown tools; only a small read-only shell allowlist is accepted.
-Agents cannot start/stop sprints, edit state/policies/hooks or write outside declared scope.
-Use scoped apply_patch for implementation; run builds/tests in a human terminal for now.
+Only the human-directed sprint utilities may invoke start/stop and preserve their closeout receipt; they cannot widen implementation scope or edit policies/hooks.
+Use scoped apply_patch for implementation; existing role/runtime rules still govern execution and tests.
+If the hook denies a transition or receipt write, report it and provide the human-run command; do not bypass or alter enforcement.
 A guard execution failure emits a deny decision through a shell fallback.
 
 Codex supports these hooks locally (observed version 0.162.0-alpha.17.2; hooks enabled).

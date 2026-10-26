@@ -30,7 +30,9 @@ All named roles currently propose changes in conversation. File-writing speciali
 
 ## Sprint transitions
 
-The human selects scope, objective and acceptance before starting a sprint in a terminal:
+Use `$asdg-sprint-start` to start a human-selected scope, objective and acceptance criteria; `$asdg-sprint-review` assesses evidence without changing state.
+Use `$asdg-sprint-close` to preserve a review and end the explicitly selected sprint, including an unfinished or cancelled one. These utilities preserve Focus.
+The existing local CLI remains available:
 
 ```sh
 python3 asdg/scripts/cli.py sprint start --id SPRINT-001 --objective 'Chosen improvement' \
@@ -41,7 +43,7 @@ python3 asdg/scripts/cli.py sprint stop
 
 An active sprint authorizes only its file scope and intended work, subject to independent role/runtime restrictions.
 Scope may be an exact file or a directory ending in `/`; policies, distribution and state are protected.
-Stopping returns the current record to inactive; this pilot has no complete historical sprint/release manager.
+Stopping returns the current record to inactive. The close skill preserves a receipt under `.asdg/sprint-closeouts/`; direct CLI stop does not, and no release is closed.
 Do not run these example transitions as part of installation.
 
 ## Optional AI advice
