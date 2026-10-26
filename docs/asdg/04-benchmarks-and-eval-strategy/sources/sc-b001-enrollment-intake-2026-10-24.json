@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "record_type": "candidate_enrollment_intake_observation",
+  "case_id": "SC-B001",
+  "observed_on": "2026-10-24",
+  "timezone": "America/Toronto",
+  "candidate_status": "content_review_and_excerpt_selection_pending",
+  "source": {
+    "repository_relative_path": "eval-data/pablo-voice-solo-recording.mp3",
+    "sha256": "12839d18257f92130859273e3365608cc65aff0a7188e360eca7b893e9a55177",
+    "bytes": 1611008,
+    "modified_by_this_intake": false
+  },
+  "verified_metadata": {
+    "codec": "mp3",
+    "audio_stream_count": 1,
+    "duration_seconds": 181.479637,
+    "sample_rate_hz": 44100,
+    "channels": 2,
+    "channel_layout": "stereo",
+    "reported_format_bit_rate_bps": 71016
+  },
+  "user_report": {
+    "statement": "I added a voice solo recording in the same folder please check eval-data",
+    "intended_identity": "User (Pablo), from conversation context and filename; not independently verified",
+    "intended_use": "Candidate voice enrollment for an optional comparison",
+    "capture_conditions": "Not provided for this recording",
+    "independent_capture_from_test_interview": "Not independently verified"
+  },
+  "checks": [
+    {
+      "command": "ffprobe -v error -show_entries format=format_name,duration,size,bit_rate:stream=index,codec_name,codec_type,sample_rate,channels,channel_layout,duration -of json eval-data/pablo-voice-solo-recording.mp3",
+      "exit_code": 0,
+      "result": "Metadata read successfully."
+    },
+    {
+      "command": "ffmpeg -nostdin -hide_banner -v error -i eval-data/pablo-voice-solo-recording.mp3 -map 0:a:0 -f null -",
+      "exit_code": 0,
+      "result": "Full local decode completed with no reported errors; output discarded."
+    },
+    {
+      "command": "ffmpeg -nostdin -hide_banner -i eval-data/pablo-voice-solo-recording.mp3 -af volumedetect -f null -",
+      "exit_code": 0,
+      "mean_volume_dbfs": -21.4,
+      "max_volume_dbfs": -0.5,
+      "result": "Non-silent decoded signal; these levels do not establish speech content, intelligibility, speaker count or enrollment quality."
+    }
+  ],
+  "content_listened_to_by_assistant": false,
+  "transcript_created": false,
+  "speaker_analysis_run": false,
+  "voice_profile_created": false,
+  "enrollment_excerpt_created": false,
+  "application_evaluation_run": false,
+  "human_acceptance": null
+}

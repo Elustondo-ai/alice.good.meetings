@@ -32,7 +32,7 @@ def advice_destination(root: Path, repo: Path = REPO) -> Path:
     folder = safe_path(root, relative)
     if not folder.is_dir() or not safe_path(root, relative / 'README.md').is_file():
         raise Conflict('Canonical project planning folder is missing; no report saved.')
-    return safe_path(root, relative / 'current' / 'advice')
+    return safe_path(root, relative)
 
 
 def _wrapped(value: str, prefix: str = '') -> list[str]:
@@ -95,7 +95,7 @@ def save_advice(root: Path, status: dict, advice: dict, repo: Path = REPO) -> Pa
             directory.mkdir()
             created_directories.append(directory)
         for _ in range(3):
-            name = f"status-{instant.strftime('%Y%m%dT%H%M%S%fZ')}-{uuid4().hex[:12]}.md"
+            name = f"02.1-status-{instant.strftime('%Y%m%dT%H%M%S%fZ')}-{uuid4().hex[:12]}.md"
             target = safe_path(root, relative / name)
             receipt = safe_path(root, relative / Path(name).with_suffix('.json'))
             if target.exists() or receipt.exists():

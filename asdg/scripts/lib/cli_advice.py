@@ -70,6 +70,8 @@ def build_prompt(root: Path, status: dict, repo: Path = REPO) -> str:
                 'asdg/00-governance/docs/runtime-contract.md',
                 'asdg/00-governance/types/contract.md',
                 'asdg/00-governance/types/interaction-contract.md',
+                'asdg/00-governance/docs/continuation.md',
+                'asdg/skills/asdg-suggestion/SKILL.md',
                 'asdg/00-governance/skills/review-routing/SKILL.md',
                 'asdg/docs/lifecycle-baseline.md']
     # Missing contracts fail closed; do not invent a substitute role definition.
@@ -90,7 +92,9 @@ def build_prompt(root: Path, status: dict, repo: Path = REPO) -> str:
         'Absent fields mean unknown; an explicitly recorded release=null means none declared. '
         'Evidence presence does not mean approval. '
         'Earliest unmet evidence is a mechanical finding, not a prescribed priority. '
-        'Recommend one useful next action with reasons, evidence paths, and questions. '
+        'This is Status calling Suggestion with fresh facts and project-wide scope. '
+        'Apply the canonical Suggestion once using the shared continuation contract; '
+        'recommend one useful next action with reasons, evidence paths, and questions. '
         'Return summary.action and summary.reason as 1-2 short sentences each, with no '
         'role envelope, evidence paths, runtime details or boilerplate. summary.question '
         'is null unless one essential question prevents the next decision. '

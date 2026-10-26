@@ -10,6 +10,8 @@ from cli_files import Conflict, read_bytes, safe_path
 
 PREFIX = Path('docs/asdg/02-purpose')
 DOCUMENTS = ('01-purpose.md', '02-current-capabilities.md', '03-planned-improvements.md')
+LEGACY_DOCUMENTS = ('01-purpose.md', 'current/02-current-capabilities.md',
+                    'planned-release/03-planned-improvements.md')
 CRITERIA = ('purpose', 'outcomes', 'boundaries', 'current_evidence', 'next_improvement',
             'acceptance_questions', 'visual', 'documentation')
 
@@ -32,8 +34,9 @@ def validate_reviews(reviews: list) -> None:
         hashes = event['artifacts']
         if not isinstance(hashes, dict) or not hashes:
             raise Conflict('Purpose reviews require exact artifact hashes.')
-        required = {str(PREFIX / name) for name in (*DOCUMENTS, 'README.md')}
-        if not required <= hashes.keys():
+        layouts = (DOCUMENTS, LEGACY_DOCUMENTS)
+        if not any({str(PREFIX / name) for name in (*layout, 'README.md')} <= hashes.keys()
+                   for layout in layouts):
             raise Conflict('Purpose review omits a required document.')
         for name, digest in hashes.items():
             path = Path(name)
@@ -72,9 +75,10 @@ def bundle_hashes(root: Path, files: list[str]) -> dict[str, str]:
         text = data.decode('utf-8')
         for alt, target in re.findall(r'!\[([^\]]*)\]\(([^)]+)\)', text):
             relative = Path(target)
-            if not alt.strip() or not relative.is_relative_to('images') or '..' in relative.parts:
-                raise Conflict('Purpose images require alt text and a local images/ path.')
-            dependency = path.parent.relative_to(root) / relative
+            dependency = Path(os.path.normpath(path.parent.relative_to(root) / relative))
+            if (not alt.strip() or relative.is_absolute()
+                    or not dependency.is_relative_to(PREFIX / 'images')):
+                raise Conflict('Purpose images require alt text and a path inside the stage images/ folder.')
             safe_path(root, dependency)
             names.add(dependency.as_posix())
             if name == str(PREFIX / DOCUMENTS[0]):

@@ -156,6 +156,8 @@ def main(argv: list[str] | None = None) -> int:
                 print('ASDG initialized and verified.' if args.operation == 'init'
                       else 'ASDG structure verified.')
                 print('ALL GOOD!')
+                if args.operation == 'init':
+                    print('Next: use $asdg-status to inspect project facts and receive a project-wide next step.')
             else:
                 print('ASDG initialization failed.' if args.operation == 'init'
                       else 'ASDG verification failed.', file=sys.stderr)

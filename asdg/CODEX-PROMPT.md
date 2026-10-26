@@ -1,47 +1,35 @@
-# Codex prompt — first portable ASDG installation
+# Codex prompt — initialize this project with ASDG
 
-Copy the prompt below into a general Codex conversation opened at the fresh Speaker Coach Git root.
-The zip must already be extracted so `asdg/` sits beside `app.js` and `index.html`.
+Copy the prompt below into a general Codex conversation opened at the target project's existing Git root.
+The portable distribution must already be extracted as the project's local `asdg/` folder.
 
 ---
 
-Work with me on installing and verifying the embedded ASDG pilot in this fresh Speaker Coach repository.
-This is a bounded ASDG installation task. Keep the application and existing documents intact.
-The embedded `asdg/` is our evolving working baseline; do not resolve the old sibling governance checkout.
-Do not use a global `asdg` command, which may still point to the old installation.
+Help me initialize and verify the embedded ASDG distribution in this repository.
+Follow `asdg/skills/asdg-init/SKILL.md`, `asdg/AGENTS.md` and the client root instructions.
+Use the local Python entry points, not a machine-wide command or an external provider checkout.
 
-Read `asdg/README.md`, `asdg/AGENTS.md`, `asdg/docs/installation.md`,
-`asdg/docs/native-integration.md`, `asdg/docs/review-loop.md` and `asdg/docs/verification.md`.
-Inspect the actual repository, applicable instructions and Git status. Record application file hashes.
-Confirm the distribution is directly under this client's Git root; do not initialize another repository.
+Before first setup, offer the two optional orientation questions from the Init skill: rough purpose and starting point.
+Reuse answers I have already supplied. I can answer either, both, or say skip, not sure, or initialize now.
+Starting from scratch, extending an existing project and integrating other systems may overlap.
+Do not infer answers from the repository name, code presence or project status.
+When I provide answers, retain them as initial orientation, not accepted Purpose or completed Context.
 
-Run these commands from the client root:
+Inspect the actual repository and Git status, preserve existing work, and record application file hashes.
+Use the initializer's dry run before writing. Resolve conflicts without overwriting user changes.
+Default to the initializer's new-project status unless I explicitly supplied another initial status.
+Run local structure verification and factual status, then repeat initialization to check that it makes no further changes.
+Keep the Python initializer noninteractive; the conversational skill owns the optional questions.
 
-```sh
-python3 asdg/scripts/check.py --integrity
-python3 asdg/scripts/init.py --project-status defining --dry-run
-python3 asdg/scripts/init.py --project-status defining
-python3 asdg/scripts/cli.py verify --json
-python3 asdg/scripts/cli.py status --facts-only
-python3 asdg/scripts/init.py --project-status defining --json
-```
+For a fresh project, confirm that the stage introductions are generic and contain explanatory visuals.
+New living documents use flat stage files: 01 Intended, 02 Current, 03 Planned, with dotted topic extensions.
+Follow the shared human documentation, visual-review and source-companion rules.
+Existing project documentation stays intact; initialization does not migrate or certify its contents.
 
-The repeat run should report no managed changes. Record actual results, not expected outcomes.
-Confirm project DEFINING, release none, sprint inactive, implementation BLOCKED and no registered stage evidence.
-Confirm application hashes are unchanged, logs are Git-ignored and `.asdg/` state is not ignored.
-Confirm the twelve Focus adapters and thirteen named-role adapters resolve to this local distribution.
-Check native skill discovery if your runtime exposes it. Do not claim native invocation based on files alone.
-Separate configured hooks, human trust, direct guard tests and actual native interception.
-If a hook blocks a step, report the exact human-terminal command; do not bypass or disable it.
+Report observed results, changed paths, preservation checks and unresolved issues.
+Distinguish configured discovery and hooks from actual native invocation, human trust and runtime enforcement.
+If a hook blocks a step, retain the denial and provide the exact command for me to run in a terminal.
+Do not bypass hooks, change trust, invent project facts or mark documentation accepted.
 
-Do not start a sprint, declare a release, register/approve evidence, modify app code, install SDK packages,
-activate/delegate a specialist, commit or push as part of this task.
-If anything conflicts or fails, preserve existing files and report the concrete issue and proposed bounded fix.
-Do not silently weaken governance or turn installation into a broad refactor.
-
-Return a concise review report with changed paths, test commands/results, Codex/Python versions,
-application-integrity results, native checks still pending, and the proposed next iteration.
-If permitted, save it under `docs/asdg/07-planning/current/reviews/install-YYYYMMDD.md` (50 nonblank lines max);
-otherwise return the same report in the conversation. Retain a hash-bound modification receipt when saving.
-Provide the exact diff of any existing files changed. I will share this evidence with our reviewer in ChatGPT.
-After installation, wait for my choice of Context or Purpose review; the current specialist roles remain read-only.
+Do not start a sprint, declare a release, implement application changes, activate/delegate a specialist, commit or push.
+After successful setup, recommend ASDG Status and let me choose the next conversation.

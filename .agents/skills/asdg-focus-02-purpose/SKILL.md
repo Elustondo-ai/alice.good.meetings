@@ -1,6 +1,6 @@
 ---
 name: asdg-focus-02-purpose
-description: Explicitly focus this conversation on ASDG 02 Purpose. No parameter required. Loads ASDG-02 and its workflow for clarifying purpose and saving illustrated project documentation; activation alone performs no project work.
+description: Explicitly focus this conversation on ASDG 02 Purpose. No parameter required. Loads ASDG-02 and its workflow for clarifying purpose and saving illustrated project documentation; selection includes a read-only opening assessment.
 ---
 
 # ASDG Focus 02 — Purpose
@@ -14,8 +14,8 @@ Record `asdg-focus-02-purpose` as the actual activation entry. Extra user text r
 Conflicting explicit role selections require clarification; never choose another specialist silently.
 Resolve the workflow link from THIS file's directory, not the terminal working directory.
 Stop if required sources are missing; preserve prior focus. Keep the target project unchanged.
-The shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.
-Activation alone executes no project task and spawns no subagent.
-Subsequent assigned Purpose work saves illustrated client documentation within the canonical role contract.
+The shared workflow loads the role/procedure, attempts chat renaming and begins the canonical read-only opening.
+Activation alone writes no artifacts and spawns no subagent; an accompanying assignment starts within the role contract.
+Assigned Purpose documentation work saves illustrated client documentation within that same contract.
 Follow the canonical procedure's required visual completion checks; activation alone creates no image.
 This YAML-first file records AI modification, not whole-file human approval.

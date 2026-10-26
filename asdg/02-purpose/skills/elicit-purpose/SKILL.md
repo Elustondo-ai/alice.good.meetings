@@ -11,13 +11,18 @@ Procedure for an explicitly selected Purpose role; use only its bounded document
 Read the owner's contract and shared runtime rules before applying this procedure.
 A non-owning caller may inspect the method, but must not use it to bypass role boundaries.
 
-## Procedure
+## Opening or assigned delivery
+
+On selection without an assignment, use [the read-only opening](opening.md); do not run the documentation steps below.
+With an assignment, begin that task within the contract. Reuse inspected material and prior answers instead of restarting onboarding.
+
+## Documentation procedure
 
 1. Clarify the desired outcome before discussing implementation.
 2. Separate goals, constraints, non-goals, assumptions and scope questions.
 3. Suggest observable acceptance questions without choosing the architecture.
 4. Inspect the bound client's existing `docs/asdg/02-purpose/` and preserve accepted content and history.
-5. Save ordered concept files: `01-purpose.md`, `02-current-capabilities.md` and `03-planned-improvements.md`; update README navigation.
+5. Save `01-purpose.md`, `02-current-capabilities.md` and `03-planned-improvements.md`; update README navigation.
 6. Record sources and decision status, distinguish reports from verification, and retain unresolved questions.
 7. Append exact-hash modification receipts, check Markdown lengths and links, and summarize saved paths.
 8. Require an explanatory image near the opening of `01-purpose.md`, stored in `images/` and embedded using a relative link.
@@ -31,7 +36,7 @@ A non-owning caller may inspect the method, but must not use it to bypass role b
 ## Output and checks
 
 Use the owner's contract; distinguish purpose, evidenced capabilities and selected improvements with decision status.
-Keep these files directly in `docs/asdg/02-purpose/`; no `intended/`, `current/` or `planned/` subfolders are needed.
+Use the [stage layout](../../../00-governance/docs/stage-layout.md) inside `docs/asdg/02-purpose/`; use `03.N-sprint-<topic>.md` for sprint work.
 Canonical identities and Purpose paths follow the catalogue; legacy identities exist only in migration records.
 Do not claim tests, review, routing or implementation happened unless observed.
 Deliver saved documentation plus a concise conversation summary; activation alone writes no artifacts.
@@ -41,4 +46,8 @@ Report unavailable generation, saving or rendering explicitly; do not claim an u
 Use generic actor names such as `User` in product documentation.
 If writing is blocked, report the exact blocker and unsaved outcome; do not claim documentation was delivered.
 Out-of-scope work returns to the coordinator; missing prerequisites are reported as blocked.
+End substantive work with one useful continuation under [the shared contract](../../../00-governance/docs/continuation.md), respecting explicit stops.
 This YAML-first file records AI modification, not whole-file human approval.
+
+Before declaring a substantive Markdown deliverable complete, identify its embedded explanatory visual, the idea it conveys and the rendering check performed; missing or uninspected visuals must be reported as a documentation gap.
+An ordinary criteria table, status table or decorative image does not replace a diagram of behavior, relationships or evidence; navigation-only pages and immutable source archives retain the shared exceptions.

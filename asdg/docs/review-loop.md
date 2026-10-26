@@ -30,7 +30,7 @@ Governance maintenance is a separate explicit task; an application sprint cannot
 
 Record the objective; changed paths and rationale; commands/results; relevant versions;
 file-integrity observations; native discovery/trust evidence; unresolved questions; and the proposed next step.
-Use `docs/asdg/07-planning/current/reviews/` for deliberate review reports, with at most 50 nonblank lines each.
+Use `docs/asdg/07-planning/02.N-review-<topic>.md` for new deliberate review reports, with at most 50 nonblank lines each.
 Use `logs/` for disposable execution traces. Keep exact-state approval history in `.asdg/`, not ignored logs.
 Do not include credentials, full transcripts, private reasoning or unnecessary personal information.
 Never claim a commit, push, approval, native invocation or trust operation unless it actually occurred.

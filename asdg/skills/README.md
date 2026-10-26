@@ -8,6 +8,7 @@ Canonical workflows live here; native discovery adapters remain thin references.
 | [Focus](asdg-focus/SKILL.md) | Select governance 00 or one of twelve specialist focuses |
 | [Status](asdg-status/SKILL.md) | Show status, a suggested next step, then observations and technical debt |
 | [Role](asdg-role/SKILL.md) | Explain the selected role's responsibilities, outputs and boundaries |
+| [Approve](asdg-approve/SKILL.md) | Resolve the current reviewed documentation baseline and record explicit human acceptance |
 | [Suggestion](asdg-suggestion/SKILL.md) | Recommend one useful next step from project evidence and priorities |
 | [Development view](asdg-view-dev/SKILL.md) | Open a useful project file and terminal alongside the chat |
 | [Documentation](asdg-documentation/SKILL.md) | Preserve readable, evidence-based project documents |

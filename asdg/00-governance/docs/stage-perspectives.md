@@ -43,8 +43,8 @@ An actual observation may challenge the target; propose a target revision rather
 Do not promote Planned to Actual because an agent said done; require suitable evidence for each claim.
 Keep human review, operational authorization and evidence separate from these three perspectives.
 Maintain one authoritative record per artifact/work item; a snapshot links to records instead of copying entire documents.
-Use stage-specific layouts where defined: Purpose uses `01-purpose.md`, `02-current-capabilities.md` and `03-planned-improvements.md`.
-Other stages retain their `intended/`, `current/` and `planned/` folders until their own contracts define a different layout.
+Use the [shared stage layout](stage-layout.md): Intended in `01` root files, Actual in `02` root files.
+Use `03` root files for Planned, with release/sprint horizons in filenames; consolidate verified outcomes into `02` Current at cycle closeout.
 Keep empty perspectives empty; preserve topic navigation and reference the integrated Stage 07 plan.
 Do not overwrite accepted baselines or rewrite historical reports; record changes and evidence provenance.
 Apply existing role boundaries, including ASDG-02's bounded documentation allowance; this model grants no additional authority.

@@ -32,8 +32,9 @@ The canonical package is `02-purpose`, native role is `asdg_02`, and procedure i
 
 ## Perspectives
 
-Client Purpose documents live directly under `docs/asdg/02-purpose/`, one Markdown file per concept:
+Client Purpose documents follow the [stage layout](../00-governance/docs/stage-layout.md), one file per concept:
 `01-purpose.md`, `02-current-capabilities.md` and `03-planned-improvements.md`, linked from `README.md`.
+Name sprint-specific work `03.N-sprint-<topic>.md`; create additional documents only when needed.
 Every completed Purpose delivery includes an explanatory image near the opening of `01-purpose.md`, from the local `images/` subfolder.
 Use a vision/current-state caption and alt text; inspect image quality and the rendered document when available.
 Reuse a suitable image across wording updates. A text-only draft is incomplete; report unavailable tools or preview checks.

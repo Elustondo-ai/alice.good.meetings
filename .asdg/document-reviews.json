@@ -763,6 +763,2131 @@
       "provenance": {
         "generator": "Purpose two-gate completion"
       }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "4517999ea6cfb7a4e51886e21f774e3d59f45ffaca06bfee951ebe02049976e7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T19:58:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 benchmark documentation review package",
+        "authorization": "User explicitly requested updating documents in the Stage 04 folder for review; no human acceptance inferred.",
+        "source_draft": {
+          "path": "/Users/pablo.elustondo/Downloads/Speaker-Coach-Benchmark-and-Evaluation-Strategy-Draft.md",
+          "sha256": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd"
+        }
+      },
+      "previous_state": {
+        "sha256": "bdcad3e9735f423480012953fc611e259183a87ad12775a5c4f6b9c8d2d0cea5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/current/01-evidence-and-reconciliation.md",
+      "sha256": "38413b6881123d46a1420f0e5cef4b214ae6b36f726377e34140890338dc99c6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T19:58:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 benchmark documentation review package",
+        "authorization": "User explicitly requested updating documents in the Stage 04 folder for review; no human acceptance inferred.",
+        "source_draft": {
+          "path": "/Users/pablo.elustondo/Downloads/Speaker-Coach-Benchmark-and-Evaluation-Strategy-Draft.md",
+          "sha256": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd"
+        },
+        "inspected_application_sources": {
+          "app.js": "9f4f15bbe9bfd76a4acba877de93d8fb069258ea04b697d504b8a5a4a53bfc8e",
+          "index.html": "8493484f29a8494319b09e90c0278a3ea218fb9d429bb98178155ef19a206a8b"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/intended/01-evaluation-strategy.md",
+      "sha256": "3e08f2e1ccedf427fe44e13b7e9af92087bb3d9ef4aa892394d372ebb9da3f69",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T19:58:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 benchmark documentation review package",
+        "authorization": "User explicitly requested updating documents in the Stage 04 folder for review; no human acceptance inferred.",
+        "source_draft": {
+          "path": "/Users/pablo.elustondo/Downloads/Speaker-Coach-Benchmark-and-Evaluation-Strategy-Draft.md",
+          "sha256": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/intended/02-benchmark-collection.md",
+      "sha256": "982b120890ff68c40cd7482507e4ad5fc03b0704f3e93b95e888850bcc3e8337",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T19:58:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 benchmark documentation review package",
+        "authorization": "User explicitly requested updating documents in the Stage 04 folder for review; no human acceptance inferred.",
+        "source_draft": {
+          "path": "/Users/pablo.elustondo/Downloads/Speaker-Coach-Benchmark-and-Evaluation-Strategy-Draft.md",
+          "sha256": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/planned/01-single-recording-evaluation.md",
+      "sha256": "a1bc7a5b90f0733fa40690882563232b41e3e5f357e6de9427d7c1ac5b530ae2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T19:58:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 benchmark documentation review package",
+        "authorization": "User explicitly requested updating documents in the Stage 04 folder for review; no human acceptance inferred.",
+        "source_draft": {
+          "path": "/Users/pablo.elustondo/Downloads/Speaker-Coach-Benchmark-and-Evaluation-Strategy-Draft.md",
+          "sha256": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/planned/02-measurements-and-thresholds.md",
+      "sha256": "940f52df063ff41dbc5f085dc3fe51a8d7341996b54ee83786faa138429a4e0e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T19:58:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 benchmark documentation review package",
+        "authorization": "User explicitly requested updating documents in the Stage 04 folder for review; no human acceptance inferred.",
+        "source_draft": {
+          "path": "/Users/pablo.elustondo/Downloads/Speaker-Coach-Benchmark-and-Evaluation-Strategy-Draft.md",
+          "sha256": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/planned/03-alternatives-and-review-decisions.md",
+      "sha256": "944d7306917c674d216ae83c373f2a9ccbb36d9b73b781dfb622d8458b6fbdc5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T19:58:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 benchmark documentation review package",
+        "authorization": "User explicitly requested updating documents in the Stage 04 folder for review; no human acceptance inferred.",
+        "source_draft": {
+          "path": "/Users/pablo.elustondo/Downloads/Speaker-Coach-Benchmark-and-Evaluation-Strategy-Draft.md",
+          "sha256": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "e0552e67c03f7d5513196a6537cb160d61345b65c70aba4295d677f2e336abbc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:09:55Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 assessed review refinements",
+        "authorization": "User requested judgment on supplied comments within the authorized Stage 04 documentation update; drafts remain for review."
+      },
+      "previous_state": {
+        "sha256": "4517999ea6cfb7a4e51886e21f774e3d59f45ffaca06bfee951ebe02049976e7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/current/01-evidence-and-reconciliation.md",
+      "sha256": "fc9dd6e5f6927d997a19c6f15fc2216c054be085747832f59d7851b2ae705c66",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:09:55Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 assessed review refinements",
+        "authorization": "User requested judgment on supplied comments within the authorized Stage 04 documentation update; drafts remain for review."
+      },
+      "previous_state": {
+        "sha256": "38413b6881123d46a1420f0e5cef4b214ae6b36f726377e34140890338dc99c6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/intended/01-evaluation-strategy.md",
+      "sha256": "ff9aa040b0efe56bdcdd6255ac62013b4c8006db5e00cb910ff676f4b60702a7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:09:55Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 assessed review refinements",
+        "authorization": "User requested judgment on supplied comments within the authorized Stage 04 documentation update; drafts remain for review."
+      },
+      "previous_state": {
+        "sha256": "3e08f2e1ccedf427fe44e13b7e9af92087bb3d9ef4aa892394d372ebb9da3f69",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/planned/01-single-recording-evaluation.md",
+      "sha256": "2c18f96674f3cf6a40baf47db0cdda57ff42f29c99cd28f28b2d9c98a5bfcd92",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:09:55Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 assessed review refinements",
+        "authorization": "User requested judgment on supplied comments within the authorized Stage 04 documentation update; drafts remain for review."
+      },
+      "previous_state": {
+        "sha256": "a1bc7a5b90f0733fa40690882563232b41e3e5f357e6de9427d7c1ac5b530ae2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/planned/02-measurements-and-thresholds.md",
+      "sha256": "a118ec2d3420e6f4f2a88fcfe057ae35418dedd03219f92cb06fa74d1d77edfb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:09:55Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 assessed review refinements",
+        "authorization": "User requested judgment on supplied comments within the authorized Stage 04 documentation update; drafts remain for review."
+      },
+      "previous_state": {
+        "sha256": "940f52df063ff41dbc5f085dc3fe51a8d7341996b54ee83786faa138429a4e0e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/planned/03-alternatives-and-review-decisions.md",
+      "sha256": "fb93e9317aa44953ad1781932e78ce41b39d2ecd2b4a2058b25492e1e761d073",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:09:55Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 assessed review refinements",
+        "authorization": "User requested judgment on supplied comments within the authorized Stage 04 documentation update; drafts remain for review."
+      },
+      "previous_state": {
+        "sha256": "944d7306917c674d216ae83c373f2a9ccbb36d9b73b781dfb622d8458b6fbdc5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/sources/strategy-draft-0.1.md",
+      "sha256": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:09:55Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 assessed review refinements",
+        "authorization": "User requested judgment on supplied comments within the authorized Stage 04 documentation update; drafts remain for review.",
+        "operation": "byte-for-byte source capture",
+        "original_path": "/Users/pablo.elustondo/Downloads/Speaker-Coach-Benchmark-and-Evaluation-Strategy-Draft.md",
+        "source_sha256": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd",
+        "retained_source_marker": "AI-MODIFIED - 2026-10-21T16:13Z"
+      }
+    },
+    {
+      "path": "docs/asdg/01-context-and-domain-analysis/README.md",
+      "sha256": "52ed52a2355f8456db9b516aa24ea6b893f809f1519ce3fed75a496e2f91a59d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.557361+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/01-context-and-domain-analysis/README.md"
+      },
+      "previous_state": {
+        "sha256": "7cb45f61cc5c0500862402662d41bfc6a739a66a2bda301796523663434e8f85",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/current/02-current-capabilities.md",
+      "sha256": "59c9757eab19f085ff82e26bfcc2278d3b95d0f2c59c52ac73cae896b8306e96",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.557442+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/02-purpose/02-current-capabilities.md"
+      },
+      "previous_state": {
+        "sha256": "50164f379a178f32a2e5f82dd3c5c06f6adf0e87d052c0f8ef979d608f78f5d4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/planned-release/03-planned-improvements.md",
+      "sha256": "4d37b3d4aa286a3514335b725b3a14d9094428086cd9a652cdc5622399004931",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.557470+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/02-purpose/03-planned-improvements.md"
+      },
+      "previous_state": {
+        "sha256": "5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "64864d9a935aa154e3638981ab25c24103f9998929faa0c84790bc5bfbb4f894",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.557576+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/02-purpose/README.md"
+      },
+      "previous_state": {
+        "sha256": "82377c899ee4e4127c2a45a7e2ed3e2a20360c7f403c3bcc6fc8b2ec8dd42419",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/README.md",
+      "sha256": "2dc479d0f8e41fca5c19ab1d1a699c1a0f54acc012dda66a8d1baa0661921150",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.557658+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/03-system-model-and-use-cases/README.md"
+      },
+      "previous_state": {
+        "sha256": "d3f1c7f378a8f9f7389ab935faffa70b47b9867db43d8cee2e50867a752fe5a5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01-direct-question.md",
+      "sha256": "bccb84185f98a68fa5836f0001562422aefde8c959577cda81e44a089de88dd7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.557743+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/03-system-model-and-use-cases/intended/01-direct-question.md"
+      },
+      "previous_state": {
+        "sha256": "2a4c1bf9eb351a6c59a86488eb04207d790a97771cf78334688642cacca0bde8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/02-open-question.md",
+      "sha256": "86ec27e14efbbb75b15931c4db9ee4c0781487dd175f1d6426d266beb208e777",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.557832+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/03-system-model-and-use-cases/intended/02-open-question.md"
+      },
+      "previous_state": {
+        "sha256": "4d1dc20d762803cdb2b8702c4c71b5c6c3f961d09c4731e4fadeb73460b75344",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/03-experience-question.md",
+      "sha256": "a095add37ab0321216273a24ab5772995da52d65cdcae5affbaaa7581fd7ddbf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.557949+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/03-system-model-and-use-cases/intended/03-experience-question.md"
+      },
+      "previous_state": {
+        "sha256": "df8516c5acf21fc934cfdfb2b5c06da7637a04e9e085e05ca477763ebad420da",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/04-system-model.md",
+      "sha256": "982030a559de4587eac5f21812462b30a062e7cf58f8c540fab2bb96e3459238",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.558066+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/03-system-model-and-use-cases/intended/04-system-model.md"
+      },
+      "previous_state": {
+        "sha256": "fcae2b468ccafa6b30c0ddd6a1878b061adaf64be5f69669cc6b8ac51062b3a4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "d0745fd1f8feb80946865b1b7d9ed1ba15592e4c9a528c4253e912a8a5b32730",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.558184+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md"
+      },
+      "previous_state": {
+        "sha256": "e0552e67c03f7d5513196a6537cb160d61345b65c70aba4295d677f2e336abbc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/current/01-evidence-and-reconciliation.md",
+      "sha256": "b080ad4d1c4d268aff1b17c842068ffd858b99595c39502ee983d8629e910bb7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.558287+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/04-benchmarks-and-eval-strategy/current/01-evidence-and-reconciliation.md"
+      },
+      "previous_state": {
+        "sha256": "fc9dd6e5f6927d997a19c6f15fc2216c054be085747832f59d7851b2ae705c66",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md",
+      "sha256": "9f5bcc097d25b4e2ad49f7267c7d9911601b7627889e6f088fb4c0baeb4032db",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.558408+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/04-benchmarks-and-eval-strategy/intended/01-evaluation-strategy.md"
+      },
+      "previous_state": {
+        "sha256": "ff9aa040b0efe56bdcdd6255ac62013b4c8006db5e00cb910ff676f4b60702a7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/02-benchmark-collection.md",
+      "sha256": "a682dfcd1499c4dce7542b7660516d0914bd1eba0babd765f744488dbb8f43e7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.558524+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/04-benchmarks-and-eval-strategy/intended/02-benchmark-collection.md"
+      },
+      "previous_state": {
+        "sha256": "982b120890ff68c40cd7482507e4ad5fc03b0704f3e93b95e888850bcc3e8337",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/planned-release/01-single-recording-evaluation.md",
+      "sha256": "a37ee630a5baf490abc0752731a479fb59b88b4232f0e532902e746ea4be5a3a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.558650+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/04-benchmarks-and-eval-strategy/planned/01-single-recording-evaluation.md"
+      },
+      "previous_state": {
+        "sha256": "2c18f96674f3cf6a40baf47db0cdda57ff42f29c99cd28f28b2d9c98a5bfcd92",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/planned-release/02-measurements-and-thresholds.md",
+      "sha256": "a118ec2d3420e6f4f2a88fcfe057ae35418dedd03219f92cb06fa74d1d77edfb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.558762+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/04-benchmarks-and-eval-strategy/planned/02-measurements-and-thresholds.md"
+      },
+      "previous_state": {
+        "sha256": "a118ec2d3420e6f4f2a88fcfe057ae35418dedd03219f92cb06fa74d1d77edfb",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/planned-release/03-alternatives-and-review-decisions.md",
+      "sha256": "fb93e9317aa44953ad1781932e78ce41b39d2ecd2b4a2058b25492e1e761d073",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.558896+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/04-benchmarks-and-eval-strategy/planned/03-alternatives-and-review-decisions.md"
+      },
+      "previous_state": {
+        "sha256": "fb93e9317aa44953ad1781932e78ce41b39d2ecd2b4a2058b25492e1e761d073",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/README.md",
+      "sha256": "5cd855d4a357e50be1ff0f3a1657a3a4f2661ac4e4bb28c87ebd4869f6234354",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.559012+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/05-high-level-design-and-architecture/README.md"
+      },
+      "previous_state": {
+        "sha256": "a9306b631e97e862dbe1088a920e3e2eea9760f316a79dc52d83e6b517c0542c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/06-viable-proof-of-concept/README.md",
+      "sha256": "35b4e277a9543f0f842586a756db452dd8fa1e7c83612c06154e519020515854",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.559109+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/06-viable-proof-of-concept/README.md"
+      },
+      "previous_state": {
+        "sha256": "eba42b52fec74a1ea210a0b307c85cf59f8097ba4ed91715a6bc10c9397ee85c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "cb261436feef0fbf1b8d2c125ac08b52e3be2c278bc20c72c930d53212b10127",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.559189+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/07-planning/README.md"
+      },
+      "previous_state": {
+        "sha256": "a2500fa27e06591ab1f6138dd42175d8641c330eb50a73ffb4e3eb7a3063795f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/README.md",
+      "sha256": "7fb2a89da00254afe3db4c96e0cf8b7a89884201c616744077e1c6238723314d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.559264+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/08-low-level-design/README.md"
+      },
+      "previous_state": {
+        "sha256": "9c65be514127d2ec6367a1c051ce6235bb6ddceff58addcdff75dda6f813f4e7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/09-build-and-test-cycle/README.md",
+      "sha256": "a75d7ebdcd81dca4bdf1df16c23a82375ae576c65680308a8d2d0914a9f1bb05",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.559323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/09-build-and-test-cycle/README.md"
+      },
+      "previous_state": {
+        "sha256": "38ee32616d4c15ba3f496fbee62193fe2b5bd3ef53314674938bedabc901110b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/10-document-review-and-release/README.md",
+      "sha256": "3461b68a220b8b6bf08e3677e00aa5aa23affd7056d1f8fc464f375906605e38",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.559422+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/10-document-review-and-release/README.md"
+      },
+      "previous_state": {
+        "sha256": "d955b76a7223d45e8604123cd2411ba4d717dccc056326c178a7f81bf5f4d952",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/11-operational-reality-devops-and-user-acceptance/README.md",
+      "sha256": "5242e111f9fdc478feb84f6301b9e6608a51fa84d9476bfb866bd34b23d4c3a0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.559524+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/11-operational-reality-devops-and-user-acceptance/README.md"
+      },
+      "previous_state": {
+        "sha256": "3d98f1d270ef1907f613550679117fa064ef4c0aec1d97eccbef337a2ea5b1ed",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/12-observability-insights-and-learning/README.md",
+      "sha256": "ff79834c20b2af753c3186e8fdd641d65614711be1f506f87e85c084a5317477",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.559603+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/12-observability-insights-and-learning/README.md"
+      },
+      "previous_state": {
+        "sha256": "377cef6c99da793615be2a4e996108848e8471d0174521ab2f720aaee54c8aee",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/README.md",
+      "sha256": "b89f86e0f6f80ec415bd15d95fa159c9c09d0fe54c5aff38b583f8b21c1b91ea",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-21T20:26:36.559678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Shared stage layout: root intent and release/sprint plans",
+        "original_path": "docs/asdg/README.md"
+      },
+      "previous_state": {
+        "sha256": "ace3c6367dbc93fc4bdcd890b0d98dbd5a89496f479e88655cd292959dcd957b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/00-governance/README.md",
+      "sha256": "26cfdde9b3aa811b283a788a4576414f878a6dbc722fa2a8695866ccc420b31d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T17:51:08.158932+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Rewrite Governance README for human readers"
+      },
+      "previous_state": {
+        "sha256": "8d78726e187a7a6c812dddae3f16ff82498a3060f802ad3ba2b258bb5520b95c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/00-governance/README.md",
+      "sha256": "81e21f6470c029d073e9efeabf2509f2f66716fdc708ebdbdddea892c33157df",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T17:58:20.295396+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Embed a human-readable governance diagram"
+      },
+      "previous_state": {
+        "sha256": "26cfdde9b3aa811b283a788a4576414f878a6dbc722fa2a8695866ccc420b31d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/00-governance/images/development-loop.svg",
+      "sha256": "5b19bdcb61074b6827bb83c25f8db4c7a9cb7a43b1cf0e3e429b449118ae0c55",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T17:58:20.295396+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Editable SVG governance diagram; rendered and visually inspected"
+      }
+    },
+    {
+      "path": "app.md",
+      "sha256": "8dfac8ed4127e0cbdec4882da377a6f63458b9986b89456ce70afcdc851e17d3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T20:32:00.760681+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Human-readable CRC source companions and authoring standard",
+        "source": "app.js",
+        "source_sha256": "9f4f15bbe9bfd76a4acba877de93d8fb069258ea04b697d504b8a5a4a53bfc8e"
+      }
+    },
+    {
+      "path": "index.md",
+      "sha256": "de9eed6e62dae55efe2a7930a06d0a98d0eaa1b211e21d495581d588606d5812",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T20:32:00.761014+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Human-readable CRC source companions and authoring standard",
+        "source": "index.html",
+        "source_sha256": "8493484f29a8494319b09e90c0278a3ea218fb9d429bb98178155ef19a206a8b"
+      }
+    },
+    {
+      "path": "images/app-flow.svg",
+      "sha256": "d071033cfdfb94e2e93019e6e5c0e59744819017e9099cc6c43d48398406dfb8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T20:32:00.955582+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Human-readable CRC source companions and authoring standard",
+        "source": "app.js",
+        "source_sha256": "9f4f15bbe9bfd76a4acba877de93d8fb069258ea04b697d504b8a5a4a53bfc8e"
+      }
+    },
+    {
+      "path": "images/index-flow.svg",
+      "sha256": "1eb2ac99951212f7729c9caceefd726a86ae25d2d28605d21fa144cdfe1d08c3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T20:32:00.955614+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Human-readable CRC source companions and authoring standard",
+        "source": "index.html",
+        "source_sha256": "8493484f29a8494319b09e90c0278a3ea218fb9d429bb98178155ef19a206a8b"
+      }
+    },
+    {
+      "path": "docs/asdg/01-context-and-domain-analysis/README.md",
+      "sha256": "a40fc2aea5ca68e5496d1dcd69052f06835a120b8003a51cb7dafea83fee43c5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.042988+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "52ed52a2355f8456db9b516aa24ea6b893f809f1519ce3fed75a496e2f91a59d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/01-context-and-domain-analysis/images/stage-overview.svg",
+      "sha256": "90de15953d0ee46641b18a6b257df4ce4d397b914df733bc65d1742e4302178b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.043672+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "183e5402b56a2e068596403793dca63d2dce083350fca8719af9380397de835a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.043781+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "64864d9a935aa154e3638981ab25c24103f9998929faa0c84790bc5bfbb4f894",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/images/stage-overview.svg",
+      "sha256": "bbb8c97f3a7f9188f8cc8953acef39b5b53b7fbbfa5049c0e2b109c271909cc6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.043843+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/README.md",
+      "sha256": "12873af60c7720c4500c3fdcee6cac8bcc53f47a926ff0549324f19d539fbc4c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.043941+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "2dc479d0f8e41fca5c19ab1d1a699c1a0f54acc012dda66a8d1baa0661921150",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/images/stage-overview.svg",
+      "sha256": "543d73d5a773e338e6ff4050daea791bc8be7a305b2ffa042fe27e41106113b2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.043994+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "75ed8bedff1a76867b179b7604b5eb282d41c1e010ae36091055f9b77814b48a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044111+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "d0745fd1f8feb80946865b1b7d9ed1ba15592e4c9a528c4253e912a8a5b32730",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/images/stage-overview.svg",
+      "sha256": "e3fbc7ae4e5844d5601f3283e1a9460117a1762200227cbfb9ca80a28e42639a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044166+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/README.md",
+      "sha256": "8cec94b82cc711c880b9c231c4e52495ccbcabef5adc7890fc441bde60b73d68",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044291+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "5cd855d4a357e50be1ff0f3a1657a3a4f2661ac4e4bb28c87ebd4869f6234354",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/images/stage-overview.svg",
+      "sha256": "a579301c7a924ffc24bcb89009fe7000d61f40a845f9c5b54637e34aa19d04a1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044374+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/06-viable-proof-of-concept/README.md",
+      "sha256": "8e9690692a8d9c66fced2e96add3260eebd194cf0280c5d6526890ad080a7921",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044460+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "35b4e277a9543f0f842586a756db452dd8fa1e7c83612c06154e519020515854",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/06-viable-proof-of-concept/images/stage-overview.svg",
+      "sha256": "89aa9c27d697d078dd20e57892b371cfee855dfecfd5e4b9e5f059a562782baf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044529+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "f4424b30fa3a770d639d563c17cca72438fdc7970e9ea5a4ae380cdc88b7f53a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044665+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "cb261436feef0fbf1b8d2c125ac08b52e3be2c278bc20c72c930d53212b10127",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/images/stage-overview.svg",
+      "sha256": "50e6e4de4a5bb3e5b4b9cdf83bd3c5ec98e67eef46d3d40d5d72a2ad7c75c88a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044731+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/README.md",
+      "sha256": "505c7a70457cd38e5ff6162a60bbbdcd5f2b7c8753aa693bd9e8801b8d5e1b11",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044817+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "7fb2a89da00254afe3db4c96e0cf8b7a89884201c616744077e1c6238723314d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/stage-overview.svg",
+      "sha256": "a08b69a12d16ab64cb247d680b45b842d1307570030ff1b57cadcdb2d4c0b74d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044866+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/09-build-and-test-cycle/README.md",
+      "sha256": "036a5567466eab61e8cccdd30593b5721570b707cd4e758ed22036791cef221b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044950+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "a75d7ebdcd81dca4bdf1df16c23a82375ae576c65680308a8d2d0914a9f1bb05",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/09-build-and-test-cycle/images/stage-overview.svg",
+      "sha256": "5560d8a7d7a7d938f38e918bc6471cb9e46e522ad786a7872a2a3601ed068aae",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.044994+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/10-document-review-and-release/README.md",
+      "sha256": "68ec55fc3f8044ef9dce09b3592c32e6418e2347b03bc57c9b75fad9208b038f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.045075+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "3461b68a220b8b6bf08e3677e00aa5aa23affd7056d1f8fc464f375906605e38",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/10-document-review-and-release/images/stage-overview.svg",
+      "sha256": "99b3840ccb61601633520b039a6e1c9bdcc32761922d66fbfd14e2a7016f7da7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.045119+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/11-operational-reality-devops-and-user-acceptance/README.md",
+      "sha256": "ec217c03b3b999282f6f9b787bc722d98dce9a659536863afdf294d6f0142853",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.045193+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "5242e111f9fdc478feb84f6301b9e6608a51fa84d9476bfb866bd34b23d4c3a0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/11-operational-reality-devops-and-user-acceptance/images/stage-overview.svg",
+      "sha256": "c1845c6d8677a8b97778eb88175ca4f469b1245d84462c06abf91895a08e31f3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.045236+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/12-observability-insights-and-learning/README.md",
+      "sha256": "b398bfa3db0248a2147901c7fe5011beb4c0566167874a492b5794c5f065c039",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.045315+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      },
+      "previous_state": {
+        "sha256": "ff79834c20b2af753c3186e8fdd641d65614711be1f506f87e85c084a5317477",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/12-observability-insights-and-learning/images/stage-overview.svg",
+      "sha256": "1e1ae0944d54d9a48545c65f98b4965ccf2347c9dd653ee2374484ae0743cd9e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T21:49:28.045358+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-readable introductions to all twelve SpeakerCoach stages; greenfield Context intentionally empty"
+      }
+    },
+    {
+      "path": "docs/asdg/00-governance/README.md",
+      "sha256": "32b102a905ffeac5c794484e88b88429c14211407dc5e58651eedb160177a006",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/00-governance/README.md"
+      },
+      "previous_state": {
+        "sha256": "81e21f6470c029d073e9efeabf2509f2f66716fdc708ebdbdddea892c33157df",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/01-context-and-domain-analysis/README.md",
+      "sha256": "b54bef0cbba62050fc58f454ccfd03a4b0e8accb378d73370af3ddd99404a87e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/01-context-and-domain-analysis/README.md"
+      },
+      "previous_state": {
+        "sha256": "a40fc2aea5ca68e5496d1dcd69052f06835a120b8003a51cb7dafea83fee43c5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "dad5043df905d39be3838ede98ef4c86c1f7719c1877b01cc5526b8e53a5b699",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/02-purpose/README.md"
+      },
+      "previous_state": {
+        "sha256": "183e5402b56a2e068596403793dca63d2dce083350fca8719af9380397de835a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01-system-model.md",
+      "sha256": "d6855f1d9ebdd3acb7c5c9aca353a0eed0e9a4dd54fe4d13cea96083d9535fbe",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/03-system-model-and-use-cases/00-system-model.md"
+      },
+      "previous_state": {
+        "sha256": "982030a559de4587eac5f21812462b30a062e7cf58f8c540fab2bb96e3459238",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.1-direct-question.md",
+      "sha256": "10f6020cfe2baab657d8bc1031f1eaf05d11273b6396ca08bfadfebb11214880",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/03-system-model-and-use-cases/01-direct-question.md"
+      },
+      "previous_state": {
+        "sha256": "bccb84185f98a68fa5836f0001562422aefde8c959577cda81e44a089de88dd7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.2-open-question.md",
+      "sha256": "76a7906197d05786d491f19f2af21a166eaed8a104cb8d39c261ade922ba501f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/03-system-model-and-use-cases/02-open-question.md"
+      },
+      "previous_state": {
+        "sha256": "86ec27e14efbbb75b15931c4db9ee4c0781487dd175f1d6426d266beb208e777",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.3-experience-question.md",
+      "sha256": "4c3c0403124600d7b50cf17918e3405355315be9d6aadf6a824010a78974b186",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/03-system-model-and-use-cases/03-experience-question.md"
+      },
+      "previous_state": {
+        "sha256": "a095add37ab0321216273a24ab5772995da52d65cdcae5affbaaa7581fd7ddbf",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/README.md",
+      "sha256": "33ec9c767ccee1e2980c6631401e2b64a7558d192b786b841113d9b40cf05a46",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/03-system-model-and-use-cases/README.md"
+      },
+      "previous_state": {
+        "sha256": "12873af60c7720c4500c3fdcee6cac8bcc53f47a926ff0549324f19d539fbc4c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md",
+      "sha256": "46df74963a0b570828752f093ec5eb814c10ab653619dbe5d01c4dfaaaad28b6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md"
+      },
+      "previous_state": {
+        "sha256": "9f5bcc097d25b4e2ad49f7267c7d9911601b7627889e6f088fb4c0baeb4032db",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/01.1-benchmark-collection.md",
+      "sha256": "10291aaf598c07eed392ae068741b860db494c88a1c033bd8ecd0e59575096c7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/04-benchmarks-and-eval-strategy/02-benchmark-collection.md"
+      },
+      "previous_state": {
+        "sha256": "a682dfcd1499c4dce7542b7660516d0914bd1eba0babd765f744488dbb8f43e7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "21e19b9552fa797ff541061850621c91d5ca38e3fa1b2c2e734ecc159226f8d6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md"
+      },
+      "previous_state": {
+        "sha256": "75ed8bedff1a76867b179b7604b5eb282d41c1e010ae36091055f9b77814b48a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/02-evidence-and-reconciliation.md",
+      "sha256": "85b9ddef24128b750d77e9e407642f2cb79512a89a5afb91525296eb00bc9f9a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/04-benchmarks-and-eval-strategy/current/01-evidence-and-reconciliation.md"
+      },
+      "previous_state": {
+        "sha256": "b080ad4d1c4d268aff1b17c842068ffd858b99595c39502ee983d8629e910bb7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03-release-single-recording-evaluation.md",
+      "sha256": "9ad5c8915b0015ac544494315813bae5e367f84e4dc29cb67cfdfb2db07ed908",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/04-benchmarks-and-eval-strategy/planned-release/01-single-recording-evaluation.md"
+      },
+      "previous_state": {
+        "sha256": "a37ee630a5baf490abc0752731a479fb59b88b4232f0e532902e746ea4be5a3a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.1-release-measurements-and-thresholds.md",
+      "sha256": "ba44c57eb87b8b46ebb8c25079d31d02a350c9b0a7d641e5fa58e8e9e5af981c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/04-benchmarks-and-eval-strategy/planned-release/02-measurements-and-thresholds.md"
+      },
+      "previous_state": {
+        "sha256": "a118ec2d3420e6f4f2a88fcfe057ae35418dedd03219f92cb06fa74d1d77edfb",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.2-release-alternatives-and-review-decisions.md",
+      "sha256": "e64d22d1348b2993ba0874d03f31d911da36ece341871aebdbfe08e3ba7bdeda",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/04-benchmarks-and-eval-strategy/planned-release/03-alternatives-and-review-decisions.md"
+      },
+      "previous_state": {
+        "sha256": "fb93e9317aa44953ad1781932e78ce41b39d2ecd2b4a2058b25492e1e761d073",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/README.md",
+      "sha256": "2420c9d7f29201b5991acd0c2af385744f14b847532c93231684e29aee13263d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/05-high-level-design-and-architecture/README.md"
+      },
+      "previous_state": {
+        "sha256": "8cec94b82cc711c880b9c231c4e52495ccbcabef5adc7890fc441bde60b73d68",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/06-viable-proof-of-concept/README.md",
+      "sha256": "7e746f02556a44a7e2e85b7a3f5408460696a4cda57a6caa60919f9551c21813",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/06-viable-proof-of-concept/README.md"
+      },
+      "previous_state": {
+        "sha256": "8e9690692a8d9c66fced2e96add3260eebd194cf0280c5d6526890ad080a7921",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "167f3ef5d4b140d63393fcd50f424b7205547ecf4890f8d7c4848badc6ec7322",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/07-planning/README.md"
+      },
+      "previous_state": {
+        "sha256": "f4424b30fa3a770d639d563c17cca72438fdc7970e9ea5a4ae380cdc88b7f53a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03-asdg-evolution-tasks.md",
+      "sha256": "f8ba955faced5567c570fcf7c696402b6d604627e76491d98f10c4a87ef002a7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/07-planning/current/reviews/asdg-evolution-tasks.md"
+      },
+      "previous_state": {
+        "sha256": "a002f0ad10302acccf3efd7dcdca3c6bed47bbf90442bb3709ceec53d686cb90",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/README.md",
+      "sha256": "0aa6858115908ce3aaa46a8558288cadb7d932adb4971308e668cf69d96aa074",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/08-low-level-design/README.md"
+      },
+      "previous_state": {
+        "sha256": "505c7a70457cd38e5ff6162a60bbbdcd5f2b7c8753aa693bd9e8801b8d5e1b11",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/09-build-and-test-cycle/README.md",
+      "sha256": "79913374d63285e49c47879d19251bd0d1e1c660ae50a0a9bb9befc0d58a68dc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/09-build-and-test-cycle/README.md"
+      },
+      "previous_state": {
+        "sha256": "036a5567466eab61e8cccdd30593b5721570b707cd4e758ed22036791cef221b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/10-document-review-and-release/README.md",
+      "sha256": "97aacc11d092b6ffb942211f05881c78693e8b871472ea0d2add6847f0711d19",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/10-document-review-and-release/README.md"
+      },
+      "previous_state": {
+        "sha256": "68ec55fc3f8044ef9dce09b3592c32e6418e2347b03bc57c9b75fad9208b038f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/11-operational-reality-devops-and-user-acceptance/README.md",
+      "sha256": "eb0bc6516cabf9875ea9521b92c3f734493a69655e8aca860db54f855d4f6ab7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/11-operational-reality-devops-and-user-acceptance/README.md"
+      },
+      "previous_state": {
+        "sha256": "ec217c03b3b999282f6f9b787bc722d98dce9a659536863afdf294d6f0142853",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/12-observability-insights-and-learning/README.md",
+      "sha256": "cc18ba94bf909579f3d91305e0094b3c1734782aa025de08bc418b0f8c771c55",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/12-observability-insights-and-learning/README.md"
+      },
+      "previous_state": {
+        "sha256": "b398bfa3db0248a2147901c7fe5011beb4c0566167874a492b5794c5f065c039",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/README.md",
+      "sha256": "ed4f34844114eb528f07fa42a7540bfc1eb9570c48882df81b6b7aeece8b14aa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:56:32.958654+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Flat numbered stage documents",
+        "previous_path": "docs/asdg/README.md"
+      },
+      "previous_state": {
+        "sha256": "b89f86e0f6f80ec415bd15d95fa159c9c09d0fe54c5aff38b583f8b21c1b91ea",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/02-current-capabilities.md",
+      "sha256": "50164f379a178f32a2e5f82dd3c5c06f6adf0e87d052c0f8ef979d608f78f5d4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:57:00.001279+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Complete flat documentation paths and companion guidance"
+      },
+      "previous_state": {
+        "sha256": "59c9757eab19f085ff82e26bfcc2278d3b95d0f2c59c52ac73cae896b8306e96",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/03-planned-improvements.md",
+      "sha256": "5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T22:57:00.001293+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Complete flat documentation paths and companion guidance"
+      },
+      "previous_state": {
+        "sha256": "4d37b3d4aa286a3514335b725b3a14d9094428086cd9a652cdc5622399004931",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md",
+      "sha256": "b2db77d9bbec4ebae6c29b53f3a74fb7454037bf1cdf25e9ac5aba79d94dce41",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.580408+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [
+          "images/evaluation-strategy.svg"
+        ],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      },
+      "previous_state": {
+        "sha256": "46df74963a0b570828752f093ec5eb814c10ab653619dbe5d01c4dfaaaad28b6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/01.1-benchmark-collection.md",
+      "sha256": "5c46cf67fc04145b496d37d5a3f916b9535e79361cbffd7c1f4f7dbd3e53ee8c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.580514+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [
+          "images/benchmark-admission.svg"
+        ],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      },
+      "previous_state": {
+        "sha256": "10291aaf598c07eed392ae068741b860db494c88a1c033bd8ecd0e59575096c7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/01.2-evaluation-criteria.md",
+      "sha256": "e1ea9652518ed8401daee8517966f9b6eeb9d578425f164e90e6f5529a65e31d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.580611+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [
+          "images/evaluation-scorecard.svg"
+        ],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03-release-single-recording-evaluation.md",
+      "sha256": "0dde48b7f9368fdc10878d5f29955944ff2b3c9b90ad616d2085486e3f0a18d8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.580731+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [
+          "images/pilot-milestones.svg"
+        ],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      },
+      "previous_state": {
+        "sha256": "9ad5c8915b0015ac544494315813bae5e367f84e4dc29cb67cfdfb2db07ed908",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "9f969cfed64912bb994b815e94d2b7427eaff4012f1ccf680092bb89639a1dbd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.580781+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [
+          "images/evaluation-strategy.svg"
+        ],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      },
+      "previous_state": {
+        "sha256": "21e19b9552fa797ff541061850621c91d5ca38e3fa1b2c2e734ecc159226f8d6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/02-evidence-and-reconciliation.md",
+      "sha256": "0bc20a26b90799e030c80c6d552d53fab02d87a48764f343210255c2b1a79802",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.580880+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [
+          "images/evidence-limits.svg"
+        ],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      },
+      "previous_state": {
+        "sha256": "85b9ddef24128b750d77e9e407642f2cb79512a89a5afb91525296eb00bc9f9a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.1-release-measurements-and-thresholds.md",
+      "sha256": "dfd3b7293f057170e65ffa08eff5929af3243486b8cde824eba1a0d33d9d6bfe",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.581015+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [
+          "images/timing-measurement.svg"
+        ],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      },
+      "previous_state": {
+        "sha256": "ba44c57eb87b8b46ebb8c25079d31d02a350c9b0a7d641e5fa58e8e9e5af981c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.2-release-alternatives-and-review-decisions.md",
+      "sha256": "f8b653548729c8c1eb58b165565151a2d4cef207bef09e19b7a12b30e9e1bdfc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.581147+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [
+          "images/comparison-design.svg"
+        ],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      },
+      "previous_state": {
+        "sha256": "e64d22d1348b2993ba0874d03f31d911da36ece341871aebdbfe08e3ba7bdeda",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/images/evaluation-strategy.svg",
+      "sha256": "7a7b0f2b0487a0e75d90053876858d57552c528c62d11fc5d88b05d561755f9f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.581271+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/images/benchmark-admission.svg",
+      "sha256": "83f8a7c3edbe58a4367b83118bec16bbc797fc340b208f4ead86b6fdac517377",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.581298+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/images/evaluation-scorecard.svg",
+      "sha256": "ea007693ce0d270b9d06aa92e04c45c559b6d1b654d9a0e560f1dac27a9e19e2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.581325+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/images/pilot-milestones.svg",
+      "sha256": "36a07e6edc9b4e754dc1363d291ada910040a7850d7f3ed4c1f6a7107bfc800a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.581421+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/images/evidence-limits.svg",
+      "sha256": "0688fa5a83e15365274b488120cca1da1cdefc271fb9dd572f3f7abacd4aeff5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.581516+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/images/comparison-design.svg",
+      "sha256": "8032dd6a6e4f7b5fb02ce60ad93750701af034d8cdcc476d14b2b01c4e264e9c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.581620+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/images/timing-measurement.svg",
+      "sha256": "2029ca6c56a5347b292b1f0507ef7fd34f7a3bbcf88b716b34e1ebb46d039921",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-23T23:03:32.581705+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Source-led evaluation narrative and per-artifact visual delivery check",
+        "visuals": [],
+        "visual_rendering": "Rendered SVG assets inspected; full Markdown preview not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "114aa2c3e85a350c15a908a08e63fd73aed76949382fb343b9334dec411a7578",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T00:09:56Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 candidate audio intake",
+        "authorization": "Continuing the User-authorized Stage 04 documentation with the supplied first-test candidate and capture clarification.",
+        "scope": "Local file inspection and draft documentation; no transcription, application test, benchmark admission or human acceptance.",
+        "visual_review": {
+          "asset": "docs/asdg/04-benchmarks-and-eval-strategy/images/evaluation-strategy.svg",
+          "idea": "Replay, Air QA and live evidence are complementary.",
+          "inspection": "Rendered existing SVG at 760px width and inspected labels and relationships; asset-only check, not an embedded Markdown preview."
+        }
+      },
+      "previous_state": {
+        "sha256": "9f969cfed64912bb994b815e94d2b7427eaff4012f1ccf680092bb89639a1dbd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03-release-single-recording-evaluation.md",
+      "sha256": "478dad04b538cc09aaa49620a7d75b05b324e174ba859246efc3f0159c806eab",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T00:09:56Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 candidate audio intake",
+        "authorization": "Continuing the User-authorized Stage 04 documentation with the supplied first-test candidate and capture clarification.",
+        "scope": "Local file inspection and draft documentation; no transcription, application test, benchmark admission or human acceptance.",
+        "visual_review": {
+          "asset": "docs/asdg/04-benchmarks-and-eval-strategy/images/pilot-milestones.svg",
+          "idea": "Feasibility, question quality and usefulness are separate checks.",
+          "inspection": "Rendered existing SVG at 760px width and inspected labels and relationships; asset-only check, not an embedded Markdown preview."
+        }
+      },
+      "previous_state": {
+        "sha256": "0dde48b7f9368fdc10878d5f29955944ff2b3c9b90ad616d2085486e3f0a18d8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/02-evidence-and-reconciliation.md",
+      "sha256": "b112134797c1209dc4c670663f469c25b882518997dc8d8347213b080a28fab4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T00:09:56Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 candidate audio intake",
+        "authorization": "Continuing the User-authorized Stage 04 documentation with the supplied first-test candidate and capture clarification.",
+        "scope": "Local file inspection and draft documentation; no transcription, application test, benchmark admission or human acceptance.",
+        "visual_review": {
+          "asset": "docs/asdg/04-benchmarks-and-eval-strategy/images/evidence-limits.svg",
+          "idea": "Historical 21 October evidence limits, qualified by the 24 October intake update.",
+          "inspection": "Rendered existing SVG at 760px width and inspected labels and relationships; asset-only check, not an embedded Markdown preview."
+        },
+        "inspected_application_sources": {
+          "app.js": "9f4f15bbe9bfd76a4acba877de93d8fb069258ea04b697d504b8a5a4a53bfc8e",
+          "index.html": "8493484f29a8494319b09e90c0278a3ea218fb9d429bb98178155ef19a206a8b"
+        }
+      },
+      "previous_state": {
+        "sha256": "0bc20a26b90799e030c80c6d552d53fab02d87a48764f343210255c2b1a79802",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.3-first-recording-case.md",
+      "sha256": "5fd205a51383f5d19579e237c1541e9b569ab5c3d405d92fa4449802f8a0016a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T00:09:56Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 candidate audio intake",
+        "authorization": "Continuing the User-authorized Stage 04 documentation with the supplied first-test candidate and capture clarification.",
+        "scope": "Local file inspection and draft documentation; no transcription, application test, benchmark admission or human acceptance.",
+        "visual_review": {
+          "asset": "docs/asdg/04-benchmarks-and-eval-strategy/images/pilot-milestones.svg",
+          "idea": "The new candidate starts with replay feasibility; later feature and usefulness checks stay separate.",
+          "inspection": "Rendered existing SVG at 760px width and inspected labels and relationships; asset-only check, not an embedded Markdown preview."
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/sources/sc-b001-intake-2026-10-24.json",
+      "sha256": "b5c96b99004886ad8ab21156ccf25903c8ec41b3449c5cd01c780a75fcaf4826",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T00:09:56Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "ASDG-04 candidate audio intake",
+        "authorization": "Continuing the User-authorized Stage 04 documentation with the supplied first-test candidate and capture clarification.",
+        "scope": "Local file inspection and draft documentation; no transcription, application test, benchmark admission or human acceptance."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.3-first-recording-case.md",
+      "sha256": "6fe3cbfb1ba6879700049f6a6682cd3ceed5c49d75178c1e47e5957784d60abc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T00:57:03Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "User-requested Stage 04 documentation continuation: check and document supplied solo voice candidate; no implementation or benchmark execution.",
+        "validation": "Source prose, relative links, Markdown length, JSON and source hashes checked. Original audio and lifecycle/sprint state preserved.",
+        "visual_review": {
+          "visual": "images/pilot-milestones.svg",
+          "idea": "Enrollment is an optional comparison within the existing progressive-replay evaluation.",
+          "result": "Existing unchanged visual reused; prior asset-only rendering inspection retained. Embedded Markdown preview not verified in this intake."
+        }
+      },
+      "previous_state": {
+        "sha256": "5fd205a51383f5d19579e237c1541e9b569ab5c3d405d92fa4449802f8a0016a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "5576abcd3dcf2a022afe1eb8ace831849b38117d70d51c4b0bff7f8d7dd9bac5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T00:57:03Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "User-requested Stage 04 documentation continuation: check and document supplied solo voice candidate; no implementation or benchmark execution.",
+        "validation": "Source prose, relative links, Markdown length, JSON and source hashes checked. Original audio and lifecycle/sprint state preserved.",
+        "visual_review": {
+          "visual": "images/evaluation-strategy.svg",
+          "idea": "Replay, Air QA and live validation provide distinct evidence.",
+          "result": "Existing unchanged visual reused; prior asset-only rendering inspection retained. Embedded Markdown preview not verified in this intake."
+        }
+      },
+      "previous_state": {
+        "sha256": "114aa2c3e85a350c15a908a08e63fd73aed76949382fb343b9334dec411a7578",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/sources/sc-b001-enrollment-intake-2026-10-24.json",
+      "sha256": "dc626ba5df87066681a84b437d15cab7ae29135ec1dfa64fdb658df42cc2e410",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T00:57:03Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "User-requested Stage 04 documentation continuation: check and document supplied solo voice candidate; no implementation or benchmark execution.",
+        "validation": "Source prose, relative links, Markdown length, JSON and source hashes checked. Original audio and lifecycle/sprint state preserved."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.3-first-recording-case.md",
+      "sha256": "737b1dd4d12b85d6c9e25d00369cdb4e8ad58ab700ea6dba086d4807cd68da1b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T01:20:54Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "User explicitly requested generation of their voice profile from the supplied solo recording. Standalone local data analysis and Stage 04 documentation; no application implementation.",
+        "validation": "192 finite values, unit norm, disjoint enrollment/check intervals, source hashes, artifact equality, Markdown length and relative links verified. Application, source audio and lifecycle/sprint hashes unchanged.",
+        "visual_review": {
+          "visual": "images/pilot-milestones.svg",
+          "idea": "Standalone enrollment supports the optional replay comparison; application replay and live usefulness remain separate evidence.",
+          "result": "Existing unchanged visual reused; prior asset-only inspection retained. Embedded Markdown preview not verified for this update."
+        }
+      },
+      "previous_state": {
+        "sha256": "6fe3cbfb1ba6879700049f6a6682cd3ceed5c49d75178c1e47e5957784d60abc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "b014f887a5b99258fd0672352b3cb7ba186fe2cc8406f253187b67fe51347802",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T01:20:54Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "User explicitly requested generation of their voice profile from the supplied solo recording. Standalone local data analysis and Stage 04 documentation; no application implementation.",
+        "validation": "192 finite values, unit norm, disjoint enrollment/check intervals, source hashes, artifact equality, Markdown length and relative links verified. Application, source audio and lifecycle/sprint hashes unchanged.",
+        "visual_review": {
+          "visual": "images/evaluation-strategy.svg",
+          "idea": "Standalone enrollment supports the optional replay comparison; application replay and live usefulness remain separate evidence.",
+          "result": "Existing unchanged visual reused; prior asset-only inspection retained. Embedded Markdown preview not verified for this update."
+        }
+      },
+      "previous_state": {
+        "sha256": "5576abcd3dcf2a022afe1eb8ace831849b38117d70d51c4b0bff7f8d7dd9bac5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "eval-data/voice-profiles/pablo-ecapa-v1.json",
+      "sha256": "635d2e155ab36ed40a86474739d99de7f263baceaa7615245f77f0c1ce1aae2e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T01:20:54Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "User explicitly requested generation of their voice profile from the supplied solo recording. Standalone local data analysis and Stage 04 documentation; no application implementation.",
+        "validation": "192 finite values, unit norm, disjoint enrollment/check intervals, source hashes, artifact equality, Markdown length and relative links verified. Application, source audio and lifecycle/sprint hashes unchanged."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "479cea20f7ce8a1fae8a5b88026c0e5d5acb5a0c8ea921f89e0222d4b60fe100",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T13:33:51Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "Continue the existing Stage 04 evaluation using the two supplied recordings. Offline 90-second profile comparison; two review clips labeled by User. No application implementation or sprint transition.",
+        "validation": "Source/profile/model hashes, 30 windows and 25 scores, two explicit human speaker labels, unset threshold/accuracy, Markdown lengths, links and preservation hashes checked.",
+        "visual_review": {
+          "visual": "images/evaluation-strategy.svg",
+          "idea": "Offline component evidence remains distinct from valid replay, application behavior and live usefulness.",
+          "result": "Existing unchanged diagram reused; prior asset-only inspection retained. Embedded Markdown preview not verified."
+        }
+      },
+      "previous_state": {
+        "sha256": "b014f887a5b99258fd0672352b3cb7ba186fe2cc8406f253187b67fe51347802",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.3-first-recording-case.md",
+      "sha256": "09f045d1043dbc17ff99ed56a8d4db7d45c2fc6481e82dd4dd185f187583c46c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T13:33:51Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "Continue the existing Stage 04 evaluation using the two supplied recordings. Offline 90-second profile comparison; two review clips labeled by User. No application implementation or sprint transition.",
+        "validation": "Source/profile/model hashes, 30 windows and 25 scores, two explicit human speaker labels, unset threshold/accuracy, Markdown lengths, links and preservation hashes checked.",
+        "visual_review": {
+          "visual": "images/pilot-milestones.svg",
+          "idea": "Offline component evidence remains distinct from valid replay, application behavior and live usefulness.",
+          "result": "Existing unchanged diagram reused; prior asset-only inspection retained. Embedded Markdown preview not verified."
+        }
+      },
+      "previous_state": {
+        "sha256": "737b1dd4d12b85d6c9e25d00369cdb4e8ad58ab700ea6dba086d4807cd68da1b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.4-voice-profile-probe.md",
+      "sha256": "042e0afa81c4153a922773bdd3611d0a9f0ef48dc91660df3cba6adbe70d1609",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T13:33:51Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "Continue the existing Stage 04 evaluation using the two supplied recordings. Offline 90-second profile comparison; two review clips labeled by User. No application implementation or sprint transition.",
+        "validation": "Source/profile/model hashes, 30 windows and 25 scores, two explicit human speaker labels, unset threshold/accuracy, Markdown lengths, links and preservation hashes checked.",
+        "visual_review": {
+          "visual": "images/voice-profile-probe.svg",
+          "idea": "Similarity varies over time; A and B are the only confirmed speaker anchors; other windows and recognition accuracy remain unverified.",
+          "result": "Rendered at 760px and visually inspected: labels legible, no overlaps, missing scores distinguished. Asset-only check; embedded Markdown preview not verified."
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/images/voice-profile-probe.svg",
+      "sha256": "3a3fe3ff71fe4a468f2ecf51a9bb8e1cd38be263c7a70d9186ad1837d2eceee5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T13:33:51Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "Continue the existing Stage 04 evaluation using the two supplied recordings. Offline 90-second profile comparison; two review clips labeled by User. No application implementation or sprint transition.",
+        "validation": "Source/profile/model hashes, 30 windows and 25 scores, two explicit human speaker labels, unset threshold/accuracy, Markdown lengths, links and preservation hashes checked."
+      }
+    },
+    {
+      "path": "eval-data/results/sc-b001-profile-probe-2026-10-25.json",
+      "sha256": "2bd6dbc472b574ea2b31fbbeebb6cfcae75b7451d6eaa35fff9772ccdcd3b28f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T13:33:51Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "Continue the existing Stage 04 evaluation using the two supplied recordings. Offline 90-second profile comparison; two review clips labeled by User. No application implementation or sprint transition.",
+        "validation": "Source/profile/model hashes, 30 windows and 25 scores, two explicit human speaker labels, unset threshold/accuracy, Markdown lengths, links and preservation hashes checked."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.2-release-alternatives-and-review-decisions.md",
+      "sha256": "a414de5605fd8ec0de5008b9203a4d4eaeb6239b077bf5bc89169e2707767eb4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T19:44:11Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "Record User-selected P for Pablo turn toggle and the declared manual-assisted evaluation condition; documentation only.",
+        "user_decision": "ok let use the letter P for pablo",
+        "validation": "Markdown length, links and ASDG structure checked; application and lifecycle/sprint hashes unchanged.",
+        "visual_review": {
+          "visual": "images/comparison-design.svg",
+          "idea": "Fair comparison and separate feasibility/usefulness evidence; the manual cue is explicitly declared as assistance.",
+          "result": "Existing unchanged visual retained. No new rendering or embedded-preview check in this narrow text update."
+        }
+      },
+      "previous_state": {
+        "sha256": "f8b653548729c8c1eb58b165565151a2d4cef207bef09e19b7a12b30e9e1bdfc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03-release-single-recording-evaluation.md",
+      "sha256": "771044fba7a121a8f359152d962a9b12f8da93a918e39fc2a3f4de89ec2f179e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-25T19:44:11Z",
+      "human_approval": null,
+      "provenance": {
+        "scope": "Record User-selected P for Pablo turn toggle and the declared manual-assisted evaluation condition; documentation only.",
+        "user_decision": "ok let use the letter P for pablo",
+        "validation": "Markdown length, links and ASDG structure checked; application and lifecycle/sprint hashes unchanged.",
+        "visual_review": {
+          "visual": "images/pilot-milestones.svg",
+          "idea": "Fair comparison and separate feasibility/usefulness evidence; the manual cue is explicitly declared as assistance.",
+          "result": "Existing unchanged visual retained. No new rendering or embedded-preview check in this narrow text update."
+        }
+      },
+      "previous_state": {
+        "sha256": "478dad04b538cc09aaa49620a7d75b05b324e174ba859246efc3f0159c806eab",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "eval-data/README.md",
+      "sha256": "73081ed011e7b78206ea4c3412a0d1cc3a8d33a233be41f42b0b0d42ac1f0294",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Readable evaluation-data navigation; working transcript retained",
+        "visual_check": "Navigation or link-only edit"
+      }
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/README.md",
+      "sha256": "6ca9e613cf97c51cf6d787167f4a3fa05e7963b2bcfce73d05f85469e04feba7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Readable evaluation-data navigation; working transcript retained",
+        "visual_check": "Mermaid source reviewed; native preview not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.4-voice-profile-probe.md",
+      "sha256": "0a532f2f5a83e364cfdf46a9159efc4ae830d8fbf2f1c76c5a83e2427b6024a9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Readable evaluation-data navigation; working transcript retained",
+        "visual_check": "Navigation or link-only edit"
+      },
+      "previous_state": {
+        "sha256": "042e0afa81c4153a922773bdd3611d0a9f0ef48dc91660df3cba6adbe70d1609",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/sc-b001-profile-probe-2026-10-25.json",
+      "sha256": "2bd6dbc472b574ea2b31fbbeebb6cfcae75b7451d6eaa35fff9772ccdcd3b28f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Relocation only; identical file bytes",
+        "previous_path": "eval-data/results/sc-b001-profile-probe-2026-10-25.json",
+        "previous_sha256": "2bd6dbc472b574ea2b31fbbeebb6cfcae75b7451d6eaa35fff9772ccdcd3b28f"
+      }
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/transcript.txt",
+      "sha256": "ed4b8108661916e44b8d6f098b9f4455027134fb7e502cf7626bd1b415022ea6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Relocation only; identical file bytes",
+        "previous_path": "eval-data/results/obs-2026-10-25/transcript.txt",
+        "previous_sha256": "ed4b8108661916e44b8d6f098b9f4455027134fb7e502cf7626bd1b415022ea6"
+      }
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/provenance.json",
+      "sha256": "0a05d8a37e7ba24c48c6dd49270ac029b8892b625e7b0f0aa1ba4f3e85c15b35",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Relocation only; identical file bytes",
+        "previous_path": "eval-data/results/obs-2026-10-25/provenance.json",
+        "previous_sha256": "0a05d8a37e7ba24c48c6dd49270ac029b8892b625e7b0f0aa1ba4f3e85c15b35"
+      }
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/asr-raw.json",
+      "sha256": "196eaaaf96f08c8ac675869412150c86f6e1e43608d9c5c8aa03d413d51a3979",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Relocation only; identical file bytes",
+        "previous_path": "eval-data/results/obs-2026-10-25/asr-raw.json",
+        "previous_sha256": "196eaaaf96f08c8ac675869412150c86f6e1e43608d9c5c8aa03d413d51a3979"
+      }
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/audio.m4a",
+      "sha256": "8caf301b841ae878170f74a5e5b7d1dbbfe2e1687fc976cf3247f8feaa8000e2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Relocation only; identical file bytes",
+        "previous_path": "eval-data/results/obs-2026-10-25/audio.m4a",
+        "previous_sha256": "8caf301b841ae878170f74a5e5b7d1dbbfe2e1687fc976cf3247f8feaa8000e2"
+      }
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/transcript.json",
+      "sha256": "77c6659a197dcc777457517df1014b81bc54e1e828e245f918dd4cc26db2ad85",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Relocation only; identical file bytes",
+        "previous_path": "eval-data/results/obs-2026-10-25/transcript.json",
+        "previous_sha256": "77c6659a197dcc777457517df1014b81bc54e1e828e245f918dd4cc26db2ad85"
+      }
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/speaker-acoustic-evidence.json",
+      "sha256": "25d873eb853509e40fa7bf800bac51eff8bd5144c078de5aa19229e25b711f6b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T00:04:55.154889+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Relocation only; identical file bytes",
+        "previous_path": "eval-data/results/obs-2026-10-25/speaker-acoustic-evidence.json",
+        "previous_sha256": "25d873eb853509e40fa7bf800bac51eff8bd5144c078de5aa19229e25b711f6b"
+      }
     }
   ]
 }

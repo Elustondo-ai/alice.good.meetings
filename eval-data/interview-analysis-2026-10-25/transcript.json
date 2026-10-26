@@ -1,0 +1,1856 @@
+{
+  "recording_id": "obs-2026-10-25",
+  "status": "draft_for_review",
+  "audio_file": "audio.m4a",
+  "duration_seconds": 85.161,
+  "time_origin": "first_decoded_audio_sample",
+  "time_unit": "seconds",
+  "speakers": {
+    "Pablo": "Candidate match to enrolled Pablo voice profile",
+    "interviewer": "Other voice; role inferred from interview context",
+    "overlap": "Predicted simultaneous speech; do not force words onto one speaker",
+    "unknown": "Insufficient acoustic assignment evidence"
+  },
+  "segments": [
+    {
+      "id": 1,
+      "start": 1.4000000000000021,
+      "end": 4.28,
+      "speaker": "Pablo",
+      "text": "Yeah, it's recording right now.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.49950952735531007,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 1.4000000000000021,
+          "end": 2.16,
+          "word": " Yeah,",
+          "probability": 0.4742923676967621,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 2.34,
+          "end": 2.64,
+          "word": " it's",
+          "probability": 0.9359787404537201,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 2.64,
+          "end": 3.06,
+          "word": " recording",
+          "probability": 0.9621759653091431,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 3.06,
+          "end": 3.42,
+          "word": " right",
+          "probability": 0.9892249703407288,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 3.42,
+          "end": 4.28,
+          "word": " now.",
+          "probability": 0.9944133162498474,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 5.18,
+      "end": 6.82,
+      "speaker": "interviewer",
+      "text": "Could you tell me a little about yourself?",
+      "review_status": "automatic_unverified",
+      "speaker_margin": -0.3495558334295046,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 5.18,
+          "end": 5.24,
+          "word": " Could",
+          "probability": 0.8083070516586304,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 5.24,
+          "end": 5.4,
+          "word": " you",
+          "probability": 0.9982399940490723,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 5.4,
+          "end": 5.6,
+          "word": " tell",
+          "probability": 0.9982162117958069,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 5.6,
+          "end": 5.8,
+          "word": " me",
+          "probability": 0.9992062449455261,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 5.8,
+          "end": 5.92,
+          "word": " a",
+          "probability": 0.9969736337661743,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 5.92,
+          "end": 6.08,
+          "word": " little",
+          "probability": 0.9993458390235901,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 6.08,
+          "end": 6.42,
+          "word": " about",
+          "probability": 0.9896841049194336,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 6.42,
+          "end": 6.82,
+          "word": " yourself?",
+          "probability": 0.9959113597869873,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 8.22,
+      "end": 11.76,
+      "speaker": "Pablo",
+      "text": "Yeah, I describe myself normally using four pillars.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.4900940073670543,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 8.22,
+          "end": 8.28,
+          "word": " Yeah,",
+          "probability": 0.9666356444358826,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 8.4,
+          "end": 8.52,
+          "word": " I",
+          "probability": 0.9976246953010559,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 8.52,
+          "end": 8.96,
+          "word": " describe",
+          "probability": 0.7980653643608093,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 8.96,
+          "end": 9.68,
+          "word": " myself",
+          "probability": 0.9976230263710022,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 9.68,
+          "end": 10.2,
+          "word": " normally",
+          "probability": 0.9620262384414673,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 10.2,
+          "end": 10.8,
+          "word": " using",
+          "probability": 0.9872866272926331,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 10.8,
+          "end": 11.34,
+          "word": " four",
+          "probability": 0.9216927886009216,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 11.34,
+          "end": 11.76,
+          "word": " pillars.",
+          "probability": 0.9994303584098816,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 12.16,
+      "end": 16.24,
+      "speaker": "Pablo",
+      "text": "First of all, I am a software developer, engineer,",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.47108213146898475,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 12.16,
+          "end": 12.46,
+          "word": " First",
+          "probability": 0.9926162362098694,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 12.46,
+          "end": 12.7,
+          "word": " of",
+          "probability": 0.9886322617530823,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 12.7,
+          "end": 13.0,
+          "word": " all,",
+          "probability": 0.999303936958313,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 13.0,
+          "end": 13.28,
+          "word": " I",
+          "probability": 0.9988710284233093,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 13.28,
+          "end": 13.48,
+          "word": " am",
+          "probability": 0.9966051578521729,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 13.48,
+          "end": 13.86,
+          "word": " a",
+          "probability": 0.962914764881134,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 13.86,
+          "end": 14.32,
+          "word": " software",
+          "probability": 0.995840847492218,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 14.32,
+          "end": 14.96,
+          "word": " developer,",
+          "probability": 0.9907026290893555,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 15.42,
+          "end": 16.24,
+          "word": " engineer,",
+          "probability": 0.8522427082061768,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 17.54,
+      "end": 20.2,
+      "speaker": "Pablo",
+      "text": "with decades of experience",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.3307598346327584,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 17.54,
+          "end": 17.66,
+          "word": " with",
+          "probability": 0.9891902208328247,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 17.66,
+          "end": 19.38,
+          "word": " decades",
+          "probability": 0.5344470739364624,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 19.38,
+          "end": 19.72,
+          "word": " of",
+          "probability": 0.9942082166671753,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 19.72,
+          "end": 20.2,
+          "word": " experience",
+          "probability": 0.9197813272476196,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 20.2,
+      "end": 23.7,
+      "speaker": "Pablo",
+      "text": "in coding, the whole SDLC2 lifecycle.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.4277521100162186,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 20.2,
+          "end": 20.5,
+          "word": " in",
+          "probability": 0.8380411863327026,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 20.5,
+          "end": 20.96,
+          "word": " coding,",
+          "probability": 0.9948108196258545,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 21.38,
+          "end": 21.5,
+          "word": " the",
+          "probability": 0.6531501412391663,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 21.5,
+          "end": 21.84,
+          "word": " whole",
+          "probability": 0.9981895089149475,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 21.84,
+          "end": 23.02,
+          "word": " SDLC2",
+          "probability": 0.7575404445330302,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 23.02,
+          "end": 23.7,
+          "word": " lifecycle.",
+          "probability": 0.8448000252246857,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ],
+      "review_note": "Check “SDLC2”: automatic recognition may have joined a hesitation to the acronym."
+    },
+    {
+      "id": 7,
+      "start": 24.76,
+      "end": 27.48,
+      "speaker": "Pablo",
+      "text": "The second pillar is my solution architecting.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.44361155871705177,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 24.76,
+          "end": 24.9,
+          "word": " The",
+          "probability": 0.9722146391868591,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 24.9,
+          "end": 25.14,
+          "word": " second",
+          "probability": 0.9982345104217529,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 25.14,
+          "end": 25.54,
+          "word": " pillar",
+          "probability": 0.9967407584190369,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 25.54,
+          "end": 25.84,
+          "word": " is",
+          "probability": 0.996147871017456,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 25.84,
+          "end": 26.18,
+          "word": " my",
+          "probability": 0.9964074492454529,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 26.18,
+          "end": 26.62,
+          "word": " solution",
+          "probability": 0.9793624877929688,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 26.62,
+          "end": 27.48,
+          "word": " architecting.",
+          "probability": 0.9568566977977753,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 27.48,
+      "end": 32.32,
+      "speaker": "Pablo",
+      "text": "So I have acquired a lot of breadth, different technologies, different",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.3781115031107829,
+      "overlap_candidate_ids": [
+        0
+      ],
+      "words": [
+        {
+          "start": 27.48,
+          "end": 27.86,
+          "word": " So",
+          "probability": 0.6412106156349182,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 27.86,
+          "end": 28.68,
+          "word": " I",
+          "probability": 0.8342639207839966,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 28.68,
+          "end": 28.96,
+          "word": " have",
+          "probability": 0.9909840822219849,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 28.96,
+          "end": 29.44,
+          "word": " acquired",
+          "probability": 0.9132171273231506,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 29.44,
+          "end": 29.78,
+          "word": " a",
+          "probability": 0.9939415454864502,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 29.78,
+          "end": 29.98,
+          "word": " lot",
+          "probability": 0.9974954724311829,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 29.98,
+          "end": 30.34,
+          "word": " of",
+          "probability": 0.9978741407394409,
+          "speaker": "Pablo",
+          "overlap_candidate": true,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 30.34,
+          "end": 30.76,
+          "word": " breadth,",
+          "probability": 0.5894193649291992,
+          "speaker": "Pablo",
+          "overlap_candidate": true,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 30.98,
+          "end": 31.3,
+          "word": " different",
+          "probability": 0.9981142282485962,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 31.3,
+          "end": 31.86,
+          "word": " technologies,",
+          "probability": 0.8252628445625305,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 32.1,
+          "end": 32.32,
+          "word": " different",
+          "probability": 0.9861060380935669,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 32.32,
+      "end": 38.86,
+      "speaker": "Pablo",
+      "text": "methodologies, so I normally have used an architectural mindset to make decisions.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.4123498335213903,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 32.32,
+          "end": 33.02,
+          "word": " methodologies,",
+          "probability": 0.8229242861270905,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 33.24,
+          "end": 33.48,
+          "word": " so",
+          "probability": 0.9800353646278381,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 33.48,
+          "end": 34.02,
+          "word": " I",
+          "probability": 0.9736909866333008,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 34.02,
+          "end": 34.36,
+          "word": " normally",
+          "probability": 0.9929159879684448,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 34.36,
+          "end": 34.66,
+          "word": " have",
+          "probability": 0.5875736474990845,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 34.66,
+          "end": 35.46,
+          "word": " used",
+          "probability": 0.6615943908691406,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 35.46,
+          "end": 36.78,
+          "word": " an",
+          "probability": 0.868138313293457,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 36.78,
+          "end": 37.28,
+          "word": " architectural",
+          "probability": 0.8249002695083618,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 37.28,
+          "end": 37.74,
+          "word": " mindset",
+          "probability": 0.9906642436981201,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 37.74,
+          "end": 38.12,
+          "word": " to",
+          "probability": 0.9969497323036194,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 38.12,
+          "end": 38.28,
+          "word": " make",
+          "probability": 0.9994414448738098,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 38.28,
+          "end": 38.86,
+          "word": " decisions.",
+          "probability": 0.9931793212890625,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 39.52,
+      "end": 43.38,
+      "speaker": "Pablo",
+      "text": "The third pillar is my team leading capacity.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.4636568123810875,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 39.52,
+          "end": 39.76,
+          "word": " The",
+          "probability": 0.9532551169395447,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 39.76,
+          "end": 40.16,
+          "word": " third",
+          "probability": 0.9931759238243103,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 40.16,
+          "end": 40.42,
+          "word": " pillar",
+          "probability": 0.9973952770233154,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 40.42,
+          "end": 41.18,
+          "word": " is",
+          "probability": 0.9950301647186279,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 41.18,
+          "end": 41.76,
+          "word": " my",
+          "probability": 0.9863365888595581,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 41.76,
+          "end": 42.42,
+          "word": " team",
+          "probability": 0.9890024662017822,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 42.42,
+          "end": 42.7,
+          "word": " leading",
+          "probability": 0.7816573977470398,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 42.7,
+          "end": 43.38,
+          "word": " capacity.",
+          "probability": 0.9926522374153137,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 43.74,
+      "end": 49.84,
+      "speaker": "Pablo",
+      "text": "I have been leading technical teams for four decades now and I enjoy learning",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.4085165116433557,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 43.74,
+          "end": 43.76,
+          "word": " I",
+          "probability": 0.9747303128242493,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 43.76,
+          "end": 43.96,
+          "word": " have",
+          "probability": 0.982934296131134,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 43.96,
+          "end": 44.22,
+          "word": " been",
+          "probability": 0.9971277117729187,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 44.22,
+          "end": 44.84,
+          "word": " leading",
+          "probability": 0.8396194577217102,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 44.84,
+          "end": 45.48,
+          "word": " technical",
+          "probability": 0.991887629032135,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 45.48,
+          "end": 45.98,
+          "word": " teams",
+          "probability": 0.9952566027641296,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 45.98,
+          "end": 46.84,
+          "word": " for",
+          "probability": 0.9890475869178772,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 46.84,
+          "end": 47.14,
+          "word": " four",
+          "probability": 0.8096711039543152,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 47.14,
+          "end": 47.56,
+          "word": " decades",
+          "probability": 0.9978996515274048,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 47.56,
+          "end": 48.1,
+          "word": " now",
+          "probability": 0.9959849119186401,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 48.1,
+          "end": 48.46,
+          "word": " and",
+          "probability": 0.4097808599472046,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 48.46,
+          "end": 48.64,
+          "word": " I",
+          "probability": 0.990456759929657,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 48.64,
+          "end": 49.1,
+          "word": " enjoy",
+          "probability": 0.980010449886322,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 49.1,
+          "end": 49.84,
+          "word": " learning",
+          "probability": 0.9906896352767944,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ],
+      "review_note": "Check “for four decades”: this may be the repeated word “for, for decades”. Do not treat this as a confirmed four-decade experience claim."
+    },
+    {
+      "id": 12,
+      "start": 49.84,
+      "end": 54.2,
+      "speaker": "Pablo",
+      "text": "on the process and discussing and using agile methodology essentially.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.357448451758157,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 49.84,
+          "end": 50.2,
+          "word": " on",
+          "probability": 0.8782410621643066,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 50.2,
+          "end": 50.3,
+          "word": " the",
+          "probability": 0.9984059929847717,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 50.3,
+          "end": 50.76,
+          "word": " process",
+          "probability": 0.9900614023208618,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 50.76,
+          "end": 51.06,
+          "word": " and",
+          "probability": 0.9719289541244507,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 51.06,
+          "end": 51.54,
+          "word": " discussing",
+          "probability": 0.981766402721405,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 51.54,
+          "end": 51.92,
+          "word": " and",
+          "probability": 0.416708379983902,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 51.92,
+          "end": 52.28,
+          "word": " using",
+          "probability": 0.9936726093292236,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 52.28,
+          "end": 52.82,
+          "word": " agile",
+          "probability": 0.3229976296424866,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 52.82,
+          "end": 53.52,
+          "word": " methodology",
+          "probability": 0.91544508934021,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 53.52,
+          "end": 54.2,
+          "word": " essentially.",
+          "probability": 0.575147807598114,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 54.2,
+      "end": 60.54,
+      "speaker": "Pablo",
+      "text": "And my fourth pillar is that I always keep an eye on innovation.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.4233527976211622,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 54.2,
+          "end": 55.42,
+          "word": " And",
+          "probability": 0.36588624119758606,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 55.42,
+          "end": 55.68,
+          "word": " my",
+          "probability": 0.9612340927124023,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 55.68,
+          "end": 56.04,
+          "word": " fourth",
+          "probability": 0.7197103500366211,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 56.04,
+          "end": 56.52,
+          "word": " pillar",
+          "probability": 0.9808655977249146,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 56.52,
+          "end": 57.1,
+          "word": " is",
+          "probability": 0.9889886975288391,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 57.1,
+          "end": 57.32,
+          "word": " that",
+          "probability": 0.9766607880592346,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 57.32,
+          "end": 57.56,
+          "word": " I",
+          "probability": 0.981916069984436,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 57.56,
+          "end": 57.94,
+          "word": " always",
+          "probability": 0.993018388748169,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 57.94,
+          "end": 58.38,
+          "word": " keep",
+          "probability": 0.9926897883415222,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 58.38,
+          "end": 59.18,
+          "word": " an",
+          "probability": 0.9676625728607178,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 59.18,
+          "end": 59.46,
+          "word": " eye",
+          "probability": 0.9981422424316406,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 59.46,
+          "end": 59.76,
+          "word": " on",
+          "probability": 0.9890972375869751,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 59.76,
+          "end": 60.54,
+          "word": " innovation.",
+          "probability": 0.9808802008628845,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 61.22,
+      "end": 66.12,
+      "speaker": "Pablo",
+      "text": "My whole career, I have always been in the forefront of all technological changes and",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.5097882574521333,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 61.22,
+          "end": 61.4,
+          "word": " My",
+          "probability": 0.9625945091247559,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 61.4,
+          "end": 61.66,
+          "word": " whole",
+          "probability": 0.9892005920410156,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 61.66,
+          "end": 62.08,
+          "word": " career,",
+          "probability": 0.998783528804779,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 62.26,
+          "end": 62.3,
+          "word": " I",
+          "probability": 0.9666765332221985,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 62.3,
+          "end": 62.5,
+          "word": " have",
+          "probability": 0.7399551868438721,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 62.5,
+          "end": 62.82,
+          "word": " always",
+          "probability": 0.9950520396232605,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 62.82,
+          "end": 63.04,
+          "word": " been",
+          "probability": 0.9964661598205566,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 63.04,
+          "end": 63.2,
+          "word": " in",
+          "probability": 0.9576577544212341,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 63.2,
+          "end": 63.34,
+          "word": " the",
+          "probability": 0.9953064322471619,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 63.34,
+          "end": 63.72,
+          "word": " forefront",
+          "probability": 0.999893069267273,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 63.72,
+          "end": 64.24,
+          "word": " of",
+          "probability": 0.9961285591125488,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 64.24,
+          "end": 64.48,
+          "word": " all",
+          "probability": 0.569660484790802,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 64.48,
+          "end": 64.94,
+          "word": " technological",
+          "probability": 0.9863787889480591,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 64.94,
+          "end": 65.64,
+          "word": " changes",
+          "probability": 0.9965296387672424,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 65.64,
+          "end": 66.12,
+          "word": " and",
+          "probability": 0.46677902340888977,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 66.12,
+      "end": 67.7,
+      "speaker": "Pablo",
+      "text": "this time is no different.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.5479597699141919,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 66.12,
+          "end": 66.58,
+          "word": " this",
+          "probability": 0.9893575310707092,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 66.58,
+          "end": 66.88,
+          "word": " time",
+          "probability": 0.9977741837501526,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 66.88,
+          "end": 67.04,
+          "word": " is",
+          "probability": 0.6926875114440918,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 67.04,
+          "end": 67.26,
+          "word": " no",
+          "probability": 0.6121853590011597,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 67.26,
+          "end": 67.7,
+          "word": " different.",
+          "probability": 0.9979953765869141,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 68.06,
+      "end": 77.16,
+      "speaker": "Pablo",
+      "text": "And so I am getting better and better on AI assisted development and authentic AI.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": 0.3884998562209576,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 68.06,
+          "end": 68.08,
+          "word": " And",
+          "probability": 0.944440484046936,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 68.08,
+          "end": 68.42,
+          "word": " so",
+          "probability": 0.9928881525993347,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 68.42,
+          "end": 69.36,
+          "word": " I",
+          "probability": 0.8232851624488831,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 69.36,
+          "end": 69.68,
+          "word": " am",
+          "probability": 0.9707684516906738,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 69.68,
+          "end": 70.24,
+          "word": " getting",
+          "probability": 0.9429065585136414,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 70.24,
+          "end": 70.68,
+          "word": " better",
+          "probability": 0.9988277554512024,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 70.68,
+          "end": 70.9,
+          "word": " and",
+          "probability": 0.9658263921737671,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 70.9,
+          "end": 71.2,
+          "word": " better",
+          "probability": 0.9994382262229919,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 71.2,
+          "end": 71.88,
+          "word": " on",
+          "probability": 0.9917769432067871,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 71.88,
+          "end": 73.1,
+          "word": " AI",
+          "probability": 0.8451197743415833,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 73.1,
+          "end": 73.52,
+          "word": " assisted",
+          "probability": 0.7151345014572144,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 73.52,
+          "end": 74.86,
+          "word": " development",
+          "probability": 0.9898583292961121,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 74.86,
+          "end": 76.1,
+          "word": " and",
+          "probability": 0.9467085003852844,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 76.1,
+          "end": 76.8,
+          "word": " authentic",
+          "probability": 0.201592355966568,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 76.8,
+          "end": 77.16,
+          "word": " AI.",
+          "probability": 0.9712464213371277,
+          "speaker": "Pablo",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ],
+      "review_note": "Check “authentic AI”: low recognition confidence. “Agentic AI” is a context-based suggestion, not an audio-verified correction."
+    },
+    {
+      "id": 17,
+      "start": 79.06,
+      "end": 79.7,
+      "speaker": "interviewer",
+      "text": "Great.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": -0.544896967582334,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 79.06,
+          "end": 79.7,
+          "word": " Great.",
+          "probability": 0.9418742656707764,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 80.12,
+      "end": 80.42,
+      "speaker": "interviewer",
+      "text": "Thanks.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": -0.6822449620123794,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 80.12,
+          "end": 80.42,
+          "word": " Thanks.",
+          "probability": 0.9889739751815796,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 80.42,
+      "end": 80.58,
+      "speaker": "interviewer",
+      "text": "Thanks.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": -0.7055416971482105,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 80.42,
+          "end": 80.58,
+          "word": " Thanks.",
+          "probability": 0.11422491073608398,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ],
+      "review_note": "Possible spurious duplicate “Thanks” with very low recognition confidence; retained in raw output."
+    },
+    {
+      "id": 20,
+      "start": 80.86,
+      "end": 81.7,
+      "speaker": "interviewer",
+      "text": "Let's stop there.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": -0.7692271032053908,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 80.86,
+          "end": 81.06,
+          "word": " Let's",
+          "probability": 0.8180331289768219,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 81.06,
+          "end": 81.26,
+          "word": " stop",
+          "probability": 0.9945964217185974,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 81.26,
+          "end": 81.7,
+          "word": " there.",
+          "probability": 0.9943563342094421,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "start": 82.22,
+      "end": 83.26,
+      "speaker": "interviewer",
+      "text": "Please end the recording.",
+      "review_status": "automatic_unverified",
+      "speaker_margin": -0.7943671306851438,
+      "overlap_candidate_ids": [],
+      "words": [
+        {
+          "start": 82.22,
+          "end": 82.36,
+          "word": " Please",
+          "probability": 0.9804167151451111,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 82.36,
+          "end": 82.64,
+          "word": " end",
+          "probability": 0.9777538776397705,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 82.64,
+          "end": 82.8,
+          "word": " the",
+          "probability": 0.9959522485733032,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        },
+        {
+          "start": 82.8,
+          "end": 83.26,
+          "word": " recording.",
+          "probability": 0.999208390712738,
+          "speaker": "interviewer",
+          "overlap_candidate": false,
+          "review_status": "automatic_unverified"
+        }
+      ]
+    }
+  ],
+  "speaker_activity_timeline": [
+    {
+      "start": 1.954,
+      "end": 4.062,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 5.122,
+      "end": 7.038,
+      "speaker": "interviewer",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 8.034,
+      "end": 16.894,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 17.282,
+      "end": 18.814,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 18.978,
+      "end": 30.27096875,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 30.27096875,
+      "end": 30.524093750000002,
+      "speaker": "overlap",
+      "review_status": "automatic_unverified",
+      "method": "overlap_model"
+    },
+    {
+      "start": 30.524093750000002,
+      "end": 46.398,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 46.626,
+      "end": 54.974,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 55.266,
+      "end": 58.558,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 58.946,
+      "end": 68.958,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 69.186,
+      "end": 72.19,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 72.322,
+      "end": 75.39,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 75.586,
+      "end": 77.822,
+      "speaker": "Pablo",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 78.466,
+      "end": 78.814,
+      "speaker": "interviewer",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 79.394,
+      "end": 79.998,
+      "speaker": "interviewer",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 80.162,
+      "end": 81.726,
+      "speaker": "interviewer",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    },
+    {
+      "start": 82.114,
+      "end": 83.422,
+      "speaker": "interviewer",
+      "review_status": "automatic_unverified",
+      "method": "vad_and_profile_comparison"
+    }
+  ],
+  "overlap_spans": [
+    {
+      "start": 30.27096875,
+      "end": 30.524093750000002,
+      "label": "overlap",
+      "review_status": "automatic_unverified",
+      "mean_overlap_vote": 0.5799999999999998
+    }
+  ],
+  "manual_cue_events": null,
+  "manual_cue_capture_status": "not_recorded",
+  "limitations": [
+    "Draft annotation: no independent human listening review has been completed.",
+    "Timestamps are estimated seconds from the first decoded audio sample; they are not keyboard-event times.",
+    "The complete recording was processed offline. This is candidate evaluator-reference preparation, not a streaming/no-look-ahead application test.",
+    "The two stereo channels are identical mixtures. Separate clean speaker recordings cannot be recovered from channel selection.",
+    "Short acknowledgements, fillers and overlapping words may be missing or wrongly assigned. Overlap markers are model predictions, not exhaustive verified labels.",
+    "Pablo labels use his existing voice profile. Interviewer labels use an in-recording closing-turn anchor and context; similarity margins are uncalibrated, not probabilities or accuracy scores.",
+    "No P-key events were recorded. Their absence cannot show whether Pablo forgot a cue.",
+    "Raw ASR wording is preserved, including flagged errors. Suggested corrections are not accepted reference text."
+  ]
+}

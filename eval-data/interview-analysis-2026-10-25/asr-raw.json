@@ -1,0 +1,1544 @@
+{
+  "status": "automatic_draft_not_human_verified",
+  "source_audio": "/private/tmp/speakercoach-obs-20261025.wav",
+  "audio_sha256": "172ac54f13b077510b239b4261d2b9771c759cc7b9d26a08f2c58ff30e45a20f",
+  "model": "Systran/faster-whisper-small.en",
+  "model_files_sha256": {
+    "model.bin": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+    "config.json": "666a9605530ac1f61fa8177f3702b4dacec9966749e42610839fcc32661d5fae",
+    "tokenizer.json": "929c5252409436dce1b38a75d1abbcb5e132d170d8e324e4e04ed915fa2d22df",
+    "vocabulary.txt": "ff77588746d3a2595d32ab5b69ffd7b95ce2441ac57533cb66fc3eb575a115cf"
+  },
+  "runtime": {
+    "faster-whisper": "1.2.1",
+    "ctranslate2": "4.8.4",
+    "av": "19.0.2"
+  },
+  "options": {
+    "language": "en",
+    "beam_size": 5,
+    "word_timestamps": true,
+    "vad_filter": false,
+    "condition_on_previous_text": false,
+    "temperature": 0.0
+  },
+  "duration": 85.161,
+  "segments": [
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 1.4000000000000021,
+      "end": 4.28,
+      "text": " Yeah, it's recording right now.",
+      "tokens": [
+        50363,
+        9425,
+        11,
+        340,
+        338,
+        8296,
+        826,
+        783,
+        13,
+        50563
+      ],
+      "avg_logprob": -0.16405871208710007,
+      "compression_ratio": 1.4009661835748792,
+      "no_speech_prob": 0.5139614343643188,
+      "words": [
+        {
+          "start": 1.4000000000000021,
+          "end": 2.16,
+          "word": " Yeah,",
+          "probability": 0.4742923676967621
+        },
+        {
+          "start": 2.34,
+          "end": 2.64,
+          "word": " it's",
+          "probability": 0.9359787404537201
+        },
+        {
+          "start": 2.64,
+          "end": 3.06,
+          "word": " recording",
+          "probability": 0.9621759653091431
+        },
+        {
+          "start": 3.06,
+          "end": 3.42,
+          "word": " right",
+          "probability": 0.9892249703407288
+        },
+        {
+          "start": 3.42,
+          "end": 4.28,
+          "word": " now.",
+          "probability": 0.9944133162498474
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 5.18,
+      "end": 6.82,
+      "text": " Could you tell me a little about yourself?",
+      "tokens": [
+        50563,
+        10347,
+        345,
+        1560,
+        502,
+        257,
+        1310,
+        546,
+        3511,
+        30,
+        50763
+      ],
+      "avg_logprob": -0.16405871208710007,
+      "compression_ratio": 1.4009661835748792,
+      "no_speech_prob": 0.5139614343643188,
+      "words": [
+        {
+          "start": 5.18,
+          "end": 5.24,
+          "word": " Could",
+          "probability": 0.8083070516586304
+        },
+        {
+          "start": 5.24,
+          "end": 5.4,
+          "word": " you",
+          "probability": 0.9982399940490723
+        },
+        {
+          "start": 5.4,
+          "end": 5.6,
+          "word": " tell",
+          "probability": 0.9982162117958069
+        },
+        {
+          "start": 5.6,
+          "end": 5.8,
+          "word": " me",
+          "probability": 0.9992062449455261
+        },
+        {
+          "start": 5.8,
+          "end": 5.92,
+          "word": " a",
+          "probability": 0.9969736337661743
+        },
+        {
+          "start": 5.92,
+          "end": 6.08,
+          "word": " little",
+          "probability": 0.9993458390235901
+        },
+        {
+          "start": 6.08,
+          "end": 6.42,
+          "word": " about",
+          "probability": 0.9896841049194336
+        },
+        {
+          "start": 6.42,
+          "end": 6.82,
+          "word": " yourself?",
+          "probability": 0.9959113597869873
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 3,
+      "seek": 0,
+      "start": 8.22,
+      "end": 11.76,
+      "text": " Yeah, I describe myself normally using four pillars.",
+      "tokens": [
+        50763,
+        9425,
+        11,
+        314,
+        6901,
+        3589,
+        7685,
+        1262,
+        1440,
+        30485,
+        13,
+        50963
+      ],
+      "avg_logprob": -0.16405871208710007,
+      "compression_ratio": 1.4009661835748792,
+      "no_speech_prob": 0.5139614343643188,
+      "words": [
+        {
+          "start": 8.22,
+          "end": 8.28,
+          "word": " Yeah,",
+          "probability": 0.9666356444358826
+        },
+        {
+          "start": 8.4,
+          "end": 8.52,
+          "word": " I",
+          "probability": 0.9976246953010559
+        },
+        {
+          "start": 8.52,
+          "end": 8.96,
+          "word": " describe",
+          "probability": 0.7980653643608093
+        },
+        {
+          "start": 8.96,
+          "end": 9.68,
+          "word": " myself",
+          "probability": 0.9976230263710022
+        },
+        {
+          "start": 9.68,
+          "end": 10.2,
+          "word": " normally",
+          "probability": 0.9620262384414673
+        },
+        {
+          "start": 10.2,
+          "end": 10.8,
+          "word": " using",
+          "probability": 0.9872866272926331
+        },
+        {
+          "start": 10.8,
+          "end": 11.34,
+          "word": " four",
+          "probability": 0.9216927886009216
+        },
+        {
+          "start": 11.34,
+          "end": 11.76,
+          "word": " pillars.",
+          "probability": 0.9994303584098816
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 4,
+      "seek": 0,
+      "start": 12.16,
+      "end": 16.24,
+      "text": " First of all, I am a software developer, engineer,",
+      "tokens": [
+        50963,
+        3274,
+        286,
+        477,
+        11,
+        314,
+        716,
+        257,
+        3788,
+        8517,
+        11,
+        11949,
+        11,
+        51163
+      ],
+      "avg_logprob": -0.16405871208710007,
+      "compression_ratio": 1.4009661835748792,
+      "no_speech_prob": 0.5139614343643188,
+      "words": [
+        {
+          "start": 12.16,
+          "end": 12.46,
+          "word": " First",
+          "probability": 0.9926162362098694
+        },
+        {
+          "start": 12.46,
+          "end": 12.7,
+          "word": " of",
+          "probability": 0.9886322617530823
+        },
+        {
+          "start": 12.7,
+          "end": 13.0,
+          "word": " all,",
+          "probability": 0.999303936958313
+        },
+        {
+          "start": 13.0,
+          "end": 13.28,
+          "word": " I",
+          "probability": 0.9988710284233093
+        },
+        {
+          "start": 13.28,
+          "end": 13.48,
+          "word": " am",
+          "probability": 0.9966051578521729
+        },
+        {
+          "start": 13.48,
+          "end": 13.86,
+          "word": " a",
+          "probability": 0.962914764881134
+        },
+        {
+          "start": 13.86,
+          "end": 14.32,
+          "word": " software",
+          "probability": 0.995840847492218
+        },
+        {
+          "start": 14.32,
+          "end": 14.96,
+          "word": " developer,",
+          "probability": 0.9907026290893555
+        },
+        {
+          "start": 15.42,
+          "end": 16.24,
+          "word": " engineer,",
+          "probability": 0.8522427082061768
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 5,
+      "seek": 0,
+      "start": 17.54,
+      "end": 20.2,
+      "text": " with decades of experience",
+      "tokens": [
+        51163,
+        351,
+        4647,
+        286,
+        1998,
+        51363
+      ],
+      "avg_logprob": -0.16405871208710007,
+      "compression_ratio": 1.4009661835748792,
+      "no_speech_prob": 0.5139614343643188,
+      "words": [
+        {
+          "start": 17.54,
+          "end": 17.66,
+          "word": " with",
+          "probability": 0.9891902208328247
+        },
+        {
+          "start": 17.66,
+          "end": 19.38,
+          "word": " decades",
+          "probability": 0.5344470739364624
+        },
+        {
+          "start": 19.38,
+          "end": 19.72,
+          "word": " of",
+          "probability": 0.9942082166671753
+        },
+        {
+          "start": 19.72,
+          "end": 20.2,
+          "word": " experience",
+          "probability": 0.9197813272476196
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 6,
+      "seek": 0,
+      "start": 20.2,
+      "end": 23.7,
+      "text": " in coding, the whole SDLC2 lifecycle.",
+      "tokens": [
+        51363,
+        287,
+        19617,
+        11,
+        262,
+        2187,
+        9834,
+        5639,
+        17,
+        3868,
+        47510,
+        13,
+        51563
+      ],
+      "avg_logprob": -0.16405871208710007,
+      "compression_ratio": 1.4009661835748792,
+      "no_speech_prob": 0.5139614343643188,
+      "words": [
+        {
+          "start": 20.2,
+          "end": 20.5,
+          "word": " in",
+          "probability": 0.8380411863327026
+        },
+        {
+          "start": 20.5,
+          "end": 20.96,
+          "word": " coding,",
+          "probability": 0.9948108196258545
+        },
+        {
+          "start": 21.38,
+          "end": 21.5,
+          "word": " the",
+          "probability": 0.6531501412391663
+        },
+        {
+          "start": 21.5,
+          "end": 21.84,
+          "word": " whole",
+          "probability": 0.9981895089149475
+        },
+        {
+          "start": 21.84,
+          "end": 23.02,
+          "word": " SDLC2",
+          "probability": 0.7575404445330302
+        },
+        {
+          "start": 23.02,
+          "end": 23.7,
+          "word": " lifecycle.",
+          "probability": 0.8448000252246857
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 7,
+      "seek": 0,
+      "start": 24.76,
+      "end": 27.48,
+      "text": " The second pillar is my solution architecting.",
+      "tokens": [
+        51563,
+        383,
+        1218,
+        30042,
+        318,
+        616,
+        4610,
+        7068,
+        278,
+        13,
+        51763
+      ],
+      "avg_logprob": -0.16405871208710007,
+      "compression_ratio": 1.4009661835748792,
+      "no_speech_prob": 0.5139614343643188,
+      "words": [
+        {
+          "start": 24.76,
+          "end": 24.9,
+          "word": " The",
+          "probability": 0.9722146391868591
+        },
+        {
+          "start": 24.9,
+          "end": 25.14,
+          "word": " second",
+          "probability": 0.9982345104217529
+        },
+        {
+          "start": 25.14,
+          "end": 25.54,
+          "word": " pillar",
+          "probability": 0.9967407584190369
+        },
+        {
+          "start": 25.54,
+          "end": 25.84,
+          "word": " is",
+          "probability": 0.996147871017456
+        },
+        {
+          "start": 25.84,
+          "end": 26.18,
+          "word": " my",
+          "probability": 0.9964074492454529
+        },
+        {
+          "start": 26.18,
+          "end": 26.62,
+          "word": " solution",
+          "probability": 0.9793624877929688
+        },
+        {
+          "start": 26.62,
+          "end": 27.48,
+          "word": " architecting.",
+          "probability": 0.9568566977977753
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 8,
+      "seek": 2748,
+      "start": 27.48,
+      "end": 32.32,
+      "text": " So I have acquired a lot of breadth, different technologies, different",
+      "tokens": [
+        50363,
+        1406,
+        314,
+        423,
+        9477,
+        257,
+        1256,
+        286,
+        32483,
+        11,
+        1180,
+        8514,
+        11,
+        1180,
+        50605
+      ],
+      "avg_logprob": -0.2189563591335271,
+      "compression_ratio": 1.6492890995260663,
+      "no_speech_prob": 0.0024486572947353125,
+      "words": [
+        {
+          "start": 27.48,
+          "end": 27.86,
+          "word": " So",
+          "probability": 0.6412106156349182
+        },
+        {
+          "start": 27.86,
+          "end": 28.68,
+          "word": " I",
+          "probability": 0.8342639207839966
+        },
+        {
+          "start": 28.68,
+          "end": 28.96,
+          "word": " have",
+          "probability": 0.9909840822219849
+        },
+        {
+          "start": 28.96,
+          "end": 29.44,
+          "word": " acquired",
+          "probability": 0.9132171273231506
+        },
+        {
+          "start": 29.44,
+          "end": 29.78,
+          "word": " a",
+          "probability": 0.9939415454864502
+        },
+        {
+          "start": 29.78,
+          "end": 29.98,
+          "word": " lot",
+          "probability": 0.9974954724311829
+        },
+        {
+          "start": 29.98,
+          "end": 30.34,
+          "word": " of",
+          "probability": 0.9978741407394409
+        },
+        {
+          "start": 30.34,
+          "end": 30.76,
+          "word": " breadth,",
+          "probability": 0.5894193649291992
+        },
+        {
+          "start": 30.98,
+          "end": 31.3,
+          "word": " different",
+          "probability": 0.9981142282485962
+        },
+        {
+          "start": 31.3,
+          "end": 31.86,
+          "word": " technologies,",
+          "probability": 0.8252628445625305
+        },
+        {
+          "start": 32.1,
+          "end": 32.32,
+          "word": " different",
+          "probability": 0.9861060380935669
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 9,
+      "seek": 2748,
+      "start": 32.32,
+      "end": 38.86,
+      "text": " methodologies, so I normally have used an architectural mindset to make decisions.",
+      "tokens": [
+        50605,
+        2446,
+        5823,
+        11,
+        523,
+        314,
+        7685,
+        423,
+        973,
+        281,
+        27070,
+        20527,
+        284,
+        787,
+        5370,
+        13,
+        50943
+      ],
+      "avg_logprob": -0.2189563591335271,
+      "compression_ratio": 1.6492890995260663,
+      "no_speech_prob": 0.0024486572947353125,
+      "words": [
+        {
+          "start": 32.32,
+          "end": 33.02,
+          "word": " methodologies,",
+          "probability": 0.8229242861270905
+        },
+        {
+          "start": 33.24,
+          "end": 33.48,
+          "word": " so",
+          "probability": 0.9800353646278381
+        },
+        {
+          "start": 33.48,
+          "end": 34.02,
+          "word": " I",
+          "probability": 0.9736909866333008
+        },
+        {
+          "start": 34.02,
+          "end": 34.36,
+          "word": " normally",
+          "probability": 0.9929159879684448
+        },
+        {
+          "start": 34.36,
+          "end": 34.66,
+          "word": " have",
+          "probability": 0.5875736474990845
+        },
+        {
+          "start": 34.66,
+          "end": 35.46,
+          "word": " used",
+          "probability": 0.6615943908691406
+        },
+        {
+          "start": 35.46,
+          "end": 36.78,
+          "word": " an",
+          "probability": 0.868138313293457
+        },
+        {
+          "start": 36.78,
+          "end": 37.28,
+          "word": " architectural",
+          "probability": 0.8249002695083618
+        },
+        {
+          "start": 37.28,
+          "end": 37.74,
+          "word": " mindset",
+          "probability": 0.9906642436981201
+        },
+        {
+          "start": 37.74,
+          "end": 38.12,
+          "word": " to",
+          "probability": 0.9969497323036194
+        },
+        {
+          "start": 38.12,
+          "end": 38.28,
+          "word": " make",
+          "probability": 0.9994414448738098
+        },
+        {
+          "start": 38.28,
+          "end": 38.86,
+          "word": " decisions.",
+          "probability": 0.9931793212890625
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 10,
+      "seek": 2748,
+      "start": 39.52,
+      "end": 43.38,
+      "text": " The third pillar is my team leading capacity.",
+      "tokens": [
+        50963,
+        383,
+        2368,
+        30042,
+        318,
+        616,
+        1074,
+        3756,
+        5339,
+        13,
+        51169
+      ],
+      "avg_logprob": -0.2189563591335271,
+      "compression_ratio": 1.6492890995260663,
+      "no_speech_prob": 0.0024486572947353125,
+      "words": [
+        {
+          "start": 39.52,
+          "end": 39.76,
+          "word": " The",
+          "probability": 0.9532551169395447
+        },
+        {
+          "start": 39.76,
+          "end": 40.16,
+          "word": " third",
+          "probability": 0.9931759238243103
+        },
+        {
+          "start": 40.16,
+          "end": 40.42,
+          "word": " pillar",
+          "probability": 0.9973952770233154
+        },
+        {
+          "start": 40.42,
+          "end": 41.18,
+          "word": " is",
+          "probability": 0.9950301647186279
+        },
+        {
+          "start": 41.18,
+          "end": 41.76,
+          "word": " my",
+          "probability": 0.9863365888595581
+        },
+        {
+          "start": 41.76,
+          "end": 42.42,
+          "word": " team",
+          "probability": 0.9890024662017822
+        },
+        {
+          "start": 42.42,
+          "end": 42.7,
+          "word": " leading",
+          "probability": 0.7816573977470398
+        },
+        {
+          "start": 42.7,
+          "end": 43.38,
+          "word": " capacity.",
+          "probability": 0.9926522374153137
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 11,
+      "seek": 2748,
+      "start": 43.74,
+      "end": 49.84,
+      "text": " I have been leading technical teams for four decades now and I enjoy learning",
+      "tokens": [
+        51169,
+        314,
+        423,
+        587,
+        3756,
+        6276,
+        3466,
+        329,
+        1440,
+        4647,
+        783,
+        290,
+        314,
+        2883,
+        4673,
+        51491
+      ],
+      "avg_logprob": -0.2189563591335271,
+      "compression_ratio": 1.6492890995260663,
+      "no_speech_prob": 0.0024486572947353125,
+      "words": [
+        {
+          "start": 43.74,
+          "end": 43.76,
+          "word": " I",
+          "probability": 0.9747303128242493
+        },
+        {
+          "start": 43.76,
+          "end": 43.96,
+          "word": " have",
+          "probability": 0.982934296131134
+        },
+        {
+          "start": 43.96,
+          "end": 44.22,
+          "word": " been",
+          "probability": 0.9971277117729187
+        },
+        {
+          "start": 44.22,
+          "end": 44.84,
+          "word": " leading",
+          "probability": 0.8396194577217102
+        },
+        {
+          "start": 44.84,
+          "end": 45.48,
+          "word": " technical",
+          "probability": 0.991887629032135
+        },
+        {
+          "start": 45.48,
+          "end": 45.98,
+          "word": " teams",
+          "probability": 0.9952566027641296
+        },
+        {
+          "start": 45.98,
+          "end": 46.84,
+          "word": " for",
+          "probability": 0.9890475869178772
+        },
+        {
+          "start": 46.84,
+          "end": 47.14,
+          "word": " four",
+          "probability": 0.8096711039543152
+        },
+        {
+          "start": 47.14,
+          "end": 47.56,
+          "word": " decades",
+          "probability": 0.9978996515274048
+        },
+        {
+          "start": 47.56,
+          "end": 48.1,
+          "word": " now",
+          "probability": 0.9959849119186401
+        },
+        {
+          "start": 48.1,
+          "end": 48.46,
+          "word": " and",
+          "probability": 0.4097808599472046
+        },
+        {
+          "start": 48.46,
+          "end": 48.64,
+          "word": " I",
+          "probability": 0.990456759929657
+        },
+        {
+          "start": 48.64,
+          "end": 49.1,
+          "word": " enjoy",
+          "probability": 0.980010449886322
+        },
+        {
+          "start": 49.1,
+          "end": 49.84,
+          "word": " learning",
+          "probability": 0.9906896352767944
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 12,
+      "seek": 2748,
+      "start": 49.84,
+      "end": 54.2,
+      "text": " on the process and discussing and using agile methodology essentially.",
+      "tokens": [
+        51491,
+        319,
+        262,
+        1429,
+        290,
+        11142,
+        290,
+        1262,
+        36710,
+        20411,
+        6986,
+        13,
+        51713
+      ],
+      "avg_logprob": -0.2189563591335271,
+      "compression_ratio": 1.6492890995260663,
+      "no_speech_prob": 0.0024486572947353125,
+      "words": [
+        {
+          "start": 49.84,
+          "end": 50.2,
+          "word": " on",
+          "probability": 0.8782410621643066
+        },
+        {
+          "start": 50.2,
+          "end": 50.3,
+          "word": " the",
+          "probability": 0.9984059929847717
+        },
+        {
+          "start": 50.3,
+          "end": 50.76,
+          "word": " process",
+          "probability": 0.9900614023208618
+        },
+        {
+          "start": 50.76,
+          "end": 51.06,
+          "word": " and",
+          "probability": 0.9719289541244507
+        },
+        {
+          "start": 51.06,
+          "end": 51.54,
+          "word": " discussing",
+          "probability": 0.981766402721405
+        },
+        {
+          "start": 51.54,
+          "end": 51.92,
+          "word": " and",
+          "probability": 0.416708379983902
+        },
+        {
+          "start": 51.92,
+          "end": 52.28,
+          "word": " using",
+          "probability": 0.9936726093292236
+        },
+        {
+          "start": 52.28,
+          "end": 52.82,
+          "word": " agile",
+          "probability": 0.3229976296424866
+        },
+        {
+          "start": 52.82,
+          "end": 53.52,
+          "word": " methodology",
+          "probability": 0.91544508934021
+        },
+        {
+          "start": 53.52,
+          "end": 54.2,
+          "word": " essentially.",
+          "probability": 0.575147807598114
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 13,
+      "seek": 5420,
+      "start": 54.2,
+      "end": 60.54,
+      "text": " And my fourth pillar is that I always keep an eye on innovation.",
+      "tokens": [
+        50363,
+        843,
+        616,
+        5544,
+        30042,
+        318,
+        326,
+        314,
+        1464,
+        1394,
+        281,
+        4151,
+        319,
+        11044,
+        13,
+        50720
+      ],
+      "avg_logprob": -0.3157119477117384,
+      "compression_ratio": 1.455958549222798,
+      "no_speech_prob": 0.4302840530872345,
+      "words": [
+        {
+          "start": 54.2,
+          "end": 55.42,
+          "word": " And",
+          "probability": 0.36588624119758606
+        },
+        {
+          "start": 55.42,
+          "end": 55.68,
+          "word": " my",
+          "probability": 0.9612340927124023
+        },
+        {
+          "start": 55.68,
+          "end": 56.04,
+          "word": " fourth",
+          "probability": 0.7197103500366211
+        },
+        {
+          "start": 56.04,
+          "end": 56.52,
+          "word": " pillar",
+          "probability": 0.9808655977249146
+        },
+        {
+          "start": 56.52,
+          "end": 57.1,
+          "word": " is",
+          "probability": 0.9889886975288391
+        },
+        {
+          "start": 57.1,
+          "end": 57.32,
+          "word": " that",
+          "probability": 0.9766607880592346
+        },
+        {
+          "start": 57.32,
+          "end": 57.56,
+          "word": " I",
+          "probability": 0.981916069984436
+        },
+        {
+          "start": 57.56,
+          "end": 57.94,
+          "word": " always",
+          "probability": 0.993018388748169
+        },
+        {
+          "start": 57.94,
+          "end": 58.38,
+          "word": " keep",
+          "probability": 0.9926897883415222
+        },
+        {
+          "start": 58.38,
+          "end": 59.18,
+          "word": " an",
+          "probability": 0.9676625728607178
+        },
+        {
+          "start": 59.18,
+          "end": 59.46,
+          "word": " eye",
+          "probability": 0.9981422424316406
+        },
+        {
+          "start": 59.46,
+          "end": 59.76,
+          "word": " on",
+          "probability": 0.9890972375869751
+        },
+        {
+          "start": 59.76,
+          "end": 60.54,
+          "word": " innovation.",
+          "probability": 0.9808802008628845
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 14,
+      "seek": 5420,
+      "start": 61.22,
+      "end": 66.12,
+      "text": " My whole career, I have always been in the forefront of all technological changes and",
+      "tokens": [
+        50720,
+        2011,
+        2187,
+        3451,
+        11,
+        314,
+        423,
+        1464,
+        587,
+        287,
+        262,
+        26401,
+        286,
+        477,
+        14614,
+        2458,
+        290,
+        50967
+      ],
+      "avg_logprob": -0.3157119477117384,
+      "compression_ratio": 1.455958549222798,
+      "no_speech_prob": 0.4302840530872345,
+      "words": [
+        {
+          "start": 61.22,
+          "end": 61.4,
+          "word": " My",
+          "probability": 0.9625945091247559
+        },
+        {
+          "start": 61.4,
+          "end": 61.66,
+          "word": " whole",
+          "probability": 0.9892005920410156
+        },
+        {
+          "start": 61.66,
+          "end": 62.08,
+          "word": " career,",
+          "probability": 0.998783528804779
+        },
+        {
+          "start": 62.26,
+          "end": 62.3,
+          "word": " I",
+          "probability": 0.9666765332221985
+        },
+        {
+          "start": 62.3,
+          "end": 62.5,
+          "word": " have",
+          "probability": 0.7399551868438721
+        },
+        {
+          "start": 62.5,
+          "end": 62.82,
+          "word": " always",
+          "probability": 0.9950520396232605
+        },
+        {
+          "start": 62.82,
+          "end": 63.04,
+          "word": " been",
+          "probability": 0.9964661598205566
+        },
+        {
+          "start": 63.04,
+          "end": 63.2,
+          "word": " in",
+          "probability": 0.9576577544212341
+        },
+        {
+          "start": 63.2,
+          "end": 63.34,
+          "word": " the",
+          "probability": 0.9953064322471619
+        },
+        {
+          "start": 63.34,
+          "end": 63.72,
+          "word": " forefront",
+          "probability": 0.999893069267273
+        },
+        {
+          "start": 63.72,
+          "end": 64.24,
+          "word": " of",
+          "probability": 0.9961285591125488
+        },
+        {
+          "start": 64.24,
+          "end": 64.48,
+          "word": " all",
+          "probability": 0.569660484790802
+        },
+        {
+          "start": 64.48,
+          "end": 64.94,
+          "word": " technological",
+          "probability": 0.9863787889480591
+        },
+        {
+          "start": 64.94,
+          "end": 65.64,
+          "word": " changes",
+          "probability": 0.9965296387672424
+        },
+        {
+          "start": 65.64,
+          "end": 66.12,
+          "word": " and",
+          "probability": 0.46677902340888977
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 15,
+      "seek": 5420,
+      "start": 66.12,
+      "end": 67.7,
+      "text": " this time is no different.",
+      "tokens": [
+        50967,
+        428,
+        640,
+        318,
+        645,
+        1180,
+        13,
+        51058
+      ],
+      "avg_logprob": -0.3157119477117384,
+      "compression_ratio": 1.455958549222798,
+      "no_speech_prob": 0.4302840530872345,
+      "words": [
+        {
+          "start": 66.12,
+          "end": 66.58,
+          "word": " this",
+          "probability": 0.9893575310707092
+        },
+        {
+          "start": 66.58,
+          "end": 66.88,
+          "word": " time",
+          "probability": 0.9977741837501526
+        },
+        {
+          "start": 66.88,
+          "end": 67.04,
+          "word": " is",
+          "probability": 0.6926875114440918
+        },
+        {
+          "start": 67.04,
+          "end": 67.26,
+          "word": " no",
+          "probability": 0.6121853590011597
+        },
+        {
+          "start": 67.26,
+          "end": 67.7,
+          "word": " different.",
+          "probability": 0.9979953765869141
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 16,
+      "seek": 5420,
+      "start": 68.06,
+      "end": 77.16,
+      "text": " And so I am getting better and better on AI assisted development and authentic AI.",
+      "tokens": [
+        51058,
+        843,
+        523,
+        314,
+        716,
+        1972,
+        1365,
+        290,
+        1365,
+        319,
+        9552,
+        18419,
+        2478,
+        290,
+        16425,
+        9552,
+        13,
+        51574
+      ],
+      "avg_logprob": -0.3157119477117384,
+      "compression_ratio": 1.455958549222798,
+      "no_speech_prob": 0.4302840530872345,
+      "words": [
+        {
+          "start": 68.06,
+          "end": 68.08,
+          "word": " And",
+          "probability": 0.944440484046936
+        },
+        {
+          "start": 68.08,
+          "end": 68.42,
+          "word": " so",
+          "probability": 0.9928881525993347
+        },
+        {
+          "start": 68.42,
+          "end": 69.36,
+          "word": " I",
+          "probability": 0.8232851624488831
+        },
+        {
+          "start": 69.36,
+          "end": 69.68,
+          "word": " am",
+          "probability": 0.9707684516906738
+        },
+        {
+          "start": 69.68,
+          "end": 70.24,
+          "word": " getting",
+          "probability": 0.9429065585136414
+        },
+        {
+          "start": 70.24,
+          "end": 70.68,
+          "word": " better",
+          "probability": 0.9988277554512024
+        },
+        {
+          "start": 70.68,
+          "end": 70.9,
+          "word": " and",
+          "probability": 0.9658263921737671
+        },
+        {
+          "start": 70.9,
+          "end": 71.2,
+          "word": " better",
+          "probability": 0.9994382262229919
+        },
+        {
+          "start": 71.2,
+          "end": 71.88,
+          "word": " on",
+          "probability": 0.9917769432067871
+        },
+        {
+          "start": 71.88,
+          "end": 73.1,
+          "word": " AI",
+          "probability": 0.8451197743415833
+        },
+        {
+          "start": 73.1,
+          "end": 73.52,
+          "word": " assisted",
+          "probability": 0.7151345014572144
+        },
+        {
+          "start": 73.52,
+          "end": 74.86,
+          "word": " development",
+          "probability": 0.9898583292961121
+        },
+        {
+          "start": 74.86,
+          "end": 76.1,
+          "word": " and",
+          "probability": 0.9467085003852844
+        },
+        {
+          "start": 76.1,
+          "end": 76.8,
+          "word": " authentic",
+          "probability": 0.201592355966568
+        },
+        {
+          "start": 76.8,
+          "end": 77.16,
+          "word": " AI.",
+          "probability": 0.9712464213371277
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 17,
+      "seek": 5420,
+      "start": 79.06,
+      "end": 79.7,
+      "text": " Great.",
+      "tokens": [
+        51624,
+        3878,
+        13,
+        51674
+      ],
+      "avg_logprob": -0.3157119477117384,
+      "compression_ratio": 1.455958549222798,
+      "no_speech_prob": 0.4302840530872345,
+      "words": [
+        {
+          "start": 79.06,
+          "end": 79.7,
+          "word": " Great.",
+          "probability": 0.9418742656707764
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 18,
+      "seek": 5420,
+      "start": 80.12,
+      "end": 80.42,
+      "text": " Thanks.",
+      "tokens": [
+        51674,
+        6930,
+        13,
+        51724
+      ],
+      "avg_logprob": -0.3157119477117384,
+      "compression_ratio": 1.455958549222798,
+      "no_speech_prob": 0.4302840530872345,
+      "words": [
+        {
+          "start": 80.12,
+          "end": 80.42,
+          "word": " Thanks.",
+          "probability": 0.9889739751815796
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 19,
+      "seek": 8042,
+      "start": 80.42,
+      "end": 80.58,
+      "text": " Thanks.",
+      "tokens": [
+        50363,
+        6930,
+        13,
+        50413
+      ],
+      "avg_logprob": -0.2642136247534501,
+      "compression_ratio": 0.8947368421052632,
+      "no_speech_prob": 0.35136789083480835,
+      "words": [
+        {
+          "start": 80.42,
+          "end": 80.58,
+          "word": " Thanks.",
+          "probability": 0.11422491073608398
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 20,
+      "seek": 8042,
+      "start": 80.86,
+      "end": 81.7,
+      "text": " Let's stop there.",
+      "tokens": [
+        50413,
+        3914,
+        338,
+        2245,
+        612,
+        13,
+        50463
+      ],
+      "avg_logprob": -0.2642136247534501,
+      "compression_ratio": 0.8947368421052632,
+      "no_speech_prob": 0.35136789083480835,
+      "words": [
+        {
+          "start": 80.86,
+          "end": 81.06,
+          "word": " Let's",
+          "probability": 0.8180331289768219
+        },
+        {
+          "start": 81.06,
+          "end": 81.26,
+          "word": " stop",
+          "probability": 0.9945964217185974
+        },
+        {
+          "start": 81.26,
+          "end": 81.7,
+          "word": " there.",
+          "probability": 0.9943563342094421
+        }
+      ],
+      "temperature": 0.0
+    },
+    {
+      "id": 21,
+      "seek": 8042,
+      "start": 82.22,
+      "end": 83.26,
+      "text": " Please end the recording.",
+      "tokens": [
+        50463,
+        4222,
+        886,
+        262,
+        8296,
+        13,
+        50513
+      ],
+      "avg_logprob": -0.2642136247534501,
+      "compression_ratio": 0.8947368421052632,
+      "no_speech_prob": 0.35136789083480835,
+      "words": [
+        {
+          "start": 82.22,
+          "end": 82.36,
+          "word": " Please",
+          "probability": 0.9804167151451111
+        },
+        {
+          "start": 82.36,
+          "end": 82.64,
+          "word": " end",
+          "probability": 0.9777538776397705
+        },
+        {
+          "start": 82.64,
+          "end": 82.8,
+          "word": " the",
+          "probability": 0.9959522485733032
+        },
+        {
+          "start": 82.8,
+          "end": 83.26,
+          "word": " recording.",
+          "probability": 0.999208390712738
+        }
+      ],
+      "temperature": 0.0
+    }
+  ],
+  "limitations": [
+    "Offline processing used the complete recording.",
+    "Word times are estimates, not independently measured ground truth.",
+    "Overlap, fillers and short backchannels may be omitted or misplaced.",
+    "Speaker labels are not provided by this transcription model."
+  ]
+}

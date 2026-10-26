@@ -81,6 +81,25 @@ class PortableTests(unittest.TestCase):
         self.assertEqual(status['guard']['runtime_trust'], 'UNKNOWN')
         self.assertEqual(len(status['lifecycle_stages']), 12)
         self.assertEqual(status['current_stage']['number'], 1)
+        from cli_status import context_is_empty
+        for folder in (self.root / 'docs/asdg').glob('[0-1][0-9]-*'):
+            document = (folder / 'README.md').read_text()
+            self.assertIn('```mermaid', document)
+            self.assertNotIn('SpeakerCoach', document)
+            self.assertNotIn('Speaker Coach', document)
+        self.assertTrue(context_is_empty(self.root, {'slug': '01-context-and-domain-analysis'}))
+        context = self.root / 'docs/asdg/01-context-and-domain-analysis/README.md'
+        context.write_text(context.read_text() + '\nExisting payroll integration requires review.\n')
+        self.assertFalse(context_is_empty(self.root, {'slug': context.parent.name}))
+        preserved = snapshot(self.root)
+        self.init()
+        self.assertEqual(snapshot(self.root), preserved)
+        for stage in status['lifecycle_stages']:
+            folder = self.root / 'docs/asdg' / stage['slug']
+            for name in ('current', 'planned-release', 'planned-sprint'):
+                self.assertFalse((folder / name).exists())
+            self.assertFalse((folder / 'intended').exists())
+            self.assertFalse((folder / 'planned').exists())
 
     def test_default_initial_state_new_and_no_later_redeclaration(self):
         self.init()
@@ -88,6 +107,76 @@ class PortableTests(unittest.TestCase):
         self.init('--project-status', 'defined', expect=1)
         self.assertEqual(snapshot(self.root), before)
         self.assertEqual(json.loads(self.run_cli('status', '--json').stdout)['project_status'], 'new')
+
+    def test_init_guidance_resolves_to_installed_status_without_changing_state_on_repeat(self):
+        result = self.init()
+        self.assertIn('$asdg-status', result.stdout)
+        self.assertNotIn('$asdg-focus-', result.stdout)
+        adapter = self.root / '.agents/skills/asdg-status/SKILL.md'
+        self.assertTrue(adapter.is_file())
+        self.assertEqual(adapter.read_bytes(),
+                         (self.root / 'asdg/templates/.agents/skills/asdg-status/SKILL.md').read_bytes())
+        before = snapshot(self.root)
+        self.assertIn('$asdg-status', self.init().stdout)
+        self.assertEqual(snapshot(self.root), before)
+        status = json.loads(self.run_cli('status', '--json').stdout)
+        self.assertEqual(status['project_status'], 'new')
+        self.assertEqual(status['sprint_status'], 'inactive')
+        self.assertEqual(status['implementation_permission'], 'BLOCKED')
+
+    def test_init_guidance_is_only_emitted_after_successful_console_initialization(self):
+        before = snapshot(self.root)
+        self.assertNotIn('$asdg-status', self.init('--dry-run').stdout)
+        self.assertEqual(snapshot(self.root), before)
+        report = json.loads(self.init('--json').stdout)
+        self.assertIsNone(report['human_approval'])
+        self.assertFalse(report['sprint_started'])
+        self.assertNotIn('$asdg-status', self.run_cli('verify').stdout)
+        adapter = self.root / '.agents/skills/asdg-focus-02-purpose/SKILL.md'
+        adapter.write_text(adapter.read_text() + '\nClient customization.\n')
+        before = snapshot(self.root)
+        self.assertNotIn('$asdg-status', self.init(expect=1).stdout)
+        self.assertEqual(snapshot(self.root), before)
+
+    def test_factual_entry_points_never_import_advice_or_mutate_initialized_project(self):
+        self.init()
+        before = snapshot(self.root)
+        # An import trap proves these entry points never reach the SDK advice path.
+        program = '''import importlib.abc, runpy, sys
+class RejectAdvice(importlib.abc.MetaPathFinder):
+    def find_spec(self, fullname, path=None, target=None):
+        if fullname in ('cli_advice', 'codex_sdk'):
+            raise AssertionError('Unexpected model advice import: ' + fullname)
+sys.meta_path.insert(0, RejectAdvice())
+entry, *arguments = sys.argv[1:]
+sys.argv = [entry, *arguments]
+runpy.run_path(entry, run_name='__main__')
+'''
+        for entry, args in (('init.py', []), ('cli.py', ['status', '--facts-only']),
+                            ('cli.py', ['status', '--json'])):
+            result = subprocess.run([sys.executable, '-B', '-c', program,
+                                     str(self.root / 'asdg/scripts' / entry), *args],
+                                    cwd=self.root, capture_output=True, text=True, timeout=20)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertEqual(snapshot(self.root), before)
+
+    def test_purpose_focus_adapter_installs_exactly_without_resetting_unregistered_work(self):
+        self.init()
+        doc = self.root / 'docs/asdg/02-purpose/unregistered.md'
+        doc.write_text('# Purpose\n\nHelp new staff complete their first shift independently.\n')
+        before = snapshot(self.root)
+        self.init()
+        self.assertEqual(snapshot(self.root), before)
+        relative = Path('.agents/skills/asdg-focus-02-purpose/SKILL.md')
+        self.assertEqual((self.root / relative).read_bytes(),
+                         (self.root / 'asdg/templates' / relative).read_bytes())
+        self.assertTrue((self.root / 'asdg/02-purpose/skills/elicit-purpose/opening.md').is_file())
+        self.assertTrue((self.root / 'asdg/00-governance/docs/continuation.md').is_file())
+        status = json.loads(self.run_cli('status', '--json').stdout)
+        purpose = next(s for s in status['lifecycle_stages'] if s['number'] == 2)
+        self.assertEqual(purpose['artifacts'], [])
+        self.assertEqual(doc.read_text().splitlines()[-1],
+                         'Help new staff complete their first shift independently.')
 
     def test_governance_focus_installs_without_changing_lifecycle_or_authority(self):
         self.init()
@@ -128,14 +217,14 @@ class PortableTests(unittest.TestCase):
                          thread_id='fixture-thread', turn_id='fixture-turn',
                          sandbox='read-only', approval_mode='deny-all', ephemeral=True))
         report = save_advice(self.root.resolve(), status, advice, repo=self.root)
-        self.assertEqual(report.parent, self.root / 'docs/asdg/07-planning/current/advice')
+        self.assertEqual(report.parent, self.root.resolve() / 'docs/asdg/07-planning')
         receipt = json.loads(report.with_suffix('.json').read_text())
         self.assertIsNone(receipt['document_review']['human_approval'])
         self.assertLessEqual(sum(bool(x.strip()) for x in report.read_text().splitlines()), 50)
         after = snapshot(self.root)
         self.assertEqual({k: after[k] for k in before}, before)
         self.assertEqual(set(after) - set(before),
-                         {p.relative_to(self.root).as_posix() for p in (report, report.with_suffix('.json'))})
+                         {p.relative_to(self.root.resolve()).as_posix() for p in (report, report.with_suffix('.json'))})
 
     def test_preserves_client_instructions_documents_and_ignore(self):
         old = b'AI-MODIFIED - 2026-10-01T00:00Z | PME-APPROVED - 2026-10-02T00:00Z\n# Client\nKeep this client rule.\n'
@@ -272,7 +361,7 @@ class PortableTests(unittest.TestCase):
 
     def test_recorded_evidence_and_release_survive_repeat_init(self):
         self.init()
-        p=self.root/'docs/asdg/01-context-and-domain-analysis/current/context.md';p.parent.mkdir();p.write_text('# Evidence\nObserved fixture.\n')
+        p=self.root/'docs/asdg/01-context-and-domain-analysis/current/context.md';p.parent.mkdir(exist_ok=True);p.write_text('# Evidence\nObserved fixture.\n')
         state={'schema_version':1,'project_status':'defining','release':{'release_id':'R1','status':'planning'},
                'stages':{'01':{'artifacts':[p.relative_to(self.root).as_posix()],'not_applicable_reason':None}}}
         (self.root/'.asdg/lifecycle.json').write_text(json.dumps(state))

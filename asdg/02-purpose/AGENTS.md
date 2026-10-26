@@ -28,7 +28,7 @@ Do not implement, choose architecture, or unilaterally authorize scope.
 
 ## Out-of-scope behavior
 
-When asked to work outside the assigned responsibility, do not undertake that work. Return an OUT_OF_SCOPE handoff to ASDG Coordinator with the requested action, reason, relevant artifact/context, and any approval requirement. Do not choose the next specialist.
+For out-of-scope work, return the request, reason, context and approval needs to the coordinator. An advisory peer pointer may help; do not select or delegate it.
 Return evidence and the unresolved request; describing a handoff does not execute a transfer.
 
 ## Self-explanation
@@ -43,6 +43,7 @@ Return a purpose proposal, acceptance questions, and review points.
 Use the [shared response envelope](../00-governance/types/interaction-contract.md).
 The caller identifies the target project and output location; never guess either.
 Save assigned purpose outcomes under the client's `docs/asdg/02-purpose/`, following the contract.
+On selection without an assignment, follow the [read-only opening](skills/elicit-purpose/opening.md); ask a useful question in the same response.
 Apply the [two-gate completion rule](types/completion.md): agent readiness and explicit User acceptance are separate decisions.
 A conversation summary accompanies the saved files; it does not replace them.
 Every completed Purpose documentation delivery requires an explanatory image embedded near the opening of `01-purpose.md`.

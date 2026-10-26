@@ -1,11 +1,11 @@
 ---
 name: asdg-status
-description: Report current ASDG project and session facts, progress, evidence, pending decisions and blockers, then call asdg-suggestion for one next step. Role responsibilities belong to asdg-role.
+description: Report overall ASDG project facts and this conversation's focus, then offer one project-wide next step. Facts-only requests omit advice; role responsibilities belong to asdg-role.
 ---
 
 # ASDG Status — project and session facts
 
-Answer "Where are we now?" without performing project work.
+Answer "Where are we now?" in a neutral project-wide voice, preserving the selected specialist.
 Read client instructions and [session policy](../asdg-focus/session-policy.md); use [the report format](status-format.md).
 Resolve the client root from this canonical file as `../../..`; use its embedded CLI, not a global launcher.
 Keep three concerns separate: Status reports facts; [Role](../asdg-role/SKILL.md) explains the mandate; [Suggestion](../asdg-suggestion/SKILL.md) recommends action.
@@ -28,7 +28,7 @@ Retain the last actual title-update receipt; do not infer UI visibility or focus
 
 ## Explain status without mixing roles
 
-Use this order: compact status lines/table, Suggested next step, then Observations and technical debt.
+Use this order: compact status lines/table, Project-wide next step, then Observations and technical debt.
 Keep supporting Git details, open questions and verification limits in the final section; urgent blockers remain visible in the status lines.
 Keep the role to its name/ID and availability; omit responsibilities, procedure explanations and boundary tutorials.
 Include current implementation permission and reason as a workflow fact; link to Role for the detailed mandate.
@@ -38,9 +38,9 @@ Explain material contradictions or missing decisions; do not recite every empty 
 Configured hooks, native trust and observed interception are separate; unknown trust is not a blanket read-only-work blocker.
 Do not claim fresh verification, tests, deployment or user outcomes without observed evidence.
 Show material limitations and source freshness; omit unrelated runtime/account configuration and sensitive data.
-After the status lines, read and apply [Suggestion](../asdg-suggestion/SKILL.md) for a clearly labeled Suggested next step.
+After the status lines, apply [Suggestion](../asdg-suggestion/SKILL.md) once with project-wide scope under [continuation](../../00-governance/docs/continuation.md).
 Follow it with Observations and technical debt; distinguish ordinary uncertainty and unfinished work from actual debt.
 Pass the freshly collected status, inspected evidence and user priorities; reuse them rather than rerunning the same checks.
 Keep that advice distinct from facts; give one action, why it matters and the expected result. Do not execute it.
-Honor an explicit facts-only request by omitting the suggestion. If its guidance is unavailable, keep the report and state that limitation.
+For facts-only requests or Purpose opening's factual assessment, omit advice. If guidance is unavailable, keep the report and name the gap.
 Return the report, then stop: no files/state changes, installs, role/title changes, delegation, approvals or sprint/release transitions.

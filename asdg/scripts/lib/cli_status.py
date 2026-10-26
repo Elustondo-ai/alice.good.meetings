@@ -8,8 +8,9 @@ from pathlib import Path
 from cli_files import Conflict, read_bytes, safe_path
 from cli_model import ARTIFACTS, PROVIDER, REPO, VERSION, catalogue, now
 from cli_policy import implementation_permission
-from cli_project import inspect
+from cli_project import inspect, STAGE_NOTE
 from purpose_review import completion_status, validate_reviews
+import stage_review
 
 LIFECYCLE = Path('.asdg/lifecycle.json')
 EMPTY_LIFECYCLE = {'schema_version': 1, 'stages': {}}
@@ -55,12 +56,15 @@ def read_lifecycle(root: Path, rules: list[dict]) -> dict:
         raise Conflict('Invalid release; expected null or release_id and a supported status.')
     known = {f"{rule['number']:02d}": rule for rule in rules}
     for number, entry in value['stages'].items():
-        allowed = {'artifacts', 'not_applicable_reason'} | ({'reviews'} if number == '02' else set())
+        allowed = {'artifacts', 'not_applicable_reason', 'reviews'}
         if (number not in known or not isinstance(entry, dict)
                 or not {'artifacts', 'not_applicable_reason'} <= set(entry) or set(entry) - allowed):
             raise Conflict(f'Invalid lifecycle evidence entry: {number}')
         if 'reviews' in entry:
-            validate_reviews(entry['reviews'])
+            if number == '02':
+                validate_reviews(entry['reviews'])
+            else:
+                stage_review.validate_reviews(entry['reviews'], number, ARTIFACTS / known[number]['slug'])
         files, reason = entry['artifacts'], entry['not_applicable_reason']
         if not isinstance(files, list) or any(not isinstance(p, str) or not p.strip() for p in files):
             raise Conflict(f'Invalid artifact list for stage {number}.')
@@ -84,13 +88,15 @@ def context_is_empty(root: Path, rule: dict) -> bool:
                 'Use Intended / Actual / Planned; preserve sources, uncertainties and human decisions.\n'
                 'Intended: desired outcomes and constraints. Actual: substantiated current evidence.\n'
                 'Planned: selected next work, linked to the integrated Stage 07 plan.\n')
+    modern = scaffold.split('Intended:')[0] + STAGE_NOTE
+    introduction = read_bytes(safe_path(root, Path('asdg/scaffolds/stages') / (rule['slug'] + '.md')))
     for path in folder.rglob('*'):
         if path.is_symlink():
             return False
         if not path.is_file() or path.name in ('.gitkeep', '.DS_Store'):
             continue
         data = path.read_bytes()
-        if path == folder / 'README.md' and data == scaffold.encode():
+        if path == folder / 'README.md' and data in (scaffold.encode(), modern.encode(), introduction):
             continue
         if data.strip():
             return False
@@ -114,6 +120,9 @@ def evidence_status(root: Path, rules: list[dict], value: dict) -> list[dict]:
                            not_applicable_reason=entry.get('not_applicable_reason')))
         if rule['number'] == 2:
             stages[-1]['completion'] = completion_status(root, entry)
+        elif 'reviews' in entry:
+            stages[-1]['completion'] = stage_review.completion_status(
+                root, entry, f"{rule['number']:02d}", ARTIFACTS / rule['slug'])
     context = next((stage for stage in stages if stage['number'] == 1), None)
     purpose = next((stage for stage in stages if stage['number'] == 2), None)
     if (context is not None and purpose is not None and not context['artifacts']
@@ -222,6 +231,10 @@ def render_status(status: dict) -> str:
     purpose = next((s for s in status['lifecycle_stages'] if s['number'] == 2), None)
     if purpose:
         lines.extend(['', 'Purpose completion: ' + purpose['completion']['status'], purpose['completion']['reason']])
+    for stage in status['lifecycle_stages']:
+        if stage['number'] not in (1, 2) and 'completion' in stage:
+            lines.extend(['', f"{stage['name']} completion: {stage['completion']['status']}",
+                          stage['completion']['reason']])
     if status['errors']:
         lines.extend(f'ERROR: {error}' for error in status['errors'])
     else:

@@ -16,3 +16,6 @@ Empty scaffolds, recorded evidence and human acceptance are distinct.
 - [Document, Review and Release Agent](10-document-review-and-release/README.md)
 - [Operational Reality, DevOps and User Acceptance Agent](11-operational-reality-devops-and-user-acceptance/README.md)
 - [Observability, Insights and Learning Agent](12-observability-insights-and-learning/README.md)
+
+In stages 01–12, read root files in order: `01` Intended, `02` Current, `03` Planned. Use dotted numbers for additional topics.
+Follow the [layout and cycle closeout rule](../../asdg/00-governance/docs/stage-layout.md).

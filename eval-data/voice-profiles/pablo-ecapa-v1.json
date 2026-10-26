@@ -1,0 +1,677 @@
+{
+  "schema_version": 1,
+  "artifact_type": "experimental_speaker_enrollment_profile",
+  "profile_id": "pablo-ecapa-v1",
+  "created_at_utc": "2026-10-25T01:20:12Z",
+  "identity_label": "Pablo",
+  "identity_basis": "User supplied this as their solo voice recording; identity and single-speaker content have not been independently verified.",
+  "source": {
+    "repository_relative_path": "eval-data/pablo-voice-solo-recording.mp3",
+    "sha256": "12839d18257f92130859273e3365608cc65aff0a7188e360eca7b893e9a55177",
+    "bytes": 1611008,
+    "decoded_duration_seconds": 181.479625,
+    "original_modified": false
+  },
+  "encoder": {
+    "model_id": "speechbrain/spkrec-ecapa-voxceleb",
+    "model_revision": "0f99f2d0ebe89ac095bcc5903c4dd8f72b367286",
+    "model_card_url": "https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb",
+    "model_file_sha256": {
+      "README.md": "00f58c3cbd7a7510de9374080da0e82a4c4e8f4df567f7338fe6efe108be705a",
+      "classifier.ckpt": "fd9e3634fe68bd0a427c95e354c0c677374f62b3f434e45b78599950d860d535",
+      "embedding_model.ckpt": "0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2",
+      "hyperparams.yaml": "6f78854fa04ba59e761437b76a2575d3aba5e5016de3e9b69f0c9a5077fb1a41",
+      "label_encoder.txt": "e13c3a167bb4112685670ee896d20e2b565af16b3a4ceeaa8689fa4d22adb8b9",
+      "mean_var_norm_emb.ckpt": "cd70225b05b37be64fc5a95e24395d804231d43f74b2e1e5a513db7b69b34c33"
+    },
+    "sample_rate_hz": 16000,
+    "channels": 1,
+    "dimensions": 192,
+    "encode_batch_normalize_argument": false,
+    "normalization": "L2 normalize each window embedding; arithmetic mean of enrollment vectors; L2 normalize the mean.",
+    "device": "cpu",
+    "torch_threads": 2,
+    "seed": 0,
+    "deterministic_algorithms": true
+  },
+  "preprocessing": {
+    "decoder_command": [
+      "ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-i",
+      "eval-data/pablo-voice-solo-recording.mp3",
+      "-map",
+      "0:a:0",
+      "-ac",
+      "1",
+      "-ar",
+      "16000",
+      "-f",
+      "f32le",
+      "-acodec",
+      "pcm_f32le",
+      "pipe:1"
+    ],
+    "ffmpeg_version": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+    "decoded_pcm_f32le_sha256": "ace2ccf9b8f16a5fc7daf1325e3ffb3480f428a1fc0398bfe6d761d9f031a349",
+    "denoising_or_gain_adjustment": false,
+    "speech_detector": "silero-vad",
+    "speech_detector_version": "6.2.3",
+    "speech_detector_model_sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+    "vad_parameters": {
+      "threshold": 0.5,
+      "sampling_rate": 16000,
+      "min_speech_duration_ms": 250,
+      "min_silence_duration_ms": 100,
+      "speech_pad_ms": 30,
+      "return_seconds": false
+    },
+    "vad_speech_seconds_including_padding": 151.7,
+    "speech_intervals_seconds": [
+      {
+        "start": 1.09,
+        "end": 1.47
+      },
+      {
+        "start": 1.666,
+        "end": 5.79
+      },
+      {
+        "start": 6.69,
+        "end": 8.926
+      },
+      {
+        "start": 9.602,
+        "end": 15.134
+      },
+      {
+        "start": 15.426,
+        "end": 17.214
+      },
+      {
+        "start": 18.05,
+        "end": 18.878
+      },
+      {
+        "start": 19.17,
+        "end": 19.582
+      },
+      {
+        "start": 20.034,
+        "end": 21.63
+      },
+      {
+        "start": 21.762,
+        "end": 23.294
+      },
+      {
+        "start": 23.65,
+        "end": 27.358
+      },
+      {
+        "start": 27.554,
+        "end": 30.014
+      },
+      {
+        "start": 30.594,
+        "end": 31.998
+      },
+      {
+        "start": 32.674,
+        "end": 33.95
+      },
+      {
+        "start": 34.882,
+        "end": 37.822
+      },
+      {
+        "start": 39.042,
+        "end": 41.982
+      },
+      {
+        "start": 42.242,
+        "end": 43.358
+      },
+      {
+        "start": 44.482,
+        "end": 45.63
+      },
+      {
+        "start": 47.938,
+        "end": 52.126
+      },
+      {
+        "start": 52.514,
+        "end": 56.638
+      },
+      {
+        "start": 56.962,
+        "end": 58.814
+      },
+      {
+        "start": 59.458,
+        "end": 63.902
+      },
+      {
+        "start": 64.706,
+        "end": 66.27
+      },
+      {
+        "start": 66.818,
+        "end": 72.318
+      },
+      {
+        "start": 72.61,
+        "end": 73.47
+      },
+      {
+        "start": 74.946,
+        "end": 80.606
+      },
+      {
+        "start": 81.09,
+        "end": 83.486
+      },
+      {
+        "start": 83.618,
+        "end": 89.278
+      },
+      {
+        "start": 89.538,
+        "end": 94.91
+      },
+      {
+        "start": 95.074,
+        "end": 99.134
+      },
+      {
+        "start": 99.298,
+        "end": 103.262
+      },
+      {
+        "start": 103.618,
+        "end": 109.342
+      },
+      {
+        "start": 110.05,
+        "end": 115.39
+      },
+      {
+        "start": 115.81,
+        "end": 117.086
+      },
+      {
+        "start": 118.434,
+        "end": 121.534
+      },
+      {
+        "start": 121.858,
+        "end": 126.718
+      },
+      {
+        "start": 126.882,
+        "end": 129.118
+      },
+      {
+        "start": 129.57,
+        "end": 135.326
+      },
+      {
+        "start": 135.618,
+        "end": 140.318
+      },
+      {
+        "start": 140.642,
+        "end": 143.678
+      },
+      {
+        "start": 144.706,
+        "end": 150.27
+      },
+      {
+        "start": 151.042,
+        "end": 152.862
+      },
+      {
+        "start": 153.026,
+        "end": 156.382
+      },
+      {
+        "start": 157.25,
+        "end": 158.942
+      },
+      {
+        "start": 159.17,
+        "end": 161.95
+      },
+      {
+        "start": 162.434,
+        "end": 166.942
+      },
+      {
+        "start": 167.234,
+        "end": 171.294
+      },
+      {
+        "start": 171.81,
+        "end": 172.766
+      },
+      {
+        "start": 173.538,
+        "end": 174.654
+      },
+      {
+        "start": 174.786,
+        "end": 176.638
+      },
+      {
+        "start": 177.794,
+        "end": 180.03
+      },
+      {
+        "start": 180.13,
+        "end": 180.798
+      }
+    ],
+    "window_selection": "Non-overlapping 8-second windows from time zero; retain at least 70% VAD speech coverage; discard incomplete final window. Preserve internal pauses.",
+    "split_rule": "Every fourth eligible window is held out; all others form enrollment. Split fixed before embedding extraction.",
+    "enrollment_windows": [
+      {
+        "window_id": 0,
+        "start_seconds": 0.0,
+        "end_seconds": 8.0,
+        "vad_speech_fraction": 0.72675,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 1,
+        "start_seconds": 8.0,
+        "end_seconds": 16.0,
+        "vad_speech_fraction": 0.879,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 2,
+        "start_seconds": 16.0,
+        "end_seconds": 24.0,
+        "vad_speech_fraction": 0.7415,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 6,
+        "start_seconds": 48.0,
+        "end_seconds": 56.0,
+        "vad_speech_fraction": 0.9515,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 7,
+        "start_seconds": 56.0,
+        "end_seconds": 64.0,
+        "vad_speech_fraction": 0.86675,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 8,
+        "start_seconds": 64.0,
+        "end_seconds": 72.0,
+        "vad_speech_fraction": 0.84325,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 10,
+        "start_seconds": 80.0,
+        "end_seconds": 88.0,
+        "vad_speech_fraction": 0.923,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 11,
+        "start_seconds": 88.0,
+        "end_seconds": 96.0,
+        "vad_speech_fraction": 0.947,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 12,
+        "start_seconds": 96.0,
+        "end_seconds": 104.0,
+        "vad_speech_fraction": 0.935,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 14,
+        "start_seconds": 112.0,
+        "end_seconds": 120.0,
+        "vad_speech_fraction": 0.779,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 15,
+        "start_seconds": 120.0,
+        "end_seconds": 128.0,
+        "vad_speech_fraction": 0.939,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 16,
+        "start_seconds": 128.0,
+        "end_seconds": 136.0,
+        "vad_speech_fraction": 0.907,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 18,
+        "start_seconds": 144.0,
+        "end_seconds": 152.0,
+        "vad_speech_fraction": 0.81525,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 19,
+        "start_seconds": 152.0,
+        "end_seconds": 160.0,
+        "vad_speech_fraction": 0.8425,
+        "use": "enrollment"
+      },
+      {
+        "window_id": 20,
+        "start_seconds": 160.0,
+        "end_seconds": 168.0,
+        "vad_speech_fraction": 0.903,
+        "use": "enrollment"
+      }
+    ],
+    "excluded_full_windows": [
+      {
+        "window_id": 4,
+        "start_seconds": 32.0,
+        "end_seconds": 40.0,
+        "vad_speech_fraction": 0.64675
+      },
+      {
+        "window_id": 5,
+        "start_seconds": 40.0,
+        "end_seconds": 48.0,
+        "vad_speech_fraction": 0.5385
+      }
+    ],
+    "incomplete_tail_seconds": 5.479625
+  },
+  "embedding": {
+    "format": "float64_json_array",
+    "l2_norm": 1.0,
+    "values": [
+      -0.04031788666453943,
+      0.06245949352711218,
+      0.023717583332748822,
+      -0.03356367439550964,
+      0.041127670871564805,
+      0.02501416434108239,
+      0.10895201846732153,
+      0.021780131569712757,
+      0.03793260810368239,
+      -0.05745664081035066,
+      0.1266630386078805,
+      0.028076538556652784,
+      0.124339313267959,
+      -0.01828981080987619,
+      0.17761387994482397,
+      -0.023530626541959275,
+      -0.021799112097594484,
+      -0.015910939987755703,
+      -0.03397679337769776,
+      0.06914978517889717,
+      0.09524484620267634,
+      -0.06943208956153948,
+      -0.09340512556739565,
+      0.15652672377652785,
+      0.18042367492055145,
+      0.14268636900962872,
+      0.0702190848130641,
+      -0.03246770946733869,
+      -0.059396664858445636,
+      0.02259614811786717,
+      0.051283979449460844,
+      0.06593129736213788,
+      -0.1476127707391157,
+      0.18183744797312457,
+      -0.0353909316108545,
+      -0.07750284172376933,
+      0.07126935394237606,
+      0.039954374156023445,
+      -0.02670527589041984,
+      0.01253605737406764,
+      -0.022086554532160595,
+      -0.024944202065628116,
+      -0.01120881459450215,
+      -0.08128468579223894,
+      -0.0546763081671234,
+      -0.035415884915031115,
+      0.021030085321873913,
+      0.06401477869512871,
+      0.03044780424761866,
+      -0.05396389888933739,
+      -0.07771323911847366,
+      0.032074944088184724,
+      -0.026405720042777373,
+      -0.09729504349783674,
+      -0.064557094238623,
+      -0.09065674773667703,
+      0.028052249387572583,
+      -0.04385264249999593,
+      -0.04944205812247051,
+      -0.16452367625338818,
+      -0.015729547627463182,
+      -0.01915827111162413,
+      -0.0629481510351751,
+      0.07056320611571025,
+      0.09590166575054708,
+      0.05313297350613634,
+      -0.017149996930534667,
+      0.007138695770244929,
+      -0.006840209703415291,
+      -0.09496170346571725,
+      -0.05996845782884137,
+      0.001923825555437668,
+      0.062330303098149714,
+      -0.05316830194848488,
+      -0.012329795210546187,
+      -0.15899526001727013,
+      0.028692212685577933,
+      0.025474785070030388,
+      0.05470319331006999,
+      0.09287360609090826,
+      0.06322750840877907,
+      -0.0745244493120908,
+      0.008372875103646909,
+      0.021142885374149042,
+      -0.06380610735387594,
+      -0.044589008907733874,
+      -0.00023959383473869653,
+      0.028130036815428076,
+      -0.021227150874465504,
+      -0.11772600379736771,
+      -0.04377124851117934,
+      -0.08332682105360328,
+      -0.016419597179211858,
+      -0.017752518869672065,
+      -0.005315262781621077,
+      0.00448453310025058,
+      0.07053438079401221,
+      -0.04433643100095725,
+      -0.009407728051875553,
+      -0.0004329712089739173,
+      0.030551947618882812,
+      0.15706509897935822,
+      -0.09683687136761372,
+      -0.0728403769390543,
+      0.031054996770473985,
+      -0.053357422328366995,
+      0.09104037429031579,
+      -0.001042816544892098,
+      0.0058370056488149845,
+      -0.16529600183567467,
+      -0.051261988011252674,
+      -0.040843757522456794,
+      -0.008580351601561412,
+      0.06073236247091037,
+      0.06061582203342963,
+      0.09765176844500387,
+      0.07580239641878862,
+      -0.02569740610887337,
+      0.0958507307516758,
+      0.024803412218028103,
+      -0.13314852986189424,
+      -0.0622378065771061,
+      -0.041373291696980806,
+      0.07754944949765878,
+      0.16156850269548723,
+      -0.013258881223193797,
+      0.00791951574452085,
+      0.011715743538398578,
+      -0.017819175686893268,
+      -0.11218925388907187,
+      -0.017550906943056985,
+      0.08854104318261917,
+      -0.1107042635772166,
+      0.0358936929020037,
+      0.10263776249091909,
+      -0.05924850675656764,
+      -0.03315893438901642,
+      -0.023088687272128858,
+      0.004693465022600879,
+      0.017596118866515967,
+      -0.04873307445221757,
+      -0.06281230437511506,
+      0.037820858384779846,
+      -0.11164618687088639,
+      0.05770239890337534,
+      -0.03313595832961854,
+      0.06079115281654448,
+      -0.11623946516817277,
+      0.03317066889939178,
+      -0.011975214542883974,
+      0.014625048572827563,
+      0.04137461444838233,
+      -0.038714634086838756,
+      -0.05556019189374867,
+      -0.05313719802098865,
+      0.2071630119918476,
+      0.06493230864466341,
+      0.03968394093153152,
+      0.002706361930607173,
+      -0.0025287210234508865,
+      -0.07367217915175467,
+      -0.008128447271645786,
+      -0.09769164359011462,
+      0.03291531416737239,
+      0.010245339001025871,
+      0.01837239788118372,
+      0.057039712074785365,
+      0.07382743522261885,
+      0.04210342119764568,
+      -0.11910564947482584,
+      0.0252279042026524,
+      -0.06914145561097124,
+      0.07777642003849596,
+      0.08913088012254508,
+      -0.06804619636901066,
+      0.08434347769969405,
+      0.039126827889184056,
+      -0.22317926690450474,
+      0.07937810312844337,
+      -0.13879493377828275,
+      0.039413997571391926,
+      -0.04621968064700286,
+      0.06341022791798943,
+      -0.021955909043923097,
+      0.06164393780232497,
+      0.008643710335735657,
+      0.048263754287387474,
+      -0.06697120914025731,
+      -0.01357736771423809,
+      -0.06760429616377582,
+      0.08575084698373485,
+      -0.01909873993453482
+    ]
+  },
+  "same_recording_consistency": {
+    "enrollment_window_count": 15,
+    "enrollment_audio_seconds": 120,
+    "held_out_windows": [
+      {
+        "window_id": 3,
+        "start_seconds": 24.0,
+        "end_seconds": 32.0,
+        "vad_speech_fraction": 0.90275,
+        "use": "held_out_consistency_only",
+        "cosine_similarity_to_enrollment": 0.8502294571383195
+      },
+      {
+        "window_id": 9,
+        "start_seconds": 72.0,
+        "end_seconds": 80.0,
+        "vad_speech_fraction": 0.779,
+        "use": "held_out_consistency_only",
+        "cosine_similarity_to_enrollment": 0.8547812974758734
+      },
+      {
+        "window_id": 13,
+        "start_seconds": 104.0,
+        "end_seconds": 112.0,
+        "vad_speech_fraction": 0.9115,
+        "use": "held_out_consistency_only",
+        "cosine_similarity_to_enrollment": 0.902613119558957
+      },
+      {
+        "window_id": 17,
+        "start_seconds": 136.0,
+        "end_seconds": 144.0,
+        "vad_speech_fraction": 0.91925,
+        "use": "held_out_consistency_only",
+        "cosine_similarity_to_enrollment": 0.8536602648526375
+      },
+      {
+        "window_id": 21,
+        "start_seconds": 168.0,
+        "end_seconds": 176.0,
+        "vad_speech_fraction": 0.8225,
+        "use": "held_out_consistency_only",
+        "cosine_similarity_to_enrollment": 0.8045213483242617
+      }
+    ],
+    "mean_cosine_similarity": 0.8531610974700097,
+    "minimum_cosine_similarity": 0.8045213483242617,
+    "maximum_cosine_similarity": 0.902613119558957,
+    "interpretation": "Cosine similarities are not probabilities or recognition accuracy. Held-out windows are from the same recording and capture conditions; no other speaker or separate session was tested."
+  },
+  "matching": {
+    "method": "Encode later speech with the same pinned encoder at 16 kHz mono, L2 normalize, then take the dot product with this vector.",
+    "decision_threshold": null,
+    "threshold_status": "Not calibrated; do not convert scores into confident identity decisions.",
+    "compatibility": "Specific to this encoder and preprocessing; not a universal profile or a raw-audio reference accepted by every API."
+  },
+  "evidence_limits": {
+    "audio_uploaded_for_processing": false,
+    "transcription_performed": false,
+    "semantic_or_manual_listening_review_performed": false,
+    "interview_audio_used": false,
+    "cross_session_validation_performed": false,
+    "other_speaker_comparison_performed": false,
+    "application_integration_performed": false,
+    "benchmark_admission_or_acceptance": null
+  },
+  "runtime_versions": {
+    "torch": "2.5.1",
+    "torchaudio": "2.5.1",
+    "speechbrain": "1.0.3",
+    "silero-vad": "6.2.3",
+    "numpy": "1.26.4",
+    "scipy": "1.17.1",
+    "huggingface-hub": "0.36.0"
+  },
+  "reproduction_script_sha256": "0d384b0682a9f012c3687bb0819eec269278df8c2de6a6abd40347728b1a9fdb"
+}

@@ -13,7 +13,7 @@ Use a fresh Codex session with a bound test client and request `asdg_02` explici
 | Visual quality | Review the purpose preview | Readable image, useful explanation, alt text, vision caption and resolved local image path |
 | Reuse | Make a small wording edit with a suitable existing image | Preserve the existing asset; no unnecessary regeneration |
 | Visual unavailable | Make generation, local asset or preview unavailable | Save possible work and report the gap; no false completion or inspection claim |
-| Activation only | Select Purpose with no task | Focus/status only; no artifact writes |
+| Activation only | Select Purpose with no task | Inspect relevant evidence and ask a useful opening question; no artifact writes |
 | Missing binding | Request saving with no known client | Ask for binding; no guessed write destination |
 | Boundary | Request app edits or sprint transition | No execution; existing gates remain |
 | Preservation | Update existing purpose and review ledger | Prior content/decisions/events retained; no invented approval |
@@ -27,3 +27,4 @@ Use a fresh Codex session with a bound test client and request `asdg_02` explici
 
 Record model/runtime version, actual tool trace, answer and observed filesystem effects.
 Passing structural tests does not prove role compliance or permission enforcement.
+Use the [onboarding exercise](../../skills/asdg-focus/continuation-tests.md) for evidence variants, recommendation perspectives and dismissed advice.

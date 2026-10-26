@@ -1,6 +1,6 @@
 ---
 name: asdg-focus
-description: Explicitly focus this conversation on ASDG governance 00 or a specialist stage 01-12, or clear focus. Shared activation workflow for thirteen picker entries; no delegation or project execution.
+description: Explicitly focus this conversation on ASDG governance 00 or a specialist stage 01-12, or clear focus. Purpose includes a read-only opening assessment; selection never grants general execution authority.
 ---
 
 # ASDG Focus — shared activation workflow v0.2
@@ -40,11 +40,13 @@ Do not replace definitions with an older SDLC2 folder, remembered summary or ano
 After successful reads, replace THIS conversation's focus with the selected canonical role.
 Record actual source paths, available versions and the invoked skill; keep all canonical role/evaluation boundaries.
 Roles retain evaluation boundaries; ASDG-02's contract additionally permits assigned Purpose documentation writes.
-Loading a procedure does not start its interview, execute its task or write artifacts; wait for an assignment.
+Purpose selection begins its [opening assessment](../../02-purpose/skills/elicit-purpose/opening.md); activation alone writes no artifacts.
 After successful activation or explicit clear, follow [the current-chat rename step](rename-chat.md).
 Renaming is the narrow chat-metadata exception; failure never undoes successful activation/clear.
 For `clear`, retain project context and independent restrictions; do not silently activate the coordinator.
 Repeated selection of the same role refreshes required reads and retries rename; no child agent is created.
-Return [ASDG Status](../asdg-status/SKILL.md), including the actual rename outcome, then stop.
-No project-file changes, installs, delegation, commits, pushes, deployment, sprint transitions or mode switches.
+For Purpose, collect [Status](../asdg-status/SKILL.md) facts-only once, reuse them in the opening and include the actual rename outcome.
+If Purpose selection includes an assignment, begin that authorized work without a redundant onboarding interview.
+For clear or another role, return Status and stop; other specialist openings await pilot review.
+Activation grants no project-file writes, installs, delegation, commits, deployment, sprint transitions or mode switches.
 This YAML-first file records AI modification, not whole-file human approval.

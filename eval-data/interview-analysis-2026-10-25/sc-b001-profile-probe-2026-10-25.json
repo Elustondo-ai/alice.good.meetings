@@ -1,0 +1,375 @@
+{
+  "schema_version": 1,
+  "record_type": "offline_exploratory_profile_comparison",
+  "case_id": "SC-B001",
+  "created_at_utc": "2026-10-25T13:31:43Z",
+  "source": {
+    "path": "eval-data/mock-interview-0.mp3",
+    "sha256": "47ab9a0fb7288b3d14ed45081a69ed5bf2e0dd1ea1609b42cec9488f2d3fb860",
+    "analyzed_start_seconds": 0,
+    "analyzed_end_seconds": 90
+  },
+  "user_confirmation": {
+    "date": "2026-10-25",
+    "interview_has_two_speakers_including_user": true,
+    "solo_has_only_user": true,
+    "basis": "Explicit user statement in this chat"
+  },
+  "profile": {
+    "path": "eval-data/voice-profiles/pablo-ecapa-v1.json",
+    "sha256": "635d2e155ab36ed40a86474739d99de7f263baceaa7615245f77f0c1ce1aae2e",
+    "profile_id": "pablo-ecapa-v1",
+    "model_id": "speechbrain/spkrec-ecapa-voxceleb",
+    "model_revision": "0f99f2d0ebe89ac095bcc5903c4dd8f72b367286"
+  },
+  "processing": {
+    "audio_upload_performed": false,
+    "sample_rate_hz": 16000,
+    "channels": 1,
+    "prefix_sha256": "ba3d4a6ea0d831bc74c5265826cb1ed1d1ce12c458150f642dcf60278b1f826f",
+    "decode": "FFmpeg: first 90 seconds only, mono 16000 Hz PCM16 WAV; no gain adjustment or denoising.",
+    "window_seconds": 3,
+    "hop_seconds": 3,
+    "minimum_vad_speech_fraction": 0.7,
+    "vad_parameters": {
+      "threshold": 0.5,
+      "sampling_rate": 16000,
+      "min_speech_duration_ms": 250,
+      "min_silence_duration_ms": 100,
+      "speech_pad_ms": 30,
+      "return_seconds": false
+    },
+    "vad_scope": "Each window independently; reset between windows. This is an offline diagnostic with no delivery-timing or access-isolation evidence.",
+    "embedding": "Same pinned ECAPA encoder as enrollment; normalize=False then L2-normalize; cosine similarity to frozen profile.",
+    "runtime_versions": {
+      "torch": "2.5.1",
+      "speechbrain": "1.0.3",
+      "silero-vad": "6.2.3",
+      "numpy": "1.26.4",
+      "soundfile": "0.13.1"
+    },
+    "script_sha256": "e9ca79bd571a539157dd3709b61bb65d2ee4191f2280402449d123346063cbc9"
+  },
+  "summary": {
+    "total_windows": 30,
+    "scored_windows": 25,
+    "unscored_windows": 5,
+    "minimum_cosine_similarity": 0.15918456311671875,
+    "maximum_cosine_similarity": 0.5825557581619979,
+    "decision_threshold": null,
+    "accuracy": null,
+    "confirmed_windows": 2,
+    "observation": "The User-confirmed Pablo clip scored 0.5825557581619979; the User-confirmed interviewer clip scored 0.15918456311671875. This selected pair supports relative separation only."
+  },
+  "windows": [
+    {
+      "start_seconds": 0,
+      "end_seconds": 3,
+      "vad_speech_fraction": 0.6473333333333333,
+      "cosine_similarity": null,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "insufficient_detected_speech"
+    },
+    {
+      "start_seconds": 3,
+      "end_seconds": 6,
+      "vad_speech_fraction": 0.7866666666666666,
+      "cosine_similarity": 0.31336833397814773,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 6,
+      "end_seconds": 9,
+      "vad_speech_fraction": 0.8413333333333334,
+      "cosine_similarity": 0.4934596947139017,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 9,
+      "end_seconds": 12,
+      "vad_speech_fraction": 0.8606666666666667,
+      "cosine_similarity": 0.46934941041955214,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 12,
+      "end_seconds": 15,
+      "vad_speech_fraction": 1,
+      "cosine_similarity": 0.4922243759150916,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 15,
+      "end_seconds": 18,
+      "vad_speech_fraction": 1,
+      "cosine_similarity": 0.5192046525529576,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 18,
+      "end_seconds": 21,
+      "vad_speech_fraction": 0.9993333333333333,
+      "cosine_similarity": 0.4478314101340913,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 21,
+      "end_seconds": 24,
+      "vad_speech_fraction": 0.522,
+      "cosine_similarity": null,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "insufficient_detected_speech"
+    },
+    {
+      "start_seconds": 24,
+      "end_seconds": 27,
+      "vad_speech_fraction": 0.9246666666666666,
+      "cosine_similarity": 0.15918456311671875,
+      "confirmed_speaker": "Interviewer",
+      "inferred_speaker": null,
+      "status": "scored_user_confirmed_speaker"
+    },
+    {
+      "start_seconds": 27,
+      "end_seconds": 30,
+      "vad_speech_fraction": 0.698,
+      "cosine_similarity": null,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "insufficient_detected_speech"
+    },
+    {
+      "start_seconds": 30,
+      "end_seconds": 33,
+      "vad_speech_fraction": 0.6606666666666666,
+      "cosine_similarity": null,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "insufficient_detected_speech"
+    },
+    {
+      "start_seconds": 33,
+      "end_seconds": 36,
+      "vad_speech_fraction": 0.838,
+      "cosine_similarity": 0.3062131697530958,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 36,
+      "end_seconds": 39,
+      "vad_speech_fraction": 0.978,
+      "cosine_similarity": 0.4921437399300068,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 39,
+      "end_seconds": 42,
+      "vad_speech_fraction": 0.9033333333333333,
+      "cosine_similarity": 0.446418489883168,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 42,
+      "end_seconds": 45,
+      "vad_speech_fraction": 1,
+      "cosine_similarity": 0.5166008922091703,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 45,
+      "end_seconds": 48,
+      "vad_speech_fraction": 0.9993333333333333,
+      "cosine_similarity": 0.47545410503511437,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 48,
+      "end_seconds": 51,
+      "vad_speech_fraction": 1,
+      "cosine_similarity": 0.5356300066789142,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 51,
+      "end_seconds": 54,
+      "vad_speech_fraction": 0.8806666666666667,
+      "cosine_similarity": 0.5573858628462394,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 54,
+      "end_seconds": 57,
+      "vad_speech_fraction": 0.9266666666666666,
+      "cosine_similarity": 0.49519746603209314,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 57,
+      "end_seconds": 60,
+      "vad_speech_fraction": 0.8393333333333334,
+      "cosine_similarity": 0.538406156303475,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 60,
+      "end_seconds": 63,
+      "vad_speech_fraction": 1,
+      "cosine_similarity": 0.4078763975354068,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 63,
+      "end_seconds": 66,
+      "vad_speech_fraction": 1,
+      "cosine_similarity": 0.49448979154011224,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 66,
+      "end_seconds": 69,
+      "vad_speech_fraction": 1,
+      "cosine_similarity": 0.4698779519709736,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 69,
+      "end_seconds": 72,
+      "vad_speech_fraction": 0.9446666666666667,
+      "cosine_similarity": 0.5825557581619979,
+      "confirmed_speaker": "Pablo (User)",
+      "inferred_speaker": null,
+      "status": "scored_user_confirmed_speaker"
+    },
+    {
+      "start_seconds": 72,
+      "end_seconds": 75,
+      "vad_speech_fraction": 0.9993333333333333,
+      "cosine_similarity": 0.5712014767396252,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 75,
+      "end_seconds": 78,
+      "vad_speech_fraction": 0.8606666666666667,
+      "cosine_similarity": 0.5083569131485342,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 78,
+      "end_seconds": 81,
+      "vad_speech_fraction": 1,
+      "cosine_similarity": 0.5674525352299596,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 81,
+      "end_seconds": 84,
+      "vad_speech_fraction": 0.8313333333333334,
+      "cosine_similarity": 0.5361668567610927,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    },
+    {
+      "start_seconds": 84,
+      "end_seconds": 87,
+      "vad_speech_fraction": 0.5513333333333333,
+      "cosine_similarity": null,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "insufficient_detected_speech"
+    },
+    {
+      "start_seconds": 87,
+      "end_seconds": 90,
+      "vad_speech_fraction": 0.8953333333333333,
+      "cosine_similarity": 0.5161381478497948,
+      "confirmed_speaker": null,
+      "inferred_speaker": null,
+      "status": "scored_identity_unconfirmed"
+    }
+  ],
+  "review_clips": [
+    {
+      "clip_id": "A",
+      "temporary_audio_path": "/private/tmp/speakercoach-review-A.wav",
+      "start_seconds": 69,
+      "end_seconds": 72,
+      "selection": "highest_score",
+      "cosine_similarity": 0.5825557581619979,
+      "confirmed_speaker": "Pablo (User)",
+      "sha256": "35feb158ec37fea131b257467315bde54b15fc1077d6155e8548be2f03a28ed5",
+      "confirmation_basis": "User listening confirmation"
+    },
+    {
+      "clip_id": "B",
+      "temporary_audio_path": "/private/tmp/speakercoach-review-B.wav",
+      "start_seconds": 24,
+      "end_seconds": 27,
+      "selection": "lowest_score",
+      "cosine_similarity": 0.15918456311671875,
+      "confirmed_speaker": "Interviewer",
+      "sha256": "73a39be61c7c9649c94b251222f42405ec4b3c36b8963b640dba029b42fecb7f",
+      "confirmation_basis": "User listening confirmation"
+    }
+  ],
+  "evidence_limits": [
+    "Two review windows have User-confirmed speaker labels. Other windows and a transcript remain unreviewed.",
+    "Unreviewed scores are hypotheses about voice similarity, not confirmed identities or probabilities.",
+    "Three-second windows can contain speaker changes, overlap or background sound.",
+    "Review examples were selected from score extremes and cannot establish accuracy.",
+    "The first 90 seconds are now exploratory/development material; reserve later audio for any scored validation and do not tune on it.",
+    "No streaming benchmark, application run, threshold calibration or benchmark acceptance occurred."
+  ],
+  "next_reference_needed": "Independent transcript and speaker-turn labels across an exchange; calibrate only on development material and reserve later audio for validation.",
+  "reference_labels": {
+    "recorded_on": "2026-10-25",
+    "basis": "Explicit User confirmation after listening to review clips in this chat",
+    "statement": "A is me\nB is the interviwer",
+    "scope": "Only the two three-second review clips; no other intervals labeled."
+  }
+}

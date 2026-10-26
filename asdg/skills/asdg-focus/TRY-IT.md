@@ -10,7 +10,7 @@ A skill/configuration file being present is not proof the app discovered or exec
 Supply `Target project: Speaker Coach` explicitly; the provider folder is not the consumer.
 1. New conversation: `$asdg-status` → None, no role activation and no rename.
 2. Select **ASDG Focus 02 — Purpose**, or send `$asdg-focus-02-purpose` with no argument.
-3. Expect canonical ASDG-02 reads, retained project context and a native current-chat rename attempt.
+3. Expect canonical ASDG-02 reads, retained project context, a native rename attempt and the evidence-based Purpose opening.
 4. Expected default for known Speaker Coach: `02 Purpose — Speaker Coach`.
 5. `$asdg-status` → Purpose remains selected; actual rename receipt shown separately from focus.
 6. `What is your role?` → grounded Purpose explanation; no reactivation required.
@@ -43,6 +43,7 @@ No rename path may touch project files, internal stores, other chats, deletion o
 Record surface/version, picker labels, actual read/rename tool trace, before/after replies and UI title.
 Record project-file diff separately; title metadata is not an application-source change.
 Multi-turn retention, thirteen runtime invocations, reload/resume/compaction need live tests; not assumed passed.
+Run the [Purpose continuation exercise](continuation-tests.md) in disposable clients before extending other specialist openings.
 Pablo's earlier screenshot verifies direct user-requested rename on his app, not these updated skills.
 Static syntax and references are a separate check. No file state is self-approved by this update.
 

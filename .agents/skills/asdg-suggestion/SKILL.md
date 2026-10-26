@@ -1,6 +1,6 @@
 ---
 name: asdg-suggestion
-description: Suggest a useful next ASDG project step from current evidence, workflow state and user priorities. Advisory only; does not activate a role or perform the suggested work.
+description: Suggest the selected ASDG specialist's next contribution, or a project-wide next step when unfocused or called by Status. Advisory only; preserves focus and authority.
 ---
 
 # ASDG Suggestion — discovery adapter

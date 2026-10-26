@@ -9,6 +9,12 @@ from cli_model import ARTIFACTS, BINDING, PROVIDER, REPO, VERSION, catalogue, js
 from cli_sprint import INACTIVE, SPRINT, read_state
 from documentation import nonblank_source_lines, review_record, PROJECT_REVIEWS
 
+STAGE_FOLDERS = ()  # Flat numbered documents; no mandatory perspective directories.
+STAGE_NOTE = (  # Legacy scaffold signature, retained only for Context compatibility.
+    'Intended documents live at this stage root; substantiated evidence belongs in `current/`.\n'
+    'Use `planned-release/` for release work and `planned-sprint/` for sprint work, linked to Stage 07.\n'
+    "At cycle closeout, consolidate verified outcomes into Current before deleting that cycle's temporary plans.\n")
+
 HOOK_CONFIG = b'[features]\nhooks = true\n'
 BEGIN, END = '<!-- ASDG:BEGIN embedded-v1 -->', '<!-- ASDG:END -->'
 BRIDGE = f'''{BEGIN}
@@ -33,11 +39,20 @@ Do not edit state, hook definitions or ASDG policies as part of application impl
 Review and trust project hooks in Codex; configuration alone does not establish enforcement.
 Named roles retain read-only evaluation except ASDG-02 Purpose documentation under docs/asdg/02-purpose/.
 Purpose documentation and stage 02 review recording follow asdg/02-purpose/types/contract.md; a sprint does not widen role authority.
+Explicit human use of asdg-approve permits only the documentation-acceptance recording workflow in asdg/skills/asdg-approve/recording.md.
 Installation grants no approval, publication, commit, push, deployment or hook trust.
 {END}
 '''
 IGNORE_BEGIN, IGNORE_END = '# ASDG generated files: BEGIN', '# ASDG generated files: END'
 IGNORE = f'{IGNORE_BEGIN}\n/logs/\n/asdg/**/__pycache__/\n/asdg/**/*.pyc\n/.asdg/backups/\n/.asdg/cache/\n{IGNORE_END}\n'
+
+
+def stage_readme(repo, slug):
+    """Read a portable human-facing stage introduction without project assumptions."""
+    data = read_bytes(safe_path(repo, Path('asdg/scaffolds/stages') / (slug + '.md')))
+    if data is None or nonblank_source_lines(data.decode()) > 50:
+        raise Conflict(f'Missing or oversized stage introduction: {slug}')
+    return data
 
 
 def distribution(repo):
@@ -125,6 +140,7 @@ def preflight_package(repo):
         if read_bytes(safe_path(repo, name)) is None:
             raise Conflict(f'Missing packaged input: {name}')
     for agent in agents:
+        stage_readme(repo, Path(agent['folder']).name)
         for key in ('entry', 'skill'):
             if read_bytes(safe_path(repo, agent[key])) is None:
                 raise Conflict(f'Missing role input: {agent[key]}')
@@ -192,18 +208,19 @@ def initialize(root, repo=REPO, project_state=None, dry_run=False):
         changes.append(plan(root, 'logs/.gitkeep', b''))
     index = ARTIFACTS / 'README.md'
     if read_bytes(safe_path(root, index)) is None:
-        text = '# Project evidence\n\nRead the existing application before reconstructing its documentation.\n'
-        text += 'Empty scaffolds, recorded evidence and human acceptance are distinct.\n\n'
-        text += '\n'.join(f"- [{a['title']}]({Path(a['folder']).name}/README.md)" for a in agents) + '\n'
+        text = '# Project documentation\n\nExplore the project from its purpose through design, delivery and learning.\n'
+        text += 'These introductions explain each area; project evidence and decisions are added as work progresses.\n\n'
+        text += '\n'.join(f"- [{Path(a['folder']).name.replace('-', ' ')}]({Path(a['folder']).name}/README.md)" for a in agents) + '\n'
         changes.append(plan(root, index, text.encode()))
     for agent in agents:
         folder = ARTIFACTS / Path(agent['folder']).name
         if read_bytes(safe_path(root, folder / 'README.md')) is None:
-            text = f"# {agent['title']} — project evidence\n\nNo assessment has been recorded here yet.\n\n"
-            text += 'Use Intended / Actual / Planned; preserve sources, uncertainties and human decisions.\n'
-            text += 'Intended: desired outcomes and constraints. Actual: substantiated current evidence.\n'
-            text += 'Planned: selected next work, linked to the integrated Stage 07 plan.\n'
-            changes.append(plan(root, folder / 'README.md', text.encode()))
+            changes.append(plan(root, folder / 'README.md', stage_readme(repo, folder.name)))
+        if not folder.name.startswith('00-'):
+            for name in STAGE_FOLDERS:
+                destination = safe_path(root, folder / name)
+                if not destination.exists() or not any(destination.iterdir()):
+                    changes.append(plan(root, folder / name / '.gitkeep', b''))
     changes = [c for c in changes if c is not None]
     ledger_raw = read_bytes(safe_path(root, PROJECT_REVIEWS))
     if existing is not None and ledger_raw is None:
@@ -260,6 +277,11 @@ def inspect(root, repo=REPO):
     for relative in [ARTIFACTS / 'README.md'] + [ARTIFACTS / Path(a['folder']).name / 'README.md' for a in agents]:
         if read_bytes(safe_path(root, relative)) is None:
             missing.append(str(relative))
+    for agent in agents[1:]:
+        for name in STAGE_FOLDERS:
+            relative = ARTIFACTS / Path(agent['folder']).name / name
+            if not safe_path(root, relative).is_dir():
+                missing.append(str(relative))
     if value is not None and value.get('stages') != [Path(a['folder']).name for a in agents]:
         missing.append('.asdg/project.json: stage mapping')
     return {'provider': PROVIDER, 'cli_version': VERSION, 'project_root': str(root),

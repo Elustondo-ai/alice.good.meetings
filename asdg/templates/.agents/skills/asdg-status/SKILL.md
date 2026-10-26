@@ -1,6 +1,6 @@
 ---
 name: asdg-status
-description: Show ASDG project/session status, an advisory next-step suggestion, then observations and technical debt. Changes no state or focus; detailed role explanations are separate.
+description: Show overall ASDG project facts and conversation focus, then a project-wide next step unless facts-only. Changes no state or focus; role explanations are separate.
 ---
 
 # asdg-status — Codex discovery adapter

@@ -18,6 +18,8 @@ Use the shared [response envelope](../../00-governance/types/interaction-contrac
 One authoritative project/sprint state; do not create a second copy in this package.
 Evidence of a proposal, attempted execution, observed success and human approval are distinct.
 No type-language mandate; this Markdown is the initial contract notation.
+Evaluate the shared [documentation review criteria](../../00-governance/docs/documentation-review.md), including rendered visuals and source-companion accuracy.
+Report missing or stale documentation as review findings; file presence and structural checks cannot establish documentation readiness.
 
 ## Failure/return
 

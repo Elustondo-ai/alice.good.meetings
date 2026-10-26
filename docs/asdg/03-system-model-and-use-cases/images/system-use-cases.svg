@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1300" viewBox="0 0 1800 1300" role="img" aria-labelledby="title desc">
+  <title id="title">Speaker Coach interview use cases</title>
+  <desc id="desc">Interviewee receives coaching. Interviewer contributes the question. Three specialized use cases are direct answer, open answer and experience story. General coaching includes question retention and brief answer cues. Conditional corrective guidance extends open answer and experience story.</desc>
+  <defs>
+    <marker id="generalization" markerWidth="18" markerHeight="16" refX="16" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L16 8 L1 15 Z" fill="#fff" stroke="#31576a" stroke-width="2"/></marker>
+    <marker id="dependency" markerWidth="15" markerHeight="15" refX="13" refY="7.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L13 7.5 L1 14" fill="none" stroke="#31576a" stroke-width="2"/></marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #203b4a; }
+      .heading { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 22px; fill: #536b78; }
+      .label { font-size: 23px; text-anchor: middle; }
+      .id { font-size: 18px; font-weight: 700; fill: #26716c; text-anchor: middle; }
+      .relation { font-size: 21px; fill: #31576a; }
+      .small { font-size: 19px; fill: #536b78; }
+      .case { fill: #eff8f6; stroke: #397874; stroke-width: 2.5; }
+      .base { fill: #e8eff8; stroke: #31576a; stroke-width: 2.5; }
+      .optional { fill: #fff5df; stroke: #ab8039; stroke-width: 2.5; }
+      .line { fill: none; stroke: #31576a; stroke-width: 2.5; }
+      .dependency { fill: none; stroke: #31576a; stroke-width: 2.3; stroke-dasharray: 9 7; marker-end: url(#dependency); }
+      .generalization { fill: none; stroke: #31576a; stroke-width: 2.5; marker-end: url(#generalization); }
+      .actor { fill: none; stroke: #31576a; stroke-width: 3; stroke-linecap: round; }
+    </style>
+  </defs>
+  <rect width="1800" height="1300" fill="#fbfcfd"/>
+  <text x="70" y="65" class="heading">Speaker Coach interview use cases</text>
+  <text x="70" y="102" class="sub">One coaching goal, three answer scenarios, private visual guidance</text>
+  <rect x="250" y="140" width="1450" height="980" rx="4" fill="#ffffff" stroke="#95abb6" stroke-width="2"/>
+  <text x="282" y="182" font-size="26" font-weight="700">Speaker Coach</text>
+  <!-- Actor associations have no directional arrows. -->
+  <path d="M143 270 L800 270" class="line"/>
+  <path d="M143 780 L360 780" class="line"/>
+  <!-- Each specialized use case points to its general use case. -->
+  <path d="M550 425 L550 350 L825 305" class="generalization"/>
+  <path d="M950 425 L950 335" class="generalization"/>
+  <path d="M1350 425 L1350 350 L1075 305" class="generalization"/>
+  <!-- The base use case includes two required shared behaviors. -->
+  <path d="M814 297 L320 297 L320 650 L550 650 L550 715" class="dependency"/>
+  <text x="350" y="629" class="relation">«include»</text>
+  <path d="M1086 297 L1630 297 L1630 650 L1350 650 L1350 715" class="dependency"/>
+  <text x="1425" y="629" class="relation">«include»</text>
+  <!-- The optional use case extends the two longer-answer use cases. -->
+  <path d="M1000 941 L1145 900 L1145 600 L1020 530" class="dependency"/>
+  <text x="1010" y="862" class="relation">«extend»</text>
+  <path d="M1180 1000 L1570 1000 L1570 600 L1420 530" class="dependency"/>
+  <text x="1437" y="930" class="relation">«extend»</text>
+  <!-- Use cases -->
+  <ellipse cx="950" cy="270" rx="150" ry="65" class="base"/>
+  <text x="950" y="263" class="label"><tspan x="950">Receive interview</tspan><tspan x="950" dy="30">coaching</tspan></text>
+  <ellipse cx="550" cy="480" rx="160" ry="55" class="case"/>
+  <text x="550" y="464" class="id">UC-01</text>
+  <text x="550" y="491" class="label"><tspan x="550">Answer a direct</tspan><tspan x="550" dy="27">question</tspan></text>
+  <ellipse cx="950" cy="480" rx="160" ry="55" class="case"/>
+  <text x="950" y="464" class="id">UC-02</text>
+  <text x="950" y="491" class="label"><tspan x="950">Develop an open</tspan><tspan x="950" dy="27">answer</tspan></text>
+  <ellipse cx="1350" cy="480" rx="160" ry="55" class="case"/>
+  <text x="1350" y="464" class="id">UC-03</text>
+  <text x="1350" y="491" class="label"><tspan x="1350">Tell an experience</tspan><tspan x="1350" dy="27">story</tspan></text>
+  <ellipse cx="550" cy="780" rx="190" ry="65" class="case"/>
+  <text x="550" y="772" class="label"><tspan x="550">Identify and retain</tspan><tspan x="550" dy="30">the current question</tspan></text>
+  <ellipse cx="1350" cy="780" rx="190" ry="65" class="case"/>
+  <text x="1350" y="772" class="label"><tspan x="1350">Prepare brief</tspan><tspan x="1350" dy="30">answer cues</tspan></text>
+  <ellipse cx="950" cy="1000" rx="230" ry="60" class="optional"/>
+  <text x="950" y="992" class="label"><tspan x="950">Signal drift, repetition</tspan><tspan x="950" dy="30">or need to conclude</tspan></text>
+  <text x="950" y="1093" text-anchor="middle" class="small">Condition: correction warranted while an answer is underway.</text>
+  <!-- External actors -->
+  <g transform="translate(110 210)" class="actor"><circle cy="0" r="18"/><path d="M0 18 V85 M-32 48 L32 48 M0 85 L-28 125 M0 85 L28 125"/></g>
+  <text x="110" y="370" text-anchor="middle" font-size="24" font-weight="700">Interviewee</text>
+  <text x="110" y="397" text-anchor="middle" class="small">Receives cues</text>
+  <g transform="translate(110 720)" class="actor"><circle cy="0" r="18"/><path d="M0 18 V85 M-32 48 L32 48 M0 85 L-28 125 M0 85 L28 125"/></g>
+  <text x="110" y="880" text-anchor="middle" font-size="24" font-weight="700">Interviewer</text>
+  <text x="110" y="907" text-anchor="middle" class="small">Asks questions</text>
+  <text x="70" y="1172" class="sub">Generalization: hollow triangle points to the broader use case.</text>
+  <text x="70" y="1208" class="sub">«include»: required shared behavior.  «extend»: conditional additional behavior.</text>
+  <text x="70" y="1244" class="sub">Actor associations show participation; the interviewer does not receive private coaching.</text>
+</svg>

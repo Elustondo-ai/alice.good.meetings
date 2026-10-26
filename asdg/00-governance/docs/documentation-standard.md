@@ -1,7 +1,9 @@
 # Readable project documentation
 
 Documentation helps a person understand a subject, assess its evidence and find useful detail.
+This is a mandatory ASDG rule for every adopting project, all twelve specialists, governance and methodology maintenance.
 Readability is required in both source Markdown and the rendered document.
+Everything in the client's `docs/asdg/` intended for reading has a human audience, including technical material.
 
 ## Size and structure
 
@@ -16,14 +18,22 @@ Derived compilations and technical execution records are not new source document
 
 ## Write for the reader
 
-Open with a meaningful title and explanation of the subject.
+Open with the project's subject and a useful explanation; avoid agent-role titles and template-filling instructions.
+Explain decisions, interfaces, evidence and open questions as engineers would explain them to each other.
+Read supplied sources before restructuring; preserve their clear narrative and meaning, keep archives intact and identify added proposals.
+Teach the approach first, then link detailed protocols and thresholds; adapt to each project's facts instead of copying another project's assumptions.
 Use normal prose to distinguish evidence, documented aspirations, inference and unknowns.
 Keep useful evidence links, baseline dates, limitations, open decisions and commitment status.
 Keep machine timestamps, run IDs, repeated role labels and tool receipts in technical records.
 Use Intended / Actual / Planned in substantive assessments, without labeling every sentence.
-Choose visuals that explain something; do not require decorative diagrams for every document.
+Give each substantive explanation a useful embedded visual: a diagram, dashboard, scenario picture or CRC table.
+Let the visual convey the main idea at a glance and the prose supply the detail, like speaker notes.
+Navigation-only indexes, brief change notes and reference appendices can link to the relevant visual instead.
+Keep editable diagram sources and accessible labels; inspect rendering, legibility and technical accuracy.
 Review representative rendered documents as well as source. Counting alone cannot certify readability.
 See the [assessment example](../../skills/asdg-documentation/example.md).
+Every maintained programming source file has a [human-readable interface companion](code-companions.md), updated with code changes.
+Apply the [documentation review criteria](documentation-review.md); missing or inaccurate explanations remain reported gaps.
 
 ## Review history without clutter
 

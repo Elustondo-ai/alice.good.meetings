@@ -1,11 +1,11 @@
 ---
 name: asdg-suggestion
-description: Recommend a useful next step for an ASDG project using current workflow state, project evidence and the user's priorities. Use when asked what to do next or for an ASDG suggestion; provide advice without executing it or changing conversation focus.
+description: Recommend a useful next contribution from the selected ASDG specialist, or a project-wide next step when unfocused or called by Status. Advice only; preserves focus and authority.
 ---
 
 # ASDG Suggestion
 
-Recommend one concrete next step worth the user's time. Use judgment, not a fixed stage checklist.
+Recommend one concrete next step under [the continuation contract](../../00-governance/docs/continuation.md), using judgment rather than a stage checklist.
 Resolve the client root from this canonical file as `../../..`; use only its embedded distribution.
 Read client `AGENTS.md`, [distribution instructions](../../AGENTS.md), [session policy](../asdg-focus/session-policy.md),
 [lifecycle baseline](../../docs/lifecycle-baseline.md) and [catalogue](../../00-governance/types/agent-catalog.json).
@@ -13,6 +13,7 @@ Read client `AGENTS.md`, [distribution instructions](../../AGENTS.md), [session 
 ## Establish the situation
 
 Identify the target project, latest user goal, constraints and explicit decisions from this conversation.
+Resolve the recommendation perspective from that contract: direct specialist advice is role-scoped; Status always requests project-wide advice.
 Keep a current methodology-maintenance task distinct from the consuming application's next product step.
 When called by Status, reuse its fresh CLI result and inspection evidence; otherwise run `python3 asdg/scripts/cli.py status --json`.
 Never call the Status skill back; inspect additional sources only when needed or evidence has changed. This workflow needs no SDK.
@@ -32,6 +33,7 @@ Prefer the smallest useful conversation, decision, observation, experiment or sc
 Respect active commitments: recommend progress or evidence for the agreed scope, or explain why a human should reconsider it.
 Prioritize a demonstrated operational/user problem when urgent; do not send a working project back through every empty stage.
 For a seed, clarify only the context/purpose needed for the next useful trial; do not invent a platform, roadmap or required POC.
+For NEW with no substantive Purpose and no urgent dependency, suggest the verified Purpose Focus selector; do not require a complete Context package first.
 Treat absent sprint authorization as a boundary on implementation, not a reason to create a sprint for discussion or inspection.
 Unknown hook trust matters when relying on enforcement; do not make it a universal blocker to useful read-only work.
 Recommend checking behavior or user value when that uncertainty matters more than polishing documentation.
@@ -39,12 +41,12 @@ When evidence conflicts with the user's preference, explain the tradeoff respect
 
 ## Return a useful recommendation
 
-Lead with the suggested action and intended benefit, then explain why now using a few specific inspected sources and relevant user decisions.
+Label the perspective briefly, then give the action, intended benefit and evidence-based reason; avoid a repeated role prefix on every reply.
 Explain why it outranks the nearest plausible alternative when the choice is material; avoid a long menu or automatic twelve-stage plan.
 State the expected result or observation that would make the step worthwhile, plus the uncertainty that could change the recommendation.
 When a focused chat would help, name the existing selector from the catalogue/adapters and provide a short ready-to-use assignment.
 Read current role contracts before promising delivery: distinguish conversation-only roles from any bounded documentation/review allowance.
 Keep the response proportional; distinguish facts, user preferences and recommendations without repeating a full status report.
-Invite feedback on the premise or priority. Agreement is useful feedback, not proof of correctness, evidence approval or execution authority.
-Revise advice when new evidence warrants it; do not persist preferences, change this skill or claim learning across chats without authorization.
+Respect rejected advice and deferrals; change the recommendation when evidence warrants it. Agreement is not approval or execution authority.
+Keep preferences in conversation context; do not persist them, change this skill or claim learning across chats without authorization.
 Return advice only: no writes, role activation, delegation, title changes, sprint/release transitions, commits, installation or deployment.

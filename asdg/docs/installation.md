@@ -19,6 +19,7 @@ Nothing changes outside the selected client repository; no shell startup file or
 | `logs/` | Ignored disposable records, centralized by session and child instance |
 
 Run the [README setup command](../README.md), or give Codex [the installation prompt](../CODEX-PROMPT.md).
+Every adopting project inherits the [human documentation rules](../00-governance/docs/documentation-standard.md) through `asdg/AGENTS.md`; initialization neither creates all source companions nor certifies their quality.
 Optional commands, run from the project root:
 
 ```sh

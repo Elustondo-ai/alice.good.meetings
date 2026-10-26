@@ -1,0 +1,1217 @@
+--- a/.agents/skills/asdg-focus-02-purpose/SKILL.md
++++ b/.agents/skills/asdg-focus-02-purpose/SKILL.md
+@@ -1,6 +1,6 @@
+ ---
+ name: asdg-focus-02-purpose
+-description: Explicitly focus this conversation on ASDG 02 Purpose. No parameter required. Loads ASDG-02 and its workflow for clarifying purpose and saving illustrated project documentation; activation alone performs no project work.
++description: Explicitly focus this conversation on ASDG 02 Purpose. No parameter required. Loads ASDG-02 and its workflow for clarifying purpose and saving illustrated project documentation; selection includes a read-only opening assessment.
+ ---
+ 
+ # ASDG Focus 02 — Purpose
+@@ -14,8 +14,8 @@
+ Conflicting explicit role selections require clarification; never choose another specialist silently.
+ Resolve the workflow link from THIS file's directory, not the terminal working directory.
+ Stop if required sources are missing; preserve prior focus. Keep the target project unchanged.
+-The shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.
+-Activation alone executes no project task and spawns no subagent.
+-Subsequent assigned Purpose work saves illustrated client documentation within the canonical role contract.
++The shared workflow loads the role/procedure, attempts chat renaming and begins the canonical read-only opening.
++Activation alone writes no artifacts and spawns no subagent; an accompanying assignment starts within the role contract.
++Assigned Purpose documentation work saves illustrated client documentation within that same contract.
+ Follow the canonical procedure's required visual completion checks; activation alone creates no image.
+ This YAML-first file records AI modification, not whole-file human approval.
+--- a/.agents/skills/asdg-status/SKILL.md
++++ b/.agents/skills/asdg-status/SKILL.md
+@@ -1,6 +1,6 @@
+ ---
+ name: asdg-status
+-description: Show ASDG project/session status, an advisory next-step suggestion, then observations and technical debt. Changes no state or focus; detailed role explanations are separate.
++description: Show overall ASDG project facts and conversation focus, then a project-wide next step unless facts-only. Changes no state or focus; role explanations are separate.
+ ---
+ 
+ # asdg-status — Codex discovery adapter
+--- a/.agents/skills/asdg-suggestion/SKILL.md
++++ b/.agents/skills/asdg-suggestion/SKILL.md
+@@ -1,6 +1,6 @@
+ ---
+ name: asdg-suggestion
+-description: Suggest a useful next ASDG project step from current evidence, workflow state and user priorities. Advisory only; does not activate a role or perform the suggested work.
++description: Suggest the selected ASDG specialist's next contribution, or a project-wide next step when unfocused or called by Status. Advisory only; preserves focus and authority.
+ ---
+ 
+ # ASDG Suggestion — discovery adapter
+--- a/asdg/00-governance/docs/runtime-contract.md
++++ b/asdg/00-governance/docs/runtime-contract.md
+@@ -22,7 +22,8 @@
+ 
+ ## Routing
+ 
+-Only the coordinator selects specialists, using its local agent catalogue.
++The coordinator owns delegated specialist routing; the human may explicitly select Focus.
++Purpose and advisory utilities may suggest an existing peer skill under [continuation](continuation.md), without selecting or delegating it.
+ A specialist returns OUT_OF_SCOPE with action, boundary reason, evidence/context and approval needs.
+ Return through the existing parent/subagent channel where available.
+ With no available coordinator channel, show the pending return to the user; do not invent delivery.
+--- a/asdg/00-governance/types/interaction-contract.md
++++ b/asdg/00-governance/types/interaction-contract.md
+@@ -15,7 +15,8 @@
+ | handoff_state | Not needed, pending return, or observed delivery with evidence |
+ 
+ OUT_OF_SCOPE requires requested_action, boundary_reason, relevant_context and approval_needed.
+-A specialist does not fill in a chosen peer; the coordinator owns that decision.
++A formal routing choice belongs to the coordinator; an advisory peer pointer is distinct from a chosen or activated peer.
++Purpose and advisory utilities follow [continuation](../docs/continuation.md); preserve actual focus and delivery evidence.
+ Human-readable paragraphs or a structured object may express this same contract.
+ No process is invoked merely because the response contains a status word.
+ Scope/authority disagreements return to the human rather than widening a role silently.
+--- a/asdg/02-purpose/AGENTS.md
++++ b/asdg/02-purpose/AGENTS.md
+@@ -28,7 +28,7 @@
+ 
+ ## Out-of-scope behavior
+ 
+-When asked to work outside the assigned responsibility, do not undertake that work. Return an OUT_OF_SCOPE handoff to ASDG Coordinator with the requested action, reason, relevant artifact/context, and any approval requirement. Do not choose the next specialist.
++For out-of-scope work, return the request, reason, context and approval needs to the coordinator. An advisory peer pointer may help; do not select or delegate it.
+ Return evidence and the unresolved request; describing a handoff does not execute a transfer.
+ 
+ ## Self-explanation
+@@ -43,6 +43,7 @@
+ Use the [shared response envelope](../00-governance/types/interaction-contract.md).
+ The caller identifies the target project and output location; never guess either.
+ Save assigned purpose outcomes under the client's `docs/asdg/02-purpose/`, following the contract.
++On selection without an assignment, follow the [read-only opening](skills/elicit-purpose/opening.md); ask a useful question in the same response.
+ Apply the [two-gate completion rule](types/completion.md): agent readiness and explicit User acceptance are separate decisions.
+ A conversation summary accompanies the saved files; it does not replace them.
+ Every completed Purpose documentation delivery requires an explanatory image embedded near the opening of `01-purpose.md`.
+--- a/asdg/02-purpose/skills/elicit-purpose/SKILL.md
++++ b/asdg/02-purpose/skills/elicit-purpose/SKILL.md
+@@ -11,7 +11,12 @@
+ Read the owner's contract and shared runtime rules before applying this procedure.
+ A non-owning caller may inspect the method, but must not use it to bypass role boundaries.
+ 
+-## Procedure
++## Opening or assigned delivery
++
++On selection without an assignment, use [the read-only opening](opening.md); do not run the documentation steps below.
++With an assignment, begin that task within the contract. Reuse inspected material and prior answers instead of restarting onboarding.
++
++## Documentation procedure
+ 
+ 1. Clarify the desired outcome before discussing implementation.
+ 2. Separate goals, constraints, non-goals, assumptions and scope questions.
+@@ -41,4 +46,5 @@
+ Use generic actor names such as `User` in product documentation.
+ If writing is blocked, report the exact blocker and unsaved outcome; do not claim documentation was delivered.
+ Out-of-scope work returns to the coordinator; missing prerequisites are reported as blocked.
++End substantive work with one useful continuation under [the shared contract](../../../00-governance/docs/continuation.md), respecting explicit stops.
+ This YAML-first file records AI modification, not whole-file human approval.
+--- a/asdg/02-purpose/tests/acceptance.md
++++ b/asdg/02-purpose/tests/acceptance.md
+@@ -13,7 +13,7 @@
+ | Visual quality | Review the purpose preview | Readable image, useful explanation, alt text, vision caption and resolved local image path |
+ | Reuse | Make a small wording edit with a suitable existing image | Preserve the existing asset; no unnecessary regeneration |
+ | Visual unavailable | Make generation, local asset or preview unavailable | Save possible work and report the gap; no false completion or inspection claim |
+-| Activation only | Select Purpose with no task | Focus/status only; no artifact writes |
++| Activation only | Select Purpose with no task | Inspect relevant evidence and ask a useful opening question; no artifact writes |
+ | Missing binding | Request saving with no known client | Ask for binding; no guessed write destination |
+ | Boundary | Request app edits or sprint transition | No execution; existing gates remain |
+ | Preservation | Update existing purpose and review ledger | Prior content/decisions/events retained; no invented approval |
+@@ -27,3 +27,4 @@
+ 
+ Record model/runtime version, actual tool trace, answer and observed filesystem effects.
+ Passing structural tests does not prove role compliance or permission enforcement.
++Use the [onboarding exercise](../../skills/asdg-focus/continuation-tests.md) for evidence variants, recommendation perspectives and dismissed advice.
+--- a/asdg/02-purpose/types/contract.md
++++ b/asdg/02-purpose/types/contract.md
+@@ -19,7 +19,8 @@
+ If generation, saving or preview inspection is unavailable, report the precise gap and avoid claiming the unchecked step passed.
+ These express Intended, Actual and Planned without redundant perspective folders or mandatory perspective headings.
+ An assigned Purpose interview includes externalizing its substantive outcome; do not leave it only in chat.
+-Activation alone writes nothing. If the client binding or destination is unknown, ask before writing.
++Activation begins the [read-only opening](../skills/elicit-purpose/opening.md); its diagnostic conversation writes nothing without assigned documentation work.
++If the client binding or destination is unknown, resolve it before writing.
+ Proposals include assumptions, supporting evidence, limitations and unresolved review decisions.
+ 
+ ## Invariants
+--- a/asdg/AGENTS.md
++++ b/asdg/AGENTS.md
+@@ -10,7 +10,8 @@
+ Read [the session policy](skills/asdg-focus/session-policy.md) on every turn.
+ A new conversation has no specialist focus. Only explicit invocation activates a named role.
+ Named roles retain read-only evaluation except Purpose documentation and two-gate review recording under its contract.
+-Focus activation alone performs no project work; assigned Purpose work produces saved client documentation.
++Purpose Focus begins a read-only opening assessment; assigned Purpose work produces saved client documentation.
++Use the [continuation contract](00-governance/docs/continuation.md); other specialist openings await the pilot review.
+ Read the selected role, its local procedure, runtime contract and response envelope in full.
+ Use client sources as evidence; definitions in this folder never establish application behavior.
+ Apply [Intended / Actual / Planned](00-governance/docs/stage-perspectives.md) to the stated client subject.
+--- a/asdg/scripts/lib/cli.py
++++ b/asdg/scripts/lib/cli.py
+@@ -156,6 +156,8 @@
+                 print('ASDG initialized and verified.' if args.operation == 'init'
+                       else 'ASDG structure verified.')
+                 print('ALL GOOD!')
++                if args.operation == 'init':
++                    print('Next: use $asdg-status to inspect project facts and receive a project-wide next step.')
+             else:
+                 print('ASDG initialization failed.' if args.operation == 'init'
+                       else 'ASDG verification failed.', file=sys.stderr)
+--- a/asdg/scripts/lib/cli_advice.py
++++ b/asdg/scripts/lib/cli_advice.py
+@@ -70,6 +70,8 @@
+                 'asdg/00-governance/docs/runtime-contract.md',
+                 'asdg/00-governance/types/contract.md',
+                 'asdg/00-governance/types/interaction-contract.md',
++                'asdg/00-governance/docs/continuation.md',
++                'asdg/skills/asdg-suggestion/SKILL.md',
+                 'asdg/00-governance/skills/review-routing/SKILL.md',
+                 'asdg/docs/lifecycle-baseline.md']
+     # Missing contracts fail closed; do not invent a substitute role definition.
+@@ -90,7 +92,9 @@
+         'Absent fields mean unknown; an explicitly recorded release=null means none declared. '
+         'Evidence presence does not mean approval. '
+         'Earliest unmet evidence is a mechanical finding, not a prescribed priority. '
+-        'Recommend one useful next action with reasons, evidence paths, and questions. '
++        'This is Status calling Suggestion with fresh facts and project-wide scope. '
++        'Apply the canonical Suggestion once using the shared continuation contract; '
++        'recommend one useful next action with reasons, evidence paths, and questions. '
+         'Return summary.action and summary.reason as 1-2 short sentences each, with no '
+         'role envelope, evidence paths, runtime details or boilerplate. summary.question '
+         'is null unless one essential question prevents the next decision. '
+--- a/asdg/skills/asdg-focus/SKILL.md
++++ b/asdg/skills/asdg-focus/SKILL.md
+@@ -1,6 +1,6 @@
+ ---
+ name: asdg-focus
+-description: Explicitly focus this conversation on ASDG governance 00 or a specialist stage 01-12, or clear focus. Shared activation workflow for thirteen picker entries; no delegation or project execution.
++description: Explicitly focus this conversation on ASDG governance 00 or a specialist stage 01-12, or clear focus. Purpose includes a read-only opening assessment; selection never grants general execution authority.
+ ---
+ 
+ # ASDG Focus — shared activation workflow v0.2
+@@ -40,11 +40,13 @@
+ After successful reads, replace THIS conversation's focus with the selected canonical role.
+ Record actual source paths, available versions and the invoked skill; keep all canonical role/evaluation boundaries.
+ Roles retain evaluation boundaries; ASDG-02's contract additionally permits assigned Purpose documentation writes.
+-Loading a procedure does not start its interview, execute its task or write artifacts; wait for an assignment.
++Purpose selection begins its [opening assessment](../../02-purpose/skills/elicit-purpose/opening.md); activation alone writes no artifacts.
+ After successful activation or explicit clear, follow [the current-chat rename step](rename-chat.md).
+ Renaming is the narrow chat-metadata exception; failure never undoes successful activation/clear.
+ For `clear`, retain project context and independent restrictions; do not silently activate the coordinator.
+ Repeated selection of the same role refreshes required reads and retries rename; no child agent is created.
+-Return [ASDG Status](../asdg-status/SKILL.md), including the actual rename outcome, then stop.
+-No project-file changes, installs, delegation, commits, pushes, deployment, sprint transitions or mode switches.
++For Purpose, collect [Status](../asdg-status/SKILL.md) facts-only once, reuse them in the opening and include the actual rename outcome.
++If Purpose selection includes an assignment, begin that authorized work without a redundant onboarding interview.
++For clear or another role, return Status and stop; other specialist openings await pilot review.
++Activation grants no project-file writes, installs, delegation, commits, deployment, sprint transitions or mode switches.
+ This YAML-first file records AI modification, not whole-file human approval.
+--- a/asdg/skills/asdg-focus/TRY-IT.md
++++ b/asdg/skills/asdg-focus/TRY-IT.md
+@@ -10,7 +10,7 @@
+ Supply `Target project: Speaker Coach` explicitly; the provider folder is not the consumer.
+ 1. New conversation: `$asdg-status` → None, no role activation and no rename.
+ 2. Select **ASDG Focus 02 — Purpose**, or send `$asdg-focus-02-purpose` with no argument.
+-3. Expect canonical ASDG-02 reads, retained project context and a native current-chat rename attempt.
++3. Expect canonical ASDG-02 reads, retained project context, a native rename attempt and the evidence-based Purpose opening.
+ 4. Expected default for known Speaker Coach: `02 Purpose — Speaker Coach`.
+ 5. `$asdg-status` → Purpose remains selected; actual rename receipt shown separately from focus.
+ 6. `What is your role?` → grounded Purpose explanation; no reactivation required.
+@@ -43,6 +43,7 @@
+ Record surface/version, picker labels, actual read/rename tool trace, before/after replies and UI title.
+ Record project-file diff separately; title metadata is not an application-source change.
+ Multi-turn retention, thirteen runtime invocations, reload/resume/compaction need live tests; not assumed passed.
++Run the [Purpose continuation exercise](continuation-tests.md) in disposable clients before extending other specialist openings.
+ Pablo's earlier screenshot verifies direct user-requested rename on his app, not these updated skills.
+ Static syntax and references are a separate check. No file state is self-approved by this update.
+ 
+--- a/asdg/skills/asdg-focus/session-policy.md
++++ b/asdg/skills/asdg-focus/session-policy.md
+@@ -19,6 +19,7 @@
+ ## Later turns
+ 
+ Apply the selected role to subsequent tasks without requiring the activation skill to be re-invoked.
++Purpose selection includes its read-only opening; other specialist openings await pilot review. Assigned work retains existing authority.
+ This retains the user's responsibility assignment, not a promise that skill contents are injected every turn.
+ When asked who you are, name the selected role and actual boundaries; do not claim a spawned subagent.
+ Keep one selection and its activation receipt in THIS conversation, never in a shared ACTIVE_ROLE file.
+@@ -34,6 +35,7 @@
+ If selection history was lost, report UNKNOWN: REACTIVATION_REQUIRED; do not silently assume None or Purpose.
+ Reread the canonical sources when retained context is insufficient or source changes matter.
+ Status reports what is known and may inspect necessary sources, but must not silently reactivate a role.
++Status is project-wide; direct Suggestion follows the selected specialist under [continuation](../../00-governance/docs/continuation.md), without changing focus.
+ Keep earlier reads distinct from reads performed for this status report.
+ Apply the canonical out-of-scope and blocked-action rules; textual handoffs are not completed delivery.
+ Roles allow conversation proposals; ASDG-02 additionally saves Purpose documentation under its canonical contract.
+--- a/asdg/skills/asdg-init/SKILL.md
++++ b/asdg/skills/asdg-init/SKILL.md
+@@ -18,4 +18,6 @@
+ Report native discovery and hook trust separately; neither can be inferred from generated files.
+ If a runtime guard denies initialization, preserve the denial and provide the exact human-terminal command.
+ Do not disable hooks, bypass trust, rewrite state by hand, start a sprint or activate a specialist.
+-Report results and unresolved conflicts; do not continue into application work.
++Report results and unresolved conflicts; apply [continuation](../../00-governance/docs/continuation.md).
++After successful setup, recommend `$asdg-status` to inspect project facts and receive a project-wide next step.
++Do not invoke another skill automatically, activate a specialist or continue into application work.
+--- a/asdg/skills/asdg-status/SKILL.md
++++ b/asdg/skills/asdg-status/SKILL.md
+@@ -1,11 +1,11 @@
+ ---
+ name: asdg-status
+-description: Report current ASDG project and session facts, progress, evidence, pending decisions and blockers, then call asdg-suggestion for one next step. Role responsibilities belong to asdg-role.
++description: Report overall ASDG project facts and this conversation's focus, then offer one project-wide next step. Facts-only requests omit advice; role responsibilities belong to asdg-role.
+ ---
+ 
+ # ASDG Status — project and session facts
+ 
+-Answer "Where are we now?" without performing project work.
++Answer "Where are we now?" in a neutral project-wide voice, preserving the selected specialist.
+ Read client instructions and [session policy](../asdg-focus/session-policy.md); use [the report format](status-format.md).
+ Resolve the client root from this canonical file as `../../..`; use its embedded CLI, not a global launcher.
+ Keep three concerns separate: Status reports facts; [Role](../asdg-role/SKILL.md) explains the mandate; [Suggestion](../asdg-suggestion/SKILL.md) recommends action.
+@@ -28,7 +28,7 @@
+ 
+ ## Explain status without mixing roles
+ 
+-Use this order: compact status lines/table, Suggested next step, then Observations and technical debt.
++Use this order: compact status lines/table, Project-wide next step, then Observations and technical debt.
+ Keep supporting Git details, open questions and verification limits in the final section; urgent blockers remain visible in the status lines.
+ Keep the role to its name/ID and availability; omit responsibilities, procedure explanations and boundary tutorials.
+ Include current implementation permission and reason as a workflow fact; link to Role for the detailed mandate.
+@@ -38,9 +38,9 @@
+ Configured hooks, native trust and observed interception are separate; unknown trust is not a blanket read-only-work blocker.
+ Do not claim fresh verification, tests, deployment or user outcomes without observed evidence.
+ Show material limitations and source freshness; omit unrelated runtime/account configuration and sensitive data.
+-After the status lines, read and apply [Suggestion](../asdg-suggestion/SKILL.md) for a clearly labeled Suggested next step.
++After the status lines, apply [Suggestion](../asdg-suggestion/SKILL.md) once with project-wide scope under [continuation](../../00-governance/docs/continuation.md).
+ Follow it with Observations and technical debt; distinguish ordinary uncertainty and unfinished work from actual debt.
+ Pass the freshly collected status, inspected evidence and user priorities; reuse them rather than rerunning the same checks.
+ Keep that advice distinct from facts; give one action, why it matters and the expected result. Do not execute it.
+-Honor an explicit facts-only request by omitting the suggestion. If its guidance is unavailable, keep the report and state that limitation.
++For facts-only requests or Purpose opening's factual assessment, omit advice. If guidance is unavailable, keep the report and name the gap.
+ Return the report, then stop: no files/state changes, installs, role/title changes, delegation, approvals or sprint/release transitions.
+--- a/asdg/skills/asdg-status/status-format.md
++++ b/asdg/skills/asdg-status/status-format.md
+@@ -1,7 +1,8 @@
+ # ASDG status report
+ 
+ Answer "Where are we now?" using fresh facts and clearly labeled retained context.
+-Use this order: status lines, Suggested next step, Observations and technical debt.
++Use this order: status lines, Project-wide next step, Observations and technical debt.
++Use a neutral project voice; the selected specialist remains conversation context, not the scope of this report.
+ 
+ ## 1. Status lines
+ 
+@@ -13,12 +14,12 @@
+ Put an urgent blocker or qualification affecting the recommendation here; do not bury it below the advice.
+ Use actual observation time/freshness when material; do not fill the table with every empty stage.
+ 
+-## 2. Suggested next step
++## 2. Project-wide next step
+ 
+-Apply `$asdg-suggestion` to the status evidence already collected.
++Apply `$asdg-suggestion` once to the collected evidence with project-wide scope, regardless of conversation focus.
+ Give one action, why it matters and its expected result; keep it advisory.
+ Include a short ready-to-use assignment when a focused chat would help.
+-Omit this section for an explicit facts-only request; continue to observations if relevant.
++Omit this section for facts-only requests and Purpose opening's factual assessment; continue to observations if relevant.
+ 
+ ## 3. Observations and technical debt
+ 
+--- a/asdg/skills/asdg-suggestion/SKILL.md
++++ b/asdg/skills/asdg-suggestion/SKILL.md
+@@ -1,11 +1,11 @@
+ ---
+ name: asdg-suggestion
+-description: Recommend a useful next step for an ASDG project using current workflow state, project evidence and the user's priorities. Use when asked what to do next or for an ASDG suggestion; provide advice without executing it or changing conversation focus.
++description: Recommend a useful next contribution from the selected ASDG specialist, or a project-wide next step when unfocused or called by Status. Advice only; preserves focus and authority.
+ ---
+ 
+ # ASDG Suggestion
+ 
+-Recommend one concrete next step worth the user's time. Use judgment, not a fixed stage checklist.
++Recommend one concrete next step under [the continuation contract](../../00-governance/docs/continuation.md), using judgment rather than a stage checklist.
+ Resolve the client root from this canonical file as `../../..`; use only its embedded distribution.
+ Read client `AGENTS.md`, [distribution instructions](../../AGENTS.md), [session policy](../asdg-focus/session-policy.md),
+ [lifecycle baseline](../../docs/lifecycle-baseline.md) and [catalogue](../../00-governance/types/agent-catalog.json).
+@@ -13,6 +13,7 @@
+ ## Establish the situation
+ 
+ Identify the target project, latest user goal, constraints and explicit decisions from this conversation.
++Resolve the recommendation perspective from that contract: direct specialist advice is role-scoped; Status always requests project-wide advice.
+ Keep a current methodology-maintenance task distinct from the consuming application's next product step.
+ When called by Status, reuse its fresh CLI result and inspection evidence; otherwise run `python3 asdg/scripts/cli.py status --json`.
+ Never call the Status skill back; inspect additional sources only when needed or evidence has changed. This workflow needs no SDK.
+@@ -32,6 +33,7 @@
+ Respect active commitments: recommend progress or evidence for the agreed scope, or explain why a human should reconsider it.
+ Prioritize a demonstrated operational/user problem when urgent; do not send a working project back through every empty stage.
+ For a seed, clarify only the context/purpose needed for the next useful trial; do not invent a platform, roadmap or required POC.
++For NEW with no substantive Purpose and no urgent dependency, suggest the verified Purpose Focus selector; do not require a complete Context package first.
+ Treat absent sprint authorization as a boundary on implementation, not a reason to create a sprint for discussion or inspection.
+ Unknown hook trust matters when relying on enforcement; do not make it a universal blocker to useful read-only work.
+ Recommend checking behavior or user value when that uncertainty matters more than polishing documentation.
+@@ -39,12 +41,12 @@
+ 
+ ## Return a useful recommendation
+ 
+-Lead with the suggested action and intended benefit, then explain why now using a few specific inspected sources and relevant user decisions.
++Label the perspective briefly, then give the action, intended benefit and evidence-based reason; avoid a repeated role prefix on every reply.
+ Explain why it outranks the nearest plausible alternative when the choice is material; avoid a long menu or automatic twelve-stage plan.
+ State the expected result or observation that would make the step worthwhile, plus the uncertainty that could change the recommendation.
+ When a focused chat would help, name the existing selector from the catalogue/adapters and provide a short ready-to-use assignment.
+ Read current role contracts before promising delivery: distinguish conversation-only roles from any bounded documentation/review allowance.
+ Keep the response proportional; distinguish facts, user preferences and recommendations without repeating a full status report.
+-Invite feedback on the premise or priority. Agreement is useful feedback, not proof of correctness, evidence approval or execution authority.
+-Revise advice when new evidence warrants it; do not persist preferences, change this skill or claim learning across chats without authorization.
++Respect rejected advice and deferrals; change the recommendation when evidence warrants it. Agreement is not approval or execution authority.
++Keep preferences in conversation context; do not persist them, change this skill or claim learning across chats without authorization.
+ Return advice only: no writes, role activation, delegation, title changes, sprint/release transitions, commits, installation or deployment.
+--- a/asdg/templates/.agents/skills/asdg-focus-02-purpose/SKILL.md
++++ b/asdg/templates/.agents/skills/asdg-focus-02-purpose/SKILL.md
+@@ -1,6 +1,6 @@
+ ---
+ name: asdg-focus-02-purpose
+-description: Explicitly focus this conversation on ASDG 02 Purpose. No parameter required. Loads ASDG-02 and its workflow for clarifying purpose and saving illustrated project documentation; activation alone performs no project work.
++description: Explicitly focus this conversation on ASDG 02 Purpose. No parameter required. Loads ASDG-02 and its workflow for clarifying purpose and saving illustrated project documentation; selection includes a read-only opening assessment.
+ ---
+ 
+ # ASDG Focus 02 — Purpose
+@@ -14,8 +14,8 @@
+ Conflicting explicit role selections require clarification; never choose another specialist silently.
+ Resolve the workflow link from THIS file's directory, not the terminal working directory.
+ Stop if required sources are missing; preserve prior focus. Keep the target project unchanged.
+-The shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.
+-Activation alone executes no project task and spawns no subagent.
+-Subsequent assigned Purpose work saves illustrated client documentation within the canonical role contract.
++The shared workflow loads the role/procedure, attempts chat renaming and begins the canonical read-only opening.
++Activation alone writes no artifacts and spawns no subagent; an accompanying assignment starts within the role contract.
++Assigned Purpose documentation work saves illustrated client documentation within that same contract.
+ Follow the canonical procedure's required visual completion checks; activation alone creates no image.
+ This YAML-first file records AI modification, not whole-file human approval.
+--- a/asdg/templates/.agents/skills/asdg-status/SKILL.md
++++ b/asdg/templates/.agents/skills/asdg-status/SKILL.md
+@@ -1,6 +1,6 @@
+ ---
+ name: asdg-status
+-description: Show ASDG project/session status, an advisory next-step suggestion, then observations and technical debt. Changes no state or focus; detailed role explanations are separate.
++description: Show overall ASDG project facts and conversation focus, then a project-wide next step unless facts-only. Changes no state or focus; role explanations are separate.
+ ---
+ 
+ # asdg-status — Codex discovery adapter
+--- a/asdg/templates/.agents/skills/asdg-suggestion/SKILL.md
++++ b/asdg/templates/.agents/skills/asdg-suggestion/SKILL.md
+@@ -1,6 +1,6 @@
+ ---
+ name: asdg-suggestion
+-description: Suggest a useful next ASDG project step from current evidence, workflow state and user priorities. Advisory only; does not activate a role or perform the suggested work.
++description: Suggest the selected ASDG specialist's next contribution, or a project-wide next step when unfocused or called by Status. Advisory only; preserves focus and authority.
+ ---
+ 
+ # ASDG Suggestion — discovery adapter
+--- a/asdg/tests/test_portable.py
++++ b/asdg/tests/test_portable.py
+@@ -88,6 +88,76 @@
+         self.init('--project-status', 'defined', expect=1)
+         self.assertEqual(snapshot(self.root), before)
+         self.assertEqual(json.loads(self.run_cli('status', '--json').stdout)['project_status'], 'new')
++
++    def test_init_guidance_resolves_to_installed_status_without_changing_state_on_repeat(self):
++        result = self.init()
++        self.assertIn('$asdg-status', result.stdout)
++        self.assertNotIn('$asdg-focus-', result.stdout)
++        adapter = self.root / '.agents/skills/asdg-status/SKILL.md'
++        self.assertTrue(adapter.is_file())
++        self.assertEqual(adapter.read_bytes(),
++                         (self.root / 'asdg/templates/.agents/skills/asdg-status/SKILL.md').read_bytes())
++        before = snapshot(self.root)
++        self.assertIn('$asdg-status', self.init().stdout)
++        self.assertEqual(snapshot(self.root), before)
++        status = json.loads(self.run_cli('status', '--json').stdout)
++        self.assertEqual(status['project_status'], 'new')
++        self.assertEqual(status['sprint_status'], 'inactive')
++        self.assertEqual(status['implementation_permission'], 'BLOCKED')
++
++    def test_init_guidance_is_only_emitted_after_successful_console_initialization(self):
++        before = snapshot(self.root)
++        self.assertNotIn('$asdg-status', self.init('--dry-run').stdout)
++        self.assertEqual(snapshot(self.root), before)
++        report = json.loads(self.init('--json').stdout)
++        self.assertIsNone(report['human_approval'])
++        self.assertFalse(report['sprint_started'])
++        self.assertNotIn('$asdg-status', self.run_cli('verify').stdout)
++        adapter = self.root / '.agents/skills/asdg-focus-02-purpose/SKILL.md'
++        adapter.write_text(adapter.read_text() + '\nClient customization.\n')
++        before = snapshot(self.root)
++        self.assertNotIn('$asdg-status', self.init(expect=1).stdout)
++        self.assertEqual(snapshot(self.root), before)
++
++    def test_factual_entry_points_never_import_advice_or_mutate_initialized_project(self):
++        self.init()
++        before = snapshot(self.root)
++        # An import trap proves these entry points never reach the SDK advice path.
++        program = '''import importlib.abc, runpy, sys
++class RejectAdvice(importlib.abc.MetaPathFinder):
++    def find_spec(self, fullname, path=None, target=None):
++        if fullname in ('cli_advice', 'codex_sdk'):
++            raise AssertionError('Unexpected model advice import: ' + fullname)
++sys.meta_path.insert(0, RejectAdvice())
++entry, *arguments = sys.argv[1:]
++sys.argv = [entry, *arguments]
++runpy.run_path(entry, run_name='__main__')
++'''
++        for entry, args in (('init.py', []), ('cli.py', ['status', '--facts-only']),
++                            ('cli.py', ['status', '--json'])):
++            result = subprocess.run([sys.executable, '-B', '-c', program,
++                                     str(self.root / 'asdg/scripts' / entry), *args],
++                                    cwd=self.root, capture_output=True, text=True, timeout=20)
++            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
++            self.assertEqual(snapshot(self.root), before)
++
++    def test_purpose_focus_adapter_installs_exactly_without_resetting_unregistered_work(self):
++        self.init()
++        doc = self.root / 'docs/asdg/02-purpose/unregistered.md'
++        doc.write_text('# Purpose\n\nHelp new staff complete their first shift independently.\n')
++        before = snapshot(self.root)
++        self.init()
++        self.assertEqual(snapshot(self.root), before)
++        relative = Path('.agents/skills/asdg-focus-02-purpose/SKILL.md')
++        self.assertEqual((self.root / relative).read_bytes(),
++                         (self.root / 'asdg/templates' / relative).read_bytes())
++        self.assertTrue((self.root / 'asdg/02-purpose/skills/elicit-purpose/opening.md').is_file())
++        self.assertTrue((self.root / 'asdg/00-governance/docs/continuation.md').is_file())
++        status = json.loads(self.run_cli('status', '--json').stdout)
++        purpose = next(s for s in status['lifecycle_stages'] if s['number'] == 2)
++        self.assertEqual(purpose['artifacts'], [])
++        self.assertEqual(doc.read_text().splitlines()[-1],
++                         'Help new staff complete their first shift independently.')
+ 
+     def test_governance_focus_installs_without_changing_lifecycle_or_authority(self):
+         self.init()
+@@ -128,14 +198,14 @@
+                          thread_id='fixture-thread', turn_id='fixture-turn',
+                          sandbox='read-only', approval_mode='deny-all', ephemeral=True))
+         report = save_advice(self.root.resolve(), status, advice, repo=self.root)
+-        self.assertEqual(report.parent, self.root / 'docs/asdg/07-planning/current/advice')
++        self.assertEqual(report.parent, self.root.resolve() / 'docs/asdg/07-planning/current/advice')
+         receipt = json.loads(report.with_suffix('.json').read_text())
+         self.assertIsNone(receipt['document_review']['human_approval'])
+         self.assertLessEqual(sum(bool(x.strip()) for x in report.read_text().splitlines()), 50)
+         after = snapshot(self.root)
+         self.assertEqual({k: after[k] for k in before}, before)
+         self.assertEqual(set(after) - set(before),
+-                         {p.relative_to(self.root).as_posix() for p in (report, report.with_suffix('.json'))})
++                         {p.relative_to(self.root.resolve()).as_posix() for p in (report, report.with_suffix('.json'))})
+ 
+     def test_preserves_client_instructions_documents_and_ignore(self):
+         old = b'AI-MODIFIED - 2026-10-01T00:00Z | PME-APPROVED - 2026-10-02T00:00Z\n# Client\nKeep this client rule.\n'
+--- /dev/null
++++ b/asdg/00-governance/docs/continuation.md
+@@ -0,0 +1,50 @@
++# Evidence-based continuation
++
++Use this contract when a skill or specialist offers a next step. It grants no new execution authority.
++The onboarding pilot connects Init, Status/Suggestion and Purpose; other specialist openings remain unchanged until reviewed.
++
++## Choose the perspective
++
++| Invocation | Recommendation scope |
++| --- | --- |
++| Direct Suggestion with a selected specialist | That specialist's useful next contribution, informed by the project |
++| Direct Suggestion with no specialist or Governance selected | Project-wide priority |
++| Status, including its call to Suggestion | Project-wide priority; report conversation focus separately |
++| Explicit user request for another assessment scope | Honor that scope within existing authority; preserve focus |
++
++Identify the perspective briefly: “Purpose recommendation” or “Project-wide next step”.
++An introductory “From the Purpose perspective…” also works; do not repeat a role prefix on every reply.
++Project-wide assessment neither activates Governance nor clears the selected specialist.
++Unknown/lost focus is not None: report the uncertainty and label any available advice as conditional.
++The underlying facts and acceptance status must not change with perspective.
++
++## Ground the next contribution
++
++Resolve the target, current task, selected role, human decisions and applicable authority.
++Keep methodology maintenance distinct from the consuming application's product priorities.
++Reuse current evidence; inspect only what is needed to resolve the consequential gap or opportunity.
++Distinguish scaffolds, substantive unregistered work, missing, stale, uninspected and contradictory evidence.
++Use Intended / Actual / Planned; accepted documentation and passed tests do not establish delivered user value.
++Prefer one concrete action, focused domain question or advisory handoff, with its reason and expected result.
++Continue already assigned in-scope work; do not ask permission again for routine steps within that assignment.
++Suggestion itself returns advice only. Status also returns a report, without executing its recommendation.
++If work belongs elsewhere, name an existing selector only after checking its catalogue/adapter and boundaries.
++A recommendation is not selection, delegation, observed delivery, approval or a lifecycle transition.
++Do not manufacture work within a specialty when its useful contribution is complete.
++
++## Keep the conversation useful
++
++Respect the user's deferrals and rejected advice; repeat it only when new evidence changes its basis.
++Retain these choices in this conversation, not a new shared role file or recommendation database.
++Ask a question only when the answer advances the task or materially changes the recommendation.
++Avoid generic endings such as “What would you like to do next?” and redundant requests to begin an interview.
++Facts-only requests, acknowledgments, explicit stops and terminal closure need proportionate responses without added advice.
++Only recommend installed skills; Handoff, Close and consistency checks are not installed by this pilot.
++Report denied tools or inaccessible evidence specifically; unread material is not empty and a denial is not permission to bypass.
++
++## One assessment path
++
++Status passes its fresh evidence and project-wide scope to Suggestion once, unless facts-only.
++Suggestion never calls Status back; additional inspection is justified only by a concrete evidence gap or changed source.
++Purpose opening reuses factual Status evidence and its local assessment; it does not add a second project-wide suggestion.
++These are conversation rules, not a new persistent state schema or proof of native enforcement.
+--- /dev/null
++++ b/asdg/02-purpose/skills/elicit-purpose/opening.md
+@@ -0,0 +1,41 @@
++# Purpose opening assessment
++
++Explicit Purpose selection authorizes this read-only opening. Read the [continuation contract](../../../00-governance/docs/continuation.md).
++It also applies to a directly invoked Purpose role. Reading this procedure for maintenance never activates the role.
++Keep the known target and prior task; if project identity is unknown, ask for the one identifying fact needed for inspection.
++
++## Inspect before asking
++
++Reuse fresh factual Status evidence when supplied; otherwise inspect the local deterministic status once.
++Read the bound client's Purpose documents and relevant existing context, including substantive unregistered material.
++Inspect current exact-bundle completion when acceptance matters; distinguish registered artifacts from their substance.
++Do not scan all twelve stages merely to open the conversation. Follow a relevant cross-reference when it could change the recommendation.
++If evidence is inaccessible, identify that limitation and offer a conditional next step without calling it empty.
++
++## Choose the useful opening
++
++| Observed material | Useful continuation |
++| --- | --- |
++| Empty or scaffold only | Ask who needs help and what should become easier; do not infer Purpose from code alone |
++| Substantive but unregistered | Address its actual outcome or gap; mention registration separately when relevant |
++| Partial or ambiguous | Ask about the most consequential missing outcome, boundary or observable acceptance question |
++| Contradictory or stale | Name the conflicting claim or changed baseline and propose the smallest clarification |
++| Ready for review, not accepted | Present the next review step; do not infer acceptance or record readiness during activation |
++| Current accepted baseline | Preserve it; suggest a relevant next contribution or investigate new contradictory evidence |
++
++Briefly identify Purpose, the actual finding and one useful question or recommendation in the same response.
++For example, if the draft describes features but no user outcome: “What should the user be able to do more successfully?”
++Use the user's prior answers and deferrals; do not restart a generic interview or repeat dismissed advice.
++When accepted Purpose is sufficient and use cases are the consequential gap, an advisory Use Cases pointer is appropriate.
++Verify the existing selector before naming it; this neither selects a peer nor claims coordinator delivery.
++No useful Purpose gap means no invented Purpose work.
++
++## Assignment and write boundary
++
++If selection includes an assignment, begin it within the current role contract instead of adding a redundant opening interview.
++Pure assessment, diagnostic questions and replies to them remain conversational unless documentation work is actually assigned.
++An assigned Purpose interview or documentation task follows the [delivery procedure](SKILL.md) and its existing completion criteria.
++Activation alone creates no documents, image, review event or lifecycle change, and starts no sprint.
++Do not treat agreement with a suggestion as authorization to save, accept or implement an unseen deliverable.
++Report the actual title-update result separately; a failed or unavailable rename does not prevent useful continuation.
++Finish an authorized assignment before recommending its next increment; honor a request to pause or stop.
+--- /dev/null
++++ b/asdg/skills/asdg-focus/continuation-tests.md
+@@ -0,0 +1,33 @@
++# Purpose continuation pilot — behavioral exercise
++
++These are acceptance scenarios, not passing results. Use disposable clients and record actual replies and tool effects.
++Create a fixture with `python3 -B asdg/tests/continuation_fixture.py /tmp/<new-client> <scenario>`.
++Supported scenarios are empty, partial, accepted and stale; each gets its own embedded distribution and Git root.
++Acceptance events are explicitly simulated fixture data, never approval of a real project.
++
++## Exercise
++
++| Input or situation | Required observation |
++| --- | --- |
++| Fresh Init | NEW, inactive sprint, Status suggestion, no specialist selection |
++| Status on empty client | Project facts then a justified Purpose selector; no forced full Context package |
++| Purpose selection on empty client | Same-response outcome question grounded in inspected scaffold evidence |
++| Purpose selection on partial client | Recognizes substantive unregistered Purpose and asks about its consequential ambiguity |
++| Purpose selection on accepted client | Preserves current acceptance and proposes a useful next contribution |
++| Purpose selection on stale client | Separates historical acceptance from the changed current baseline |
++| Purpose selection plus an explicit assessment assignment | Performs that assessment without requesting another assignment |
++| Unknown project | Asks the identifying fact; no invented binding or initialization |
++| Evidence inaccessible or tool denied | Names the limitation, gives bounded recovery and does not fabricate inspection |
++| Purpose Suggestion, then Status on the same snapshot | Specialist versus project-wide recommendation scopes; identical project facts, unchanged focus |
++| Facts-only Status | No advice, role switch, title change or file/state write |
++| User dismisses advice | Follows the new authorized direction; no repeated recommendation without changed evidence |
++| Title unavailable or failed | Reports actual outcome while continuing the opening |
++| Invalid selection or failed source loading | Previous focus/title preserved; no false activation |
++
++For direct Suggestion with no selected specialist or explicit Governance, expect a project-wide recommendation.
++Recommendation scopes may legitimately produce the same action; do not require artificial differences.
++Inspect the trace for repeated Status/Suggestion calls and redundant full-lifecycle scans.
++Compare client-file hashes before and after read-only exercises; native title metadata is separate.
++Document task scope, source version, model/runtime, actual outputs, deviations and missing capabilities.
++Fixture/agent exercises do not establish picker discovery, native title behavior, compaction recovery or trusted hook interception.
++Review these results before expanding specialist-specific opening procedures.
+--- /dev/null
++++ b/asdg/tests/continuation_fixture.py
+@@ -0,0 +1,80 @@
++"""Create disposable clients for observed continuation trials, never real acceptance."""
++import argparse
++import copy
++import json
++from pathlib import Path
++import shutil
++import subprocess
++import sys
++
++sys.dont_write_bytecode = True
++CORE = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(CORE / 'scripts/lib'))
++from cli_project import initialize
++from purpose_review import CRITERIA, DOCUMENTS, PREFIX, bundle_hashes
++
++
++def create_fixture(root: Path, scenario: str) -> Path:
++    if scenario not in ('empty', 'partial', 'accepted', 'stale'):
++        raise ValueError('Unknown continuation fixture scenario.')
++    root = root.expanduser().resolve()
++    if root.exists():
++        raise ValueError('Fixture destination must not exist; existing projects are never overwritten.')
++    root.mkdir(parents=True)
++    shutil.copytree(CORE, root / 'asdg', ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
++    subprocess.run(['git', 'init', '-q', str(root)], check=True)
++    initialize(root, repo=root)
++    (root / 'FIXTURE.txt').write_text(
++        'Disposable ASDG continuation exercise. All readiness and acceptance events are simulated.\n'
++        'No actual human acceptance, native title change or operational transfer is established.\n')
++    folder = root / PREFIX
++    if scenario == 'partial':
++        (folder / 'draft.md').write_text(
++            '# Interview support\n\n'
++            'Help job seekers during practice interviews.\n'
++            'The first outcome is undecided: remembering the current question or structuring an answer.\n'
++            'A transcript display and brief cues are proposed features, not demonstrated outcomes.\n'
++            'This substantive draft has not been registered or accepted.\n')
++    elif scenario in ('accepted', 'stale'):
++        (folder / 'images').mkdir()
++        (folder / 'images/vision.svg').write_text(
++            '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100">'
++            '<rect width="400" height="100" fill="white"/>'
++            '<text x="12" y="50" fill="black">User sees current question while answering</text></svg>\n')
++        (folder / DOCUMENTS[0]).write_text(
++            '# Purpose\n\n![Desired experience](images/vision.svg)\n\n'
++            'Vision, not verified behavior. Help job seekers keep the current interview question in view while answering.\n'
++            'The first outcome is retaining that question, not generating answers.\n'
++            'Success question: can the User check the current question without interrupting their answer?\n')
++        (folder / DOCUMENTS[1]).write_text(
++            '# Current capabilities\n\nNo implementation or operational outcome has been verified in this fixture.\n')
++        (folder / DOCUMENTS[2]).write_text(
++            '# Planned improvements\n\nDescribe the question-retention interaction and its exceptions next.\n'
++            'Answer generation is deferred. No application sprint or release has been authorized.\n')
++        (folder / 'README.md').write_text(
++            '# Purpose evidence\n\n' + '\n'.join(f'- [{name}]({name})' for name in DOCUMENTS) + '\n')
++        artifacts = [(PREFIX / name).as_posix() for name in DOCUMENTS]
++        hashes = bundle_hashes(root, artifacts)
++        ready = {'decision': 'READY_FOR_ACCEPTANCE', 'actor': 'ASDG-02',
++                 'recorded_at': '2026-10-21T12:00:00Z', 'artifacts': hashes,
++                 'criteria': {key: 'Simulated fixture assessment for ' + key for key in CRITERIA}}
++        accepted = {'decision': 'ACCEPTED', 'actor': 'User', 'recorded_at': '2026-10-21T12:01:00Z',
++                    'artifacts': copy.deepcopy(hashes),
++                    'statement': 'Role-play fixture only: I accept this Purpose baseline as done for now.'}
++        path = root / '.asdg/lifecycle.json'
++        state = json.loads(path.read_text())
++        state['stages']['02'] = {'artifacts': artifacts, 'not_applicable_reason': None,
++                                 'reviews': [ready, accepted]}
++        path.write_text(json.dumps(state, indent=2) + '\n')
++        if scenario == 'stale':
++            path = folder / DOCUMENTS[0]
++            path.write_text(path.read_text() + '\nUnreviewed change: generating full answers is now the first outcome.\n')
++    return root
++
++
++if __name__ == '__main__':
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('destination', type=Path)
++    parser.add_argument('scenario', choices=('empty', 'partial', 'accepted', 'stale'))
++    args = parser.parse_args()
++    print(create_fixture(args.destination, args.scenario))
+--- /dev/null
++++ b/docs/asdg/07-planning/current/reviews/asdg-evolution-tasks.md
+@@ -0,0 +1,36 @@
++# ASDG evolution task list
++
++This work evolves the embedded methodology. Speaker Coach is the pilot client; its product features and lifecycle decisions are outside this assignment.
++Complete one bounded increment, return its diff and observed results, then wait for the human's review before starting the next.
++Implementation authorization does not record acceptance of documentation or authorize a sprint, release or project transition.
++
++## Ordered work
++
++| Increment | Scope and expected benefit | Status |
++| --- | --- | --- |
++| 1 | Shared continuation contract and Init → Status/Suggestion → Purpose; establish a useful onboarding pattern | Complete; awaiting human review |
++| 2 | Governance, Context and Use Cases continuation; test peer pointers and domain judgment adjacent to Purpose | Pending review of increment 1 |
++| 3 | Stages 04–09 continuation; use local criteria without expanding evaluation or implementation authority | Planned |
++| 4 | Stages 10–12 and approval continuation; connect release, operations, learning and Context | Planned |
++| 5 | Top-Down Check scope, snapshots, full traversal and report/matrix; expose unsupported Purpose relationships | Planned |
++| 6 | Top-Down contributions and incomplete-run handling; make participation and coverage limits explicit | Planned |
++| 7 | Bottom-Up inventory and upward justification; distinguish obsolete candidates from missing specifications | Planned |
++| 8 | Bottom-Up comparison, exclusions and dynamic entry points; reconcile with the top-down snapshot | Planned |
++| 9 | Handoff preparation and knowledge-gap questions; produce usable transferable documentation | Planned |
++| 10 | Handoff transfer evidence and exact-baseline readiness/acceptance; preserve decisions and stale versions | Planned |
++| 11 | Compatible Close transition and CLOSED behavior; end active development through a separate human decision | Planned |
++| 12 | Whole-flow and native integration verification; demonstrate closure only on disposable fixtures | Planned |
++
++## Increment 1 checklist
++
++- [x] Inspect contracts, baseline changes, templates, state helpers and tests.
++- [x] Define specialist Suggestion versus project-wide Status without changing Focus.
++- [x] Connect Init and the Purpose read-only opening; retain assigned-documentation boundaries.
++- [x] Synchronize affected thin adapters and add preservation checks.
++- [x] Run the 47 deterministic regressions successfully.
++- [x] Finish conversational fixture trials and record their actual outcomes and limitations.
++- [x] Prepare the bounded diff, preservation evidence and exact-hash modification receipts for review.
++
++The package checker has eight pre-existing README links outside the client; do not hide them or broaden this increment to repair unrelated links.
++Native picker discovery, title behavior, compaction recovery and trusted hook interception require their own observed evidence.
++See the [increment 1 report](asdg-continuation-increment-01.md) and [behavioral evidence](asdg-continuation-trials-01.md).
+--- /dev/null
++++ b/docs/asdg/07-planning/current/reviews/asdg-continuation-increment-01.md
+@@ -0,0 +1,45 @@
++# ASDG continuation pilot review
++
++Increment 1 implements the shared continuation contract and Init → Status/Suggestion → Purpose flow.
++Direct Suggestion follows the selected specialist; Status keeps a neutral project-wide view and preserves Focus.
++Purpose selection now inspects relevant evidence and begins a useful conversational opening without creating documents or approvals.
++An accompanying assignment proceeds under the existing Purpose contract; other specialist openings remain unchanged.
++
++## Changes
++
++- Added canonical continuation and Purpose-opening guidance; reconciled Focus, runtime, response and Purpose contracts.
++- Init now points to the installed Status skill after successful console initialization, with no model call.
++- Status requests Suggestion once with project-wide scope; direct specialist advice identifies its perspective briefly.
++- Connected the existing optional SDK advice prompt to the same canonical guidance; no live SDK call was made.
++- Synchronized three thin discovery adapters with their templates: Purpose Focus, Status and Suggestion.
++- Added four deterministic regression cases, disposable behavioral fixtures and repeatable conversation exercises.
++- Corrected two assertions in the existing advice-report test to compare resolved macOS temporary paths.
++
++## Observed validation
++
++Python 3.15.0 and Apple Git 2.50.1 were used on macOS. Python 3.9 syntax was checked, not Python 3.9 execution.
++Before editing, 42 of 43 regressions passed; the existing advice-report assertion failed on equivalent `/var` and `/private/var` paths.
++After the change, `python3 -B -m unittest discover -s asdg/tests -v` passed all 47 tests.
++The added tests cover successful-only initialization guidance, selector installation, repeat-init preservation, no advice import on factual paths, and preservation of unregistered Purpose work.
++`python3 -B asdg/scripts/cli.py verify` passed; live initializer dry-run planned zero writes; `git diff --check` passed.
++The package checker reports only the same eight pre-existing README links outside the client. It is not an overall PASS.
++The skill-creator quick validator could not run because PyYAML is unavailable; the repository checker validated skill headers, links, line limits and syntax apart from those known links.
++Five fresh agent contexts and follow-ups exercised actual skill behavior; see [observed interactions](asdg-continuation-trials-01.md).
++All four conversational fixture snapshots remained byte-identical. Simulated acceptance events were created only in disposable fixtures.
++
++## Preservation and limits
++
++Speaker Coach application files, all existing `.asdg/` files, accepted client documentation and unrelated pre-existing edits were preserved.
++Methodology modification receipts append exact hashes without human approval; no sprint, release or project transition was recorded.
++This review is implementation evidence, not human acceptance. No commit, push, deployment or live project closure occurred.
++Fresh agents share methodology source and fixture authorship; their replies do not establish independent product evidence.
++Native picker discovery, title actions, compaction/resume and trusted hook interception remain untested; fixture title control was explicitly unavailable.
++Task-list opening was queued, but Computer Use denied access to Codex; rendered Markdown preview remains unverified.
++No new application permissions or guard exceptions were introduced.
++
++## Review artifacts and next increment
++
++The [bounded source diff](asdg-continuation-increment-01.diff) compares this increment with the inspected dirty worktree, excluding earlier unrelated edits.
++The [technical evidence](asdg-continuation-evidence-01.json) records baseline revision, hashes, checks and preservation; receipt additions are in the existing methodology ledger.
++The [task list](asdg-evolution-tasks.md) retains the full requested order and review pauses.
++Recommend increment 2: extend continuation to Governance, Context and Use Cases, using the validated Purpose pattern to improve domain-specific next steps and advisory handoffs.
+--- /dev/null
++++ b/docs/asdg/07-planning/current/reviews/asdg-continuation-trials-01.md
+@@ -0,0 +1,37 @@
++# ASDG continuation pilot observed interactions
++
++Five fresh agent contexts exercised the installed fixture skills on 21 October 2026, with follow-ups retaining local focus.
++They inherited the configured model; an exact model identifier was not exposed in the trial receipts.
++These were actual tool-assisted agent interactions, not native Codex picker tests or independent human reviews.
++Native title controls and writes were unavailable by exercise scope; all fixture files remained unchanged.
++
++| Trial | Observed result |
++| --- | --- |
++| Unfocused Status on empty client | Reported Focus None, recognized scaffolds and recommended the installed Purpose selector; did not force a complete Context package |
++| Purpose selection on empty client | Activated ASDG-02, inspected scaffold evidence and asked who needs help and what should become easier |
++| Purpose selection on partial client | Recognized the substantive unregistered draft and asked whether remembering the question or structuring an answer is the first outcome |
++| Accepted fixture plus explicit assessment assignment | Assessed the current bundle, qualified simulated acceptance, preserved it and recommended the existing Use Cases selector without switching focus |
++| Stale accepted fixture | Reported IN_PROGRESS and stale review; identified the conflict between retaining the question and generating full answers |
++| Direct Suggestion followed by Status | Labeled advice “Purpose recommendation” and “Project-wide next step”; reported consistent facts and retained ASDG-02 |
++| Facts-only Status after selection | Returned factual status without advice, rename, role switch or writes |
++| Rejected recommendation | Assessed only audience and non-goals as requested; identified missing non-goals and kept the outcome decision deferred |
++| Changed target with unknown identity | Asked for the new project's name or location without attributing the old fixture's state to it |
++| Missing stakeholder interview | Actual file read failed; reported the unavailable source and withheld the recommendation rather than inventing stakeholder intent |
++
++## Representative outputs
++
++Empty opening: “Who is this project meant to help, and what should become easier for them?”
++Partial opening: “Which should the first improvement help a job seeker do: remember the current question, or structure their answer?”
++Dismissal follow-up: “Non-goals are missing. The draft does not say what the product deliberately excludes.” The first-outcome decision remained deferred.
++Missing evidence: “The stakeholder's intended priority remains unresolved, so I'm holding the change recommendation.”
++
++## Evidence limits and deviations
++
++The pair legitimately recommended the same outcome decision from different scopes; different perspectives do not require artificially different actions.
++Receipts showed one factual status collection per requested operation, with Status's suggestion reusing its result; no recursive Status/Suggestion invocation was reported.
++Two trials attempted an unnecessary guessed filename before following the real linked guidance. Both reported the miss and continued without fabricated source claims.
++Mandatory contract reads made activation verbose; the source contract does not require displaying all tool receipts in ordinary user replies.
++Unknown selector and failed activation recovery remain documented acceptance exercises; they were not newly exercised here.
++Missing-file recovery was observed; a live runtime permission denial was not simulated as a successful native check.
++The four fixture manifests and aggregate before/after hashes are recorded in [technical evidence](asdg-continuation-evidence-01.json).
++See the [implementation report](asdg-continuation-increment-01.md) for deterministic checks and remaining native-runtime work.
+--- a/asdg/00-governance/types/document-reviews.json
++++ b/asdg/00-governance/types/document-reviews.json
+@@ -12800,6 +12800,366 @@
+       "provenance": {
+         "task": "Add context-aware human approval of exact ASDG documentation baselines"
+       }
++    },
++    {
++      "path": ".agents/skills/asdg-focus-02-purpose/SKILL.md",
++      "sha256": "b767dd420b6e1b4eb160bdbd83dc054d6a4ffe73822e575fe2794cdc3d218a41",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "94ea0017e9f0e59eb3e98784bfb5cd60b0567ad7986998a9c86791c40d3449ec",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": ".agents/skills/asdg-status/SKILL.md",
++      "sha256": "eada036d20117b8dc22cb1f3e2850a28cff4670e9457d1e416864f62a06ba935",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "1164d99c92bd8301c9b1f76a6949f32059422ed07e2b1b850708bfb533f15ce1",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": ".agents/skills/asdg-suggestion/SKILL.md",
++      "sha256": "6b5d4aa2c201de8b05e34d98723dd6875ced8fa84e1706ef0de10227ab5e29e2",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "e7b01bf5c3fc42c708582f12dabee408e27d32c1d192c001669c744627a9724c",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/00-governance/docs/runtime-contract.md",
++      "sha256": "599bfbc03b1ebafe6fc9e3ede5e9ee8169b4824f8bce1270a5708aebb47ff9fa",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "2edea8967d55e8814cc5a2ee3f310e5f578cc0873209943513e41d165d051dd0",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/00-governance/types/interaction-contract.md",
++      "sha256": "772ea5f4c9fc2c9219fcc9abc09326f41ddeaa0ff5be0f0ee5f98f3872341b15",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "c58e1c341340347a8b8f5653316b95d6c90c0591b7562e914149281d44a58c6b",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/02-purpose/AGENTS.md",
++      "sha256": "4567804be2930e64c7b32e3ca7fe3f121c8239b4eae02e7c5e28dcc2110bdcca",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "20b5f443190b7286cb058cd0b7565e009f4f943022aea13923116bb002e6403a",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/02-purpose/skills/elicit-purpose/SKILL.md",
++      "sha256": "6f903bb3d2872ef8f0bb6452e195d3d44f93c7757ef036a6f4e22fe1cbc03cde",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "983251feaf8eba63e535e1d99ca7ba4fc994cc0e8f6075db057603bc6022d8d7",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/02-purpose/tests/acceptance.md",
++      "sha256": "c8951cfd1c4df9d60d969142b107c3bef8cdeb927e9cbd0ccd8323da02aa0b89",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "e15d81802cc5fc96edd9105bb9d617d54eb8de3f882bdf9c93764f4b56f82191",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/02-purpose/types/contract.md",
++      "sha256": "1e6b5938e0f9e3e29625e5a8441015f146f581e5ad374576ac064e5358bb117b",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "f77f0eae33f9824d75624174539993dd4417b0b50f9752d9eb5b5853d7e042d8",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/AGENTS.md",
++      "sha256": "f1cecf5e03c1316026e01a7e1823d6ee870393d2e257d6a68c6c7b48807c6da5",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "be8957eb1b4bfc93842a28899aab96dc18afcb6ebeffeea00b2ea067b044adb9",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/SKILL.md",
++      "sha256": "dbfeab9e0b84fc2d4d161750a91c93fa9f8f82e8ff9e77ec681c08db7e6f32d2",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "15a5f4481c96acb47e5be31c804f9d75e9550e102a1fdec1ba022766b5017228",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/TRY-IT.md",
++      "sha256": "b0d6020d176ab010fb1e95d3811e80327d3bf78db7ff226c2a756ff97c031943",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "31b5499965848d556c5440fcd5819a41f4af7c0a4078f5899ea4758e974e1059",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/session-policy.md",
++      "sha256": "e08b134fcd5d7668ad737439db6486d750612c5fe9f3aa40ed565b470fed0886",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "1fbaea6ec3ffb93dd3c55ca90ff2e4d39fd5d332a99231c848c07699c12d5bf8",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-init/SKILL.md",
++      "sha256": "e384df2ee23e9f943f0e4ece6d34a235485e4fc439bf1f07d336e0f10d1a277a",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "719f5824b7782ac1458c7088109ca95d9a35c7189af0d85abe2ae66e32d30b71",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-status/SKILL.md",
++      "sha256": "f9c2a85429400124f06fcf48c94ff378ce2bf78a75f5eb22c1622f28369c09c9",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "6b5ee36e8106c214882ed41b29b1e0df88c461f399d7cf2a4f402364ef8b6961",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-status/status-format.md",
++      "sha256": "6c7ebde6e8f5ede67502c9422b86ae3ff5794c5d40274f995090949a132c73ac",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "1299ca70daf3d13464b9e91363ffd9abe7a5bf22e54d8f94c1838b7a46c6491e",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-suggestion/SKILL.md",
++      "sha256": "68a7f066c60501d03b24eeb4221fcc9b30547ebfb94ff918767c7692e6aece18",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "a347ae33c8a9b74083e0ba70ded2fbe3695eb28c4df7ec707629c7a6e545e1fa",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/templates/.agents/skills/asdg-focus-02-purpose/SKILL.md",
++      "sha256": "b767dd420b6e1b4eb160bdbd83dc054d6a4ffe73822e575fe2794cdc3d218a41",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "94ea0017e9f0e59eb3e98784bfb5cd60b0567ad7986998a9c86791c40d3449ec",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/templates/.agents/skills/asdg-status/SKILL.md",
++      "sha256": "eada036d20117b8dc22cb1f3e2850a28cff4670e9457d1e416864f62a06ba935",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "1164d99c92bd8301c9b1f76a6949f32059422ed07e2b1b850708bfb533f15ce1",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/templates/.agents/skills/asdg-suggestion/SKILL.md",
++      "sha256": "6b5d4aa2c201de8b05e34d98723dd6875ced8fa84e1706ef0de10227ab5e29e2",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      },
++      "previous_state": {
++        "sha256": "e7b01bf5c3fc42c708582f12dabee408e27d32c1d192c001669c744627a9724c",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/00-governance/docs/continuation.md",
++      "sha256": "913473e2165204698618352302c763e4b098899390ff7964153777de2243c343",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      }
++    },
++    {
++      "path": "asdg/02-purpose/skills/elicit-purpose/opening.md",
++      "sha256": "bd26bfb8c545d1bb8b1ac31e62580577b532da722894da877ba96ec602035479",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/continuation-tests.md",
++      "sha256": "67865fac218c70836173991149608b87867858878b93482cc2aeb2fce1dbbc3f",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      }
++    },
++    {
++      "path": "docs/asdg/07-planning/current/reviews/asdg-evolution-tasks.md",
++      "sha256": "a002f0ad10302acccf3efd7dcdca3c6bed47bbf90442bb3709ceec53d686cb90",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      }
++    },
++    {
++      "path": "docs/asdg/07-planning/current/reviews/asdg-continuation-increment-01.md",
++      "sha256": "abc5e0ceb2351d0ae17a1d11e724c02b0357f0d7698106a5dd13c72d3847aec6",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      }
++    },
++    {
++      "path": "docs/asdg/07-planning/current/reviews/asdg-continuation-trials-01.md",
++      "sha256": "aae4f361d21e09020818e136877199df2ac028244f793088cb639eee63bfe731",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-21T19:14:40Z",
++      "human_approval": null,
++      "provenance": {
++        "task": "ASDG continuation increment 1"
++      }
+     }
+   ],
+   "distribution_version": "0.2.0-pilot.2"

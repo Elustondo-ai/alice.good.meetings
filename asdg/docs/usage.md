@@ -47,7 +47,7 @@ Do not run these example transitions as part of installation.
 ## Optional AI advice
 
 Plain `status` and `status --verbose` retain the existing Codex SDK advisory path.
-The latter saves a report and receipt under `docs/asdg/07-planning/current/advice/`.
+The latter saves a report and receipt at the Stage 07 root as `02.1-status-<time>-<id>.md` and a matching JSON receipt.
 It requires a compatible separately installed SDK/runtime and Codex sign-in; initialization installs neither.
 The retained adapter targets `openai-codex==0.163.0`; live advice has not been revalidated for this package.
 If advice is unavailable, report the failure and use `--facts-only`; do not confuse mechanical guidance with AI advice.

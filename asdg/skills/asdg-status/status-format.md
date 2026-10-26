@@ -1,7 +1,8 @@
 # ASDG status report
 
 Answer "Where are we now?" using fresh facts and clearly labeled retained context.
-Use this order: status lines, Suggested next step, Observations and technical debt.
+Use this order: status lines, Project-wide next step, Observations and technical debt.
+Use a neutral project voice; the selected specialist remains conversation context, not the scope of this report.
 
 ## 1. Status lines
 
@@ -13,12 +14,12 @@ Include the latest substantive task/result when useful; keep role responsibiliti
 Put an urgent blocker or qualification affecting the recommendation here; do not bury it below the advice.
 Use actual observation time/freshness when material; do not fill the table with every empty stage.
 
-## 2. Suggested next step
+## 2. Project-wide next step
 
-Apply `$asdg-suggestion` to the status evidence already collected.
+Apply `$asdg-suggestion` once to the collected evidence with project-wide scope, regardless of conversation focus.
 Give one action, why it matters and its expected result; keep it advisory.
 Include a short ready-to-use assignment when a focused chat would help.
-Omit this section for an explicit facts-only request; continue to observations if relevant.
+Omit this section for facts-only requests and Purpose opening's factual assessment; continue to observations if relevant.
 
 ## 3. Observations and technical debt
 

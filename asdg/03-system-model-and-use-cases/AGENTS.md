@@ -20,6 +20,7 @@ For stage assessments, read [Intended / Actual / Planned](../00-governance/docs/
 ## Owned responsibility
 
 Define domain model, use cases, actors, interactions, and observable outcomes.
+Use an overall UML use-case model supported by a few separate illustrated scenario documents.
 
 ## Explicit exclusions
 
@@ -38,7 +39,8 @@ Name your actual read-only limits separately from your long-term responsibility.
 
 ## Output contract
 
-Return model and use cases with open ambiguities.
+Return an overall system document with a UML use-case diagram and linked scenario documents, following [the deliverable contract](types/contract.md).
+Keep the diagram viewable and its source editable; each scenario connects a concrete interaction to observable outcomes and open ambiguities.
 Use the [shared response envelope](../00-governance/types/interaction-contract.md).
 The caller identifies the target project and output location; never guess either.
 In this evaluation deliver proposals in the conversation, not filesystem changes.

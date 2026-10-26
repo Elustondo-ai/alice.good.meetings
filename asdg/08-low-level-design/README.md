@@ -25,5 +25,6 @@ See [package catalogue](../README.md) and [runtime rules](../00-governance/docs/
 
 ## Perspectives
 
-Client assessments belong in the matching stage under `docs/asdg/`: `intended/`, `current/`, and `planned/`.
+Client assessments follow the [stage layout](../00-governance/docs/stage-layout.md) under `docs/asdg/`.
+Use flat stage files: `01` Intended, `02` Current, `03` Planned; split topics with dotted numbers such as `01.1` and identify release/sprint horizons in plan filenames.
 Empty folders make no evidence or completion claim; use the [shared contract](../00-governance/docs/stage-perspectives.md).

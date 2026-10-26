@@ -45,8 +45,8 @@ Only Stage 06 can be explicitly unnecessary, with an explanation and no artifact
 This does not skip preceding unmet stages. Other stages cannot be marked unnecessary.
 Malformed existing indexes are errors and are not silently repaired by init.
 Repeat init preserves registered evidence and active sprint state.
-The guard protects this index from agent writes; humans establish authoritative evidence references.
-The generated AGENTS bridge directs agents to shared status and recommendations without adding rules.
+Humans establish authoritative evidence references; [ASDG Approve](../../skills/asdg-approve/SKILL.md) permits narrowly scoped recording after explicit human approval of a reviewed documentation baseline. Runtime denials must not be bypassed.
+Optional `reviews` hold hash-bound readiness and User acceptance. Stage 02 retains Purpose's stronger rules; other stages use `stage_review`. Presence alone never establishes acceptance, and changed dependencies make a prior acceptance stale.
 Linked/edited bridges require explicit migration; repeat init preserves an identical embedded bridge.
 Existing consuming projects need a deliberate init/upgrade before the new structure verifies.
 Use `--project-status defining` for the agreed imported-project declaration; see [status metadata](../../docs/usage.md).

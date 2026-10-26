@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "subject": "ASDG continuation increment 1",
+  "recorded_at": "2026-10-21T19:14:40Z",
+  "baseline_revision": "db7e0e044d04129347158d21a1b490aaba867711",
+  "baseline": "Inspected dirty worktree including pre-existing acceptance and Stage 03 changes",
+  "human_approval": null,
+  "environment": {
+    "platform": "macOS",
+    "python": "3.15.0",
+    "git": "2.50.1 (Apple Git-155)",
+    "model": "Inherited configured model; exact identifier not exposed by trial receipts"
+  },
+  "checks": [
+    {
+      "command": "python3 -B -m unittest discover -s asdg/tests -v",
+      "phase": "before",
+      "passed": 42,
+      "total": 43,
+      "result": "One existing macOS unresolved/resolved temporary-path assertion failure"
+    },
+    {
+      "command": "python3 -B -m unittest discover -s asdg/tests -v",
+      "phase": "after",
+      "passed": 47,
+      "total": 47,
+      "result": "PASS"
+    },
+    {
+      "command": "python3 -B asdg/scripts/cli.py verify",
+      "result": "PASS"
+    },
+    {
+      "command": "python3 -B asdg/scripts/init.py --dry-run",
+      "result": "PASS",
+      "planned_files": 0
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    },
+    {
+      "command": "python3 -B asdg/scripts/check.py",
+      "result": "FAIL: unchanged eight pre-existing README links outside client; no new reported failures"
+    },
+    {
+      "command": "skill-creator/scripts/quick_validate.py",
+      "result": "UNAVAILABLE: PyYAML absent in default and bundled Python; no dependencies installed"
+    }
+  ],
+  "behavioral_trials": {
+    "mode": "Five fresh tool-assisted agent contexts with follow-ups; shared methodology and fixture authorship",
+    "agents": [
+      "empty_opening_trial",
+      "partial_opening_trial",
+      "accepted_opening_trial",
+      "stale_opening_trial",
+      "unfocused_status_trial"
+    ],
+    "observed": [
+      "empty opening",
+      "substantive unregistered draft",
+      "accepted baseline and explicit assignment",
+      "stale baseline conflict",
+      "specialist Suggestion versus project-wide Status",
+      "facts-only Status",
+      "dismissed advice",
+      "unknown new target",
+      "missing stakeholder source",
+      "unfocused Status recommends installed Purpose"
+    ],
+    "no_recursive_status_suggestion_call_reported": true,
+    "native_ui_tested": false
+  },
+  "fixture_before": {
+    "/private/tmp/asdg-continuation-empty-02": {
+      "files": 314,
+      "sha256": "cd18e180be92ab8f455d10af878f4237f6f8619d9ad90edfe44027935caa9ea7"
+    },
+    "/private/tmp/asdg-continuation-partial-02": {
+      "files": 315,
+      "sha256": "cf1a40f86195c801543f25597d42a58590e15b85723c0cecff1a4d1fb90a09b8"
+    },
+    "/private/tmp/asdg-continuation-accepted-02": {
+      "files": 318,
+      "sha256": "877ce5d06f200f8a4de1852c3121fe9db83532b3cbf490bf6628d7efd0e90109"
+    },
+    "/private/tmp/asdg-continuation-stale-02": {
+      "files": 318,
+      "sha256": "9f57528488f2f4de3bfc85e18751b46b5b4e17085329e70505f797877731b992"
+    }
+  },
+  "fixture_after": {
+    "/private/tmp/asdg-continuation-empty-02": {
+      "files": 314,
+      "sha256": "cd18e180be92ab8f455d10af878f4237f6f8619d9ad90edfe44027935caa9ea7"
+    },
+    "/private/tmp/asdg-continuation-partial-02": {
+      "files": 315,
+      "sha256": "cf1a40f86195c801543f25597d42a58590e15b85723c0cecff1a4d1fb90a09b8"
+    },
+    "/private/tmp/asdg-continuation-accepted-02": {
+      "files": 318,
+      "sha256": "877ce5d06f200f8a4de1852c3121fe9db83532b3cbf490bf6628d7efd0e90109"
+    },
+    "/private/tmp/asdg-continuation-stale-02": {
+      "files": 318,
+      "sha256": "9f57528488f2f4de3bfc85e18751b46b5b4e17085329e70505f797877731b992"
+    }
+  },
+  "sources": {
+    ".agents/skills/asdg-focus-02-purpose/SKILL.md": {
+      "before_sha256": "94ea0017e9f0e59eb3e98784bfb5cd60b0567ad7986998a9c86791c40d3449ec",
+      "after_sha256": "b767dd420b6e1b4eb160bdbd83dc054d6a4ffe73822e575fe2794cdc3d218a41"
+    },
+    ".agents/skills/asdg-status/SKILL.md": {
+      "before_sha256": "1164d99c92bd8301c9b1f76a6949f32059422ed07e2b1b850708bfb533f15ce1",
+      "after_sha256": "eada036d20117b8dc22cb1f3e2850a28cff4670e9457d1e416864f62a06ba935"
+    },
+    ".agents/skills/asdg-suggestion/SKILL.md": {
+      "before_sha256": "e7b01bf5c3fc42c708582f12dabee408e27d32c1d192c001669c744627a9724c",
+      "after_sha256": "6b5d4aa2c201de8b05e34d98723dd6875ced8fa84e1706ef0de10227ab5e29e2"
+    },
+    "asdg/00-governance/docs/runtime-contract.md": {
+      "before_sha256": "2edea8967d55e8814cc5a2ee3f310e5f578cc0873209943513e41d165d051dd0",
+      "after_sha256": "599bfbc03b1ebafe6fc9e3ede5e9ee8169b4824f8bce1270a5708aebb47ff9fa"
+    },
+    "asdg/00-governance/types/interaction-contract.md": {
+      "before_sha256": "c58e1c341340347a8b8f5653316b95d6c90c0591b7562e914149281d44a58c6b",
+      "after_sha256": "772ea5f4c9fc2c9219fcc9abc09326f41ddeaa0ff5be0f0ee5f98f3872341b15"
+    },
+    "asdg/02-purpose/AGENTS.md": {
+      "before_sha256": "20b5f443190b7286cb058cd0b7565e009f4f943022aea13923116bb002e6403a",
+      "after_sha256": "4567804be2930e64c7b32e3ca7fe3f121c8239b4eae02e7c5e28dcc2110bdcca"
+    },
+    "asdg/02-purpose/skills/elicit-purpose/SKILL.md": {
+      "before_sha256": "983251feaf8eba63e535e1d99ca7ba4fc994cc0e8f6075db057603bc6022d8d7",
+      "after_sha256": "6f903bb3d2872ef8f0bb6452e195d3d44f93c7757ef036a6f4e22fe1cbc03cde"
+    },
+    "asdg/02-purpose/tests/acceptance.md": {
+      "before_sha256": "e15d81802cc5fc96edd9105bb9d617d54eb8de3f882bdf9c93764f4b56f82191",
+      "after_sha256": "c8951cfd1c4df9d60d969142b107c3bef8cdeb927e9cbd0ccd8323da02aa0b89"
+    },
+    "asdg/02-purpose/types/contract.md": {
+      "before_sha256": "f77f0eae33f9824d75624174539993dd4417b0b50f9752d9eb5b5853d7e042d8",
+      "after_sha256": "1e6b5938e0f9e3e29625e5a8441015f146f581e5ad374576ac064e5358bb117b"
+    },
+    "asdg/AGENTS.md": {
+      "before_sha256": "be8957eb1b4bfc93842a28899aab96dc18afcb6ebeffeea00b2ea067b044adb9",
+      "after_sha256": "f1cecf5e03c1316026e01a7e1823d6ee870393d2e257d6a68c6c7b48807c6da5"
+    },
+    "asdg/scripts/lib/cli.py": {
+      "before_sha256": "b32f51bf3a16edcf231c4d0bc52f205574e8cf1393f4f11cb4858b66cfa1f8e7",
+      "after_sha256": "0dd12847fa830c262957cb911edcfd1789c478a1f6d576a6262f76cd240b4010"
+    },
+    "asdg/scripts/lib/cli_advice.py": {
+      "before_sha256": "ecb22c639519fcfd9d0b0b3ea58b177c378dfd6d97cd69ab6a7100cd52466cc2",
+      "after_sha256": "590574d4d6388aa6af4b8418465f83fda31cf2404e2dc8b480009853a851edaf"
+    },
+    "asdg/skills/asdg-focus/SKILL.md": {
+      "before_sha256": "15a5f4481c96acb47e5be31c804f9d75e9550e102a1fdec1ba022766b5017228",
+      "after_sha256": "dbfeab9e0b84fc2d4d161750a91c93fa9f8f82e8ff9e77ec681c08db7e6f32d2"
+    },
+    "asdg/skills/asdg-focus/TRY-IT.md": {
+      "before_sha256": "31b5499965848d556c5440fcd5819a41f4af7c0a4078f5899ea4758e974e1059",
+      "after_sha256": "b0d6020d176ab010fb1e95d3811e80327d3bf78db7ff226c2a756ff97c031943"
+    },
+    "asdg/skills/asdg-focus/session-policy.md": {
+      "before_sha256": "1fbaea6ec3ffb93dd3c55ca90ff2e4d39fd5d332a99231c848c07699c12d5bf8",
+      "after_sha256": "e08b134fcd5d7668ad737439db6486d750612c5fe9f3aa40ed565b470fed0886"
+    },
+    "asdg/skills/asdg-init/SKILL.md": {
+      "before_sha256": "719f5824b7782ac1458c7088109ca95d9a35c7189af0d85abe2ae66e32d30b71",
+      "after_sha256": "e384df2ee23e9f943f0e4ece6d34a235485e4fc439bf1f07d336e0f10d1a277a"
+    },
+    "asdg/skills/asdg-status/SKILL.md": {
+      "before_sha256": "6b5ee36e8106c214882ed41b29b1e0df88c461f399d7cf2a4f402364ef8b6961",
+      "after_sha256": "f9c2a85429400124f06fcf48c94ff378ce2bf78a75f5eb22c1622f28369c09c9"
+    },
+    "asdg/skills/asdg-status/status-format.md": {
+      "before_sha256": "1299ca70daf3d13464b9e91363ffd9abe7a5bf22e54d8f94c1838b7a46c6491e",
+      "after_sha256": "6c7ebde6e8f5ede67502c9422b86ae3ff5794c5d40274f995090949a132c73ac"
+    },
+    "asdg/skills/asdg-suggestion/SKILL.md": {
+      "before_sha256": "a347ae33c8a9b74083e0ba70ded2fbe3695eb28c4df7ec707629c7a6e545e1fa",
+      "after_sha256": "68a7f066c60501d03b24eeb4221fcc9b30547ebfb94ff918767c7692e6aece18"
+    },
+    "asdg/templates/.agents/skills/asdg-focus-02-purpose/SKILL.md": {
+      "before_sha256": "94ea0017e9f0e59eb3e98784bfb5cd60b0567ad7986998a9c86791c40d3449ec",
+      "after_sha256": "b767dd420b6e1b4eb160bdbd83dc054d6a4ffe73822e575fe2794cdc3d218a41"
+    },
+    "asdg/templates/.agents/skills/asdg-status/SKILL.md": {
+      "before_sha256": "1164d99c92bd8301c9b1f76a6949f32059422ed07e2b1b850708bfb533f15ce1",
+      "after_sha256": "eada036d20117b8dc22cb1f3e2850a28cff4670e9457d1e416864f62a06ba935"
+    },
+    "asdg/templates/.agents/skills/asdg-suggestion/SKILL.md": {
+      "before_sha256": "e7b01bf5c3fc42c708582f12dabee408e27d32c1d192c001669c744627a9724c",
+      "after_sha256": "6b5d4aa2c201de8b05e34d98723dd6875ced8fa84e1706ef0de10227ab5e29e2"
+    },
+    "asdg/tests/test_portable.py": {
+      "before_sha256": "34acef5d2693e598877350a082432c71e69f6d9fd57d3fe3bd88a18bc972fff4",
+      "after_sha256": "5969783bf08c8a5d2eb55defdd7e35b6a26c829a535588261aa8063db20558dd"
+    },
+    "asdg/00-governance/docs/continuation.md": {
+      "before_sha256": null,
+      "after_sha256": "913473e2165204698618352302c763e4b098899390ff7964153777de2243c343"
+    },
+    "asdg/02-purpose/skills/elicit-purpose/opening.md": {
+      "before_sha256": null,
+      "after_sha256": "bd26bfb8c545d1bb8b1ac31e62580577b532da722894da877ba96ec602035479"
+    },
+    "asdg/skills/asdg-focus/continuation-tests.md": {
+      "before_sha256": null,
+      "after_sha256": "67865fac218c70836173991149608b87867858878b93482cc2aeb2fce1dbbc3f"
+    },
+    "asdg/tests/continuation_fixture.py": {
+      "before_sha256": null,
+      "after_sha256": "ed8d69ebc85ac493a70ddda9e7c07469b68239da35f8f830eebb8ef502ddefec"
+    },
+    "docs/asdg/07-planning/current/reviews/asdg-evolution-tasks.md": {
+      "before_sha256": null,
+      "after_sha256": "a002f0ad10302acccf3efd7dcdca3c6bed47bbf90442bb3709ceec53d686cb90"
+    },
+    "docs/asdg/07-planning/current/reviews/asdg-continuation-increment-01.md": {
+      "before_sha256": null,
+      "after_sha256": "abc5e0ceb2351d0ae17a1d11e724c02b0357f0d7698106a5dd13c72d3847aec6"
+    },
+    "docs/asdg/07-planning/current/reviews/asdg-continuation-trials-01.md": {
+      "before_sha256": null,
+      "after_sha256": "aae4f361d21e09020818e136877199df2ac028244f793088cb639eee63bfe731"
+    }
+  },
+  "methodology_review_ledger": {
+    "prior_events": 785,
+    "appended_events": 26,
+    "prior_sha256": "caa76552809529fdac25fc53b613bef3c298acf9b034f14047d150ba831b83c4",
+    "after_sha256": "68c1e5596c1ed6ec0508bd91596c8c00844526300f071a54133c8b7b76943255",
+    "prior_bytes_preserved": true
+  },
+  "preservation": {
+    "baseline_file_count": 332,
+    "live_asdg_state": {
+      ".asdg/document-reviews.json": "d8fb1968b62c2c93bafeb548725dd9b64c719a2dc2d8595879ab9156f5b27209",
+      ".asdg/lifecycle.json": "9cdeb0a2c110bf72a927cb1e2248d2a4d372c1f43e4d76b23a5fe4363f946072",
+      ".asdg/project.json": "567611ac3ddc8715c7e7d1827c27620d866bee0447c08157fef079f864b09404",
+      ".asdg/sprint.json": "891adfab0df9a8c357fae04a7f334f27f16adf93f7bb31af2ff67b91f670fc14"
+    },
+    "application_and_unrelated_changes": "Unchanged against inspected working-tree hashes"
+  },
+  "limits": [
+    "No live SDK advice call",
+    "Native picker/title/compaction/trusted interception not verified",
+    "Task-list opening queued; Computer Use denied Codex UI access, so rendered preview unverified",
+    "Unknown-selector and failed-activation recovery not newly exercised",
+    "No human acceptance, sprint or project transition, commit, push, deployment or closure"
+  ],
+  "diff_scope": "30 source/report files plus appended methodology receipt events; excludes this evidence JSON and the diff artifact itself"
+}

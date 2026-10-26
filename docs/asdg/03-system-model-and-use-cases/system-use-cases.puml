@@ -1,0 +1,33 @@
+@startuml
+title Speaker Coach interview use cases
+left to right direction
+skinparam shadowing false
+skinparam backgroundColor #FBFCFD
+skinparam usecaseBackgroundColor #F0F7F6
+skinparam usecaseBorderColor #265E5B
+skinparam ArrowColor #34516A
+actor Interviewee as User
+actor Interviewer
+rectangle "Speaker Coach" {
+  usecase "Receive interview\ncoaching" as Coaching
+  usecase "UC-01\nAnswer a direct\nquestion" as Direct
+  usecase "UC-02\nDevelop an open\nanswer" as Open
+  usecase "UC-03\nTell an experience\nstory" as Story
+  usecase "Identify and retain\nthe current question" as Question
+  usecase "Prepare brief\nanswer cues" as Cues
+  usecase "Signal drift, repetition\nor need to conclude" as Signal
+  Direct -|> Coaching
+  Open -|> Coaching
+  Story -|> Coaching
+  Coaching ..> Question : <<include>>
+  Coaching ..> Cues : <<include>>
+  Signal ..> Open : <<extend>>\n[correction warranted]
+  Signal ..> Story : <<extend>>\n[correction warranted]
+}
+User -- Coaching
+Interviewer -- Question
+note bottom of Signal
+  Extension point: while answering.
+  Cue delivery is private to Interviewee.
+end note
+@enduml

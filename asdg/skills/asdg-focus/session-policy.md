@@ -19,6 +19,7 @@ If its required guidance is unavailable, retain the declaration but block specia
 ## Later turns
 
 Apply the selected role to subsequent tasks without requiring the activation skill to be re-invoked.
+Purpose selection includes its read-only opening; other specialist openings await pilot review. Assigned work retains existing authority.
 This retains the user's responsibility assignment, not a promise that skill contents are injected every turn.
 When asked who you are, name the selected role and actual boundaries; do not claim a spawned subagent.
 Keep one selection and its activation receipt in THIS conversation, never in a shared ACTIVE_ROLE file.
@@ -34,11 +35,13 @@ On resume or compaction, use only a retained, unambiguous activation receipt or 
 If selection history was lost, report UNKNOWN: REACTIVATION_REQUIRED; do not silently assume None or Purpose.
 Reread the canonical sources when retained context is insufficient or source changes matter.
 Status reports what is known and may inspect necessary sources, but must not silently reactivate a role.
+Status is project-wide; direct Suggestion follows the selected specialist under [continuation](../../00-governance/docs/continuation.md), without changing focus.
 Keep earlier reads distinct from reads performed for this status report.
 Apply the canonical out-of-scope and blocked-action rules; textual handoffs are not completed delivery.
 Roles allow conversation proposals; ASDG-02 additionally saves Purpose documentation under its canonical contract.
 ASDG-02 may record its two-gate Purpose reviews under its completion contract; other lifecycle execution remains excluded.
 Its agent readiness never implies User acceptance or application implementation authority.
+Explicit human use of [ASDG Approve](../asdg-approve/SKILL.md) permits its narrow documentation-acceptance recording workflow; it neither changes Focus nor grants other role writes.
 Changing Codex Plan/Default mode or invoking a skill does not widen that authority.
 Never infer runtime permissions, human approval, effective hooks or successful tests from role instructions.
 

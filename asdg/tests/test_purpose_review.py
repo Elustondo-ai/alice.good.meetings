@@ -9,7 +9,7 @@ import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts/lib'))
 from cli_files import Conflict
 from cli_status import evidence_status, read_lifecycle, recommendation, render_status
-from purpose_review import CRITERIA, DOCUMENTS, PREFIX, bundle_hashes, completion_status, validate_reviews
+from purpose_review import CRITERIA, DOCUMENTS, LEGACY_DOCUMENTS, PREFIX, bundle_hashes, completion_status, validate_reviews
 
 
 class PurposeReviewTests(unittest.TestCase):
@@ -21,6 +21,7 @@ class PurposeReviewTests(unittest.TestCase):
         (self.folder / 'images').mkdir(parents=True)
         (self.folder / 'images/purpose.png').write_bytes(b'fixture image bytes')
         for name in DOCUMENTS:
+            (self.folder / name).parent.mkdir(parents=True, exist_ok=True)
             (self.folder / name).write_text('# Purpose fixture\n\nObserved or proposed content.\n')
         (self.folder / DOCUMENTS[0]).write_text(
             '# Purpose\n\n![Desired experience](images/purpose.png)\n\nVision, not implemented behavior.\n')
@@ -166,6 +167,46 @@ class PurposeReviewTests(unittest.TestCase):
         image.unlink(); image.write_bytes(b'fixture image bytes')
         (self.folder / 'README.md').write_text('[Missing](does-not-exist.md)\n')
         self.assertIn('Broken Purpose link', completion_status(self.root, self.entry)['reason'])
+
+    def test_layout_migration_preserves_legacy_history_without_transferring_acceptance(self):
+        self.ready(); self.accept()
+        for event in self.entry['reviews']:
+            for current, legacy in zip(DOCUMENTS, LEGACY_DOCUMENTS):
+                if current != legacy:
+                    event['artifacts'][str(PREFIX / legacy)] = event['artifacts'].pop(str(PREFIX / current))
+        history = copy.deepcopy(self.entry['reviews'])
+        validate_reviews(history)
+        state = completion_status(self.root, self.entry)
+        self.assertTrue(state['review_stale'])
+        self.assertFalse(state['user_accepted'])
+        self.assertEqual(self.entry['reviews'], history)
+        self.ready(); self.accept()
+        self.assertTrue(completion_status(self.root, self.entry)['user_accepted'])
+
+    def test_current_layout_scaffold_and_empty_plan_folders_are_empty_context(self):
+        from cli_project import STAGE_NOTE, STAGE_FOLDERS
+        self.ready(); self.accept()
+        folder = self.root / 'docs/asdg/01-context-and-domain-analysis'
+        folder.mkdir()
+        (folder / 'README.md').write_text(
+            '# Context and Domain Agent — project evidence\n\n'
+            'No assessment has been recorded here yet.\n\n'
+            'Use Intended / Actual / Planned; preserve sources, uncertainties and human decisions.\n'
+            + STAGE_NOTE)
+        for name in ('current', 'planned-release', 'planned-sprint'):
+            (folder / name).mkdir()
+            (folder / name / '.gitkeep').write_bytes(b'')
+        self.assertEqual(self.context_status()[0]['readiness'], 'ACCEPTED_EMPTY')
+        (folder / 'planned-sprint/context.md').write_text('# Proposed context work\n')
+        self.assertEqual(self.context_status()[0]['readiness'], 'MISSING')
+
+    def test_flat_current_document_can_reference_shared_stage_image(self):
+        current = self.folder / DOCUMENTS[1]
+        current.write_text('# Current evidence\n\n![Evidence](images/purpose.png)\n')
+        self.ready()
+        self.assertTrue(completion_status(self.root, self.entry)['agent_ready'])
+        current.write_text('# Unsafe image\n\n![Evidence](../../outside.png)\n')
+        self.assertTrue(completion_status(self.root, self.entry)['review_stale'])
 
     def test_state_schema_is_backward_compatible_and_review_is_purpose_only(self):
         (self.root / '.asdg').mkdir()

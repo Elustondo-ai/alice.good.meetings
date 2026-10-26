@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "record_type": "candidate_intake_observation",
+  "case_id": "SC-B001",
+  "observed_on": "2026-10-24",
+  "timezone": "America/Toronto",
+  "candidate_status": "references_pending_not_admitted",
+  "source": {
+    "repository_relative_path": "eval-data/mock-interview-0.mp3",
+    "sha256": "47ab9a0fb7288b3d14ed45081a69ed5bf2e0dd1ea1609b42cec9488f2d3fb860",
+    "bytes": 8213036,
+    "modified_by_this_intake": false
+  },
+  "verified_metadata": {
+    "codec": "mp3",
+    "audio_stream_count": 1,
+    "duration_seconds": 872.619637,
+    "sample_rate_hz": 44100,
+    "channels": 2,
+    "channel_layout": "stereo",
+    "reported_format_bit_rate_bps": 75295
+  },
+  "user_report": {
+    "statement": "we are two , the cording was done ove air using iphone microphone",
+    "participant_count": 2,
+    "capture_device_type": "iPhone microphone",
+    "capture_path": "over air",
+    "independently_verified": false
+  },
+  "checks": [
+    {
+      "command": "ffprobe -v error -show_entries format=format_name,duration,size,bit_rate:stream=index,codec_name,codec_type,sample_rate,channels,channel_layout,duration -of json eval-data/mock-interview-0.mp3",
+      "exit_code": 0,
+      "result": "Metadata read successfully."
+    },
+    {
+      "command": "ffmpeg -nostdin -hide_banner -v error -i eval-data/mock-interview-0.mp3 -map 0:a:0 -f null -",
+      "exit_code": 0,
+      "result": "Full local decode completed with no reported errors; output discarded."
+    }
+  ],
+  "application_evaluation_run": false,
+  "transcript_created": false,
+  "speaker_labels_created": false,
+  "content_listened_to_by_assistant": false,
+  "references_pending": [
+    "checked early-exchange transcript and timestamps",
+    "speaker-turn and overlap labels",
+    "voice-to-person mapping if named identification is evaluated"
+  ],
+  "human_acceptance": null
+}

@@ -47,6 +47,159 @@
           "statement": "I accept Purpose as done for now."
         }
       ]
+    },
+    "03": {
+      "artifacts": [
+        "docs/asdg/03-system-model-and-use-cases/01.1-direct-question.md",
+        "docs/asdg/03-system-model-and-use-cases/01.2-open-question.md",
+        "docs/asdg/03-system-model-and-use-cases/01.3-experience-question.md",
+        "docs/asdg/03-system-model-and-use-cases/01-system-model.md"
+      ],
+      "not_applicable_reason": null,
+      "reviews": [
+        {
+          "decision": "READY_FOR_ACCEPTANCE",
+          "actor": "ASDG-03",
+          "recorded_at": "2026-10-21T02:45:17.660040+00:00",
+          "artifacts": {
+            "docs/asdg/03-system-model-and-use-cases/README.md": "d3f1c7f378a8f9f7389ab935faffa70b47b9867db43d8cee2e50867a752fe5a5",
+            "docs/asdg/03-system-model-and-use-cases/intended/01-direct-question.md": "2a4c1bf9eb351a6c59a86488eb04207d790a97771cf78334688642cacca0bde8",
+            "docs/asdg/03-system-model-and-use-cases/intended/02-open-question.md": "4d1dc20d762803cdb2b8702c4c71b5c6c3f961d09c4731e4fadeb73460b75344",
+            "docs/asdg/03-system-model-and-use-cases/intended/03-experience-question.md": "df8516c5acf21fc934cfdfb2b5c06da7637a04e9e085e05ca477763ebad420da",
+            "docs/asdg/03-system-model-and-use-cases/intended/04-system-model.md": "fcae2b468ccafa6b30c0ddd6a1878b061adaf64be5f69669cc6b8ac51062b3a4",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/direct-question.png": "d839e0b397fd56ddb550467f003673003ec76059201d509d3ebefba4f8747a19",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/experience-question.png": "6f1330e615683d8b37f270fa832859692084eac8eba4f8d65c2fb2ae5bd6787d",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/illustration-prompts.json": "42aba7c97983a00d8539ebe080f7d100ade86bc37ea7a716192468f365786292",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/open-question.png": "a09f53267c58b6e147dd7ba1fadbee97b0d22fdcf9863573990aca658eefe5bf",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/system-use-cases.png": "58bc3b7a0f1dddc99e09b8c0f6e400b50fd91a987f570e45b98d420961f48a47",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/system-use-cases.svg": "ec37233a8430fb97aea8481b4059ef60d9efbb31973a61481e93b087965b27a2",
+            "docs/asdg/03-system-model-and-use-cases/intended/system-use-cases.puml": "09f3ec66962e6e4001ee64f241d4069b4a57235ca909570d5bc492040fbd72c0"
+          },
+          "criteria": {
+            "system": "Both actors, the Speaker Coach boundary and domain concepts are described in the overall document.",
+            "uml": "Rendered UML, SVG and PlantUML were inspected: three scenario specializations, shared includes and conditional extensions agree.",
+            "scenarios": "All three separate scenarios describe goals, actors, triggers, preconditions, main flows and alternatives.",
+            "outcomes": "Observable outcomes and unresolved timing, relevance and recall questions are explicit.",
+            "evidence": "Each document separates intended behavior, reported current capabilities and selected next work.",
+            "visual": "The three storyboards and system diagram were visually inspected in all four rendered documents.",
+            "documentation": "All four documents have 31 nonblank source lines; links resolve and diagram source and assets are present."
+          }
+        },
+        {
+          "decision": "ACCEPTED",
+          "actor": "User",
+          "recorded_at": "2026-10-21T02:45:17.660040+00:00",
+          "artifacts": {
+            "docs/asdg/03-system-model-and-use-cases/README.md": "d3f1c7f378a8f9f7389ab935faffa70b47b9867db43d8cee2e50867a752fe5a5",
+            "docs/asdg/03-system-model-and-use-cases/intended/01-direct-question.md": "2a4c1bf9eb351a6c59a86488eb04207d790a97771cf78334688642cacca0bde8",
+            "docs/asdg/03-system-model-and-use-cases/intended/02-open-question.md": "4d1dc20d762803cdb2b8702c4c71b5c6c3f961d09c4731e4fadeb73460b75344",
+            "docs/asdg/03-system-model-and-use-cases/intended/03-experience-question.md": "df8516c5acf21fc934cfdfb2b5c06da7637a04e9e085e05ca477763ebad420da",
+            "docs/asdg/03-system-model-and-use-cases/intended/04-system-model.md": "fcae2b468ccafa6b30c0ddd6a1878b061adaf64be5f69669cc6b8ac51062b3a4",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/direct-question.png": "d839e0b397fd56ddb550467f003673003ec76059201d509d3ebefba4f8747a19",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/experience-question.png": "6f1330e615683d8b37f270fa832859692084eac8eba4f8d65c2fb2ae5bd6787d",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/illustration-prompts.json": "42aba7c97983a00d8539ebe080f7d100ade86bc37ea7a716192468f365786292",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/open-question.png": "a09f53267c58b6e147dd7ba1fadbee97b0d22fdcf9863573990aca658eefe5bf",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/system-use-cases.png": "58bc3b7a0f1dddc99e09b8c0f6e400b50fd91a987f570e45b98d420961f48a47",
+            "docs/asdg/03-system-model-and-use-cases/intended/images/system-use-cases.svg": "ec37233a8430fb97aea8481b4059ef60d9efbb31973a61481e93b087965b27a2",
+            "docs/asdg/03-system-model-and-use-cases/intended/system-use-cases.puml": "09f3ec66962e6e4001ee64f241d4069b4a57235ca909570d5bc492040fbd72c0"
+          },
+          "statement": "$asdg-approve"
+        }
+      ]
+    },
+    "04": {
+      "artifacts": [
+        "docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md",
+        "docs/asdg/04-benchmarks-and-eval-strategy/01.1-benchmark-collection.md",
+        "docs/asdg/04-benchmarks-and-eval-strategy/01.2-evaluation-criteria.md",
+        "docs/asdg/04-benchmarks-and-eval-strategy/02-evidence-and-reconciliation.md",
+        "docs/asdg/04-benchmarks-and-eval-strategy/03-release-single-recording-evaluation.md",
+        "docs/asdg/04-benchmarks-and-eval-strategy/03.1-release-measurements-and-thresholds.md",
+        "docs/asdg/04-benchmarks-and-eval-strategy/03.2-release-alternatives-and-review-decisions.md",
+        "docs/asdg/04-benchmarks-and-eval-strategy/03.3-first-recording-case.md",
+        "docs/asdg/04-benchmarks-and-eval-strategy/03.4-voice-profile-probe.md"
+      ],
+      "not_applicable_reason": null,
+      "reviews": [
+        {
+          "decision": "READY_FOR_ACCEPTANCE",
+          "actor": "ASDG-04",
+          "recorded_at": "2026-10-26T00:28:56.609Z",
+          "artifacts": {
+            "docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md": "b2db77d9bbec4ebae6c29b53f3a74fb7454037bf1cdf25e9ac5aba79d94dce41",
+            "docs/asdg/04-benchmarks-and-eval-strategy/01.1-benchmark-collection.md": "5c46cf67fc04145b496d37d5a3f916b9535e79361cbffd7c1f4f7dbd3e53ee8c",
+            "docs/asdg/04-benchmarks-and-eval-strategy/01.2-evaluation-criteria.md": "e1ea9652518ed8401daee8517966f9b6eeb9d578425f164e90e6f5529a65e31d",
+            "docs/asdg/04-benchmarks-and-eval-strategy/02-evidence-and-reconciliation.md": "b112134797c1209dc4c670663f469c25b882518997dc8d8347213b080a28fab4",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03-release-single-recording-evaluation.md": "771044fba7a121a8f359152d962a9b12f8da93a918e39fc2a3f4de89ec2f179e",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03.1-release-measurements-and-thresholds.md": "dfd3b7293f057170e65ffa08eff5929af3243486b8cde824eba1a0d33d9d6bfe",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03.2-release-alternatives-and-review-decisions.md": "a414de5605fd8ec0de5008b9203a4d4eaeb6239b077bf5bc89169e2707767eb4",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03.3-first-recording-case.md": "09f045d1043dbc17ff99ed56a8d4db7d45c2fc6481e82dd4dd185f187583c46c",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03.4-voice-profile-probe.md": "0a532f2f5a83e364cfdf46a9159efc4ae830d8fbf2f1c76c5a83e2427b6024a9",
+            "docs/asdg/04-benchmarks-and-eval-strategy/README.md": "479cea20f7ce8a1fae8a5b88026c0e5d5acb5a0c8ea921f89e0222d4b60fe100",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/benchmark-admission.svg": "83f8a7c3edbe58a4367b83118bec16bbc797fc340b208f4ead86b6fdac517377",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/comparison-design.svg": "8032dd6a6e4f7b5fb02ce60ad93750701af034d8cdcc476d14b2b01c4e264e9c",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/evaluation-scorecard.svg": "ea007693ce0d270b9d06aa92e04c45c559b6d1b654d9a0e560f1dac27a9e19e2",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/evaluation-strategy.svg": "7a7b0f2b0487a0e75d90053876858d57552c528c62d11fc5d88b05d561755f9f",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/evidence-limits.svg": "0688fa5a83e15365274b488120cca1da1cdefc271fb9dd572f3f7abacd4aeff5",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/pilot-milestones.svg": "36a07e6edc9b4e754dc1363d291ada910040a7850d7f3ed4c1f6a7107bfc800a",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/timing-measurement.svg": "2029ca6c56a5347b292b1f0507ef7fd34f7a3bbcf88b716b34e1ebb46d039921",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/voice-profile-probe.svg": "3a3fe3ff71fe4a468f2ecf51a9bb8e1cd38be263c7a70d9186ad1837d2eceee5",
+            "docs/asdg/04-benchmarks-and-eval-strategy/sources/sc-b001-enrollment-intake-2026-10-24.json": "dc626ba5df87066681a84b437d15cab7ae29135ec1dfa64fdb658df42cc2e410",
+            "docs/asdg/04-benchmarks-and-eval-strategy/sources/sc-b001-intake-2026-10-24.json": "b5c96b99004886ad8ab21156ccf25903c8ec41b3449c5cd01c780a75fcaf4826",
+            "docs/asdg/04-benchmarks-and-eval-strategy/sources/strategy-draft-0.1.md": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd"
+          },
+          "criteria": {
+            "scope": "Existing Phase 04 documentation baseline, accepted as done for now with its listed open questions. This self-assessment does not declare the proposed harness, feature gates, recording suite or live product behavior complete.",
+            "alignment": "Read the current Purpose, next-improvement and system-model documents. The strategy preserves focus/recall/attention, distinguishes speakers and retains the current question as the first candidate feature; eventual grounded hints remain broader scope. Stage 02/03 stale review records are preserved and are not reapproved by this decision.",
+            "strategy": "01-evaluation-strategy.md and 01.1-benchmark-collection.md define complementary permanent progressive replay, Air QA and live validation; one initial case grows toward ten recordings; private annotations and reviewed/versioned admission remain explicit.",
+            "alternatives": "03.2-release-alternatives-and-review-decisions.md compares a simple automatic baseline, transcript-based semantic tracking, streaming-audio analysis and current duration signals; optional human-operated question display tests usefulness separately. P is declared manual assistance, not implemented key capture. No architecture or evidence-free winner is selected.",
+            "protocol": "03-release-single-recording-evaluation.md distinguishes the minimal replay-feasibility demonstration from the five-question feature evaluation and live usefulness. Permitted runtime input, private evaluator references, normal-speed delivery, fresh state, repeat handling and invalid/unverified runs are explicit; no future audio or references may reach preprocessing or analysis.",
+            "criteria": "01.2-evaluation-criteria.md and 03.1-release-measurements-and-thresholds.md define observable speaker attribution, question meaning/persistence, transitions, visible-display timing, reliability and attention. Participant denominators, missed-question failures and answer-relative timing are specified. Numeric 95-percent/two-second gates and three repeats remain provisional details for later experiment review.",
+            "evidence": "02-evidence-and-reconciliation.md preserves dated source observations and intake updates. 03.3-first-recording-case.md and 03.4-voice-profile-probe.md distinguish supplied audio, enrollment, same-recording consistency and two confirmed examples from unmeasured recognition accuracy or application capability. Current app.js still contains amplitude/timing controls; no application test is claimed.",
+            "comparison_and_limits": "The offline voice-profile comparison supports only the observed ordering of two User-labeled excerpts selected as score extremes. No representative accuracy, calibrated threshold, benchmark admission, real-time isolation or general human-benefit result is inferred. Archived source bytes and historical intake records retain their original dated meaning.",
+            "visual_01": "01-evaluation-strategy.md embeds evaluation-strategy.svg: three complementary evidence paths. Rendered SVG inspected at 760px and within an 840px-wide Markdown HTML preview; labels readable and relationships consistent.",
+            "visual_01_1": "01.1-benchmark-collection.md embeds benchmark-admission.svg: capture/check/private annotation/versioned admission. Rendered SVG inspected at 760px; readable and consistent. The full document rendered without horizontal overflow or broken images.",
+            "visual_01_2": "01.2-evaluation-criteria.md embeds evaluation-scorecard.svg: validity, correctness, timing and usefulness require distinct evidence. Rendered SVG inspected at 760px; readable and consistent. The full document rendered without horizontal overflow or broken images.",
+            "visual_02": "02-evidence-and-reconciliation.md embeds evidence-limits.svg: inspected source, reported experience and still-unverified outcomes. Rendered SVG inspected at 760px; dated-assessment scope is explicit. The full document rendered without horizontal overflow or broken images.",
+            "visual_03": "03-release-single-recording-evaluation.md embeds pilot-milestones.svg: replay feasibility, question quality and usefulness are separate milestones. Rendered SVG inspected at 760px; readable and consistent. The full document rendered without horizontal overflow or broken images.",
+            "visual_03_1": "03.1-release-measurements-and-thresholds.md embeds timing-measurement.svg: delivery, processing/display and answer-relative timing. Rendered SVG and full Markdown HTML preview inspected; labels/table readable, no broken image or horizontal overflow.",
+            "visual_03_2": "03.2-release-alternatives-and-review-decisions.md embeds comparison-design.svg: common permitted inputs and scorecard, with separate manual usefulness comparison. Rendered SVG inspected at 760px; readable and consistent. The full document rendered without horizontal overflow or broken images.",
+            "visual_03_3": "03.3-first-recording-case.md reuses pilot-milestones.svg for the candidate's place in the two-milestone plan. The SVG was inspected at 760px and this document rendered without horizontal overflow or broken images.",
+            "visual_03_4": "03.4-voice-profile-probe.md embeds voice-profile-probe.svg: score variation, missing scores and two confirmed speaker anchors. Rendered SVG and full Markdown HTML preview inspected; legends, anchors and limitations readable.",
+            "documentation": "All nine substantive documents and README read; all local links resolved by stage_review.bundle_hashes. The ten living Markdown files contain 19-43 nonblank lines each. Eight linked visuals inspected; all ten Markdown files rendered with no broken images or horizontal overflow; three representative full previews visually inspected. ASDG structure verification passed. No production/source changes or new companion obligations introduced.",
+            "deferred_work": "Independent reference review/calibration, complete case admission, progressive replay implementation and no-look-ahead validation, full feature comparisons, Air QA/live usefulness measurement and the ten-recording suite remain future work. The separate OBS transcript is a working offline artifact, not accepted product-test evidence. Architecture selection and implementation planning remain separate; sprint stays inactive."
+          }
+        },
+        {
+          "decision": "ACCEPTED",
+          "actor": "User",
+          "recorded_at": "2026-10-26T00:28:56.609Z",
+          "artifacts": {
+            "docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md": "b2db77d9bbec4ebae6c29b53f3a74fb7454037bf1cdf25e9ac5aba79d94dce41",
+            "docs/asdg/04-benchmarks-and-eval-strategy/01.1-benchmark-collection.md": "5c46cf67fc04145b496d37d5a3f916b9535e79361cbffd7c1f4f7dbd3e53ee8c",
+            "docs/asdg/04-benchmarks-and-eval-strategy/01.2-evaluation-criteria.md": "e1ea9652518ed8401daee8517966f9b6eeb9d578425f164e90e6f5529a65e31d",
+            "docs/asdg/04-benchmarks-and-eval-strategy/02-evidence-and-reconciliation.md": "b112134797c1209dc4c670663f469c25b882518997dc8d8347213b080a28fab4",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03-release-single-recording-evaluation.md": "771044fba7a121a8f359152d962a9b12f8da93a918e39fc2a3f4de89ec2f179e",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03.1-release-measurements-and-thresholds.md": "dfd3b7293f057170e65ffa08eff5929af3243486b8cde824eba1a0d33d9d6bfe",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03.2-release-alternatives-and-review-decisions.md": "a414de5605fd8ec0de5008b9203a4d4eaeb6239b077bf5bc89169e2707767eb4",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03.3-first-recording-case.md": "09f045d1043dbc17ff99ed56a8d4db7d45c2fc6481e82dd4dd185f187583c46c",
+            "docs/asdg/04-benchmarks-and-eval-strategy/03.4-voice-profile-probe.md": "0a532f2f5a83e364cfdf46a9159efc4ae830d8fbf2f1c76c5a83e2427b6024a9",
+            "docs/asdg/04-benchmarks-and-eval-strategy/README.md": "479cea20f7ce8a1fae8a5b88026c0e5d5acb5a0c8ea921f89e0222d4b60fe100",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/benchmark-admission.svg": "83f8a7c3edbe58a4367b83118bec16bbc797fc340b208f4ead86b6fdac517377",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/comparison-design.svg": "8032dd6a6e4f7b5fb02ce60ad93750701af034d8cdcc476d14b2b01c4e264e9c",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/evaluation-scorecard.svg": "ea007693ce0d270b9d06aa92e04c45c559b6d1b654d9a0e560f1dac27a9e19e2",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/evaluation-strategy.svg": "7a7b0f2b0487a0e75d90053876858d57552c528c62d11fc5d88b05d561755f9f",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/evidence-limits.svg": "0688fa5a83e15365274b488120cca1da1cdefc271fb9dd572f3f7abacd4aeff5",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/pilot-milestones.svg": "36a07e6edc9b4e754dc1363d291ada910040a7850d7f3ed4c1f6a7107bfc800a",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/timing-measurement.svg": "2029ca6c56a5347b292b1f0507ef7fd34f7a3bbcf88b716b34e1ebb46d039921",
+            "docs/asdg/04-benchmarks-and-eval-strategy/images/voice-profile-probe.svg": "3a3fe3ff71fe4a468f2ecf51a9bb8e1cd38be263c7a70d9186ad1837d2eceee5",
+            "docs/asdg/04-benchmarks-and-eval-strategy/sources/sc-b001-enrollment-intake-2026-10-24.json": "dc626ba5df87066681a84b437d15cab7ae29135ec1dfa64fdb658df42cc2e410",
+            "docs/asdg/04-benchmarks-and-eval-strategy/sources/sc-b001-intake-2026-10-24.json": "b5c96b99004886ad8ab21156ccf25903c8ec41b3449c5cd01c780a75fcaf4826",
+            "docs/asdg/04-benchmarks-and-eval-strategy/sources/strategy-draft-0.1.md": "97de732bfd8d5b8575f3ff7a937f2fb9ab5e1c948267948d7dd839bd34edf6dd"
+          },
+          "statement": "make phase 04 complete for now"
+        }
+      ]
     }
   }
 }

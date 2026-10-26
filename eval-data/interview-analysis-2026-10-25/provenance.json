@@ -1,0 +1,157 @@
+{
+  "created_at": "2026-10-25T21:31:21.681151+00:00",
+  "purpose": "User-requested speaker-labeled timed transcript of an OBS mock interview",
+  "original_movie": {
+    "path": "/Users/pablo.elustondo/Movies/2026-10-25 17-10-58.mov",
+    "sha256": "7035173739abbcef5278a97c11c0162121341a535c4075243f6348f74c12b6f3",
+    "decoded_pcm_sha256": "SHA256=6ac327a18644cb08941cad077dde262b589872591f9fe1cbc87a3375514e63b2"
+  },
+  "exported_audio": {
+    "path": "/Users/pablo.elustondo/Documents/2026-10-25 17-10-58.m4a",
+    "sha256": "8caf301b841ae878170f74a5e5b7d1dbbfe2e1687fc976cf3247f8feaa8000e2",
+    "decoded_pcm_sha256": "SHA256=6ac327a18644cb08941cad077dde262b589872591f9fe1cbc87a3375514e63b2",
+    "container_start_seconds": 0.044,
+    "container_duration_seconds": 85.205333,
+    "decoded_duration_seconds": 85.161,
+    "sample_rate": 48000,
+    "channels": 2
+  },
+  "analysis_audio": {
+    "format": "PCM16 mono 16000Hz",
+    "sha256": "172ac54f13b077510b239b4261d2b9771c759cc7b9d26a08f2c58ff30e45a20f"
+  },
+  "channel_check": {
+    "left_right_correlation": 1.0,
+    "left_minus_right_rms": 0.0
+  },
+  "asr": {
+    "status": "automatic_draft_not_human_verified",
+    "audio_sha256": "172ac54f13b077510b239b4261d2b9771c759cc7b9d26a08f2c58ff30e45a20f",
+    "model": "Systran/faster-whisper-small.en",
+    "model_files_sha256": {
+      "model.bin": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+      "config.json": "666a9605530ac1f61fa8177f3702b4dacec9966749e42610839fcc32661d5fae",
+      "tokenizer.json": "929c5252409436dce1b38a75d1abbcb5e132d170d8e324e4e04ed915fa2d22df",
+      "vocabulary.txt": "ff77588746d3a2595d32ab5b69ffd7b95ce2441ac57533cb66fc3eb575a115cf"
+    },
+    "runtime": {
+      "faster-whisper": "1.2.1",
+      "ctranslate2": "4.8.4",
+      "av": "19.0.2"
+    },
+    "options": {
+      "language": "en",
+      "beam_size": 5,
+      "word_timestamps": true,
+      "vad_filter": false,
+      "condition_on_previous_text": false,
+      "temperature": 0.0
+    },
+    "duration": 85.161,
+    "limitations": [
+      "Offline processing used the complete recording.",
+      "Word times are estimates, not independently measured ground truth.",
+      "Overlap, fillers and short backchannels may be omitted or misplaced.",
+      "Speaker labels are not provided by this transcription model."
+    ]
+  },
+  "speaker_identification": {
+    "profile_path": "eval-data/voice-profiles/pablo-ecapa-v1.json",
+    "profile_sha256": "635d2e155ab36ed40a86474739d99de7f263baceaa7615245f77f0c1ce1aae2e",
+    "encoder": {
+      "model_id": "speechbrain/spkrec-ecapa-voxceleb",
+      "model_revision": "0f99f2d0ebe89ac095bcc5903c4dd8f72b367286",
+      "model_card_url": "https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb",
+      "model_file_sha256": {
+        "README.md": "00f58c3cbd7a7510de9374080da0e82a4c4e8f4df567f7338fe6efe108be705a",
+        "classifier.ckpt": "fd9e3634fe68bd0a427c95e354c0c677374f62b3f434e45b78599950d860d535",
+        "embedding_model.ckpt": "0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2",
+        "hyperparams.yaml": "6f78854fa04ba59e761437b76a2575d3aba5e5016de3e9b69f0c9a5077fb1a41",
+        "label_encoder.txt": "e13c3a167bb4112685670ee896d20e2b565af16b3a4ceeaa8689fa4d22adb8b9",
+        "mean_var_norm_emb.ckpt": "cd70225b05b37be64fc5a95e24395d804231d43f74b2e1e5a513db7b69b34c33"
+      },
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "dimensions": 192,
+      "encode_batch_normalize_argument": false,
+      "normalization": "L2 normalize each window embedding; arithmetic mean of enrollment vectors; L2 normalize the mean.",
+      "device": "cpu",
+      "torch_threads": 2,
+      "seed": 0,
+      "deterministic_algorithms": true
+    },
+    "window_seconds": 1.5,
+    "step_seconds": 0.5,
+    "interviewer_anchor_seconds": [
+      79,
+      83.5
+    ],
+    "interviewer_anchor_basis": "Closing-turn content from ASR plus acoustic distinction; not human-verified",
+    "assignment_rule": "Duration-weighted window cosine margin >0.10: Pablo; <-0.10: interviewer; otherwise unknown",
+    "calibration": "None; provisional annotation heuristic",
+    "warning": "Anchor and profile used to create labels, not to independently validate them"
+  },
+  "overlap": {
+    "status": "automatic_overlap_candidates_not_verified_reference",
+    "model": "pyannote/segmentation-3.0 converted by sherpa-onnx",
+    "model_sha256": "220ad67ca923bef2fa91f2390c786097bf305bceb5e261d4af67b38e938e1079",
+    "model_metadata": {
+      "url_1": "https://huggingface.co/pyannote/segmentation-3.0",
+      "powerset_max_classes": "2",
+      "num_speakers": "3",
+      "sample_rate": "16000",
+      "onnx.quant.pre_process": "onnxruntime.quant",
+      "receptive_field_size": "991",
+      "license": "https://huggingface.co/pyannote/segmentation-3.0/blob/main/LICENSE",
+      "window_size": "160000",
+      "receptive_field_shift": "270",
+      "model_type": "pyannote-segmentation-3.0",
+      "maintainer": "k2-fsa",
+      "num_classes": "7",
+      "model_author": "pyannote",
+      "version": "1",
+      "url_2": "https://huggingface.co/csukuangfj/pyannote-models/tree/main/segmentation-3.0"
+    },
+    "runtime_onnxruntime": "1.31.0",
+    "source_url": "https://k2-fsa.github.io/sherpa/onnx/speaker-diarization/models.html",
+    "method": {
+      "chunk_seconds": 10.0,
+      "chunk_step_seconds": 1,
+      "frame_step_seconds": 0.016875,
+      "frame_center_offset_seconds": 0.03096875,
+      "overlap_rule": "mean predicted speaker count >= 1.5",
+      "bridge_gap_seconds": 0.12,
+      "minimum_span_seconds": 0.1
+    },
+    "duration_seconds": 85.161,
+    "overlap_spans": [
+      {
+        "start": 30.27096875,
+        "end": 30.524093750000002,
+        "label": "overlap",
+        "review_status": "automatic_unverified",
+        "mean_overlap_vote": 0.5799999999999998
+      }
+    ],
+    "limitations": [
+      "Model estimates, not human-verified boundaries.",
+      "May miss quiet or very short overlap or mistake noise for overlap.",
+      "Does not recover separate voices or transcribe both speakers.",
+      "Complete recording processed offline."
+    ]
+  },
+  "limitations": [
+    "Draft annotation: no independent human listening review has been completed.",
+    "Timestamps are estimated seconds from the first decoded audio sample; they are not keyboard-event times.",
+    "The complete recording was processed offline. This is candidate evaluator-reference preparation, not a streaming/no-look-ahead application test.",
+    "The two stereo channels are identical mixtures. Separate clean speaker recordings cannot be recovered from channel selection.",
+    "Short acknowledgements, fillers and overlapping words may be missing or wrongly assigned. Overlap markers are model predictions, not exhaustive verified labels.",
+    "Pablo labels use his existing voice profile. Interviewer labels use an in-recording closing-turn anchor and context; similarity margins are uncalibrated, not probabilities or accuracy scores.",
+    "No P-key events were recorded. Their absence cannot show whether Pablo forgot a cue.",
+    "Raw ASR wording is preserved, including flagged errors. Suggested corrections are not accepted reference text."
+  ],
+  "sources": {
+    "asr": "https://github.com/SYSTRAN/faster-whisper",
+    "overlap_model": "https://k2-fsa.github.io/sherpa/onnx/speaker-diarization/models.html"
+  }
+}

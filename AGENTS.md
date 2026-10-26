@@ -20,5 +20,6 @@ Do not edit state, hook definitions or ASDG policies as part of application impl
 Review and trust project hooks in Codex; configuration alone does not establish enforcement.
 Named roles retain read-only evaluation except ASDG-02 Purpose documentation under docs/asdg/02-purpose/.
 Purpose documentation and stage 02 review recording follow asdg/02-purpose/types/contract.md; a sprint does not widen role authority.
+Explicit human use of asdg-approve permits only the documentation-acceptance recording workflow in asdg/skills/asdg-approve/recording.md.
 Installation grants no approval, publication, commit, push, deployment or hook trust.
 <!-- ASDG:END -->
