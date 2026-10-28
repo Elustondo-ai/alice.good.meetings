@@ -58,11 +58,28 @@
       font-size: min(24px, 2.5vmin);
       border-radius: min(8px, 1vmin);
     }
+    #server {
+      position: fixed;
+      bottom: 44px;
+      left: min(8px, 1vmin);
+      max-width: min(760px, 96vw);
+      max-height: 34vh;
+      overflow: auto;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      margin: 0;
+      padding: 8px;
+      background: rgba(0, 0, 0, 0.72);
+      color: white;
+      font: clamp(12px, 1.8vmin, 17px) monospace;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
   <div id="panel">GOOD</div>
   <pre id="debug"></pre>
+  <pre id="server" role="status" aria-label="Server and agent responses"></pre>
   <div id="controls">
     <button id="listen">Start Listening</button>
     <button data-state="good">Good</button>

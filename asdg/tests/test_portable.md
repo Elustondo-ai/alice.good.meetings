@@ -30,11 +30,16 @@ PortableTests extends unittest.TestCase. Test methods use per-test state; simula
 | `payload(paths) -> dict; denied(payload) -> None` | Constructs patch inputs and asserts hook denial. |
 
 The [test case guide](test_portable-cases.md) lists every `test_*` method and the behavior it checks.
+Decision discovery is exercised in a relocated client without SpeakerCoach files; repeat setup preserves unregistered decision evidence and lifecycle/sprint bytes.
+Optional local decision skills survive repeat setup from a specialist subdirectory; generic roles require no placeholder and state remains unchanged.
+Focus installation keeps one picker entry and thirteen role adapters; preflight rejects missing shared metadata or retired per-role picker templates before writes.
 `test_dry_run_then_init_repeat_is_byte_identical` also checks portable stage introductions, embedded diagrams, empty Context recognition, absence of perspective directories and preservation on repeat setup.
 
 ## Effects and failure behavior
 
 Tests invoke Python, Git and configured shell hooks and write disposable fixture files. Snapshot comparisons protect unrelated content. Test success is not native UI/hook-trust evidence.
+
+Documentation guard cases exercise docs-only and mixed patches, absent/malformed state, source extensions, policy paths, traversal, symlinks and moves in disposable projects.
 
 ## Example
 

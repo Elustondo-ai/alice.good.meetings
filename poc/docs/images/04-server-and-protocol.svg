@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="475" viewBox="0 0 900 475" role="img" aria-labelledby="title desc">
+<title id="title">Validate each packet, then transcribe</title><desc id="desc">Each 4808-byte binary packet includes a sequence, source sample index and PCM payload. The server validates it, appends audio and commits speech turns.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#1c3045}.node{font-size:22px;font-weight:700}.body{font-size:18px}.label{font-size:17px;fill:#465d72}.zone{font-size:17px;font-weight:700;letter-spacing:1px}.edge{fill:none;stroke:#52677b;stroke-width:2;stroke-linejoin:round}.heading{font-size:26px;font-weight:700}.kicker{font-size:13px;fill:#61778d;letter-spacing:1.6px}</style>
+<rect width="900" height="475" rx="16" fill="#f8fafc"/>
+<text x="24" y="29" class="kicker">SPEAKERCOACH · WORKING POC</text>
+<text x="24" y="64" class="heading">Validate each packet, then transcribe</text>
+<text x="24" y="106" class="label">BROWSER → SERVER  ·  4808 bytes, little-endian</text>
+<rect x="24" y="125" width="230" height="100" rx="12" fill="#e8f0ff" stroke="#3979df"/>
+<text x="40" y="155" class="node">Packet sequence</text>
+<text x="40" y="182" class="body">Bytes 0–3 · uint32</text>
+<text x="40" y="207" class="body">Starts at 0; adds 1</text>
+<rect x="274" y="125" width="230" height="100" rx="12" fill="#e8f0ff" stroke="#3979df"/>
+<text x="290" y="155" class="node">Starting sample</text>
+<text x="290" y="182" class="body">Bytes 4–7 · uint32</text>
+<text x="290" y="207" class="body">Starts at 0; adds 2400</text>
+<rect x="524" y="125" width="352" height="100" rx="12" fill="#e8f0ff" stroke="#3979df"/>
+<text x="540" y="155" class="node">Audio payload</text>
+<text x="540" y="182" class="body">Bytes 8–4807 · PCM16 mono</text>
+<text x="540" y="207" class="body">2400 samples · 100 ms at 24 kHz</text>
+<text x="24" y="266" class="label">SERVER → CLOUD  ·  field widths above are schematic</text>
+<rect x="24" y="290" width="250" height="100" rx="12" fill="#e5f4ed" stroke="#27866a"/>
+<text x="40" y="320" class="node">Validate continuity</text>
+<text x="40" y="347" class="body">Length, sequence, sample</text>
+<text x="40" y="372" class="body">Reject malformed packets</text>
+<path d="M 274 340 H 324" class="edge" marker-end="url(#arrow)"/>
+<rect x="324" y="290" width="250" height="100" rx="12" fill="#e5f4ed" stroke="#27866a"/>
+<text x="340" y="320" class="node">Append PCM</text>
+<text x="340" y="347" class="body">Base64 audio buffer</text>
+<text x="340" y="372" class="body">Track voice and duration</text>
+<path d="M 574 340 H 624" class="edge" marker-end="url(#arrow)"/>
+<rect x="624" y="290" width="252" height="100" rx="12" fill="#f0eaff" stroke="#8664bd"/>
+<text x="640" y="320" class="node">Commit speech turn</text>
+<text x="640" y="347" class="body">800 ms quiet or 8 s total</text>
+<text x="640" y="372" class="body">Text → session.observe()</text>
+<text x="24" y="438" class="label">No voice: clear buffer every 5 s. Send audio only after the server reports ready.</text>
+</svg>

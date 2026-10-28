@@ -40,7 +40,8 @@ Cover scripts and tests as well as application/library code; update the companio
 ## Evidence and review
 
 Use Intended / Actual / Planned in substantive assessments of the explicit target project.
-Follow the [stage layout](../../00-governance/docs/stage-layout.md): flat root files numbered `01` Intended, `02` Current and `03` Planned, with dotted topic extensions.
+Follow the [stage layout](../../00-governance/docs/stage-layout.md): flat perspective files, with its named decision-folder exception.
+For material decisions, use [ASDG Decision](../asdg-decision/SKILL.md) in the current specialist context and existing authority.
 At cycle closeout, consolidate verified outcomes into Current before removing only that completed cycle's plans.
 Technical provenance belongs in the standard's JSON records, not repeated labels in the prose.
 Do not invent measurements, tests, approval, deployment or user acceptance.

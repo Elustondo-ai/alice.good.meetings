@@ -1,23 +1,23 @@
 ---
 name: asdg-focus
-description: Explicitly focus this conversation on ASDG governance 00 or a specialist stage 01-12, or clear focus. Purpose includes a read-only opening assessment; selection never grants general execution authority.
+description: Interpret the user's free-text Focus request, select the matching ASDG specialist or governance role, clarify ambiguity, or clear focus. Selection preserves existing authority.
 ---
 
-# ASDG Focus — shared activation workflow v0.2
+# ASDG Focus — conversational selection
 
 Read [session policy](session-policy.md). Only explicit user selection activates focus.
-Prefer a dedicated `asdg-focus-<NN>-<label>` skill: its fixed role ID needs no argument.
-The generic skill remains a shortcut; trailing text is an instruction argument, not a shell command.
+This is the single public Focus skill. Accept the user's own words, such as “focus on high level architecture.”
+Trailing text is a conversational request, not a shell command; preserve its complete meaning and accompanying task context.
 
 ## Resolve the selection
 
-Read [the existing catalogue](../../00-governance/types/agent-catalog.json) and [UI choices](focus-choices.md).
-A dedicated adapter supplies its fixed catalogue role ID; preserve its actual invocation in the receipt.
-Extra task text is context, not another selector. Conflicting explicit selections require clarification.
-Generic input accepts one trimmed, case-insensitive role ID, native name, 00-12, catalogue folder basename or listed alias.
-Missing generic input: direct the user to the thirteen named Focus skills; keep focus unchanged and stop.
-For `clear`, skip role loading, clear only conversation focus, then rename and report Status.
-Unknown, ambiguous or path-like input leaves focus unchanged.
+Read [the existing catalogue](../../00-governance/types/agent-catalog.json) and the [interpretation and clarification guide](focus-choices.md).
+Interpret intent using the phrase and relevant conversation context; match responsibilities, not just keywords. Numbers, role IDs and names remain valid shortcuts.
+For one clear match, briefly state the interpreted role and continue without asking for confirmation.
+For unresolved ambiguity, ask one question with the plausible specialists, a recommended option and its reason; await the user's choice before activation or renaming.
+For missing or unrecognizable intent, ask which specialist the user wants and show all twelve; offer Governance separately.
+Clarification preserves the previous focus, title and task. An unanswered or preselected recommendation is not a choice.
+For an explicit clear request, including natural-language equivalents, skip role loading, clear only conversation focus, then rename and report Status.
 Resolve to exactly one catalogue entry, governance 00 or stage 01-12. Do not synthesize paths from user input.
 00 selects ASDG-COORDINATOR / asdg_coordinator, an explicit management focus outside the twelve development stages.
 Governance is distinct from None; `clear` never selects it. Never create or renumber roles.
@@ -38,8 +38,8 @@ Do not replace definitions with an older SDLC2 folder, remembered summary or ano
 ## Activate, rename and report
 
 After successful reads, replace THIS conversation's focus with the selected canonical role.
-Record actual source paths, available versions and the invoked skill; keep all canonical role/evaluation boundaries.
-Roles retain evaluation boundaries; ASDG-02's contract additionally permits assigned Purpose documentation writes.
+Record the original phrase, interpreted role, actual source paths and invoked skill; keep all canonical role/evaluation boundaries.
+All roles share [documentation authority](../../00-governance/docs/documentation-authority.md) under the client's `docs/`; code, approvals and operational gates remain separate.
 Purpose selection begins its [opening assessment](../../02-purpose/skills/elicit-purpose/opening.md); activation alone writes no artifacts.
 After successful activation or explicit clear, follow [the current-chat rename step](rename-chat.md).
 Renaming is the narrow chat-metadata exception; failure never undoes successful activation/clear.

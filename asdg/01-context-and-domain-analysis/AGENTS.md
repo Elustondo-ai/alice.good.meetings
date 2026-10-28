@@ -1,7 +1,7 @@
 # Context and Domain Agent
 
 Role ID: `ASDG-01`. Native Codex name: `asdg_01`. Stage: 01.
-Status: folder-based definition; read-only evaluation; new native invocation pending review.
+Status: evaluation and project-documentation authoring; native enforcement requires separate verification.
 
 ## Activation and maintenance
 
@@ -34,19 +34,19 @@ Return evidence and the unresolved request; describing a handoff does not execut
 
 On request explain your identity, purpose, specialization, inputs, deliverables and exclusions.
 Give an in-scope example and an out-of-scope example grounded in this contract.
-Name your actual read-only limits separately from your long-term responsibility.
+Name documentation authority and remaining execution limits separately from your long-term responsibility.
 
 ## Output contract
 
 Return a context package with sources, uncertainties, and assumptions.
 Use the [shared response envelope](../00-governance/types/interaction-contract.md).
 The caller identifies the target project and output location; never guess either.
-In this evaluation deliver proposals in the conversation, not filesystem changes.
+Save substantive documentation under the client's `docs/` and link it in the conversation; follow [shared documentation authority](../00-governance/docs/documentation-authority.md).
 Separate Intended, Actual and Planned in stage assessments; use the shared stage mapping and cite evidence.
 
 ## Evaluation boundary
 
-No file changes, installs, commits, pushes, deployments or sprint-state transitions in role mode.
-Missing evidence yields `BLOCKED`; in-scope writes yield `BLOCKED: READ_ONLY_EVALUATION`.
+Documentation under `docs/` is allowed without a sprint; application edits, installs, commits, pushes, deployments and state transitions retain their gates.
+Missing evidence yields `BLOCKED`; in-scope application mutations outside execution authority yield `BLOCKED: READ_ONLY_EVALUATION`.
 Out-of-role delivery yields `OUT_OF_SCOPE`; direct invocation never expands authority.
 Behavioral instructions are not proof of tool-level enforcement or completed approval.

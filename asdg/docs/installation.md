@@ -51,7 +51,7 @@ See [native integration limits](native-integration.md) and the actual local runt
 
 ## Repetition and upgrades
 
-Repeat the same initializer to check/restore identical generated entries; valid state is preserved.
+Repeat initialization preserves state and restores current generated entries; retire an older client's per-role Focus adapters only through an authorized migration after checking customizations.
 Deleting `logs/` loses observations only; it does not remove lifecycle or review history.
 Review package updates as diffs against this local working baseline; never replace the folder wholesale.
 Keep `.asdg/` across upgrades. Catalogue/version changes require a reviewed migration.

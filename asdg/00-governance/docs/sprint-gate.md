@@ -20,13 +20,17 @@ Protected agent-policy/state paths cannot be scope. The guard must receive EVERY
 Guard exit 0 means all targets are allowed; exit 1 means blocked. Missing, malformed,
 unsupported or symlink state fails closed; active state without supplied targets also blocks.
 See [state format](sprint-state.md). This is file scope, not semantic proof of task compliance.
+The [Sprint start Git preflight](../../skills/asdg-sprint-start/git-preflight.md) requires a clean worktree and a new sprint branch before activation; dirty work must be committed by the developer first.
+This skill-level convention is not enforced by the bare CLI; direct terminal users must perform the same preflight themselves.
 
 ## Codex enforcement and activation
 
 The PreToolUse hook and CLI consume the SAME evaluator and permission function; see [engine](state-engine.md).
-It checks patch create/update/delete/rename targets BEFORE execution. It blocks arbitrary
+It checks every patch create/update/delete/rename target BEFORE execution. Documentation formats under client `docs/` need no sprint; code, policy paths, traversal and symlinks receive no documentation exemption.
+Mixed patches still check every application target against active scope. File classification does not prove content semantics; see [documentation authority](documentation-authority.md).
+It blocks arbitrary
 shell execution, REPL/MCP and unknown tools; only a small read-only shell allowlist is accepted.
-Only the human-directed sprint utilities may invoke start/stop and preserve their closeout receipt; they cannot widen implementation scope or edit policies/hooks.
+Only the human-directed sprint utilities may create the sprint branch, invoke start/stop and preserve their closeout receipt; they cannot widen implementation scope or edit policies/hooks.
 Use scoped apply_patch for implementation; existing role/runtime rules still govern execution and tests.
 If the hook denies a transition or receipt write, report it and provide the human-run command; do not bypass or alter enforcement.
 A guard execution failure emits a deny decision through a shell fallback.

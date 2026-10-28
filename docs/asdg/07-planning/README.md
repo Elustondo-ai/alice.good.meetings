@@ -6,13 +6,15 @@ This folder connects desired outcomes to selected release and sprint work. A use
 
 ## SpeakerCoach today
 
-No application sprint is active and no release is declared in the current project state. The existing review reports concern documentation and ASDG evolution; they should not be mistaken for a committed product delivery plan.
+As of 28 October 2026, SPRINT-000 is active for the streaming/agent POC and no release is declared. The existing review reports concern documentation and ASDG evolution; they should not be mistaken for a committed product delivery plan.
 
 ## What belongs here as we develop
 
 Release plans describe a broader delivery objective. Sprint plans select a small, explicit scope within that direction. Both need clear decision status, dependencies and completion criteria.
 
 ## Explore
+
+- [Shared documentation authority review](02.7-review-documentation-authority.md): every agent can save documents while code and approval gates remain separate.
 
 - [ASDG evolution task list](03-asdg-evolution-tasks.md): methodology work and its recorded sequencing.
 - [Continuation increment review](current/reviews/asdg-continuation-increment-01.md): evidence from that methodology increment.

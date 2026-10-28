@@ -1,0 +1,583 @@
+{
+  "subject": "ASDG shared documentation authority",
+  "recorded_at": "2026-10-28T18:49:04+00:00",
+  "starting_revision": "4952a131ed750b5428ce13e3e7487d6c55dad299",
+  "tests": {
+    "command": "TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p test_*.py",
+    "passed": 57
+  },
+  "structure": "PASS",
+  "package_check": "8 pre-existing external presentation links in unchanged asdg/README.md",
+  "generic_skill_validator": "UNAVAILABLE: PyYAML missing",
+  "native_hook_trust": "NOT_VERIFIED",
+  "visual_check": "New documentation-authority SVG rendered and inspected at 720 px; embedded Markdown pane not inspected",
+  "protected_files_unchanged": true,
+  "human_approval": null,
+  "changes": [
+    {
+      "path": "AGENTS.md",
+      "before_sha256": "73ddd247cdf7f4796e730c5006b22bd4df6f9c16cbcd29c9509a5e3c0c1e036f",
+      "after_sha256": "112cb477dac981385ea083a4087bcd71bf24be0aec5a34a24da53522dd59107b"
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "before_sha256": "05de09b0de95b9254bb0f3dd425797d4f91eb9f5c0c008e03354c10bf0eb817b",
+      "after_sha256": "ed9a4481c8557960de45fd76a36fceb5113e0e270f7b7340988ddb9b5a0b5402"
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "before_sha256": "bdba26b55758776b4035b3e8faf7aa35fa043a11f20b84273b5fe2298826ba0b",
+      "after_sha256": "ba5f1b62295c9938e955f7e351433ecaa58ce5fe7f32c1c408166d61c8bc2247"
+    },
+    {
+      "path": "asdg/00-governance/docs/stage-perspectives.md",
+      "before_sha256": "4d436a45423414a843ac4f90215555196ff6d9dad828fb57ec94749b0537a87d",
+      "after_sha256": "f2038c07afa175f46ee38313fe002173e2237d4c712da0dc6c771ce59508b905"
+    },
+    {
+      "path": "asdg/00-governance/docs/sprint-gate.md",
+      "before_sha256": "f93d595aaf5cd37e9c243ebd3fe4969cc38bb35bcc258bce5f1db9159dae764f",
+      "after_sha256": "99743c9acf0682ce5f41bb4e02b132991d72d33d315867f86089bf035520117a"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "before_sha256": "cce807b79f8640ccd84cfa4acc5552449f86f191e45c173ae08b318e6575f953",
+      "after_sha256": "9b1f0a329bdbdd4cea01ac169bcfe5abe31a73da86819985ebb33762ad69b942"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "before_sha256": "aeeef3e3fedfd5003f12beb0a7cccfe931a650396560a222b95c4e355610b4c6",
+      "after_sha256": "cff2eac1f53eecec7112b4e60c073f1463ddf9cf8db9c5b8d45775436594110a"
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "before_sha256": "818b7ef0168ad3a30c38513ddfcff5d86918cba4e71dd4c193bb1b926bc980c9",
+      "after_sha256": "729f0793d172c51451936f529a2451a5e3a41d6ae4e5059c80b586c5a2cbba30"
+    },
+    {
+      "path": "asdg/docs/review-loop.md",
+      "before_sha256": "ad9d34cfb1427e9c56f0abeed06fae3ccbcd145d385b7a06923ecd338ebda0ff",
+      "after_sha256": "529fad8914e3a81a3baa7078b738a19e68be6c4f2aeb1425785201d894a63be9"
+    },
+    {
+      "path": "asdg/tests/acceptance.md",
+      "before_sha256": "0c662e061c846b514030ab6704f3289831190072db411787ccba646943b8d872",
+      "after_sha256": "1765a23b85e3b6380c67a22a157b1904b919d919f1d587db64bb1f7197374e45"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.py",
+      "before_sha256": "4141b78d64183368e2a3faca7a488e5334ac0fa71e2dfe5c929d95d67a31e918",
+      "after_sha256": "46dfd617f4f33e17100a4a5bd2c9200c5437198d918b514456670f3edff5f4a3"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "before_sha256": "7c33f2dc19515cce8103736f211c5c8d9076a6943f311784a563cfe54e72cdb5",
+      "after_sha256": "398d95a80f23bb24ebea4d3aa2cfa515ed81171c1508fee9b3ca927a8063fbe9"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_hook.py",
+      "before_sha256": "2876725cbf6c1dccfd3f65707f17aa631cfa6166837bbfdc1c2bfe5c019d24ee",
+      "after_sha256": "688456b424419157811a9ef0b6c7e3d7b325453662b675361cf861d5fb2edae8"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_hook.md",
+      "before_sha256": "b395f3137dab1085a0db35dba423c1e32bda6c189b5a005c78df97bba058d898",
+      "after_sha256": "cbd4f044c7d651b9ba2e1bbc2ffb3dccbe0a4edd21e24953dff840ee705a863d"
+    },
+    {
+      "path": "asdg/tests/test_portable.py",
+      "before_sha256": "c7524d010c76ca6f6774a5e9b240ffcbd74e195da8759b8ca952f7fd191f3057",
+      "after_sha256": "9b67e83bcce43e9617a74109d07a30cb8f883927ca9850880f8359d4647cdf90"
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "before_sha256": "95cc18c358144dfd9dc3fec50016916ff4a38af8fc8820c50ed1a6b9f987d2ec",
+      "after_sha256": "871c42fe040c1219f15ebd477c2b9bf7183cef09f6056df98ee7b428d3db8915"
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "before_sha256": "d41f857bebd0379f257914fb538bac57afec18625ef9679660e9d1d163b2f729",
+      "after_sha256": "402afc8ad307c284e6e7f8eb633ee3f6806af88828c8b1682c1f60ea38c4ff33"
+    },
+    {
+      "path": "asdg/00-governance/types/agent-catalog.json",
+      "before_sha256": "ee9db75fd35c26815a4070d012e91444c9020f62b31308797c755460c7861e17",
+      "after_sha256": "e71894e91b0c923cab73ff33f8d90adf4688280a2b7ef9f415035f0437e6a4aa"
+    },
+    {
+      "path": ".asdg/project.json",
+      "before_sha256": "567611ac3ddc8715c7e7d1827c27620d866bee0447c08157fef079f864b09404",
+      "after_sha256": "8a1d1b28847703c43589d56efbb59ceb44c3690c11101029d6eb209640e59f6c"
+    },
+    {
+      "path": "asdg/00-governance/AGENTS.md",
+      "before_sha256": "54e96229f6305fd88114a8a6b25fbfbb436f0614ba9c4ac630f98891db4b0bf8",
+      "after_sha256": "391f082ccfb180aafeae61affa619a167b20a009288a977c6511a58d2395c92a"
+    },
+    {
+      "path": "asdg/00-governance/skills/review-routing/SKILL.md",
+      "before_sha256": "8204c7876193f34350885b0d1a20c914142e01996748c8dabc0617134daf743d",
+      "after_sha256": "96e3e79711029c2ffc7bdfcd7b95f74a5ce546d4de4f8287da895a5df2c8ddf8"
+    },
+    {
+      "path": "asdg/00-governance/types/contract.md",
+      "before_sha256": "b2509f93d871401b6f09cb5c975f92a02c67ac8c800334e447c20ae5f559f658",
+      "after_sha256": "fdbe5930911c79e40d1dbb221ca6f5a3c509e5fa90a85dd4b52f8e3804b3bc7b"
+    },
+    {
+      "path": "asdg/00-governance/README.md",
+      "before_sha256": "07d459322375bb0a1f58c7ef2bbd89b0e64e02a8d61251fa4f07085519f4fbf7",
+      "after_sha256": "6a30036558a39cf070d7fe1831583d7beee08a9ce3538774e5c67b6b6399fa84"
+    },
+    {
+      "path": ".codex/agents/asdg_coordinator.toml",
+      "before_sha256": "26816b6dca7781f885fd9a2f3a34897caff6332ee5da6cf23483067e8dda4146",
+      "after_sha256": "18105b8323f0bb6284c297155504e98d9ee5d950bf63b1b9625275414e37309b"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_coordinator.toml",
+      "before_sha256": "26816b6dca7781f885fd9a2f3a34897caff6332ee5da6cf23483067e8dda4146",
+      "after_sha256": "18105b8323f0bb6284c297155504e98d9ee5d950bf63b1b9625275414e37309b"
+    },
+    {
+      "path": "asdg/01-context-and-domain-analysis/AGENTS.md",
+      "before_sha256": "28d083dc861862fa2a6664198120770b3e4f8907689e8c4c1009b3eeb3565f4a",
+      "after_sha256": "a93eb71826b9f658f64b172ef5c6b05dcb303fa99729b936f7208e672b4db88f"
+    },
+    {
+      "path": "asdg/01-context-and-domain-analysis/skills/analyze-context/SKILL.md",
+      "before_sha256": "ae1bf019c71f7e0f3faa4a16e4c6dcd4fc5edf6199bb6184b740d401f254895f",
+      "after_sha256": "87ec32a32a7015bd6baedfbc4ece3e7bba004f7d77137136fb3130b6008205fd"
+    },
+    {
+      "path": "asdg/01-context-and-domain-analysis/types/contract.md",
+      "before_sha256": "e951cb3f3b494c6d0aafe281988d30a41ffc68d204c430c8adafd9d473ce4fc6",
+      "after_sha256": "2d0919e22373906c847c424fdf731ba19e0678c8887dbc64df330800423de207"
+    },
+    {
+      "path": "asdg/01-context-and-domain-analysis/README.md",
+      "before_sha256": "94030f6bff0cba71ee5d7a79f2a28ea0bcc0f5f8ede1bfe022a0da5866ec57ff",
+      "after_sha256": "f5744b6358a5d18c313a089ff28508da26fcb34da3047a31a5fc396f9f1f7037"
+    },
+    {
+      "path": ".codex/agents/asdg_01.toml",
+      "before_sha256": "cc5e7f01cc9fe0a3cd5de8486f8b0b7bb2f2cd9ab9eb7ccef0df176f1e6a1165",
+      "after_sha256": "128bf85e6cc71fdbe06c1192adbe51045e93df66e978d306f17a80e40c61a642"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_01.toml",
+      "before_sha256": "cc5e7f01cc9fe0a3cd5de8486f8b0b7bb2f2cd9ab9eb7ccef0df176f1e6a1165",
+      "after_sha256": "128bf85e6cc71fdbe06c1192adbe51045e93df66e978d306f17a80e40c61a642"
+    },
+    {
+      "path": "asdg/01-context-and-domain-analysis/tests/acceptance.md",
+      "before_sha256": "70e8b66baa9df4730b470fcf797384c990b0dcd63fb10a6d9a86f62fbecd4116",
+      "after_sha256": "cfa98316e7cb982c6cc0657c242f0be64130d4ad42f16aad8707dd6f6857c7de"
+    },
+    {
+      "path": "asdg/02-purpose/AGENTS.md",
+      "before_sha256": "4567804be2930e64c7b32e3ca7fe3f121c8239b4eae02e7c5e28dcc2110bdcca",
+      "after_sha256": "a3877a1d42c44cfd13c23d43b83aacb288a3d7f557a020dd43d58a4129969faa"
+    },
+    {
+      "path": "asdg/02-purpose/skills/elicit-purpose/SKILL.md",
+      "before_sha256": "8f5fc7b70938bec54f39c31df882267ebae3890bc5a5d9e3cabb51d72701f50b",
+      "after_sha256": "15ea73ccb3a85ba12c39dbaad69ed71c7734f0308a3baf0422ad4e81b1ee3039"
+    },
+    {
+      "path": "asdg/02-purpose/types/contract.md",
+      "before_sha256": "03f2a3ed6bbb413d67c29dba4ea43e8fec098711bccaa03c17d46882b3cc60ec",
+      "after_sha256": "891845a79c6b40a11ed8809f12805a0043d2562ec8753e5a33df98c293f649ba"
+    },
+    {
+      "path": ".codex/agents/asdg_02.toml",
+      "before_sha256": "a01829e87d2ad772592f22d22102072f5be025cf7d5c0211df970d314ec1b550",
+      "after_sha256": "a106aa6c990504bb1cac55317cade38a3df0e72878a50f943009987f133aac16"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_02.toml",
+      "before_sha256": "a01829e87d2ad772592f22d22102072f5be025cf7d5c0211df970d314ec1b550",
+      "after_sha256": "a106aa6c990504bb1cac55317cade38a3df0e72878a50f943009987f133aac16"
+    },
+    {
+      "path": "asdg/03-system-model-and-use-cases/AGENTS.md",
+      "before_sha256": "18f58200d8b728fb4c86d092287433cf44b6aa988739679e4a8a0534ee78d264",
+      "after_sha256": "25bdefb3e3c575e447d5acd09783802749e018e720bb736d277fa8d94bafeead"
+    },
+    {
+      "path": "asdg/03-system-model-and-use-cases/skills/model-use-cases/SKILL.md",
+      "before_sha256": "7b1a141e49bbfe37f49e80a4aabac570262594ff18d96f7c3c30725e260b6333",
+      "after_sha256": "2ffde197cd46b20170e4b7b6a5b2d636c58da35e1954f8f6af01db1b9bb8f60c"
+    },
+    {
+      "path": "asdg/03-system-model-and-use-cases/types/contract.md",
+      "before_sha256": "2ddc63a1f4ed2ba0561801d1a1077e3ad1814108866ba00a21111649028c53bd",
+      "after_sha256": "3041cbaec6f89186a960435bd08aea4650b8baa607e5eb9423d94dc97b3f4393"
+    },
+    {
+      "path": "asdg/03-system-model-and-use-cases/README.md",
+      "before_sha256": "76c593621b5ed5614b1cda3f5b5cb3124cd16e59c4509d2b6439902ca4f235eb",
+      "after_sha256": "32564f612426f9b46cd55b1554f0c1a21f3b7db1093d11765467e3a60916ade2"
+    },
+    {
+      "path": ".codex/agents/asdg_03.toml",
+      "before_sha256": "b0b3df96658bbe6d12563e485ec093fca1872a05a3d57d68da3041f472d1e098",
+      "after_sha256": "fa7b640f1cc87295a25bec5ed5f242c1155aaa87d20c7279b647f90f7047b6aa"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_03.toml",
+      "before_sha256": "b0b3df96658bbe6d12563e485ec093fca1872a05a3d57d68da3041f472d1e098",
+      "after_sha256": "fa7b640f1cc87295a25bec5ed5f242c1155aaa87d20c7279b647f90f7047b6aa"
+    },
+    {
+      "path": "asdg/03-system-model-and-use-cases/tests/acceptance.md",
+      "before_sha256": "95a29bc66b2e8df048b2646148d70b206dcf10153e2d3bcda0a43feeb8d17d21",
+      "after_sha256": "dd45e505d3a58583ee988700f77aa8a1d0f7fccd74da02179e15c142072765ba"
+    },
+    {
+      "path": "asdg/04-benchmarks-and-eval-strategy/AGENTS.md",
+      "before_sha256": "fd53d0e16e0c80164a477613ff5886a1ae2fbbb64486256aa203f7968872b0d7",
+      "after_sha256": "41f61ec9bdf9259f176b460461e49050537aaf6aba2bde10dc8259dcc71aff60"
+    },
+    {
+      "path": "asdg/04-benchmarks-and-eval-strategy/skills/evaluate-alternatives/SKILL.md",
+      "before_sha256": "126fe8505f6718467cab52d3afa8e3c654159e1ec028829f01b253475250ff5a",
+      "after_sha256": "82b903d8d2dd8be61487af553ce988e4f677ccc3d12c5328fd64d6c8015411b3"
+    },
+    {
+      "path": "asdg/04-benchmarks-and-eval-strategy/types/contract.md",
+      "before_sha256": "c5b0cbe3ed1245bcedc874fcc5685f67f1b117a1238377ba9fa09ffef266fd5e",
+      "after_sha256": "cd3158b9498b540b162b9390d50e52ccb552a53604c20de8448b8685dd4b2a64"
+    },
+    {
+      "path": "asdg/04-benchmarks-and-eval-strategy/README.md",
+      "before_sha256": "19a623ee20bf04a8996d79b80b6cb01e9084241df281facd3b2e43d41c9ab73a",
+      "after_sha256": "10303dd1f0471fa481a4e222207af22555cb28a8f7e819fd4fc428a1d6300462"
+    },
+    {
+      "path": ".codex/agents/asdg_04.toml",
+      "before_sha256": "dbd468329f44943afb92327d8c6c4037654744fac78c9f138985f3dbea0e8ebe",
+      "after_sha256": "40adfa25d7234c725f3f34a9232561a9bd123561330c23027a85b6f2f8cad24a"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_04.toml",
+      "before_sha256": "dbd468329f44943afb92327d8c6c4037654744fac78c9f138985f3dbea0e8ebe",
+      "after_sha256": "40adfa25d7234c725f3f34a9232561a9bd123561330c23027a85b6f2f8cad24a"
+    },
+    {
+      "path": "asdg/04-benchmarks-and-eval-strategy/tests/acceptance.md",
+      "before_sha256": "4bf4fa8e816be1f47698c2909c3fa98bd3d777f248efdcc81bea605859dc18ee",
+      "after_sha256": "d42c045fdae65207b5d5f0a5d4ae7ebe09bb38f4f74c4b6f657d2a783548a646"
+    },
+    {
+      "path": "asdg/05-high-level-design-and-architecture/AGENTS.md",
+      "before_sha256": "3c321a904c305d3144c1e92eb3f0c0831262ad72470bd78076004d1912d769e8",
+      "after_sha256": "f32c65b4964924e0516ab5ab9618c34ee068b829b02d01627e6c15faa3b2b942"
+    },
+    {
+      "path": "asdg/05-high-level-design-and-architecture/types/contract.md",
+      "before_sha256": "29d84c4980a190eb34910bd5313d3ef7cf59ace4b93a4d7d83e45b7dfce7c294",
+      "after_sha256": "196bb273b6b6ef669822a6de2d5109bd2becab5c180119d692df65b08b0d1bd1"
+    },
+    {
+      "path": ".codex/agents/asdg_05.toml",
+      "before_sha256": "b5fff16a778d02ef8bbceab763c33395b8d87e9b2153c8594c297b2991922869",
+      "after_sha256": "74095d339f69e642b775044e2f570a199168d0fda835af967df35066e912190a"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_05.toml",
+      "before_sha256": "b5fff16a778d02ef8bbceab763c33395b8d87e9b2153c8594c297b2991922869",
+      "after_sha256": "74095d339f69e642b775044e2f570a199168d0fda835af967df35066e912190a"
+    },
+    {
+      "path": "asdg/06-viable-proof-of-concept/AGENTS.md",
+      "before_sha256": "4e9456390b077171738f8762e0dfdadb32dca9b4873db3b9a092bbcb73a058f0",
+      "after_sha256": "f72844a95842f1fef1ba25782ded71c9d87a1e245bfb9bc0bd2839482b7ab6c0"
+    },
+    {
+      "path": "asdg/06-viable-proof-of-concept/skills/plan-experiment/SKILL.md",
+      "before_sha256": "15f74701e3481ac8cdba779d57f63752a90f028b20cfcbed332d9fac755acda8",
+      "after_sha256": "b20681cfd93ece7179adc5ea72bbc02848565439fa76f0374399c2d2a41793f9"
+    },
+    {
+      "path": "asdg/06-viable-proof-of-concept/types/contract.md",
+      "before_sha256": "5f6bfaa2c3dedcd8b38edff1c6e47bf6519f32278028377b3429be5a97ca3f60",
+      "after_sha256": "b1af20456a02744257991e90ed15f6fb95427d3f536428db7603d0e7c0d4df62"
+    },
+    {
+      "path": "asdg/06-viable-proof-of-concept/README.md",
+      "before_sha256": "3dd3ee1813874fb4420f6e46cf6bb52fcb4ba8a53e0e41d00792eb75d4297588",
+      "after_sha256": "cdc60b1ed864197517290d9ce1e3f5a2f6fe79eb414cbd3cd24c3a2bf677d99f"
+    },
+    {
+      "path": ".codex/agents/asdg_06.toml",
+      "before_sha256": "00e6790930aa93e7fea8837ec9a72aeb7b9b932859d9744826a884b969074549",
+      "after_sha256": "5005989d197f01237710aa3d86657fd927daea41f5b608598957df85876526d9"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_06.toml",
+      "before_sha256": "00e6790930aa93e7fea8837ec9a72aeb7b9b932859d9744826a884b969074549",
+      "after_sha256": "5005989d197f01237710aa3d86657fd927daea41f5b608598957df85876526d9"
+    },
+    {
+      "path": "asdg/06-viable-proof-of-concept/tests/acceptance.md",
+      "before_sha256": "4ac49412461d96705011a81e9595f4276a203a9db93e4d82ba8190892f697ad4",
+      "after_sha256": "bcd1c40637f6dc17c335c8367e37f38f04a1442012710cf9b296c9195d03c631"
+    },
+    {
+      "path": "asdg/07-planning/AGENTS.md",
+      "before_sha256": "f2081564b4680a37f24a19c6eb0077e268710a01f140edcef14937b1ae95adcf",
+      "after_sha256": "c41a6ca0f425fae170f06ef9a64138989cd112655c36d12def236548a5dc55f9"
+    },
+    {
+      "path": "asdg/07-planning/skills/prepare-plan/SKILL.md",
+      "before_sha256": "4a7f167dcedd089c898aae55547ac177046f93e497307ed745b54290e9038661",
+      "after_sha256": "96b0191064d20cacdb5e6d4979c93a5ad976869b73abe526a4cf1d359fc34fdc"
+    },
+    {
+      "path": "asdg/07-planning/types/contract.md",
+      "before_sha256": "60c5cf89b6d5615c8e5e1592c1658f7879d94a5b105f882aa8c991415db082ff",
+      "after_sha256": "ea08edc5ef758ed7973d00e057a147283ede9f00f67f3a61b0da695a0f75818c"
+    },
+    {
+      "path": "asdg/07-planning/README.md",
+      "before_sha256": "55f5f1cb871e680747228d5129066cdef71ce1bbc93cc4820a40308194741d52",
+      "after_sha256": "15c89c84b7c3c57d7575fec0778de3edbf90dfa3993b5fc3bcd71784462f6d0a"
+    },
+    {
+      "path": ".codex/agents/asdg_07.toml",
+      "before_sha256": "68d210d9b34b61fc42a7de2940adc8f262453e5870734b58c74b47a2aaa7195e",
+      "after_sha256": "a23a48a3bb91898cacce0a634359c0f44b7aff736c4e97bca8b9fdfde28a019f"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_07.toml",
+      "before_sha256": "68d210d9b34b61fc42a7de2940adc8f262453e5870734b58c74b47a2aaa7195e",
+      "after_sha256": "a23a48a3bb91898cacce0a634359c0f44b7aff736c4e97bca8b9fdfde28a019f"
+    },
+    {
+      "path": "asdg/07-planning/tests/acceptance.md",
+      "before_sha256": "333b7a7b9a4208864c24daf29fa3219ebc76ccd770758937316d998cbc46d50e",
+      "after_sha256": "59697049f082817a9f62d4ada6ff5ef735d522b3bcfa0731a4680f1b26b791ae"
+    },
+    {
+      "path": "asdg/08-low-level-design/AGENTS.md",
+      "before_sha256": "1288f7b3ae575d2a36d55370144dc47ccc3b5c1b2c3d7a123320c64c0fcbdcfb",
+      "after_sha256": "65a188f5dda5659767b5a69a1145c43bca9b4e0de5d0be27da5701962158361e"
+    },
+    {
+      "path": "asdg/08-low-level-design/skills/specify-design/SKILL.md",
+      "before_sha256": "b549c48d6871f1fade5f677ce8107d0d57b8292dafbb89438e8b29a01ed7eae5",
+      "after_sha256": "39a3275236393f87a256cbc13a3e8c119e08935e51c8a900265fb06e56cb574d"
+    },
+    {
+      "path": "asdg/08-low-level-design/types/contract.md",
+      "before_sha256": "ef3e2f4513d47bf034b98a08a0ec9fd9ff9269b2ade1624c050559a8ce88fb73",
+      "after_sha256": "28b445b68e86810d5dcb7924660d9212785a9f3b47b4241cbeca905b03077f0f"
+    },
+    {
+      "path": "asdg/08-low-level-design/README.md",
+      "before_sha256": "2dcabaca94946801b6d2e19d420a628f80abd6f5dc1e7ac23f605200b53c0866",
+      "after_sha256": "ce23c80b2ffc1568939381a1cef946e71db4101b08ee40617686aa244187305d"
+    },
+    {
+      "path": ".codex/agents/asdg_08.toml",
+      "before_sha256": "4dcd0e2ddfdd5de65e20caf3be11f5f7ee725cebec32c8c3b67d0e5bf7167ad5",
+      "after_sha256": "4bdf0c6ecadf1830bc8aec2eb9a82691257658adc2a95da6c422fdf37c28d8f8"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_08.toml",
+      "before_sha256": "4dcd0e2ddfdd5de65e20caf3be11f5f7ee725cebec32c8c3b67d0e5bf7167ad5",
+      "after_sha256": "4bdf0c6ecadf1830bc8aec2eb9a82691257658adc2a95da6c422fdf37c28d8f8"
+    },
+    {
+      "path": "asdg/08-low-level-design/tests/acceptance.md",
+      "before_sha256": "dfcf46ad84b8ed27ac99c519db372bd48671d154b8fbce9de9c6a59fdeb1c6f1",
+      "after_sha256": "af18c123cf65f1a87114ab02310919300c9085e9560b486722565db05c468127"
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/AGENTS.md",
+      "before_sha256": "f40286f3c29b0e64b5866e6d98e9776c265022dcbbe649a94bbeaf11a313048d",
+      "after_sha256": "23882cbd7705b798a858465507bfa123d43bdefd1efd70c9434111a4b69571a6"
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/skills/review-build-task/SKILL.md",
+      "before_sha256": "f262a8c5bcab9103266d48df24f530cc4dbdaaec1d0659e0256252f7ee3b9acc",
+      "after_sha256": "29846066bf51ded096db7d0ab234bb4db61d36a928818025c4a200ebbfb84128"
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/types/contract.md",
+      "before_sha256": "6624450dd0f2836596427ca4f5b4fb16d7959c584776c1f008041222449f51aa",
+      "after_sha256": "b73e2490d4bfb0b78e1d3b8d922aa2b368ab64d28ab12fbff14d3f3f70906764"
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/README.md",
+      "before_sha256": "ac44ef1c804c8d33fda08463b0b313fc52be495b624d42b8a91fa77b42ebd32f",
+      "after_sha256": "33112aa7c44cf7635c05869fe69b8a3ccbf170835eb46b802f25c4c09d08bbd1"
+    },
+    {
+      "path": ".codex/agents/asdg_09.toml",
+      "before_sha256": "6ddf6c6500835bc3b8afbdd202a3596bd946a632b65293035b2413b1e6016db4",
+      "after_sha256": "2a670258b50bf6e89cd11ec09a58973277cf3c321b7e922d4a680e1505c5ea47"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_09.toml",
+      "before_sha256": "6ddf6c6500835bc3b8afbdd202a3596bd946a632b65293035b2413b1e6016db4",
+      "after_sha256": "2a670258b50bf6e89cd11ec09a58973277cf3c321b7e922d4a680e1505c5ea47"
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/tests/acceptance.md",
+      "before_sha256": "a37995a723c5bd7b2fa86f546271eff835167b0ff65eacffbac96deadf582d92",
+      "after_sha256": "c4c34a7676bfdfd1b77196dffeb5eee682d81210b25fe01aa8925e23b6ccf6be"
+    },
+    {
+      "path": "asdg/10-document-review-and-release/AGENTS.md",
+      "before_sha256": "13479c045629b7579db4ab19182b889c56517a3c9420abbb90101c87431b56d0",
+      "after_sha256": "606e1cbb269b6206e0b066576b4982bac7f5bcbfddafaddf0fe5db51165e1e51"
+    },
+    {
+      "path": "asdg/10-document-review-and-release/skills/review-readiness/SKILL.md",
+      "before_sha256": "6ac52e7e9205ac98173fa9625c3b852016f7f1dee901d2b32a9393775f9c9d97",
+      "after_sha256": "c3f341f1b05f597423105a965166309cb7456dbc449e9fea51a9e1959bc46de0"
+    },
+    {
+      "path": "asdg/10-document-review-and-release/types/contract.md",
+      "before_sha256": "8f0778833ec0205d018b53dfbc07ff34b96f833c1d48062efbaa6a0a74b2ad67",
+      "after_sha256": "6a7f7cdb7b88d3a8ecfd0e2257d9652d97f6e05738a3beff0422f6d95a62af94"
+    },
+    {
+      "path": "asdg/10-document-review-and-release/README.md",
+      "before_sha256": "801a97cf1bb2cf52015ec7944f321051a920ac30d8d67bbdebc2a4c4eaf49fde",
+      "after_sha256": "6cffde12e537802366c6937eb5e9f0ee86e57a4a3d5c96515ef29f1a7c0b39cc"
+    },
+    {
+      "path": ".codex/agents/asdg_10.toml",
+      "before_sha256": "888b231b4c3f4096e1cfdff17ff4926d17bb62aa2c68cbcdd4763f1fe07855d6",
+      "after_sha256": "767bb84d867295ba283201a70e7424b0086792f63f2c230cbceda91ecdfc35b8"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_10.toml",
+      "before_sha256": "888b231b4c3f4096e1cfdff17ff4926d17bb62aa2c68cbcdd4763f1fe07855d6",
+      "after_sha256": "767bb84d867295ba283201a70e7424b0086792f63f2c230cbceda91ecdfc35b8"
+    },
+    {
+      "path": "asdg/10-document-review-and-release/tests/acceptance.md",
+      "before_sha256": "c17ad7b4562c45f2d41a848b1ec6e55f8c77f389824a69aa007ea92cecda365a",
+      "after_sha256": "f644034cd8467994a1ae63a6477e4a33195b113d533dd2047f074e2aa2a56efe"
+    },
+    {
+      "path": "asdg/11-operational-reality-devops-and-user-acceptance/AGENTS.md",
+      "before_sha256": "760adc05997ac986ce14b19daddb5672f2c4f056846a4c95cb96f21397bcd857",
+      "after_sha256": "99423df950766cf5fa403ad02a0e2314a712254f385a07e4f1d168e4a0626d0c"
+    },
+    {
+      "path": "asdg/11-operational-reality-devops-and-user-acceptance/skills/assess-operations/SKILL.md",
+      "before_sha256": "33752df817a6b47b0dbc0748398ef19a5f4f8d33a5e0511d4163db88b2328eb4",
+      "after_sha256": "8c9db4db061904120c304d9b801523b43e042cb3daaa56c1abc36392cdfa7d21"
+    },
+    {
+      "path": "asdg/11-operational-reality-devops-and-user-acceptance/types/contract.md",
+      "before_sha256": "2f0bb3ad4a57a2015b11f2724bba801ed3641d6efa65c86d8c1fa24486fedd81",
+      "after_sha256": "10c244fb1f48dd0e14e8db994794599b1ca7c13a49bb8317daa92899440eee29"
+    },
+    {
+      "path": "asdg/11-operational-reality-devops-and-user-acceptance/README.md",
+      "before_sha256": "278837ae92cbbf48b30b8637cbc3818978336b2bf3220b9ec52533bf7aec412f",
+      "after_sha256": "b3c42c95861bef980fdab45e6e274e3f089eb06730f59171ab5dec044d3b4c4e"
+    },
+    {
+      "path": ".codex/agents/asdg_11.toml",
+      "before_sha256": "21399b63f078c75c2be422d6f70b1c07746e114683b6cdd121af235e4d5119f6",
+      "after_sha256": "d706ba032dc44411942cf75d0fb41e20e2876818342d8982806f082be6f3a496"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_11.toml",
+      "before_sha256": "21399b63f078c75c2be422d6f70b1c07746e114683b6cdd121af235e4d5119f6",
+      "after_sha256": "d706ba032dc44411942cf75d0fb41e20e2876818342d8982806f082be6f3a496"
+    },
+    {
+      "path": "asdg/11-operational-reality-devops-and-user-acceptance/tests/acceptance.md",
+      "before_sha256": "ce8380b6c7f53afd38126981d3d80394500fc369d999f89c09670b20ac30da24",
+      "after_sha256": "5e90224b0d0bcc11b18034ad809d6055626641dbedcb570efdd1d4b071df48ea"
+    },
+    {
+      "path": "asdg/12-observability-insights-and-learning/AGENTS.md",
+      "before_sha256": "d49bdee85b19158b8cbb5887b0a982877987ec900525a221722f57e867e4b2ef",
+      "after_sha256": "de9d303f69d4a09872b9941c1511cfd2d9a3a626e86d4e4c48571b00a7c38495"
+    },
+    {
+      "path": "asdg/12-observability-insights-and-learning/skills/derive-insights/SKILL.md",
+      "before_sha256": "5a2621e2dffd11590a413aa5bd51202198d8a7cbda9d1d708afd810e6df4dae5",
+      "after_sha256": "3104dd53bb55b500e86d8066d5d0e9e5af9a1f105f3bb9ec976b39c093f43104"
+    },
+    {
+      "path": "asdg/12-observability-insights-and-learning/types/contract.md",
+      "before_sha256": "d2e918cc3f6279998d012308120c6af5ac81de0b5ab02e4ebcaafd7fcae8decb",
+      "after_sha256": "a256ce197517ec0cd25b2c842251a9844034e9a805a22b5b75ff1c61f3a842a3"
+    },
+    {
+      "path": "asdg/12-observability-insights-and-learning/README.md",
+      "before_sha256": "09a836bf981d5c5bdda209137de25e8bd071f38ad67d835d13ce8eb1d0f840ce",
+      "after_sha256": "ff9c4851f4fb503a55515e551c0c8608191e40a6fd825720122f48f9bdcdeb93"
+    },
+    {
+      "path": ".codex/agents/asdg_12.toml",
+      "before_sha256": "e9a9c026c0f16d1f8af2f004f89fe8ca12ede4a8db7706cf775054569540884a",
+      "after_sha256": "a2be9e33f651bd8e6bd635818611b39809da50e18330a924de6f96e624541c1c"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_12.toml",
+      "before_sha256": "e9a9c026c0f16d1f8af2f004f89fe8ca12ede4a8db7706cf775054569540884a",
+      "after_sha256": "a2be9e33f651bd8e6bd635818611b39809da50e18330a924de6f96e624541c1c"
+    },
+    {
+      "path": "asdg/12-observability-insights-and-learning/tests/acceptance.md",
+      "before_sha256": "ee6ea27cb2b287ce265d70e05ca353eb55137e9166f5c5cc92762ae8e734da73",
+      "after_sha256": "d5a21216a6d540ebb8ebe42d6cdeee8e6b86f9c606bb07f5b39952fa9812a8bc"
+    },
+    {
+      "path": "asdg/scripts/lib/agent_log_hook.py",
+      "before_sha256": "186ba46784c0a14f95977fb6a4333e0740142c0d2aa438c36090699b5822037f",
+      "after_sha256": "09a65a4d49afedb28afbef4c0fa5e8225597bce24580042b099f9747f8ad2920"
+    },
+    {
+      "path": "asdg/scripts/lib/agent_log_hook.md",
+      "before_sha256": "79363af8c49ba55aea7d5e9fc34bfb90de694ddcf4d62317b7b8d250c8e19854",
+      "after_sha256": "ce67a415560b1d3b103aa5578e47b85828ad5cb3c336afcb5c27d9cfb7611b90"
+    },
+    {
+      "path": "asdg/00-governance/docs/session-logging.md",
+      "before_sha256": "e406b81650c120d0042cf9cfdd8147d231d6fe58a7b1edfc3312d1e5f8b80214",
+      "after_sha256": "70a357225f5adb068a38e54bfc3d0e562f466676e1d80de9ab95e8cc72ffa193"
+    },
+    {
+      "path": "asdg/skills/asdg-decision/record-format.md",
+      "before_sha256": "b0b01b33556d472a29db65e7b950dfe8ae335a48ef81884df01927049973c7bf",
+      "after_sha256": "fa666ddd939b31ba286b6f97a5c53a02408146ef137167a34966901092b7dd8f"
+    },
+    {
+      "path": "asdg/docs/native-integration.md",
+      "before_sha256": "87eb73f46a72294a1e70d51d69732cbb61cbcffa95f494e4cbc9b890425ef941",
+      "after_sha256": "cfa8da6232d72726c594134159aa902deb4387e48a489c0ebee1a60ccb18a08e"
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "before_sha256": "167f3ef5d4b140d63393fcd50f424b7205547ecf4890f8d7c4848badc6ec7322",
+      "after_sha256": "4e1691f04b801f1b94fc1b482cce4926ab3bbc1c668c9a256adf45ccc2183040"
+    },
+    {
+      "path": "asdg/00-governance/docs/documentation-authority.md",
+      "before_sha256": null,
+      "after_sha256": "4c47471669a6b94519cf5144b2fb0642c3b057d1a91b01217f7285c4ebec1508"
+    },
+    {
+      "path": "asdg/00-governance/docs/images/documentation-authority.svg",
+      "before_sha256": null,
+      "after_sha256": "19c6c8e31912d9ee24f1854d61a20f8bcd4a5b7552a18f79936834f01882d8bb"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.7-review-documentation-authority.md",
+      "before_sha256": null,
+      "after_sha256": "e68a5a9a1cbccbd63a4909c76902d74a05b9308446cfa31c600039118e5b7cd3"
+    }
+  ]
+}

@@ -4,7 +4,7 @@
   "cli_version": "0.2.0-pilot.2",
   "project_id": "speakercoach",
   "artifacts_root": "docs/asdg",
-  "catalog_sha256": "ee9db75fd35c26815a4070d012e91444c9020f62b31308797c755460c7861e17",
+  "catalog_sha256": "e71894e91b0c923cab73ff33f8d90adf4688280a2b7ef9f415035f0437e6a4aa",
   "methodology_revision_at_init": null,
   "distribution_root": "asdg",
   "distribution_version": "0.2.0-pilot.2",

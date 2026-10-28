@@ -1,6 +1,6 @@
 # Stage documents: read the files in order
 
-In every consuming project's stages 01–12, keep human-facing documents directly in the stage folder.
+In every consuming project's stages 01–12, keep main perspective documents directly in the stage folder; named decision packages are the exception below.
 The filename communicates both reading order and perspective; no perspective subfolder is needed.
 
 | File family | Reader's question | Example |
@@ -14,6 +14,12 @@ Keep a useful main document, then split distinct topics using `.1`, `.2` and so 
 Each Markdown unit retains the 50-nonblank-line limit; do not create filler to populate a family.
 Keep README navigation at the root and supporting assets in folders such as `images/` and `sources/`.
 Do not create `intended/`, `current/`, `planned/`, `planned-release/` or `planned-sprint/` for new living documents.
+
+## Decision packages
+
+Material decisions may use `decisions/<Decision name>/` within the responsible stage, following [ASDG Decision](../../skills/asdg-decision/record-format.md).
+Keep one or two introductions, meaningful option notes and editable visuals; numbering inside a decision folder expresses reading order, not stage perspective.
+Link packages from relevant stage navigation within the assigned scope; do not duplicate authoritative state or infer approval.
 
 ## Plans and completed work
 

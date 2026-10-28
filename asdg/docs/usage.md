@@ -16,23 +16,27 @@ An existing code file or stage README never establishes accepted lifecycle evide
 
 ## A specialist conversation
 
-For whole-project management, select `$asdg-focus-00-governance`; its title is `00 Governance — <project>`.
+For whole-project management, use `$asdg-focus on project governance`; its title is `00 Governance — <project>`.
 It selects the existing coordinator, distinct from a general chat with no focus; it grants no execution authority.
 
-Select `$asdg-focus-01-context` or `$asdg-focus-02-purpose` in Codex.
+Select **ASDG focus** in Codex and describe the role, for example “on high level architecture” or “help me clarify the project's purpose.”
+Focus interprets the phrase; a clear match proceeds, ambiguity asks for a recommended choice and alternatives, and no match shows all twelve specialists plus Governance separately.
 Activation loads the role and reports focus; assign the review task in the following message.
 For example: “Read this project's existing code and purpose documents; explain the gaps and propose corrections.”
 Stage 02 is Purpose; `intent` remains a generic Focus alias. No `asdg-intent` adapter is installed.
 The focus stays in this conversation while its activation receipt remains available.
 `$asdg-status` reports conversation focus; it is distinct from CLI workflow status.
 These skills do not create a new window or persistent agent process. Resume the same Codex conversation.
-All named roles currently propose changes in conversation. File-writing specialist workflows need a later reviewed change.
+Every agent may save documentation and supporting assets under `docs/` without a sprint or separate save approval; use the [shared documentation contract](../00-governance/docs/documentation-authority.md).
+Use `$asdg-decision` in any role: it loads the role's optional `skills/decision/SKILL.md` or uses generic defaults, following the [specialization contract](../skills/asdg-decision/specialization.md).
+The skill preserves Focus and explicit selections; recording a decision does not implement it or approve a lifecycle baseline.
 
 ## Sprint transitions
 
-Use `$asdg-sprint-start` to start a human-selected scope, objective and acceptance criteria; `$asdg-sprint-review` assesses evidence without changing state.
+Use `$asdg-sprint-start` to verify a clean worktree, create a short sprint branch and activate the chosen scope; `$asdg-sprint-review` assesses evidence without changing state.
+If anything is staged, unstaged or untracked, start stops and asks the developer to commit/check it in. `SPRINT-000` uses `sprint-00` unless another name is selected.
 Use `$asdg-sprint-close` to preserve a review and end the explicitly selected sprint, including an unfinished or cancelled one. These utilities preserve Focus.
-The existing local CLI remains available:
+The existing local CLI remains available; perform the [clean-worktree and branch preflight](../skills/asdg-sprint-start/git-preflight.md) before a manual start:
 
 ```sh
 python3 asdg/scripts/cli.py sprint start --id SPRINT-001 --objective 'Chosen improvement' \

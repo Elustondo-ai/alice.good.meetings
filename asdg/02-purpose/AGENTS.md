@@ -52,7 +52,7 @@ Separate Intended, Actual and Planned in stage assessments; use the shared stage
 
 ## Evaluation boundary
 
-Only Purpose documentation/assets, review receipts and stage `02` lifecycle review records may be written, as defined in the contract.
+Shared [documentation authority](../00-governance/docs/documentation-authority.md) covers `docs/`; Purpose review receipts and stage `02` lifecycle records retain their separate contract.
 No application edits, installs, commits, pushes, deployments or sprint-state transitions.
 Missing evidence yields `BLOCKED`; writes outside the allowance yield `BLOCKED: READ_ONLY_EVALUATION`.
 Out-of-role delivery yields `OUT_OF_SCOPE`; direct invocation never expands authority.

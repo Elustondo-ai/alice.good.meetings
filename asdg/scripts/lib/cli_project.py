@@ -37,8 +37,9 @@ Only an explicit human sprint start/stop decision authorizes a transition; never
 Use scoped apply_patch edits. Arbitrary shell/REPL writes remain blocked by the guard.
 Do not edit state, hook definitions or ASDG policies as part of application implementation.
 Review and trust project hooks in Codex; configuration alone does not establish enforcement.
-Named roles retain read-only evaluation except ASDG-02 Purpose documentation under docs/asdg/02-purpose/.
-Purpose documentation and stage 02 review recording follow asdg/02-purpose/types/contract.md; a sprint does not widen role authority.
+Every agent may create and update project documentation and supporting assets under docs/ without an active sprint or separate save approval.
+Use asdg/00-governance/docs/documentation-authority.md; documentation is the default shared handoff, while code, approvals and state transitions retain their gates.
+A sprint does not widen role authority; asdg-decision preserves Focus and operational gates.
 Explicit human use of asdg-approve permits only the documentation-acceptance recording workflow in asdg/skills/asdg-approve/recording.md.
 Explicit human sprint requests use asdg/skills/asdg-sprint-start/SKILL.md or asdg/skills/asdg-sprint-close/SKILL.md; these utilities do not widen specialist delivery authority.
 Installation grants no approval, publication, commit, push, deployment or hook trust.
@@ -148,9 +149,10 @@ def preflight_package(repo):
         if read_bytes(safe_path(repo, Path('asdg/templates') / agent['adapter'])) is None:
             raise Conflict(f'Missing role adapter: {agent["native_name"]}')
     focus_root = safe_path(repo, 'asdg/templates/.agents/skills')
-    if (len(list(focus_root.glob('asdg-focus-*/SKILL.md'))) != 13
-            or not (focus_root / 'asdg-focus-00-governance/SKILL.md').is_file()):
-        raise Conflict('Expected governance 00 and twelve specialist focus adapters.')
+    if (list(focus_root.glob('asdg-focus-*/SKILL.md'))
+            or not (focus_root / 'asdg-focus/SKILL.md').is_file()
+            or not (focus_root / 'asdg-focus/agents/openai.yaml').is_file()):
+        raise Conflict('Expected one shared Focus adapter and no per-role Focus picker templates.')
     return agents, digest
 
 

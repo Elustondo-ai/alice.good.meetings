@@ -47,4 +47,4 @@ Use the [shared stage layout](stage-layout.md): Intended in `01` root files, Act
 Use `03` root files for Planned, with release/sprint horizons in filenames; consolidate verified outcomes into `02` Current at cycle closeout.
 Keep empty perspectives empty; preserve topic navigation and reference the integrated Stage 07 plan.
 Do not overwrite accepted baselines or rewrite historical reports; record changes and evidence provenance.
-Apply existing role boundaries, including ASDG-02's bounded documentation allowance; this model grants no additional authority.
+All roles may save documentation under [shared documentation authority](documentation-authority.md); this model grants no code or state-transition authority.

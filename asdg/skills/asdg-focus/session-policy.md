@@ -7,14 +7,14 @@ Explicit native delegated assignments remain valid; these skills do not spawn or
 ## Selection
 
 A genuinely new conversation starts with no selected specialist; general repository guidance still applies.
-Explicitly selecting a named Focus skill, or a valid generic selector, requests governance 00 or one specialist, stages 01-12.
+An explicit Focus request in natural language, or a role selector, requests governance 00 or one specialist, stages 01-12; unresolved ambiguity requires a choice before switching.
 Governance selects ASDG-COORDINATOR: whole-project coordination, distinct from a general session with no selected role.
 Select the role only after the canonical definition and required sources were successfully read.
 Inspecting, maintaining, mentioning or reading a role package by itself NEVER activates that role.
 Status, another ordinary skill, a topic change or a directory change NEVER selects or clears focus.
 An explicit focus-clear request clears the selection; it grants no new permissions.
 Invalid input or a failed activation leaves the previous selection unchanged and records the failure.
-If its required guidance is unavailable, retain the declaration but block specialist work until resolved.
+If an already active role's required guidance becomes unavailable, retain its declaration but block specialist work; missing guidance for a proposed switch leaves the previous focus unchanged.
 
 ## Later turns
 
@@ -38,8 +38,8 @@ Status reports what is known and may inspect necessary sources, but must not sil
 Status is project-wide; direct Suggestion follows the selected specialist under [continuation](../../00-governance/docs/continuation.md), without changing focus.
 Keep earlier reads distinct from reads performed for this status report.
 Apply the canonical out-of-scope and blocked-action rules; textual handoffs are not completed delivery.
-Roles allow conversation proposals; ASDG-02 additionally saves Purpose documentation under its canonical contract.
-ASDG-02 may record its two-gate Purpose reviews under its completion contract; other lifecycle execution remains excluded.
+Every agent may save relevant documentation under the client's `docs/` at any time; [shared documentation authority](../../00-governance/docs/documentation-authority.md) makes documents the default shared handoff.
+ASDG-02 may record its two-gate Purpose reviews; ASDG-05 decision authoring does not grant lifecycle execution or document acceptance.
 Its agent readiness never implies User acceptance or application implementation authority.
 Explicit human use of [ASDG Approve](../asdg-approve/SKILL.md) permits its narrow documentation-acceptance recording workflow; it neither changes Focus nor grants other role writes.
 Human-directed [Sprint start](../asdg-sprint-start/SKILL.md), [review](../asdg-sprint-review/SKILL.md) and [close](../asdg-sprint-close/SKILL.md) have their stated utility permissions only; Focus and specialist delivery authority remain unchanged.

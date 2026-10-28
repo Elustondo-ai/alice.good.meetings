@@ -12,9 +12,12 @@ Names describe the intended regression checks; this index is not an execution re
 | `test_init_guidance_resolves_to_installed_status_without_changing_state_on_repeat` | init guidance resolves to installed status without changing state on repeat. |
 | `test_init_guidance_is_only_emitted_after_successful_console_initialization` | init guidance is only emitted after successful console initialization. |
 | `test_factual_entry_points_never_import_advice_or_mutate_initialized_project` | factual entry points never import advice or mutate initialized project. |
-| `test_purpose_focus_adapter_installs_exactly_without_resetting_unregistered_work` | purpose focus adapter installs exactly without resetting unregistered work. |
-| `test_governance_focus_installs_without_changing_lifecycle_or_authority` | governance focus installs without changing lifecycle or authority. |
-| `test_missing_governance_focus_template_fails_before_any_writes` | missing governance focus template fails before any writes. |
+| `test_shared_focus_preserves_unregistered_purpose_work` | The shared adapter installs exactly and repeat setup preserves Purpose evidence. |
+| `test_single_focus_installs_without_changing_roles_or_authority` | One Focus picker entry retains thirteen role adapters and unchanged lifecycle/authority. |
+| `test_decision_skill_relocates_and_preserves_unregistered_decisions` | Decision discovery survives relocation; repeat setup preserves decision evidence and state. |
+| `test_optional_decision_specialization_preserves_generic_roles_and_local_methods` | Optional specialist methods survive repeat setup; absent methods require no placeholders or state changes. |
+| `test_missing_shared_focus_template_fails_before_any_writes` | Missing shared skill or UI metadata fails preflight without writes. |
+| `test_retired_focus_template_is_rejected_before_any_writes` | A retired per-role picker template cannot silently restore menu clutter. |
 | `test_advice_report_creates_planning_parents_without_changing_state` | advice report creates planning parents without changing state. |
 | `test_preserves_client_instructions_documents_and_ignore` | preserves client instructions documents and ignore. |
 | `test_existing_codex_config_conflict_has_no_side_effects` | existing codex config conflict has no side effects. |
@@ -25,6 +28,10 @@ Names describe the intended regression checks; this index is not an execution re
 | `test_relocation_and_subdirectory_invocation` | relocation and subdirectory invocation. |
 | `test_rejects_non_git_and_external_root` | rejects non git and external root. |
 | `test_inactive_sprint_blocks_patch_and_arbitrary_shell` | inactive sprint blocks patch and arbitrary shell. |
+| `test_documentation_patch_needs_no_sprint_or_lifecycle_state` | Documentation patches remain allowed with inactive, missing or malformed cycle state; code remains blocked. |
+| `test_mixed_documentation_and_code_checks_every_code_target` | A documentation target cannot hide an out-of-scope code target. |
+| `test_documentation_exemption_rejects_escape_policy_and_symlink_targets` | Documentation paths cannot escape into policy, state or external files. |
+| `test_documentation_moves_validate_both_targets` | Moves validate both source and destination; documents cannot move code or state. |
 | `test_active_sprint_checks_every_path_and_is_preserved` | active sprint checks every path and is preserved. |
 | `test_protected_governance_traversal_and_symlink_scope_blocked` | protected governance traversal and symlink scope blocked. |
 | `test_guard_failure_fallback_and_unknown_tool` | guard failure fallback and unknown tool. |

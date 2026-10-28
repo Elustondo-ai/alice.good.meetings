@@ -132,7 +132,7 @@ class PortableTests(unittest.TestCase):
         self.assertIsNone(report['human_approval'])
         self.assertFalse(report['sprint_started'])
         self.assertNotIn('$asdg-status', self.run_cli('verify').stdout)
-        adapter = self.root / '.agents/skills/asdg-focus-02-purpose/SKILL.md'
+        adapter = self.root / '.agents/skills/asdg-focus/SKILL.md'
         adapter.write_text(adapter.read_text() + '\nClient customization.\n')
         before = snapshot(self.root)
         self.assertNotIn('$asdg-status', self.init(expect=1).stdout)
@@ -160,14 +160,14 @@ runpy.run_path(entry, run_name='__main__')
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertEqual(snapshot(self.root), before)
 
-    def test_purpose_focus_adapter_installs_exactly_without_resetting_unregistered_work(self):
+    def test_shared_focus_preserves_unregistered_purpose_work(self):
         self.init()
         doc = self.root / 'docs/asdg/02-purpose/unregistered.md'
         doc.write_text('# Purpose\n\nHelp new staff complete their first shift independently.\n')
         before = snapshot(self.root)
         self.init()
         self.assertEqual(snapshot(self.root), before)
-        relative = Path('.agents/skills/asdg-focus-02-purpose/SKILL.md')
+        relative = Path('.agents/skills/asdg-focus/SKILL.md')
         self.assertEqual((self.root / relative).read_bytes(),
                          (self.root / 'asdg/templates' / relative).read_bytes())
         self.assertTrue((self.root / 'asdg/02-purpose/skills/elicit-purpose/opening.md').is_file())
@@ -178,13 +178,14 @@ runpy.run_path(entry, run_name='__main__')
         self.assertEqual(doc.read_text().splitlines()[-1],
                          'Help new staff complete their first shift independently.')
 
-    def test_governance_focus_installs_without_changing_lifecycle_or_authority(self):
+    def test_single_focus_installs_without_changing_roles_or_authority(self):
         self.init()
-        relative = Path('.agents/skills/asdg-focus-00-governance')
+        relative = Path('.agents/skills/asdg-focus')
         for name in ('SKILL.md', 'agents/openai.yaml'):
             self.assertEqual((self.root / relative / name).read_bytes(),
                              (self.root / 'asdg/templates' / relative / name).read_bytes())
-        self.assertEqual(len(list((self.root / '.agents/skills').glob('asdg-focus-*/SKILL.md'))), 13)
+        self.assertEqual([p.parent.name for p in (self.root / '.agents/skills').glob('asdg-focus*/SKILL.md')], ['asdg-focus'])
+        self.assertEqual(len(list((self.root / '.codex/agents').glob('asdg*.toml'))), 13)
         status = json.loads(self.run_cli('status', '--json').stdout)
         self.assertEqual([s['number'] for s in status['lifecycle_stages']], list(range(1, 13)))
         self.assertEqual(status['sprint_status'], 'inactive')
@@ -194,8 +195,70 @@ runpy.run_path(entry, run_name='__main__')
         self.init()
         self.assertEqual(snapshot(self.root), before)
 
-    def test_missing_governance_focus_template_fails_before_any_writes(self):
-        shutil.rmtree(self.root / 'asdg/templates/.agents/skills/asdg-focus-00-governance')
+    def test_decision_skill_relocates_and_preserves_unregistered_decisions(self):
+        self.init()
+        relative = Path('.agents/skills/asdg-decision')
+        for name in ('SKILL.md', 'agents/openai.yaml'):
+            self.assertEqual((self.root / relative / name).read_bytes(),
+                             (self.root / 'asdg/templates' / relative / name).read_bytes())
+        canonical = (self.root / relative / '../../../asdg/skills/asdg-decision/SKILL.md').resolve()
+        self.assertEqual(canonical, (self.root / 'asdg/skills/asdg-decision/SKILL.md').resolve())
+        self.assertTrue(canonical.is_file())
+        self.assertTrue((canonical.parent / 'record-format.md').is_file())
+        self.assertTrue((self.root / 'asdg/05-high-level-design-and-architecture/docs/architectural-decisions.md').is_file())
+        decisions = self.root / 'docs/asdg/05-high-level-design-and-architecture/decisions'
+        self.assertFalse(decisions.exists())
+        doc = decisions / 'Keep session state local' / 'README.md'
+        doc.parent.mkdir(parents=True)
+        doc.write_text('# Keep session state local\n\nProposed; evidence remains incomplete.\n')
+        protected = {p: (self.root / p).read_bytes()
+                     for p in ('.asdg/project.json', '.asdg/lifecycle.json', '.asdg/sprint.json')}
+        before = snapshot(self.root)
+        self.init(cwd=self.root / 'docs')
+        self.assertEqual(snapshot(self.root), before)
+        for p, data in protected.items():
+            self.assertEqual((self.root / p).read_bytes(), data)
+        self.assertEqual((self.root / 'app.js').read_bytes(), self.app)
+        self.assertFalse((decisions / 'Use Open AI Agent SDK').exists())
+
+    def test_optional_decision_specialization_preserves_generic_roles_and_local_methods(self):
+        self.init()
+        catalogue = json.loads((self.root / 'asdg/00-governance/types/agent-catalog.json').read_text())
+        roles = {row['stage']: row for row in catalogue['agents']}
+        architecture = self.root / roles[5]['folder'] / 'skills/decision/SKILL.md'
+        generic_role = self.root / roles[4]['folder'] / 'skills/decision/SKILL.md'
+        self.assertTrue(architecture.is_file())
+        self.assertFalse(generic_role.exists())
+        self.run_cli('verify', cwd=self.root / 'docs')
+        protected = {p: (self.root / p).read_bytes()
+                     for p in ('.asdg/project.json', '.asdg/lifecycle.json', '.asdg/sprint.json', 'app.js')}
+        generic_role.parent.mkdir(parents=True)
+        generic_role.write_text('---\nname: decision\ndescription: Evaluate a benchmark choice.\n---\n\n'
+                                '# Benchmark decision\n\nCompare representativeness and reproducibility.\n')
+        before = snapshot(self.root)
+        self.init(cwd=generic_role.parent)
+        self.assertEqual(snapshot(self.root), before)
+        self.run_cli('verify')
+        for p, data in protected.items():
+            self.assertEqual((self.root / p).read_bytes(), data)
+        for stage, row in roles.items():
+            if stage not in (4, 5):
+                self.assertFalse((self.root / row['folder'] / 'skills/decision/SKILL.md').exists())
+
+    def test_missing_shared_focus_template_fails_before_any_writes(self):
+        for name in ('SKILL.md', 'agents/openai.yaml'):
+            path = self.root / 'asdg/templates/.agents/skills/asdg-focus' / name
+            original = path.read_bytes()
+            path.unlink()
+            before = snapshot(self.root)
+            self.init(expect=1)
+            self.assertEqual(snapshot(self.root), before)
+            path.write_bytes(original)
+
+    def test_retired_focus_template_is_rejected_before_any_writes(self):
+        path = self.root / 'asdg/templates/.agents/skills/asdg-focus-05-architecture/SKILL.md'
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('---\nname: asdg-focus-05-architecture\ndescription: Retired fixture.\n---\n')
         before = snapshot(self.root)
         self.init(expect=1)
         self.assertEqual(snapshot(self.root), before)
@@ -259,7 +322,7 @@ runpy.run_path(entry, run_name='__main__')
 
     def test_edited_adapter_is_preserved_and_verification_fails(self):
         self.init()
-        p=self.root/'.agents/skills/asdg-focus-02-purpose/SKILL.md';p.write_text(p.read_text()+'\nLocal change.\n')
+        p=self.root/'.agents/skills/asdg-focus/SKILL.md';p.write_text(p.read_text()+'\nLocal change.\n')
         before=snapshot(self.root)
         self.init(expect=1); self.run_cli('verify', expect=1)
         self.assertEqual(snapshot(self.root), before)
@@ -307,6 +370,64 @@ runpy.run_path(entry, run_name='__main__')
         self.denied({'tool_name':'Bash','tool_input':{'command':'echo bad > app.js'},'cwd':str(self.root)})
         self.run_cli('sprint','check-implementation','--path','app.js',expect=1)
         self.assertEqual(snapshot(self.root),before)
+
+    def test_documentation_patch_needs_no_sprint_or_lifecycle_state(self):
+        self.init()
+        targets = ['docs/asdg/03-system-model-and-use-cases/01.4-question.md',
+                   'docs/asdg/03-system-model-and-use-cases/images/question.svg',
+                   'docs/shared/handoff.json', 'docs/shared/question.puml']
+        before = snapshot(self.root)
+        self.assertEqual(self.hook(self.payload(targets)), {})
+        self.assertEqual(snapshot(self.root), before)
+        for relative in ('.asdg/sprint.json', '.asdg/lifecycle.json'):
+            path = self.root / relative
+            original = path.read_bytes()
+            path.write_text('{malformed')
+            self.assertEqual(self.hook(self.payload(targets)), {})
+            self.denied(self.payload(['app.js']))
+            path.unlink()
+            self.assertEqual(self.hook(self.payload(targets)), {})
+            self.denied(self.payload(['app.js']))
+            path.write_bytes(original)
+
+    def test_mixed_documentation_and_code_checks_every_code_target(self):
+        self.init()
+        doc = 'docs/asdg/07-planning/03-plan.md'
+        self.denied(self.payload([doc, 'app.js']))
+        self.active()
+        self.assertEqual(self.hook(self.payload([doc, 'app.js'])), {})
+        self.denied(self.payload([doc, 'app.js', 'index.html']))
+        self.denied(self.payload([doc, 'docs/example.py']))
+        self.denied(self.payload([doc, 'docs/example.js']))
+        self.denied(self.payload([]))
+        self.run_cli('sprint', 'check-implementation', '--path', 'index.html', expect=1)
+
+    def test_documentation_exemption_rejects_escape_policy_and_symlink_targets(self):
+        self.init()
+        for target in ('docs/../app.js', 'docs/../.asdg/sprint.json',
+                       'docs/AGENTS.md', 'docs/SKILL.md', 'docs/.codex/config.json',
+                       'docs-other/note.md', '../outside.md'):
+            self.denied(self.payload([target]))
+        outside = Path(self.area.name) / 'outside'
+        outside.mkdir()
+        (self.root / 'docs/linked').symlink_to(outside, target_is_directory=True)
+        self.denied(self.payload(['docs/linked/note.md']))
+        destination = self.root / 'docs/note.md'
+        destination.symlink_to(outside / 'note.md')
+        self.denied(self.payload(['docs/note.md']))
+        self.assertEqual(list(outside.iterdir()), [])
+
+    def test_documentation_moves_validate_both_targets(self):
+        self.init()
+        def move(source, destination):
+            return {'tool_name': 'apply_patch', 'cwd': str(self.root),
+                    'tool_input': {'command': '*** Begin Patch\n*** Update File: '
+                                   + source + '\n*** Move to: ' + destination
+                                   + '\n@@\n-old\n+new\n*** End Patch'}}
+        self.assertEqual(self.hook(move('docs/old.md', 'docs/asdg/07-planning/new.md')), {})
+        self.denied(move('app.js', 'docs/app.md'))
+        self.denied(move('docs/note.md', 'app.js'))
+        self.denied(move('docs/note.md', '.asdg/sprint.json'))
 
     def test_active_sprint_checks_every_path_and_is_preserved(self):
         self.init();self.active()

@@ -22,7 +22,7 @@ A different conversation is not proof of independence: disclose shared source, a
 
 For the first iteration, finish installation and native discovery verification before application cleanup.
 Then review Context and Purpose against the real `app.js` and `index.html`, one conversation at a time.
-Specialists retain evaluation limits; ASDG-02 now has a bounded Purpose documentation allowance in its contract.
+Every specialist may save project documentation under `docs/`; code, approval and state-transition limits remain separate.
 Source checks and observed documentation writes do not prove fresh-session native enforcement.
 Governance maintenance is a separate explicit task; an application sprint cannot silently authorize it.
 

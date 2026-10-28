@@ -13,7 +13,7 @@ The initializer configures SubagentStart, SubagentStop, PostToolUse and PostTool
 Hooks need native trust and actual execution. Configuration alone does not prove recording.
 A main-thread Focus conversation is not a child agent and is not a complete transcript source.
 Missing attribution is skipped rather than assigned to an invented agent.
-The read-only specialist does not receive file-write authority; the separately configured recorder writes.
+Specialists may author documentation under the shared contract; activity-log writes belong to the separately configured recorder.
 The recorder uses Python standard-library facilities on macOS/Linux and does not call a model.
 
 ## Public summary contract

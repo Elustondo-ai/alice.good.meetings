@@ -1,4 +1,4 @@
-"""Codex PreToolUse boundary: scoped patches; conservative read-only shell access."""
+"""Codex PreToolUse boundary: documentation patches, scoped code and read-only shell."""
 from __future__ import annotations
 
 import json
@@ -11,8 +11,44 @@ from cli_files import safe_path
 from cli_status import project_status
 
 
+# File types used for prose, diagrams, media, exports and documentary evidence.
+# Application source remains subject to sprint checks even when placed in docs/.
+DOCUMENTATION_SUFFIXES = frozenset((
+    '.md', '.txt', '.rst', '.adoc', '.svg', '.png', '.jpg', '.jpeg', '.webp',
+    '.gif', '.puml', '.plantuml', '.mmd', '.dot', '.pdf', '.docx', '.pptx',
+    '.xlsx', '.csv', '.tsv', '.json', '.html', '.css', '.mp3', '.wav',
+    '.m4a', '.mp4', '.webm', '.mov',
+))
+
+
+def documentation_target(root: Path, value: str) -> bool:
+    """Recognize a local documentation file, rejecting policy paths and symlinks."""
+    if not isinstance(value, str) or not value or value != value.strip():
+        return False
+    if any(c in value for c in '\\*?[]\n\r'):
+        return False
+    path = Path(value)
+    if path.is_absolute():
+        try:
+            path = path.relative_to(root)
+        except ValueError:
+            return False
+    if len(path.parts) < 2 or path.parts[0] != 'docs' or '..' in path.parts:
+        return False
+    if any(part in ('.git', '.asdg', '.codex', '.agents', '.claude', 'AGENTS.md',
+                    'SKILL.md') for part in path.parts):
+        return False
+    if path.suffix.lower() not in DOCUMENTATION_SUFFIXES:
+        return False
+    safe_path(root, path)
+    return True
+
+
 def implementation_decision(root: Path, paths: list[str], override: str | None = None) -> tuple[bool, str]:
-    status = project_status(root, requested_paths=paths)
+    implementation_paths = [path for path in paths if not documentation_target(root, path)]
+    if paths and not implementation_paths:
+        return True, 'Documentation under docs/ needs no active sprint.'
+    status = project_status(root, requested_paths=implementation_paths)
     permission = status['implementation']
     if permission['allowed'] is True:
         return True, permission['reason']

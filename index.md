@@ -14,13 +14,14 @@ Owns document structure, responsive inline CSS and the initial GOOD appearance; 
 
 ## Interface and data
 
-DOM contract: `#panel` is a div, `#debug` a pre element, `#listen` a button, and `#controls button[data-state]` carries good, land or stop. There are no exported programming functions.
+DOM contract: `#panel` is a div, `#debug` and `#server` are pre elements, `#listen` is the Start/Stop listening button, and `#controls button[data-state]` carries good, land or stop. There are no exported programming functions.
 
 | Callable or interface | Contract |
 | --- | --- |
 | `Document load` | Initializes a green GOOD panel and loads app.js after the DOM elements. |
 | `Manual state controls` | Supply data-state values consumed by the script. |
 | `Viewport layout` | Uses viewport-relative sizes and fixed overlays; overflow is hidden. |
+| `Server response overlay` | A small scrollable status surface shows server counters, transcript and agent output; text is assigned through textContent. |
 
 ## Effects and failure behavior
 
@@ -28,4 +29,4 @@ Changing element IDs or data-state values requires a matching JavaScript change.
 
 ## Example
 
-Open the page through the project's browser hosting setup; use its manual controls to inspect the three feedback labels.
+Run `bash poc/start.sh` and open http://127.0.0.1:3000. The original feedback surface remains; the lower overlay provides the server/agent demonstration. See [POC results](poc/RESULTS.md).

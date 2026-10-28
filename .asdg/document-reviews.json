@@ -3144,6 +3144,1560 @@
       "provenance": {
         "task": "User-requested ASDG sprint start, review and close skills"
       }
+    },
+    {
+      "path": ".agents/skills/asdg-sprint-start/SKILL.md",
+      "sha256": "16e3cad2e9d4002df04289feba402f44bd4a75dbf12515bb4d74ff2c0eae05af",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:35:12.853181+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested clean-worktree and sprint-branch preflight"
+      },
+      "previous_state": {
+        "sha256": "040b68d89dc6e26c913f18a274d7aad8302b8e5ae92ef15694d1968dcdadae31",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.2-review-sprint-git-preflight.md",
+      "sha256": "0f89442b10e911624d88e243424d9a08c99b3b4d5e691f07b659750ee8d4057a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:35:12.934595+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested clean-worktree and sprint-branch preflight"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/01-comparison.md",
+      "sha256": "e6c651e2a138004f53782a5b880ddecdd6fd738b4f45f6bc0e6c4c8560abc62f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 31,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/comparison.svg",
+        "visual_idea": "Media produces observations, reasoning proposes changes, and application code validates and displays state; tracing observes the flow.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": true
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/02-openai-agents-sdk.md",
+      "sha256": "d39894c76acf69b854e95f44a61f9211c7e1aff343aea5df22da3bb11256255c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/openai-agents.svg",
+        "visual_idea": "Transcript snapshot: Permitted observations \u2192 Agent + Runner: Structured proposal \u2192 State controller: Accept or reject.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/03-pydantic-ai.md",
+      "sha256": "2109105e1fbe99e41f34b2534fbf1da0e9c456e813ca6c023811c78674845ddb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/pydantic-ai.svg",
+        "visual_idea": "Audio session: Realtime observations \u2192 Typed text agent: Separate structured work \u2192 State controller: Validate the proposal.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/04-langchain.md",
+      "sha256": "096952406b167c579899050baff0a72e6b4891a403a585a3bbeb4fe692649036",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/langchain.svg",
+        "visual_idea": "Models + tools: Provider integrations \u2192 Agent loop: Prompt and middleware \u2192 State proposal: SpeakerCoach validates.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/05-langgraph.md",
+      "sha256": "5dd3117a82b12ee1f85df69e9c59aeed2d6d1e1644f6279dd9f89b09321d8d5f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/langgraph.svg",
+        "visual_idea": "Interpret: Current question \u2192 Retrieve: Relevant experience \u2192 Verify: Evidence check \u2192 Publish: If still relevant.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/06-langsmith.md",
+      "sha256": "679675e3a50196785e0915c80302812aaa2900706175f69edac1f2cd123404f7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/langsmith.svg",
+        "visual_idea": "Reasoner: Model request / result \u2192 Controller: Accepted / rejected \u2192 Browser: Visible update.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/07-livekit-agents.md",
+      "sha256": "694da194c16d7738cbdbb273839b9e9fb86dd2041dcb952bc011f1db5150fd4e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/livekit.svg",
+        "visual_idea": "Browser / room: Audio and data \u2192 LiveKit agent: Media + AI pipeline \u2192 SpeakerCoach: State and visual cues.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/08-pipecat.md",
+      "sha256": "410cfc54bff60583d9bdf53c5ad031663a80e293fe9967ee64a94a0b1ee0c9c0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/pipecat.svg",
+        "visual_idea": "Audio frames: Streaming transport \u2192 Pipeline processors: Speech and model stages \u2192 Observations / cues: Application controller.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/09-vercel-ai-sdk.md",
+      "sha256": "372c5669440c2de9215c5fb21fc106aa08e49fd22839add355ae68b685722929",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/vercel-ai.svg",
+        "visual_idea": "Provider adapters: OpenAI / Google / others \u2192 TypeScript AI SDK: Structured generation \u2192 Application + UI: Controller remains ours.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/10-google-adk.md",
+      "sha256": "8aedac1ff5702bf85edc1c5d8828daf508f3d30494397643e5f9589ddfad4e45",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/google-adk.svg",
+        "visual_idea": "Audio / observations: Gemini Live when live \u2192 ADK runtime: Tools, sessions, workflow \u2192 SpeakerCoach: Validate proposed state.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": true
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/11-gemini-live-api.md",
+      "sha256": "f690333e393620d5036b98135baaa2731779d43ec2794ef191938d7a10e55702",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/gemini-live.svg",
+        "visual_idea": "Browser audio: Continuous stream \u2192 Gemini Live: Live observations \u2192 Reason + validate: Explicit state boundary.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/12-claude-agent-sdk.md",
+      "sha256": "ea46eba4747a5b1ba9b540a670082f4d8ba5593bec7e2eda54d7a1b7c913de6d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/claude-agent.svg",
+        "visual_idea": "Task + context: Permitted files / tools \u2192 Claude agent loop: Sessions and permissions \u2192 Task result: Validate before use.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/13-anthropic-client-sdk.md",
+      "sha256": "0fc5591038ff376642337b7ae831fee073098279e01cd5434be0d93edec66845",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 10,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/anthropic-client.svg",
+        "visual_idea": "Transcript snapshot: Same comparison input \u2192 Claude Messages API: Structured proposal \u2192 State controller: Same acceptance rules.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": false
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/README.md",
+      "sha256": "b008761643575e2130d21d9491fbdaea700555b9be2b076d6d1e1a33733c9e9a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "nonblank_lines": 21,
+        "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/decision.svg",
+        "visual_idea": "Transcript observations become an SDK proposal; the application controller decides what the browser may show.",
+        "visual_check": {
+          "result": "PASS",
+          "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
+          "all_images_loaded": true,
+          "horizontal_overflow": false
+        },
+        "full_page_inspection": true
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/anthropic-client.svg",
+      "sha256": "cb6e686332d4730ab209ea521a89c64d4902114c3b8f035e20b4f2cec40e1191",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/claude-agent.svg",
+      "sha256": "38df8a486661c864c324ceddc11541d79a59c50b3d9c8f35e8a67d36ce23f327",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/comparison.svg",
+      "sha256": "f539df7469957e470293787e5a1c14021c018a305c61b188acf85901e67c7853",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/decision.svg",
+      "sha256": "a5aa78e61a4d74020fee77ea5521dbf992ddf7ff496929a4b88336b666540a7a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/gemini-live.svg",
+      "sha256": "17d1f39a0a86b4cceac08dc43da7ac1770b73271248cdcc950d01804b174744b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/google-adk.svg",
+      "sha256": "94e378aaaf8a7a470ce36b0438e65323bdfd3e13863aa99697a6207d2871d15b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/langchain.svg",
+      "sha256": "27e7bf29da1a7d0469a214ff2138fa511fd0e8425213129864570ae7e668581c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/langgraph.svg",
+      "sha256": "596d28364700686f389668618383846a35260357c19cca0b7c5bf4c3e039f01a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/langsmith.svg",
+      "sha256": "7e8c4ca80eb2fe62bf9d5326be173c8c7caecfee123ad64c48b0f914056fb37a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/livekit.svg",
+      "sha256": "726c6c1de0205a7a554a7b6c8299e2db842c90ca166b745bbb15e923c90f931a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/openai-agents.svg",
+      "sha256": "9cac0ed0504b657b2405c8ebd209ae8d232e448ca39d4e90e6bd170d16d157c1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/pipecat.svg",
+      "sha256": "eaf2e9a88b2854b0cf630ef1452a4c13b3e49907660800b340fa6958d8cbf01d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/pydantic-ai.svg",
+      "sha256": "46ad4c95d0b3905c7245c04976c823000b73d2993502b3305843e1d2fc24fffa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/vercel-ai.svg",
+      "sha256": "552e2d15d6456108369919986c3843eafc7308db3e4fff030c27a2148dc06dc3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:40:47.178673+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User explicitly requested a decision folder with short Markdown product comparisons and visuals.",
+        "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
+        "visual_check": "PASS: inspected embedded at 656 px width; labels and arrows legible."
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "73ddd247cdf7f4796e730c5006b22bd4df6f9c16cbcd29c9509a5e3c0c1e036f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:54:17.887463+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Explicit user request: context-aware ASDG Decision skill and foundational ASDG-05 decision documentation guidance.",
+        "review": "docs/asdg/07-planning/02.3-review-decision-skill.json",
+        "scope": "Methodology maintenance and local adapters; no application implementation or acceptance.",
+        "review_type": "Instruction/reference, configuration, maintained source or technical evidence; source review and applicable validators."
+      },
+      "previous_state": {
+        "sha256": "a0ddfb66a8c3202bc5dc7a301c6ee12ecbbb95100db47a23727cb4ef5b303558",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_05.toml",
+      "sha256": "b5fff16a778d02ef8bbceab763c33395b8d87e9b2153c8594c297b2991922869",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:54:17.887463+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Explicit user request: context-aware ASDG Decision skill and foundational ASDG-05 decision documentation guidance.",
+        "review": "docs/asdg/07-planning/02.3-review-decision-skill.json",
+        "scope": "Methodology maintenance and local adapters; no application implementation or acceptance.",
+        "review_type": "Instruction/reference, configuration, maintained source or technical evidence; source review and applicable validators."
+      },
+      "previous_state": {
+        "sha256": "abd9f39b13fbaa6937525f38972c90ce9730eb2829bda4a551e554d9ca38d79b",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-decision/SKILL.md",
+      "sha256": "e0cb40d51d3b6a2081e528c02c8aa716bd062968fd73217611d0e0aa8e411975",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:54:17.887463+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Explicit user request: context-aware ASDG Decision skill and foundational ASDG-05 decision documentation guidance.",
+        "review": "docs/asdg/07-planning/02.3-review-decision-skill.json",
+        "scope": "Methodology maintenance and local adapters; no application implementation or acceptance.",
+        "review_type": "Instruction/reference, configuration, maintained source or technical evidence; source review and applicable validators."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-decision/agents/openai.yaml",
+      "sha256": "f6cf40ce75188279a858ff3ce9d3e6767378e4e5d0d3475130bfff2fac2df994",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:54:17.887463+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Explicit user request: context-aware ASDG Decision skill and foundational ASDG-05 decision documentation guidance.",
+        "review": "docs/asdg/07-planning/02.3-review-decision-skill.json",
+        "scope": "Methodology maintenance and local adapters; no application implementation or acceptance.",
+        "review_type": "Instruction/reference, configuration, maintained source or technical evidence; source review and applicable validators."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.3-review-decision-skill.md",
+      "sha256": "ed422ce62012a0ffa9ca1376faa496aaf98780307539883796f0d0c9a458fc34",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:54:17.887463+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Explicit user request: context-aware ASDG Decision skill and foundational ASDG-05 decision documentation guidance.",
+        "review": "docs/asdg/07-planning/02.3-review-decision-skill.json",
+        "scope": "Methodology maintenance and local adapters; no application implementation or acceptance.",
+        "visual_review": {
+          "document": "docs/asdg/07-planning/02.3-review-decision-skill.md",
+          "embedded_visual": "../../../asdg/skills/asdg-decision/images/decision-record.svg",
+          "explains": "The maintenance change and its observed validation scope.",
+          "inspection": "PASS: rendered embedded image at 656 px within a 720 px document pane; readable labels and relationships, no horizontal overflow. Representative complete pages inspected.",
+          "render_location": "/private/tmp/asdg-decision-skill-review/02.3-review-decision-skill.png"
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.3-review-decision-skill.json",
+      "sha256": "23e94e420050c953c2a62017e5c094601ab4257595203c9796d88844ad3cc28b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T01:54:17.887463+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Explicit user request: context-aware ASDG Decision skill and foundational ASDG-05 decision documentation guidance.",
+        "review": "docs/asdg/07-planning/02.3-review-decision-skill.json",
+        "scope": "Methodology maintenance and local adapters; no application implementation or acceptance.",
+        "review_type": "Instruction/reference, configuration, maintained source or technical evidence; source review and applicable validators."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.4-review-decision-specialization.md",
+      "sha256": "5c1eb831f02efd93e118496f2a9056549b304345306e0f1f6b13849cf07bf0d3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T02:10:14.756884+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested optional specialist-local decision methods with generic fallback.",
+        "review": "docs/asdg/07-planning/02.4-review-decision-specialization.json",
+        "scope": "Embedded methodology only; no role permission expansion or application implementation.",
+        "visual_review": {
+          "document": "docs/asdg/07-planning/02.4-review-decision-specialization.md",
+          "visual": "../../../asdg/skills/asdg-decision/images/decision-specialization.svg",
+          "purpose": "Methodology change and optional specialization behavior.",
+          "result": "PASS: embedded image loads at 656 px within a 720 px document pane, with no overflow. New dispatch diagram and representative complete pages inspected; unchanged existing diagrams reused."
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.4-review-decision-specialization.json",
+      "sha256": "e0c555e5a2572d2db5eb532fd2599403a2843cd66ebb3e01b072d470e214f6bd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T02:10:14.756902+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested optional specialist-local decision methods with generic fallback.",
+        "review": "docs/asdg/07-planning/02.4-review-decision-specialization.json",
+        "scope": "Embedded methodology only; no role permission expansion or application implementation.",
+        "review_type": "Instruction/reference, maintained test source or technical record; source and applicable validator review."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus/SKILL.md",
+      "sha256": "29a18cf6ae918368877725756f33d99530b1396cbf2edd96a53f03aa63eeb1a8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T02:24:05.227963+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "f3b92e5172010d1184fa67d244678878e4b2279eecf0ddb58ce9bebab8eff8d7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus/agents/openai.yaml",
+      "sha256": "bcaef25988af99f52679450385bc99ad9d8845189aa95a8cea75ee75da5b4079",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T02:24:05.227991+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "b812dbc638ff173c1047c207b9cf44e963a6f019e072b90127e17c2f325023d8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.5-review-conversational-focus.md",
+      "sha256": "95eac9fdfe4d0098c4bd9544339a4725d8fcdf130d488cc069c105f2a45f487c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T02:24:05.228086+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "visual_review": {
+          "document": "docs/asdg/07-planning/02.5-review-conversational-focus.md",
+          "asset": "../../../asdg/skills/asdg-focus/images/focus-selection.svg",
+          "idea": "One Focus interface and its validation scope.",
+          "result": "PASS: rendered embedded at 656 px in a 720 px document pane, no horizontal overflow. New guide/diagram and review page inspected; existing companion visuals reused."
+        }
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+      "sha256": "4b862d9bda4ef54a62b77eef20830c96bd9447b15422e6175ff6a2f5e1d87146",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T02:24:05.228114+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus-00-governance/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228156+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "09d9ed62ea5ced294ba31a281cf6ca6c3997a053d75836b8dea910d4679f71f2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-00-governance/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228168+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "029358adb224606be200669ecd4a21c8463b4bdfc2370ae4bc18e470b731cbdd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-01-context/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228175+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "cfa689c401b98d7aef28a8ea958dd77309b0a0173c0640f1ef57568e1adeafcf",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-01-context/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228185+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "f3f0d88942f6cff23cf7e2509b1ec0221733b6e1ae533f33f547c55cc15fa690",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-02-purpose/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228191+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "b767dd420b6e1b4eb160bdbd83dc054d6a4ffe73822e575fe2794cdc3d218a41",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-02-purpose/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228202+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "56be11b92ddae8499d81d1d2a9f88a56dee448ec2d112fa8c3531ec1260831bd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-03-use-cases/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228208+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "4d453093e7bce3650ab5b84a23fdeefafecfae5881fc572d7fac44fb3bfdcd47",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-03-use-cases/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228220+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "32fa08a0be602fc444208d58cd6f9ceaf20d5513ed0d4ff437607017754506da",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-04-test-strategy/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228226+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "cfc256c7f03ea84f5d9a59f407f2fdcecc1e685430b9dc66a97c26479d158c6e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-04-test-strategy/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228236+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "3c5eafdc44e563b7b43332d9396ebdc35302d41c6863d3e8ba289c211db42748",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-05-architecture/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228242+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "348b3f5ca466536d9afaa746db7a6c2f335e7439670c3b5a486797d1038e87eb",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-05-architecture/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228251+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "05a1b25608670b84278176e264232269ed6c254136cef04e2da1bb0d0b7cc2bf",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-06-poc/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228257+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "9cf691b66707db8c9dd66370678356b761058f0aaf2992c6b6c74635a900408c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-06-poc/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228267+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "0a277d7ef8b560b9ab05368c6618ed2fa66f484c983a9f6dfbd3539bfcfe948c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-07-planning/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228273+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "d79a0d7a3afa5c63696009f10f90aa4569bf3f7c79de4c60f5067137a779c0e0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-07-planning/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228282+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "088551544b51a8b35aa15271716a5572cadbd8b3a79eabfdac0fe9571f35d1a5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-08-low-level-design/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228288+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "33ca875654782dfeb38e3db91d24d95ed24e6a3505bd3a909255f855cf7ea22c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-08-low-level-design/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228298+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "910fed590fa2f79ed37e7781830658bf926fa7690782a59dd35f5835c9438a0f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-09-build-test/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228304+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "499361317cae22fb25fdafd26772e853d1dbb7139690fdbd7597d8aa59d75ae1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-09-build-test/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228313+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "770403098d6061dd6824a73b72e49d2909fd5cd0c50200a2db1c5eda00736cc5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-10-review-release/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228319+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "0880cbecb4eed93f2ce04a0e251a943de7da29c2566f20f943df72b88d9251bf",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-10-review-release/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228329+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "2901a5f5d066a5ec3ccaacc0d9dce7e931ddaff4e9a3d1f482ac522b458130d2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-11-operations/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228335+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "2de3413a1ca7a8f3ddb17cba10212f73c6a6f0036e62562e10f5d539f04dd2fa",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-11-operations/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228344+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "b35666379df204d44f51bca4eec38448dedb15910871b3fe04abe8ea0b0c22bb",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-12-insights/SKILL.md",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228350+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "a2d6802c71ba4e1ec132b3030b159fc73858df025a885949645fc8f4c1687d26",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": ".agents/skills/asdg-focus-12-insights/agents/openai.yaml",
+      "sha256": null,
+      "event": "AI-REMOVED",
+      "recorded_at": "2026-10-27T02:24:05.228360+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested single conversational ASDG Focus picker, natural-language selection and ambiguity handling.",
+        "review": "docs/asdg/07-planning/02.5-review-conversational-focus.json",
+        "scope": "Methodology maintenance and explicit retirement of unchanged per-role picker adapters; no role authority or application/state changes.",
+        "review_type": "Instruction/reference, configuration, maintained source, technical record or explicitly retired adapter."
+      },
+      "previous_state": {
+        "sha256": "e6142d68ada6c34edce122e57e6fdcb2f3fed61b2536a46445f278fe32db7bcd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      },
+      "exists": false
+    },
+    {
+      "path": "docs/asdg/07-planning/02.6-review-concern-strategy.md",
+      "sha256": "b38bc03ec35006f4dff5dbab938892056c3558e464bc9413c0c39711da5280b4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T06:15:03.846895+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Roles, Concerns, Focus and Skills strategy proposal",
+        "status": "PROPOSED",
+        "validation": "Markdown/link/XML checks and rendered visual inspection; no runtime implementation"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.6-review-concern-strategy.json",
+      "sha256": "3f0bf4af51de71761ee4a0c03070aa15c0026bfd190ec3708c06e52fc8a668d7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T06:15:03.846932+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Roles, Concerns, Focus and Skills strategy proposal",
+        "status": "PROPOSED",
+        "validation": "Markdown/link/XML checks and rendered visual inspection; no runtime implementation"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md",
+      "sha256": "898bfb00220acd716f9169a98a8e0d9c1c934a9bad6ad93ca0d8e469ba02dd23",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:48:19.210312+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Document UC-04 voice clarification and explicit visible-question confirmation",
+        "visual_review": "UC-04 SVG and embedded document, overall model and README rendered and inspected at 1100px viewport; no horizontal overflow; draft versus confirmed memory and confirmation boundary checked."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/images/question-confirmation.svg",
+      "sha256": "bb000ed53974066d00683637461b9050f92c210919210e41b872aa6dfadb04e1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:48:19.210556+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Document UC-04 voice clarification and explicit visible-question confirmation",
+        "visual_review": "UC-04 SVG and embedded document, overall model and README rendered and inspected at 1100px viewport; no horizontal overflow; draft versus confirmed memory and confirmation boundary checked."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/README.md",
+      "sha256": "8af37619ff91aa7e604592dcbecb7c3432888805312e68650ad9308884957872",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:48:19.210680+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Document UC-04 voice clarification and explicit visible-question confirmation",
+        "visual_review": "UC-04 SVG and embedded document, overall model and README rendered and inspected at 1100px viewport; no horizontal overflow; draft versus confirmed memory and confirmation boundary checked."
+      },
+      "previous_state": {
+        "sha256": "33ec9c767ccee1e2980c6631401e2b64a7558d192b786b841113d9b40cf05a46",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01-system-model.md",
+      "sha256": "c46b24e1c6e85868c66802d9945b6212c38b5df6c10235b1e641ab28bc533db9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:48:19.210932+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Document UC-04 voice clarification and explicit visible-question confirmation",
+        "visual_review": "UC-04 SVG and embedded document, overall model and README rendered and inspected at 1100px viewport; no horizontal overflow; draft versus confirmed memory and confirmation boundary checked."
+      },
+      "previous_state": {
+        "sha256": "d6855f1d9ebdd3acb7c5c9aca353a0eed0e9a4dd54fe4d13cea96083d9535fbe",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "112cb477dac981385ea083a4087bcd71bf24be0aec5a34a24da53522dd59107b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "73ddd247cdf7f4796e730c5006b22bd4df6f9c16cbcd29c9509a5e3c0c1e036f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".asdg/project.json",
+      "sha256": "8a1d1b28847703c43589d56efbb59ceb44c3690c11101029d6eb209640e59f6c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "567611ac3ddc8715c7e7d1827c27620d866bee0447c08157fef079f864b09404",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_coordinator.toml",
+      "sha256": "18105b8323f0bb6284c297155504e98d9ee5d950bf63b1b9625275414e37309b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "26816b6dca7781f885fd9a2f3a34897caff6332ee5da6cf23483067e8dda4146",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_01.toml",
+      "sha256": "128bf85e6cc71fdbe06c1192adbe51045e93df66e978d306f17a80e40c61a642",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "cc5e7f01cc9fe0a3cd5de8486f8b0b7bb2f2cd9ab9eb7ccef0df176f1e6a1165",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_02.toml",
+      "sha256": "a106aa6c990504bb1cac55317cade38a3df0e72878a50f943009987f133aac16",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "a01829e87d2ad772592f22d22102072f5be025cf7d5c0211df970d314ec1b550",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-19T14:15:33Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_03.toml",
+      "sha256": "fa7b640f1cc87295a25bec5ed5f242c1155aaa87d20c7279b647f90f7047b6aa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "b0b3df96658bbe6d12563e485ec093fca1872a05a3d57d68da3041f472d1e098",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_04.toml",
+      "sha256": "40adfa25d7234c725f3f34a9232561a9bd123561330c23027a85b6f2f8cad24a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "dbd468329f44943afb92327d8c6c4037654744fac78c9f138985f3dbea0e8ebe",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_05.toml",
+      "sha256": "74095d339f69e642b775044e2f570a199168d0fda835af967df35066e912190a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "b5fff16a778d02ef8bbceab763c33395b8d87e9b2153c8594c297b2991922869",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_06.toml",
+      "sha256": "5005989d197f01237710aa3d86657fd927daea41f5b608598957df85876526d9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "00e6790930aa93e7fea8837ec9a72aeb7b9b932859d9744826a884b969074549",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_07.toml",
+      "sha256": "a23a48a3bb91898cacce0a634359c0f44b7aff736c4e97bca8b9fdfde28a019f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "68d210d9b34b61fc42a7de2940adc8f262453e5870734b58c74b47a2aaa7195e",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_08.toml",
+      "sha256": "4bdf0c6ecadf1830bc8aec2eb9a82691257658adc2a95da6c422fdf37c28d8f8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "4dcd0e2ddfdd5de65e20caf3be11f5f7ee725cebec32c8c3b67d0e5bf7167ad5",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_09.toml",
+      "sha256": "2a670258b50bf6e89cd11ec09a58973277cf3c321b7e922d4a680e1505c5ea47",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "6ddf6c6500835bc3b8afbdd202a3596bd946a632b65293035b2413b1e6016db4",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_10.toml",
+      "sha256": "767bb84d867295ba283201a70e7424b0086792f63f2c230cbceda91ecdfc35b8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "888b231b4c3f4096e1cfdff17ff4926d17bb62aa2c68cbcdd4763f1fe07855d6",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-14T16:01:39Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_11.toml",
+      "sha256": "d706ba032dc44411942cf75d0fb41e20e2876818342d8982806f082be6f3a496",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "21399b63f078c75c2be422d6f70b1c07746e114683b6cdd121af235e4d5119f6",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-14T16:01:39Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".codex/agents/asdg_12.toml",
+      "sha256": "a2be9e33f651bd8e6bd635818611b39809da50e18330a924de6f96e624541c1c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "e9a9c026c0f16d1f8af2f004f89fe8ca12ede4a8db7706cf775054569540884a",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-14T16:01:39Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "4e1691f04b801f1b94fc1b482cce4926ab3bbc1c668c9a256adf45ccc2183040",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "Existing visuals preserved; instruction and interface edits checked in source"
+      },
+      "previous_state": {
+        "sha256": "167f3ef5d4b140d63393fcd50f424b7205547ecf4890f8d7c4848badc6ec7322",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.7-review-documentation-authority.md",
+      "sha256": "e68a5a9a1cbccbd63a4909c76902d74a05b9308446cfa31c600039118e5b7cd3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
+        "visual_check": "New documentation-authority SVG rendered and inspected at 720 px; embedded Markdown pane not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.7-review-documentation-authority.json",
+      "sha256": "8ae3efdc69b985de3b8c77c5c8ee8f9fedb2fd494f27fedfe1353b5ad08b4e74",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T18:49:04+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Technical validation receipt; no approval inferred"
+      }
     }
   ]
 }
