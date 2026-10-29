@@ -16,7 +16,7 @@ An existing code file or stage README never establishes accepted lifecycle evide
 
 ## A specialist conversation
 
-For whole-project management, use `$asdg-focus on project governance`; its title is `00 Governance — <project>`.
+For whole-project management, use `$asdg-focus on project governance`; its default title is `00 Governance`.
 It selects the existing coordinator, distinct from a general chat with no focus; it grants no execution authority.
 
 Select **ASDG focus** in Codex and describe the role, for example “on high level architecture” or “help me clarify the project's purpose.”
@@ -25,6 +25,9 @@ Activation loads the role and reports focus; assign the review task in the follo
 For example: “Read this project's existing code and purpose documents; explain the gaps and propose corrections.”
 Stage 02 is Purpose; `intent` remains a generic Focus alias. No `asdg-intent` adapter is installed.
 The focus stays in this conversation while its activation receipt remains available.
+Use `$asdg-focus subject Security` for a title such as `05 Architecture Security`; role selectors and bare `clear` retain their meanings.
+Use `$asdg-attitude black` to append `Black`; `off` removes the attitude from the title. `status` only reports; English/Spanish and temporary scopes remain supported.
+Proposed pilot default: a hat persists until changed or turned off; “this answer only” restores the previous hat at completion. See [session fields and titles](../skills/asdg-focus/session-state.md).
 `$asdg-status` reports conversation focus; it is distinct from CLI workflow status.
 These skills do not create a new window or persistent agent process. Resume the same Codex conversation.
 Every agent may save documentation and supporting assets under `docs/` without a sprint or separate save approval; use the [shared documentation contract](../00-governance/docs/documentation-authority.md).

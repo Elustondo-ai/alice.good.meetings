@@ -1,52 +1,48 @@
 ---
 name: asdg-focus
-description: Interpret the user's free-text Focus request, select the matching ASDG specialist or governance role, clarify ambiguity, or clear focus. Selection preserves existing authority.
+description: Preserve conversational ASDG role selection; use subject plus a topic to change subject focus within the current role. Clarify ambiguous requests before switching; all selections retain existing authority.
 ---
 
-# ASDG Focus — conversational selection
+# ASDG Focus — role selection and subject focus
 
-Read [session policy](session-policy.md). Only explicit user selection activates focus.
-This is the single public Focus skill. Accept the user's own words, such as “focus on high level architecture.”
-Trailing text is a conversational request, not a shell command; preserve its complete meaning and accompanying task context.
+Read [session policy](session-policy.md) and [session fields](session-state.md). Only explicit requests change selection.
+This remains the single public Focus skill; existing role phrases, IDs and clear commands retain their meaning.
+Pass the complete user phrase and task context; never interpret them as shell commands.
 
-## Resolve the selection
+## Resolve the requested dimension
 
-Read [the existing catalogue](../../00-governance/types/agent-catalog.json) and the [interpretation and clarification guide](focus-choices.md).
-Interpret intent using the phrase and relevant conversation context; match responsibilities, not just keywords. Numbers, role IDs and names remain valid shortcuts.
-For one clear match, briefly state the interpreted role and continue without asking for confirmation.
-For unresolved ambiguity, ask one question with the plausible specialists, a recommended option and its reason; await the user's choice before activation or renaming.
-For missing or unrecognizable intent, ask which specialist the user wants and show all twelve; offer Governance separately.
-Clarification preserves the previous focus, title and task. An unanswered or preselected recommendation is not a choice.
-For an explicit clear request, including natural-language equivalents, skip role loading, clear only conversation focus, then rename and report Status.
-Resolve to exactly one catalogue entry, governance 00 or stage 01-12. Do not synthesize paths from user input.
-00 selects ASDG-COORDINATOR / asdg_coordinator, an explicit management focus outside the twelve development stages.
-Governance is distinct from None; `clear` never selects it. Never create or renumber roles.
+An explicit `subject <topic>`, `subject clear`, `subject status`, or clear within-role topic request uses [subject focus](subject-focus.md); then return without running role activation.
+For role requests, read [the catalogue](../../00-governance/types/agent-catalog.json) and [interpretation guidance](focus-choices.md).
+“Focus on high level architecture,” numeric IDs, canonical IDs, native names, folder basenames and established aliases still select roles.
+If subject-versus-role intent remains ambiguous, ask one question before changing either field or the title.
+For one clear role match, state the interpreted role and proceed without another confirmation.
+For overlapping responsibilities, ask among plausible specialists with a recommendation and reason; an unanswered option is not a selection.
+For missing or unrecognizable intent, ask which specialist the user wants, showing the twelve plus Governance separately.
+Quoted examples, hypothetical requests and explanations select nothing.
+For legacy `clear`, “clear focus,” or “return to general,” clear only the role, preserve goal/subject/attitude/project, then rename and report Status.
+Resolve a role to exactly one catalogue entry; do not synthesize paths, identities or numbering from user input.
+00 selects ASDG-COORDINATOR, not None. Clarification and invalid input preserve the prior receipt and title.
 
-## Read before changing focus
+## Read before role activation
 
-Resolve the client root as `../../..` and distribution root as `../..` from THIS canonical skill directory.
-Read client root AGENTS.md and `asdg/AGENTS.md`; retain the target project and existing task context.
-Verify its session-policy reference; otherwise report BLOCKED: SESSION_POLICY_NOT_CONFIGURED.
-Use [the lifecycle baseline](../../docs/lifecycle-baseline.md); stop on identity/order disagreement.
-Resolve the target project only from explicit context or verified binding; unknown is valid for an interview.
-Read the selected catalogue `entry`, its required sources and catalogue `skill`, in full.
-Include its contract, runtime rules and shared response envelope; resolve links from their containing files.
-Check the role ID/native name/stage match the catalogue. Missing or contradictory sources block activation.
-Inspecting these files does not activate them. A failed switch preserves the previous selection and title.
-Do not replace definitions with an older SDLC2 folder, remembered summary or another project's package.
+Resolve client root as `../../..` and distribution root as `../..` from THIS canonical skill directory.
+Read client AGENTS.md and `asdg/AGENTS.md`; verify the session-policy reference or report BLOCKED: SESSION_POLICY_NOT_CONFIGURED.
+Retain the target project and all other session fields; unknown project is valid for an interview.
+Read [the lifecycle baseline](../../docs/lifecycle-baseline.md); stop on identity/order disagreement.
+Read the selected catalogue entry, required sources and procedure in full, including contract, runtime rules and response envelope.
+Resolve links from their containing files; confirm role ID/native name/stage match the catalogue.
+Missing or contradictory sources block the proposed switch and preserve the previous role and title.
+Inspection alone does not activate a role; do not substitute an old provider checkout or remembered definition.
 
 ## Activate, rename and report
 
-After successful reads, replace THIS conversation's focus with the selected canonical role.
-Record the original phrase, interpreted role, actual source paths and invoked skill; keep all canonical role/evaluation boundaries.
-All roles share [documentation authority](../../00-governance/docs/documentation-authority.md) under the client's `docs/`; code, approvals and operational gates remain separate.
-Purpose selection begins its [opening assessment](../../02-purpose/skills/elicit-purpose/opening.md); activation alone writes no artifacts.
-After successful activation or explicit clear, follow [the current-chat rename step](rename-chat.md).
-Renaming is the narrow chat-metadata exception; failure never undoes successful activation/clear.
-For `clear`, retain project context and independent restrictions; do not silently activate the coordinator.
-Repeated selection of the same role refreshes required reads and retries rename; no child agent is created.
-For Purpose, collect [Status](../asdg-status/SKILL.md) facts-only once, reuse them in the opening and include the actual rename outcome.
-If Purpose selection includes an assignment, begin that authorized work without a redundant onboarding interview.
-For clear or another role, return Status and stop; other specialist openings await pilot review.
-Activation grants no project-file writes, installs, delegation, commits, deployment, sprint transitions or mode switches.
-This YAML-first file records AI modification, not whole-file human approval.
+After successful reads, replace only this chat's role. Preserve subject even across role changes; flag an out-of-role subject without silently erasing it.
+Record the selecting phrase, interpreted role, actual sources, invoked skill and the retained goal/subject/attitude/project.
+All agents retain [documentation authority](../../00-governance/docs/documentation-authority.md); code, approvals and operations retain separate gates.
+Purpose begins its [read-only opening](../../02-purpose/skills/elicit-purpose/opening.md); activation alone writes no artifacts.
+Follow [current-chat renaming](rename-chat.md): short role name, selected subject, selected attitude; project binding stays in the receipt.
+A failed rename does not undo selection. Repeated role selection refreshes required reads and retries the title; it does not reset other fields.
+For Purpose, collect [Status](../asdg-status/SKILL.md) facts-only once and reuse the result in its opening, with the actual rename outcome.
+If selection includes an assignment, continue that authorized work without a redundant interview.
+For clear or another role without an assignment, return Status and stop; other specialist openings await pilot review.
+Keep the compact first-line state declaration accurate. No activation grants implementation, installation, delegation, commit, deployment or sprint authority.

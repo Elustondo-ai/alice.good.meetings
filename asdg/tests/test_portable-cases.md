@@ -14,6 +14,7 @@ Names describe the intended regression checks; this index is not an execution re
 | `test_factual_entry_points_never_import_advice_or_mutate_initialized_project` | factual entry points never import advice or mutate initialized project. |
 | `test_shared_focus_preserves_unregistered_purpose_work` | The shared adapter installs exactly and repeat setup preserves Purpose evidence. |
 | `test_single_focus_installs_without_changing_roles_or_authority` | One Focus picker entry retains thirteen role adapters and unchanged lifecycle/authority. |
+| `test_attitude_adapter_relocates_and_preserves_state` | Installed Attitude adapters and canonical guides survive relocation and repeat setup without changing project state. |
 | `test_decision_skill_relocates_and_preserves_unregistered_decisions` | Decision discovery survives relocation; repeat setup preserves decision evidence and state. |
 | `test_optional_decision_specialization_preserves_generic_roles_and_local_methods` | Optional specialist methods survive repeat setup; absent methods require no placeholders or state changes. |
 | `test_missing_shared_focus_template_fails_before_any_writes` | Missing shared skill or UI metadata fails preflight without writes. |

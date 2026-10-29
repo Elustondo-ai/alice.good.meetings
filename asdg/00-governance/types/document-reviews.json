@@ -19308,6 +19308,718 @@
         "reason": "Human-requested shared documentation authority; preserve application, approval and sprint gates",
         "visual_check": "New documentation-authority SVG rendered and inspected at 720 px; embedded Markdown pane not inspected"
       }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "3e091462bd26ae73e8e182387e189586a851e9a2c0b6d3e0b5b281cc2c1b2073",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "ed9a4481c8557960de45fd76a36fceb5113e0e270f7b7340988ddb9b5a0b5402",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "sha256": "0f6b74df68f84fc22e23724c4a90db30cb1c8757fad9bb875f5563229f7d2802",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "729f0793d172c51451936f529a2451a5e3a41d6ae4e5059c80b586c5a2cbba30",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "619f8e014dc141a35eca2432bb7ad8b165845ecdbac0462c80f9a2e13e63e825",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "c267b298107d6d12020716668eac9829c63bc4c8073b2e9f0d4a74b3788c4434",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/SKILL.md",
+      "sha256": "bbd3aa60213bb4e2850bf49ee9283af17dc56c4c24e2b795150480f210d720bc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/TRY-IT.md",
+      "sha256": "03acc69a5d5f08036a62bc2eb23b7f616cbcd924c218f3dc6344d04b1b372dec",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/attitudes.md",
+      "sha256": "fc428ce3e577c0ca17990ce411e7d2f3e9a2a3b189c6d58ff2ea03d18229bd1d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "738d119b8b64d1b30bb068b53971c26bdefc332612efb7c006687949b14d33f6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "855608e3b5b3c530135bed8801655b477b3cd402629f68016afc46cfc31bc502",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "sha256": "2842ce7dcddd851814bfe30673aabe7599afa43a41e1e19ad6a1bdb780453fbc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "cff2eac1f53eecec7112b4e60c073f1463ddf9cf8db9c5b8d45775436594110a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/TRY-IT.md",
+      "sha256": "a0c0758ffdc421b3160534eca008db5ad0b6ff25c8c88ced3fe5918a4a7e74b5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "686fbc2bca9c848722fd0951a32ad705716333d63111b215c122d56c82f52b60",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/focus-choices.md",
+      "sha256": "2e29ec361364fdfa6f57f9b0015c0c997753cd23bf986b6403faf5e67b6df52f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "3d9aa1de6e3c3d1daf49572373455f82a94b86103e7e3ab4a7bb62f9f703f35e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/rename-chat.md",
+      "sha256": "5536270828a2246d2753b953836acd78dd405433fa0063649ff7d59ee38ecee6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "a630af6177856eb89dd4fec30f5d3de9e6e8dc74d605dfbbb8acf7a39112fda3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "1b2656abfd449b39c2b82e59a4cb923b3861dbaff4f34a5cebfe9505b8ceb5e7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "9b1f0a329bdbdd4cea01ac169bcfe5abe31a73da86819985ebb33762ad69b942",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-state.md",
+      "sha256": "6ff8cbe317c7bd5540e5f2cb78037355f0998d666b981187facce58ed2cf541c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/subject-focus.md",
+      "sha256": "58dd9425dff2a430250a797c88bdb6790ae3c4f378f4d02faa9fd9eb016d18c7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-role/SKILL.md",
+      "sha256": "5746464f760a2c08310498230fcea37764226275a04b7aabfaf3b06c02bffa2b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "c58dc07763da281a480b7d80e9d5ec313dda932be45b3b6b147aa3c6355cfe47",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/SKILL.md",
+      "sha256": "64bbeb9c6a65fd95d87b2c29434f8a20e7d70d6ed82d921ea23e820562c0c1b0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "f9c2a85429400124f06fcf48c94ff378ce2bf78a75f5eb22c1622f28369c09c9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/status-format.md",
+      "sha256": "ded2582912a597fd1d189ebf1eca4704dec5348a0a162598dc87ec19fdb769f4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "6c7ebde6e8f5ede67502c9422b86ae3ff5794c5d40274f995090949a132c73ac",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-suggestion/SKILL.md",
+      "sha256": "57e29493ac0d92fb85e97f863587356831d087b2412ddf044e39c152ec5374fe",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "68a7f066c60501d03b24eeb4221fcc9b30547ebfb94ff918767c7692e6aece18",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-attitude/SKILL.md",
+      "sha256": "9dfa1f1a2c2ccd0dcc8054bf79c75943a80f6ecfde743a2c340def25b81801c9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus/SKILL.md",
+      "sha256": "dd0ebab9a3e4c60a59fb75e0425ee743918389ab025853537130e15afedbeec6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "29a18cf6ae918368877725756f33d99530b1396cbf2edd96a53f03aa63eeb1a8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "04c12cbdfd880ed4ecc364903263d0b0bae2339d63fdeca20d3b1c2d60e66524",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "402afc8ad307c284e6e7f8eb633ee3f6806af88828c8b1682c1f60ea38c4ff33",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "77b3331728354b14cef6ca9013672f7f3410ec41ec53e50fd32e252a90b08f08",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "871c42fe040c1219f15ebd477c2b9bf7183cef09f6056df98ee7b428d3db8915",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "sha256": "bb2a430c7b318f3133fc3adfb827fc1c61835f58281ae120dd686bbae4a3976b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "0f6b74df68f84fc22e23724c4a90db30cb1c8757fad9bb875f5563229f7d2802",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "765d988e01a7b8cc2eb775972719f6b670c7b6b0a090c96f9c50b859e1adcb89",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "619f8e014dc141a35eca2432bb7ad8b165845ecdbac0462c80f9a2e13e63e825",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/SKILL.md",
+      "sha256": "fc22d1946be78696fa387c85fae86c60a724e531d91a397add903f67f2ec53e1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "bbd3aa60213bb4e2850bf49ee9283af17dc56c4c24e2b795150480f210d720bc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/TRY-IT.md",
+      "sha256": "53c4a5212f9aa803a6e68bae37196e836be64c836ffeea91073b262086b3249a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "03acc69a5d5f08036a62bc2eb23b7f616cbcd924c218f3dc6344d04b1b372dec",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/attitudes.md",
+      "sha256": "e1e229efa7fa887049b966bb2e41ed2144e195a8915734fc75a255d935f48872",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "fc428ce3e577c0ca17990ce411e7d2f3e9a2a3b189c6d58ff2ea03d18229bd1d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "72a58cf66a5cdbf7028c5e8ec6e97045042445d914e739c9d3d55827f6c416f8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "738d119b8b64d1b30bb068b53971c26bdefc332612efb7c006687949b14d33f6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "sha256": "a458cf7eef2ae7df1d816c294dd94ac9733d37b4da600c8f5d96f61740680818",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "2842ce7dcddd851814bfe30673aabe7599afa43a41e1e19ad6a1bdb780453fbc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/TRY-IT.md",
+      "sha256": "e43dbcf4557a9f3b3041147c8524c67274c071ddb1a15d83c5809d3061fff2e3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "a0c0758ffdc421b3160534eca008db5ad0b6ff25c8c88ced3fe5918a4a7e74b5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/rename-chat.md",
+      "sha256": "5d28d2733361a70b1f3af8f8349146985a46cbc8ef01051e4807929a24ef03ce",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "5536270828a2246d2753b953836acd78dd405433fa0063649ff7d59ee38ecee6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "1808e36e1baa3e3d7fe381cc95a12c7b01b9f86e6ce60c221bfa7e7e5c82d598",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "1b2656abfd449b39c2b82e59a4cb923b3861dbaff4f34a5cebfe9505b8ceb5e7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-state.md",
+      "sha256": "195f17c19eb1b04f0d694fc38872faddbbe416b654a73a0be0cbc92079c50a88",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "6ff8cbe317c7bd5540e5f2cb78037355f0998d666b981187facce58ed2cf541c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/subject-focus.md",
+      "sha256": "f82fb7ddb44ffe13baff7f1376b270df8e8ae006866eacf9eb6ef12945ce7814",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "58dd9425dff2a430250a797c88bdb6790ae3c4f378f4d02faa9fd9eb016d18c7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/SKILL.md",
+      "sha256": "b4b9641ab12bb332c2399f25eb1fe82c5c0356913ae866962877c4e711930050",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "64bbeb9c6a65fd95d87b2c29434f8a20e7d70d6ed82d921ea23e820562c0c1b0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-attitude/SKILL.md",
+      "sha256": "2677aec69f0330d0db6fe0459ea41a07cfab8e0e3b16254cd10dcb1c3cbf1567",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "9dfa1f1a2c2ccd0dcc8054bf79c75943a80f6ecfde743a2c340def25b81801c9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "sha256": "426be83f5fdbca6655bdb01da2c141bef3f89e03ec9ea5be6c5b126a88b71c8c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "bb2a430c7b318f3133fc3adfb827fc1c61835f58281ae120dd686bbae4a3976b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/SKILL.md",
+      "sha256": "33f262928e67a4b66ef1dec8e4fedc5c0b52ecf808b5fcb80311017febcdca1f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "fc22d1946be78696fa387c85fae86c60a724e531d91a397add903f67f2ec53e1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/TRY-IT.md",
+      "sha256": "3144db8b7fd38eb2ad231d12a559230039ba6364dce9c6162221810d443eb2a7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "53c4a5212f9aa803a6e68bae37196e836be64c836ffeea91073b262086b3249a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/attitudes.md",
+      "sha256": "ecaa2d2cd5007c4a5c7a564fc50f7c3bb79680550856341d827a74f881d35731",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "e1e229efa7fa887049b966bb2e41ed2144e195a8915734fc75a255d935f48872",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "cdc9e061d6a3efc8a40dbc3c9a44a3e3178f5e2d61adea4bd6d7b5ab2c5b211b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "72a58cf66a5cdbf7028c5e8ec6e97045042445d914e739c9d3d55827f6c416f8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "sha256": "035656534d11244f85c5aaa150a542252892561266ad4a805979773c606308a2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "a458cf7eef2ae7df1d816c294dd94ac9733d37b4da600c8f5d96f61740680818",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/TRY-IT.md",
+      "sha256": "50f9ebd9b5006c081141d9c1c691d8323ad3cf02ff2185f7efa06425fcd2e0ff",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "e43dbcf4557a9f3b3041147c8524c67274c071ddb1a15d83c5809d3061fff2e3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/focus-choices.md",
+      "sha256": "5c899f1f6cbadac60ff94e262b44198d66fb40ac14e4098436ba18dbc0a67c69",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "2e29ec361364fdfa6f57f9b0015c0c997753cd23bf986b6403faf5e67b6df52f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/rename-chat.md",
+      "sha256": "db2aab88ef8bda19c32285e2697d2f520a59e0f066ff7908b15db484a3edf3cc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "5d28d2733361a70b1f3af8f8349146985a46cbc8ef01051e4807929a24ef03ce",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "804ed85f44702945b4b92863a4e28f8ce285b08a55a5682e58e5e1a5443b83ab",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "1808e36e1baa3e3d7fe381cc95a12c7b01b9f86e6ce60c221bfa7e7e5c82d598",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-state.md",
+      "sha256": "e3d3517a977aaf6cd217e4a86f5203ca81f2875f5e781c3d68125a4cde713e59",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "195f17c19eb1b04f0d694fc38872faddbbe416b654a73a0be0cbc92079c50a88",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/subject-focus.md",
+      "sha256": "b49c88bb7e234bce2a92def856d0cbfe9a881d42bb3d668f33c13f788cd8fddd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "f82fb7ddb44ffe13baff7f1376b270df8e8ae006866eacf9eb6ef12945ce7814",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

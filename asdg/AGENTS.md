@@ -9,6 +9,7 @@ Use [the catalogue](00-governance/types/agent-catalog.json) for identities and p
 
 Read [the session policy](skills/asdg-focus/session-policy.md) on every turn.
 A new conversation has no specialist focus. Only explicit invocation activates a named role.
+Keep [goal, role, subject focus and attitude](skills/asdg-focus/session-state.md) separate in this chat's receipt; title changes reflect selections and explicit expiry, never grant authority.
 Every agent may save project documentation under `docs/` without an active sprint or separate save approval; follow [documentation authority](00-governance/docs/documentation-authority.md).
 Purpose Focus begins a read-only opening assessment; assigned Purpose work produces saved client documentation.
 Use the [continuation contract](00-governance/docs/continuation.md); other specialist openings await the pilot review.

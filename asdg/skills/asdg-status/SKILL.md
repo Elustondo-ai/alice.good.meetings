@@ -1,6 +1,6 @@
 ---
 name: asdg-status
-description: Report overall ASDG project facts and this conversation's focus, then offer one project-wide next step. Facts-only requests omit advice; role responsibilities belong to asdg-role.
+description: Report overall ASDG project facts and this chat's goal, role, subject focus and attitude, then offer one project-wide next step. Facts-only requests omit advice; responsibilities belong to asdg-role.
 ---
 
 # ASDG Status — project and session facts
@@ -20,8 +20,8 @@ Report observed but unregistered work separately from registered stage evidence;
 Where provided, distinguish agent readiness, human acceptance, exact-state review validity and application implementation permission.
 Never promote a proposal, a saved document or an agent readiness assessment into human acceptance or product success.
 Run `git status --short` for worktree facts; summarize staged/unstaged/untracked work without attributing authorship from filenames.
-Use this conversation's successful activation/clear receipt for focus; no selection means None, not Governance.
-Report explicit Governance as 00 / ASDG-COORDINATOR. Lost activation history means Unknown — reactivation required.
+Use the [session receipt](../asdg-focus/session-state.md) for separate goal, role, subject and attitude/scope/expiry; no selected role means None, not Governance.
+Report explicit Governance as 00 / ASDG-COORDINATOR. Recover fields independently; lost role evidence requires reaffirmation, and unknown attitude is not NoAttitude.
 A known selection with unavailable guidance remains selected but blocked; Status never activates, refreshes or clears it.
 State the latest substantive task and observed result, not this status request or an invented cross-chat activity.
 Retain the last actual title-update receipt; do not infer UI visibility or focus from the title alone.

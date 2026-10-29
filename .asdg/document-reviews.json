@@ -3202,7 +3202,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/openai-agents.svg",
-        "visual_idea": "Transcript snapshot: Permitted observations \u2192 Agent + Runner: Structured proposal \u2192 State controller: Accept or reject.",
+        "visual_idea": "Transcript snapshot: Permitted observations → Agent + Runner: Structured proposal → State controller: Accept or reject.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3223,7 +3223,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/pydantic-ai.svg",
-        "visual_idea": "Audio session: Realtime observations \u2192 Typed text agent: Separate structured work \u2192 State controller: Validate the proposal.",
+        "visual_idea": "Audio session: Realtime observations → Typed text agent: Separate structured work → State controller: Validate the proposal.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3244,7 +3244,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/langchain.svg",
-        "visual_idea": "Models + tools: Provider integrations \u2192 Agent loop: Prompt and middleware \u2192 State proposal: SpeakerCoach validates.",
+        "visual_idea": "Models + tools: Provider integrations → Agent loop: Prompt and middleware → State proposal: SpeakerCoach validates.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3265,7 +3265,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/langgraph.svg",
-        "visual_idea": "Interpret: Current question \u2192 Retrieve: Relevant experience \u2192 Verify: Evidence check \u2192 Publish: If still relevant.",
+        "visual_idea": "Interpret: Current question → Retrieve: Relevant experience → Verify: Evidence check → Publish: If still relevant.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3286,7 +3286,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/langsmith.svg",
-        "visual_idea": "Reasoner: Model request / result \u2192 Controller: Accepted / rejected \u2192 Browser: Visible update.",
+        "visual_idea": "Reasoner: Model request / result → Controller: Accepted / rejected → Browser: Visible update.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3307,7 +3307,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/livekit.svg",
-        "visual_idea": "Browser / room: Audio and data \u2192 LiveKit agent: Media + AI pipeline \u2192 SpeakerCoach: State and visual cues.",
+        "visual_idea": "Browser / room: Audio and data → LiveKit agent: Media + AI pipeline → SpeakerCoach: State and visual cues.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3328,7 +3328,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/pipecat.svg",
-        "visual_idea": "Audio frames: Streaming transport \u2192 Pipeline processors: Speech and model stages \u2192 Observations / cues: Application controller.",
+        "visual_idea": "Audio frames: Streaming transport → Pipeline processors: Speech and model stages → Observations / cues: Application controller.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3349,7 +3349,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/vercel-ai.svg",
-        "visual_idea": "Provider adapters: OpenAI / Google / others \u2192 TypeScript AI SDK: Structured generation \u2192 Application + UI: Controller remains ours.",
+        "visual_idea": "Provider adapters: OpenAI / Google / others → TypeScript AI SDK: Structured generation → Application + UI: Controller remains ours.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3370,7 +3370,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/google-adk.svg",
-        "visual_idea": "Audio / observations: Gemini Live when live \u2192 ADK runtime: Tools, sessions, workflow \u2192 SpeakerCoach: Validate proposed state.",
+        "visual_idea": "Audio / observations: Gemini Live when live → ADK runtime: Tools, sessions, workflow → SpeakerCoach: Validate proposed state.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3391,7 +3391,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/gemini-live.svg",
-        "visual_idea": "Browser audio: Continuous stream \u2192 Gemini Live: Live observations \u2192 Reason + validate: Explicit state boundary.",
+        "visual_idea": "Browser audio: Continuous stream → Gemini Live: Live observations → Reason + validate: Explicit state boundary.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3412,7 +3412,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/claude-agent.svg",
-        "visual_idea": "Task + context: Permitted files / tools \u2192 Claude agent loop: Sessions and permissions \u2192 Task result: Validate before use.",
+        "visual_idea": "Task + context: Permitted files / tools → Claude agent loop: Sessions and permissions → Task result: Validate before use.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -3433,7 +3433,7 @@
         "scope": "Document the selection of OpenAI Agents SDK for the current POC; no implementation or lifecycle transition.",
         "nonblank_lines": 10,
         "embedded_visual": "docs/asdg/05-high-level-design-and-architecture/decisions/Use Open AI Agent SDK/images/anthropic-client.svg",
-        "visual_idea": "Transcript snapshot: Same comparison input \u2192 Claude Messages API: Structured proposal \u2192 State controller: Same acceptance rules.",
+        "visual_idea": "Transcript snapshot: Same comparison input → Claude Messages API: Structured proposal → State controller: Same acceptance rules.",
         "visual_check": {
           "result": "PASS",
           "method": "Headless Chrome rendering embedded in a 720 px document pane; 656 px image width. Each diagram inspected visually.",
@@ -4697,6 +4697,125 @@
       "human_approval": null,
       "provenance": {
         "reason": "Technical validation receipt; no approval inferred"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-attitude/SKILL.md",
+      "sha256": "9dfa1f1a2c2ccd0dcc8054bf79c75943a80f6ecfde743a2c340def25b81801c9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus/SKILL.md",
+      "sha256": "dd0ebab9a3e4c60a59fb75e0425ee743918389ab025853537130e15afedbeec6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "29a18cf6ae918368877725756f33d99530b1396cbf2edd96a53f03aa63eeb1a8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.8-review-attitude-and-session-naming.md",
+      "sha256": "cdb1f58508f8cb158791250231344d402611841c65f6933de70a77b6195113f2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "a3f8f923718bebc41dcbfbd4a580dccd37716e564fe745b099cdfa686e006527",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicitly requested ASDG attitude and independent session naming increment",
+        "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad"
+      },
+      "previous_state": {
+        "sha256": "4e1691f04b801f1b94fc1b482cce4926ab3bbc1c668c9a256adf45ccc2183040",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-attitude/SKILL.md",
+      "sha256": "2677aec69f0330d0db6fe0459ea41a07cfab8e0e3b16254cd10dcb1c3cbf1567",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "9dfa1f1a2c2ccd0dcc8054bf79c75943a80f6ecfde743a2c340def25b81801c9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.9-review-short-session-names.md",
+      "sha256": "ffe591fb3588d559be2667074c031984f5d6e7c4301b33b8ff32d5c54080e398",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "0292d7421bd49947191187cf649643e07e9c6860bad6e974206a3924e634be48",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:01:05.425001+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shorter titles and NoAttitude/NoFocus labels; previous uncommitted work preserved"
+      },
+      "previous_state": {
+        "sha256": "a3f8f923718bebc41dcbfbd4a580dccd37716e564fe745b099cdfa686e006527",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.10-review-concise-role-titles.md",
+      "sha256": "14f437331518fa71c4e61394c177891b44e6ddab1c856c0b76e4400203e60c7f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "0bad71e10720e7dcc92a7fabfe3ca380daca05bd4065980ffb6c13929bda83db",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
+      },
+      "previous_state": {
+        "sha256": "0292d7421bd49947191187cf649643e07e9c6860bad6e974206a3924e634be48",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
     }
   ]

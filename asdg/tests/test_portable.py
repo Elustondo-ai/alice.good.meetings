@@ -195,6 +195,32 @@ runpy.run_path(entry, run_name='__main__')
         self.init()
         self.assertEqual(snapshot(self.root), before)
 
+    def test_attitude_adapter_relocates_and_preserves_state(self):
+        self.init()
+        protected = {p: (self.root / p).read_bytes()
+                     for p in ('.asdg/project.json', '.asdg/lifecycle.json', '.asdg/sprint.json', 'app.js')}
+        before_move = snapshot(self.root)
+        self.root = self.root.rename(self.root.parent / 'relocated attitude client')
+        self.assertEqual(snapshot(self.root), before_move)
+        relative = Path('.agents/skills/asdg-attitude')
+        for name in ('SKILL.md', 'agents/openai.yaml'):
+            self.assertEqual((self.root / relative / name).read_bytes(),
+                             (self.root / 'asdg/templates' / relative / name).read_bytes())
+        canonical = (self.root / relative / '../../../asdg/skills/asdg-attitude/SKILL.md').resolve()
+        self.assertEqual(canonical, self.root / 'asdg/skills/asdg-attitude/SKILL.md')
+        self.assertTrue(canonical.is_file())
+        for name in ('attitudes.md', 'TRY-IT.md'):
+            self.assertTrue((canonical.parent / name).is_file())
+        for name in ('session-state.md', 'subject-focus.md', 'rename-chat.md'):
+            self.assertTrue((canonical.parent.parent / 'asdg-focus' / name).is_file())
+        self.run_cli('verify', cwd=self.root / 'docs')
+        before_repeat = snapshot(self.root)
+        self.init(cwd=self.root / 'docs')
+        self.assertEqual(snapshot(self.root), before_repeat)
+        for path, data in protected.items():
+            self.assertEqual((self.root / path).read_bytes(), data)
+        self.assertEqual(len(list((self.root / '.codex/agents').glob('asdg*.toml'))), 13)
+
     def test_decision_skill_relocates_and_preserves_unregistered_decisions(self):
         self.init()
         relative = Path('.agents/skills/asdg-decision')

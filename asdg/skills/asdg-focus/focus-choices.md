@@ -1,6 +1,8 @@
 # Interpret the user's Focus request
 
 The [catalogue](../../00-governance/types/agent-catalog.json) owns role identities, paths and procedures; the table below explains their responsibilities.
+The short labels below are the session-name vocabulary; canonical IDs, responsibilities, folders and legacy role-name selectors remain unchanged.
+Explicit within-role topics use [subject focus](subject-focus.md); do not silently reinterpret a legacy role request.
 Use the complete phrase and relevant conversation context, including negation and distinctions such as strategy versus execution.
 These are examples of meaning, not a keyword parser or an exhaustive list of accepted phrases. Tolerate ordinary spelling mistakes.
 
@@ -25,20 +27,20 @@ A quoted example, hypothetical question or request to explain Focus does not act
 
 ## Twelve specialist choices
 
-| Stage | Short focus label | Responsibility and example intent |
+| Stage | Short role label | Responsibility and example intent |
 | --- | --- | --- |
-| 01 | Context & Domain Analysis | Understand the domain, stakeholders, terminology and source context. |
+| 01 | Context | Understand the domain, stakeholders, terminology and source context. |
 | 02 | Purpose | Clarify why the system exists, intended outcomes, scope and non-goals. |
-| 03 | System Model & Use Cases | Model actors, domain concepts, scenarios and observable interactions. |
-| 04 | Benchmarks & Test Strategy | Choose evaluation methods, benchmarks, measures and success criteria. |
-| 05 | High-Level Architecture | Decide system boundaries, components, deployment and major trade-offs. |
-| 06 | Viable Proof of Concept | Design a bounded experiment to resolve a specific uncertainty. |
+| 03 | UseCases | Model actors, domain concepts, scenarios and observable interactions. |
+| 04 | EvalStrategy | Choose evaluation methods, benchmarks, measures and success criteria. |
+| 05 | Architecture | Decide system boundaries, components, deployment and major trade-offs. |
+| 06 | POC | Design a bounded experiment to resolve a specific uncertainty. |
 | 07 | Planning | Sequence scoped work, dependencies and handoffs. |
-| 08 | Low-Level Design | Specify detailed interfaces, contracts, edge cases and component behavior. |
-| 09 | Build & Test Cycle | Assess or perform separately authorized component implementation and tests. |
-| 10 | Document, Review & Release | Review an exact candidate, documentation and release readiness. |
-| 11 | Operations, DevOps & User Acceptance | Assess real environments, rollout, recovery and acceptance evidence. |
-| 12 | Observability, Insights & Learning | Interpret telemetry and feedback to propose learning and improvements. |
+| 08 | Specs | Specify detailed interfaces, contracts, edge cases and component behavior. |
+| 09 | Coding | Assess or perform separately authorized component implementation and tests. |
+| 10 | ReviewQA | Review an exact candidate, documentation and release readiness. |
+| 11 | Operations | Assess real environments, rollout, recovery and acceptance evidence. |
+| 12 | Observability | Interpret telemetry and feedback to propose learning and improvements. |
 
 Separately offer **00 Governance** for whole-project coordination, responsibility routing and review gates; its canonical role is ASDG-COORDINATOR.
 An explicit “clear focus,” “stop specializing,” or “return to general” removes selection without selecting Governance.

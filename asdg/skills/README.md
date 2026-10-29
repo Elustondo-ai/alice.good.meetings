@@ -6,7 +6,8 @@ Canonical workflows live here; native discovery adapters remain thin references.
 | --- | --- |
 | [Initialize](asdg-init/SKILL.md) | Bootstrap the explicitly identified client |
 | [Create team](asdg-create-team/SKILL.md) | Set up governance and twelve specialist chats, reusing existing focused chats |
-| [Focus](asdg-focus/SKILL.md) | Select governance 00 or one of twelve specialist focuses |
+| [Focus](asdg-focus/SKILL.md) | Select a role; use `subject` to change its topic independently |
+| [Attitude](asdg-attitude/SKILL.md) | Choose a thinking approach, temporary scope, NoAttitude or read-only status |
 | [Status](asdg-status/SKILL.md) | Show status, a suggested next step, then observations and technical debt |
 | [Role](asdg-role/SKILL.md) | Explain the selected role's responsibilities, outputs and boundaries |
 | [Approve](asdg-approve/SKILL.md) | Resolve the current reviewed documentation baseline and record explicit human acceptance |

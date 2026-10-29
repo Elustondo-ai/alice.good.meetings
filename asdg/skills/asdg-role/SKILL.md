@@ -24,6 +24,7 @@ Use current contracts for bounded write/review allowances; do not assume every r
 ## Explain the role in the user's project
 
 Lead with role name/ID, its purpose and the target project.
+Use the [session declaration](../asdg-focus/session-state.md); distinguish the current subject and thinking attitude from the role's responsibility, without changing any field.
 Explain its owned responsibilities, expected inputs and useful outputs in plain language.
 Explain direct capabilities, explicit exclusions, applicable allowances and decisions reserved for the human.
 Distinguish a role's responsibility from runtime permission, active sprint scope, approval and actual execution.

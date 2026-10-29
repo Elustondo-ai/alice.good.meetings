@@ -17,18 +17,21 @@ Use disposable conversations and clients. File presence alone proves no native p
 | Explicit conflicting role IDs | Clarify; no role switch or rename before the answer. |
 | User answers a pending clarification | Resolve that choice; retain the original task and load the chosen sources. |
 | Unanswered or preselected recommended option | Remain pending; no activation or title mutation. |
-| Explicit “return to general” | Clear focus, attempt General title; no Governance activation. |
+| Explicit “return to general” | Clear role, attempt General title; retain subject, attitude and goal. |
+| `subject Security`, then `subject Performance` while Architecture is selected | Change subject only, retain role/attitude/goal and update the title with the real native outcome. |
+| Select Specs / Coding / ReviewQA, or the corresponding legacy role names | Resolve 08 / 09 / 10 respectively; short labels do not change responsibilities. |
+| `subject status` / `subject clear` | Report without mutation / explicitly clear subject only. |
 | Quoted example or “explain Focus” | Explain only; no activation. |
 | Numeric ID, canonical ID or native name | Preserve valid shorthand without requiring it. |
 
 ## Activation and integration
 
-1. New chat: Status reports None and does not rename.
+1. New chat: Status reports role None, subject NoFocus and attitude NoAttitude; it does not rename.
 2. Invoke Focus with “help me clarify the project's purpose”: load ASDG-02, attempt its title and begin the canonical read-only opening.
 3. Status and a later role question retain Purpose; discuss a task without repeating activation.
 4. Invoke Focus for Architecture: load 05 and attempt its title while retaining project context.
 5. Ambiguous selection or missing role source preserves the previous focus and title; report the actual limitation.
-6. Governance selects the coordinator; clear selects None. Neither adds authority, delegates work or changes state.
+6. Governance selects the coordinator; legacy clear selects role None. Neither changes goal, subject, attitude or project state.
 7. Rename failure preserves a successfully selected role; report the actual tool result and avoid blind retries.
 8. Test repeat selection, resume and compaction in the actual client before claiming their behavior verified.
 
@@ -40,6 +43,6 @@ An older client may still contain retired adapters; inspect customizations and r
 
 ## Evidence
 
-Record original phrase/context, candidate reasoning summary, actual choice/read/rename trace, previous and resulting focus, and file effects.
+Record original phrase/context, decision rationale, actual reads/rename outcome, previous/resulting role and subject, retained attitude/goal, and file effects.
 Separate semantic interpretation tests from native activation, picker refresh, title behavior and hook enforcement.
 Run the [Purpose continuation exercise](continuation-tests.md) separately; this change does not extend other specialists' opening procedures.

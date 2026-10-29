@@ -1,0 +1,578 @@
+diff --git a/.asdg/document-reviews.json b/.asdg/document-reviews.json
+--- a/.asdg/document-reviews.json
++++ b/.asdg/document-reviews.json
+@@ -4792,6 +4792,31 @@
+         "visible_review_markers": [],
+         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+       }
++    },
++    {
++      "path": "docs/asdg/07-planning/02.10-review-concise-role-titles.md",
++      "sha256": "14f437331518fa71c4e61394c177891b44e6ddab1c856c0b76e4400203e60c7f",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      }
++    },
++    {
++      "path": "docs/asdg/07-planning/README.md",
++      "sha256": "0bad71e10720e7dcc92a7fabfe3ca380daca05bd4065980ffb6c13929bda83db",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "0292d7421bd49947191187cf649643e07e9c6860bad6e974206a3924e634be48",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
+     }
+   ]
+ }
+diff --git a/asdg/00-governance/types/document-reviews.json b/asdg/00-governance/types/document-reviews.json
+--- a/asdg/00-governance/types/document-reviews.json
++++ b/asdg/00-governance/types/document-reviews.json
+@@ -19840,6 +19840,186 @@
+         "visible_review_markers": [],
+         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+       }
++    },
++    {
++      "path": "asdg/docs/usage.md",
++      "sha256": "426be83f5fdbca6655bdb01da2c141bef3f89e03ec9ea5be6c5b126a88b71c8c",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "bb2a430c7b318f3133fc3adfb827fc1c61835f58281ae120dd686bbae4a3976b",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-attitude/SKILL.md",
++      "sha256": "33f262928e67a4b66ef1dec8e4fedc5c0b52ecf808b5fcb80311017febcdca1f",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "fc22d1946be78696fa387c85fae86c60a724e531d91a397add903f67f2ec53e1",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-attitude/TRY-IT.md",
++      "sha256": "3144db8b7fd38eb2ad231d12a559230039ba6364dce9c6162221810d443eb2a7",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "53c4a5212f9aa803a6e68bae37196e836be64c836ffeea91073b262086b3249a",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-attitude/attitudes.md",
++      "sha256": "ecaa2d2cd5007c4a5c7a564fc50f7c3bb79680550856341d827a74f881d35731",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "e1e229efa7fa887049b966bb2e41ed2144e195a8915734fc75a255d935f48872",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-create-team/SKILL.md",
++      "sha256": "cdc9e061d6a3efc8a40dbc3c9a44a3e3178f5e2d61adea4bd6d7b5ab2c5b211b",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "72a58cf66a5cdbf7028c5e8ec6e97045042445d914e739c9d3d55827f6c416f8",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/SKILL.md",
++      "sha256": "035656534d11244f85c5aaa150a542252892561266ad4a805979773c606308a2",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "a458cf7eef2ae7df1d816c294dd94ac9733d37b4da600c8f5d96f61740680818",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/TRY-IT.md",
++      "sha256": "50f9ebd9b5006c081141d9c1c691d8323ad3cf02ff2185f7efa06425fcd2e0ff",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "e43dbcf4557a9f3b3041147c8524c67274c071ddb1a15d83c5809d3061fff2e3",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/focus-choices.md",
++      "sha256": "5c899f1f6cbadac60ff94e262b44198d66fb40ac14e4098436ba18dbc0a67c69",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "2e29ec361364fdfa6f57f9b0015c0c997753cd23bf986b6403faf5e67b6df52f",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/rename-chat.md",
++      "sha256": "db2aab88ef8bda19c32285e2697d2f520a59e0f066ff7908b15db484a3edf3cc",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "5d28d2733361a70b1f3af8f8349146985a46cbc8ef01051e4807929a24ef03ce",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/session-policy.md",
++      "sha256": "804ed85f44702945b4b92863a4e28f8ce285b08a55a5682e58e5e1a5443b83ab",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "1808e36e1baa3e3d7fe381cc95a12c7b01b9f86e6ce60c221bfa7e7e5c82d598",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/session-state.md",
++      "sha256": "e3d3517a977aaf6cd217e4a86f5203ca81f2875f5e781c3d68125a4cde713e59",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "195f17c19eb1b04f0d694fc38872faddbbe416b654a73a0be0cbc92079c50a88",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-focus/subject-focus.md",
++      "sha256": "b49c88bb7e234bce2a92def856d0cbfe9a881d42bb3d668f33c13f788cd8fddd",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-28T23:34:01.845599+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "User clarification: exact short role names, optional focus/attitude, no project suffix or empty title labels"
++      },
++      "previous_state": {
++        "sha256": "f82fb7ddb44ffe13baff7f1376b270df8e8ae006866eacf9eb6ef12945ce7814",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
+     }
+   ],
+   "distribution_version": "0.2.0-pilot.2"
+diff --git a/asdg/docs/usage.md b/asdg/docs/usage.md
+--- a/asdg/docs/usage.md
++++ b/asdg/docs/usage.md
+@@ -16,7 +16,7 @@
+ 
+ ## A specialist conversation
+ 
+-For whole-project management, use `$asdg-focus on project governance`; its default title is `00 Governance · NoAttitude — <project>`.
++For whole-project management, use `$asdg-focus on project governance`; its default title is `00 Governance`.
+ It selects the existing coordinator, distinct from a general chat with no focus; it grants no execution authority.
+ 
+ Select **ASDG focus** in Codex and describe the role, for example “on high level architecture” or “help me clarify the project's purpose.”
+@@ -25,8 +25,8 @@
+ For example: “Read this project's existing code and purpose documents; explain the gaps and propose corrections.”
+ Stage 02 is Purpose; `intent` remains a generic Focus alias. No `asdg-intent` adapter is installed.
+ The focus stays in this conversation while its activation receipt remains available.
+-Use `$asdg-focus subject Security` to change only the topic; role selectors and bare `clear` retain their existing meanings.
+-Use `$asdg-attitude black`, `green`, or `NoAttitude`; `status` only reports. English/Spanish colors and explicit temporary scopes are supported.
++Use `$asdg-focus subject Security` for a title such as `05 Architecture Security`; role selectors and bare `clear` retain their meanings.
++Use `$asdg-attitude black` to append `Black`; `off` removes the attitude from the title. `status` only reports; English/Spanish and temporary scopes remain supported.
+ Proposed pilot default: a hat persists until changed or turned off; “this answer only” restores the previous hat at completion. See [session fields and titles](../skills/asdg-focus/session-state.md).
+ `$asdg-status` reports conversation focus; it is distinct from CLI workflow status.
+ These skills do not create a new window or persistent agent process. Resume the same Codex conversation.
+diff --git a/asdg/skills/asdg-attitude/SKILL.md b/asdg/skills/asdg-attitude/SKILL.md
+--- a/asdg/skills/asdg-attitude/SKILL.md
++++ b/asdg/skills/asdg-attitude/SKILL.md
+@@ -18,7 +18,7 @@
+ A bare skill invocation asks which attitude the user wants; do not infer one from their mood, role or task.
+ For status / estado, report the current attitude, scope, expiry and retained title outcome, then stop without selection or renaming.
+ Unknown, conflicting or ambiguous selections leave the prior valid receipt and title intact; ask one focused clarification.
+-NoAttitude / Off / no hat / actitud normal explicitly ends the selection and any pending override; display NoAttitude for ordinary balanced assistance.
++NoAttitude / Off / no hat / actitud normal ends the selection and any pending override; retain NoAttitude in the receipt and omit the attitude from the title.
+ 
+ ## Select and apply
+ 
+diff --git a/asdg/skills/asdg-attitude/TRY-IT.md b/asdg/skills/asdg-attitude/TRY-IT.md
+--- a/asdg/skills/asdg-attitude/TRY-IT.md
++++ b/asdg/skills/asdg-attitude/TRY-IT.md
+@@ -7,7 +7,7 @@
+ ## Core sequence
+ 
+ 1. Select Architecture through the existing Focus command and record the actual role reads, project and user goal.
+-2. Select `subject Security`, then attitude Black. Subject changes only the receipt; Black updates the role/attitude/project title with the real native outcome.
++2. Select `subject Security`, then Black. Expect `05 Architecture Security`, then `05 Architecture Security Black`; record actual native outcomes.
+ 3. Change Black to Green, then NoAttitude. Preserve role, Security, goal and history; distinguish computed and observed titles.
+ 4. Select Black “for this answer only.” Apply it, restore NoAttitude before delivery and show both the attitude used and restored state; reconcile the title.
+ 5. Select Yellow, then Green for a named review. On delivery restore Yellow; an explicit NoAttitude during that review cancels the pending restoration.
+@@ -26,13 +26,14 @@
+ | A new selection supersedes a temporary hat | Old expiry cannot undo the newer selection. |
+ | Native rename unavailable, explicit failure, or inconclusive result | UNAVAILABLE, FAILED or UNKNOWN respectively; selection survives. |
+ | Native title already observed equal to computed title | UNCHANGED, supported by readback. |
+-| Native title clipping | Distinguish a preview from a stored-title change; report the limit without silently shortening role, attitude or project. |
+-| NoAttitude or legacy Off; subject NoFocus | Canonical empty labels are NoAttitude and NoFocus; focus is absent from every computed title. |
++| Native title clipping | Distinguish a preview from a stored-title change; preserve role identity and full subject in the receipt. |
++| NoAttitude or legacy Off; subject NoFocus | Empty values remain in the receipt; omit them and the project suffix from the title. |
++| Both optional fields unset / only focus / only attitude | `05 Architecture` / `05 Architecture Security` / `05 Architecture Black`. |
+ | Missing recovery evidence | Unknown fields, no authority reconstructed from the title. |
+ | Two same-role candidates in a routing request | Verify project, role, subject and ID; unresolved ambiguity is reported. |
+ 
+ Existing numeric, canonical and native role selectors and role-clear commands retain their meanings under the [Focus exercise](../asdg-focus/TRY-IT.md).
+-Role changes retain subject and attitude; different subjects may share a title, so route by verified stable ID and receipt.
++Role changes retain subject and attitude; even distinct titles require routing by verified stable ID and receipt.
+ New chats start NoAttitude unless explicitly assigned; they do not inherit the caller's attitude.
+ 
+ ## Recording results
+diff --git a/asdg/skills/asdg-attitude/attitudes.md b/asdg/skills/asdg-attitude/attitudes.md
+--- a/asdg/skills/asdg-attitude/attitudes.md
++++ b/asdg/skills/asdg-attitude/attitudes.md
+@@ -13,7 +13,7 @@
+ | Yellow / amarillo / amarilla | Plausible benefits and the conditions that would make them real. |
+ | Black / negro / negra | Reasoned risks, failure mechanisms and vulnerable assumptions; avoid unsupported negativity. |
+ | Blue / azul | Organize the thinking, synthesize findings, preserve disagreements and identify next steps. |
+-| NoAttitude / Off / sin sombrero / normal / desactivar | Ordinary balanced assistance; always display NoAttitude when no hat is selected. |
++| NoAttitude / Off / sin sombrero / normal / desactivar | Ordinary balanced assistance; record NoAttitude, with no attitude label in the title. |
+ 
+ Accept clear equivalents such as “use a factual hat,” “explore creative alternatives as our attitude,” or “sombrero crítico.”
+ A request merely to list risks or use a color in a diagram is ordinary task content unless the user clearly requests an attitude change.
+diff --git a/asdg/skills/asdg-create-team/SKILL.md b/asdg/skills/asdg-create-team/SKILL.md
+--- a/asdg/skills/asdg-create-team/SKILL.md
++++ b/asdg/skills/asdg-create-team/SKILL.md
+@@ -37,7 +37,7 @@
+ 
+ Use native `create_thread` for each confirmed missing role, in small batches, with the verified project ID and local environment.
+ Omit model and reasoning overrides; honor any explicit user preferences. Do not create worktrees, subagents or cloud tasks.
+-Let each new chat compose its title through [the current title contract](../asdg-focus/rename-chat.md), using verified labels and project; do not route by that title alone.
++Let each new chat compose its title through [the current title contract](../asdg-focus/rename-chat.md): short role, optional focus, optional attitude; keep the project binding in its receipt.
+ Each initial prompt must explicitly request `$asdg-focus` with its verified absolute path and that chat's catalogue role ID; no per-role picker skill is needed.
+ State the project root and request only activation, its required read-only opening/status, a brief role confirmation, then waiting for the user.
+ New chats start with subject NoFocus and attitude NoAttitude unless the user explicitly assigns them; never copy the caller's attitude or overwrite a reused chat's fields.
+diff --git a/asdg/skills/asdg-focus/SKILL.md b/asdg/skills/asdg-focus/SKILL.md
+--- a/asdg/skills/asdg-focus/SKILL.md
++++ b/asdg/skills/asdg-focus/SKILL.md
+@@ -40,7 +40,7 @@
+ Record the selecting phrase, interpreted role, actual sources, invoked skill and the retained goal/subject/attitude/project.
+ All agents retain [documentation authority](../../00-governance/docs/documentation-authority.md); code, approvals and operations retain separate gates.
+ Purpose begins its [read-only opening](../../02-purpose/skills/elicit-purpose/opening.md); activation alone writes no artifacts.
+-Follow [current-chat renaming](rename-chat.md), composing from role, attitude and verified project; subject stays in the receipt.
++Follow [current-chat renaming](rename-chat.md): short role name, selected subject, selected attitude; project binding stays in the receipt.
+ A failed rename does not undo selection. Repeated role selection refreshes required reads and retries the title; it does not reset other fields.
+ For Purpose, collect [Status](../asdg-status/SKILL.md) facts-only once and reuse the result in its opening, with the actual rename outcome.
+ If selection includes an assignment, continue that authorized work without a redundant interview.
+diff --git a/asdg/skills/asdg-focus/TRY-IT.md b/asdg/skills/asdg-focus/TRY-IT.md
+--- a/asdg/skills/asdg-focus/TRY-IT.md
++++ b/asdg/skills/asdg-focus/TRY-IT.md
+@@ -18,7 +18,8 @@
+ | User answers a pending clarification | Resolve that choice; retain the original task and load the chosen sources. |
+ | Unanswered or preselected recommended option | Remain pending; no activation or title mutation. |
+ | Explicit “return to general” | Clear role, attempt General title; retain subject, attitude and goal. |
+-| `subject Security`, then `subject Performance` while Architecture is selected | Change subject only, retain role/attitude/goal and make no native title call. |
++| `subject Security`, then `subject Performance` while Architecture is selected | Change subject only, retain role/attitude/goal and update the title with the real native outcome. |
++| Select Specs / Coding / ReviewQA, or the corresponding legacy role names | Resolve 08 / 09 / 10 respectively; short labels do not change responsibilities. |
+ | `subject status` / `subject clear` | Report without mutation / explicitly clear subject only. |
+ | Quoted example or “explain Focus” | Explain only; no activation. |
+ | Numeric ID, canonical ID or native name | Preserve valid shorthand without requiring it. |
+diff --git a/asdg/skills/asdg-focus/focus-choices.md b/asdg/skills/asdg-focus/focus-choices.md
+--- a/asdg/skills/asdg-focus/focus-choices.md
++++ b/asdg/skills/asdg-focus/focus-choices.md
+@@ -1,7 +1,8 @@
+ # Interpret the user's Focus request
+ 
+ The [catalogue](../../00-governance/types/agent-catalog.json) owns role identities, paths and procedures; the table below explains their responsibilities.
+-These remain role selectors. Explicit within-role topics use [subject focus](subject-focus.md); do not silently reinterpret a legacy role request.
++The short labels below are the session-name vocabulary; canonical IDs, responsibilities, folders and legacy role-name selectors remain unchanged.
++Explicit within-role topics use [subject focus](subject-focus.md); do not silently reinterpret a legacy role request.
+ Use the complete phrase and relevant conversation context, including negation and distinctions such as strategy versus execution.
+ These are examples of meaning, not a keyword parser or an exhaustive list of accepted phrases. Tolerate ordinary spelling mistakes.
+ 
+@@ -28,18 +29,18 @@
+ 
+ | Stage | Short role label | Responsibility and example intent |
+ | --- | --- | --- |
+-| 01 | Context & Domain Analysis | Understand the domain, stakeholders, terminology and source context. |
++| 01 | Context | Understand the domain, stakeholders, terminology and source context. |
+ | 02 | Purpose | Clarify why the system exists, intended outcomes, scope and non-goals. |
+-| 03 | System Model & Use Cases | Model actors, domain concepts, scenarios and observable interactions. |
+-| 04 | Benchmarks & Test Strategy | Choose evaluation methods, benchmarks, measures and success criteria. |
+-| 05 | High-Level Architecture | Decide system boundaries, components, deployment and major trade-offs. |
+-| 06 | Viable Proof of Concept | Design a bounded experiment to resolve a specific uncertainty. |
++| 03 | UseCases | Model actors, domain concepts, scenarios and observable interactions. |
++| 04 | EvalStrategy | Choose evaluation methods, benchmarks, measures and success criteria. |
++| 05 | Architecture | Decide system boundaries, components, deployment and major trade-offs. |
++| 06 | POC | Design a bounded experiment to resolve a specific uncertainty. |
+ | 07 | Planning | Sequence scoped work, dependencies and handoffs. |
+-| 08 | Low-Level Design | Specify detailed interfaces, contracts, edge cases and component behavior. |
+-| 09 | Build & Test Cycle | Assess or perform separately authorized component implementation and tests. |
+-| 10 | Document, Review & Release | Review an exact candidate, documentation and release readiness. |
+-| 11 | Operations, DevOps & User Acceptance | Assess real environments, rollout, recovery and acceptance evidence. |
+-| 12 | Observability, Insights & Learning | Interpret telemetry and feedback to propose learning and improvements. |
++| 08 | Specs | Specify detailed interfaces, contracts, edge cases and component behavior. |
++| 09 | Coding | Assess or perform separately authorized component implementation and tests. |
++| 10 | ReviewQA | Review an exact candidate, documentation and release readiness. |
++| 11 | Operations | Assess real environments, rollout, recovery and acceptance evidence. |
++| 12 | Observability | Interpret telemetry and feedback to propose learning and improvements. |
+ 
+ Separately offer **00 Governance** for whole-project coordination, responsibility routing and review gates; its canonical role is ASDG-COORDINATOR.
+ An explicit “clear focus,” “stop specializing,” or “return to general” removes selection without selecting Governance.
+diff --git a/asdg/skills/asdg-focus/images/session-title-parts.svg b/asdg/skills/asdg-focus/images/session-title-parts.svg
+new file mode 100644
+--- /dev/null
++++ b/asdg/skills/asdg-focus/images/session-title-parts.svg
+@@ -0,0 +1,32 @@
++<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
++<title id="title">Independent session fields</title><desc id="desc">Goal, role, subject focus and attitude feed a receipt in this chat only. The title shows the short role name followed by any selected focus and attitude. Goal and project binding stay in the receipt; empty fields are omitted.</desc>
++<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#60738c"/></marker></defs>
++<rect width="960" height="520" rx="20" fill="#f4f7fb"/>
++<g font-family="Arial, sans-serif" fill="#172a43">
++<text x="40" y="47" font-size="29" font-weight="700">One chat, four independent choices</text>
++<text x="40" y="80" font-size="20">Changing the approach preserves the outcome, responsibility and subject.</text>
++<g stroke="#c4cede" stroke-width="2">
++<rect x="40" y="111" width="200" height="110" rx="12" fill="#e8edf4"/>
++<rect x="265" y="111" width="200" height="110" rx="12" fill="#e2edff"/>
++<rect x="490" y="111" width="200" height="110" rx="12" fill="#e0f3eb"/>
++<rect x="715" y="111" width="205" height="110" rx="12" fill="#fff0d9"/>
++</g>
++<g font-size="24" font-weight="700">
++<text x="59" y="145">Goal</text><text x="284" y="145">Role</text><text x="509" y="145">Subject focus</text><text x="734" y="145">Attitude</text>
++</g>
++<g font-size="19">
++<text x="59" y="177">Outcome sought</text><text x="59" y="203">Keep it in the receipt</text>
++<text x="284" y="177">Responsibility</text><text x="284" y="203">e.g. Architecture</text>
++<text x="509" y="177">Topic examined</text><text x="509" y="203">e.g. Security</text>
++<text x="734" y="177">Thinking approach</text><text x="734" y="203">e.g. Black</text>
++</g>
++<path d="M140 223V246H480M365 223V246M590 223V246H480M817 223V246H480V274" fill="none" stroke="#60738c" stroke-width="2.5" marker-end="url(#arrow)"/>
++<rect x="130" y="281" width="700" height="80" rx="12" fill="#fff" stroke="#c4cede" stroke-width="2"/>
++<text x="480" y="313" text-anchor="middle" font-size="24" font-weight="700">Receipt in this conversation only</text>
++<text x="480" y="341" text-anchor="middle" font-size="19">Goal and project retained · selections · expiry · title outcome</text>
++<path d="M480 362V387" stroke="#60738c" stroke-width="2.5" marker-end="url(#arrow)"/>
++<rect x="40" y="397" width="880" height="72" rx="12" fill="#172a43"/>
++<text x="480" y="425" text-anchor="middle" font-size="19" fill="#b9cbdf">VISIBLE TITLE · short role, selected focus, selected attitude</text>
++<text x="480" y="453" text-anchor="middle" font-size="22" fill="#fff">05 Architecture Security Black</text>
++<text x="480" y="501" text-anchor="middle" font-size="18">The title reflects state. It never grants approval or implementation permission.</text>
++</g></svg>
+diff --git a/asdg/skills/asdg-focus/rename-chat.md b/asdg/skills/asdg-focus/rename-chat.md
+--- a/asdg/skills/asdg-focus/rename-chat.md
++++ b/asdg/skills/asdg-focus/rename-chat.md
+@@ -1,22 +1,21 @@
+ # Keep the current chat title aligned with its state
+ 
+-Run after successful role or attitude selection/clear, repeat selection, explicit-scope expiry or an explicit title refresh.
+-Subject-only changes stay in the conversation receipt and do not rename the chat.
++Run after successful role, subject-focus or attitude selection/clear, repeat selection, explicit-scope expiry or an explicit title refresh.
+ Status alone never renames. Preserve valid selection even if native renaming is unavailable or fails.
+ Read the current [session receipt](session-state.md); the title is its projection, never evidence of authority.
+ 
+ ## Compose the title
+ 
+-Use `NN <short role label> · <attitude> — <verified project display name>`.
++Use `NN <short role label> [<focus>] [<attitude>]`, joined with single spaces; brackets indicate optional fields and are never literal.
+ Take stage/role identity from [the catalogue](../../00-governance/types/agent-catalog.json) and its short label from [Focus choices](focus-choices.md).
+-For example: `05 High-Level Architecture · Black — SpeakerCoach` or `00 Governance · NoAttitude — SpeakerCoach`.
+-Preserve the established role prefix and project display binding; do not substitute “Architect” or renumber identities from a sample.
+-Omit subject focus entirely, including NoFocus. Report it in the conversation declaration and receipt instead.
++For example: `00 Governance`, `05 Architecture`, `05 Architecture Security`, or `05 Architecture Security Black`.
++Use the exact short labels supplied in Focus choices; preserve catalogue numbering and project binding in the receipt.
++Append an explicitly selected focus, then a selected English attitude color. Omit unset fields entirely: no Off, NoAttitude, NoFocus, None or placeholder separators.
+ Role None displays `General` without a stage number; unrecoverable role displays `Role unknown` without inventing a prefix.
+-Attitude displays the selected canonical English color, NoAttitude, or `Attitude unknown`; retain temporary scope in the receipt and reply.
+-Goal and subject stay in the receipt. Unknown project: omit its suffix and report the missing binding.
+-Use one line, no secrets or control characters; preserve the role prefix and verified project name.
+-Two same-role chats may now share a title; verify their receipts and stable IDs instead of inventing distinguishing focus suffixes.
++Report unknown focus/attitude in the receipt and reply; do not infer an empty selection. Omit unverified optional title fields.
++Never append the project name automatically or use it as an inferred focus. Goal, project and temporary scope stay in the receipt.
++Use one line with no pipes, dots, dashes, secrets or control characters added as separators; retain the full selected focus in the receipt if its display needs shortening.
++Identical selections may share a title; route by verified receipts and stable IDs, never by title alone.
+ Honor a directly requested custom title while retaining the computed projection separately; a custom title changes no state.
+ 
+ ## Supported native action
+@@ -43,7 +42,7 @@
+ 
+ Verify through supported current-chat readback when available; otherwise say UI readback not inspected.
+ If native evidence shows title clipping, report the mismatch. When the readback is only a shortened preview, do not assume the stored title changed.
+-Record computed, requested and observed titles separately. Report any client limit without inventing a shorter role, attitude label or project name.
++Record computed, requested and observed titles separately. Report any client limit without changing the role label or inventing a subject selection.
+ Retain computed title, last observed title, actual action outcome and any mismatch in this conversation's receipt.
+ A stale title after failure does not roll back role, subject, attitude or expiry.
+ Reconcile only at a later authorized selection, explicit retry or expiry with suitable evidence; never turn Status into a silent mutation.
+diff --git a/asdg/skills/asdg-focus/session-policy.md b/asdg/skills/asdg-focus/session-policy.md
+--- a/asdg/skills/asdg-focus/session-policy.md
++++ b/asdg/skills/asdg-focus/session-policy.md
+@@ -48,8 +48,8 @@
+ 
+ ## Current-chat title and acceptance
+ 
+-Successful role/attitude selection or clear, repeat selection, explicit expiry and requested title refresh call [current-chat renaming](rename-chat.md).
+-Subject-only selections update the receipt without renaming; titles omit subject focus.
++Successful role/subject/attitude selection or clear, repeat selection, explicit expiry and requested title refresh call [current-chat renaming](rename-chat.md).
++Titles show the short role name, selected focus and selected attitude; omit the project suffix and all empty-field labels.
+ This narrow metadata allowance permits no file rename, peer change, internal-store edits or expanded project authority.
+ Keep valid state if renaming fails; distinguish the computed title from actual native outcomes and observed UI.
+ Use [the behavioral exercise](TRY-IT.md) and [attitude acceptance cases](../asdg-attitude/TRY-IT.md); scenarios are not test results.
+diff --git a/asdg/skills/asdg-focus/session-state.md b/asdg/skills/asdg-focus/session-state.md
+--- a/asdg/skills/asdg-focus/session-state.md
++++ b/asdg/skills/asdg-focus/session-state.md
+@@ -4,7 +4,7 @@
+ Changing one does not silently change the others or the verified project binding.
+ The existing Focus command still selects roles. Its explicit `subject` form changes only the topic.
+ 
+-![All four fields stay in this conversation's receipt; only role and attitude join the project name in the title.](images/session-fields-simple.svg)
++![The receipt retains all fields; the title shows the short role, selected focus and selected attitude, with no project suffix or empty labels.](images/session-title-parts.svg)
+ 
+ ## Conversation receipt
+ 
+@@ -17,7 +17,7 @@
+ | Goal | User's intended outcome, current assignment and limits; Unknown if unrecoverable. |
+ | Role | Catalogue ID, native name and short label; None or Unknown are distinct. |
+ | Role evidence | Explicit selecting request, successful required reads, source paths and versions actually observed. |
+-| Subject focus | Full selected topic; NoFocus when deliberately unset, or Unknown when history is missing. Omitted from titles. |
++| Subject focus | Full selected topic; NoFocus when deliberately unset, or Unknown when history is missing. Only selected topics appear in titles. |
+ | Attitude | White, Red, Green, Yellow, Black, Blue, NoAttitude, or Unknown. |
+ | Scope / expiry | Session-until-changed, one answer, or a named review with an observable endpoint; include the prior attitude to restore. |
+ | Change | User instruction, changed field(s), prior/resulting values, expiry or cancellation and retained goal. |
+@@ -37,7 +37,8 @@
+ A role change or clear preserves goal, subject and attitude. Flag an out-of-role subject without silently erasing it.
+ Reading, mentioning, quoting, a recommendation, a topic drift or a status request changes none of these selections.
+ Normal assignments can update the user-stated goal; this increment adds no goal-management skill or inferred approval.
+-Role/attitude selection and expiry use [the title contract](rename-chat.md); subject-only changes update the receipt without renaming. A failed rename never rolls back valid state.
++Role, subject and attitude selection/clear and attitude expiry use [the title contract](rename-chat.md); a failed rename never rolls back valid state.
++NoFocus and NoAttitude remain receipt/status values and accepted clear aliases; neither appears in a session title.
+ Begin substantive replies with `Role: <verified label> | Focus: <subject/NoFocus/Unknown> | Attitude: <value and temporary scope>`.
+ Keep this declaration brief; it is context, not an extra role tutorial. Show the actual current state after any expiry.
+ For an expired one-answer override, say `Attitude: NoAttitude (restored; this answer used Black)`, substituting the actual values.
+diff --git a/asdg/skills/asdg-focus/subject-focus.md b/asdg/skills/asdg-focus/subject-focus.md
+--- a/asdg/skills/asdg-focus/subject-focus.md
++++ b/asdg/skills/asdg-focus/subject-focus.md
+@@ -1,9 +1,9 @@
+ # Change the subject while keeping the role
+ 
+-Subject focus narrows what this conversation examines. Security and Performance can both belong to High-Level Architecture.
++Subject focus narrows what this conversation examines. Security and Performance can both belong to Architecture.
+ It changes attention, not responsibility, goal, attitude or permission. See [the session model](session-state.md).
+ 
+-![Changing the subject updates the conversation receipt; the title contains only role, attitude and project.](images/session-fields-simple.svg)
++![The selected subject appears after the short role name; the project and empty labels stay out of the title.](images/session-title-parts.svg)
+ 
+ ## Explicit requests
+ 
+@@ -25,8 +25,8 @@
+ Resolve the requested topic from the user's words and context; use a concise faithful display label, not a guessed role.
+ For missing, contradictory or unintelligible input, preserve the prior value and ask only for the missing choice.
+ Treat text as data: never turn the subject into a path, shell command, tool instruction or permission.
+-Keep full wording and multi-topic intent in the receipt; subject focus never appears in the session title.
++Keep full wording and multi-topic intent in the receipt; use a faithful concise subject label in the title.
+ If the subject extends beyond the role's responsibility, explain the boundary; changing the topic does not perform an out-of-role assignment.
+-Update only subject focus and record the explicit request and retained fields; no native rename follows a subject-only change.
+-Report the resulting role, subject and attitude. Preserve the last title receipt without claiming a fresh native check; continue an accompanying authorized assignment.
++Update only subject focus and record the explicit request and retained fields, then apply [current-chat renaming](rename-chat.md).
++Report the resulting role, subject and attitude with the actual title outcome; continue an accompanying authorized assignment.
+ No peer routing, new chat, concern registry, delegated task or application change follows from subject selection.
+diff --git a/docs/asdg/07-planning/02.10-review-concise-role-titles.md b/docs/asdg/07-planning/02.10-review-concise-role-titles.md
+new file mode 100644
+--- /dev/null
++++ b/docs/asdg/07-planning/02.10-review-concise-role-titles.md
+@@ -0,0 +1,28 @@
++# Role, focus and attitude in a concise title
++
++Pablo clarified the naming convention on 28 October 2026: the project suffix had been mistaken for focus.
++Use **ID Name Focus Attitude**, separated by spaces, and omit focus or attitude when unset. The project remains bound to the chat but is absent from its title.
++
++![The receipt retains goal and project; the title shows the short role name and selected focus and attitude.](../../../asdg/skills/asdg-focus/images/session-title-parts.svg)
++
++| Selected fields | Title |
++| --- | --- |
++| Governance only | `00 Governance` |
++| Architecture only | `05 Architecture` |
++| Architecture, Security | `05 Architecture Security` |
++| Architecture, Security, Black | `05 Architecture Security Black` |
++
++The [short-name mapping](../../../asdg/skills/asdg-focus/focus-choices.md) uses Pablo's exact thirteen labels, from Governance to Observability.
++Canonical role IDs, responsibilities, source folders and legacy selection commands are unchanged. NoFocus/NoAttitude remain clear aliases and receipt values, with no title text for either.
++Subject changes again update the title. Reading a role or renaming a chat never activates it or changes its scope.
++
++## Evidence
++
++All thirteen existing specialist/governance chats and both pilot chats were renamed through native tools; readback matched all fifteen requested names.
++The pilot chats are now `05 Architecture Security` and `05 Architecture Performance`; their retained subjects and goals were preserved.
++Structure verification, all thirteen label comparisons and whitespace checks pass. Package checks retain the same eight pre-existing external presentation-link failures.
++The new SVG was rendered and inspected at 720 px. This instruction-only change adds no implementation test or new agent session.
++Existing uncommitted work, application code, sprint state, hooks and historical review reports remain intact; no commit, push, peer message or role/attitude selection occurred.
++This clarification supersedes the naming conventions in reviews 02.8 and 02.9; their observed results remain historical evidence.
++
++[Naming contract](../../../asdg/skills/asdg-focus/rename-chat.md) · [Exact incremental diff](02.10-review-concise-role-titles.diff)
+diff --git a/docs/asdg/07-planning/README.md b/docs/asdg/07-planning/README.md
+--- a/docs/asdg/07-planning/README.md
++++ b/docs/asdg/07-planning/README.md
+@@ -14,6 +14,7 @@
+ 
+ ## Explore
+ 
++- [Concise role, focus and attitude titles](02.10-review-concise-role-titles.md): the current naming convention, with the thirteen short role labels.
+ - [Shorter session names](02.9-review-short-session-names.md): role and attitude in titles, with NoAttitude and NoFocus for unset selections.
+ - [Attitude and session naming review](02.8-review-attitude-and-session-naming.md): independent role, subject and thinking attitude, with portable skills and native test evidence.
+ - [Shared documentation authority review](02.7-review-documentation-authority.md): every agent can save documents while code and approval gates remain separate.

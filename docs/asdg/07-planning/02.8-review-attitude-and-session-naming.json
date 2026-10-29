@@ -1,0 +1,953 @@
+{
+  "subject": "ASDG attitude and independent session naming",
+  "recorded_at": "2026-10-28T22:32:26.220401+00:00",
+  "starting_revision": "b49a6994a554d3e3a99f6f2bf1d51d53d5246fad",
+  "starting_worktree": "clean",
+  "implementation_status": "Implemented; bounded native pilot checks observed, remaining limitations listed",
+  "human_approval": null,
+  "authorship_and_review": "Same agent authored and checked the increment; native test chats share the same repository and instructions, not independent review.",
+  "scope": {
+    "included": [
+      "canonical attitude skill and portable adapter/template",
+      "independent conversation-local goal, role, subject and attitude receipts",
+      "compatible role selection plus explicit subject command",
+      "native current-chat title projection and truthful outcomes",
+      "Status/Role/Suggestion/team integration, docs and regression evidence"
+    ],
+    "excluded": [
+      "OpenSpec installation",
+      "application feature or POC edits",
+      "shared session-state service",
+      "commit/push/deployment",
+      "sprint transitions",
+      "hook trust or configuration changes"
+    ]
+  },
+  "sources": {
+    "brief": "Pablo's 28 October 2026 Attitude and Session Naming brief",
+    "shared_attitudes": {
+      "url": "https://docs.google.com/document/d/1BFlsTR_74flrhkHBUDmJGD81xBX9jpf6Br7r_TtWtcs",
+      "version": "1.2",
+      "inspected": "2026-10-28",
+      "dependency": "Provenance only; canonical instructions remain embedded and portable"
+    }
+  },
+  "pilot_default": {
+    "value": "Retain unscoped attitude in the same session until changed or Off",
+    "decision_status": "Proposal for review; no human acceptance recorded"
+  },
+  "versions": {
+    "python": "3.15.0",
+    "git": "2.50.1 (Apple Git-155)",
+    "distribution": "0.2.0-pilot.2, evolving embedded baseline; delivery manifest preserved"
+  },
+  "validation": [
+    {
+      "command": "TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests",
+      "result": "PASS",
+      "tests": 58,
+      "duration_seconds": 12.738,
+      "baseline_tests": 57
+    },
+    {
+      "command": "python3 -B asdg/scripts/cli.py verify",
+      "result": "PASS"
+    },
+    {
+      "command": "python3 -B asdg/scripts/check.py",
+      "result": "FAIL",
+      "pre_existing_issues": 8,
+      "new_issues": 0,
+      "details": "Eight links in unchanged asdg/README.md refer to sibling presentation builds outside the client. Skill syntax, Python 3.9 syntax, size and references introduce no new failures."
+    },
+    {
+      "command": "python3 -B /Users/pablo.elustondo/.codex/skills/.system/skill-creator/scripts/quick_validate.py asdg/skills/asdg-attitude",
+      "result": "UNAVAILABLE",
+      "reason": "ModuleNotFoundError: yaml (PyYAML unavailable); no dependency installation performed."
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    },
+    {
+      "command": "rsvg-convert -w 720 asdg/skills/asdg-focus/images/session-fields.svg",
+      "result": "PASS",
+      "details": "Rendered PNG visually inspected at 720 px; embedded Markdown preview not inspected."
+    }
+  ],
+  "native": {
+    "authorization": "Pablo explicitly selected 'Create and exercise two test chats (Recommended)' in this chat.",
+    "project_id": "f8d2a456-b7a3-4f91-a28a-f21c895543aa",
+    "host": "local",
+    "goal": "Evaluate a minimal question-display architecture through session-state tests.",
+    "test_chats": [
+      {
+        "thread_id": "01a184a1-32e0-7a13-a655-762a40a30209",
+        "observed_title": "05 High-Level Architecture · Security · Off — SpeakerCoach",
+        "cwd": "/Users/pablo.elustondo/Library/CloudStorage/GoogleDrive-pablo.elustondo@gmail.com/My Drive/1-GIT-PROJECTS/elustondoai/speakercoach",
+        "status": {
+          "type": "idle"
+        },
+        "turns": [
+          {
+            "turn_id": "01a184a3-c391-7bc2-8112-3022f12b5984",
+            "status": "completed",
+            "started_at": 1793226687,
+            "completed_at": 1793226695,
+            "title_calls": [],
+            "title_readbacks": 1
+          },
+          {
+            "turn_id": "01a184a2-6ba6-7ce2-9bbc-a8f20b2d058f",
+            "status": "completed",
+            "started_at": 1793226599,
+            "completed_at": 1793226621,
+            "title_calls": [
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Security · Black — SpeakerCoach"
+                },
+                "status": "completed"
+              },
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Security · Off — SpeakerCoach"
+                },
+                "status": "completed"
+              }
+            ],
+            "title_readbacks": 2
+          },
+          {
+            "turn_id": "01a184a2-0552-73c3-902c-773980025552",
+            "status": "completed",
+            "started_at": 1793226573,
+            "completed_at": 1793226590,
+            "title_calls": [
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Security · Green — SpeakerCoach"
+                },
+                "status": "completed"
+              },
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Security · Off — SpeakerCoach"
+                },
+                "status": "completed"
+              }
+            ],
+            "title_readbacks": 2
+          },
+          {
+            "turn_id": "01a184a1-340c-75a2-87d8-02dc77bfd064",
+            "status": "completed",
+            "started_at": 1793226519,
+            "completed_at": 1793226556,
+            "title_calls": [
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Overall · Off — SpeakerCoach"
+                },
+                "status": "completed"
+              },
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Security · Off — SpeakerCoach"
+                },
+                "status": "completed"
+              },
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Security · Black — SpeakerCoach"
+                },
+                "status": "completed"
+              }
+            ],
+            "title_readbacks": 1
+          }
+        ]
+      },
+      {
+        "thread_id": "01a184a1-3ae8-7003-8d37-4659d1729972",
+        "observed_title": "05 High-Level Architecture · Perf. · Off — SpeakerCoach",
+        "cwd": "/Users/pablo.elustondo/Library/CloudStorage/GoogleDrive-pablo.elustondo@gmail.com/My Drive/1-GIT-PROJECTS/elustondoai/speakercoach",
+        "status": {
+          "type": "idle"
+        },
+        "turns": [
+          {
+            "turn_id": "01a184a3-cc47-7271-8ae8-0a48378d8163",
+            "status": "completed",
+            "started_at": 1793226689,
+            "completed_at": 1793226700,
+            "title_calls": [
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Perf. · Off — SpeakerCoach"
+                },
+                "status": "completed"
+              }
+            ],
+            "title_readbacks": 1
+          },
+          {
+            "turn_id": "01a184a3-1985-7db0-a89c-3aef21297ced",
+            "status": "completed",
+            "started_at": 1793226643,
+            "completed_at": 1793226660,
+            "title_calls": [
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Performance · Off — SpeakerCoach"
+                },
+                "status": "completed"
+              }
+            ],
+            "title_readbacks": 2
+          },
+          {
+            "turn_id": "01a184a2-9aad-7203-8182-e81f2d66b12f",
+            "status": "completed",
+            "started_at": 1793226611,
+            "completed_at": 1793226623,
+            "title_calls": [],
+            "title_readbacks": 0
+          },
+          {
+            "turn_id": "01a184a2-2460-7b31-905a-147577311484",
+            "status": "completed",
+            "started_at": 1793226581,
+            "completed_at": 1793226591,
+            "title_calls": [],
+            "title_readbacks": 0
+          },
+          {
+            "turn_id": "01a184a1-3c55-79d3-931a-99be930349b7",
+            "status": "completed",
+            "started_at": 1793226521,
+            "completed_at": 1793226554,
+            "title_calls": [
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Overall · Off — SpeakerCoach"
+                },
+                "status": "completed"
+              },
+              {
+                "tool": "set_thread_title",
+                "arguments": {
+                  "title": "05 High-Level Architecture · Performance · Off — SpeakerCoach"
+                },
+                "status": "completed"
+              }
+            ],
+            "title_readbacks": 1
+          }
+        ]
+      }
+    ],
+    "observations": [
+      {
+        "case": "Legacy 05 and ASDG-05 role selectors",
+        "result": "PASS",
+        "evidence": "Both fresh chats read role sources and retained ASDG-05/asdg_05; activation receipts and native role-prefix titles observed."
+      },
+      {
+        "case": "Independent subjects and attitude",
+        "result": "PASS",
+        "evidence": "Security chat changed Off -> Black -> Green -> Off. Performance chat retained Performance/Off, including across later status turns. Both retained their original goal."
+      },
+      {
+        "case": "Explicit one-answer scope",
+        "result": "PASS",
+        "evidence": "Security chat renamed to Black, delivered a labeled risk hypothesis, restored Off before final delivery, renamed back and reported expiry."
+      },
+      {
+        "case": "Status and quoted commands",
+        "result": "PASS",
+        "evidence": "Performance chat executed attitude/subject status and explained a quoted Black command without title calls or selection changes."
+      },
+      {
+        "case": "Invalid Purple",
+        "result": "PASS",
+        "evidence": "Performance chat retained Off, goal, role and subject; asked clarification and made no title call. Later explicit sin sombrero resolved it."
+      },
+      {
+        "case": "Native RENAMED and UNCHANGED",
+        "result": "PASS",
+        "evidence": "Native title calls and readbacks observed; Security Off reselection matched native title and made no redundant mutation."
+      },
+      {
+        "case": "Long-title readback",
+        "result": "QUALIFIED",
+        "evidence": "Full Performance title was acknowledged by rename, while read_thread returned '05 High-Level Architecture · Performance · Off — SpeakerCoa…'. This alone did not prove storage truncation. An explicit Perf. label produced exact compact native readback while full subject remained Performance."
+      }
+    ],
+    "limits": [
+      "Native resume or compaction not exercised; multi-turn retention is not proof of native resume.",
+      "No controlled native rename UNAVAILABLE/FAILED/UNKNOWN case was induced; fallback contracts were source-reviewed only.",
+      "Picker refresh not inspected; test chats invoked installed skill paths.",
+      "Named-review and nested temporary restoration not exercised natively.",
+      "English Black/Green/Off and Spanish sin sombrero exercised; remaining color aliases/natural-language variants defined but not exhaustively tested.",
+      "Visual UI title display not inspected; observations use supported native APIs."
+    ]
+  },
+  "changes": [
+    {
+      "path": ".agents/skills/asdg-attitude/SKILL.md",
+      "before_sha256": null,
+      "after_sha256": "9dfa1f1a2c2ccd0dcc8054bf79c75943a80f6ecfde743a2c340def25b81801c9",
+      "nonblank_lines": 9
+    },
+    {
+      "path": ".agents/skills/asdg-attitude/agents/openai.yaml",
+      "before_sha256": null,
+      "after_sha256": "7ab52b110bb8ccba3411ba2a6ecc9c8a18c758caec40ce6d26b33dda072a7e90"
+    },
+    {
+      "path": ".agents/skills/asdg-focus/SKILL.md",
+      "before_sha256": "29a18cf6ae918368877725756f33d99530b1396cbf2edd96a53f03aa63eeb1a8",
+      "after_sha256": "dd0ebab9a3e4c60a59fb75e0425ee743918389ab025853537130e15afedbeec6",
+      "nonblank_lines": 11
+    },
+    {
+      "path": ".agents/skills/asdg-focus/agents/openai.yaml",
+      "before_sha256": "bcaef25988af99f52679450385bc99ad9d8845189aa95a8cea75ee75da5b4079",
+      "after_sha256": "286d3c96ad1704f1b8897372ade9b21d2b4e1b17c7cf27a03fe7a0c7e0cabd0a"
+    },
+    {
+      "path": ".asdg/document-reviews.json",
+      "before_sha256": "32ee66533b60d3414d54c175b87fe0419bd3285944d889b38fa2357dbd0a0a82",
+      "after_sha256": "21f10c6cc88adea5ed9fc8639f7655fe1bfc22c295419893241d11dd0a175634"
+    },
+    {
+      "path": "asdg/00-governance/types/document-reviews.json",
+      "before_sha256": "3661cd056056f9982927387abd2252d4cfb35fc1e4276cafa0afc1028bb98911",
+      "after_sha256": "d1c744617f1e15833db2de3e9b2f78c9a53fdac93e21cc902c35cedcc2538ee5"
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "before_sha256": "ed9a4481c8557960de45fd76a36fceb5113e0e270f7b7340988ddb9b5a0b5402",
+      "after_sha256": "3e091462bd26ae73e8e182387e189586a851e9a2c0b6d3e0b5b281cc2c1b2073",
+      "nonblank_lines": 40
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "before_sha256": "729f0793d172c51451936f529a2451a5e3a41d6ae4e5059c80b586c5a2cbba30",
+      "after_sha256": "0f6b74df68f84fc22e23724c4a90db30cb1c8757fad9bb875f5563229f7d2802",
+      "nonblank_lines": 50
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "before_sha256": "c267b298107d6d12020716668eac9829c63bc4c8073b2e9f0d4a74b3788c4434",
+      "after_sha256": "619f8e014dc141a35eca2432bb7ad8b165845ecdbac0462c80f9a2e13e63e825",
+      "nonblank_lines": 23
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/SKILL.md",
+      "before_sha256": null,
+      "after_sha256": "bbd3aa60213bb4e2850bf49ee9283af17dc56c4c24e2b795150480f210d720bc",
+      "nonblank_lines": 38
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/TRY-IT.md",
+      "before_sha256": null,
+      "after_sha256": "03acc69a5d5f08036a62bc2eb23b7f616cbcd924c218f3dc6344d04b1b372dec",
+      "nonblank_lines": 35
+    },
+    {
+      "path": "asdg/skills/asdg-attitude/attitudes.md",
+      "before_sha256": null,
+      "after_sha256": "fc428ce3e577c0ca17990ce411e7d2f3e9a2a3b189c6d58ff2ea03d18229bd1d",
+      "nonblank_lines": 28
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "before_sha256": "855608e3b5b3c530135bed8801655b477b3cd402629f68016afc46cfc31bc502",
+      "after_sha256": "738d119b8b64d1b30bb068b53971c26bdefc332612efb7c006687949b14d33f6",
+      "nonblank_lines": 47
+    },
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "before_sha256": "cff2eac1f53eecec7112b4e60c073f1463ddf9cf8db9c5b8d45775436594110a",
+      "after_sha256": "2842ce7dcddd851814bfe30673aabe7599afa43a41e1e19ad6a1bdb780453fbc",
+      "nonblank_lines": 40
+    },
+    {
+      "path": "asdg/skills/asdg-focus/TRY-IT.md",
+      "before_sha256": "686fbc2bca9c848722fd0951a32ad705716333d63111b215c122d56c82f52b60",
+      "after_sha256": "a0c0758ffdc421b3160534eca008db5ad0b6ff25c8c88ced3fe5918a4a7e74b5",
+      "nonblank_lines": 39
+    },
+    {
+      "path": "asdg/skills/asdg-focus/focus-choices.md",
+      "before_sha256": "3d9aa1de6e3c3d1daf49572373455f82a94b86103e7e3ab4a7bb62f9f703f35e",
+      "after_sha256": "2e29ec361364fdfa6f57f9b0015c0c997753cd23bf986b6403faf5e67b6df52f",
+      "nonblank_lines": 35
+    },
+    {
+      "path": "asdg/skills/asdg-focus/images/session-fields.svg",
+      "before_sha256": null,
+      "after_sha256": "85362c70dfd9da66f2ae671e61f93063f71ffab1ce1ecf5ac20a30cb904a012c"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/rename-chat.md",
+      "before_sha256": "a630af6177856eb89dd4fec30f5d3de9e6e8dc74d605dfbbb8acf7a39112fda3",
+      "after_sha256": "5536270828a2246d2753b953836acd78dd405433fa0063649ff7d59ee38ecee6",
+      "nonblank_lines": 43
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "before_sha256": "9b1f0a329bdbdd4cea01ac169bcfe5abe31a73da86819985ebb33762ad69b942",
+      "after_sha256": "1b2656abfd449b39c2b82e59a4cb923b3861dbaff4f34a5cebfe9505b8ceb5e7",
+      "nonblank_lines": 46
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-state.md",
+      "before_sha256": null,
+      "after_sha256": "6ff8cbe317c7bd5540e5f2cb78037355f0998d666b981187facce58ed2cf541c",
+      "nonblank_lines": 42
+    },
+    {
+      "path": "asdg/skills/asdg-focus/subject-focus.md",
+      "before_sha256": null,
+      "after_sha256": "58dd9425dff2a430250a797c88bdb6790ae3c4f378f4d02faa9fd9eb016d18c7",
+      "nonblank_lines": 25
+    },
+    {
+      "path": "asdg/skills/asdg-role/SKILL.md",
+      "before_sha256": "c58dc07763da281a480b7d80e9d5ec313dda932be45b3b6b147aa3c6355cfe47",
+      "after_sha256": "5746464f760a2c08310498230fcea37764226275a04b7aabfaf3b06c02bffa2b",
+      "nonblank_lines": 33
+    },
+    {
+      "path": "asdg/skills/asdg-status/SKILL.md",
+      "before_sha256": "f9c2a85429400124f06fcf48c94ff378ce2bf78a75f5eb22c1622f28369c09c9",
+      "after_sha256": "64bbeb9c6a65fd95d87b2c29434f8a20e7d70d6ed82d921ea23e820562c0c1b0",
+      "nonblank_lines": 40
+    },
+    {
+      "path": "asdg/skills/asdg-status/status-format.md",
+      "before_sha256": "6c7ebde6e8f5ede67502c9422b86ae3ff5794c5d40274f995090949a132c73ac",
+      "after_sha256": "ded2582912a597fd1d189ebf1eca4704dec5348a0a162598dc87ec19fdb769f4",
+      "nonblank_lines": 28
+    },
+    {
+      "path": "asdg/skills/asdg-suggestion/SKILL.md",
+      "before_sha256": "68a7f066c60501d03b24eeb4221fcc9b30547ebfb94ff918767c7692e6aece18",
+      "after_sha256": "57e29493ac0d92fb85e97f863587356831d087b2412ddf044e39c152ec5374fe",
+      "nonblank_lines": 44
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-attitude/SKILL.md",
+      "before_sha256": null,
+      "after_sha256": "9dfa1f1a2c2ccd0dcc8054bf79c75943a80f6ecfde743a2c340def25b81801c9",
+      "nonblank_lines": 9
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-attitude/agents/openai.yaml",
+      "before_sha256": null,
+      "after_sha256": "7ab52b110bb8ccba3411ba2a6ecc9c8a18c758caec40ce6d26b33dda072a7e90"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus/SKILL.md",
+      "before_sha256": "29a18cf6ae918368877725756f33d99530b1396cbf2edd96a53f03aa63eeb1a8",
+      "after_sha256": "dd0ebab9a3e4c60a59fb75e0425ee743918389ab025853537130e15afedbeec6",
+      "nonblank_lines": 11
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus/agents/openai.yaml",
+      "before_sha256": "bcaef25988af99f52679450385bc99ad9d8845189aa95a8cea75ee75da5b4079",
+      "after_sha256": "286d3c96ad1704f1b8897372ade9b21d2b4e1b17c7cf27a03fe7a0c7e0cabd0a"
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "before_sha256": "402afc8ad307c284e6e7f8eb633ee3f6806af88828c8b1682c1f60ea38c4ff33",
+      "after_sha256": "04c12cbdfd880ed4ecc364903263d0b0bae2339d63fdeca20d3b1c2d60e66524",
+      "nonblank_lines": 40
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "before_sha256": "871c42fe040c1219f15ebd477c2b9bf7183cef09f6056df98ee7b428d3db8915",
+      "after_sha256": "77b3331728354b14cef6ca9013672f7f3410ec41ec53e50fd32e252a90b08f08",
+      "nonblank_lines": 32
+    },
+    {
+      "path": "asdg/tests/test_portable.py",
+      "before_sha256": "9b67e83bcce43e9617a74109d07a30cb8f883927ca9850880f8359d4647cdf90",
+      "after_sha256": "3c3912bb711c61601b6e880d7ad141e291286cfae21b61855d30a4f0994a28af"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.8-review-attitude-and-session-naming.md",
+      "before_sha256": null,
+      "after_sha256": "cdb1f58508f8cb158791250231344d402611841c65f6933de70a77b6195113f2",
+      "nonblank_lines": 32
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "before_sha256": "4e1691f04b801f1b94fc1b482cce4926ab3bbc1c668c9a256adf45ccc2183040",
+      "after_sha256": "a3f8f923718bebc41dcbfbd4a580dccd37716e564fe745b099cdfa686e006527",
+      "nonblank_lines": 15
+    }
+  ],
+  "protected_files": [
+    {
+      "path": ".asdg/project.json",
+      "unchanged": true,
+      "sha256": "8a1d1b28847703c43589d56efbb59ceb44c3690c11101029d6eb209640e59f6c"
+    },
+    {
+      "path": ".asdg/lifecycle.json",
+      "unchanged": true,
+      "sha256": "b4f65255ada0acff20b0cb9ac26253e825334042b25a5cb2b1a05a1f5124f057"
+    },
+    {
+      "path": ".asdg/sprint.json",
+      "unchanged": true,
+      "sha256": "7b67029aa3117e03c8e24f0a3fbc224a4793045997f4a6a6734eadedb87894b2"
+    },
+    {
+      "path": ".codex/hooks.json",
+      "unchanged": true,
+      "sha256": "73bb060aa3c1ea7b2e4f7cfc15e01ce32387317215d20aba14ac1a915f2c2fd5"
+    },
+    {
+      "path": ".codex/config.toml",
+      "unchanged": true,
+      "sha256": "d37497c3278121598a663564ab38b53f658969717f78decb661ddd11c66551ea"
+    },
+    {
+      "path": "app.js",
+      "unchanged": true,
+      "sha256": "188dadc7287357a1c6058d7f267e2055b75feb0c3057afab48cd79924ffadeca"
+    },
+    {
+      "path": "index.html",
+      "unchanged": true,
+      "sha256": "6963f1f6cf33385e4175c011d53392723c95090f9760d24d764d61728a5426cc"
+    },
+    {
+      "path": "AGENTS.md",
+      "unchanged": true,
+      "sha256": "112cb477dac981385ea083a4087bcd71bf24be0aec5a34a24da53522dd59107b"
+    },
+    {
+      "path": "asdg/00-governance/types/agent-catalog.json",
+      "unchanged": true,
+      "sha256": "e71894e91b0c923cab73ff33f8d90adf4688280a2b7ef9f415035f0437e6a4aa"
+    },
+    {
+      "path": "asdg/metadata/MANIFEST.json",
+      "unchanged": true,
+      "sha256": "bd56b26516224e2c550c739715cb12ae5e1fb8266aa9fe6a37164dc59dec8692"
+    },
+    {
+      "path": ".codex/agents/asdg_01.toml",
+      "unchanged": true,
+      "sha256": "128bf85e6cc71fdbe06c1192adbe51045e93df66e978d306f17a80e40c61a642"
+    },
+    {
+      "path": ".codex/agents/asdg_02.toml",
+      "unchanged": true,
+      "sha256": "a106aa6c990504bb1cac55317cade38a3df0e72878a50f943009987f133aac16"
+    },
+    {
+      "path": ".codex/agents/asdg_03.toml",
+      "unchanged": true,
+      "sha256": "fa7b640f1cc87295a25bec5ed5f242c1155aaa87d20c7279b647f90f7047b6aa"
+    },
+    {
+      "path": ".codex/agents/asdg_04.toml",
+      "unchanged": true,
+      "sha256": "40adfa25d7234c725f3f34a9232561a9bd123561330c23027a85b6f2f8cad24a"
+    },
+    {
+      "path": ".codex/agents/asdg_05.toml",
+      "unchanged": true,
+      "sha256": "74095d339f69e642b775044e2f570a199168d0fda835af967df35066e912190a"
+    },
+    {
+      "path": ".codex/agents/asdg_06.toml",
+      "unchanged": true,
+      "sha256": "5005989d197f01237710aa3d86657fd927daea41f5b608598957df85876526d9"
+    },
+    {
+      "path": ".codex/agents/asdg_07.toml",
+      "unchanged": true,
+      "sha256": "a23a48a3bb91898cacce0a634359c0f44b7aff736c4e97bca8b9fdfde28a019f"
+    },
+    {
+      "path": ".codex/agents/asdg_08.toml",
+      "unchanged": true,
+      "sha256": "4bdf0c6ecadf1830bc8aec2eb9a82691257658adc2a95da6c422fdf37c28d8f8"
+    },
+    {
+      "path": ".codex/agents/asdg_09.toml",
+      "unchanged": true,
+      "sha256": "2a670258b50bf6e89cd11ec09a58973277cf3c321b7e922d4a680e1505c5ea47"
+    },
+    {
+      "path": ".codex/agents/asdg_10.toml",
+      "unchanged": true,
+      "sha256": "767bb84d867295ba283201a70e7424b0086792f63f2c230cbceda91ecdfc35b8"
+    },
+    {
+      "path": ".codex/agents/asdg_11.toml",
+      "unchanged": true,
+      "sha256": "d706ba032dc44411942cf75d0fb41e20e2876818342d8982806f082be6f3a496"
+    },
+    {
+      "path": ".codex/agents/asdg_12.toml",
+      "unchanged": true,
+      "sha256": "a2be9e33f651bd8e6bd635818611b39809da50e18330a924de6f96e624541c1c"
+    },
+    {
+      "path": ".codex/agents/asdg_coordinator.toml",
+      "unchanged": true,
+      "sha256": "18105b8323f0bb6284c297155504e98d9ee5d950bf63b1b9625275414e37309b"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_01.toml",
+      "unchanged": true,
+      "sha256": "128bf85e6cc71fdbe06c1192adbe51045e93df66e978d306f17a80e40c61a642"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_02.toml",
+      "unchanged": true,
+      "sha256": "a106aa6c990504bb1cac55317cade38a3df0e72878a50f943009987f133aac16"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_03.toml",
+      "unchanged": true,
+      "sha256": "fa7b640f1cc87295a25bec5ed5f242c1155aaa87d20c7279b647f90f7047b6aa"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_04.toml",
+      "unchanged": true,
+      "sha256": "40adfa25d7234c725f3f34a9232561a9bd123561330c23027a85b6f2f8cad24a"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_05.toml",
+      "unchanged": true,
+      "sha256": "74095d339f69e642b775044e2f570a199168d0fda835af967df35066e912190a"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_06.toml",
+      "unchanged": true,
+      "sha256": "5005989d197f01237710aa3d86657fd927daea41f5b608598957df85876526d9"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_07.toml",
+      "unchanged": true,
+      "sha256": "a23a48a3bb91898cacce0a634359c0f44b7aff736c4e97bca8b9fdfde28a019f"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_08.toml",
+      "unchanged": true,
+      "sha256": "4bdf0c6ecadf1830bc8aec2eb9a82691257658adc2a95da6c422fdf37c28d8f8"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_09.toml",
+      "unchanged": true,
+      "sha256": "2a670258b50bf6e89cd11ec09a58973277cf3c321b7e922d4a680e1505c5ea47"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_10.toml",
+      "unchanged": true,
+      "sha256": "767bb84d867295ba283201a70e7424b0086792f63f2c230cbceda91ecdfc35b8"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_11.toml",
+      "unchanged": true,
+      "sha256": "d706ba032dc44411942cf75d0fb41e20e2876818342d8982806f082be6f3a496"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_12.toml",
+      "unchanged": true,
+      "sha256": "a2be9e33f651bd8e6bd635818611b39809da50e18330a924de6f96e624541c1c"
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_coordinator.toml",
+      "unchanged": true,
+      "sha256": "18105b8323f0bb6284c297155504e98d9ee5d950bf63b1b9625275414e37309b"
+    },
+    {
+      "path": "eval-data/README.md",
+      "unchanged": true,
+      "sha256": "73081ed011e7b78206ea4c3412a0d1cc3a8d33a233be41f42b0b0d42ac1f0294"
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/README.md",
+      "unchanged": true,
+      "sha256": "6ca9e613cf97c51cf6d787167f4a3fa05e7963b2bcfce73d05f85469e04feba7"
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/asr-raw.json",
+      "unchanged": true,
+      "sha256": "196eaaaf96f08c8ac675869412150c86f6e1e43608d9c5c8aa03d413d51a3979"
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/audio.m4a",
+      "unchanged": true,
+      "sha256": "8caf301b841ae878170f74a5e5b7d1dbbfe2e1687fc976cf3247f8feaa8000e2"
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/provenance.json",
+      "unchanged": true,
+      "sha256": "0a05d8a37e7ba24c48c6dd49270ac029b8892b625e7b0f0aa1ba4f3e85c15b35"
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/sc-b001-profile-probe-2026-10-25.json",
+      "unchanged": true,
+      "sha256": "2bd6dbc472b574ea2b31fbbeebb6cfcae75b7451d6eaa35fff9772ccdcd3b28f"
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/speaker-acoustic-evidence.json",
+      "unchanged": true,
+      "sha256": "25d873eb853509e40fa7bf800bac51eff8bd5144c078de5aa19229e25b711f6b"
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/transcript.json",
+      "unchanged": true,
+      "sha256": "77c6659a197dcc777457517df1014b81bc54e1e828e245f918dd4cc26db2ad85"
+    },
+    {
+      "path": "eval-data/interview-analysis-2026-10-25/transcript.txt",
+      "unchanged": true,
+      "sha256": "ed4b8108661916e44b8d6f098b9f4455027134fb7e502cf7626bd1b415022ea6"
+    },
+    {
+      "path": "eval-data/mock-interview-0.mp3",
+      "unchanged": true,
+      "sha256": "47ab9a0fb7288b3d14ed45081a69ed5bf2e0dd1ea1609b42cec9488f2d3fb860"
+    },
+    {
+      "path": "eval-data/pablo-voice-solo-recording.mp3",
+      "unchanged": true,
+      "sha256": "12839d18257f92130859273e3365608cc65aff0a7188e360eca7b893e9a55177"
+    },
+    {
+      "path": "eval-data/voice-profiles/pablo-ecapa-v1.json",
+      "unchanged": true,
+      "sha256": "635d2e155ab36ed40a86474739d99de7f263baceaa7615245f77f0c1ce1aae2e"
+    },
+    {
+      "path": "poc/.env.example",
+      "unchanged": true,
+      "sha256": "bb080f0861dc90b13d11846402cb1bb937e4aa28c68f725457a7682cdc3d376d"
+    },
+    {
+      "path": "poc/README.md",
+      "unchanged": true,
+      "sha256": "719ecd137b0cb4948d4a8b919cdf008eec8f328b72137433633388747af5100c"
+    },
+    {
+      "path": "poc/RESULTS.md",
+      "unchanged": true,
+      "sha256": "14e199362758ec1d1393902bf5d9d8790f7319bc3825d403419a1b28deaa3897"
+    },
+    {
+      "path": "poc/agent.md",
+      "unchanged": true,
+      "sha256": "46e3c10eaaa5d20a064423d6d4a2ca1cff57d88daa035115b46aaee345ca92f3"
+    },
+    {
+      "path": "poc/agent.mjs",
+      "unchanged": true,
+      "sha256": "43ff0a2c883ece40b2a2c14a6a9f627328d76f6a20100e1bdb65b20424dd8ce3"
+    },
+    {
+      "path": "poc/audio-worklet.js",
+      "unchanged": true,
+      "sha256": "f30f75200f7b6d87359e3dedfe607e0328b7be1e211aa9bf5b7720c0e6d5084f"
+    },
+    {
+      "path": "poc/audio-worklet.md",
+      "unchanged": true,
+      "sha256": "5f9dfa2067de39b499ac51ed2f71a2ac038fa5183a311353d7ebf2ebba6b797f"
+    },
+    {
+      "path": "poc/browser-smoke.md",
+      "unchanged": true,
+      "sha256": "5e8a2c290bb73dfa66771e60624a582671ce60d23e49933e78aa757b44cfa6b0"
+    },
+    {
+      "path": "poc/browser-smoke.mjs",
+      "unchanged": true,
+      "sha256": "053f648832084d0a293015f5f61e79f28c5b90e42e051e5732005be9130c8f7c"
+    },
+    {
+      "path": "poc/docs/01-introduction.md",
+      "unchanged": true,
+      "sha256": "3a818b3872d68996202f403ee36d446677073f0f4030726cd268cebb49d17610"
+    },
+    {
+      "path": "poc/docs/02-architecture.md",
+      "unchanged": true,
+      "sha256": "b13cf7e78c17424a9f191af489ecc11f66a83730b9c2388f68fb8354a10eab8c"
+    },
+    {
+      "path": "poc/docs/03-browser-and-audio.md",
+      "unchanged": true,
+      "sha256": "6eac938fdc61c8de79c375794e992b7698527c71096bbf935916ebd080f5a826"
+    },
+    {
+      "path": "poc/docs/04-server-and-protocol.md",
+      "unchanged": true,
+      "sha256": "72f1ed9b5637710e446133e3d3478519c064401af6032311e6249bf772d21d85"
+    },
+    {
+      "path": "poc/docs/05-agent-and-state.md",
+      "unchanged": true,
+      "sha256": "4f968313b2d33997fac56a35531bb0b6dee0d66bcb41a86a485f9ed16e742c42"
+    },
+    {
+      "path": "poc/docs/06-code-navigation.md",
+      "unchanged": true,
+      "sha256": "f5b30547508d7263e554e075e1e16d3453108425f6ba50eb519e5828a90b72bd"
+    },
+    {
+      "path": "poc/docs/07-running-and-verification.md",
+      "unchanged": true,
+      "sha256": "f8e013fc0f93a31565ff79f4420e3acb999a9822cd27d26fb21a51435d446194"
+    },
+    {
+      "path": "poc/docs/README.md",
+      "unchanged": true,
+      "sha256": "d76ba3d6f0d9e95c327edec9ccf77422e2e25f863490fe5d84367e9b403398c1"
+    },
+    {
+      "path": "poc/docs/images/01-introduction.svg",
+      "unchanged": true,
+      "sha256": "31532cbc1a043a521e6eccc513d9b53dd0e40315d756bbfcb442358e840a01a7"
+    },
+    {
+      "path": "poc/docs/images/02-architecture.svg",
+      "unchanged": true,
+      "sha256": "5b06e8698b1c3b8ca1b3dc0487d8d28348abdd282a5bf56339fdfe9090d28358"
+    },
+    {
+      "path": "poc/docs/images/03-browser-and-audio.svg",
+      "unchanged": true,
+      "sha256": "afb54196a413e53c5e55be0034f31b38b48222d0a472cc43e5178b7b7168a017"
+    },
+    {
+      "path": "poc/docs/images/04-server-and-protocol.svg",
+      "unchanged": true,
+      "sha256": "b0f75bd3bb126ebb6eb48be90cd8dbbbbde203b8612d6d0e1cda6a0a4ac46555"
+    },
+    {
+      "path": "poc/docs/images/05-agent-and-state.svg",
+      "unchanged": true,
+      "sha256": "c2ccda2c4585060a9e542886c487a295536d91fe3942d00d87b213d615dae21e"
+    },
+    {
+      "path": "poc/docs/images/06-code-navigation.svg",
+      "unchanged": true,
+      "sha256": "523a397e61e5f767d3d59212e134a1f991f3422a9832f0b11303262c6c77c34c"
+    },
+    {
+      "path": "poc/docs/images/07-running-and-verification.svg",
+      "unchanged": true,
+      "sha256": "54b5800bcafc88d6c170c0c23be1f18bac84f1c3a963569d84ea5a631533a815"
+    },
+    {
+      "path": "poc/docs/images/README.svg",
+      "unchanged": true,
+      "sha256": "2a1a55f506680df87502cf352c329f31ed013ff2552b125c96d3bdf9e22a447c"
+    },
+    {
+      "path": "poc/docs/review.json",
+      "unchanged": true,
+      "sha256": "f89502dfc3eef76599db279267d0e65f03479225cf92d49bc19ad43216f8f123"
+    },
+    {
+      "path": "poc/evidence.json",
+      "unchanged": true,
+      "sha256": "ca525980bab0f1bf65d0aa8d009557485b3637dace91c493e9cf759297e57f8c"
+    },
+    {
+      "path": "poc/package.json",
+      "unchanged": true,
+      "sha256": "91e2d4e71d1cc6cfc663b88a98dca779036909bfc1fb3be0426ecfd9a3e6a116"
+    },
+    {
+      "path": "poc/pnpm-lock.yaml",
+      "unchanged": true,
+      "sha256": "4ab6bc74df417e4e90b9606c8010a1423cc519e184ff676f78278129078a0811"
+    },
+    {
+      "path": "poc/poc.test.md",
+      "unchanged": true,
+      "sha256": "be58d94a33c48a15cfd6730d84f9962d6ef5211e26d3fe5d57f5dd8d2e66ffcf"
+    },
+    {
+      "path": "poc/poc.test.mjs",
+      "unchanged": true,
+      "sha256": "c4b09aab4027c63bea3465490e54abb7702319b6e603b886ab789cb81624c3a0"
+    },
+    {
+      "path": "poc/server.md",
+      "unchanged": true,
+      "sha256": "d9affa327073f37ca5d659572a5762377d544e7ed787524a43c7526261414be3"
+    },
+    {
+      "path": "poc/server.mjs",
+      "unchanged": true,
+      "sha256": "0732aa9a158ef7c979d8e11a9a1ebbc6013e7bbca695c4735f90398a2ccf7db6"
+    },
+    {
+      "path": "poc/session.md",
+      "unchanged": true,
+      "sha256": "e1cc3281e70694a409c1f9ebb026843671bdecd04ba572ef8747f4c30d9ba00b"
+    },
+    {
+      "path": "poc/session.mjs",
+      "unchanged": true,
+      "sha256": "16ba46e7b8e5a3c97bb9e9a58407371b77bf31cb14a7a7f556bdd6c83615c0a8"
+    },
+    {
+      "path": "poc/start.md",
+      "unchanged": true,
+      "sha256": "155c06449914580f5ae60f2b9b97614a202dcdae01c9ce4e11411d886d8643ea"
+    },
+    {
+      "path": "poc/start.sh",
+      "unchanged": true,
+      "sha256": "7f7bf03441afbd22e175aebdba1331596e5b71d23330bc2b84548ce11556b956"
+    }
+  ],
+  "review_ledgers": [
+    {
+      "path": ".asdg/document-reviews.json",
+      "previous_events": 312,
+      "appended_events": 4,
+      "existing_events_preserved": true
+    },
+    {
+      "path": "asdg/00-governance/types/document-reviews.json",
+      "previous_events": 1215,
+      "appended_events": 22,
+      "existing_events_preserved": true
+    }
+  ],
+  "starting_tracked_count": 564,
+  "unchanged_tracked_count": 541,
+  "generated_review_files": [
+    "docs/asdg/07-planning/02.8-review-attitude-and-session-naming.json",
+    "docs/asdg/07-planning/02.8-review-attitude-and-session-naming.diff"
+  ],
+  "exact_diff": "Includes all task changes and new files against the starting revision, including review receipts and this report. Excludes only the diff file itself.",
+  "next_review": "Review persistence default, title receipt behavior and unverified native cases before advancing to the separate ASDG/OpenSpec increment."
+}

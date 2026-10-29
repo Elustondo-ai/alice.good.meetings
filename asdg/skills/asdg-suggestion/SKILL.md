@@ -41,7 +41,7 @@ When evidence conflicts with the user's preference, explain the tradeoff respect
 
 ## Return a useful recommendation
 
-Label the perspective briefly, then give the action, intended benefit and evidence-based reason; avoid a repeated role prefix on every reply.
+Use the compact session declaration once, then label the recommendation perspective and give the action, benefit and evidence-based reason; avoid repeating the role tutorial.
 Explain why it outranks the nearest plausible alternative when the choice is material; avoid a long menu or automatic twelve-stage plan.
 State the expected result or observation that would make the step worthwhile, plus the uncertainty that could change the recommendation.
 When a focused chat would help, name the existing selector from the catalogue/adapters and provide a short ready-to-use assignment.
