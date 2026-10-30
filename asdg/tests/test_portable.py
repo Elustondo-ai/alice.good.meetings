@@ -221,6 +221,34 @@ runpy.run_path(entry, run_name='__main__')
             self.assertEqual((self.root / path).read_bytes(), data)
         self.assertEqual(len(list((self.root / '.codex/agents').glob('asdg*.toml'))), 13)
 
+    def test_openspec_wrapper_preserves_upstream_and_relocates(self):
+        native = self.root / '.agents/skills/openspec-propose/SKILL.md'
+        native.parent.mkdir(parents=True)
+        native.write_text('---\nname: openspec-propose\ndescription: Independent upstream fixture.\n---\n')
+        config = self.root / 'openspec/config.yaml'
+        config.parent.mkdir()
+        config.write_text('schema: spec-driven\n')
+        self.init()
+        protected = {p: (self.root / p).read_bytes() for p in (
+            '.agents/skills/openspec-propose/SKILL.md', 'openspec/config.yaml',
+            '.asdg/project.json', '.asdg/lifecycle.json', '.asdg/sprint.json',
+            '.codex/hooks.json', 'app.js')}
+        self.root = self.root.rename(self.root.parent / 'relocated proposal client')
+        relative = Path('.agents/skills/asdg-openspec-propose')
+        for name in ('SKILL.md', 'agents/openai.yaml'):
+            self.assertEqual((self.root / relative / name).read_bytes(),
+                             (self.root / 'asdg/templates' / relative / name).read_bytes())
+        canonical = (self.root / relative / '../../../asdg/skills/asdg-openspec-propose/SKILL.md').resolve()
+        self.assertEqual(canonical, (self.root / 'asdg/skills/asdg-openspec-propose/SKILL.md').resolve())
+        self.assertTrue(canonical.is_file())
+        self.run_cli('verify', cwd=self.root / 'docs')
+        before = snapshot(self.root)
+        self.init(cwd=self.root / 'docs')
+        self.assertEqual(snapshot(self.root), before)
+        for path, data in protected.items():
+            self.assertEqual((self.root / path).read_bytes(), data)
+        self.assertFalse((self.root / 'openspec/changes').exists())
+
     def test_decision_skill_relocates_and_preserves_unregistered_decisions(self):
         self.init()
         relative = Path('.agents/skills/asdg-decision')

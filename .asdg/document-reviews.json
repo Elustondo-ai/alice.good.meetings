@@ -4817,6 +4817,257 @@
         "visible_review_markers": [],
         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "19dc04e07f3dc5a717a89ddd14204b923944fc8844e2593a120a557cbf01ee96",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.356644+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      },
+      "previous_state": {
+        "sha256": "0bad71e10720e7dcc92a7fabfe3ca380daca05bd4065980ffb6c13929bda83db",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.md",
+      "sha256": "ab7e3e5b4f34428cde4d12909a065f5e9bed2f8b77ed8c33cb523ef7eff451d8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.366806+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-openspec-propose/SKILL.md",
+      "sha256": "00073cda62cd8627f4fa15633b60cda404aa8bac691438d90e40079daf73de9b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.376461+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/proposal.md",
+      "sha256": "378d6420f82643a1d707bc296e6e6c4caab622eb8c493dab276ee57c66bbe069",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG OpenSpec proposal UC-04",
+        "role_id": "ASDG-08",
+        "decision_status": "Proposal for review; user clarified confirmation scope and Pablo-only audio, without exact-document acceptance",
+        "embedded_visual": "openspec/changes/uc-04-confirm-current-question/images/proposal-flow.svg",
+        "visual_explains": "Clarification requires confirmation; automatic tracking continues outside that flow.",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "All six embedded diagrams visually inspected in standalone HTML previews; complete proposal, design and confirmation spec inspected. Native Codex opening queued, not observed."
+        },
+        "validation": "OpenSpec strict validation passed; all 17 captured source hashes match; no application execution or sprint transition."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/proposal-flow.svg",
+      "sha256": "e241e5967883fdae4c7994c0ffc0ebfcfcd29bf5ff9dcd94a98974c2f53cdd53",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Editable explanatory asset for UC-04 OpenSpec proposal",
+        "role_id": "ASDG-08",
+        "document": "openspec/changes/uc-04-confirm-current-question/proposal.md",
+        "visual_explains": "Clarification requires confirmation; automatic tracking continues outside that flow.",
+        "rendering_check": "Embedded at 720px and visually inspected; SVG XML parses."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/design.md",
+      "sha256": "5b965780125dbcaf73a615b0c63fe937d424c2b7b0d569260ebb8f133e2196c9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG OpenSpec proposal UC-04",
+        "role_id": "ASDG-08",
+        "decision_status": "Proposal for review; user clarified confirmation scope and Pablo-only audio, without exact-document acceptance",
+        "embedded_visual": "openspec/changes/uc-04-confirm-current-question/images/design-protocol.svg",
+        "visual_explains": "Browser sends reviewed tuple; controller validates, commits once and acknowledges.",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "All six embedded diagrams visually inspected in standalone HTML previews; complete proposal, design and confirmation spec inspected. Native Codex opening queued, not observed."
+        },
+        "validation": "OpenSpec strict validation passed; all 17 captured source hashes match; no application execution or sprint transition."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/design-protocol.svg",
+      "sha256": "3bcea19ccf459ecf2dece3db9b5b3cd0bd623073e0acc14dc62b7b7493007017",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Editable explanatory asset for UC-04 OpenSpec proposal",
+        "role_id": "ASDG-08",
+        "document": "openspec/changes/uc-04-confirm-current-question/design.md",
+        "visual_explains": "Browser sends reviewed tuple; controller validates, commits once and acknowledges.",
+        "rendering_check": "Embedded at 720px and visually inspected; SVG XML parses."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/tasks.md",
+      "sha256": "349402790a59b9989f53ae720dad7325bf3abf1768acf5ddd7a8fe5a4f994eb2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG OpenSpec proposal UC-04",
+        "role_id": "ASDG-08",
+        "decision_status": "Proposal for review; user clarified confirmation scope and Pablo-only audio, without exact-document acceptance",
+        "embedded_visual": "openspec/changes/uc-04-confirm-current-question/images/task-flow.svg",
+        "visual_explains": "Dependency order with local tests and documentation in each implementation group.",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "All six embedded diagrams visually inspected in standalone HTML previews; complete proposal, design and confirmation spec inspected. Native Codex opening queued, not observed."
+        },
+        "validation": "OpenSpec strict validation passed; all 17 captured source hashes match; no application execution or sprint transition."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/task-flow.svg",
+      "sha256": "3f777bbfaf4da53c454a3dd02eea154c26cb95712b5f2a499b21c405f695dfcc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Editable explanatory asset for UC-04 OpenSpec proposal",
+        "role_id": "ASDG-08",
+        "document": "openspec/changes/uc-04-confirm-current-question/tasks.md",
+        "visual_explains": "Dependency order with local tests and documentation in each implementation group.",
+        "rendering_check": "Embedded at 720px and visually inspected; SVG XML parses."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/specs/question-clarification/spec.md",
+      "sha256": "116deafab00609b75d95ebd46f024764506b285315828b60775cfae5f4d92a4e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG OpenSpec proposal UC-04",
+        "role_id": "ASDG-08",
+        "decision_status": "Proposal for review; user clarified confirmation scope and Pablo-only audio, without exact-document acceptance",
+        "embedded_visual": "openspec/changes/uc-04-confirm-current-question/images/clarification-flow.svg",
+        "visual_explains": "Speech or Start opens a separate draft refined by further speech.",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "All six embedded diagrams visually inspected in standalone HTML previews; complete proposal, design and confirmation spec inspected. Native Codex opening queued, not observed."
+        },
+        "validation": "OpenSpec strict validation passed; all 17 captured source hashes match; no application execution or sprint transition."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/clarification-flow.svg",
+      "sha256": "8466dad3e106568913c3f1e47cb421910376570de88126d064abb2ebb6c0068f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Editable explanatory asset for UC-04 OpenSpec proposal",
+        "role_id": "ASDG-08",
+        "document": "openspec/changes/uc-04-confirm-current-question/specs/question-clarification/spec.md",
+        "visual_explains": "Speech or Start opens a separate draft refined by further speech.",
+        "rendering_check": "Embedded at 720px and visually inspected; SVG XML parses."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/specs/question-confirmation/spec.md",
+      "sha256": "1a8cb1030af16ac8b6340cab532da5f3d37ddc071a04e3e5e59e62b7d2d67878",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG OpenSpec proposal UC-04",
+        "role_id": "ASDG-08",
+        "decision_status": "Proposal for review; user clarified confirmation scope and Pablo-only audio, without exact-document acceptance",
+        "embedded_visual": "openspec/changes/uc-04-confirm-current-question/images/confirmation-flow.svg",
+        "visual_explains": "Exact match commits once; stale requests preserve the current question and require review.",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "All six embedded diagrams visually inspected in standalone HTML previews; complete proposal, design and confirmation spec inspected. Native Codex opening queued, not observed."
+        },
+        "validation": "OpenSpec strict validation passed; all 17 captured source hashes match; no application execution or sprint transition."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/confirmation-flow.svg",
+      "sha256": "da7ed5c63cf2f6636a469e82d026f51d3c67ee09c07d01835dce5cdf126dbae6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Editable explanatory asset for UC-04 OpenSpec proposal",
+        "role_id": "ASDG-08",
+        "document": "openspec/changes/uc-04-confirm-current-question/specs/question-confirmation/spec.md",
+        "visual_explains": "Exact match commits once; stale requests preserve the current question and require review.",
+        "rendering_check": "Embedded at 720px and visually inspected; SVG XML parses."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/specs/question-tracking/spec.md",
+      "sha256": "6f1282e0b8926327adbd37632793eb84826cbb00f2da9b84276199046d6e90de",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested ASDG OpenSpec proposal UC-04",
+        "role_id": "ASDG-08",
+        "decision_status": "Proposal for review; user clarified confirmation scope and Pablo-only audio, without exact-document acceptance",
+        "embedded_visual": "openspec/changes/uc-04-confirm-current-question/images/tracking-flow.svg",
+        "visual_explains": "Confirmed wording persists through answers; genuine new questions resume automatic tracking.",
+        "rendering_check": {
+          "result": "PASS",
+          "document_pane_width_px": 720,
+          "image_loaded": true,
+          "horizontal_overflow": false,
+          "inspection": "All six embedded diagrams visually inspected in standalone HTML previews; complete proposal, design and confirmation spec inspected. Native Codex opening queued, not observed."
+        },
+        "validation": "OpenSpec strict validation passed; all 17 captured source hashes match; no application execution or sprint transition."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/tracking-flow.svg",
+      "sha256": "09e06bb8416905f2aec1dac8508ac12c56ffb58cd1c86803cb560d28646ea1d4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T02:53:18.225323+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Editable explanatory asset for UC-04 OpenSpec proposal",
+        "role_id": "ASDG-08",
+        "document": "openspec/changes/uc-04-confirm-current-question/specs/question-tracking/spec.md",
+        "visual_explains": "Confirmed wording persists through answers; genuine new questions resume automatic tracking.",
+        "rendering_check": "Embedded at 720px and visually inspected; SVG XML parses."
+      }
     }
   ]
 }

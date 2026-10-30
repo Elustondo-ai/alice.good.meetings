@@ -20020,6 +20020,101 @@
         "visible_review_markers": [],
         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "9f4d79c3a65da371ac446c68e79795130d54c63d7f37326225c8a69259525c85",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.250418+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      },
+      "previous_state": {
+        "sha256": "765d988e01a7b8cc2eb775972719f6b670c7b6b0a090c96f9c50b859e1adcb89",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "863b0072747a13bc0b77204cd181cf2c16875edb77467acc94096e34a19241e1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.261832+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      },
+      "previous_state": {
+        "sha256": "77b3331728354b14cef6ca9013672f7f3410ec41ec53e50fd32e252a90b08f08",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "0922ffc04d0c641469ccbeec82c9cb6537b9b785f89d3300fbac8d09f0779e75",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.270997+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      },
+      "previous_state": {
+        "sha256": "04c12cbdfd880ed4ecc364903263d0b0bae2339d63fdeca20d3b1c2d60e66524",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-openspec-propose/SKILL.md",
+      "sha256": "ea127959d10715b2e4d7f6d02bf4eff2f44519cbc8be4f5edd3281458b90b90e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.281238+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-openspec-propose/TRY-IT.md",
+      "sha256": "47d6757885fb6d1609cd9133302a028783493b5a9b87230acb9718f34e8bbfab",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.290907+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-openspec-propose/evidence.md",
+      "sha256": "75f815b8aa79a38a81e9124c474d1e3cdce3a120f4c204e4b13f5d473e4c3372",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.300049+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-openspec-propose/images/proposal-flow.svg",
+      "sha256": "cb942ef5ac209f2db17be17af76e3d7745fa680fcf89b6cc9c108cfdf16e0f9c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.309146+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-openspec-propose/SKILL.md",
+      "sha256": "00073cda62cd8627f4fa15633b60cda404aa8bac691438d90e40079daf73de9b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-29T00:49:43.319702+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

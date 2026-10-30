@@ -18,6 +18,7 @@ Canonical workflows live here; native discovery adapters remain thin references.
 | [Development view](asdg-view-dev/SKILL.md) | Open a useful project file and terminal alongside the chat |
 | [Documentation](asdg-documentation/SKILL.md) | Preserve readable, evidence-based project documents |
 | [Decision](asdg-decision/SKILL.md) | Shared decision method with optional specialist-local enrichment |
+| [OpenSpec proposal](asdg-openspec-propose/SKILL.md) | Connect ASDG evidence to the installed native proposal workflow; planning only |
 
 Each numbered stage owns its bounded specialist procedure under its local `skills/` folder.
 Its optional `skills/decision/SKILL.md` enriches Decision through the [shared interface](asdg-decision/specialization.md); absence uses generic behavior.

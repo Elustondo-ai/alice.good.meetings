@@ -14,6 +14,7 @@ Release plans describe a broader delivery objective. Sprint plans select a small
 
 ## Explore
 
+- [ASDG–OpenSpec proposal wrapper](02.11-review-openspec-proposal-wrapper.md): source-linked planning through the installed native OpenSpec workflow.
 - [Concise role, focus and attitude titles](02.10-review-concise-role-titles.md): the current naming convention, with the thirteen short role labels.
 - [Shorter session names](02.9-review-short-session-names.md): role and attitude in titles, with NoAttitude and NoFocus for unset selections.
 - [Attitude and session naming review](02.8-review-attitude-and-session-naming.md): independent role, subject and thinking attitude, with portable skills and native test evidence.

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 325" role="img" aria-labelledby="title desc">
+<title id="title">The controller owns confirmation</title><desc id="desc">The browser submits its displayed tuple to the controller. The controller checks and commits once, then returns a request-specific result and versioned state. The model cannot confirm.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#46617d"/></marker></defs>
+<style>text{font:16px Arial,sans-serif;fill:#19324a}.small{font-size:14px}.heading{font-size:21px;font-weight:bold}</style>
+<rect width="760" height="325" rx="14" fill="#f7f9fc"/>
+<text x="24" y="34" class="heading">The controller owns confirmation</text>
+<rect x="25" y="105" width="190" height="80" rx="12" fill="#eaf1ff" stroke="#46617d"/>
+<text x="120" y="140" text-anchor="middle">Browser</text>
+<text x="120" y="160" text-anchor="middle">rendered draft</text>
+<rect x="295" y="105" width="180" height="80" rx="12" fill="#eaf1ff" stroke="#46617d"/>
+<text x="385" y="140" text-anchor="middle">Controller</text>
+<text x="385" y="160" text-anchor="middle">check and commit</text>
+<rect x="555" y="105" width="180" height="80" rx="12" fill="#e6f4ec" stroke="#46617d"/>
+<text x="645" y="140" text-anchor="middle">Session memory</text>
+<text x="645" y="160" text-anchor="middle">exact approved text</text>
+<path d="M215 125 H295" fill="none" stroke="#46617d" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="255" y="90" text-anchor="middle" class="small">tuple</text>
+<path d="M475 145 H555" fill="none" stroke="#46617d" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="515" y="90" text-anchor="middle" class="small">once</text>
+<path d="M385 185 V235 H120 V185" fill="none" stroke="#46617d" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="260" y="260" text-anchor="middle" class="small">result and versioned state</text>
+<text x="24" y="295" class="small">Only a user control confirms; model proposals remain subject to state and evidence checks.</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 310" role="img" aria-labelledby="title desc">
+<title id="title">Refine a draft without losing the current question</title><desc id="desc">Recognized clarification or the Start question control opens a separate draft. Further speech refines it while the established question stays visible.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#46617d"/></marker></defs>
+<style>text{font:16px Arial,sans-serif;fill:#19324a}.small{font-size:14px}.heading{font-size:21px;font-weight:bold}</style>
+<rect width="760" height="310" rx="14" fill="#f7f9fc"/>
+<text x="24" y="34" class="heading">Refine a draft without losing the current question</text>
+<rect x="20" y="65" width="180" height="65" rx="12" fill="#eaf1ff" stroke="#46617d"/>
+<text x="110" y="92.5" text-anchor="middle">Recognized</text>
+<text x="110" y="112.5" text-anchor="middle">clarification</text>
+<rect x="20" y="165" width="180" height="65" rx="12" fill="#eaf1ff" stroke="#46617d"/>
+<text x="110" y="192.5" text-anchor="middle">Start question</text>
+<text x="110" y="212.5" text-anchor="middle">manual fallback</text>
+<rect x="280" y="110" width="170" height="80" rx="12" fill="#eaf1ff" stroke="#46617d"/>
+<text x="365" y="145" text-anchor="middle">Separate</text>
+<text x="365" y="165" text-anchor="middle">visible draft</text>
+<rect x="550" y="110" width="190" height="80" rx="12" fill="#eaf1ff" stroke="#46617d"/>
+<text x="645" y="145" text-anchor="middle">Further spoken</text>
+<text x="645" y="165" text-anchor="middle">corrections</text>
+<path d="M200 97 H240 V135 H280" fill="none" stroke="#46617d" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M200 197 H240 V165 H280" fill="none" stroke="#46617d" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M450 135 H550" fill="none" stroke="#46617d" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M645 190 V225 H365 V190" fill="none" stroke="#46617d" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="505" y="247" text-anchor="middle" class="small">refine wording</text>
+<text x="24" y="281" class="small">The established question remains visible; silence never confirms the draft.</text>
+</svg>
