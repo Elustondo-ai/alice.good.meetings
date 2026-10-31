@@ -13,7 +13,7 @@ Use the canonical role and shared Decision skill; sandbox/hook enforcement and f
 | Uncertainty | Evidence does not select an option | Proposed/undecided status; no fabricated benchmark or consensus. |
 | Revisit | New requirement changes an existing choice | Update the existing package and explain the change, retaining prior rationale/history. |
 | Context | Decision in another specialist's responsibility | Preserve Focus, use the actual contract; no automatic Stage 05 destination or broadened authority. |
-| No Focus | Explicit subject with no selected role | Infer only a proposed owner; clarify material ambiguity without activating a role. |
+| No Focus | Explicit subject under the default Governance role | Infer only a proposed owner; clarify material ambiguity without activating a role. |
 | Exclusion | Implement, approve or deploy the choice | No execution from this skill; existing role and operational boundaries apply. |
 | Portability | Different client without the motivating example | Apply the method without SpeakerCoach files, providers or absolute paths. |
 | Runtime denial | A package write is denied | Report the blocked write; preserve analysis, no alternate-channel bypass. |

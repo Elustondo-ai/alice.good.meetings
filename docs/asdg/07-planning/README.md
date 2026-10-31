@@ -14,6 +14,7 @@ Release plans describe a broader delivery objective. Sprint plans select a small
 
 ## Explore
 
+- [Governance default, ASDG Admin and title sync](02.12-review-governance-admin-and-titles.md): every session has an accountable role, and only Admin changes ASDG rules.
 - [ASDG–OpenSpec proposal wrapper](02.11-review-openspec-proposal-wrapper.md): source-linked planning through the installed native OpenSpec workflow.
 - [Concise role, focus and attitude titles](02.10-review-concise-role-titles.md): the current naming convention, with the thirteen short role labels.
 - [Shorter session names](02.9-review-short-session-names.md): role and attitude in titles, with NoAttitude and NoFocus for unset selections.

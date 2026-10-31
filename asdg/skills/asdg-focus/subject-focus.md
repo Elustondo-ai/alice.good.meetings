@@ -11,10 +11,10 @@ Use `$asdg-focus subject Security` or `$asdg-focus subject Performance`.
 Accept equally clear natural language: “Stay in the Architect role and focus on security” or “Cambia el tema a rendimiento, mantén el rol.”
 `$asdg-focus subject clear` or `subject NoFocus` clears only the subject and displays NoFocus; `subject status` reports it without selection or renaming.
 A clearly marked subject request does not need a catalogue role match: subjects are project topics, not new role IDs.
-A topic-only change can be made under general assistance; it never loads or activates a specialist automatically.
+A topic-only change keeps the current role, including the default 00 Governance; it never loads or activates a specialist automatically.
 
 Keep legacy role selection intact: `$asdg-focus 05`, `ASDG-05`, `asdg_05` and “focus on high level architecture” still select the role.
-Bare `clear`, “clear focus,” and “return to general” retain their legacy meaning: clear the role, preserving other session fields.
+Bare `clear`, “clear focus,” and “return to general” return the role to 00 Governance, preserving other session fields.
 For an unclear “focus on security,” distinguish a subject change within the retained role from a request for another responsibility.
 When the intended dimension cannot be resolved, ask one question before changing any field or title.
 Quoted commands, examples, proposed topics and explanatory questions do not select a subject.

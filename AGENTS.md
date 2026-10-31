@@ -8,6 +8,7 @@ Use this local entry point; a machine-wide `asdg` may resolve an older installat
 Client evidence belongs in `docs/asdg/`; methodology definitions are not client evidence.
 Preserve `.asdg/` state and review history; disposable activity logs belong under `logs/`.
 Explicit Focus selection affects this conversation only; reading a role never activates it.
+Sessions act under 00 Governance (ASDG-COORDINATOR) by default; there is no role-less path.
 No specialist is active merely because this repository was initialized.
 ## Implementation gate
 Before application edits, inspect `.asdg/sprint.json` and check EVERY target with
@@ -17,6 +18,7 @@ Scope is an exact file or a directory ending in /; satisfy its objective and acc
 Only an explicit human sprint start/stop decision authorizes a transition; never infer one.
 Use scoped apply_patch edits. Arbitrary shell/REPL writes remain blocked by the guard.
 Do not edit state, hook definitions or ASDG policies as part of application implementation.
+Agent changes to ASDG rules run only under explicitly selected ASDG Admin (asdg/admin/AGENTS.md) within a human-authorized scope.
 Review and trust project hooks in Codex; configuration alone does not establish enforcement.
 Every agent may create and update project documentation and supporting assets under docs/ without an active sprint or separate save approval.
 Use asdg/00-governance/docs/documentation-authority.md; documentation is the default shared handoff, while code, approvals and state transitions retain their gates.

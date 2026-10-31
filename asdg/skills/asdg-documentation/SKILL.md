@@ -27,6 +27,7 @@ Include an embedded visual in each substantive explanation so a reader can grasp
 Use the prose as technical speaker notes; navigation indexes and brief appendices may link to an existing visual.
 An established visual-and-notes topic keeps its original source structure and filenames.
 Choose a diagram, dashboard, scenario picture or CRC table that conveys a relationship; avoid decoration.
+For a graphical interface, follow the [GUI visual rule](../../00-governance/docs/gui-visuals.md): who uses it, then a captioned screenshot or labelled mockup.
 Keep editable diagram sources with supporting assets such as `images/`; use `build/` when a separate export workflow requires it.
 Optional presentation tools may derive slides; they are not included in this core.
 See the [readable assessment example](example.md).

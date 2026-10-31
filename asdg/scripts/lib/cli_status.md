@@ -16,10 +16,11 @@ Combines structure, lifecycle evidence, review freshness and sprint scope into o
 - [purpose_review](purpose_review.md): Checks Purpose acceptance.
 - [stage_review](stage_review.md): Checks other stage acceptance.
 - [cli_model](cli_model.md): Provides identities and time.
+- [cli_session](cli_session.md): Checks that the default 00 Governance role's sources are present.
 
 ## Interface and data
 
-Lifecycle data is schema_version:1 with stages keyed by two-digit strings. Stage entries carry artifacts, not_applicable_reason and optional reviews. Status includes lifecycle_stages, errors, implementation, guard and recommendation. Readiness and human acceptance remain separate fields.
+Lifecycle data is schema_version:1 with stages keyed by two-digit strings. Stage entries carry artifacts, not_applicable_reason and optional reviews. Status includes lifecycle_stages, errors, implementation, guard, session_governance and recommendation; a BLOCKED governance bootstrap adds errors and so blocks implementation. Readiness and human acceptance remain separate fields.
 
 | Callable or interface | Contract |
 | --- | --- |

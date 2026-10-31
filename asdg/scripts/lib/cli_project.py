@@ -27,6 +27,7 @@ Use this local entry point; a machine-wide `asdg` may resolve an older installat
 Client evidence belongs in `docs/asdg/`; methodology definitions are not client evidence.
 Preserve `.asdg/` state and review history; disposable activity logs belong under `logs/`.
 Explicit Focus selection affects this conversation only; reading a role never activates it.
+Sessions act under 00 Governance (ASDG-COORDINATOR) by default; there is no role-less path.
 No specialist is active merely because this repository was initialized.
 ## Implementation gate
 Before application edits, inspect `.asdg/sprint.json` and check EVERY target with
@@ -36,6 +37,7 @@ Scope is an exact file or a directory ending in /; satisfy its objective and acc
 Only an explicit human sprint start/stop decision authorizes a transition; never infer one.
 Use scoped apply_patch edits. Arbitrary shell/REPL writes remain blocked by the guard.
 Do not edit state, hook definitions or ASDG policies as part of application implementation.
+Agent changes to ASDG rules run only under explicitly selected ASDG Admin (asdg/admin/AGENTS.md) within a human-authorized scope.
 Review and trust project hooks in Codex; configuration alone does not establish enforcement.
 Every agent may create and update project documentation and supporting assets under docs/ without an active sprint or separate save approval.
 Use asdg/00-governance/docs/documentation-authority.md; documentation is the default shared handoff, while code, approvals and state transitions retain their gates.
@@ -55,6 +57,12 @@ def stage_readme(repo, slug):
     if data is None or nonblank_source_lines(data.decode()) > 50:
         raise Conflict(f'Missing or oversized stage introduction: {slug}')
     return data
+
+
+# Exact earlier managed bridges; init replaces them in place (with a backup) rather than reporting an edit.
+_ADMIN_LINE = 'Agent changes to ASDG rules run only under explicitly selected ASDG Admin (asdg/admin/AGENTS.md) within a human-authorized scope.\n'
+_DEFAULT_LINE = 'Sessions act under 00 Governance (ASDG-COORDINATOR) by default; there is no role-less path.\n'
+LEGACY_BRIDGES = (BRIDGE.replace(_ADMIN_LINE, ''), BRIDGE.replace(_ADMIN_LINE, '').replace(_DEFAULT_LINE, ''))
 
 
 def distribution(repo):
@@ -79,14 +87,17 @@ def hook_config(root, repo=REPO):
     return json_bytes({'description': 'ASDG guard and public activity logs; review/trust in /hooks.', 'hooks': hooks})
 
 
-def merge_block(old, block, begin, end, name):
+def merge_block(old, block, begin, end, name, legacy=()):
     if old is None:
         return block.encode()
     text = old.decode('utf-8')
+    for previous in legacy:
+        if text.count(previous) == 1 and block not in text:
+            text = text.replace(previous, block)
     if begin in text or end in text:
         if text.count(begin) != 1 or text.count(end) != 1 or block not in text:
             raise Conflict(f'Edited or incomplete managed section in {name}; reconcile manually.')
-        return old
+        return text.encode()
     if name == 'AGENTS.md':
         if 'ELUSTONDO-ASDG:BEGIN' in text or 'ELUSTONDO-ASDLC:BEGIN' in text:
             raise Conflict('Linked/legacy AGENTS.md integration requires explicit migration.')
@@ -148,6 +159,8 @@ def preflight_package(repo):
                 raise Conflict(f'Missing role input: {agent[key]}')
         if read_bytes(safe_path(repo, Path('asdg/templates') / agent['adapter'])) is None:
             raise Conflict(f'Missing role adapter: {agent["native_name"]}')
+    from cli_session import validate_admin
+    validate_admin(repo)
     focus_root = safe_path(repo, 'asdg/templates/.agents/skills')
     if (list(focus_root.glob('asdg-focus-*/SKILL.md'))
             or not (focus_root / 'asdg-focus/SKILL.md').is_file()
@@ -199,7 +212,7 @@ def initialize(root, repo=REPO, project_state=None, dry_run=False):
     for relative, data in template_files(repo):
         changes.append(plan(root, relative, data))
     old_agents = read_bytes(safe_path(root, 'AGENTS.md'))
-    new_agents = merge_block(old_agents, BRIDGE, BEGIN, END, 'AGENTS.md')
+    new_agents = merge_block(old_agents, BRIDGE, BEGIN, END, 'AGENTS.md', LEGACY_BRIDGES)
     if nonblank_source_lines(new_agents.decode()) > 50:
         raise Conflict('AGENTS.md would exceed 50 nonblank lines; arrange a reviewed shorter bridge first.')
     if old_agents is not None and old_agents != new_agents:

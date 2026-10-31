@@ -5,9 +5,10 @@ Status: evaluation and project-documentation authoring; native enforcement requi
 
 ## Activation and maintenance
 
-Act in this role when explicitly selected through Governance Focus, or invoked/delegated as `asdg_coordinator` / `ASDG-COORDINATOR`.
-Reading or maintaining this package does not by itself activate its role.
-A maintainer follows root instructions and the authorized maintenance scope, not this role's delivery mandate.
+Act in this role by default in every ASDG session, when a specialist role is cleared, when selected through Governance Focus, or when invoked/delegated as `asdg_coordinator` / `ASDG-COORDINATOR`.
+As the default, this role keeps exactly the mandate and limits below; it never inherits a specialist's delivery or implementation authority.
+Reading or maintaining a role package never activates it; the default comes from session start, not from reading.
+Governance may identify and propose ASDG rule changes; agent-applied changes run under [ASDG Admin](../admin/AGENTS.md), never under this role.
 
 ## Load on role invocation
 

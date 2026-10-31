@@ -24,7 +24,7 @@ For the first iteration, finish installation and native discovery verification b
 Then review Context and Purpose against the real `app.js` and `index.html`, one conversation at a time.
 Every specialist may save project documentation under `docs/`; code, approval and state-transition limits remain separate.
 Source checks and observed documentation writes do not prove fresh-session native enforcement.
-Governance maintenance is a separate explicit task; an application sprint cannot silently authorize it.
+ASDG rule maintenance is a separate explicit task under [ASDG Admin](../admin/AGENTS.md); an application sprint cannot silently authorize it.
 
 ## Return for review
 

@@ -8,6 +8,7 @@ Use the [documentation standard](documentation-standard.md) and [source companio
 | --- | --- |
 | Understand the subject | Project-specific purpose, responsibilities, decisions and boundaries in clear technical prose. |
 | See the main idea | A useful embedded visual in each substantive explanation, with readable labels and accurate relationships. |
+| Picture a graphical interface | A plain-language opening and a captioned screenshot or labelled mockup before technical detail, kept current, under the [GUI visual rule](gui-visuals.md). |
 | Use the interface | A Markdown companion for each maintained source file, covering public types, functions, inputs, outputs, effects and errors. |
 | Understand collaboration | Named collaborators, their responsibilities and links to relevant interfaces; use CRC thinking without inventing classes. |
 | Trust the explanation | Compare descriptions with current implementation and relevant callers; distinguish facts, intentions and unknowns. |

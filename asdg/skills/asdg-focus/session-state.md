@@ -15,7 +15,7 @@ Use plain language or an equivalent structured record; this is a receipt shape, 
 | --- | --- |
 | Project / thread | Verified root, display name and stable native thread ID when supplied by the runtime. |
 | Goal | User's intended outcome, current assignment and limits; Unknown if unrecoverable. |
-| Role | Catalogue ID, native name and short label; None or Unknown are distinct. |
+| Role | Catalogue ID or `ASDG-ADMIN`, native name if any and short label; 00 Governance by default, or Unknown when blocked. Never None. |
 | Role evidence | Explicit selecting request, successful required reads, source paths and versions actually observed. |
 | Subject focus | Full selected topic; NoFocus when deliberately unset, or Unknown when history is missing. Only selected topics appear in titles. |
 | Attitude | White, Red, Green, Yellow, Black, Blue, NoAttitude, or Unknown. |
@@ -23,9 +23,10 @@ Use plain language or an equivalent structured record; this is a receipt shape, 
 | Change | User instruction, changed field(s), prior/resulting values, expiry or cancellation and retained goal. |
 | Title | Computed/requested title, last observed title if known, actual native outcome and any unresolved mismatch. |
 
-A genuinely new chat begins with role None, subject NoFocus and attitude NoAttitude unless explicitly assigned.
+A genuinely new chat begins under 00 Governance (`ASDG-COORDINATOR`) once its required sources load, with subject NoFocus and attitude NoAttitude unless explicitly assigned.
+If bootstrap fails, record role Unknown with the missing source and block dependent work; see [session policy](session-policy.md).
 A retained pre-attitude role receipt remains valid; where history establishes no attitude or subject selection, record NoAttitude/NoFocus without reactivating the role.
-Normalize legacy Off to NoAttitude and a known unset subject None to NoFocus; unknown history still means Unknown.
+Normalize legacy Off to NoAttitude, a known unset subject None to NoFocus, and a recorded role None to 00 Governance after rereading its sources; unknown history still means Unknown.
 Otherwise recover each field independently from an unambiguous receipt or supported session metadata.
 Missing attitude history means Unknown, not an invented NoAttitude; missing subject history does not erase a verified role.
 A title, folder name, another chat's receipt or role-file inspection cannot recover authority.
@@ -34,7 +35,7 @@ If required role guidance is unavailable, retain a known role but block work nee
 ## Updates and replies
 
 Only an explicit role request changes role; only an explicit subject request changes subject; only an explicit attitude request changes attitude.
-A role change or clear preserves goal, subject and attitude. Flag an out-of-role subject without silently erasing it.
+A role change, or a clear that returns to 00 Governance, preserves goal, subject and attitude. Flag an out-of-role subject without silently erasing it.
 Reading, mentioning, quoting, a recommendation, a topic drift or a status request changes none of these selections.
 Normal assignments can update the user-stated goal; this increment adds no goal-management skill or inferred approval.
 Role, subject and attitude selection/clear and attitude expiry use [the title contract](rename-chat.md); a failed rename never rolls back valid state.

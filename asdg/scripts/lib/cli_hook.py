@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 from cli_files import safe_path
+from cli_session import governance_bootstrap
 from cli_status import project_status
 
 
@@ -45,6 +46,11 @@ def documentation_target(root: Path, value: str) -> bool:
 
 
 def implementation_decision(root: Path, paths: list[str], override: str | None = None) -> tuple[bool, str]:
+    # Every write, documentation included, needs a loadable default role; read-only commands never reach here.
+    session = governance_bootstrap(root)
+    if session['status'] != 'READY':
+        return False, ('BLOCKED: GOVERNANCE_BOOTSTRAP\n' + '\n'.join(session['missing']) +
+                       '\n\nRestore the missing governance sources; read-only diagnosis remains available.')
     implementation_paths = [path for path in paths if not documentation_target(root, path)]
     if paths and not implementation_paths:
         return True, 'Documentation under docs/ needs no active sprint.'

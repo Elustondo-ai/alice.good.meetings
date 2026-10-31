@@ -8,7 +8,7 @@ Use [the catalogue](00-governance/types/agent-catalog.json) for identities and p
 ## Client work
 
 Read [the session policy](skills/asdg-focus/session-policy.md) on every turn.
-A new conversation has no specialist focus. Only explicit invocation activates a named role.
+Every session acts under an accountable role: 00 Governance by default, or a specialist only after explicit selection loads it.
 Keep [goal, role, subject focus and attitude](skills/asdg-focus/session-state.md) separate in this chat's receipt; title changes reflect selections and explicit expiry, never grant authority.
 Every agent may save project documentation under `docs/` without an active sprint or separate save approval; follow [documentation authority](00-governance/docs/documentation-authority.md).
 Purpose Focus begins a read-only opening assessment; assigned Purpose work produces saved client documentation.
@@ -29,12 +29,14 @@ Governance 00, all twelve specialists and methodology maintainers must follow th
 All reader-facing `docs/asdg/` artifacts explain the project to humans, with useful embedded visuals and technically precise prose.
 Material decisions across all roles use [ASDG Decision](skills/asdg-decision/SKILL.md), with generic defaults and an [optional local specialization](skills/asdg-decision/specialization.md); role authority remains unchanged.
 Every maintained source file requires a [CRC-inspired Markdown companion](00-governance/docs/code-companions.md), kept current with the code.
+Documentation, guides and designs for a graphical interface open with who uses it and a captioned [representative visual](00-governance/docs/gui-visuals.md).
 Apply the [documentation review criteria](00-governance/docs/documentation-review.md) before claiming documentation complete; initialization alone proves no compliance.
 These portable requirements travel with this distribution and do not depend on SpeakerCoach or an external provider checkout.
 
 ## Explicit ASDG maintenance
 
-Maintaining these definitions does not activate the specialist whose file is being edited.
+Agent changes to these definitions run only under explicitly selected [ASDG Admin](admin/AGENTS.md) within a human-authorized scope; any role may propose them.
+Maintaining a definition never activates the specialist whose file is edited, and no agent selects Admin to escape a restriction.
 The user has chosen this embedded folder as an evolving working baseline; record bounded changes here.
 Do not silently pull or overwrite it from the old sibling repository, package or Google Drive source.
 Keep canonical skills here; native discovery adapters remain thin references generated from `templates/`.

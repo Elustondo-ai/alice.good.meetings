@@ -29,12 +29,17 @@ PortableTests extends unittest.TestCase. Test methods use per-test state; simula
 | `hook(payload, event='PreToolUse', cwd=None) -> dict` | Runs the fixture's configured hook with JSON input and parses its response. |
 | `payload(paths) -> dict; denied(payload) -> None` | Constructs patch inputs and asserts hook denial. |
 
-The [test case guide](test_portable-cases.md) lists every `test_*` method and the behavior it checks.
+The [test case guide](test_portable-cases.md) and its [role and session cases](test_portable-cases-roles.md) list every `test_*` method and the behavior it checks.
 Decision discovery is exercised in a relocated client without SpeakerCoach files; repeat setup preserves unregistered decision evidence and lifecycle/sprint bytes.
 Optional local decision skills survive repeat setup from a specialist subdirectory; generic roles require no placeholder and state remains unchanged.
 Focus installation keeps one picker entry and thirteen role adapters; preflight rejects missing shared metadata or retired per-role picker templates before writes.
 Attitude discovery and its receipt guides survive relocation; repeat initialization preserves project, lifecycle, sprint and application bytes. Native chat semantics require separate observation.
 OpenSpec wrapper installation survives relocation and repeat setup while preserving a separately installed upstream skill, OpenSpec configuration, ASDG state, hooks and application bytes; it creates no proposal.
+Status reports whether a new session can start under the default 00 Governance role; a missing coordinator source or entry-point link blocks it and blocks implementation, while repeat setup upgrades only an unedited earlier bridge.
+Every guarded write, documentation included, needs a READY governance bootstrap; docs still need no sprint, and read-only commands stay available. Admin preflight rejects an invalid package with a specific message.
+ASDG Admin is registered outside the 13-role catalogue; the guard denies an in-sprint patch to an ASDG rule regardless of claimed role.
+A text check confirms the session and role instructions define no role-None path or old maintainer allowance; it does not show that an agent obeys them.
+In a relocated client, the GUI visual rule, its diagram and resolving links from the all-role instructions, standard, review criteria, runtime contract and documentation skill remain present.
 `test_dry_run_then_init_repeat_is_byte_identical` also checks portable stage introductions, embedded diagrams, empty Context recognition, absence of perspective directories and preservation on repeat setup.
 
 ## Effects and failure behavior

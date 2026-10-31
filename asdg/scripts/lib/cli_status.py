@@ -9,6 +9,7 @@ from cli_files import Conflict, read_bytes, safe_path
 from cli_model import ARTIFACTS, PROVIDER, REPO, VERSION, catalogue, now
 from cli_policy import implementation_permission
 from cli_project import inspect, STAGE_NOTE
+from cli_session import governance_bootstrap
 from purpose_review import completion_status, validate_reviews
 import stage_review
 
@@ -173,6 +174,8 @@ def project_status(root: Path, repo: Path = REPO, requested_paths: list[str] | N
     except (OSError, ValueError, TypeError, KeyError) as exc:
         if str(exc) not in errors:
             errors.append(str(exc))
+    session = governance_bootstrap(root, repo)
+    errors.extend(f'Governance bootstrap: {gap}' for gap in session['missing'] if f'Governance bootstrap: {gap}' not in errors)
     sprint = report.get('sprint_state')
     release = lifecycle.get('release')
     permission = implementation_permission(root, sprint, errors, requested_paths)
@@ -197,7 +200,7 @@ def project_status(root: Path, repo: Path = REPO, requested_paths: list[str] | N
                 sprint_id=(sprint or {}).get('sprint_id'), sprint_objective=(sprint or {}).get('objective'),
                 sprint_scope=(sprint or {}).get('scope', []), acceptance_criteria=(sprint or {}).get('acceptance_criteria', []),
                 implementation_permission=permission['permission'], implementation_reason=permission['reason'],
-                implementation=permission, blockers=blockers,
+                implementation=permission, blockers=blockers, session_governance=session,
                 missing_required_artifacts=[{'stage': s['number'], 'required_evidence': s['evidence'],
                                              'missing_paths': s['missing_paths']} for s in stages if s['readiness'] == 'MISSING'],
                 guard={'configuration': 'UNKNOWN' if 'implementation_enforcement' not in report else 'PRESENT' if not any(
@@ -220,6 +223,7 @@ def render_status(status: dict) -> str:
                            status['sprint_status'].upper() +
                            (f" — {status['sprint_id']}" if status['sprint_id'] else '')),
              f"Implementation: {status['implementation_permission']}",
+             f"Session role: {status['session_governance']['label']} by default ({status['session_governance']['status']})",
              f"Evidence focus: {stage_label(status['current_stage'])}",
              f"Evidence focus basis: {status['current_stage_basis']}", '', 'Mechanical workflow finding:',
              status['recommendation']['action']]

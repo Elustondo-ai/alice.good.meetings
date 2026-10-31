@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -249,6 +250,145 @@ runpy.run_path(entry, run_name='__main__')
             self.assertEqual((self.root / path).read_bytes(), data)
         self.assertFalse((self.root / 'openspec/changes').exists())
 
+    def test_gui_visual_rule_is_shared_by_all_role_entry_points(self):
+        self.init()
+        self.root = self.root.rename(self.root.parent / 'relocated gui client')
+        docs = self.root / 'asdg/00-governance/docs'
+        rule = (docs / 'gui-visuals.md').read_text()
+        self.assertIn('every adopting project, governance, all twelve specialists', rule)
+        self.assertTrue((docs / 'images/gui-visuals.svg').is_file())
+        referrers = ('asdg/AGENTS.md', 'asdg/00-governance/docs/documentation-standard.md',
+                     'asdg/00-governance/docs/documentation-review.md',
+                     'asdg/00-governance/docs/runtime-contract.md',
+                     'asdg/skills/asdg-documentation/SKILL.md')
+        for path in referrers:
+            source = self.root / path
+            links = re.findall(r'\]\(([^)]*gui-visuals\.md)\)', source.read_text())
+            self.assertTrue(links, path)
+            for link in links:
+                self.assertEqual((source.parent / link).resolve(), (docs / 'gui-visuals.md').resolve())
+        self.assertIn('asdg/AGENTS.md', (self.root / 'AGENTS.md').read_text())
+
+    def test_new_session_bootstrap_reports_governance_default_ready(self):
+        self.init()
+        session = json.loads(self.run_cli('status', '--json').stdout)['session_governance']
+        self.assertEqual((session['default_role'], session['native_name'], session['status']),
+                         ('ASDG-COORDINATOR', 'asdg_coordinator', 'READY'))
+        self.assertFalse(session['role_none_permitted'])
+        self.assertEqual(session['enforcement'], 'INSTRUCTIONAL_ONLY')
+        self.assertIn('00 Governance (ASDG-COORDINATOR) by default', (self.root / 'AGENTS.md').read_text())
+        self.assertIn('Session role: 00 Governance by default (READY)', self.run_cli('status', '--facts-only').stdout)
+
+    def test_missing_governance_source_blocks_bootstrap_and_implementation(self):
+        self.init()
+        self.active()
+        self.run_cli('sprint', 'check-implementation', '--path', 'app.js')
+        (self.root / 'asdg/00-governance/types/contract.md').unlink()
+        status = json.loads(self.run_cli('status', '--json', expect=1).stdout)
+        session = status['session_governance']
+        self.assertEqual((session['status'], session['blocked_code']), ('BLOCKED', 'GOVERNANCE_BOOTSTRAP'))
+        self.assertEqual(session['missing'], ['asdg/00-governance/types/contract.md: required governance source missing'])
+        self.assertIn('Governance bootstrap: ' + session['missing'][0], status['errors'])
+        self.assertEqual(status['implementation_permission'], 'BLOCKED')
+        self.run_cli('sprint', 'check-implementation', '--path', 'app.js', expect=1)
+        payload = {'tool_name': 'apply_patch', 'tool_input': {'command':
+                   '*** Begin Patch\n*** Update File: app.js\n@@\n-console.log("existing application");\n+x\n*** End Patch\n'}}
+        self.assertEqual(self.hook(payload)['hookSpecificOutput']['permissionDecision'], 'deny')
+
+    def test_entry_point_without_distribution_link_blocks_bootstrap(self):
+        self.init()
+        agents = self.root / 'AGENTS.md'
+        agents.write_text(agents.read_text().replace('read `asdg/AGENTS.md`', 'read the methodology'))
+        session = json.loads(self.run_cli('status', '--json', expect=1).stdout)['session_governance']
+        self.assertEqual(session['status'], 'BLOCKED')
+        self.assertIn('AGENTS.md: client entry point does not load asdg/AGENTS.md', session['missing'])
+
+    def test_repeat_setup_upgrades_only_an_unedited_legacy_bridge(self):
+        sys.path.insert(0, str(self.root / 'asdg/scripts/lib'))
+        self.addCleanup(sys.path.remove, str(self.root / 'asdg/scripts/lib'))
+        from cli_project import BRIDGE, LEGACY_BRIDGES
+        self.init()
+        agents = self.root / 'AGENTS.md'
+        self.assertEqual(len(LEGACY_BRIDGES), 2)
+        for legacy in LEGACY_BRIDGES:
+            old = agents.read_text().replace(BRIDGE, legacy)
+            agents.write_text(old)
+            self.run_cli('verify', expect=1)
+            self.init()
+            self.assertIn(BRIDGE, agents.read_text())
+            backups = list((self.root / '.asdg/backups').glob('AGENTS-before-*.md'))
+            self.assertIn(old, [b.read_text() for b in backups])
+            self.run_cli('verify')
+        agents.write_text(agents.read_text().replace(BRIDGE, LEGACY_BRIDGES[0].replace('Preserve', 'Keep')))
+        self.init(expect=1)
+
+    def test_admin_role_is_registered_outside_the_lifecycle(self):
+        registration = json.loads((CORE / 'admin/types/admin-role.json').read_text())
+        self.assertEqual((registration['role_id'], registration['title'], registration['lifecycle_stage'],
+                          registration['default'], registration['native_adapter']),
+                         ('ASDG-ADMIN', 'ASDG Admin', None, False, None))
+        self.assertEqual(registration['activation'], 'explicit-human-selection-only')
+        for key in ('entry', 'contract', 'skill'):
+            self.assertTrue((CORE.parent / registration[key]).is_file(), key)
+        catalogue = json.loads((CORE / '00-governance/types/agent-catalog.json').read_text())
+        self.assertEqual(len(catalogue['agents']), 13)
+        self.assertNotIn('ASDG-ADMIN', json.dumps(catalogue))
+        self.init()
+        self.assertFalse(list((self.root / '.codex/agents').glob('*admin*')))
+        self.assertIn('admin/types/admin-role.json', (CORE / 'skills/asdg-focus/focus-choices.md').read_text())
+
+    def test_project_work_cannot_patch_asdg_rules_through_the_guard(self):
+        # Role-agnostic: the guard knows paths and sprint scope, not which role a session claims.
+        self.init()
+        self.active()
+        rule = 'asdg/skills/asdg-focus/session-policy.md'
+        payload = {'tool_name': 'apply_patch', 'cwd': str(self.root), 'tool_input': {'command':
+                   f'*** Begin Patch\n*** Update File: {rule}\n@@\n-# ASDG\n+# Edited\n*** End Patch\n'}}
+        self.assertEqual(self.hook(payload)['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.run_cli('sprint', 'check-implementation', '--path', rule, expect=1)
+        sys.path.insert(0, str(self.root / 'asdg/scripts/lib'))
+        self.addCleanup(sys.path.remove, str(self.root / 'asdg/scripts/lib'))
+        from cli_files import Conflict
+        from cli_sprint import relative_path
+        with self.assertRaisesRegex(Conflict, 'policy paths cannot be implementation scope'):
+            relative_path(self.root, 'asdg/')
+
+    def test_session_instructions_define_no_role_none_path(self):
+        # Documentation consistency only: conversation role state has no runtime enforcement.
+        skills = CORE / 'skills'
+        required = {
+            CORE / 'AGENTS.md': ['00 Governance by default'],
+            CORE / '00-governance/AGENTS.md': ['by default in every ASDG session', 'never inherits a specialist'],
+            skills / 'asdg-focus/session-policy.md': ['There is no role None', 'GOVERNANCE_BOOTSTRAP',
+                                                      'returns the role to 00 Governance', 'Preserve a valid recovered role',
+                                                      'gains no specialist delivery or implementation authority'],
+            skills / 'asdg-focus/session-state.md': ['Never None', 'record role Unknown'],
+            skills / 'asdg-focus/SKILL.md': ['return the role to 00 Governance', 'there is no role None'],
+            skills / 'asdg-focus/subject-focus.md': ['return the role to 00 Governance'],
+            skills / 'asdg-status/SKILL.md': ['the role is the default 00 Governance'],
+            skills / 'asdg-focus/focus-choices.md': ['returns to 00 Governance', 'never selects it'],
+            skills / 'asdg-focus/rename-chat.md': ['a new session starting under 00 Governance', 'a legacy role None migrating',
+                                                   'a clear returning to it', 'including ASDG Admin', 'set_session_title'],
+            CORE / 'admin/AGENTS.md': ['explicit, visible human selection', 'it does not authorize any change',
+                                       'never to remove a restriction'],
+        }
+        required[skills / 'asdg-focus/session-policy.md'] += ['no agent selects Admin itself', 'new-session Governance start',
+                                                              'legacy None migration', 'clear to Governance']
+        required[CORE / 'AGENTS.md'] += ['run only under explicitly selected [ASDG Admin]']
+        for entry in CORE.glob('[01][0-9]-*/AGENTS.md'):
+            required.setdefault(entry, []).append('ASDG Admin')
+        for path, phrases in required.items():
+            text = path.read_text()
+            for phrase in phrases:
+                self.assertIn(phrase, text, path)
+        forbidden = re.compile(r'role None,|starts with role None|begins with role None|selects role None|'
+                               r'means None, not Governance|displays `General`|clear only the role|under general assistance|'
+                               r'A maintainer follows root instructions|maintainers follow the explicit maintenance|'
+                               r"runs under the session's accountable role|removes selection without selecting Governance")
+        for path in CORE.rglob('*.md'):
+            if 'proposals' not in path.parts:
+                self.assertIsNone(forbidden.search(path.read_text()), path)
+
     def test_decision_skill_relocates_and_preserves_unregistered_decisions(self):
         self.init()
         relative = Path('.agents/skills/asdg-decision')
@@ -424,6 +564,65 @@ runpy.run_path(entry, run_name='__main__')
         self.denied({'tool_name':'Bash','tool_input':{'command':'echo bad > app.js'},'cwd':str(self.root)})
         self.run_cli('sprint','check-implementation','--path','app.js',expect=1)
         self.assertEqual(snapshot(self.root),before)
+
+    def test_documentation_writes_require_governance_bootstrap_but_no_sprint(self):
+        self.init()
+        doc = ['docs/asdg/07-planning/handoff.md']
+        self.assertEqual(json.loads((self.root / '.asdg/sprint.json').read_text())['status'], 'inactive')
+        self.assertEqual(self.hook(self.payload(doc)), {})
+        for relative in ('asdg/00-governance/types/contract.md', 'asdg/skills/asdg-focus/session-state.md'):
+            path = self.root / relative
+            original = path.read_bytes()
+            path.unlink()
+            for targets in (doc, ['app.js']):
+                reason = self.hook(self.payload(targets))['hookSpecificOutput']['permissionDecisionReason']
+                self.assertIn('BLOCKED: GOVERNANCE_BOOTSTRAP', reason)
+                self.assertIn(f'{relative}: required governance source missing', reason)
+            for command in ('git status --short', 'python3 asdg/scripts/cli.py status --json', 'cat AGENTS.md'):
+                self.assertEqual(self.hook({'tool_name': 'Bash', 'cwd': str(self.root),
+                                            'tool_input': {'command': command}}), {}, command)
+            path.write_bytes(original)
+            self.assertEqual(self.hook(self.payload(doc)), {})
+
+    def test_valid_admin_package_passes_without_changing_catalogue_or_binding(self):
+        catalogue = (self.root / 'asdg/00-governance/types/agent-catalog.json').read_bytes()
+        self.init()
+        binding = (self.root / '.asdg/project.json').read_bytes()
+        self.run_cli('verify')
+        self.init()
+        self.assertEqual((self.root / 'asdg/00-governance/types/agent-catalog.json').read_bytes(), catalogue)
+        self.assertEqual((self.root / '.asdg/project.json').read_bytes(), binding)
+        self.assertEqual(json.loads(binding)['catalog_sha256'], hashlib.sha256(catalogue).hexdigest())
+
+    def test_invalid_admin_package_fails_preflight_and_verify_with_diagnostic(self):
+        self.init()
+        registration = self.root / 'asdg/admin/types/admin-role.json'
+        original = registration.read_bytes()
+        value = json.loads(original)
+        cases = [
+            (lambda: registration.unlink(), 'Admin registration missing: asdg/admin/types/admin-role.json'),
+            (lambda: registration.write_text('{"role_id": '), 'Admin registration is not valid JSON'),
+            (lambda: registration.write_text(json.dumps(dict(value, default=True))), 'field default must be false'),
+            (lambda: registration.write_text(json.dumps(dict(value, activation='automatic'))), 'field activation must be'),
+            (lambda: registration.write_text(json.dumps(dict(value, role_id='ASDG-COORDINATOR'))), 'field role_id must be'),
+            (lambda: registration.write_text(json.dumps(dict(value, extra=1))), 'missing or unexpected fields'),
+            (lambda: registration.write_text(json.dumps(dict(value, entry='asdg/admin/../AGENTS.md'))),
+             'entry must be a path inside asdg/admin/'),
+            (lambda: (self.root / 'asdg/admin/types/contract.md').unlink(),
+             'Admin contract source missing: asdg/admin/types/contract.md'),
+        ]
+        contract = (self.root / 'asdg/admin/types/contract.md').read_bytes()
+        for damage, diagnostic in cases:
+            damage()
+            result = self.run_cli('verify', expect=1)
+            self.assertIn(diagnostic, result.stdout + result.stderr)
+            before = snapshot(self.root)
+            result = self.init(expect=1)
+            self.assertIn(diagnostic, result.stdout + result.stderr)
+            self.assertEqual(snapshot(self.root), before)
+            registration.write_bytes(original)
+            (self.root / 'asdg/admin/types/contract.md').write_bytes(contract)
+        self.run_cli('verify')
 
     def test_documentation_patch_needs_no_sprint_or_lifecycle_state(self):
         self.init()

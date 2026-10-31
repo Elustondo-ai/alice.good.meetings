@@ -5068,6 +5068,205 @@
         "visual_explains": "Confirmed wording persists through answers; genuine new questions resume automatic tracking.",
         "rendering_check": "Embedded at 720px and visually inspected; SVG XML parses."
       }
+    },
+    {
+      "path": "index.md",
+      "sha256": "bde1caa2fdceeee37c949b24f972815bc9f7bc1e2d5836f271a11fb5bb08f9a4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T22:28:59.794372+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested plain-language introduction and real interface screenshot for index.md"
+      },
+      "previous_state": {
+        "sha256": "7264245266941e7b3958c597154598a135fe32bf0fc54c2ab247abea893e24c8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/images/meeting-helper-page.png",
+      "sha256": "f7f0e73d975098e3a34b651dc693eebab0217c5ba3e7361cc3391701151066f8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T22:28:59.794372+00:00",
+      "human_approval": null,
+      "provenance": {
+        "document": "index.md",
+        "capture": "Headless Chrome 1280x720 of file://index.html with app.js running; initial state, mic off, no server",
+        "task": "User-requested plain-language introduction and real interface screenshot for index.md"
+      }
+    },
+    {
+      "path": "index.md",
+      "sha256": "29a89d4d3a8c04f86242d8260713b07cea734e4ab8de966068fc3e484c0fe134",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T22:46:46.921105+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Replace idle screenshot with live connected capture; caption states synthetic input and limits"
+      },
+      "previous_state": {
+        "sha256": "bde1caa2fdceeee37c949b24f972815bc9f7bc1e2d5836f271a11fb5bb08f9a4",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/images/meeting-helper-page.png",
+      "sha256": "5a29483fc4c76c77b247e56ee3008050dff55f355f4379a0dbec0ebf975212c4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T22:46:46.921105+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Replace idle screenshot with live connected capture; caption states synthetic input and limits",
+        "document": "index.md",
+        "capture": "Playwright-driven headless Chrome 1280x720 at http://127.0.0.1:3000 with fake microphone playing a macOS say synthetic WAV once; real OpenAI transcription and agent; smoke test poc/browser-smoke.mjs PASS same day"
+      },
+      "previous_state": {
+        "sha256": "f7f0e73d975098e3a34b651dc693eebab0217c5ba3e7361cc3391701151066f8",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".asdg/backups/AGENTS-before-112cb477dac981385ea083a4087bcd71bf24be0aec5a34a24da53522dd59107b.md",
+      "sha256": "112cb477dac981385ea083a4087bcd71bf24be0aec5a34a24da53522dd59107b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:35:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "abf9d0cd6e4d9a6d7a1c2539a8c6df2fb2d47e3967ae3250e8bf9c10394634c1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:35:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      },
+      "previous_state": {
+        "sha256": "112cb477dac981385ea083a4087bcd71bf24be0aec5a34a24da53522dd59107b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".asdg/backups/AGENTS-before-abf9d0cd6e4d9a6d7a1c2539a8c6df2fb2d47e3967ae3250e8bf9c10394634c1.md",
+      "sha256": "abf9d0cd6e4d9a6d7a1c2539a8c6df2fb2d47e3967ae3250e8bf9c10394634c1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:03:23Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "6ec9192e2fa450e85db82d05dd7307207f23953f49078f96b45783908be82e24",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:03:23Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      },
+      "previous_state": {
+        "sha256": "abf9d0cd6e4d9a6d7a1c2539a8c6df2fb2d47e3967ae3250e8bf9c10394634c1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "aef1f0914a870ff9b8ae9a8671d2db8ffb04c05d8e33e00736e66bc80ae02b8a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "19dc04e07f3dc5a717a89ddd14204b923944fc8844e2593a120a557cbf01ee96",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.12-review-governance-admin-and-titles.json",
+      "sha256": "bbd7e53ad7ed4298ca6ed6a4677dfdf49dd4494a883f22b0db5c51baaa5d2ce8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.12-review-governance-admin-and-titles.md",
+      "sha256": "10b7b632caf8dacfb2957409bbfd760445189554a16c50a61708bccd4f2ccd96",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/images/02.12-governance-and-admin.svg",
+      "sha256": "d22fccb06d34f6c96b8373ffdff3b11a793fd04af555b8b040b70ea7e82ad763",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.12-review-governance-admin-and-titles.json",
+      "sha256": "ab10d3a18f86ee6497dc6014132ba56ca2b53f8c2837943b49c5e18d19b6743c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:54:25.528751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin follow-up: bootstrap gate before all writes, Admin package validation, native scenario evidence"
+      },
+      "previous_state": {
+        "sha256": "bbd7e53ad7ed4298ca6ed6a4677dfdf49dd4494a883f22b0db5c51baaa5d2ce8",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.12-review-governance-admin-and-titles.md",
+      "sha256": "3f2419e061643d1214c565facc7136ff21d3587c3ccc0d13c92142877886ffd2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:54:25.528751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin follow-up: bootstrap gate before all writes, Admin package validation, native scenario evidence"
+      },
+      "previous_state": {
+        "sha256": "10b7b632caf8dacfb2957409bbfd760445189554a16c50a61708bccd4f2ccd96",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.12-review-governance-admin-and-titles.json",
+      "sha256": "e7ca60c3abbaf299aa77c1d20fdaebdbacaf9766758506a5d4115ee9a08e14b9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:55:47.007812+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Add split case file and package check to follow-up receipt"
+      },
+      "previous_state": {
+        "sha256": "ab10d3a18f86ee6497dc6014132ba56ca2b53f8c2837943b49c5e18d19b6743c",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
     }
   ]
 }

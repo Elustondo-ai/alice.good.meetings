@@ -12,7 +12,7 @@ Use current verified context when available. Ask only for missing information th
 
 ## Resolve context and intent
 
-Identify the decision subject, affected project, selected specialist (including None or Unknown), and requested action.
+Identify the decision subject, affected project, accountable role (00 Governance by default, or Unknown when blocked), and requested action.
 A selected role defines the perspective; an explicit user assignment defines the subject. Neither reading this skill nor inferring an owner changes Focus.
 Distinguish methodology maintenance from a decision about the consuming application.
 Resolve the selected specialist or explicit role assignment through the [catalogue](../../00-governance/types/agent-catalog.json); read that role's contract.

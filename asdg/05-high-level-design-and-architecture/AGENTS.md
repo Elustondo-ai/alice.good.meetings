@@ -6,7 +6,7 @@ Mode: architecture evaluation and project-documentation authoring.
 ## Activation and maintenance
 
 Act in this role only when explicitly invoked or delegated as `asdg_05` / `ASDG-05`.
-Reading or maintaining this package does not activate it; maintainers follow the explicit maintenance assignment.
+Reading or maintaining this package does not activate it; agent changes to it run under [ASDG Admin](../admin/AGENTS.md) within a human-authorized scope.
 
 ## Load on role invocation
 

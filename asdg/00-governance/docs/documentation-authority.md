@@ -28,4 +28,4 @@ This permission does not authorize unrelated deletion, application-code changes,
 Executable application code or runtime configuration is not documentation merely because it is placed in `docs/`.
 Documentation needs no sprint; application changes still require the active sprint's objective, scope, acceptance criteria and applicable role authority.
 Purpose review recording and explicit approval/sprint utilities retain their separate contracts; no lifecycle approval is inferred from saving a file.
-Methodology maintenance requires an explicit user task. Runtime denials remain binding and must be reported.
+Methodology maintenance requires an explicit user task performed under [ASDG Admin](../../admin/AGENTS.md). Runtime denials remain binding and must be reported.

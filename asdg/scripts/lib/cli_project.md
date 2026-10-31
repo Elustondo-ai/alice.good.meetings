@@ -26,10 +26,10 @@ Inputs are project/repository Paths and optional project_state (`new`, `defining
 | `distribution(repo)` | Reads and validates embedded metadata; returns its dictionary. |
 | `stage_readme(repo, slug) -> bytes` | Reads a packaged stage introduction; rejects missing files or documents over 50 nonblank lines. |
 | `hook_config(root, repo=REPO)` | Returns JSON bytes for the configured guard and lifecycle logging hooks; does not establish trust. |
-| `merge_block(old, block, begin, end, name)` | Returns preserved/extended bytes for a managed text block; rejects edited or incomplete blocks. |
+| `merge_block(old, block, begin, end, name, legacy=())` | Returns preserved/extended bytes for a managed text block; replaces an exact earlier block listed in `legacy`, and rejects edited or incomplete blocks. |
 | `binding(root, catalog_hash)` | Validates project identity/catalogue/layout; returns the binding dict or None for a fresh area. |
 | `template_files(repo)` | Returns relative template paths and bytes; rejects symlinks and unexpected destination roots. |
-| `preflight_package(repo)` | Checks thirteen role definitions/adapters and exactly one shared Focus picker template; rejects missing metadata or retired per-role Focus templates. Returns agents and catalogue digest. |
+| `preflight_package(repo)` | Checks thirteen role definitions/adapters, the separate Admin package through `cli_session.validate_admin`, and exactly one shared Focus picker template; rejects missing metadata or retired per-role Focus templates. Returns agents and catalogue digest. |
 | `initialize(root, repo=REPO, project_state=None, dry_run=False)` | Plans integration and documentation writes; dry_run returns plans only, otherwise applies changes and review receipts. |
 | `inspect(root, repo=REPO)` | Returns structure_ok, missing items, binding/version details and sprint state; does not mutate the project. |
 
@@ -37,6 +37,7 @@ Inputs are project/repository Paths and optional project_state (`new`, `defining
 
 Conflicts stop initialization rather than overwriting edited integration. Existing lifecycle/sprint records are preserved. New setup records an inactive sprint; it grants no implementation permission.
 The managed bridge grants every agent documentation authoring under `docs/` and routes sprint utilities; initialization itself creates no substantive deliverable or transition.
+The bridge also states the 00 Governance default role and that agent rule changes run under ASDG Admin. `LEGACY_BRIDGES` holds the exact earlier bridges, so repeat setup upgrades an unedited older block (backing up the old file) instead of reporting a conflict.
 Discovery templates include ASDG Decision; existing customized adapters remain conflicts requiring explicit reconciliation.
 
 ## Example

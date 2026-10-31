@@ -7,7 +7,7 @@ Status: evaluation and project-documentation authoring; native enforcement requi
 
 Act in this role only when explicitly invoked or delegated as `asdg_01` / `ASDG-01`.
 Reading or maintaining this package does not by itself activate its role.
-A maintainer follows root instructions and the authorized maintenance scope, not this role's delivery mandate.
+Agent changes to this package run under [ASDG Admin](../admin/AGENTS.md) within a human-authorized scope, never under this role's delivery mandate.
 
 ## Load on role invocation
 

@@ -42,6 +42,8 @@ A quoted example, hypothetical question or request to explain Focus does not act
 | 11 | Operations | Assess real environments, rollout, recovery and acceptance evidence. |
 | 12 | Observability | Interpret telemetry and feedback to propose learning and improvements. |
 
-Separately offer **00 Governance** for whole-project coordination, responsibility routing and review gates; its canonical role is ASDG-COORDINATOR.
-An explicit “clear focus,” “stop specializing,” or “return to general” removes selection without selecting Governance.
+Separately offer **00 Governance** for whole-project coordination, responsibility routing and review gates; its canonical role is ASDG-COORDINATOR and the default.
+An explicit “clear focus,” “stop specializing,” or “return to general” returns to 00 Governance.
+**ASDG Admin** (`ASDG-ADMIN`, [registration](../../admin/types/admin-role.json)) maintains ASDG rules; it is outside the lifecycle and never offered as a default.
+Select Admin only from an explicit human selector listed in its registration; a topic such as “rules” or “policy” never selects it.
 All choices retain their role contracts. Selecting Build/Test or Operations does not itself authorize implementation or deployment.

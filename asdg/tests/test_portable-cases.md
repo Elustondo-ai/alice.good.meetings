@@ -4,6 +4,7 @@
 
 Each method below belongs to `PortableTests`, takes `self`, returns `None` and uses unittest assertions.
 Names describe the intended regression checks; this index is not an execution result.
+Session-role, governance-bootstrap and Admin cases are in the [role and session case guide](test_portable-cases-roles.md).
 
 | Test method | Responsibility |
 | --- | --- |
@@ -16,6 +17,7 @@ Names describe the intended regression checks; this index is not an execution re
 | `test_single_focus_installs_without_changing_roles_or_authority` | One Focus picker entry retains thirteen role adapters and unchanged lifecycle/authority. |
 | `test_attitude_adapter_relocates_and_preserves_state` | Installed Attitude adapters and canonical guides survive relocation and repeat setup without changing project state. |
 | `test_openspec_wrapper_preserves_upstream_and_relocates` | The wrapper installs and relocates without modifying upstream skills, configuration, state, hooks or application files. |
+| `test_gui_visual_rule_is_shared_by_all_role_entry_points` | The single GUI visual rule and its diagram survive relocation, and every all-role entry point links to it. |
 | `test_decision_skill_relocates_and_preserves_unregistered_decisions` | Decision discovery survives relocation; repeat setup preserves decision evidence and state. |
 | `test_optional_decision_specialization_preserves_generic_roles_and_local_methods` | Optional specialist methods survive repeat setup; absent methods require no placeholders or state changes. |
 | `test_missing_shared_focus_template_fails_before_any_writes` | Missing shared skill or UI metadata fails preflight without writes. |

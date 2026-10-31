@@ -47,7 +47,7 @@ Load only this role's relevant local SKILL.md and any required shared capability
 Discovery adapters reuse canonical workflows; local role procedures require explicit loading, and reading them alone never activates a role.
 Client outputs follow the [stage layout](stage-layout.md); [ASDG Decision](../../skills/asdg-decision/SKILL.md) uses generic defaults plus the role's optional local `skills/decision/SKILL.md`, without widening authority.
 Follow [the documentation standard](documentation-standard.md): at most 50 nonblank source lines per unit.
-Every role applies its human-audience, embedded-visual and source-companion rules and [review criteria](documentation-review.md) in every consuming project.
+Every role applies its human-audience, embedded-visual, [GUI visual](gui-visuals.md) and source-companion rules and [review criteria](documentation-review.md) in every consuming project.
 Preserve spacing and normal prose; keep technical review events in the prescribed records.
 A YAML-first skill keeps valid front matter and does not infer PME whole-file approval.
 

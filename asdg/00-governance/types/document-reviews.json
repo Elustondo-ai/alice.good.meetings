@@ -20115,6 +20115,951 @@
       "provenance": {
         "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
       }
+    },
+    {
+      "path": "asdg/00-governance/docs/gui-visuals.md",
+      "sha256": "2924d455b1961233edba02f41677c54bca32b24622eee7b912970aa5d40044c7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:23:12.614532+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shared GUI documentation visual rule for all roles; single authoritative definition with references"
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/images/gui-visuals.svg",
+      "sha256": "3e38fa614215bf9707de89715ddd3293f6ac45e3b996de5db179f0681b1bdbe6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:23:12.614532+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shared GUI documentation visual rule for all roles; single authoritative definition with references"
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "304d593385b2bc316506b2bc4ee29bd3ed4758ce1068cfd4d6e6f050e48a1b67",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:23:12.614532+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shared GUI documentation visual rule for all roles; single authoritative definition with references"
+      },
+      "previous_state": {
+        "sha256": "3e091462bd26ae73e8e182387e189586a851e9a2c0b6d3e0b5b281cc2c1b2073",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/documentation-standard.md",
+      "sha256": "eb811e008c1010c51db431f97f04c5c815bed1e3a962738a1a76ec3f95626081",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:23:12.614532+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shared GUI documentation visual rule for all roles; single authoritative definition with references"
+      },
+      "previous_state": {
+        "sha256": "979fae35a3edc800b889128dd28380f52f604fedbce704a75c1417dc3f0ecb3b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/documentation-review.md",
+      "sha256": "2f8bd0af880a61767554ab08f923283cec8a5ececea2941dd6fee6ee6e530b5a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:23:12.614532+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shared GUI documentation visual rule for all roles; single authoritative definition with references"
+      },
+      "previous_state": {
+        "sha256": "1adc90c0a76fd331ab50e3145c540bc76fef30e80b9e6acf093b0985f6fc4f6d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "7a5e0747896d549ccf5ecb1201c48660131d91d1075a102589b6ecbc3a22e6e4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:23:12.614532+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shared GUI documentation visual rule for all roles; single authoritative definition with references"
+      },
+      "previous_state": {
+        "sha256": "ba5f1b62295c9938e955f7e351433ecaa58ce5fe7f32c1c408166d61c8bc2247",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-documentation/SKILL.md",
+      "sha256": "54c76cbe75fd1e0e4101ed5a5e7f35e53809c204c60e8e515b1ec0044c9a9bd6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:23:12.614532+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shared GUI documentation visual rule for all roles; single authoritative definition with references"
+      },
+      "previous_state": {
+        "sha256": "5f164556a757b6f3c1a8057cd661177079e24aa658e860cb9b55ca8b438011a4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "acad1622b84fda2a8ba1715dcba6e533f6f5ac09849c1deb3a0d507a720b2137",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:23:12.614532+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shared GUI documentation visual rule for all roles; single authoritative definition with references"
+      },
+      "previous_state": {
+        "sha256": "863b0072747a13bc0b77204cd181cf2c16875edb77467acc94096e34a19241e1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "432084010ee531bb156848a09388599173ebe6cd0de80cebc68323063708273e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:23:12.614532+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested shared GUI documentation visual rule for all roles; single authoritative definition with references"
+      },
+      "previous_state": {
+        "sha256": "0922ffc04d0c641469ccbeec82c9cb6537b9b785f89d3300fbac8d09f0779e75",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "57312f375cf8b143b49b872f9b4cc57e88012416b96f23bc231385bc0ca1054e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "304d593385b2bc316506b2bc4ee29bd3ed4758ce1068cfd4d6e6f050e48a1b67",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/AGENTS.md",
+      "sha256": "a57f57c42e0668059e591358671ccd25b7cad51d3e108109825ee50b0f7961c4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "391f082ccfb180aafeae61affa619a167b20a009288a977c6511a58d2395c92a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/continuation.md",
+      "sha256": "e67b4d2b9ee96b89b9d5adf754da6e6ea07b1e389a8ff3199f84620cb12dde41",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "913473e2165204698618352302c763e4b098899390ff7964153777de2243c343",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "1d2e1fd14ca79a0c99eb36ae6c701ca8720aea2e53ad91e10fa8bd505319f05b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "804ed85f44702945b4b92863a4e28f8ce285b08a55a5682e58e5e1a5443b83ab",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-state.md",
+      "sha256": "c40abebcda22bfa994e53787dcfd67ef5aef2da40bf773ce860f62d9e378f348",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "e3d3517a977aaf6cd217e4a86f5203ca81f2875f5e781c3d68125a4cde713e59",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "sha256": "58f730f310594887c4a597d435c842626df9eba33d273cad3cb1b580831636ef",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "035656534d11244f85c5aaa150a542252892561266ad4a805979773c606308a2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/subject-focus.md",
+      "sha256": "5fc299b215f629cfcdefe672912516934f2f85df71af362793058ccf36d890bc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "b49c88bb7e234bce2a92def856d0cbfe9a881d42bb3d668f33c13f788cd8fddd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/rename-chat.md",
+      "sha256": "bab856f64cb4d5a317a991891826ab8b6d08d7fdd0e984497e0e3dffb7ef1049",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "db2aab88ef8bda19c32285e2697d2f520a59e0f066ff7908b15db484a3edf3cc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/TRY-IT.md",
+      "sha256": "5c2c9de26ed157fc2190fb2bf9dadf936de9af537ecd798e0c0ec00c1b456763",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "50f9ebd9b5006c081141d9c1c691d8323ad3cf02ff2185f7efa06425fcd2e0ff",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/SKILL.md",
+      "sha256": "a0480b62d8c4ac5fd92c601c5d0674f76e6373e5d09bc65ee613be7576911ccb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "b4b9641ab12bb332c2399f25eb1fe82c5c0356913ae866962877c4e711930050",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-decision/SKILL.md",
+      "sha256": "9b99ec26cbc8c403bf46d684c0ea139fe5843271f9dd22dc4a5001ee53b5389f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "c90bb3490fdc576a15795ce327584a1d43b1daa5499cb8e4e795365af8f554b3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/05-high-level-design-and-architecture/tests/acceptance.md",
+      "sha256": "1314cb56a82fcd6cc0fcbfd73bad893cfb5e3755ac669d1c5f389bcc29201449",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "28e853342abc812fd7666b07d27445835702b7cbf35606b00ae7b1818023f1d2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_session.md",
+      "sha256": "9ab3020f6fb633381e23758cff6242d32e57a37a4d2392626bd399a28d67ffb3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/images/cli_session-flow.svg",
+      "sha256": "65bb5afd2aa771fa8b743ec60486ed1cd8e784d79582364e4f9c8c19f7924acf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_status.md",
+      "sha256": "d06d4dcd71c637afe9818976f283f012ca200b46cf15965aace1772de72ee216",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "48aea66429bb49683048a20ec348fa81522165f8d17bfc57e15ebadc94842c29",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "sha256": "d1cabab81768d922f88d855ff542e8b1ca78441f6c47f450cb8539cecaec8ba7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "398d95a80f23bb24ebea4d3aa2cfa515ed81171c1508fee9b3ca927a8063fbe9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/README.md",
+      "sha256": "9881fa547a13fd5d9200a70b3b262e1974b53aaa093fb685c3188c984e9c4ff5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "353f42418484b5a06ab143b83e27ab132e9320df528c43eb6a58106a420f2d76",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "8d19231bf406206e772a31f9fafea144bf8ccc471914c454613ec2217738c236",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "acad1622b84fda2a8ba1715dcba6e533f6f5ac09849c1deb3a0d507a720b2137",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "87d7b0b0d5f0b4ea430f187f575d07773916cc4b0c27c31835b5b84e697382cd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:37:22.557978+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "User-requested default-session governance: 00 Governance default role, no role None path, bootstrap blocking"
+      },
+      "previous_state": {
+        "sha256": "432084010ee531bb156848a09388599173ebe6cd0de80cebc68323063708273e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "0acda5b7d423c259a801d9894a78cfb2e71e5b763de3a89ef2ae49d8457da67b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-30T23:38:09.979772+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Reword test case row to avoid the forbidden role-None phrase"
+      },
+      "previous_state": {
+        "sha256": "87d7b0b0d5f0b4ea430f187f575d07773916cc4b0c27c31835b5b84e697382cd",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/AGENTS.md",
+      "sha256": "590f41fed13f397bddf5adf7ee16b5f65213448a19649ca2d34ec8bec0d7dc0f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "a57f57c42e0668059e591358671ccd25b7cad51d3e108109825ee50b0f7961c4",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/documentation-authority.md",
+      "sha256": "6b1d86ccdc8d17e7ea3a36814313c8c45650815d0c8c5a97b0f1e21fd47c8962",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "4c47471669a6b94519cf5144b2fb0642c3b057d1a91b01217f7285c4ebec1508",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/01-context-and-domain-analysis/AGENTS.md",
+      "sha256": "f4248d3b6a3ea877466377f16c9babebf89de73bdd35096d8eaa357f17e5eea1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "a93eb71826b9f658f64b172ef5c6b05dcb303fa99729b936f7208e672b4db88f",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/02-purpose/AGENTS.md",
+      "sha256": "71945f5849c2960dafa4b7aae3af1e3f36f092539d5c787a2a2d6a057a1b7b92",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "a3877a1d42c44cfd13c23d43b83aacb288a3d7f557a020dd43d58a4129969faa",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/03-system-model-and-use-cases/AGENTS.md",
+      "sha256": "4a848d961e27a03a0da75707ccd11fa05375c3d7453e91e337b46d3135204c02",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "25bdefb3e3c575e447d5acd09783802749e018e720bb736d277fa8d94bafeead",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/04-benchmarks-and-eval-strategy/AGENTS.md",
+      "sha256": "9a91031611c5a4b0de5bfbffa86e9aef823276c30a82121a5675e40bf8b568b5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "41f61ec9bdf9259f176b460461e49050537aaf6aba2bde10dc8259dcc71aff60",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/05-high-level-design-and-architecture/AGENTS.md",
+      "sha256": "9a8e1c134d53dac4866395a8a613d00aa51a4ab2bb7e40493119539c855b6026",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "f32c65b4964924e0516ab5ab9618c34ee068b829b02d01627e6c15faa3b2b942",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/06-viable-proof-of-concept/AGENTS.md",
+      "sha256": "119bb1f608978df4923da42fe7d23556a8a9c8b2ffeaa3cb6eb43c8b1e82be8b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "f72844a95842f1fef1ba25782ded71c9d87a1e245bfb9bc0bd2839482b7ab6c0",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/07-planning/AGENTS.md",
+      "sha256": "5a5df0fdacbd6191e5a2ca3c04ae80e0c0a4e07229f315d64d3d8a7340fba5e8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "c41a6ca0f425fae170f06ef9a64138989cd112655c36d12def236548a5dc55f9",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/08-low-level-design/AGENTS.md",
+      "sha256": "1c35ac4edeced17108fd25c68af35182a863b8b5235d3f5ed3712c54f59c74eb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "65a188f5dda5659767b5a69a1145c43bca9b4e0de5d0be27da5701962158361e",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/AGENTS.md",
+      "sha256": "ffb7734655efc818690bc4dbfdcae54a8a36f26baef5222a75121fa4ebfa06d6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "23882cbd7705b798a858465507bfa123d43bdefd1efd70c9434111a4b69571a6",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/10-document-review-and-release/AGENTS.md",
+      "sha256": "7fd1130e46a9bdb14ba82d6776e8a6d67f59e852669156c7871f79db0eb53ddf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "606e1cbb269b6206e0b066576b4982bac7f5bcbfddafaddf0fe5db51165e1e51",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/11-operational-reality-devops-and-user-acceptance/AGENTS.md",
+      "sha256": "2fcb2d81fb953d453fdc5b6a61df2523002b4162b3e7e1abc565e6ecf738f170",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "99423df950766cf5fa403ad02a0e2314a712254f385a07e4f1d168e4a0626d0c",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/12-observability-insights-and-learning/AGENTS.md",
+      "sha256": "5bbcad1e7838699cd05737ae98d637aee4fc5ad98c3a0d176b19d3dcd8d808a5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "de9d303f69d4a09872b9941c1511cfd2d9a3a626e86d4e4c48571b00a7c38495",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "ef1e130bb56e4a3ef6aa661a65f03a06cd349e6d95554c0cba8b6d3ff03bee93",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "57312f375cf8b143b49b872f9b4cc57e88012416b96f23bc231385bc0ca1054e",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/review-loop.md",
+      "sha256": "ee933399f03785b213b425209d3cdeff07fb872a59d5a2f2f8312debd652e6b3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "529fad8914e3a81a3baa7078b738a19e68be6c4f2aeb1425785201d894a63be9",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "sha256": "597ec737497d04245d53f89039a98c3ec1d6020c6e29bca4ff11bdf0a5cb1105",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "d1cabab81768d922f88d855ff542e8b1ca78441f6c47f450cb8539cecaec8ba7",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "sha256": "9f19a247eefc9032ca0cec3b1d217a60f666ba29c741d4d7ed9425c55040861d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "58f730f310594887c4a597d435c842626df9eba33d273cad3cb1b580831636ef",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/TRY-IT.md",
+      "sha256": "0f72e7fe27affaafb29d0b3bda2f744158bd9e7040eedf9c4ac8fbd40c0d3c29",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "5c2c9de26ed157fc2190fb2bf9dadf936de9af537ecd798e0c0ec00c1b456763",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/focus-choices.md",
+      "sha256": "f970bf6969b3e894e0ccfbe53f3c82f502aa8c0b63e8beb40dda0581f4d9e6ab",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "5c899f1f6cbadac60ff94e262b44198d66fb40ac14e4098436ba18dbc0a67c69",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/rename-chat.md",
+      "sha256": "e37c9284a61db66d7e18482e4e565015826551bf4a4cc1939aa4463cfd3e5e79",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "bab856f64cb4d5a317a991891826ab8b6d08d7fdd0e984497e0e3dffb7ef1049",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "6bb3ef11a0c660b6cf90d34892392f2768a79a9153bf627ee145c8e25c1a23d8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "1d2e1fd14ca79a0c99eb36ae6c701ca8720aea2e53ad91e10fa8bd505319f05b",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-state.md",
+      "sha256": "1c120c646e13ac3e01d951b0795e1a7beb615d8a99013e7469c7e1248d22cfdd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "c40abebcda22bfa994e53787dcfd67ef5aef2da40bf773ce860f62d9e378f348",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "2b5ce7d02c59c822625439feb2d07ce8f0e08c88308b302d13e3119eeb6b4e05",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "0acda5b7d423c259a801d9894a78cfb2e71e5b763de3a89ef2ae49d8457da67b",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "7277efff181dda3b96912447cff4675390f1e9ffab3aca524899879c1e272796",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      },
+      "previous_state": {
+        "sha256": "8d19231bf406206e772a31f9fafea144bf8ccc471914c454613ec2217738c236",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/admin/AGENTS.md",
+      "sha256": "69f01ee7ebb0731036c5f4ea51b18a94e3094ccd2f2c5009f9d8bac60c3109a6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      }
+    },
+    {
+      "path": "asdg/admin/skills/maintain-rules/SKILL.md",
+      "sha256": "2dcbf163817afdc3e12be19afcea754e185ca98f59b9641ec5c8f8351f1298df",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      }
+    },
+    {
+      "path": "asdg/admin/types/admin-role.json",
+      "sha256": "5e86ecddec485342c4b07f0da7fc829c23aa342cca058922332aeaf90fcf6edd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      }
+    },
+    {
+      "path": "asdg/admin/types/contract.md",
+      "sha256": "c8e22e5f6782f0bd4df545433e8f060d9f6f67d22f38629e95d75c36d559f590",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:06:14.346992+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin (bootstrap under Governance, then Admin): default-role governance, Admin role, title synchronization"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_hook.md",
+      "sha256": "b8668ebc3a1451461a58591505b6fbea40502ee5eb3d7eaba46a6f4044a15689",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:54:25.528751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin follow-up: bootstrap gate before all writes, Admin package validation, native scenario evidence"
+      },
+      "previous_state": {
+        "sha256": "cbd4f044c7d651b9ba2e1bbc2ffb3dccbe0a4edd21e24953dff840ee705a863d",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "sha256": "100748ba822a7c0097a173c0e5715d25bf320dfb612a0495c59497f7b0ffcaa8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:54:25.528751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin follow-up: bootstrap gate before all writes, Admin package validation, native scenario evidence"
+      },
+      "previous_state": {
+        "sha256": "597ec737497d04245d53f89039a98c3ec1d6020c6e29bca4ff11bdf0a5cb1105",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "4fd8fc3e5ca6ba98ac3bde4fd359aa6ba40e09956f5f7867d911115359145c5d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:54:25.528751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin follow-up: bootstrap gate before all writes, Admin package validation, native scenario evidence"
+      },
+      "previous_state": {
+        "sha256": "2b5ce7d02c59c822625439feb2d07ce8f0e08c88308b302d13e3119eeb6b4e05",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "e96f68785b9b77a3c044915f9518e621a3e2d4d82640898c5674f0dd17b0818e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:54:25.528751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin follow-up: bootstrap gate before all writes, Admin package validation, native scenario evidence"
+      },
+      "previous_state": {
+        "sha256": "7277efff181dda3b96912447cff4675390f1e9ffab3aca524899879c1e272796",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_session.md",
+      "sha256": "1a709222e396cc3fba27675e73079d67435ffbbeed94109350ecc15f9a0797b4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:54:25.528751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin follow-up: bootstrap gate before all writes, Admin package validation, native scenario evidence"
+      },
+      "previous_state": {
+        "sha256": "9ab3020f6fb633381e23758cff6242d32e57a37a4d2392626bd399a28d67ffb3",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "b83973768f94001ac344ca4e23ae796987d97570449cbe3367f47b952d8b23d9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:55:17.710035+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Split portable case index to stay within the 50-line limit"
+      },
+      "previous_state": {
+        "sha256": "4fd8fc3e5ca6ba98ac3bde4fd359aa6ba40e09956f5f7867d911115359145c5d",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases-roles.md",
+      "sha256": "a12f53f161ec4414effad77be0aa8d0fb090995bd493626980c4493d19f27222",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:55:17.710035+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Split portable case index to stay within the 50-line limit"
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "9a28fa7d82718aae483a97a4f8c43fd7b9ab701cdf80bea89d4b5c2306086217",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T00:55:17.710035+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "Split portable case index to stay within the 50-line limit"
+      },
+      "previous_state": {
+        "sha256": "e96f68785b9b77a3c044915f9518e621a3e2d4d82640898c5674f0dd17b0818e",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

@@ -1,6 +1,6 @@
 # Keep the current chat title aligned with its state
 
-Run after successful role, subject-focus or attitude selection/clear, repeat selection, explicit-scope expiry or an explicit title refresh.
+Run once required sources load: a new session starting under 00 Governance, a legacy role None migrating to it, a clear returning to it, any explicit role selection including ASDG Admin, subject or attitude selection/clear, repeat selection, explicit-scope expiry or an explicit title refresh.
 Status alone never renames. Preserve valid selection even if native renaming is unavailable or fails.
 Read the current [session receipt](session-state.md); the title is its projection, never evidence of authority.
 
@@ -9,9 +9,10 @@ Read the current [session receipt](session-state.md); the title is its projectio
 Use `NN <short role label> [<focus>] [<attitude>]`, joined with single spaces; brackets indicate optional fields and are never literal.
 Take stage/role identity from [the catalogue](../../00-governance/types/agent-catalog.json) and its short label from [Focus choices](focus-choices.md).
 For example: `00 Governance`, `05 Architecture`, `05 Architecture Security`, or `05 Architecture Security Black`.
+ASDG Admin is outside the stages: use `ASDG Admin [<focus>] [<attitude>]` with no number.
 Use the exact short labels supplied in Focus choices; preserve catalogue numbering and project binding in the receipt.
 Append an explicitly selected focus, then a selected English attitude color. Omit unset fields entirely: no Off, NoAttitude, NoFocus, None or placeholder separators.
-Role None displays `General` without a stage number; unrecoverable role displays `Role unknown` without inventing a prefix.
+The default role displays `00 Governance`; there is no `General` title. Unknown or blocked role displays `Role unknown` without inventing a prefix.
 Report unknown focus/attitude in the receipt and reply; do not infer an empty selection. Omit unverified optional title fields.
 Never append the project name automatically or use it as an inferred focus. Goal, project and temporary scope stay in the receipt.
 Use one line with no pipes, dots, dashes, secrets or control characters added as separators; retain the full selected focus in the receipt if its display needs shortening.
@@ -22,6 +23,7 @@ Honor a directly requested custom title while retaining the computed projection 
 
 Use the current client's supported rename-chat action and its actual schema.
 For `mcp__codex_app__set_thread_title` or `codex_tui.set_thread_title`, pass `title` and omit `threadId` to target this chat.
+In the Claude desktop app's Code tab, use `mcp__ccd_session_mgmt__set_session_title` with `session_id` `"self"`, then read back with `get_session` `"self"`; observed working on 31 October 2026.
 An equivalent exposed native current-chat operation is acceptable; never invent an API or directive.
 When a stable ID is required, use the calling thread ID supplied by the runtime, never a title match.
 If the current title is actually observed to equal the computed title, report UNCHANGED without a redundant mutation.

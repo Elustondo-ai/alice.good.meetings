@@ -19,9 +19,9 @@ For one clear role match, state the interpreted role and proceed without another
 For overlapping responsibilities, ask among plausible specialists with a recommendation and reason; an unanswered option is not a selection.
 For missing or unrecognizable intent, ask which specialist the user wants, showing the twelve plus Governance separately.
 Quoted examples, hypothetical requests and explanations select nothing.
-For legacy `clear`, “clear focus,” or “return to general,” clear only the role, preserve goal/subject/attitude/project, then rename and report Status.
-Resolve a role to exactly one catalogue entry; do not synthesize paths, identities or numbering from user input.
-00 selects ASDG-COORDINATOR, not None. Clarification and invalid input preserve the prior receipt and title.
+For legacy `clear`, “clear focus,” or “return to general,” return the role to 00 Governance by loading its sources as for any selection; preserve goal/subject/attitude/project, then rename and report Status.
+Resolve a role to exactly one catalogue entry, or for an explicit Admin selector to the [Admin registration](../../admin/types/admin-role.json); do not synthesize paths, identities or numbering from user input.
+00 selects ASDG-COORDINATOR, which is also the default role; there is no role None. Clarification and invalid input preserve the prior receipt and title.
 
 ## Read before role activation
 
@@ -29,9 +29,9 @@ Resolve client root as `../../..` and distribution root as `../..` from THIS can
 Read client AGENTS.md and `asdg/AGENTS.md`; verify the session-policy reference or report BLOCKED: SESSION_POLICY_NOT_CONFIGURED.
 Retain the target project and all other session fields; unknown project is valid for an interview.
 Read [the lifecycle baseline](../../docs/lifecycle-baseline.md); stop on identity/order disagreement.
-Read the selected catalogue entry, required sources and procedure in full, including contract, runtime rules and response envelope.
+Read the selected catalogue entry, required sources and procedure in full, including contract, runtime rules and response envelope; for Admin, its registration lists them.
 Resolve links from their containing files; confirm role ID/native name/stage match the catalogue.
-Missing or contradictory sources block the proposed switch and preserve the previous role and title.
+Missing or contradictory sources block the proposed switch and preserve the previous role and title; if the Governance sources themselves fail, report `BLOCKED: GOVERNANCE_BOOTSTRAP`.
 Inspection alone does not activate a role; do not substitute an old provider checkout or remembered definition.
 
 ## Activate, rename and report
