@@ -4,7 +4,7 @@
 
 Each method below belongs to `PortableTests`, takes `self`, returns `None` and uses unittest assertions.
 Names describe the intended regression checks; this index is not an execution result.
-Session-role, governance-bootstrap and Admin cases are in the [role and session case guide](test_portable-cases-roles.md).
+Session-role, governance-bootstrap and Admin cases are in the [role and session case guide](test_portable-cases-roles.md); client selection cases are in the [client case guide](test_portable-cases-clients.md).
 
 | Test method | Responsibility |
 | --- | --- |
@@ -23,7 +23,7 @@ Session-role, governance-bootstrap and Admin cases are in the [role and session 
 | `test_missing_shared_focus_template_fails_before_any_writes` | Missing shared skill or UI metadata fails preflight without writes. |
 | `test_retired_focus_template_is_rejected_before_any_writes` | A retired per-role picker template cannot silently restore menu clutter. |
 | `test_advice_report_creates_planning_parents_without_changing_state` | advice report creates planning parents without changing state. |
-| `test_preserves_client_instructions_documents_and_ignore` | preserves client instructions documents and ignore. |
+| `test_preserves_client_instructions_documents_and_ignore` | Existing instructions follow the bootstrap without their old approval marker, which the receipt keeps; ignore rules and documents are preserved. |
 | `test_existing_codex_config_conflict_has_no_side_effects` | existing codex config conflict has no side effects. |
 | `test_foreign_binding_and_legacy_data_are_not_overwritten` | foreign binding and legacy data are not overwritten. |
 | `test_edited_adapter_is_preserved_and_verification_fails` | edited adapter is preserved and verification fails. |

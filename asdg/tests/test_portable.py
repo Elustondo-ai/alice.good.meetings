@@ -276,7 +276,8 @@ runpy.run_path(entry, run_name='__main__')
                          ('ASDG-COORDINATOR', 'asdg_coordinator', 'READY'))
         self.assertFalse(session['role_none_permitted'])
         self.assertEqual(session['enforcement'], 'INSTRUCTIONAL_ONLY')
-        self.assertIn('00 Governance (ASDG-COORDINATOR) by default', (self.root / 'AGENTS.md').read_text())
+        self.assertTrue((self.root / 'AGENTS.md').read_text().startswith('<!-- ASDG:BEGIN bootstrap-v2 -->\n## ASDG bootstrap\n'))
+        self.assertIn('00 Governance by default', (self.root / 'asdg/AGENTS.md').read_text())
         self.assertIn('Session role: 00 Governance by default (READY)', self.run_cli('status', '--facts-only').stdout)
 
     def test_missing_governance_source_blocks_bootstrap_and_implementation(self):
@@ -298,29 +299,112 @@ runpy.run_path(entry, run_name='__main__')
     def test_entry_point_without_distribution_link_blocks_bootstrap(self):
         self.init()
         agents = self.root / 'AGENTS.md'
-        agents.write_text(agents.read_text().replace('read `asdg/AGENTS.md`', 'read the methodology'))
-        session = json.loads(self.run_cli('status', '--json', expect=1).stdout)['session_governance']
-        self.assertEqual(session['status'], 'BLOCKED')
-        self.assertIn('AGENTS.md: client entry point does not load asdg/AGENTS.md', session['missing'])
+        managed = agents.read_text()
+        # An edited block without the link, or a removed block whose project text mentions the file, both fail.
+        for text in (managed.replace('`asdg/AGENTS.md`', 'the methodology'), 'Project notes: read asdg/AGENTS.md first.\n'):
+            agents.write_text(text)
+            session = json.loads(self.run_cli('status', '--json', expect=1).stdout)['session_governance']
+            self.assertEqual(session['status'], 'BLOCKED')
+            self.assertIn('AGENTS.md: client entry point does not load asdg/AGENTS.md', session['missing'])
 
-    def test_repeat_setup_upgrades_only_an_unedited_legacy_bridge(self):
+    def bootstrap_module(self):
         sys.path.insert(0, str(self.root / 'asdg/scripts/lib'))
         self.addCleanup(sys.path.remove, str(self.root / 'asdg/scripts/lib'))
-        from cli_project import BRIDGE, LEGACY_BRIDGES
+        import cli_project
+        return cli_project
+
+    def test_known_legacy_blocks_move_first_and_keep_project_text(self):
+        cli = self.bootstrap_module()
         self.init()
         agents = self.root / 'AGENTS.md'
-        self.assertEqual(len(LEGACY_BRIDGES), 2)
-        for legacy in LEGACY_BRIDGES:
-            old = agents.read_text().replace(BRIDGE, legacy)
-            agents.write_text(old)
+        project = '# Team rules\n\nKeep the build green.\n'
+        self.assertEqual(len(cli.LEGACY_BRIDGES), 3)
+        for legacy in cli.LEGACY_BRIDGES:
+            cases = ((project + '\n' + legacy, cli.BRIDGE + '\n' + project),  # appended by an older setup
+                     (legacy, cli.BRIDGE),  # an older fresh install
+                     (project + '\n' + legacy + '\nLater note.\n', cli.BRIDGE + '\n' + project + '\nLater note.\n'))
+            for old, expected in cases:
+                agents.write_text(old)
+                self.run_cli('verify', expect=1)
+                self.init()
+                self.assertEqual(agents.read_text(), expected)
+                self.assertIn(old, [b.read_text() for b in (self.root / '.asdg/backups').glob('AGENTS-before-*.md')])
+                before = snapshot(self.root)
+                self.init()
+                self.assertEqual(snapshot(self.root), before)
+                self.run_cli('verify')
+
+    def test_project_text_after_bootstrap_is_preserved_byte_for_byte(self):
+        cli = self.bootstrap_module()
+        project = b'# Client notes\r\n\r\nTabs\tand trailing spaces stay.  \n\xc3\xa9t\xc3\xa9\n'
+        (self.root / 'AGENTS.md').write_bytes(project)
+        self.init()
+        body = (self.root / 'AGENTS.md').read_bytes()
+        self.assertEqual(body, cli.BRIDGE.encode() + b'\n' + project)
+        extended = body + b'\n## More project guidance\nStill project-owned.\n'
+        (self.root / 'AGENTS.md').write_bytes(extended)
+        self.run_cli('verify')
+        before = snapshot(self.root)
+        self.init()
+        self.init()
+        self.assertEqual(snapshot(self.root), before)
+        self.assertEqual((self.root / 'AGENTS.md').read_bytes(), extended)
+
+    def test_edited_moved_or_duplicated_bootstrap_conflicts_without_writes(self):
+        cli = self.bootstrap_module()
+        (self.root / 'AGENTS.md').write_text('# Project\n')
+        self.init()
+        agents = self.root / 'AGENTS.md'
+        good = agents.read_text()
+        self.assertEqual(good, cli.BRIDGE + '\n# Project\n')
+        for text in (good.replace('stop dependent work', 'continue anyway'),
+                     '# Project\n\n' + cli.BRIDGE,
+                     good + '\n' + cli.BRIDGE,
+                     '# Project\n\n' + cli.LEGACY_BRIDGES[0].replace('Preserve', 'Keep')):
+            agents.write_text(text)
+            before = snapshot(self.root)
+            result = self.init(expect=1)
+            self.assertIn('Edited, moved or incomplete ASDG bootstrap', result.stdout + result.stderr)
+            self.assertEqual(snapshot(self.root), before)
             self.run_cli('verify', expect=1)
-            self.init()
-            self.assertIn(BRIDGE, agents.read_text())
-            backups = list((self.root / '.asdg/backups').glob('AGENTS-before-*.md'))
-            self.assertIn(old, [b.read_text() for b in backups])
-            self.run_cli('verify')
-        agents.write_text(agents.read_text().replace(BRIDGE, LEGACY_BRIDGES[0].replace('Preserve', 'Keep')))
-        self.init(expect=1)
+        agents.write_text(good)
+        self.run_cli('verify')
+
+    def test_bootstrap_template_is_generic_and_removed_rules_have_homes(self):
+        cli = self.bootstrap_module()
+        self.assertLessEqual(sum(1 for line in cli.BRIDGE.splitlines() if line.strip()), 8)
+        for phrase in ('read and follow `asdg/AGENTS.md`', 'every startup source', 'read-only diagnosis stays allowed'):
+            self.assertIn(phrase, cli.BRIDGE)
+        self.assertNotRegex(cli.BRIDGE.lower(), 'speakercoach|speaker coach|pablo')
+        entry = (CORE / 'AGENTS.md').read_text()
+        for link in ('skills/asdg-focus/session-policy.md', 'skills/asdg-focus/session-state.md',
+                     '00-governance/docs/runtime-contract.md', '00-governance/AGENTS.md',
+                     '00-governance/docs/sprint-gate.md', '00-governance/docs/documentation-authority.md', 'admin/AGENTS.md'):
+            self.assertIn(f']({link})', entry)
+            self.assertTrue((CORE / link).is_file(), link)
+        homes = {
+            CORE / 'AGENTS.md': [
+                'session-policy.md), again on every turn', '00 Governance by default', 'BLOCKED: GOVERNANCE_BOOTSTRAP',
+                'read-only diagnosis stays allowed', 'Before substantial work, run the local `python3 asdg/scripts/cli.py status --json`',
+                'a machine-wide `asdg` may resolve an older installation', '`python3 asdg/scripts/cli.py verify` checks structure only',
+                'sprint check-implementation --path <target>', "a sprint never widens a role's authority",
+                'hook definitions or ASDG policies', 'Codex hooks enforce nothing until a human reviews and trusts them',
+                'grant no approval, publication, commit, push, deletion, deployment or hook trust',
+                'run only under explicitly selected [ASDG Admin]', 'preserving both'],
+            CORE / '00-governance/docs/sprint-gate.md': [
+                'Scope is an exact repository-relative file or directory ending in `/`', 'meet its acceptance criteria',
+                'a coding task alone implies neither', 'Use scoped apply_patch', 'It blocks arbitrary',
+                'Protected agent-policy/state paths cannot be scope', 'Project hooks run ONLY after'],
+            CORE / '00-governance/docs/runtime-contract.md': [
+                'only its bounded documentation-review recording workflow', 'python3 asdg/scripts/cli.py sprint check-implementation'],
+            CORE / '00-governance/docs/documentation-authority.md': ['default way agents communicate'],
+            CORE / 'skills/asdg-focus/session-policy.md': ['NEVER selects or clears these fields', 'Never use a shared ACTIVE_ROLE file'],
+            CORE / '00-governance/AGENTS.md': ['[runtime rules](docs/runtime-contract.md)'],
+        }
+        for path, phrases in homes.items():
+            text = path.read_text()
+            for phrase in phrases:
+                self.assertIn(phrase, text, f'{path}: {phrase}')
 
     def test_admin_role_is_registered_outside_the_lifecycle(self):
         registration = json.loads((CORE / 'admin/types/admin-role.json').read_text())
@@ -336,6 +420,185 @@ runpy.run_path(entry, run_name='__main__')
         self.init()
         self.assertFalse(list((self.root / '.codex/agents').glob('*admin*')))
         self.assertIn('admin/types/admin-role.json', (CORE / 'skills/asdg-focus/focus-choices.md').read_text())
+
+    def test_admin_skill_installs_relocates_and_is_explicit_only(self):
+        self.init()
+        self.root = self.root.rename(self.root.parent / 'relocated admin skill client')
+        relative = Path('.agents/skills/asdg-admin')
+        for name in ('SKILL.md', 'agents/openai.yaml'):
+            self.assertEqual((self.root / relative / name).read_bytes(),
+                             (self.root / 'asdg/templates' / relative / name).read_bytes())
+        self.assertIn('allow_implicit_invocation: false', (self.root / relative / 'agents/openai.yaml').read_text())
+        canonical = (self.root / relative / '../../../asdg/skills/asdg-admin/SKILL.md').resolve()
+        self.assertEqual(canonical, (self.root / 'asdg/skills/asdg-admin/SKILL.md').resolve())
+        text = canonical.read_text()
+        for phrase in ('only when the human explicitly invokes `$asdg-admin`', 'Never invoke it on your own initiative',
+                       'Selection authorizes no change', 'returns to 00 Governance', 'that list is authoritative'):
+            self.assertIn(phrase, text)
+        for link in re.findall(r'\]\(([^)#]+)\)', text):
+            self.assertTrue((canonical.parent / link).resolve().is_file(), link)
+        self.assertIn('$asdg-admin', json.loads((self.root / 'asdg/admin/types/admin-role.json').read_text())['selectors'])
+        self.assertIn('[Admin](asdg-admin/SKILL.md)', (self.root / 'asdg/skills/README.md').read_text())
+        self.run_cli('verify', cwd=self.root / 'docs')
+        before = snapshot(self.root)
+        self.init(cwd=self.root / 'docs')
+        self.assertEqual(snapshot(self.root), before)
+
+    def fresh_client(self, name):
+        self.root = Path(self.area.name) / name
+        self.root.mkdir()
+        shutil.copytree(CORE, self.root / 'asdg', ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
+        subprocess.run(['git', 'init', '-q', str(self.root)], check=True)
+        (self.root / 'app.js').write_text('console.log("existing application");\n')
+
+    def integrations(self):
+        return json.loads((self.root / '.asdg/integrations.json').read_text())['clients']
+
+    def statuses(self, expect=0):
+        report = json.loads(self.run_cli('verify', '--json', expect=expect).stdout)
+        return {name: item['status'] for name, item in report['integrations'].items()}
+
+    def test_fresh_setup_installs_only_the_selected_clients(self):
+        for choice, expected in (('codex', {'codex'}), ('claude', {'claude'}), ('both', {'codex', 'claude'})):
+            self.fresh_client(f'fresh {choice}')
+            self.init('--client', choice)
+            self.assertEqual(set(self.integrations()), expected)
+            self.assertEqual((self.root / '.codex').exists(), 'codex' in expected)
+            self.assertEqual((self.root / '.agents').exists(), 'codex' in expected)
+            self.assertEqual((self.root / '.claude/skills').is_dir(), 'claude' in expected)
+            self.assertFalse((self.root / 'CLAUDE.md').exists())
+            self.assertEqual(self.statuses(), {n: 'COMPLETE' if n in expected else 'NOT_SELECTED' for n in ('codex', 'claude')})
+            guard = json.loads(self.run_cli('status', '--json').stdout)['guard']['configuration']
+            self.assertEqual(guard, 'PRESENT' if 'codex' in expected else 'NOT_INSTALLED')
+
+    def test_clients_add_in_either_order_without_touching_the_other(self):
+        prefixes = {'codex': ('.codex/', '.agents/'), 'claude': ('.claude/',)}
+        for first, second in (('codex', 'claude'), ('claude', 'codex')):
+            self.fresh_client(f'{first} then {second}')
+            self.init('--client', first)
+            kept = {k: v for k, v in snapshot(self.root).items() if k.startswith(prefixes[first])}
+            self.assertTrue(kept)
+            self.init('--client', second)
+            after = snapshot(self.root)
+            self.assertEqual({k: after[k] for k in kept}, kept)
+            self.assertEqual(self.integrations()[first], {'recorded_from': f'--client {first}'})
+            self.assertEqual(set(self.integrations()), {'codex', 'claude'})
+            self.assertEqual(self.statuses(), {'codex': 'COMPLETE', 'claude': 'COMPLETE'})
+
+    def test_repeat_setup_and_dry_run_create_nothing_new(self):
+        for choice, expected in (('codex', {'codex'}), ('claude', {'claude'}), ('both', {'codex', 'claude'})):
+            self.fresh_client(f'repeat {choice}')
+            before = snapshot(self.root)
+            self.init('--client', choice, '--dry-run')
+            self.assertEqual(snapshot(self.root), before)
+            self.init('--client', choice)
+            first = snapshot(self.root)
+            for args in (('--client', choice), (), ('--client', choice, '--dry-run')):
+                self.init(*args)
+                self.assertEqual(snapshot(self.root), first, args)
+            self.assertEqual(set(self.integrations()), expected)
+            events = json.loads((self.root / '.asdg/document-reviews.json').read_text())['events']
+            self.assertEqual(len(events), len({(e['path'], e['sha256']) for e in events}))
+
+    def test_invalid_client_is_rejected_before_any_write(self):
+        before = snapshot(self.root)
+        result = self.init('--client', 'cursor', expect=2)
+        self.assertIn('invalid choice', result.stderr)
+        self.assertEqual(snapshot(self.root), before)
+
+    def test_edited_client_files_conflict_and_verify_names_the_damaged_client(self):
+        self.init('--client', 'both')
+        claude = self.root / '.claude/skills/asdg-admin/SKILL.md'
+        original = claude.read_bytes()
+        claude.write_text(claude.read_text().replace('disable-model-invocation: true\n', ''))
+        before = snapshot(self.root)
+        result = self.init('--client', 'claude', expect=1)
+        self.assertIn('Refusing to overwrite existing file', result.stdout + result.stderr)
+        self.assertEqual(snapshot(self.root), before)
+        self.assertEqual(self.statuses(expect=1), {'codex': 'COMPLETE', 'claude': 'DAMAGED'})
+        claude.write_bytes(original)
+        codex = self.root / '.agents/skills/asdg-focus/SKILL.md'
+        codex.write_text(codex.read_text() + 'Local change.\n')
+        self.assertEqual(self.statuses(expect=1), {'codex': 'DAMAGED', 'claude': 'COMPLETE'})
+
+    def test_codex_and_claude_adapters_resolve_the_same_canonical_skills_after_relocation(self):
+        self.init('--client', 'both')
+        self.root = self.root.rename(self.root.parent / 'relocated two-client project')
+        names = sorted(p.parent.name for p in (self.root / 'asdg/templates/.agents/skills').glob('*/SKILL.md'))
+        self.assertGreaterEqual(len(names), 16)
+        for name in names:
+            targets = set()
+            for folder in ('.agents/skills', '.claude/skills'):
+                adapter = self.root / folder / name / 'SKILL.md'
+                link = re.search(r'\]\(([^)]*asdg/skills/[^)]+)\)', adapter.read_text()).group(1)
+                targets.add((adapter.parent / link).resolve())
+            self.assertEqual(targets, {(self.root / 'asdg/skills' / name / 'SKILL.md').resolve()}, name)
+        self.run_cli('verify', cwd=self.root / 'docs')
+
+    def test_claude_invocation_controls_mirror_the_codex_policy(self):
+        self.init('--client', 'both')
+        explicit = set()
+        for adapter in (self.root / '.claude/skills').glob('*/SKILL.md'):
+            name = adapter.parent.name
+            policy = self.root / '.agents/skills' / name / 'agents/openai.yaml'
+            codex_explicit = policy.is_file() and 'allow_implicit_invocation: false' in policy.read_text()
+            front = adapter.read_text().split('---\n')[1]
+            self.assertTrue(front.startswith(f'name: {name}\ndescription: '), name)
+            self.assertEqual('disable-model-invocation: true' in front, codex_explicit, name)
+            self.assertNotIn('user-invocable', front)
+            if codex_explicit:
+                explicit.add(name)
+        self.assertTrue({'asdg-admin', 'asdg-focus', 'asdg-init', 'asdg-status'} <= explicit)
+
+    def test_legacy_codex_installation_is_recorded_explicitly(self):
+        self.init()
+        (self.root / '.asdg/integrations.json').unlink()  # an installation made before client tracking
+        report = json.loads(self.run_cli('verify', '--json').stdout)['integrations']
+        self.assertEqual((report['codex']['selection'], report['codex']['status']), ('legacy-unrecorded', 'COMPLETE'))
+        self.assertEqual(report['claude']['status'], 'NOT_SELECTED')
+        codex = {k: v for k, v in snapshot(self.root).items() if k.startswith(('.codex/', '.agents/'))}
+        result = self.init('--client', 'claude')
+        self.assertIn('NOTE: Recorded the existing Codex integration from a legacy installation', result.stdout)
+        self.assertEqual(self.integrations(), {'claude': {'recorded_from': '--client claude'},
+                                               'codex': {'recorded_from': 'legacy installation'}})
+        after = snapshot(self.root)
+        self.assertEqual({k: after[k] for k in codex}, codex)
+
+    def test_claude_bridge_is_added_only_when_claude_md_would_hide_agents_md(self):
+        # Assumes no CLAUDE.md in the fixture's parent folders, which would itself require the bridge.
+        self.init('--client', 'claude')
+        self.assertFalse((self.root / 'CLAUDE.md').exists())
+        notes = '# Team Claude notes\nUse plan mode.\n'
+        (self.root / 'CLAUDE.md').write_text(notes)
+        self.assertEqual(self.statuses(expect=1)['claude'], 'DAMAGED')
+        self.init('--client', 'claude')
+        block = '<!-- ASDG:BEGIN claude-bridge-v1 -->\n@AGENTS.md\n<!-- ASDG:END claude-bridge -->\n'
+        self.assertEqual((self.root / 'CLAUDE.md').read_text(), block + '\n' + notes)
+        self.assertIn(notes, [b.read_text() for b in (self.root / '.asdg/backups').glob('CLAUDE-before-*.md')])
+        before = snapshot(self.root)
+        self.init('--client', 'claude')
+        self.init()
+        self.assertEqual(snapshot(self.root), before)
+        (self.root / 'CLAUDE.md').write_text('@AGENTS.md\n\n' + notes)  # the user's own import is kept
+        before = snapshot(self.root)
+        self.init('--client', 'claude')
+        self.assertEqual(snapshot(self.root), before)
+        (self.root / 'CLAUDE.md').write_text((block + '\n' + notes).replace('@AGENTS.md', '@OTHER.md'))
+        before = snapshot(self.root)
+        result = self.init('--client', 'claude', expect=1)
+        self.assertIn('Edited, moved or duplicated ASDG Claude bridge', result.stdout + result.stderr)
+        self.assertEqual(snapshot(self.root), before)
+        (self.root / 'CLAUDE.md').unlink()
+        (self.root / '.claude/CLAUDE.md').write_text(notes)
+        self.init('--client', 'claude')
+        self.assertTrue((self.root / '.claude/CLAUDE.md').read_text().startswith(block.replace('@AGENTS.md', '@../AGENTS.md')))
+        self.assertFalse((self.root / 'CLAUDE.md').exists())
+        (self.root / '.claude/CLAUDE.md').unlink()
+        (self.root / 'CLAUDE.local.md').write_text('Personal notes.\n')
+        self.init('--client', 'claude')
+        self.assertEqual((self.root / 'CLAUDE.md').read_text(), block)
+        self.assertEqual((self.root / 'CLAUDE.local.md').read_text(), 'Personal notes.\n')
+        self.assertEqual(self.statuses()['claude'], 'COMPLETE')
 
     def test_project_work_cannot_patch_asdg_rules_through_the_guard(self):
         # Role-agnostic: the guard knows paths and sprint scope, not which role a session claims.
@@ -384,7 +647,9 @@ runpy.run_path(entry, run_name='__main__')
         forbidden = re.compile(r'role None,|starts with role None|begins with role None|selects role None|'
                                r'means None, not Governance|displays `General`|clear only the role|under general assistance|'
                                r'A maintainer follows root instructions|maintainers follow the explicit maintenance|'
-                               r"runs under the session's accountable role|removes selection without selecting Governance")
+                               r"runs under the session's accountable role|removes selection without selecting Governance|"
+                               r'general assistance under root instructions|distinct from None|an implementation gate in AGENTS|'
+                               r'Package maintenance follows root instructions|governance remains distinct from no focus')
         for path in CORE.rglob('*.md'):
             if 'proposals' not in path.parts:
                 self.assertIsNone(forbidden.search(path.read_text()), path)
@@ -490,8 +755,8 @@ runpy.run_path(entry, run_name='__main__')
         doc = self.root / 'docs/asdg/02-purpose/README.md'
         doc.parent.mkdir(parents=True); doc.write_text('# Existing purpose\nKeep this content.\n')
         self.init()
-        self.assertIn(b'Keep this client rule.', (self.root / 'AGENTS.md').read_bytes())
-        self.assertNotIn(b'PME-APPROVED', (self.root / 'AGENTS.md').read_bytes())
+        cli = self.bootstrap_module()
+        self.assertEqual((self.root / 'AGENTS.md').read_bytes(), cli.BRIDGE.encode() + b'\n# Client\nKeep this client rule.\n')
         self.assertTrue((self.root / '.gitignore').read_text().startswith('node_modules/\n'))
         self.assertIn('Keep this content.', doc.read_text())
         ledger = json.loads((self.root / '.asdg/document-reviews.json').read_text())

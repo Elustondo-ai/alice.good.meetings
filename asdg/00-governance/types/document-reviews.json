@@ -21060,6 +21060,680 @@
         "visible_review_markers": [],
         "approval_binding": "No approval inferred or transferred."
       }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "1fac2020d8e4af884afb3b2f139b5ce37ef79e724d0c447efcf6ce20c53d2278",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "7a5e0747896d549ccf5ecb1201c48660131d91d1075a102589b6ecbc3a22e6e4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/sprint-gate.md",
+      "sha256": "a002cca6ed0923def8a691703a3d4e39761d6c9a6e63aed83e48caea2c4c789d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "99743c9acf0682ce5f41bb4e02b132991d72d33d315867f86089bf035520117a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/types/cli-project-contract.md",
+      "sha256": "deb7277be846c839144fd5dc5a508d08cb8e68a3d57f44a123c5f394aec3a80d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "4fb8a6c13b4214da5b89167549f6abad4c62fa12b326f64bdb90255f379bc7af",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "f6b6dd59a07590bc3e2c64ddb0b0d60a859ab50b285af4ad854c370f28e89638",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "ef1e130bb56e4a3ef6aa661a65f03a06cd349e6d95554c0cba8b6d3ff03bee93",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "sha256": "1c73b9a6769de527962795a6b746d9fc443ed3e68bfcd1234c59a57da0d72007",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "9369f4885a3ddc80f73b29fb53a5fbf7899d8cd11957bd04cea74f5014d839e8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "sha256": "cccf3be1ff41a3e9e0d10cc24a171a742857c15fba4da416536cdda2be872aaf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "100748ba822a7c0097a173c0e5715d25bf320dfb612a0495c59497f7b0ffcaa8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_session.md",
+      "sha256": "0e5321ce3724ae7e69612cd1b5a1492644ea21e976aeea52977c78c411061522",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "1a709222e396cc3fba27675e73079d67435ffbbeed94109350ecc15f9a0797b4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-role/SKILL.md",
+      "sha256": "cf331061cde660ce7278f231c2c7ea082aada71adf18e4e413a6e27c10f3c744",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "5746464f760a2c08310498230fcea37764226275a04b7aabfaf3b06c02bffa2b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases-roles.md",
+      "sha256": "d7b3af76af1c5ed0c0c6421c52d5ae707b34a56d759c2e8ba3a9c4466974b4a1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "a12f53f161ec4414effad77be0aa8d0fb090995bd493626980c4493d19f27222",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "4687a004d7756d419102fa6df90e1acd70f86530488737ce3c68657497978d0d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "b83973768f94001ac344ca4e23ae796987d97570449cbe3367f47b952d8b23d9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "1e84b2c49da5cbaf58ee416179315500abdef911ab3a862cef28483c8335f125",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:48:02.014930+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: small root bootstrap; shared startup and gate rules moved to authoritative asdg/ files",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for this bounded change"
+      },
+      "previous_state": {
+        "sha256": "9a28fa7d82718aae483a97a4f8c43fd7b9ab701cdf80bea89d4b5c2306086217",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "03eb95c190d60870c2752bafe96f72ce8be132d12338d90c1da78065d98541d4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      },
+      "previous_state": {
+        "sha256": "f6b6dd59a07590bc3e2c64ddb0b0d60a859ab50b285af4ad854c370f28e89638",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/admin/AGENTS.md",
+      "sha256": "e74c5f17fd16da3acd9dc09dbbbffddd968df1d377f23d1e620227d25994c6fc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      },
+      "previous_state": {
+        "sha256": "69f01ee7ebb0731036c5f4ea51b18a94e3094ccd2f2c5009f9d8bac60c3109a6",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/admin/types/admin-role.json",
+      "sha256": "c99abc74a42e5b63450e9d42fb7e0884c6cbd452862c7328e0b1dc350174a2cd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      },
+      "previous_state": {
+        "sha256": "5e86ecddec485342c4b07f0da7fc829c23aa342cca058922332aeaf90fcf6edd",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "49447deb42a60864d2ec9bcae2bd8a2841028abdb4ba196a5b7733306a3c34c4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      },
+      "previous_state": {
+        "sha256": "9f4d79c3a65da371ac446c68e79795130d54c63d7f37326225c8a69259525c85",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/focus-choices.md",
+      "sha256": "f07c9832f6240191058b2697911a291796a9535ae82e5ffd22ebd72f48a790b0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      },
+      "previous_state": {
+        "sha256": "f970bf6969b3e894e0ccfbe53f3c82f502aa8c0b63e8beb40dda0581f4d9e6ab",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases-roles.md",
+      "sha256": "bf46f453ecb71a2647ed4598398296edb3e883db738bf2478efce9c6563a6715",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      },
+      "previous_state": {
+        "sha256": "d7b3af76af1c5ed0c0c6421c52d5ae707b34a56d759c2e8ba3a9c4466974b4a1",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "b826ef89447b951ebf18d42de9f49fbe30d01306a782f9f8fc6dc51c97620a56",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      },
+      "previous_state": {
+        "sha256": "1e84b2c49da5cbaf58ee416179315500abdef911ab3a862cef28483c8335f125",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-admin/SKILL.md",
+      "sha256": "c160363a04649050c68c745acc74b67f3b1a482b5320b4ceda4323d2c65da2dd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-admin/TRY-IT.md",
+      "sha256": "1d9658b876a8eb1263f4f3ef0d2b39eff3e74c5045e84acd663d9bcfc20bce01",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-admin/SKILL.md",
+      "sha256": "a5b0ec3ec5dd8df300f05ffc66728193c9bd0852621a55dd67b9bb6ded41bf35",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      }
+    },
+    {
+      "path": "asdg/00-governance/types/cli-project-contract.md",
+      "sha256": "51cc255ca24d38339b541b661b8ada66b8a16fe4c35a9dddc422d26f34fa10aa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "deb7277be846c839144fd5dc5a508d08cb8e68a3d57f44a123c5f394aec3a80d",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "02b0bb7700c1f77dc76faef28d28de48c82ad2a6624daa2a7bc44b27f65c04d8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "03eb95c190d60870c2752bafe96f72ce8be132d12338d90c1da78065d98541d4",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/CODEX-PROMPT.md",
+      "sha256": "f79bd7530c3b8a79c14b439dddd697933fc0cb1b8f420f48567eb6abbaf1c712",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "20ed910c4b3da0f90bdf3e1b57f689e8b24063bad3ca1d8117cb7a45c02cfc8a",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "167e7b8abd3354ee224fc4a2f4b45690af25033ad8a7ee2235ff59f425c81949",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "e79abfb0567b52619d05c5b18591fd66f77ea410d676882f4f2e34fb5eaa4e47",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/admin/AGENTS.md",
+      "sha256": "39f6d79e1296f467e028a8a347ccbe2f03be04eb488a4ea5f0cffb5ad101bcf1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "e74c5f17fd16da3acd9dc09dbbbffddd968df1d377f23d1e620227d25994c6fc",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/admin/skills/maintain-rules/SKILL.md",
+      "sha256": "f350795689f0f2c121a90e7c3ab3e7d70d6f160a49e31c8dda0a3abf35f32952",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "2dcbf163817afdc3e12be19afcea754e185ca98f59b9641ec5c8f8351f1298df",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "sha256": "48b08b46a2d50d05d7e55b28d02ba67ca2fab3bc50d6d76452a918f89f0ccf9d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "1c73b9a6769de527962795a6b746d9fc443ed3e68bfcd1234c59a57da0d72007",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/native-integration.md",
+      "sha256": "825c4b724fbda1e1537718bdbd8e25ded48eb8c376ff94886cb551c383b238bb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "cfa8da6232d72726c594134159aa902deb4387e48a489c0ebee1a60ccb18a08e",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/init.md",
+      "sha256": "0856aa195ea85dd5d77953393f157ee787003e6fe7f1e6a21bb5fc03f1709d2d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "6567c963f0890658a962b3eb0d229d49a49d8eda324ba100f0bb486545d13755",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/README.md",
+      "sha256": "db9f1f6d28da56faf9127b6c69a3ab69cf7380060446e0f15ee907fa95688ed2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "9881fa547a13fd5d9200a70b3b262e1974b53aaa093fb685c3188c984e9c4ff5",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli.md",
+      "sha256": "3442bc005b789da81b7ec893162e1674434a84421b811d6db235e4cfaa73efe3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "7b815e7094baf3bed304af7b35c3f78024dc618b4251ff6a9fb556d6d7d8ee4b",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "sha256": "f0829ffbb23ff9c02a43365169e0d7a1c9f35c9d41e1a6a6e397fd4e04044c60",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "cccf3be1ff41a3e9e0d10cc24a171a742857c15fba4da416536cdda2be872aaf",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_status.md",
+      "sha256": "264f6491237cc71d245c69ebd067ed0d2d540ea8b42ba8fc17e7d50bff17fab5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "d06d4dcd71c637afe9818976f283f012ca200b46cf15965aace1772de72ee216",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-init/SKILL.md",
+      "sha256": "3ebc445c711c50bc19b3dabb6bdd3acd26518b8603be3d8b8ef764e7680f7d08",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "5de0baa1434a19d0e553a0870f7d016f8bd893470e8f7d9c9f63a0a0c0eebe37",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "sha256": "81133d430ab2b55804f7c994d54ccade89efea04fe6e4e539adee909e1e3a319",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "4687a004d7756d419102fa6df90e1acd70f86530488737ce3c68657497978d0d",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "sha256": "3a121f805c64d3b8ba5e258396a1c4507f564969004e6466b489db4cd34db41f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "b826ef89447b951ebf18d42de9f49fbe30d01306a782f9f8fc6dc51c97620a56",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "f92790ce7dc900cdbe2f405fd6c5dfe734aff0d0e7a8459878782103128cc049",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      }
+    },
+    {
+      "path": "asdg/docs/images/client-integrations.svg",
+      "sha256": "d68c8ac4cf7c7d4b961f6a26ea923d0835276de91dea3916c463433a523bfaa9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_clients.md",
+      "sha256": "08640b02ec67208e654c059827b5d8d6b3e1da9f24feb95d3012dfa41f838456",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/images/cli_clients-flow.svg",
+      "sha256": "438a2496836468c18900cee33f5a1ccc7fd27f8f0311a835bdd5d22528e896b0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases-clients.md",
+      "sha256": "7722ebd8e1283f4b87a6342d7147d676901534300626790dda45cd9ca7445dea",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      }
     }
   ],
   "distribution_version": "0.2.0-pilot.2"

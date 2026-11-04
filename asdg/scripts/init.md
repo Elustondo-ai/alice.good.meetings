@@ -26,4 +26,4 @@ Propagates the selected handler's process status via sys.exit. Importing the scr
 
 ## Example
 
-python3 asdg/scripts/init.py --dry-run
+python3 asdg/scripts/init.py --client claude --dry-run previews a Claude setup; `--client codex` or `--client both` selects other integrations.

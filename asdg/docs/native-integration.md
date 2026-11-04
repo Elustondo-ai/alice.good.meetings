@@ -1,5 +1,7 @@
 # Native Codex integration: verify locally
 
+Claude Code integration and client selection are covered in [client integrations](client-integrations.md); this page covers Codex.
+
 The package generates repository skill adapters and thirteen custom-agent TOML files.
 It also generates hook configuration for the existing conservative implementation gate and public activity logging.
 These are configuration artifacts; actual client behavior must be observed before claiming them operational.

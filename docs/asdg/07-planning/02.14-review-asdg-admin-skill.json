@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "objective": "Add an explicit $asdg-admin skill that switches a chat to ASDG Admin, with clear returning to 00 Governance.",
+  "requested_by": "Pablo (repository owner), 2026-10-31",
+  "requests": [
+    "we need a skill like the other to tell the session that is a asdg admin. in the same way we have asdg role",
+    "Switch to ASDG Admin"
+  ],
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-opus-5-5",
+    "client": "Claude desktop app, Code tab",
+    "session": "local_15c31fc2-e853-4e10-8d69-f4417296d9cf"
+  },
+  "role": {
+    "id": "ASDG-ADMIN",
+    "selection": "explicit human selection after the agent asked",
+    "sources_loaded": [
+      "AGENTS.md",
+      "asdg/AGENTS.md",
+      "asdg/skills/asdg-focus/session-policy.md",
+      "asdg/skills/asdg-focus/session-state.md",
+      "asdg/admin/AGENTS.md",
+      "asdg/admin/types/contract.md",
+      "asdg/admin/skills/maintain-rules/SKILL.md",
+      "asdg/docs/review-loop.md",
+      "asdg/00-governance/docs/runtime-contract.md",
+      "asdg/00-governance/types/interaction-contract.md"
+    ],
+    "title": {
+      "tool": "mcp__ccd_session_mgmt__set_session_title",
+      "previous": "00 Governance",
+      "requested": "ASDG Admin",
+      "outcome": "RENAMED",
+      "readback": "ASDG Admin"
+    }
+  },
+  "starting_revision": "675df99",
+  "preserved_uncommitted_work": "02.13 root AGENTS.md bootstrap change",
+  "changed_paths_this_change": [
+    ".agents/skills/asdg-admin/SKILL.md",
+    ".agents/skills/asdg-admin/agents/openai.yaml",
+    ".asdg/document-reviews.json",
+    "asdg/00-governance/types/document-reviews.json",
+    "asdg/AGENTS.md",
+    "asdg/admin/AGENTS.md",
+    "asdg/admin/types/admin-role.json",
+    "asdg/skills/README.md",
+    "asdg/skills/asdg-admin/SKILL.md",
+    "asdg/skills/asdg-admin/TRY-IT.md",
+    "asdg/skills/asdg-focus/focus-choices.md",
+    "asdg/templates/.agents/skills/asdg-admin/SKILL.md",
+    "asdg/templates/.agents/skills/asdg-admin/agents/openai.yaml",
+    "asdg/tests/test_portable-cases-roles.md",
+    "asdg/tests/test_portable.md",
+    "asdg/tests/test_portable.py",
+    "docs/asdg/07-planning/02.14-review-asdg-admin-skill.json",
+    "docs/asdg/07-planning/02.14-review-asdg-admin-skill.md",
+    "docs/asdg/07-planning/README.md"
+  ],
+  "setup_runs": [
+    {
+      "command": "python3 asdg/scripts/cli.py init --dry-run --json",
+      "planned": [
+        ".asdg/document-reviews.json",
+        ".agents/skills/asdg-admin/SKILL.md",
+        ".agents/skills/asdg-admin/agents/openai.yaml"
+      ]
+    },
+    {
+      "command": "python3 asdg/scripts/cli.py init",
+      "result": "ASDG initialized and verified"
+    },
+    {
+      "command": "python3 asdg/scripts/cli.py init --dry-run --json (repeat)",
+      "planned": []
+    }
+  ],
+  "validation": [
+    {
+      "kind": "automated",
+      "command": "TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p 'test_*.py'",
+      "result": "PASS: 74 tests"
+    },
+    {
+      "kind": "automated",
+      "command": "python3 asdg/scripts/cli.py verify",
+      "result": "PASS"
+    },
+    {
+      "kind": "observed-codex",
+      "scenario": "$asdg-admin then $asdg-admin clear",
+      "result": "Skill used; all Admin entry sources read; ASDG-ADMIN then ASDG-COORDINATOR; titles proposed only (no rename tool in exec); no files changed"
+    },
+    {
+      "kind": "observed-codex",
+      "scenario": "rule edit without Admin",
+      "result": "Stayed 00 Governance; no change; asked the human to reply $asdg-admin; no self-selection"
+    },
+    {
+      "kind": "not-observed",
+      "result": "Claude native discovery (no .claude/skills adapters); Codex app picker UI"
+    }
+  ],
+  "review_status": "REVIEW_REQUIRED; nothing committed, approved or pushed"
+}

@@ -4,6 +4,8 @@ import json
 import re
 import shlex
 from pathlib import Path
+from cli_clients import (CLIENTS, INTEGRATIONS, claude_bridge, claude_bridge_problems, claude_files,
+                         integrations_bytes, read_integrations, resolve_clients)
 from cli_files import Conflict, apply, plan, read_bytes, safe_path
 from cli_model import ARTIFACTS, BINDING, PROVIDER, REPO, VERSION, catalogue, json_bytes, now, sha
 from cli_sprint import INACTIVE, SPRINT, read_state
@@ -16,8 +18,31 @@ STAGE_NOTE = (  # Legacy scaffold signature, retained only for Context compatibi
     "At cycle closeout, consolidate verified outcomes into Current before deleting that cycle's temporary plans.\n")
 
 HOOK_CONFIG = b'[features]\nhooks = true\n'
-BEGIN, END = '<!-- ASDG:BEGIN embedded-v1 -->', '<!-- ASDG:END -->'
+BEGIN, END = '<!-- ASDG:BEGIN bootstrap-v2 -->', '<!-- ASDG:END -->'
+MANAGED_BEGIN = '<!-- ASDG:BEGIN'  # Any version of the managed block.
 BRIDGE = f'''{BEGIN}
+## ASDG bootstrap
+This project uses the ASDG methodology embedded in `asdg/`. ASDG setup generates this block; edit only outside its markers.
+Before any project work, read and follow `asdg/AGENTS.md` and every startup source it requires.
+If a required source is missing or contradictory, stop dependent work and report it; read-only diagnosis stays allowed.
+Shared ASDG rules live under `asdg/`; project-owned guidance follows this block.
+{END}
+'''
+IGNORE_BEGIN, IGNORE_END = '# ASDG generated files: BEGIN', '# ASDG generated files: END'
+IGNORE = f'{IGNORE_BEGIN}\n/logs/\n/asdg/**/__pycache__/\n/asdg/**/*.pyc\n/.asdg/backups/\n/.asdg/cache/\n{IGNORE_END}\n'
+
+
+def stage_readme(repo, slug):
+    """Read a portable human-facing stage introduction without project assumptions."""
+    data = read_bytes(safe_path(repo, Path('asdg/scaffolds/stages') / (slug + '.md')))
+    if data is None or nonblank_source_lines(data.decode()) > 50:
+        raise Conflict(f'Missing or oversized stage introduction: {slug}')
+    return data
+
+
+# Exact earlier generated blocks, appended at the end of AGENTS.md by older setups.
+# Setup moves an unedited one to the top; an edited one stays a conflict.
+_LEGACY_BRIDGE_V1 = '''<!-- ASDG:BEGIN embedded-v1 -->
 ## ASDG integration
 This client carries its own methodology in `asdg/`; read `asdg/AGENTS.md`.
 Read `asdg/skills/asdg-focus/session-policy.md` on each turn.
@@ -45,24 +70,13 @@ A sprint does not widen role authority; asdg-decision preserves Focus and operat
 Explicit human use of asdg-approve permits only the documentation-acceptance recording workflow in asdg/skills/asdg-approve/recording.md.
 Explicit human sprint requests use asdg/skills/asdg-sprint-start/SKILL.md or asdg/skills/asdg-sprint-close/SKILL.md; these utilities do not widen specialist delivery authority.
 Installation grants no approval, publication, commit, push, deployment or hook trust.
-{END}
+<!-- ASDG:END -->
 '''
-IGNORE_BEGIN, IGNORE_END = '# ASDG generated files: BEGIN', '# ASDG generated files: END'
-IGNORE = f'{IGNORE_BEGIN}\n/logs/\n/asdg/**/__pycache__/\n/asdg/**/*.pyc\n/.asdg/backups/\n/.asdg/cache/\n{IGNORE_END}\n'
-
-
-def stage_readme(repo, slug):
-    """Read a portable human-facing stage introduction without project assumptions."""
-    data = read_bytes(safe_path(repo, Path('asdg/scaffolds/stages') / (slug + '.md')))
-    if data is None or nonblank_source_lines(data.decode()) > 50:
-        raise Conflict(f'Missing or oversized stage introduction: {slug}')
-    return data
-
-
-# Exact earlier managed bridges; init replaces them in place (with a backup) rather than reporting an edit.
-_ADMIN_LINE = 'Agent changes to ASDG rules run only under explicitly selected ASDG Admin (asdg/admin/AGENTS.md) within a human-authorized scope.\n'
-_DEFAULT_LINE = 'Sessions act under 00 Governance (ASDG-COORDINATOR) by default; there is no role-less path.\n'
-LEGACY_BRIDGES = (BRIDGE.replace(_ADMIN_LINE, ''), BRIDGE.replace(_ADMIN_LINE, '').replace(_DEFAULT_LINE, ''))
+_LEGACY_ADMIN_LINE = 'Agent changes to ASDG rules run only under explicitly selected ASDG Admin (asdg/admin/AGENTS.md) within a human-authorized scope.\n'
+_LEGACY_DEFAULT_LINE = 'Sessions act under 00 Governance (ASDG-COORDINATOR) by default; there is no role-less path.\n'
+LEGACY_BRIDGES = (_LEGACY_BRIDGE_V1,
+                  _LEGACY_BRIDGE_V1.replace(_LEGACY_ADMIN_LINE, ''),
+                  _LEGACY_BRIDGE_V1.replace(_LEGACY_ADMIN_LINE, '').replace(_LEGACY_DEFAULT_LINE, ''))
 
 
 def distribution(repo):
@@ -87,26 +101,47 @@ def hook_config(root, repo=REPO):
     return json_bytes({'description': 'ASDG guard and public activity logs; review/trust in /hooks.', 'hooks': hooks})
 
 
-def merge_block(old, block, begin, end, name, legacy=()):
+def merge_block(old, block, begin, end, name):
     if old is None:
         return block.encode()
     text = old.decode('utf-8')
-    for previous in legacy:
-        if text.count(previous) == 1 and block not in text:
-            text = text.replace(previous, block)
     if begin in text or end in text:
         if text.count(begin) != 1 or text.count(end) != 1 or block not in text:
             raise Conflict(f'Edited or incomplete managed section in {name}; reconcile manually.')
-        return text.encode()
-    if name == 'AGENTS.md':
-        if 'ELUSTONDO-ASDG:BEGIN' in text or 'ELUSTONDO-ASDLC:BEGIN' in text:
-            raise Conflict('Linked/legacy AGENTS.md integration requires explicit migration.')
-        if text.lstrip('\ufeff \t\r\n').startswith('---'):
-            raise Conflict('YAML-first AGENTS.md requires manual review; nothing overwritten.')
-        # The old bytes and declarations are retained in the hash-bound review ledger.
-        # Do not display an old approval as if it governed the newly extended file.
-        text = re.sub(r'\A(?:\ufeff)?\s*(?:AI-MODIFIED|PME-APPROVED) - [^\n]*\n*', '', text, count=1)
+        return old
     return (text + ('\n' if text.endswith('\n') else '\n\n') + block).encode()
+
+
+def bootstrap_is_current(text: str) -> bool:
+    """True when AGENTS.md begins with the current bootstrap and has no other managed markers."""
+    return text.startswith(BRIDGE) and text.count(MANAGED_BEGIN) == 1 and text.count(END) == 1
+
+
+def merge_bootstrap(old):
+    """Put the managed bootstrap first and keep every project-owned byte outside it."""
+    if old is None:
+        return BRIDGE.encode()
+    text = old.decode('utf-8')
+    if 'ELUSTONDO-ASDG:BEGIN' in text or 'ELUSTONDO-ASDLC:BEGIN' in text:
+        raise Conflict('Linked/legacy AGENTS.md integration requires explicit migration.')
+    if bootstrap_is_current(text):
+        return old
+    markers = (text.count(MANAGED_BEGIN), text.count(END))
+    if markers != (0, 0):
+        known = [block for block in LEGACY_BRIDGES if text.count(block) == 1]
+        if markers != (1, 1) or len(known) != 1:
+            raise Conflict('Edited, moved or incomplete ASDG bootstrap in AGENTS.md; reconcile it manually.')
+        before, after = text.split(known[0])
+        if before.endswith('\n\n'):
+            before = before[:-1]  # Older setups added one separator newline before the block.
+        project = before + after
+        return (BRIDGE + ('\n' + project if project.strip() else '')).encode()
+    if text.lstrip('\ufeff \t\r\n').startswith('---'):
+        raise Conflict('YAML-first AGENTS.md requires manual review; nothing overwritten.')
+    # The old bytes and declarations are retained in the hash-bound review ledger.
+    # Do not display an old approval as if it governed the newly extended file.
+    text = re.sub(r'\A(?:\ufeff)?\s*(?:AI-MODIFIED|PME-APPROVED) - [^\n]*\n*', '', text, count=1)
+    return (BRIDGE + ('\n' + text if text.strip() else '')).encode()
 
 
 def binding(root, catalog_hash):
@@ -144,6 +179,39 @@ def template_files(repo):
     return templates
 
 
+def client_files(root, repo, client):
+    """Managed files for one client integration; shared methodology files are planned separately."""
+    if client == 'codex':
+        return [(Path('.codex/hooks.json'), hook_config(root, repo)), (Path('.codex/config.toml'), HOOK_CONFIG),
+                *template_files(repo)]
+    return claude_files(repo)
+
+
+def client_report(root, repo, installed):
+    """Per client: never selected, complete or damaged. Runtime behavior is never verified here."""
+    try:
+        current = read_integrations(root)
+    except Conflict as exc:
+        problem = str(exc)
+        return {name: {'selection': 'unknown', 'status': 'DAMAGED', 'problems': [problem],
+                       'runtime': 'NOT_VERIFIED'} for name in CLIENTS}, [problem]
+    recorded = current['clients'] if current else ({'codex': {'recorded_from': 'legacy installation'}} if installed else {})
+    report, problems = {}, []
+    for name in CLIENTS:
+        if name not in recorded:
+            report[name] = {'selection': 'not-selected', 'status': 'NOT_SELECTED', 'problems': [], 'runtime': 'NOT_VERIFIED'}
+            continue
+        found = [f'{relative}: missing or locally modified integration'
+                 for relative, data in client_files(root, repo, name) if read_bytes(safe_path(root, relative)) != data]
+        if name == 'claude':
+            found += claude_bridge_problems(root)
+        report[name] = {'selection': 'recorded' if current else 'legacy-unrecorded',
+                        'recorded_from': recorded[name]['recorded_from'],
+                        'status': 'DAMAGED' if found else 'COMPLETE', 'problems': found, 'runtime': 'NOT_VERIFIED'}
+        problems.extend(found)
+    return report, problems
+
+
 def preflight_package(repo):
     distribution(repo)
     agents, digest = catalogue(repo)
@@ -169,7 +237,7 @@ def preflight_package(repo):
     return agents, digest
 
 
-def initialize(root, repo=REPO, project_state=None, dry_run=False):
+def initialize(root, repo=REPO, project_state=None, dry_run=False, client=None):
     from cli_status import LIFECYCLE, PROJECT_STATUSES, lifecycle_rules, read_lifecycle
     if root.resolve() != repo.resolve():
         raise Conflict('Embedded initialization must use this client repository.')
@@ -207,14 +275,22 @@ def initialize(root, repo=REPO, project_state=None, dry_run=False):
         state = read_lifecycle(root, rules)
         if project_state is not None and state.get('project_status') != project_state:
             raise Conflict('--project-status only declares initial state; existing state is preserved.')
-    changes.extend([plan(root, '.codex/hooks.json', hook_config(root, repo)),
-                    plan(root, '.codex/config.toml', HOOK_CONFIG)])
-    for relative, data in template_files(repo):
-        changes.append(plan(root, relative, data))
+    recorded, applied, notes = resolve_clients(root, client, existing is not None)
+    for name in applied:  # Only the selected clients; another client's files are never planned here.
+        for relative, data in client_files(root, repo, name):
+            changes.append(plan(root, relative, data))
+    bridge = claude_bridge(root) if 'claude' in applied else None
+    if bridge is not None:
+        target, data = bridge
+        old_bridge = read_bytes(safe_path(root, target))
+        if old_bridge is not None:
+            changes.append(plan(root, Path('.asdg/backups') / f'CLAUDE-before-{sha(old_bridge)}.md', old_bridge, mode=0o600))
+        changes.append(plan(root, target, data, replace=True))
+    changes.append(plan(root, INTEGRATIONS, integrations_bytes(recorded), replace=True))
     old_agents = read_bytes(safe_path(root, 'AGENTS.md'))
-    new_agents = merge_block(old_agents, BRIDGE, BEGIN, END, 'AGENTS.md', LEGACY_BRIDGES)
+    new_agents = merge_bootstrap(old_agents)
     if nonblank_source_lines(new_agents.decode()) > 50:
-        raise Conflict('AGENTS.md would exceed 50 nonblank lines; arrange a reviewed shorter bridge first.')
+        raise Conflict('AGENTS.md would exceed 50 nonblank lines; shorten its project-owned guidance first.')
     if old_agents is not None and old_agents != new_agents:
         changes.append(plan(root, Path('.asdg/backups') / f'AGENTS-before-{sha(old_agents)}.md', old_agents, mode=0o600))
     changes.append(plan(root, 'AGENTS.md', new_agents, replace=True))
@@ -255,6 +331,7 @@ def initialize(root, repo=REPO, project_state=None, dry_run=False):
     return {'operation': 'init', 'project_root': str(root), 'dry_run': dry_run,
             'planned_files': [c.relative.as_posix() for c in changes], 'changed_files': written,
             'unchanged': not changes, 'sprint_started': False, 'human_approval': None,
+            'clients_applied': applied, 'clients_recorded': sorted(recorded), 'notes': notes,
             'native_runtime_enforcement': 'NOT_VERIFIED'}
 
 
@@ -273,14 +350,12 @@ def inspect(root, repo=REPO):
         sprint = read_state(root)
     except (OSError, ValueError, KeyError, TypeError) as exc:
         missing.append(str(exc))
-    expected = [('.codex/hooks.json', hook_config(root, repo)), ('.codex/config.toml', HOOK_CONFIG)]
-    expected.extend(template_files(repo))
-    for relative, data in expected:
-        if read_bytes(safe_path(root, relative)) != data:
-            missing.append(f'{relative}: missing or locally modified integration')
+    integrations, problems = client_report(root, repo, value is not None)
+    missing.extend(problems)
+    codex = integrations['codex']['status'] != 'NOT_SELECTED'
     body = read_bytes(safe_path(root, 'AGENTS.md'))
-    if body is None or BRIDGE.encode() not in body:
-        missing.append('AGENTS.md: ASDG bootstrap section')
+    if body is None or not bootstrap_is_current(body.decode('utf-8', 'replace')):
+        missing.append('AGENTS.md: ASDG bootstrap block missing, edited or not first')
     ignore = read_bytes(safe_path(root, '.gitignore'))
     if ignore is None or IGNORE.encode() not in ignore:
         missing.append('.gitignore: log/cache exclusions')
@@ -302,12 +377,12 @@ def inspect(root, repo=REPO):
         missing.append('.asdg/project.json: stage mapping')
     return {'provider': PROVIDER, 'cli_version': VERSION, 'project_root': str(root),
             'initialized': value is not None, 'structure_ok': not missing, 'missing': missing,
-            'semantic_compliance': 'NOT_ASSESSED', 'sprint_state': sprint,
-            'implementation_enforcement': 'HOOK_TRUST_NOT_ASSESSED',
+            'semantic_compliance': 'NOT_ASSESSED', 'sprint_state': sprint, 'integrations': integrations,
+            'implementation_enforcement': 'HOOK_TRUST_NOT_ASSESSED' if codex else 'NO_ASDG_GUARD_INSTALLED',
             'methodology_root': str(repo / 'asdg'), 'catalog_sha256': digest,
             'methodology_revision_now': None, 'methodology_revision_at_init': (value or {}).get('methodology_revision_at_init'),
             'distribution_version': VERSION, 'installation_mode': 'embedded-distribution',
             'runtime_contract': str(repo / 'asdg/00-governance/docs/runtime-contract.md'),
             'coordinator_entry': str(repo / 'asdg/00-governance/AGENTS.md'),
-            'native_agent_registration': 'CONFIGURED_NOT_LIVE_VERIFIED',
-            'logging_hooks': 'CONFIGURED_NOT_LIVE_VERIFIED'}
+            'native_agent_registration': 'CONFIGURED_NOT_LIVE_VERIFIED' if codex else 'NOT_INSTALLED',
+            'logging_hooks': 'CONFIGURED_NOT_LIVE_VERIFIED' if codex else 'NOT_INSTALLED'}

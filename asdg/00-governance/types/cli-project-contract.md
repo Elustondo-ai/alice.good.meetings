@@ -8,6 +8,7 @@ The catalogue remains version 0.2, exactly governance 00 and stages 01–12.
 ## Operations
 
 `init --dry-run` validates all planned destinations without writing.
+`init --client codex|claude|both` adds client integrations without removing others; without it, repeat setup covers the recorded clients, Codex if none.
 `init` creates missing binding, lifecycle/sprint state, stage README scaffolds and discovery adapters.
 `--project-status` explicitly declares first-install new/defining/defined; omitted defaults to new.
 Repeat initialization preserves existing status, release, sprint, evidence and review history.
@@ -24,9 +25,9 @@ It uses repository-relative paths; no external home, checkout or Python environm
 `.asdg/lifecycle.json` separates project, release and stage evidence; fresh release is null, evidence empty.
 `.asdg/sprint.json` starts inactive; valid existing state is never reset.
 `.asdg/document-reviews.json` retains exact-state modification/legacy-approval records, outside disposable logs.
-`.agents/skills/` and `.codex/agents/` are thin generated adapters; the methodology stays single-source.
-Root `AGENTS.md` retains client instructions plus one identified ASDG bridge.
-`.codex/hooks.json` configures guard and public-log callbacks; `.codex/config.toml` enables hooks.
+Codex adapters (`.agents/skills/`, `.codex/agents/`) and Claude adapters (`.claude/skills/`) are thin and generated only for selected clients, which `.asdg/integrations.json` records.
+Root `AGENTS.md` begins with one identified ASDG bootstrap block; client text after it is preserved byte-for-byte.
+For Codex, `.codex/hooks.json` configures guard and public-log callbacks and `.codex/config.toml` enables hooks.
 Root `.gitignore` adds precise log/cache exclusions, never all of `.asdg/`.
 `docs/asdg/` contains client evidence; package files are never registered as client evidence by init.
 

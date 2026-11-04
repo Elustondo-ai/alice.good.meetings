@@ -2,20 +2,21 @@
 
 The observed hello-world failure had no authoritative sprint state or pre-write check.
 The agent treated a coding request as authorization; AGENTS.md alone did not stop the write.
-`asdg init` now creates inactive `.asdg/sprint.json`, an implementation gate in AGENTS.md,
+`asdg init` now creates inactive `.asdg/sprint.json`, a root `AGENTS.md` bootstrap whose required `asdg/AGENTS.md` links this gate,
 and `.codex/hooks.json` plus `.codex/config.toml` enabling hooks. Repeat init preserves valid existing sprint state.
-Exact legacy bridges migrate; edited bridges/custom hook or config files are preserved as conflicts.
+Exact earlier bootstrap blocks move to the top of `AGENTS.md`; edited blocks and custom hook or config files are preserved as conflicts.
 
 A human decides to start or close a sprint, either in a terminal or through an explicit [Sprint start](../../skills/asdg-sprint-start/SKILL.md) / [Sprint close](../../skills/asdg-sprint-close/SKILL.md) request; a coding task alone implies neither:
 ```sh
-asdg sprint status
-asdg sprint start --id SPRINT-001 --objective 'Hello endpoint' \
+python3 asdg/scripts/cli.py sprint status
+python3 asdg/scripts/cli.py sprint start --id SPRINT-001 --objective 'Hello endpoint' \
   --scope app.py --acceptance 'GET /hello returns hello world'
-asdg sprint check-implementation --path app.py
-asdg sprint stop
+python3 asdg/scripts/cli.py sprint check-implementation --path app.py
+python3 asdg/scripts/cli.py sprint stop
 ```
 `--scope` and `--acceptance` are repeatable; all fields are required to start.
 Scope is an exact repository-relative file or directory ending in `/`, without globs/traversal.
+Scope bounds paths only; work inside it must still serve the sprint objective and meet its acceptance criteria.
 Protected agent-policy/state paths cannot be scope. The guard must receive EVERY target.
 Guard exit 0 means all targets are allowed; exit 1 means blocked. Missing, malformed,
 unsupported or symlink state fails closed; active state without supplied targets also blocks.

@@ -203,7 +203,9 @@ def project_status(root: Path, repo: Path = REPO, requested_paths: list[str] | N
                 implementation=permission, blockers=blockers, session_governance=session,
                 missing_required_artifacts=[{'stage': s['number'], 'required_evidence': s['evidence'],
                                              'missing_paths': s['missing_paths']} for s in stages if s['readiness'] == 'MISSING'],
-                guard={'configuration': 'UNKNOWN' if 'implementation_enforcement' not in report else 'PRESENT' if not any(
+                guard={'configuration': 'UNKNOWN' if 'implementation_enforcement' not in report
+                       else 'NOT_INSTALLED' if report.get('implementation_enforcement') == 'NO_ASDG_GUARD_INSTALLED'
+                       else 'PRESENT' if not any(
                     '.codex/' in error for error in errors) else 'MISSING_OR_INVALID',
                        'runtime_trust': 'UNKNOWN', 'runtime_enforcement': 'NOT_VERIFIED'},
                 recommendation=next_action)
@@ -224,6 +226,8 @@ def render_status(status: dict) -> str:
                            (f" — {status['sprint_id']}" if status['sprint_id'] else '')),
              f"Implementation: {status['implementation_permission']}",
              f"Session role: {status['session_governance']['label']} by default ({status['session_governance']['status']})",
+             'Integrations: ' + ', '.join(f"{name} {item['status']}" for name, item in status.get('integrations', {}).items())
+             + '; runtime not verified',
              f"Evidence focus: {stage_label(status['current_stage'])}",
              f"Evidence focus basis: {status['current_stage_basis']}", '', 'Mechanical workflow finding:',
              status['recommendation']['action']]

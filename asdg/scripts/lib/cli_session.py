@@ -17,11 +17,19 @@ SHARED_SOURCES = (
 )
 
 
+def entry_point_loads_distribution(agents: bytes | None) -> bool:
+    """True when an ASDG-managed block, of any version, references asdg/AGENTS.md; project text does not count."""
+    if agents is None:
+        return False
+    begin = agents.find(b'<!-- ASDG:BEGIN')
+    end = agents.find(b'<!-- ASDG:END -->', begin)
+    return begin >= 0 and end > begin and b'asdg/AGENTS.md' in agents[begin:end]
+
+
 def governance_bootstrap(root: Path, repo: Path = REPO) -> dict:
     """Report whether a new session can start under the default role; never select a role itself."""
     missing = []
-    agents = read_bytes(safe_path(root, 'AGENTS.md'))
-    if agents is None or b'asdg/AGENTS.md' not in agents:
+    if not entry_point_loads_distribution(read_bytes(safe_path(root, 'AGENTS.md'))):
         missing.append('AGENTS.md: client entry point does not load asdg/AGENTS.md')
     try:
         entries, _ = catalogue(repo)

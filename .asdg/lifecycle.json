@@ -45,6 +45,43 @@
             "docs/asdg/02-purpose/images/speaker-coach-purpose.png": "260e373a121a9b7177a8936c9548e65b777f29b5faf5c6cd99f6c23c39fec758"
           },
           "statement": "I accept Purpose as done for now."
+        },
+        {
+          "decision": "READY_FOR_ACCEPTANCE",
+          "actor": "ASDG-02",
+          "recorded_at": "2026-10-31T04:36:24Z",
+          "artifacts": {
+            "docs/asdg/02-purpose/01-purpose.md": "2b288e476d331b96c7c269ae0f38daf87804e1c49015b0dcfc512b1b4b8601b0",
+            "docs/asdg/02-purpose/02-current-capabilities.md": "50164f379a178f32a2e5f82dd3c5c06f6adf0e87d052c0f8ef979d608f78f5d4",
+            "docs/asdg/02-purpose/03-planned-improvements.md": "5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f",
+            "docs/asdg/02-purpose/README.md": "f621d153fddb4516925e36223105ff72fcc0c3499138679dff1ae35597b58606",
+            "docs/asdg/02-purpose/images/speaker-coach-purpose.png": "260e373a121a9b7177a8936c9548e65b777f29b5faf5c6cd99f6c23c39fec758",
+            "docs/asdg/02-purpose/images/stage-overview.svg": "80ebc0e75561d18970cc67a77d366d01dcb6bb80d101b3d1b194aee31140efe2"
+          },
+          "criteria": {
+            "purpose": "01-purpose.md (unchanged since the 21 October acceptance) states attention, recall and structured answers as the reason for the product; README restates it.",
+            "outcomes": "01-purpose.md lists delivery regulation, staying on topic and recalling relevant experience; unchanged bytes.",
+            "boundaries": "01-purpose.md prioritizes attention and brief visual guidance and excludes architecture choice; 03-planned-improvements.md defers answer suggestions and records feasibility uncertainties.",
+            "current_evidence": "02-current-capabilities.md attributes current value to User reports and states code, audio and UI were not tested for this assessment; unchanged bytes.",
+            "next_improvement": "03-planned-improvements.md keeps the confirmed next outcome (distinguish speakers, keep the interviewer question visible) separate from later ideas and from any sprint commitment.",
+            "acceptance_questions": "03-planned-improvements.md asks observable questions on speaker distinction, question fidelity, persistence and distraction; exact-versus-shortened wording and overlapping speech remain open.",
+            "visual": "speaker-coach-purpose.png (1536x1024, unchanged) and README stage-overview.svg were inspected in a local browser render of README and 01-purpose.md on 31 October 2026; both load, labels are legible, the caption marks the illustration as vision, and the SVG arrowhead defect was fixed.",
+            "documentation": "README, 01, 02 and 03 have 15, 18, 13 and 23 nonblank lines; all relative links resolve; README navigation lists the files in 01/02/03 order; the stale review sentence was replaced with state-neutral wording; product documents use User."
+          }
+        },
+        {
+          "decision": "ACCEPTED",
+          "actor": "User",
+          "recorded_at": "2026-10-31T04:36:52Z",
+          "artifacts": {
+            "docs/asdg/02-purpose/01-purpose.md": "2b288e476d331b96c7c269ae0f38daf87804e1c49015b0dcfc512b1b4b8601b0",
+            "docs/asdg/02-purpose/02-current-capabilities.md": "50164f379a178f32a2e5f82dd3c5c06f6adf0e87d052c0f8ef979d608f78f5d4",
+            "docs/asdg/02-purpose/03-planned-improvements.md": "5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f",
+            "docs/asdg/02-purpose/README.md": "f621d153fddb4516925e36223105ff72fcc0c3499138679dff1ae35597b58606",
+            "docs/asdg/02-purpose/images/speaker-coach-purpose.png": "260e373a121a9b7177a8936c9548e65b777f29b5faf5c6cd99f6c23c39fec758",
+            "docs/asdg/02-purpose/images/stage-overview.svg": "80ebc0e75561d18970cc67a77d366d01dcb6bb80d101b3d1b194aee31140efe2"
+          },
+          "statement": "I accept it — explicit reply in the 02 Purpose chat to the question \"Do you accept the current Purpose baseline as done for now?\", 31 October 2026."
         }
       ]
     },

@@ -5267,6 +5267,445 @@
         "visible_review_markers": [],
         "approval_binding": "No approval inferred or transferred."
       }
+    },
+    {
+      "path": ".asdg/backups/AGENTS-before-6ec9192e2fa450e85db82d05dd7307207f23953f49078f96b45783908be82e24.md",
+      "sha256": "6ec9192e2fa450e85db82d05dd7307207f23953f49078f96b45783908be82e24",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:47:28Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "b46f1920690b6cd1cbe161a37fb6963998b075a1df41edcb121e3938a482a408",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:47:28Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      },
+      "previous_state": {
+        "sha256": "6ec9192e2fa450e85db82d05dd7307207f23953f49078f96b45783908be82e24",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "e5d86d5dadfe4dac7fe212d39510fc0fc1f93720c825ce8fcc9f2c1b29de01fa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:49:56.573485+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "00 Governance: project-owned SpeakerCoach guidance added after the ASDG bootstrap block",
+        "role_id": "ASDG-COORDINATOR",
+        "requested_by": "Pablo, explicit authorization to switch to 00 Governance for project-specific writing"
+      },
+      "previous_state": {
+        "sha256": "b46f1920690b6cd1cbe161a37fb6963998b075a1df41edcb121e3938a482a408",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.13-review-root-agents-bootstrap.md",
+      "sha256": "044070bff29097a8c22d234b14077b269228bcc388eac2af3511e808b16bd282",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:51:53.170518+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "00 Governance: change record for the root AGENTS.md bootstrap restructure",
+        "role_id": "ASDG-COORDINATOR"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.13-review-root-agents-bootstrap.json",
+      "sha256": "db8e83c1cf322223a07d0eb9c95b0a3acc6c2217c1ad9f7a6cb0725f3743054a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:51:53.170518+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "00 Governance: change record for the root AGENTS.md bootstrap restructure",
+        "role_id": "ASDG-COORDINATOR"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/images/02.13-root-agents-layout.svg",
+      "sha256": "d3600d51a8c6528e929e36112cc4efd0baea86c62d451e351ff4e98cc55768b6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:51:53.170518+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "00 Governance: change record for the root AGENTS.md bootstrap restructure",
+        "role_id": "ASDG-COORDINATOR"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "04b574dfded4765db6ba7e3be6ab07c81e1b900a624696c6aa38287f6d2ca1df",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T01:51:53.170518+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "00 Governance: change record for the root AGENTS.md bootstrap restructure",
+        "role_id": "ASDG-COORDINATOR"
+      },
+      "previous_state": {
+        "sha256": "aef1f0914a870ff9b8ae9a8671d2db8ffb04c05d8e33e00736e66bc80ae02b8a",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-admin/SKILL.md",
+      "sha256": "a5b0ec3ec5dd8df300f05ffc66728193c9bd0852621a55dd67b9bb6ded41bf35",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:07:58Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "1311d779ec3c97def79fec258c6e3b8278e66edd09a7e4917b26fd587866b77c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      },
+      "previous_state": {
+        "sha256": "04b574dfded4765db6ba7e3be6ab07c81e1b900a624696c6aa38287f6d2ca1df",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.14-review-asdg-admin-skill.json",
+      "sha256": "f256c708b8cb2b791fe2cacd9fb35a656754d3b26d116b260e87b55e6b125fc0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.14-review-asdg-admin-skill.md",
+      "sha256": "ab84b2a3998dfa3f816a4764d4823b7247ccfac6a9b1d6ee955abbbe3d8d913f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T02:10:24.989060+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: explicit $asdg-admin skill, Codex adapter with implicit invocation off, registration and references",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, request for an Admin skill followed by explicit Admin selection"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "fc30fcf49c1eeb77b94fa6bbc857e47777844660eed87179f62b901023e90153",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      },
+      "previous_state": {
+        "sha256": "1311d779ec3c97def79fec258c6e3b8278e66edd09a7e4917b26fd587866b77c",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.15-review-client-aware-initialization.json",
+      "sha256": "18f264fdcbdc2313a164e821061c8a2be4a3d33a026976e1131f6281c26084f2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.15-review-client-aware-initialization.md",
+      "sha256": "51c0714707781bad3f7887b00211468840786be679cf51798b5e57776524343c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:12:23.584107+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: client-aware initialization (--client codex|claude|both), Claude adapters, per-client verification",
+        "role_id": "ASDG-ADMIN",
+        "requested_by": "Pablo, explicit Admin selection for client-aware initialization"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-admin/SKILL.md",
+      "sha256": "054d97d7da391c95982533488abca23fa0afa424dba285573f219ac4cbe427e8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-approve/SKILL.md",
+      "sha256": "e536eff9d3c4a4444d607f0b3781b690b7108ff5ac39138edf64dd1241ef4223",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-attitude/SKILL.md",
+      "sha256": "2677aec69f0330d0db6fe0459ea41a07cfab8e0e3b16254cd10dcb1c3cbf1567",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-create-team/SKILL.md",
+      "sha256": "457fa162e27a19ee5130600fda9e1dbbfd16f86643ecbed4c7c6085f2099e803",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-decision/SKILL.md",
+      "sha256": "e0cb40d51d3b6a2081e528c02c8aa716bd062968fd73217611d0e0aa8e411975",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-documentation/SKILL.md",
+      "sha256": "2f69a019c6b226f2aedc4622f06c70b0250f01447aa831550e37dd7e338a32f6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-focus/SKILL.md",
+      "sha256": "b107b457dfe0d19b49d9738bfe6a83194dcd3c848f243e7cc966c1936b9eaa8b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-init/SKILL.md",
+      "sha256": "d9e41a4fb48dd9f4c3ddf694e73991812ce41242b197617b290b0e6c2926bae0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-openspec-propose/SKILL.md",
+      "sha256": "00073cda62cd8627f4fa15633b60cda404aa8bac691438d90e40079daf73de9b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-role/SKILL.md",
+      "sha256": "e01a75c89793a4c5f0a78a215faba50da239ab70b0970005967b1520d9b9f796",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-close/SKILL.md",
+      "sha256": "1d127a79f3daeab96aaea99ebfb11c1b0c608d9b647eab713ffd9ba872d53e14",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-review/SKILL.md",
+      "sha256": "53979ce63fd664849496da1d8209e89b8343e9b272e6b38c0bb171f22984655d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-start/SKILL.md",
+      "sha256": "16e3cad2e9d4002df04289feba402f44bd4a75dbf12515bb4d74ff2c0eae05af",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-status/SKILL.md",
+      "sha256": "24675e5d92b157d38eb30627c5ac2e3286827b059c35cb1a35a62c1737dc91d5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-suggestion/SKILL.md",
+      "sha256": "6b5d4aa2c201de8b05e34d98723dd6875ced8fa84e1706ef0de10227ab5e29e2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-view-dev/SKILL.md",
+      "sha256": "e553ff1ee4faf586a5c4e6f33152b6369e8167ada94a5c3a22e19da6d732cd30",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:35:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.15-review-client-aware-initialization.md",
+      "sha256": "8f321a302aa9c17ec4e6e056ab28daff6133f05435e74dfd070a08dffaaebe25",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:36:14.147559+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: record the Claude integration applied to SpeakerCoach",
+        "role_id": "ASDG-ADMIN"
+      },
+      "previous_state": {
+        "sha256": "51c0714707781bad3f7887b00211468840786be679cf51798b5e57776524343c",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.15-review-client-aware-initialization.json",
+      "sha256": "faf75b5f0dc57d394c34a514af267ee9d3f3523a24835a39118084e33c082e78",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:36:14.147559+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: record the Claude integration applied to SpeakerCoach",
+        "role_id": "ASDG-ADMIN"
+      },
+      "previous_state": {
+        "sha256": "18f264fdcbdc2313a164e821061c8a2be4a3d33a026976e1131f6281c26084f2",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.15-review-client-aware-initialization.md",
+      "sha256": "3272c7c46819fd0f7f481c745b43d8dde598ada653a4acafbfa89d2f5a66907b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:41:55.871927+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: record Pablo's observation of the Claude desktop slash menu",
+        "role_id": "ASDG-ADMIN"
+      },
+      "previous_state": {
+        "sha256": "8f321a302aa9c17ec4e6e056ab28daff6133f05435e74dfd070a08dffaaebe25",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.15-review-client-aware-initialization.json",
+      "sha256": "7538b615d02efc416dbf3a5228cf315e8515131735bf7fdb0a735b3dbf092d84",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T03:41:55.871927+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG Admin: record Pablo's observation of the Claude desktop slash menu",
+        "role_id": "ASDG-ADMIN"
+      },
+      "previous_state": {
+        "sha256": "faf75b5f0dc57d394c34a514af267ee9d3f3523a24835a39118084e33c082e78",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "f621d153fddb4516925e36223105ff72fcc0c3499138679dff1ae35597b58606",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T04:36:24.708956+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG-02 Purpose reassessment: replace stale \"requires fresh review\" sentence with state-neutral wording",
+        "role_id": "ASDG-02"
+      },
+      "previous_state": {
+        "sha256": "dad5043df905d39be3838ede98ef4c86c1f7719c1877b01cc5526b8e53a5b699",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/images/stage-overview.svg",
+      "sha256": "80ebc0e75561d18970cc67a77d366d01dcb6bb80d101b3d1b194aee31140efe2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-31T04:36:24.708956+00:00",
+      "human_approval": null,
+      "provenance": {
+        "reason": "ASDG-02 Purpose reassessment: give the first connector its missing arrowhead",
+        "role_id": "ASDG-02"
+      },
+      "previous_state": {
+        "sha256": "bbb8c97f3a7f9188f8cc8953acef39b5b53b7fbbfa5049c0e2b109c271909cc6",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
     }
   ]
 }

@@ -11,7 +11,7 @@ Separating them keeps rule changes deliberate, visible and attributable, instead
 
 ## Activation
 
-Act in this role only after an explicit, visible human selection such as `$asdg-focus admin`, "ASDG Admin" or "switch to Admin".
+Act in this role only after an explicit, visible human selection such as [`$asdg-admin`](../skills/asdg-admin/SKILL.md), `$asdg-focus admin`, "ASDG Admin" or "switch to Admin".
 Selection makes the role accountable; it does not authorize any change. Each change needs a human-authorized, bounded maintenance scope.
 An explicit human request to change ASDG rules can authorize that bounded task when Admin is then selected and loaded.
 Never activate Admin on an agent's own initiative, and never to remove a restriction met during project work.
@@ -19,13 +19,14 @@ Admin is never a default, never inferred from a topic and never reached by clear
 
 ## Load on role invocation
 
-Read client root `AGENTS.md`, distribution `asdg/AGENTS.md`, [session policy](../skills/asdg-focus/session-policy.md),
-[this contract](types/contract.md), the [maintenance procedure](skills/maintain-rules/SKILL.md) and [review loop](../docs/review-loop.md).
+Read client root `AGENTS.md`, distribution `asdg/AGENTS.md`, [session policy](../skills/asdg-focus/session-policy.md), [session fields](../skills/asdg-focus/session-state.md),
+[this contract](types/contract.md), the [maintenance procedure](skills/maintain-rules/SKILL.md), [review loop](../docs/review-loop.md),
+[runtime contract](../00-governance/docs/runtime-contract.md) and [response envelope](../00-governance/types/interaction-contract.md).
 Missing or contradictory sources block activation and preserve the previous role and title.
 
 ## Owned responsibility
 
-Maintain authoritative ASDG policies, role definitions, instruction templates, generated entry-point blocks, checks and enforcement configuration.
+Maintain authoritative ASDG policies, role definitions, instruction and client-adapter templates, generated entry-point blocks, checks and enforcement configuration.
 Reconcile every reference, template and installed copy a change affects; record exact-hash receipts and a change record.
 
 ## Exclusions

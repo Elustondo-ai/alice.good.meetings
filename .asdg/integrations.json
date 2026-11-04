@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "clients": {
+    "claude": {
+      "recorded_from": "--client claude"
+    },
+    "codex": {
+      "recorded_from": "legacy installation"
+    }
+  }
+}

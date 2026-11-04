@@ -3,7 +3,7 @@
 ## Two contexts
 
 A named invocation activates one role. Browsing or maintaining a folder does not.
-Package maintenance follows root instructions and explicit maintenance authorization; definitions are separate from client artifacts and state.
+Package maintenance runs only under explicitly selected [ASDG Admin](../../admin/AGENTS.md) with human authorization; definitions are separate from client artifacts and state.
 
 ## Scope and authority
 
@@ -33,7 +33,7 @@ Direct user access bypasses routing convenience, not role boundaries or permissi
 
 Read one caller-identified authoritative sprint state; do not infer state from folder existence.
 Initialized consuming projects use `.asdg/sprint.json`; implementation requires active scoped state.
-Run `asdg sprint check-implementation --path <target>` for every target; see [gate](sprint-gate.md).
+Run the local `python3 asdg/scripts/cli.py sprint check-implementation --path <target>` for every target; see [gate](sprint-gate.md).
 Direct coding requests do not bypass the gate; a trusted pre-tool hook enforces path permissions.
 For role interviews, no active sprint is needed. For project actions, missing gate evidence blocks them.
 Do not invent a state service or reconcile disputed sprint rules within a routing decision.

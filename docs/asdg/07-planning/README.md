@@ -14,6 +14,9 @@ Release plans describe a broader delivery objective. Sprint plans select a small
 
 ## Explore
 
+- [Client-aware initialization](02.15-review-client-aware-initialization.md): `--client codex|claude|both`, thin Claude skill adapters from the shared templates, idempotent repeat setup.
+- [`$asdg-admin` skill](02.14-review-asdg-admin-skill.md): an explicit skill that switches a chat to ASDG Admin, and `clear` back to 00 Governance.
+- [Root AGENTS.md bootstrap and project guidance](02.13-review-root-agents-bootstrap.md): a seven-line ASDG bootstrap first, shared rules under `asdg/`, SpeakerCoach guidance after.
 - [Governance default, ASDG Admin and title sync](02.12-review-governance-admin-and-titles.md): every session has an accountable role, and only Admin changes ASDG rules.
 - [ASDG–OpenSpec proposal wrapper](02.11-review-openspec-proposal-wrapper.md): source-linked planning through the installed native OpenSpec workflow.
 - [Concise role, focus and attitude titles](02.10-review-concise-role-titles.md): the current naming convention, with the thirteen short role labels.

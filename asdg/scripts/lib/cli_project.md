@@ -26,18 +26,22 @@ Inputs are project/repository Paths and optional project_state (`new`, `defining
 | `distribution(repo)` | Reads and validates embedded metadata; returns its dictionary. |
 | `stage_readme(repo, slug) -> bytes` | Reads a packaged stage introduction; rejects missing files or documents over 50 nonblank lines. |
 | `hook_config(root, repo=REPO)` | Returns JSON bytes for the configured guard and lifecycle logging hooks; does not establish trust. |
-| `merge_block(old, block, begin, end, name, legacy=())` | Returns preserved/extended bytes for a managed text block; replaces an exact earlier block listed in `legacy`, and rejects edited or incomplete blocks. |
+| `merge_block(old, block, begin, end, name)` | Returns preserved/extended bytes for an appended managed text block, such as `.gitignore`; rejects edited or incomplete blocks. |
+| `bootstrap_is_current(text: str) -> bool` | True when the text begins with `BRIDGE` and contains no other managed markers; used by setup and `inspect`. |
+| `merge_bootstrap(old) -> bytes` | Returns root `AGENTS.md` with `BRIDGE` first and all other text kept byte-for-byte; moves an exact `LEGACY_BRIDGES` block to the top, removing the one separator newline older setups added; rejects edited, moved, duplicated or linked blocks and YAML-first files. |
 | `binding(root, catalog_hash)` | Validates project identity/catalogue/layout; returns the binding dict or None for a fresh area. |
 | `template_files(repo)` | Returns relative template paths and bytes; rejects symlinks and unexpected destination roots. |
+| `client_files(root, repo, client)` | Returns the managed files for one client: Codex hooks, config and templates, or rendered Claude skill adapters. |
+| `client_report(root, repo, installed)` | Returns each client's selection, `NOT_SELECTED`, `COMPLETE` or `DAMAGED` status, problems and `runtime: NOT_VERIFIED`, plus all problems. |
 | `preflight_package(repo)` | Checks thirteen role definitions/adapters, the separate Admin package through `cli_session.validate_admin`, and exactly one shared Focus picker template; rejects missing metadata or retired per-role Focus templates. Returns agents and catalogue digest. |
-| `initialize(root, repo=REPO, project_state=None, dry_run=False)` | Plans integration and documentation writes; dry_run returns plans only, otherwise applies changes and review receipts. |
-| `inspect(root, repo=REPO)` | Returns structure_ok, missing items, binding/version details and sprint state; does not mutate the project. |
+| `initialize(root, repo=REPO, project_state=None, dry_run=False, client=None)` | Plans shared files plus the files of the selected clients only, any Claude bridge and the integration record; dry_run returns plans only, otherwise applies changes and review receipts. |
+| `inspect(root, repo=REPO)` | Returns structure_ok, missing items, binding/version details, sprint state and per-client `integrations`; a damaged selected client fails the structure, an unselected one does not. |
 
 ## Effects and failure behavior
 
 Conflicts stop initialization rather than overwriting edited integration. Existing lifecycle/sprint records are preserved. New setup records an inactive sprint; it grants no implementation permission.
-The managed bridge grants every agent documentation authoring under `docs/` and routes sprint utilities; initialization itself creates no substantive deliverable or transition.
-The bridge also states the 00 Governance default role and that agent rule changes run under ASDG Admin. `LEGACY_BRIDGES` holds the exact earlier bridges, so repeat setup upgrades an unedited older block (backing up the old file) instead of reporting a conflict.
+`BRIDGE` is a seven-line bootstrap that only requires reading `asdg/AGENTS.md` and its startup sources and blocks dependent work if one is missing; shared rules live under `asdg/`, and it holds no project-specific text.
+`LEGACY_BRIDGES` holds the three exact earlier appended blocks; repeat setup moves an unedited one to the top with a backup of the old file, and `inspect` requires the current block first and only once. Initialization itself creates no substantive deliverable or transition.
 Discovery templates include ASDG Decision; existing customized adapters remain conflicts requiring explicit reconciliation.
 
 ## Example

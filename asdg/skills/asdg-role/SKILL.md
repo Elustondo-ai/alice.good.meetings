@@ -12,8 +12,8 @@ Resolve the client root from this canonical file as `../../..`; retain the targe
 ## Establish the selected role
 
 Use this conversation's successful activation/clear receipt; never infer selection from a title, directory or available adapter.
-With no activation, explain general assistance under root instructions and say no ASDG role is selected.
-Treat explicit Governance as ASDG-COORDINATOR / 00, distinct from None and outside the twelve development stages.
+With no explicit selection, explain the default 00 Governance role; there is no role-less mode.
+Treat Governance, default or explicit, as ASDG-COORDINATOR / 00, outside the twelve stages; [ASDG Admin](../../admin/AGENTS.md) is separate and only explicitly selected.
 If activation history is lost, report Unknown — reactivation required; do not reconstruct it from other chats or user-wide logs.
 A retained selection with missing guidance stays selected but blocked; report which definition is unavailable.
 Resolve its existing entry and procedure through [the catalogue](../../00-governance/types/agent-catalog.json).
