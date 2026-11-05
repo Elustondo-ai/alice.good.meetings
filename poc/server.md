@@ -18,6 +18,7 @@ The upstream connection uses `session.update` for 24 kHz PCM transcription. Star
 Server RMS above 0.012 marks speech. A turn commits after 800 ms silence or eight seconds of buffered audio containing speech. Pure silence buffers clear every five seconds.
 Agent reasoning can start from partial transcription. Audio intake continues while that request runs.
 Audio send backlog above two seconds closes the connection with a degraded status. Sessions have a 30-minute POC limit and must be explicitly restarted after failures.
+Text controls `question.reset` and `question.confirm` go to [the session](session.md), which replies with `question.result`; a malformed question control returns `invalid` and leaves the session open. Other unknown controls still close it. See [the protocol guide](docs/04-server-and-protocol.md) for payloads.
 `stop`, socket closure, SIGINT and SIGTERM release sessions and pending work. Public errors omit provider request details and credentials.
-Audit stdout contains event names, times, counts and revisions, without audio, transcripts or API keys. `browser_rendered` is a client acknowledgement, not a human acceptance decision.
+Audit stdout contains event names, times, counts and revisions, without audio, transcripts or API keys. `transcript_final` records an item ID when its transcript completes; `question_control` records each question request's ID, type, status, whether it was a replay, and versions, never wording. `browser_rendered` is a client acknowledgement, not a human acceptance decision; when it names a Live id and version it records display, never consent.
 See [live transcription guidance](https://developers.openai.com/api/docs/guides/realtime-transcription).

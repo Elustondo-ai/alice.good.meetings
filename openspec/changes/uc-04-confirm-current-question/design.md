@@ -2,61 +2,55 @@
 
 ## Context
 
-See [proposal motivation, user decisions and ASDG hashes](proposal.md). The existing controller has one `question` and a global revision; a QUESTION proposal citing final transcript text can replace that question. The browser renders `answer` events and the server accepts only `stop` and `rendered` controls. There is no confirmation path or exchange ID in this inspected implementation.
+See the [proposal](proposal.md) for the motivation, Pablo's decisions and the ASDG hashes. The readable low-level design, with mockups, is in [08 · Focus and Live question](../../../docs/asdg/08-low-level-design/03-uc-04-focus-and-live-question.md); this file keeps the implementation-facing contract.
 
-The following code was read, not executed for this proposal. These observed bytes supersede the dated architecture document's description of a browser-only prototype as evidence of current source behavior; no upstream historical document is rewritten.
+The `sprint-01` code implements the 28 October version. The controller has `question`, `questionVersion`, `questionOrigin`, `exchangeId` and a `clarification` draft. Outside clarification, `track()` lets cited `new-question` evidence replace `question` automatically, and that is the 4 November bug. The code below was read, not run, on 4 November; it is uncommitted and may still be changing.
 
 | Source | SHA-256 | Relevant responsibility |
 | --- | --- | --- |
-| [Controller](../../../poc/session.mjs) | `16ba46e7b8e5a3c97bb9e9a58407371b77bf31cb14a7a7f556bdd6c83615c0a8` | Revision/evidence checks, snapshots, coalescing and Stop. |
-| [Reasoner](../../../poc/agent.mjs) | `43ff0a2c883ece40b2a2c14a6a9f627328d76f6a20100e1bdb65b20424dd8ce3` | Structured proposals currently require interviewer-question evidence. |
-| [Transport](../../../poc/server.mjs) | `0732aa9a158ef7c979d8e11a9a1ebbc6013e7bbca695c4735f90398a2ccf7db6` | Same-origin WebSocket, control dispatch and one connection-owned session. |
-| [Browser](../../../app.js) | `188dadc7287357a1c6058d7f267e2055b75feb0c3057afab48cd79924ffadeca` | Monotonic rendering and capture lifecycle. |
-| [Page](../../../index.html) | `6963f1f6cf33385e4175c011d53392723c95090f9760d24d764d61728a5426cc` | Color timer and scrolling diagnostic overlay; no question controls. |
-| [Tests](../../../poc/poc.test.mjs) | `c4b09aab4027c63bea3465490e54abb7702319b6e603b886ab789cb81624c3a0` | Injected reasoning, stale proposals, retained answers, transport and cleanup. |
+| [Controller](../../../poc/session.mjs) | `11af3f3ff5386f545132c265439406aa104b4e80e8e76b9ee4ab884604a56a70` | State, `refine`/`track`, cutoffs, `confirm`, request cache. |
+| [Reasoner](../../../poc/agent.mjs) | `d45f553d30e179a692a1302ef0d832fdca7efa4018d9aa1df17872cffd717b91` | Intent schema `none / clarify / new-question / answer` and prompt. |
+| [Transport](../../../poc/server.mjs) | `fd7f353e6ed390ca6133ff5222280c0369d7503091c14120a88676d1005888f9` | Control dispatch on `/session`. |
+| [Browser](../../../app.js) / [page](../../../index.html) | `051df98202e71385d1c5e66192afae40432a1144d3c218f3dd621224d3e34c7a` / `ec590c215c913f888b68dc1b156965a3693cd4e3365ee14343b98fc3ae7594ed` | Question panel, pending/uncertain handling. |
+| [Tests](../../../poc/poc.test.mjs) | `9edd17507a345a94df0f08bbe487b9ce2cba00dfb8b7608fa972f24533a2969d` | Controller and transport cases. |
 
 ## Goals / Non-Goals
 
-Implement the [clarification](specs/question-clarification/spec.md), [confirmation](specs/question-confirmation/spec.md) and [tracking](specs/question-tracking/spec.md) contracts in the existing small service. Keep audio intake independent of controls and reasoning; reuse session memory, the existing model integration and connection lifecycle. No durable storage, additional provider, automatic reconnect or speaker-recognition project is introduced.
+Goals: implement [live-question](specs/live-question/spec.md), [question-confirmation](specs/question-confirmation/spec.md) and [focus-question](specs/focus-question/spec.md) by changing the existing code. Non-goals: storage, a new provider, automatic reconnect and speaker recognition.
 
 ## Decisions
 
-![The browser submits its rendered tuple; the controller validates, commits once and returns a correlated result and versioned state.](images/design-protocol.svg)
+![The browser submits the Live tuple it displayed; the controller validates it against Live and Focus versions, commits once to Focus, and returns a correlated result before the state broadcast.](images/design-protocol.svg)
 
-**State ownership.** Extend controller state with `questionVersion` (0 before a question), `questionOrigin` (`automatic` or `user-confirmed`), `exchangeId`, and nullable `clarification: {id, version, text, exchangeId, baseQuestionVersion}`. Keep existing `question` as the authoritative text, not a second copy. Separate draft versions avoid rejecting consent merely because unrelated transcript activity advanced the global revision; a single shared text field cannot represent both draft and retained question safely.
+**State.** The state replaces `question`/`questionVersion` with `focus`/`focusVersion` and `clarification` with `live: {id, version, text, kind}`, where `kind` is `new` or `restatement`. `questionOrigin` is removed because Focus is always user-confirmed. Keeping two fields avoids the old single-field conflict between draft and retained question. The [08 state model](../../../docs/asdg/08-low-level-design/03.2-uc-04-state-and-rules.md) has the full transition rules.
 
-**Entry and refinement.** Add structured agent intent `none | clarify | new-question | answer` with cited observations. Recognized clarify intent opens/refines a draft; Start question enters that mode immediately, records the observation/audio cutoff and waits for subsequent speech. It preserves existing draft text on repeated Start rather than clearing it. Manual intent is not speaker identity; silence and timer boundaries are not confirmation. Prefer this explicit control plus semantic detection to a mandatory spoken password.
+**Live from the agent.** The output schema is unchanged. `new-question` sets Live with `kind: new`. `clarify` refines an open Live and keeps its `kind`; when Live is empty, it opens Live as a `restatement` of Focus, but text equal to Focus is ignored. `answer` and `none` leave Live alone. At least one cited observation must be newer than the Live cutoff. Focus has no automatic writer, so a misread intent can only produce a wrong Live.
 
-**Versions and exchanges.** Opening, changing or confirming a draft increments global `revision`, invalidating older reasoning snapshots. Text changes increment draft `version`; question replacement increments `questionVersion`. A clarification keeps the current exchange unless evidence supports a genuinely new question; if none exists allocate the first exchange. Unknown relation conservatively retains the exchange and exposes uncertainty, a proposed default for review. Repeated confirmation cannot allocate another exchange.
+**Versions and exchanges.** Every Live or Focus change, and every Clear live, increments `revision`, invalidating older reasoning snapshots. Each Live text change increments `live.version`; a new Live gets a fresh `id`. Only Confirm increments `focusVersion`. Confirm keeps `exchangeId` for a `restatement` of an existing Focus and allocates a new one otherwise.
 
-**Exact consent.** The browser captures the rendered draft tuple at activation, including its exact text; the server compares it to its canonical draft without re-normalizing or substituting newer text. Choose stale rejection with current-state feedback over retaining a version history and accepting an old unseen-on-server draft. Validate and commit synchronously before publishing: update question/text provenance, increment versions, clear clarification, retain its evidence cutoff and set phase QUESTION so confirmation permits reflection rather than inferring ANSWER.
+**Exact consent.** Confirm compares `liveId`, `liveVersion`, exact `text` and `expectedFocusVersion` to the canonical state, without normalizing. On a match it sets Focus, sets phase QUESTION and clears Live. It also moves the Live cutoff and retires the id, all synchronously before publishing. The result precedes the `answer` broadcast.
 
-Emit the correlated confirmation result before any subsequent state broadcast. The browser must not infer completion of its pending request merely from an unrelated `answer` event containing confirmed provenance.
-
-| Protocol extension | Payload and response contract |
+| Protocol | Contract |
 | --- | --- |
-| `question.start` | `{sessionId, requestId}`; return `question.result` with `started` and the current full snapshot; no wording is approved. |
-| `question.confirm` | `{sessionId, requestId, draftId, draftVersion, expectedQuestionVersion, text}`; strings bounded, versions safe nonnegative integers, text nonempty and at most the existing 600-character controller limit. |
-| `question.result` | `{sessionId, requestId, status, state}`; status is `started`, `confirmed`, `stale`, `invalid`, `unavailable` or `limit`; a confirmed result includes the accepted draft identity and resulting question version. |
-| Existing `answer` / `rendered` | Extend full state with draft/provenance/version fields; retain existing question/reply fields. Render acknowledgements can additionally identify draft ID/version, recording display rather than consent. |
+| `question.reset` | `{sessionId, requestId}` → `reset`; clears Live and moves the cutoff; never touches Focus. |
+| `question.confirm` | `{sessionId, requestId, liveId, liveVersion, expectedFocusVersion, text}`; IDs 1–100 characters, safe non-negative integer versions, text 1–600 characters. |
+| `question.result` | `confirmed` (adds `liveId`, `liveVersion`, `focusVersion`), `reset`, `stale` (version changed or id retired), `invalid`, `unavailable` (stopped, Live empty, or Live equals Focus), `limit`. |
+| `answer` / `rendered` | State carries `focus`, `focusVersion`, `live`. `rendered` names `liveId`/`liveVersion` as display only, never consent. |
 
-**Retries and errors.** Cache each well-formed control's payload fingerprint and result by request ID in the live session; identical retries return the original result and changed payloads return `invalid`. Proposed cap: 256 distinct controls per existing 30-minute session, then reject new controls with `limit` before mutation; retained results remain retryable. Unlike evicting successful receipts, this bounded policy cannot recommit an old request. Malformed controls produce safe feedback without exposing provider details or destroying a valid current question.
+**Retries and limits.** Unchanged: identical retries by `requestId` return the cached result, changed payloads are `invalid`, and there is a cap of 256 distinct controls. Retired Live ids are kept in a set bounded by the same cap.
 
-**Browser behavior.** Use native keyboard-operable buttons and separate current-question/draft regions. Disable Confirm while disconnected, empty or pending; freeze the submitted wording while queuing newer drafts until its result. Apply snapshots only when session matches and revision advances, but correlate duplicate/older results by request ID to settle pending status without rolling back the display. After five seconds without a result show “confirmation uncertain” and allow an identical retry; never auto-approve. New sessions clear pending controls and old confirmation labels.
-
-**Automatic compatibility.** With a draft open, model question proposals only refine it. After confirmation, retain its wording through answer evidence, silence and acknowledgements; ordinary restatement is not clarification intent. A later explicitly cited new question can resume automatic promotion outside clarification, using final evidence beyond the confirmation cutoff. Suspected correction opens a separate draft, while ambiguous relation preserves the established question. Schema/version checks constrain ordering; fidelity and intent still need semantic evaluation.
+**Browser.** Confirm is enabled when connected, nothing is pending, and Live has text different from Focus. A disabled Confirm shows a hint. Feedback clears when Live changes. The submitted wording freezes while pending; after 5 seconds it shows "uncertain" with an identical retry. Snapshots apply only for the same session and an increasing revision. A new session clears everything.
 
 ## Risks / Trade-offs
 
-- Misread clarification or new-question intent → retain the established question, expose uncertainty and test Pablo-only utterances, ordinary answer restatements and multipart corrections separately.
-- Rapid draft changes or stale confirmations → freeze submitted text, reject stale versions visibly and retry only after renewed review; record browser-visible timing rather than inventing a latency guarantee.
-- Disconnect after server commit → the page shows uncertainty and its previous acknowledged text; retries work only in the same live session. A restart is a new session, not recovery of consent.
-- Input-size or control-count limits → show actionable feedback without truncating approved meaning; tuning these proposed limits requires review, not a hidden behavior change.
+- Misread intent → only Live is wrong; Pablo ignores it or presses Clear live. Intent accuracy still needs semantic evaluation.
+- Focus never updates without a press → Pablo may answer a new question under the old Focus. Accepted: the 4 Nov decision values stability over automation.
+- Disconnect after commit → the page shows uncertainty and the last acknowledged Focus; a restart is a new session.
 
 ## Migration Plan
 
-After explicit apply authorization and an applicable UC-04 sprint decision, extend controller/schema and tests, then transport, then browser and documentation as listed in [tasks](tasks.md). Ship browser and service together, keeping existing fields and audio framing. Restart local sessions for the new protocol; there is no persistent data migration. Rollback restores the paired prior browser/service versions and starts a fresh session; it cannot preserve session-only confirmed memory.
+Change the controller and tests, then the transport, then the browser and documentation, as listed in [tasks](tasks.md). Ship browser and service together and restart local sessions; there is no stored data. Rollback restores the paired prior versions.
 
 ## Open Questions
 
-Final control labels, layout spacing and a user-acceptable latency target remain review refinements; defaults are Start question / Confirm question and the existing reasoning cadence. Measure recognition-to-draft, click-to-commit and acknowledgement-to-render separately. Stage 04's provisional two-second question-display target is not a consent timeout or an accepted UC-04 gate.
+None from the 4 Nov review. A user-acceptable latency target is still unset; record recognition-to-Live, click-to-commit and acknowledgement-to-render separately.

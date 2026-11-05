@@ -74,12 +74,54 @@
       font: clamp(12px, 1.8vmin, 17px) monospace;
       border-radius: 6px;
     }
+    #question {
+      position: fixed;
+      top: min(8px, 1vmin);
+      right: min(8px, 1vmin);
+      width: min(520px, 48vw);
+      max-height: 50vh;
+      overflow: auto;
+      padding: 10px 12px;
+      background: rgba(0, 0, 0, 0.78);
+      color: white;
+      font: clamp(14px, 2.2vmin, 20px) sans-serif;
+      border-radius: 6px;
+    }
+    #question p { margin: 4px 0 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    #question .label { font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.85; }
+    #question hr { border: 0; border-top: 1px solid rgba(255, 255, 255, 0.25); margin: 6px 0; }
+    #question .tag { text-transform: none; letter-spacing: 0; color: #ffd54a; opacity: 0.9; }
+    #focus-question { font-weight: bold; }
+    #focus-question.historical { opacity: 0.6; }
+    #live-question { border-left: 3px solid #ffd54a; padding-left: 8px; font-style: italic; }
+    #live-note, #question-feedback, #confirm-hint { font-size: 0.85em; }
+    #confirm-hint { opacity: 0.8; margin-bottom: 0; }
+    #question button { font-size: 0.85em; padding: 4px 10px; cursor: pointer; }
+    #question button.primary:enabled { font-weight: bold; }
+    #question button:disabled { cursor: not-allowed; }
+    #question button:focus-visible { outline: 3px solid #ffd54a; outline-offset: 2px; }
+    @media (max-width: 700px) {
+      #question { left: min(8px, 1vmin); width: auto; max-height: 40vh; }
+      #debug { top: auto; bottom: calc(44px + 34vh + 8px); }
+    }
   </style>
 </head>
 <body>
   <div id="panel">GOOD</div>
   <pre id="debug"></pre>
   <pre id="server" role="status" aria-label="Server and agent responses"></pre>
+  <section id="question" aria-label="Interview question">
+    <div class="label">Focus question <span id="focus-status"></span></div>
+    <p id="focus-question">No focus question yet</p>
+    <hr>
+    <div class="label">Live question <span id="live-tag" class="tag"></span></div>
+    <p id="live-question">Not listening</p>
+    <p id="live-note"></p>
+    <p id="question-feedback" role="status" aria-live="polite"></p>
+    <button id="confirm-question" class="primary" type="button" disabled aria-describedby="confirm-hint">Confirm question</button>
+    <button id="clear-live" type="button" disabled>Clear live</button>
+    <p id="confirm-hint"></p>
+  </section>
   <div id="controls">
     <button id="listen">Start Listening</button>
     <button data-state="good">Good</button>

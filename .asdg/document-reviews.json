@@ -5706,6 +5706,1010 @@
         "visible_review_markers": [],
         "approval_binding": "No approval inferred or transferred."
       }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md",
+      "sha256": "a1e93acc6b2b523301b0247c2b17c14bde078ef693d4b99cdc769e1777411301",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:25:13.871499+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-03",
+        "reason": "UC-04 redesign: Focus question and Live question cycle (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "focus-live-cycle.svg rendered in the browser pane and inspected; no overlap or clipping; markdown links checked to exist."
+      },
+      "previous_state": {
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/images/focus-live-cycle.svg",
+      "sha256": "c0cba1b9dfd19d114d422bd88be52a295249b6e629772c3182ced281c744b6f3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:25:13.871499+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-03",
+        "reason": "UC-04 redesign: Focus question and Live question cycle (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "focus-live-cycle.svg rendered in the browser pane and inspected; no overlap or clipping; markdown links checked to exist."
+      },
+      "previous_state": {
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01-system-model.md",
+      "sha256": "98b57291600ef392739c99d916b262b1e1c08647c3c82a754f352169daee0ff3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:25:13.871499+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-03",
+        "reason": "UC-04 redesign: Focus question and Live question cycle (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Summary text aligned with the redesigned UC-04."
+      },
+      "previous_state": {
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/README.md",
+      "sha256": "94230f2836860e1c302c021dceb15afd1c357129c7fc2db68401b06ef41662fc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:25:13.871499+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-03",
+        "reason": "UC-04 redesign: Focus question and Live question cycle (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Summary text aligned with the redesigned UC-04."
+      },
+      "previous_state": {
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03-uc-04-focus-and-live-question.md",
+      "sha256": "22964520aa2d93735b64ee7f20d1efc627c76027a4a219f491eb1ebc49e519ad",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Embedded SVGs rendered with rsvg-convert; Mermaid diagrams validated; Markdown rendering in a document pane not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.1-uc-04-panel-states.md",
+      "sha256": "ec886e5c7da546559ebb9f1b74912c2fa60ccc98f8564930b6a01b282a0fd4e9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Embedded SVGs rendered with rsvg-convert; Mermaid diagrams validated; Markdown rendering in a document pane not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.2-uc-04-state-and-rules.md",
+      "sha256": "98160589363cc985ecf660fc12eea75f09f5f9d479ec04e4ad9269efa0a7b97b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Embedded SVGs rendered with rsvg-convert; Mermaid diagrams validated; Markdown rendering in a document pane not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.3-uc-04-protocol.md",
+      "sha256": "4e668255f9b1274d07a177c095cf8fdaea9159fa0fa149ccfedee3eb07d88b03",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Embedded SVGs rendered with rsvg-convert; Mermaid diagrams validated; Markdown rendering in a document pane not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.4-uc-04-openspec-update.md",
+      "sha256": "8b6188016b94de192beef4d09bbc3467ad35d9826b2dc5bc0438ff21129fb7be",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Embedded SVGs rendered with rsvg-convert; Mermaid diagrams validated; Markdown rendering in a document pane not inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/README.md",
+      "sha256": "a7cc79ab291d9268705c2e3971b3e92fbab195552bb1c74cb64771cffe1167f4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Embedded SVGs rendered with rsvg-convert; Mermaid diagrams validated; Markdown rendering in a document pane not inspected"
+      },
+      "previous_state": {
+        "sha256": "0aa6858115908ce3aaa46a8558288cadb7d932adb4971308e668cf69d96aa074",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-focus-live-cycle.svg",
+      "sha256": "b89f1607748a4f52fc966ff4cbdb018745737b058798123e321e752254779a44",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-openspec-mapping.svg",
+      "sha256": "60c84c4abb3de73db7b5bd3d8b6268e330ee95e679a9b3dc898f5d7f3f2f5906",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-1-ready.svg",
+      "sha256": "9392c4450d5b15e920b47ba8a1ba1ce2bd6b4e911f05569f8e46d2182861baa2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-2-heard.svg",
+      "sha256": "42aca41d1305028df68f70ef051be7f3442f372bf584c6aa6fe7a323d71be67a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-3-confirmed.svg",
+      "sha256": "21dbc16af81bea3e1e3f113fb858ee01815cb80daf61114720cb532f155a5402",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-4-answering.svg",
+      "sha256": "fa15509e6387a0bc83964129a0831328a3009fe707aa61fc75cf735e2aa352a5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-5-new-question.svg",
+      "sha256": "deec609ea14ae99009f733b6a7c9f3996e0c55a7a1542cf0b95110e6a992f5d5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-6-uncertain.svg",
+      "sha256": "732de3b50d396f4c38a1e7575a9869fc8637c0907a9c35af5e609f5b8ea8dffc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-7-disconnected.svg",
+      "sha256": "540cfda15a9c3576412170168e1fa66c5dc517ab7860ca42a315b5939f29bb7b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-8-narrow.svg",
+      "sha256": "3d79ca154281d61c8b6503321dc2055f45cebda91b8dd308353d66b4eefede69",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:41:37.369457+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "UC-04 redesign low-level design: Focus question and Live question (Pablo's 4 Nov 2026 decision relayed by 09 Coding)",
+        "visual_review": "Mockup/diagram rendered with rsvg-convert and inspected"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md",
+      "sha256": "823939fed7b907c714289e9d61cc18c7261b5b85e37c521271d054dcaa26380a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:42:42.527604+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-03",
+        "reason": "Link UC-04 to the 08 Specs low-level design"
+      },
+      "previous_state": {
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md",
+      "sha256": "4010c93d8ca3e04c1f2132c2d359a67d39e365c6240718d7eb16213c66e121b1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:44:12.156788+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-03",
+        "reason": "Apply Pablo's 4 Nov 2026 UC-04 decisions (\"Accept all five\"): Reset live, exchange rule, muted Live tag, phase QUESTION, no shortcut",
+        "visual_review": "SVG rasterized with rsvg-convert at 1100px and inspected; Live tag legible and clear of the dashed arrow."
+      },
+      "previous_state": {
+        "approval_binding": "No approval inferred or transferred. Recording Pablo's decisions does not accept this document."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/images/focus-live-cycle.svg",
+      "sha256": "2ee42fc764d32ec295cd066575f2f2c0dccc236d3ba46472ecdec086b2ab1919",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:44:12.156788+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-03",
+        "reason": "Apply Pablo's 4 Nov 2026 UC-04 decisions (\"Accept all five\"): Reset live, exchange rule, muted Live tag, phase QUESTION, no shortcut",
+        "visual_review": "SVG rasterized with rsvg-convert at 1100px and inspected; Live tag legible and clear of the dashed arrow."
+      },
+      "previous_state": {
+        "approval_binding": "No approval inferred or transferred. Recording Pablo's decisions does not accept this document."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/proposal.md",
+      "sha256": "29f382028b89daa54ddeffb619c588c77e280c0d3c342c73dab888c778d2a142",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      },
+      "previous_state": {
+        "sha256": "378d6420f82643a1d707bc296e6e6c4caab622eb8c493dab276ee57c66bbe069",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/design.md",
+      "sha256": "108200ce7480ef876b2afd7c685d26faef9c7fe9f21bd60a21e980b04439784f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      },
+      "previous_state": {
+        "sha256": "5b965780125dbcaf73a615b0c63fe937d424c2b7b0d569260ebb8f133e2196c9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/tasks.md",
+      "sha256": "cc709d16677a1d5a5ed65abcd1ff1da78aa7b5eb77e0e1969208302a2c47c7fd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      },
+      "previous_state": {
+        "sha256": "349402790a59b9989f53ae720dad7325bf3abf1768acf5ddd7a8fe5a4f994eb2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/specs/live-question/spec.md",
+      "sha256": "783bc16b97b3aeca90d2d2ab2c96aa55c92239d1df03ac17d0ce610b395a9217",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed",
+        "renamed_from": "openspec/changes/uc-04-confirm-current-question/specs/question-clarification/spec.md"
+      },
+      "previous_state": {
+        "sha256": "116deafab00609b75d95ebd46f024764506b285315828b60775cfae5f4d92a4e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/specs/question-confirmation/spec.md",
+      "sha256": "636001b52c7f959f3a44e6381f6ecd8843e53a538d18d5a04a523e49edeec730",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      },
+      "previous_state": {
+        "sha256": "1a8cb1030af16ac8b6340cab532da5f3d37ddc071a04e3e5e59e62b7d2d67878",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/specs/focus-question/spec.md",
+      "sha256": "249d06d82e9d7de3534c3dca59feeb6c7e59eddd96c06b5ae761ec0aa9469833",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed",
+        "renamed_from": "openspec/changes/uc-04-confirm-current-question/specs/question-tracking/spec.md"
+      },
+      "previous_state": {
+        "sha256": "6f1282e0b8926327adbd37632793eb84826cbb00f2da9b84276199046d6e90de",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/proposal-flow.svg",
+      "sha256": "e3e39777499c54d33bb91e163ca2e36ab63629a1081036fc4e81761622a462ad",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      },
+      "previous_state": {
+        "sha256": "e241e5967883fdae4c7994c0ffc0ebfcfcd29bf5ff9dcd94a98974c2f53cdd53",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/clarification-flow.svg",
+      "sha256": "91e20bb59b2bb7d3b2e4de5164554dd984196af7e945932fd14bc5c03d32109f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      },
+      "previous_state": {
+        "sha256": "8466dad3e106568913c3f1e47cb421910376570de88126d064abb2ebb6c0068f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/confirmation-flow.svg",
+      "sha256": "3be8a7daf904ee85bbb44347c3ed3a3f2fd7b0e95266f774eeeb968d7efebf98",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      },
+      "previous_state": {
+        "sha256": "da7ed5c63cf2f6636a469e82d026f51d3c67ee09c07d01835dce5cdf126dbae6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/tracking-flow.svg",
+      "sha256": "3b7e5d5cbd4e44e0c9a73dd52b9dcfb1c3fad3f35218df784001294e8626a851",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      },
+      "previous_state": {
+        "sha256": "09e06bb8416905f2aec1dac8508ac12c56ffb58cd1c86803cb560d28646ea1d4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/design-protocol.svg",
+      "sha256": "df9751178bf82987eb4b0876c771484faa3339e68fffcf6a47d83c58a8659ca9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      },
+      "previous_state": {
+        "sha256": "3bcea19ccf459ecf2dece3db9b5b3cd0bd623073e0acc14dc62b7b7493007017",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03-uc-04-focus-and-live-question.md",
+      "sha256": "208610648e39f29046ad21b045260bfa4ac09522e0d75eefebc0b3a398a453a1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.3-uc-04-protocol.md",
+      "sha256": "80c4916703819b97f9ddc1e32db5ff14b99513cff33f7b6284dd2b694c96eac6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.4-uc-04-openspec-update.md",
+      "sha256": "c2610194d4c745c2b126224bc8c0b87033663957a432cd1e6293d63a9d63fc66",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-04T20:49:57.612610+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "OpenSpec UC-04 updated to the Focus/Live design after Pablo's 4 Nov 2026 'Accept all five' (relayed by 09 Coding)",
+        "visual_review": "SVGs rendered with rsvg-convert and inspected; openspec validate --strict passed"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/02-uc-04-verification.md",
+      "sha256": "3c8d97c6b801a4d94dc47d745b5c6a11a9598382d04b8766c27b721dd0b4d5da",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:18:48.006235+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "UC-04 live-run verification (task 4.4) from audit logs and Pablo's report, after his 4 Nov 2026 'Write it now'",
+        "visual_review": "Mermaid sequence validated and rendered after fixing a semicolon parse error"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/README.md",
+      "sha256": "e06b431cbea160838a4898bf4e73d1f32b22a2fb048a68df7049418ea3eec30b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:18:48.006235+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Linked the UC-04 verification page",
+        "visual_review": "Navigation-only change"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/02-uc-04-verification.md",
+      "sha256": "df0e791481d9195ddd767e68255d58b32edd6579ef3edcfe7dfd9e6ff8d154d5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:27:46.267203+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Marked findings 1-3 fixed after Pablo's 'Fix the findings'",
+        "visual_review": "Diagram unchanged; previously rendered"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/02-uc-04-verification.md",
+      "sha256": "af72ef28274aaa20295bc0c36de712c5d55eac62fc759870a1fbbe812db40a31",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:29:03.877603+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Button renamed Clear live after Pablo's 4 Nov 2026 'Rename to Clear live'",
+        "visual_review": "Label-only text change"
+      }
+    },
+    {
+      "path": "docs/asdg/09-build-and-test-cycle/01-uc-04-live-check-plan.md",
+      "sha256": "11d6a16ea1a4d9bcdf421d1dbd89d3cf0660869f92ec407f8ee3d5387ee0a3dc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:29:03.877603+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Button renamed Clear live after Pablo's 4 Nov 2026 'Rename to Clear live'",
+        "visual_review": "Label-only text change"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md",
+      "sha256": "313f1ab9dd5fc40194a8c53cabd2e9b187be3008ce0ac791856a4fd5ade79330",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:29:56.400294+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-03",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; behavior unchanged",
+        "visual_review": "SVG rasterized with rsvg-convert at 1100px; Clear live button and rules box inspected."
+      },
+      "previous_state": {
+        "approval_binding": "Stage 03 acceptance of 2026-11-04T20:48 bound the previous bytes; not transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/images/focus-live-cycle.svg",
+      "sha256": "ba2d5e5312b8193adf90b957cb69e4ef2cafd5a046e0398a6cdf854b5c3c2452",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:29:56.400294+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-03",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; behavior unchanged",
+        "visual_review": "SVG rasterized with rsvg-convert at 1100px; Clear live button and rules box inspected."
+      },
+      "previous_state": {
+        "approval_binding": "Stage 03 acceptance of 2026-11-04T20:48 bound the previous bytes; not transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03-uc-04-focus-and-live-question.md",
+      "sha256": "7d7d766f0112b82ebbad0139c245a58f42cdd80b6b19e33b728f7a4a5aee3c57",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "208610648e39f29046ad21b045260bfa4ac09522e0d75eefebc0b3a398a453a1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.1-uc-04-panel-states.md",
+      "sha256": "5030c40e861e44e1808a264735b4cc28a00df4a2f7fc7a097f7d3ac1901b2f3e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "ec886e5c7da546559ebb9f1b74912c2fa60ccc98f8564930b6a01b282a0fd4e9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.2-uc-04-state-and-rules.md",
+      "sha256": "bce6d379817401e6be72af653b15fbb0a4990914617b290c4b94035cf99e23aa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "98160589363cc985ecf660fc12eea75f09f5f9d479ec04e4ad9269efa0a7b97b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.3-uc-04-protocol.md",
+      "sha256": "2ba2fe8c65d985d72348cddedff30171e268e217a21973afe71569d00d535875",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "80c4916703819b97f9ddc1e32db5ff14b99513cff33f7b6284dd2b694c96eac6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/03.4-uc-04-openspec-update.md",
+      "sha256": "6c8981c64c51d5e83ac2db16d9be46a7ce8b8e57e4d09e577372142d5e4f46b0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "c2610194d4c745c2b126224bc8c0b87033663957a432cd1e6293d63a9d63fc66",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-openspec-mapping.svg",
+      "sha256": "f6ab07fb20928add7bc43da97a78a09fe1a965568d33e863369d9bba03cfc2ae",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "60c84c4abb3de73db7b5bd3d8b6268e330ee95e679a9b3dc898f5d7f3f2f5906",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-1-ready.svg",
+      "sha256": "3460380d25edc9835ecbff6768e2d8db795399801d0d9fcec1ab30c5fe2a99ed",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "9392c4450d5b15e920b47ba8a1ba1ce2bd6b4e911f05569f8e46d2182861baa2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-2-heard.svg",
+      "sha256": "782f02fff4164ba3ccd66a61ae7eb7973b4c40f36c053030eb9c20603f6a003c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "42aca41d1305028df68f70ef051be7f3442f372bf584c6aa6fe7a323d71be67a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-3-confirmed.svg",
+      "sha256": "df6444b4be83a70ff9f41850aa91f2b667ab5ea1411e280147089c91b4bfa3f8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "21dbc16af81bea3e1e3f113fb858ee01815cb80daf61114720cb532f155a5402",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-4-answering.svg",
+      "sha256": "a1ee779cedcf21f4310cb1f46783eed5904a36709cbe9c8c8515180c9367a951",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "fa15509e6387a0bc83964129a0831328a3009fe707aa61fc75cf735e2aa352a5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-5-new-question.svg",
+      "sha256": "39b6f82bab44cdfc5c1f7f44c2b8f537dd70c6739c1cff71395972b4cc88c520",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "deec609ea14ae99009f733b6a7c9f3996e0c55a7a1542cf0b95110e6a992f5d5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-6-uncertain.svg",
+      "sha256": "6129424509a821db2722157dc3f4d2aba9776fb9f1324582810fe239fe77b898",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "732de3b50d396f4c38a1e7575a9869fc8637c0907a9c35af5e609f5b8ea8dffc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-7-disconnected.svg",
+      "sha256": "3158e7d40cedf6900732828559d87c2d56dc5e54afba71dc949d9daa4a00f622",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "540cfda15a9c3576412170168e1fa66c5dc517ab7860ca42a315b5939f29bb7b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/images/uc04-state-8-narrow.svg",
+      "sha256": "92a07f3877e694624cc2a4037d42741f4d17782b4333ea802b10dc33594f6882",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "3d79ca154281d61c8b6503321dc2055f45cebda91b8dd308353d66b4eefede69",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/design.md",
+      "sha256": "057cc9afb4cdb109dc2df18025bad9e5aac8c911af66db1f866e52ace71f7c52",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "108200ce7480ef876b2afd7c685d26faef9c7fe9f21bd60a21e980b04439784f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/images/clarification-flow.svg",
+      "sha256": "7fce183a2b8ed2a2f9966ad52812995960f5a662780364121e536505235d5c44",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "91e20bb59b2bb7d3b2e4de5164554dd984196af7e945932fd14bc5c03d32109f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/proposal.md",
+      "sha256": "f1459ce687cb401953688930f04bb444ce6960f6f9695c49a853fe3cfcebdbfd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "29f382028b89daa54ddeffb619c588c77e280c0d3c342c73dab888c778d2a142",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/specs/live-question/spec.md",
+      "sha256": "74d685dc2546ae4ec847ddc15501f715fc618d3aa2bbc88cc68c4f549fb0063f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "783bc16b97b3aeca90d2d2ab2c96aa55c92239d1df03ac17d0ce610b395a9217",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/specs/question-confirmation/spec.md",
+      "sha256": "37f00facb60434c6e7bf9cb004533dbfd971d7dcf035550283e010318ebaa627",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "636001b52c7f959f3a44e6381f6ecd8843e53a538d18d5a04a523e49edeec730",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "openspec/changes/uc-04-confirm-current-question/tasks.md",
+      "sha256": "7d0d35bebab8c6bbc4ceff80ecd57fb21955e8934668886c3953bcfe4832b984",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T01:30:27+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-08",
+        "reason": "Rename Reset live to Clear live per Pablo, 4 Nov 2026 (\"Rename to Clear live\"), relayed by 09 Coding; protocol name question.reset kept; proposal source hashes refreshed",
+        "visual_review": "Mockup and diagram SVGs rasterized with rsvg-convert; narrow state inspected."
+      },
+      "previous_state": {
+        "sha256": "cc709d16677a1d5a5ed65abcd1ff1da78aa7b5eb77e0e1969208302a2c47c7fd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/02-uc-04-verification.md",
+      "sha256": "536a82a724b61e4ccd4efea6ca13ce1903d842080fa3b63f465ef368b36a5643",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T02:06:48.504556+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Added live run 3 (full capture) after Pablo's 4 Nov 2026 'Done, analyze it'",
+        "visual_review": "Mermaid sequence validated and rendered"
+      }
+    },
+    {
+      "path": "poc/session.md",
+      "sha256": "1b6cd6a32b66c77c0a07303ba8996f7ef09bdce7129b98cada72d3b4fd7b8c55",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T03:20:28.037751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Documented text-free agent rejection reasons in the audit after Pablo's 4 Nov 2026 'Yes, log reasons'",
+        "visual_review": "Existing visual unchanged"
+      }
+    },
+    {
+      "path": "poc/poc.test.md",
+      "sha256": "5d92e00ca3462f6ae64d27705badef07e9d84ee883c16e4bf441317d2458a31c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T03:20:28.037751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Documented text-free agent rejection reasons in the audit after Pablo's 4 Nov 2026 'Yes, log reasons'",
+        "visual_review": "Existing visual unchanged"
+      }
+    },
+    {
+      "path": "docs/asdg/08-low-level-design/02-uc-04-verification.md",
+      "sha256": "29d99e4f0d2b53aa09862a01d1d5dc750db5bf143e1de59335d1c3c4b42b527d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T03:20:28.037751+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Documented text-free agent rejection reasons in the audit after Pablo's 4 Nov 2026 'Yes, log reasons'",
+        "visual_review": "Existing visual unchanged"
+      }
     }
   ]
 }

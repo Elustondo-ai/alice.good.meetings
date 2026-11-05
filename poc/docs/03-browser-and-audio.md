@@ -36,4 +36,11 @@ Only increasing answer revisions are displayed. A render acknowledgement is sent
 The `current` resource object acts as a generation token: an old permission request or callback cannot update a newer session.
 Connection failures preserve local feedback and the last reply, with visible status; restart explicitly to reconnect.
 
+## Question panel
+
+The top-right panel always shows two areas. The **Focus question** is the one Pablo confirmed and changes only when he presses Confirm question. The **Live question** is the agent's current reading, with a small tag ("new question" or "restatement"). Confirm question and Clear live are native buttons, usable by mouse or keyboard.
+Confirm sends Live exactly as rendered and is enabled only when connected, nothing is pending, and Live has text different from Focus; otherwise a hint says why. While its result is pending, the submitted wording stays visible tagged "confirming…" and newer wording is flagged. After five seconds without a result the page reports uncertainty and offers the same request again.
+Server state is applied only when its revision is newer, and results settle only their own request, so late or duplicate results cannot roll the display back. Feedback clears when Live changes. Disconnect or Stop marks Focus as last known; a new session starts empty.
+See [question controls](04.1-question-controls.md) for the messages and [browser protocol check](../browser-protocol.md) for the deterministic test.
+
 [Guide](README.md) · [Browser companion](../../app.md) · [Worklet companion](../audio-worklet.md)

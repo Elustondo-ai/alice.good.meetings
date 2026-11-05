@@ -18,7 +18,8 @@ Its injected `reason`, `connect` and `audit` collaborators let tests exercise th
 A binary audio message is exactly 4808 bytes. Bytes 0–3 contain the zero-based packet sequence; bytes 4–7 contain its starting sample index; the remaining 4800 bytes contain 2400 PCM16 samples.
 Numbers use little-endian encoding. Each accepted packet advances the sequence by one and the sample index by 2400.
 `InterviewSession.audio()` rejects wrong sizes, missing sequence numbers and discontinuous sample positions.
-Text messages are JSON controls: `{"type":"stop"}` closes the session; `{"type":"rendered","revision":2}` records a browser acknowledgement.
+Text messages are JSON controls: `{"type":"stop"}` closes the session; `{"type":"rendered","revision":2}` records a browser acknowledgement, optionally with the `liveId` and `liveVersion` it displayed.
+Question controls (`question.reset`, `question.confirm`) are described in [question controls](04.1-question-controls.md).
 
 ## Server → OpenAI transcription
 
@@ -30,8 +31,8 @@ Committed item IDs preserve segment order; delta and completed events feed `sess
 
 ## Server → browser and failure handling
 
-Events carry `type`, `sessionId` and `serverAt`. Types include `ready`, `status`, `audio`, `transcript`, `agent` and `answer`.
-Every ten audio packets, the browser receives a count and source duration. An answer adds revision, phase, question, reply and audio cutoff.
+Events carry `type`, `sessionId` and `serverAt`. Types include `ready`, `status`, `audio`, `transcript`, `agent`, `answer` and `question.result`.
+Every ten audio packets, the browser receives a count and source duration. An answer adds revision, phase, reply, audio cutoff, `focus`, `focusVersion`, `exchangeId` and `live`.
 Audio send buffers are capped at 96,000 bytes; the downstream browser event buffer is capped at 65,536 bytes. These are byte limits, not measured latency guarantees.
 Transcription readiness has a 20-second timeout; a session has a 30-minute POC limit. Invalid input, lost transcription or excessive buffering closes the connection with status.
 An agent-call failure is handled separately by the session, preserving the last accepted result while transcription can continue.

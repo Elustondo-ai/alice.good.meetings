@@ -19,3 +19,4 @@ It exercises the 25/35-second color decisions by controlled timer inputs; this i
 Stop must end tracks, close the AudioContext and leave zero server sessions. JavaScript page errors fail the check.
 Stdout is a JSON result. A screenshot is saved to `/tmp/speakercoach-poc-browser.png`; this disposable evidence is not committed.
 This test does not establish physical microphone capture, human usability, speaker identification or benchmark accuracy.
+It does not exercise the UC-04 question controls; [browser-protocol.mjs](browser-protocol.md) checks those deterministically without OpenAI.

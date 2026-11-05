@@ -11,6 +11,7 @@ Start with the introduction, then use the architecture and code map to locate th
 | [02 · Architecture](02-architecture.md) | Browser, local service and cloud boundaries; component ownership |
 | [03 · Browser and audio](03-browser-and-audio.md) | Independent audio paths, local timing and capture cleanup |
 | [04 · Server and protocol](04-server-and-protocol.md) | Routes, WebSocket packets, transcription and failure handling |
+| [04.1 · Question controls](04.1-question-controls.md) | Start and confirm requests, results, retries and examples for UC-04 |
 | [05 · Agent and state](05-agent-and-state.md) | Model calls, observation snapshots and validated updates |
 | [06 · Code navigation](06-code-navigation.md) | Where to start reading and where to make a particular change |
 | [07 · Running and verification](07-running-and-verification.md) | Startup, configuration, test commands and evidence |

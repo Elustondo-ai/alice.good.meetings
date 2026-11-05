@@ -6,7 +6,10 @@ This folder will describe the contracts an implementation needs: inputs, outputs
 
 ## SpeakerCoach today
 
-No detailed design is documented in this stage yet. Product scenarios exist elsewhere, but they do not by themselves specify a complete implementation contract.
+No implemented behaviour is documented here yet. One proposed design awaits Pablo's review:
+
+- [UC-04 · Focus question and Live question](03-uc-04-focus-and-live-question.md) (proposed 4 November 2026): two always-visible areas in the question panel, with mockups, state rules, protocol changes and an OpenSpec update proposal.
+- [UC-04 verification](02-uc-04-verification.md) (4 November 2026, by 09 Coding, awaiting review): live-run results per scenario, timings and findings for the implemented Focus/Live panel.
 
 ## What belongs here as we develop
 

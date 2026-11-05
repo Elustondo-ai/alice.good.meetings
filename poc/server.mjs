@@ -110,7 +110,13 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
           const message = JSON.parse(raw.toString());
           if (message.type === 'stop') cleanup();
           else if (message.type === 'rendered' && Number.isSafeInteger(message.revision)) {
-            audit('browser_rendered', { sessionId: session.id, revision: message.revision });
+            // Display evidence only; a rendered Live question is never consent to confirm it.
+            const live = typeof message.liveId === 'string' && Number.isSafeInteger(message.liveVersion)
+              ? { liveId: message.liveId.slice(0, 100), liveVersion: message.liveVersion } : {};
+            audit('browser_rendered', { sessionId: session.id, revision: message.revision, ...live });
+          } else if (typeof message.type === 'string' && message.type.startsWith('question.')) {
+            // Malformed question controls get an invalid result; they never end the session.
+            session.control(message);
           } else fail('Invalid control message');
         } catch { fail('Invalid control message'); }
         return;

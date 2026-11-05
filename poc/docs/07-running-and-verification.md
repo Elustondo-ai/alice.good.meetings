@@ -25,7 +25,9 @@ Only one browser session can listen at a time. A health response confirms the pr
 
 ## Verify the right layer
 
-`node --test poc/poc.test.mjs` runs eight deterministic cases, including a temporary localhost server; these tests do not call OpenAI.
+`node --test poc/poc.test.mjs` runs eighteen deterministic cases, including a temporary localhost server; these tests do not call OpenAI.
+`node poc/browser-protocol.mjs` checks the question panel in headless Chrome against a scripted session, also without OpenAI; see [its companion](../browser-protocol.md).
+`node poc/live-capture.mjs` records a live session's messages, times and checkpoints for the UC-04 live check; see [its companion](../live-capture.md).
 `node poc/browser-smoke.mjs /absolute/path/to/synthetic.wav` runs the live browser proof against an already-running service and makes OpenAI requests.
 The smoke script needs Playwright and a browser; [its companion](../browser-smoke.md) explains `PLAYWRIGHT_MODULE`, `CHROME_PATH` and `POC_URL`.
 Use a synthetic fixture for that check. It is not an isolated replay of the private interview benchmark.

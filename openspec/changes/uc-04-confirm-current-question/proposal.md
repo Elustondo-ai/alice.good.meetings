@@ -1,52 +1,51 @@
-# UC-04: clarify and confirm the current question
+# UC-04: keep a Focus question and confirm each new one
 
 ## Why
 
-Pablo needs to restate a question aloud, see a faithful draft and confirm the wording he will answer. The POC currently establishes questions automatically, so it cannot distinguish his explicit approval from a model's interpretation.
+During an interview Pablo needs two things in view at once: the question being answered, which must never change behind Pablo's back, and what SpeakerCoach hears as a question right now. The 28 October version of this change confirmed only during clarification and tracked automatically everywhere else. In the 4 November live run, an automatic `new-question` replaced a question Pablo had just confirmed. The panel showed "(AUTOMATIC)" wording, with Confirm disabled.
 
 ## What Changes
 
-- Recognized clarification or **Start question** opens a draft that follows Pablo's corrections, including multipart questions, using his voice alone.
-- **Confirm question** accepts the precise displayed version into server-side session memory; the page marks it confirmed only after acknowledgement.
-- During clarification, silence, confidence and transcript completion cannot promote the draft. Existing question text stays visible during refinement and failure.
-- Automatic tracking continues outside clarification. Confirmation preserves a reflection interval and does not itself begin an answer.
+- Two areas are always visible. The **Focus question** is the confirmed question being answered. The **Live question** is the current automatic interpretation of speech: new questions, restatements and corrections.
+- Only **Confirm question** writes Focus. It copies exactly the Live version Pablo saw, after server acknowledgement. Model output, silence, transcript finality and timers never write Focus.
+- After Confirm, or after **Clear live** (formerly Start question), Live clears and refills only from speech heard afterwards. A small muted tag says whether Live holds a "new question" or a "restatement".
+- Confirmation sets phase QUESTION, leaving time to reflect. A confirmed restatement keeps the current exchange; any other confirmation starts a new one.
+- **BREAKING** for the paired browser and service: `question.start` becomes `question.reset`. Draft fields become Live fields, Focus fields replace `question`/`questionVersion`, and `questionOrigin` is removed.
 
-![Clarification requires a reviewed draft and explicit confirmation; automatic tracking remains available outside that flow.](images/proposal-flow.svg)
+![Speech fills Live automatically; only Confirm question copies the seen Live wording into Focus; Live then refills from later speech while Focus stays fixed.](images/proposal-flow.svg)
 
 ## Capabilities
 
 ### New Capabilities
 
-- `question-clarification`: recognize or explicitly start clarification, refine a separate draft and keep it readable.
-- `question-confirmation`: validate the displayed version, acknowledge its acceptance and handle stale requests and retries.
-- `question-tracking`: preserve automatic tracking outside clarification, protect confirmed wording during answers and retain session boundaries.
+- `live-question`: always-visible automatic interpretation, evidence cutoff, Clear live and readable tagged wording.
+- `question-confirmation`: exact-version consent from Live to Focus, acknowledgement, stale and retired requests, and retries.
+- `focus-question`: Focus written only by confirmation, kept through reflection and answers, and safe across failures and session boundaries.
 
 ### Modified Capabilities
 
-None: the existing OpenSpec capability inventory is empty. These deltas describe the new flow and its compatibility boundary; they do not establish that existing behavior has passed evaluation.
+None: the OpenSpec capability inventory is still empty. `live-question` and `focus-question` replace the earlier draft names `question-clarification` and `question-tracking`. Nothing was archived under those names.
 
 ## Impact
 
-Expected implementation touches `app.js`, `index.html`, `poc/session.mjs`, `poc/agent.mjs`, `poc/server.mjs`, tests and their Markdown companions. It extends the existing browser/service protocol without choosing a new SDK, database or audio transport; both ends must be updated together. Answer suggestions, cross-session storage and calibrated speaker recognition are excluded.
+The change touches `app.js`, `index.html`, `poc/session.mjs`, `poc/agent.mjs`, `poc/server.mjs`, the tests and their Markdown companions. The earlier version of this change is already implemented, uncommitted, on branch `sprint-01`, so the work modifies that code. It adds no SDK, database or audio transport. Answer suggestions, cross-session storage and speaker recognition are excluded.
 
-This is candidate future work. SPRINT-000 remains the streaming/agent POC; this proposal neither adds UC-04 to it nor authorizes implementation. The observed source baseline is checkout revision `c7b911964f0c558849f17ab0edaec8aa89adeeec` with existing local changes; linked hashes below identify the actual bytes used.
+SPRINT-001 is active for UC-04. Its recorded objective and acceptance criteria still describe the 28 October behaviour, and only Pablo can update them. This proposal does not change sprint state.
 
 ## Decisions and source baseline
 
-On 28 October 2026, the user selected **confirmation only during clarification, preserving automatic tracking elsewhere**, and **Pablo's voice alone is sufficient for UC-04, with two-speaker recognition a separate broader goal**. These resolve the conflicts between UC-04 and the earlier Purpose/Architecture direction for this proposal; they are not exact-document acceptance or approval of revised upstream documents.
+On 4 November 2026 Pablo decided: *"I like to see two areas all the time"*. This supersedes the 28 October choice of confirmation only during clarification. The 28 October decision that **Pablo's voice alone is sufficient** still holds. The same day Pablo accepted the five design recommendations in [08 decisions](../../../docs/asdg/08-low-level-design/03.4-uc-04-openspec-update.md): keep Clear live, the exchange numbering rule, the tag, phase QUESTION after Confirm, and no shortcut. These are stakeholder direction relayed by 09 Coding, not exact-document acceptance.
 
-“Accepted bytes” below means a matching User acceptance hash in [the lifecycle ledger](../../../.asdg/lifecycle.json). Purpose's package remains stale despite matching individual files; the current system model and UC-04 are unaccepted drafts. Stage 04/05 acceptance includes their stated open questions, not measured success or accepted numeric thresholds. The code baseline and proposed contracts are detailed in [design](design.md).
+"Accepted bytes" means a matching User acceptance hash in [the lifecycle ledger](../../../.asdg/lifecycle.json). The 03 and 08 documents are AI-modified drafts. The [design](design.md) lists the code baseline.
 
 | Source | SHA-256 of inspected bytes | Claim used and status |
 | --- | --- | --- |
-| [Purpose](../../../docs/asdg/02-purpose/01-purpose.md) | `2b288e476d331b96c7c269ae0f38daf87804e1c49015b0dcfc512b1b4b8601b0` | Attention and visual guidance; accepted bytes, package stale. |
-| [Next outcome](../../../docs/asdg/02-purpose/03-planned-improvements.md) | `5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f` | Persistent question and speaker distinction; accepted bytes, narrowed for UC-04 by the user's decision above. |
-| [System model](../../../docs/asdg/03-system-model-and-use-cases/01-system-model.md) | `c46b24e1c6e85868c66802d9945b6212c38b5df6c10235b1e641ab28bc533db9` | Shared behavior across answer scenarios; current draft, historical review stale. |
-| [UC-04](../../../docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md) | `898bfb00220acd716f9169a98a8e0d9c1c934a9bad6ad93ca0d8e469ba02dd23` | Clarification, visible-version consent and failure scenarios; AI-modified draft without exact acceptance. |
-| [Evaluation](../../../docs/asdg/04-benchmarks-and-eval-strategy/01.2-evaluation-criteria.md) | `e1ea9652518ed8401daee8517966f9b6eeb9d578425f164e90e6f5529a65e31d` | Fidelity, persistence, readability and separate usefulness evidence; accepted bytes. |
-| [Measurements](../../../docs/asdg/04-benchmarks-and-eval-strategy/03.1-release-measurements-and-thresholds.md) | `dfd3b7293f057170e65ffa08eff5929af3243486b8cde824eba1a0d33d9d6bfe` | Visible timing and misses; accepted document with provisional thresholds. |
-| [Architecture](../../../docs/asdg/05-high-level-design-and-architecture/01-architecture.md) | `40061807932a7a431fce8a69889983e52d89c32365f8c90c8b501e60ec866868` | Local service owns session memory; accepted bytes. |
-| [Streaming](../../../docs/asdg/05-high-level-design-and-architecture/01.1-streaming-and-replay.md) | `a2fadf092b91e3df038f9a5e2cc5b8b6f7bce31c0ceeb66d96638a1676189c49` | Asynchronous input, revisions, failure and replay isolation; accepted bytes. |
-| [Interview state](../../../docs/asdg/05-high-level-design-and-architecture/01.2-interview-state.md) | `ebed2f85ae618967f48a87f384d3a2885a752cb3a689e2e85de61b56b1b1cde4` | Automatic promotion, question persistence and independent phase; accepted bytes with UC-04 exception selected above. |
-| [Planning index](../../../docs/asdg/07-planning/README.md) | `19dc04e07f3dc5a717a89ddd14204b923944fc8844e2593a120a557cbf01ee96` | POC active; methodology reviews are not a committed product plan; unreviewed local edit. |
-| [Sprint state](../../../.asdg/sprint.json) | `7b67029aa3117e03c8e24f0a3fbc224a4793045997f4a6a6734eadedb87894b2` | Authoritative SPRINT-000 scope observed; no UC-04 transition requested. |
+| [Purpose](../../../docs/asdg/02-purpose/01-purpose.md) | `2b288e476d331b96c7c269ae0f38daf87804e1c49015b0dcfc512b1b4b8601b0` | Glanceable visual guidance; accepted bytes, package stale. |
+| [Next outcome](../../../docs/asdg/02-purpose/03-planned-improvements.md) | `5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f` | Persistent question; accepted bytes. |
+| [UC-04](../../../docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md) | `313f1ab9dd5fc40194a8c53cabd2e9b187be3008ce0ac791856a4fd5ade79330` | Focus/Live behaviour and failure scenarios; 4 Nov draft, not accepted. |
+| [Evaluation](../../../docs/asdg/04-benchmarks-and-eval-strategy/01.2-evaluation-criteria.md) | `e1ea9652518ed8401daee8517966f9b6eeb9d578425f164e90e6f5529a65e31d` | Fidelity, persistence, readability; accepted bytes. |
+| [Interview state](../../../docs/asdg/05-high-level-design-and-architecture/01.2-interview-state.md) | `ebed2f85ae618967f48a87f384d3a2885a752cb3a689e2e85de61b56b1b1cde4` | Its automatic promotion conflicts with Focus; Pablo's 4 Nov decision governs UC-04. Accepted bytes. |
+| [08 design overview](../../../docs/asdg/08-low-level-design/03-uc-04-focus-and-live-question.md) | `7d7d766f0112b82ebbad0139c245a58f42cdd80b6b19e33b728f7a4a5aee3c57` | Cycle and mockups; draft. |
+| [08 state model](../../../docs/asdg/08-low-level-design/03.2-uc-04-state-and-rules.md) | `bce6d379817401e6be72af653b15fbb0a4990914617b290c4b94035cf99e23aa` | Fields, transitions, invariants; draft. |
+| [08 protocol](../../../docs/asdg/08-low-level-design/03.3-uc-04-protocol.md) | `2ba2fe8c65d985d72348cddedff30171e268e217a21973afe71569d00d535875` | Message and result contract; draft. |
+| [Sprint state](../../../.asdg/sprint.json) | `601d2bebae897927aeaf18ed8769f73475b8ae2009a022f79b16e5c9ced5e31a` | SPRINT-001 active with the Focus/Live criteria. |
