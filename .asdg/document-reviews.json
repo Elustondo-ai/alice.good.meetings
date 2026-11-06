@@ -6710,6 +6710,30 @@
         "reason": "Documented text-free agent rejection reasons in the audit after Pablo's 4 Nov 2026 'Yes, log reasons'",
         "visual_review": "Existing visual unchanged"
       }
+    },
+    {
+      "path": "docs/asdg/09-build-and-test-cycle/01-uc-04-live-check-plan.md",
+      "sha256": "538a0aa39f81423a283cf25122f3955fb5bc0d094e8f3c8636fffa5bcc640bdc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T03:33:52.600428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Scripted run 4 plan for SPRINT-002 after Pablo's 4 Nov 2026 'Plan the live run'",
+        "visual_review": "Mermaid flowchart validated and rendered"
+      }
+    },
+    {
+      "path": "docs/asdg/09-build-and-test-cycle/README.md",
+      "sha256": "8c672654b2824934cacd2aaa71fb1d883669b1d19bef9b772a840604d58e7afa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-05T03:34:06.685406+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-09",
+        "reason": "Sprint status updated for SPRINT-002 after Pablo's 4 Nov 2026 'Plan the live run'",
+        "visual_review": "Existing visual unchanged"
+      }
     }
   ]
 }

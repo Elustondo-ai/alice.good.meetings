@@ -6,7 +6,7 @@ This folder will record what a scoped implementation changed and what its tests 
 
 ## SpeakerCoach today
 
-As of 4 November 2026, SPRINT-001 is active for UC-04. The first live run found that a confirmed question could be overwritten; the code now follows the [Focus and Live design](../08-low-level-design/03-uc-04-focus-and-live-question.md) with deterministic tests, and the [live check plan](01-uc-04-live-check-plan.md) describes the next integrated run. No build-and-test report exists yet.
+As of 4 November 2026, SPRINT-001 closed unfinished after three live runs of the [Focus and Live design](../08-low-level-design/03-uc-04-focus-and-live-question.md), and SPRINT-002 is active to finish its live verification. The [live check plan](01-uc-04-live-check-plan.md) scripts run 4. No build-and-test report exists yet.
 
 ## What belongs here as we develop
 

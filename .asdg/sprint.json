@@ -1,7 +1,20 @@
 {
-  "status": "inactive",
-  "sprint_id": null,
-  "objective": null,
-  "scope": [],
-  "acceptance_criteria": []
+  "status": "active",
+  "sprint_id": "SPRINT-002",
+  "objective": "Finish verifying UC-04 (openspec/changes/uc-04-confirm-current-question/) live and reduce agent result rejections, without loosening any Focus rule.",
+  "scope": [
+    "app.js",
+    "index.html",
+    "app.md",
+    "index.md",
+    "poc/",
+    "openspec/changes/uc-04-confirm-current-question/"
+  ],
+  "acceptance_criteria": [
+    "Live sequence (task 4.1): a scripted live run with only Pablo audible covers a multipart question into Live, Confirm, reflection, an answer with a restatement, the ANSWER phase after Confirm, a new question in Live while Focus holds, a second Confirm and Clear live, recording displayed wording, identities and outcomes.",
+    "Failure cases (task 4.2): stale and retired confirmations, delayed acknowledgements, network loss, late model output and Stop/restart are exercised through browser plus service, with render, commit and transcript times.",
+    "Rejections: the causes of rejected agent results are measured from the text-free audit reasons, and a later live run rejects a smaller share than run 3 (5 of 11) without changing the rule that only Confirm writes Focus.",
+    "Feedback: the Confirmed... message clears once the answer starts, if Pablo confirms that behavior.",
+    "Tests: node --test poc/poc.test.mjs and poc/browser-protocol.mjs pass, and the benchmark transcript and timestamps in eval-data/ stay unchanged."
+  ]
 }
