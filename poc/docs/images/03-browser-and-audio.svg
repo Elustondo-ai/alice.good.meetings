@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="530" viewBox="0 0 900 530" role="img" aria-labelledby="title desc">
+<title id="title">Two paths share one audio stream</title><desc id="desc">A local analyser updates the panel; an independent worklet resamples and sends audio. Stop releases both paths and prevents stale callbacks.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#1c3045}.node{font-size:22px;font-weight:700}.body{font-size:18px}.label{font-size:17px;fill:#465d72}.zone{font-size:17px;font-weight:700;letter-spacing:1px}.edge{fill:none;stroke:#52677b;stroke-width:2;stroke-linejoin:round}.heading{font-size:26px;font-weight:700}.kicker{font-size:13px;fill:#61778d;letter-spacing:1.6px}</style>
+<rect width="900" height="530" rx="16" fill="#f8fafc"/>
+<text x="24" y="29" class="kicker">SPEAKERCOACH · WORKING POC</text>
+<text x="24" y="64" class="heading">Two paths share one audio stream</text>
+<g><rect x="290" y="100" width="320" height="80" rx="12" fill="#eef2f6" stroke="#76879c" stroke-width="1.5"/>
+<text x="306" y="131" class="node">Microphone capture</text>
+<text x="306" y="159" class="body">One stream + AudioContext</text></g><g><rect x="24" y="245" width="386" height="100" rx="12" fill="#e7f0ff" stroke="#4275bb" stroke-width="1.5"/>
+<text x="40" y="276" class="node">AnalyserNode → tick()</text>
+<text x="40" y="304" class="body">RMS, elapsed time, 100 ms UI tick</text></g><g><rect x="490" y="245" width="386" height="100" rx="12" fill="#e4f5ee" stroke="#338064" stroke-width="1.5"/>
+<text x="506" y="276" class="node">PcmCapture → socket</text>
+<text x="506" y="304" class="body">24 kHz PCM16, 100 ms packets</text></g><path d="M370 180 V210 H217 V245" class="edge" marker-end="url(#arrow)"/>
+<path d="M530 180 V210 H683 V245" class="edge" marker-end="url(#arrow)"/>
+<g><rect x="24" y="395" width="386" height="84" rx="12" fill="#e7f0ff" stroke="#4275bb" stroke-width="1.5"/>
+<text x="40" y="426" class="node">Local panel and debug</text>
+<text x="40" y="454" class="body">25 s → LAND IT · 35 s → STOP</text></g><g><rect x="490" y="395" width="386" height="84" rx="12" fill="#e4f5ee" stroke="#338064" stroke-width="1.5"/>
+<text x="506" y="426" class="node">Local server</text>
+<text x="506" y="454" class="body">Transmit only after ready</text></g><path d="M217 345 V395" class="edge" marker-end="url(#arrow)"/>
+<path d="M683 345 V395" class="edge" marker-end="url(#arrow)"/>
+<text x="24" y="515" class="label">Stop: end tracks · clear timer · disconnect worklet · close context and socket</text>
+</svg>

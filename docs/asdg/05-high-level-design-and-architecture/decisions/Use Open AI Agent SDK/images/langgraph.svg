@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">LangGraph</title><desc id="desc">Interpret: Current question to Retrieve: Relevant experience to Verify: Evidence check to Publish: If still relevant. Future workflow example: a failed evidence check returns to retrieval.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#61758a" stroke-width="1.3"/></marker></defs>
+<rect x="1" y="1" width="718" height="418" rx="16" fill="#f5f8fb" stroke="#d8e1e9"/>
+<text x="24" y="31" font-family="Arial, sans-serif" font-size="13" fill="#526b80" font-weight="700">DEFERRED WORKFLOW OPTION</text>
+<text x="24" y="70" font-family="Arial, sans-serif" font-size="27" fill="#162c40" font-weight="700">LangGraph</text>
+<rect x="24" y="112" width="150" height="124" rx="12" fill="#ffffff" stroke="#bfccd8" stroke-width="1.5"/>
+<text x="37" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">Interpret</text><text x="37" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Current</text>
+<text x="37" y="196" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">question</text><path d="M179 174 H188" fill="none" stroke="#61758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="198" y="112" width="150" height="124" rx="12" fill="#e1f3ec" stroke="#43977d" stroke-width="1.5"/>
+<text x="211" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">Retrieve</text><text x="211" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Relevant</text>
+<text x="211" y="196" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">experience</text><path d="M353 174 H362" fill="none" stroke="#61758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="372" y="112" width="150" height="124" rx="12" fill="#ffffff" stroke="#bfccd8" stroke-width="1.5"/>
+<text x="385" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">Verify</text><text x="385" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Evidence check</text><path d="M527 174 H536" fill="none" stroke="#61758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="546" y="112" width="150" height="124" rx="12" fill="#ffffff" stroke="#bfccd8" stroke-width="1.5"/>
+<text x="559" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">Publish</text><text x="559" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">If still</text>
+<text x="559" y="196" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">relevant</text><path d="M447 238 V279 H273 V244" fill="none" stroke="#61758a" stroke-width="1.8" marker-end="url(#arrow)"/><text x="230" y="307" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Evidence missing? Retry retrieval.</text><path d="M24 337 H696" stroke="#d5dfe8"/><text x="24" y="366" font-family="Arial, sans-serif" font-size="16" fill="#405a70" font-weight="400">Future workflow example: a failed evidence check returns to retrieval.</text>
+</svg>
+

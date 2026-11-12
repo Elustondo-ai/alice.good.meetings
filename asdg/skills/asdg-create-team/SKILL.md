@@ -15,7 +15,7 @@ Automatic skill discovery, a status request or editing the skill is not a reques
 
 Resolve the client root as `../../..` from this canonical skill directory.
 Read [the catalogue](../../00-governance/types/agent-catalog.json) and [Focus choices](../asdg-focus/focus-choices.md).
-Use their thirteen identities, labels and installed `.agents/skills/<focus-skill>/SKILL.md` adapters; verify each path and fixed selector.
+Use their thirteen identities and labels; verify the single installed `.agents/skills/asdg-focus/SKILL.md` adapter and each catalogue role's sources.
 Run `python3 asdg/scripts/cli.py status --json`; inspect current facts without treating missing stage evidence as a setup blocker.
 If initialization or required role sources are missing, report the prerequisite; do not initialize or install as a side effect.
 Discover the native Codex project/chat tools and use their current schemas; this workflow requires user-visible project chat creation.
@@ -26,9 +26,9 @@ If the target is ambiguous, ask the user to select it before creating chats. Do 
 
 Call `list_threads` with enough results to inspect this project's active chats, including pinned entries.
 Use titles only to find candidates; read candidate chats for an explicit Focus selection and successful activation.
-Reuse a chat only when its project and latest known role agree; a role-like title alone is not confirmation.
+Reuse only after verifying project, role receipt, subject and stable thread ID; a title alone is not confirmation. Keep distinct subject/attitude sessions independent.
 The calling chat may fill its own role when its thread ID and retained activation receipt are known.
-If several chats match a role, prefer the most recent confirmed one and leave the others unchanged.
+If several chats remain plausible for a role/subject, ask which to reuse; do not silently choose the first or newest, merge their state, or create another to evade ambiguity.
 If likely matches have unresolved focus or the inventory is incomplete, mark those roles unresolved and ask only about those gaps.
 Preserve existing chats: no messages, focus changes, renaming, archiving or worktree moves merely to reuse them.
 Keep the role-to-chat mapping in this conversation; do not create shared active-role state or read internal app databases.
@@ -37,9 +37,10 @@ Keep the role-to-chat mapping in this conversation; do not create shared active-
 
 Use native `create_thread` for each confirmed missing role, in small batches, with the verified project ID and local environment.
 Omit model and reasoning overrides; honor any explicit user preferences. Do not create worktrees, subagents or cloud tasks.
-Use `NN <short focus label> — <project display name>` from Focus choices and the verified project.
-Each initial prompt must explicitly request its named Focus skill with its verified absolute path and catalogue role ID.
+Let each new chat compose its title through [the current title contract](../asdg-focus/rename-chat.md): short role, optional focus, optional attitude; keep the project binding in its receipt.
+Each initial prompt must explicitly request `$asdg-focus` with its verified absolute path and that chat's catalogue role ID; no per-role picker skill is needed.
 State the project root and request only activation, its required read-only opening/status, a brief role confirmation, then waiting for the user.
+New chats start with subject NoFocus and attitude NoAttitude unless the user explicitly assigns them; never copy the caller's attitude or overwrite a reused chat's fields.
 State that team setup assigns no documentation or application work; preserve role boundaries, existing files, approvals and sprint state.
 A new chat has no inherited conversation history: pass relevant explicit user constraints with provenance, not a fabricated approval.
 Do not ask the new chats to create peers, message this chat, run a project task or continue autonomously.

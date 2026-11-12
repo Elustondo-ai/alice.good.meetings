@@ -31,6 +31,7 @@ Let the visual convey the main idea at a glance and the prose supply the detail,
 Navigation-only indexes, brief change notes and reference appendices can link to the relevant visual instead.
 Keep editable diagram sources and accessible labels; inspect rendering, legibility and technical accuracy.
 Review representative rendered documents as well as source. Counting alone cannot certify readability.
+Graphical interfaces also require a plain-language opening and a captioned [representative screenshot or labelled mockup](gui-visuals.md).
 See the [assessment example](../../skills/asdg-documentation/example.md).
 Every maintained programming source file has a [human-readable interface companion](code-companions.md), updated with code changes.
 Apply the [documentation review criteria](documentation-review.md); missing or inaccurate explanations remain reported gaps.

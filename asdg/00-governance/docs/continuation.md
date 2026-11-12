@@ -15,7 +15,7 @@ The onboarding pilot connects Init, Status/Suggestion and Purpose; other special
 Identify the perspective briefly: “Purpose recommendation” or “Project-wide next step”.
 An introductory “From the Purpose perspective…” also works; do not repeat a role prefix on every reply.
 Project-wide assessment neither activates Governance nor clears the selected specialist.
-Unknown/lost focus is not None: report the uncertainty and label any available advice as conditional.
+Unknown/lost role is not the Governance default: report the uncertainty, block dependent work and label any available advice as conditional.
 The underlying facts and acceptance status must not change with perspective.
 
 ## Ground the next contribution

@@ -45,15 +45,53 @@
             "docs/asdg/02-purpose/images/speaker-coach-purpose.png": "260e373a121a9b7177a8936c9548e65b777f29b5faf5c6cd99f6c23c39fec758"
           },
           "statement": "I accept Purpose as done for now."
+        },
+        {
+          "decision": "READY_FOR_ACCEPTANCE",
+          "actor": "ASDG-02",
+          "recorded_at": "2026-10-31T04:36:24Z",
+          "artifacts": {
+            "docs/asdg/02-purpose/01-purpose.md": "2b288e476d331b96c7c269ae0f38daf87804e1c49015b0dcfc512b1b4b8601b0",
+            "docs/asdg/02-purpose/02-current-capabilities.md": "50164f379a178f32a2e5f82dd3c5c06f6adf0e87d052c0f8ef979d608f78f5d4",
+            "docs/asdg/02-purpose/03-planned-improvements.md": "5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f",
+            "docs/asdg/02-purpose/README.md": "f621d153fddb4516925e36223105ff72fcc0c3499138679dff1ae35597b58606",
+            "docs/asdg/02-purpose/images/speaker-coach-purpose.png": "260e373a121a9b7177a8936c9548e65b777f29b5faf5c6cd99f6c23c39fec758",
+            "docs/asdg/02-purpose/images/stage-overview.svg": "80ebc0e75561d18970cc67a77d366d01dcb6bb80d101b3d1b194aee31140efe2"
+          },
+          "criteria": {
+            "purpose": "01-purpose.md (unchanged since the 21 October acceptance) states attention, recall and structured answers as the reason for the product; README restates it.",
+            "outcomes": "01-purpose.md lists delivery regulation, staying on topic and recalling relevant experience; unchanged bytes.",
+            "boundaries": "01-purpose.md prioritizes attention and brief visual guidance and excludes architecture choice; 03-planned-improvements.md defers answer suggestions and records feasibility uncertainties.",
+            "current_evidence": "02-current-capabilities.md attributes current value to User reports and states code, audio and UI were not tested for this assessment; unchanged bytes.",
+            "next_improvement": "03-planned-improvements.md keeps the confirmed next outcome (distinguish speakers, keep the interviewer question visible) separate from later ideas and from any sprint commitment.",
+            "acceptance_questions": "03-planned-improvements.md asks observable questions on speaker distinction, question fidelity, persistence and distraction; exact-versus-shortened wording and overlapping speech remain open.",
+            "visual": "speaker-coach-purpose.png (1536x1024, unchanged) and README stage-overview.svg were inspected in a local browser render of README and 01-purpose.md on 31 October 2026; both load, labels are legible, the caption marks the illustration as vision, and the SVG arrowhead defect was fixed.",
+            "documentation": "README, 01, 02 and 03 have 15, 18, 13 and 23 nonblank lines; all relative links resolve; README navigation lists the files in 01/02/03 order; the stale review sentence was replaced with state-neutral wording; product documents use User."
+          }
+        },
+        {
+          "decision": "ACCEPTED",
+          "actor": "User",
+          "recorded_at": "2026-10-31T04:36:52Z",
+          "artifacts": {
+            "docs/asdg/02-purpose/01-purpose.md": "2b288e476d331b96c7c269ae0f38daf87804e1c49015b0dcfc512b1b4b8601b0",
+            "docs/asdg/02-purpose/02-current-capabilities.md": "50164f379a178f32a2e5f82dd3c5c06f6adf0e87d052c0f8ef979d608f78f5d4",
+            "docs/asdg/02-purpose/03-planned-improvements.md": "5319c35ac926315c133fd56badd6e501af278acdad7e097a41d698e73b4fbf4f",
+            "docs/asdg/02-purpose/README.md": "f621d153fddb4516925e36223105ff72fcc0c3499138679dff1ae35597b58606",
+            "docs/asdg/02-purpose/images/speaker-coach-purpose.png": "260e373a121a9b7177a8936c9548e65b777f29b5faf5c6cd99f6c23c39fec758",
+            "docs/asdg/02-purpose/images/stage-overview.svg": "80ebc0e75561d18970cc67a77d366d01dcb6bb80d101b3d1b194aee31140efe2"
+          },
+          "statement": "I accept it — explicit reply in the 02 Purpose chat to the question \"Do you accept the current Purpose baseline as done for now?\", 31 October 2026."
         }
       ]
     },
     "03": {
       "artifacts": [
+        "docs/asdg/03-system-model-and-use-cases/01-system-model.md",
         "docs/asdg/03-system-model-and-use-cases/01.1-direct-question.md",
         "docs/asdg/03-system-model-and-use-cases/01.2-open-question.md",
         "docs/asdg/03-system-model-and-use-cases/01.3-experience-question.md",
-        "docs/asdg/03-system-model-and-use-cases/01-system-model.md"
+        "docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md"
       ],
       "not_applicable_reason": null,
       "reviews": [
@@ -104,6 +142,62 @@
             "docs/asdg/03-system-model-and-use-cases/intended/system-use-cases.puml": "09f3ec66962e6e4001ee64f241d4069b4a57235ca909570d5bc492040fbd72c0"
           },
           "statement": "$asdg-approve"
+        },
+        {
+          "decision": "READY_FOR_ACCEPTANCE",
+          "actor": "ASDG-03",
+          "recorded_at": "2026-11-04T20:48:17.894879+00:00",
+          "artifacts": {
+            "docs/asdg/03-system-model-and-use-cases/01-system-model.md": "98b57291600ef392739c99d916b262b1e1c08647c3c82a754f352169daee0ff3",
+            "docs/asdg/03-system-model-and-use-cases/01.1-direct-question.md": "10f6020cfe2baab657d8bc1031f1eaf05d11273b6396ca08bfadfebb11214880",
+            "docs/asdg/03-system-model-and-use-cases/01.2-open-question.md": "76a7906197d05786d491f19f2af21a166eaed8a104cb8d39c261ade922ba501f",
+            "docs/asdg/03-system-model-and-use-cases/01.3-experience-question.md": "4c3c0403124600d7b50cf17918e3405355315be9d6aadf6a824010a78974b186",
+            "docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md": "4010c93d8ca3e04c1f2132c2d359a67d39e365c6240718d7eb16213c66e121b1",
+            "docs/asdg/03-system-model-and-use-cases/README.md": "94230f2836860e1c302c021dceb15afd1c357129c7fc2db68401b06ef41662fc",
+            "docs/asdg/03-system-model-and-use-cases/images/direct-question.png": "d839e0b397fd56ddb550467f003673003ec76059201d509d3ebefba4f8747a19",
+            "docs/asdg/03-system-model-and-use-cases/images/experience-question.png": "6f1330e615683d8b37f270fa832859692084eac8eba4f8d65c2fb2ae5bd6787d",
+            "docs/asdg/03-system-model-and-use-cases/images/focus-live-cycle.svg": "2ee42fc764d32ec295cd066575f2f2c0dccc236d3ba46472ecdec086b2ab1919",
+            "docs/asdg/03-system-model-and-use-cases/images/illustration-prompts.json": "42aba7c97983a00d8539ebe080f7d100ade86bc37ea7a716192468f365786292",
+            "docs/asdg/03-system-model-and-use-cases/images/open-question.png": "a09f53267c58b6e147dd7ba1fadbee97b0d22fdcf9863573990aca658eefe5bf",
+            "docs/asdg/03-system-model-and-use-cases/images/question-confirmation.svg": "bb000ed53974066d00683637461b9050f92c210919210e41b872aa6dfadb04e1",
+            "docs/asdg/03-system-model-and-use-cases/images/stage-overview.svg": "543d73d5a773e338e6ff4050daea791bc8be7a305b2ffa042fe27e41106113b2",
+            "docs/asdg/03-system-model-and-use-cases/images/system-use-cases.png": "58bc3b7a0f1dddc99e09b8c0f6e400b50fd91a987f570e45b98d420961f48a47",
+            "docs/asdg/03-system-model-and-use-cases/images/system-use-cases.svg": "ec37233a8430fb97aea8481b4059ef60d9efbb31973a61481e93b087965b27a2",
+            "docs/asdg/03-system-model-and-use-cases/system-use-cases.puml": "09f3ec66962e6e4001ee64f241d4069b4a57235ca909570d5bc492040fbd72c0"
+          },
+          "criteria": {
+            "system": "01-system-model.md describes both actors, the Speaker Coach boundary, domain concepts and shared behavior, and summarizes UC-04 as a refinement of 'Identify and retain the current question'.",
+            "uml": "system-use-cases.png inspected on 4 Nov 2026 and matches system-use-cases.puml: three specializations, two includes, two conditional extends. SVG, PNG and PUML bytes are unchanged since the 21 Oct review. UC-04 is described in prose as a refinement of the included question behavior, not as a separate diagram element.",
+            "scenarios": "UC-01 to UC-03 each state goal, actors, trigger, main flow, alternatives and outcome. UC-04 states actors and controls, the six-step Focus/Live main flow and seven alternatives or failures.",
+            "outcomes": "Each scenario has an observable-outcome or expected-observation section. UC-04 records Pablo's five 4 Nov decisions and states that no UC-04 questions remain open.",
+            "evidence": "Each document separates intended behavior from actual evidence and planned work. UC-04 cites the 4 Nov live-run defect, states that the two-area panel is not implemented and that no runtime test was performed.",
+            "visual": "focus-live-cycle.svg rasterized at 1100px and inspected after the Reset live and muted-tag changes, with no overlap or clipping. The system diagram and three storyboards are unchanged and carry alt text. Every embedded image has alt text and a local file.",
+            "documentation": "Documents have 17 to 34 nonblank lines. bundle_hashes resolved every local link, including outgoing links to stages 02, 05 and 08. Editable PlantUML and SVG sources are present."
+          }
+        },
+        {
+          "decision": "ACCEPTED",
+          "actor": "User",
+          "recorded_at": "2026-11-04T20:48:17.894879+00:00",
+          "artifacts": {
+            "docs/asdg/03-system-model-and-use-cases/01-system-model.md": "98b57291600ef392739c99d916b262b1e1c08647c3c82a754f352169daee0ff3",
+            "docs/asdg/03-system-model-and-use-cases/01.1-direct-question.md": "10f6020cfe2baab657d8bc1031f1eaf05d11273b6396ca08bfadfebb11214880",
+            "docs/asdg/03-system-model-and-use-cases/01.2-open-question.md": "76a7906197d05786d491f19f2af21a166eaed8a104cb8d39c261ade922ba501f",
+            "docs/asdg/03-system-model-and-use-cases/01.3-experience-question.md": "4c3c0403124600d7b50cf17918e3405355315be9d6aadf6a824010a78974b186",
+            "docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md": "4010c93d8ca3e04c1f2132c2d359a67d39e365c6240718d7eb16213c66e121b1",
+            "docs/asdg/03-system-model-and-use-cases/README.md": "94230f2836860e1c302c021dceb15afd1c357129c7fc2db68401b06ef41662fc",
+            "docs/asdg/03-system-model-and-use-cases/images/direct-question.png": "d839e0b397fd56ddb550467f003673003ec76059201d509d3ebefba4f8747a19",
+            "docs/asdg/03-system-model-and-use-cases/images/experience-question.png": "6f1330e615683d8b37f270fa832859692084eac8eba4f8d65c2fb2ae5bd6787d",
+            "docs/asdg/03-system-model-and-use-cases/images/focus-live-cycle.svg": "2ee42fc764d32ec295cd066575f2f2c0dccc236d3ba46472ecdec086b2ab1919",
+            "docs/asdg/03-system-model-and-use-cases/images/illustration-prompts.json": "42aba7c97983a00d8539ebe080f7d100ade86bc37ea7a716192468f365786292",
+            "docs/asdg/03-system-model-and-use-cases/images/open-question.png": "a09f53267c58b6e147dd7ba1fadbee97b0d22fdcf9863573990aca658eefe5bf",
+            "docs/asdg/03-system-model-and-use-cases/images/question-confirmation.svg": "bb000ed53974066d00683637461b9050f92c210919210e41b872aa6dfadb04e1",
+            "docs/asdg/03-system-model-and-use-cases/images/stage-overview.svg": "543d73d5a773e338e6ff4050daea791bc8be7a305b2ffa042fe27e41106113b2",
+            "docs/asdg/03-system-model-and-use-cases/images/system-use-cases.png": "58bc3b7a0f1dddc99e09b8c0f6e400b50fd91a987f570e45b98d420961f48a47",
+            "docs/asdg/03-system-model-and-use-cases/images/system-use-cases.svg": "ec37233a8430fb97aea8481b4059ef60d9efbb31973a61481e93b087965b27a2",
+            "docs/asdg/03-system-model-and-use-cases/system-use-cases.puml": "09f3ec66962e6e4001ee64f241d4069b4a57235ca909570d5bc492040fbd72c0"
+          },
+          "statement": "Pablo, 4 Nov 2026: \"I am happy\" (after reviewing UC-04), then explicit /asdg-approve, choosing scope \"Whole Stage 03\" when asked."
         }
       ]
     },

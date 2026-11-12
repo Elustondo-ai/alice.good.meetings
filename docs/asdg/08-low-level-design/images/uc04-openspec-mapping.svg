@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" role="img" aria-labelledby="t d">
+  <title id="t">Proposed OpenSpec capability mapping for UC-04</title>
+  <desc id="d">Left, the three current capability specs; right, the proposed ones. question-clarification becomes live-question. question-confirmation keeps its name with Live terms and two new outcomes. question-tracking becomes focus-question, losing automatic promotion and gaining the rule that only confirmation writes Focus.</desc>
+  <defs>
+    <marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#365b70" stroke-width="2.3"/></marker>
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #203b4a; }
+      .h { font-size: 18px; font-weight: 700; }
+      .b { font-size: 15px; fill: #526b79; }
+      .old { fill: #f1f1f1; stroke: #9aa5ab; stroke-width: 2; }
+      .new { fill: #e3f1ec; stroke: #26716c; stroke-width: 2; }
+      .l { fill: none; stroke: #365b70; stroke-width: 2.4; marker-end: url(#a); }
+    </style>
+  </defs>
+  <rect width="900" height="330" fill="#fbfcfd"/>
+  <text x="40" y="36" font-size="15" font-weight="700" fill="#9aa5ab" letter-spacing="1">TODAY (28 OCT)</text>
+  <text x="520" y="36" font-size="15" font-weight="700" fill="#26716c" letter-spacing="1">PROPOSED (4 NOV)</text>
+  <rect x="40" y="52" width="340" height="70" rx="8" class="old"/>
+  <text x="58" y="82" class="h">question-clarification</text><text x="58" y="106" class="b">draft only while clarifying</text>
+  <rect x="40" y="140" width="340" height="70" rx="8" class="old"/>
+  <text x="58" y="170" class="h">question-confirmation</text><text x="58" y="194" class="b">exact draft version consent</text>
+  <rect x="40" y="228" width="340" height="70" rx="8" class="old"/>
+  <text x="58" y="258" class="h">question-tracking</text><text x="58" y="282" class="b">automatic promotion elsewhere</text>
+  <rect x="520" y="52" width="340" height="70" rx="8" class="new"/>
+  <text x="538" y="82" class="h">live-question</text><text x="538" y="106" class="b">always visible, automatic, Clear live</text>
+  <rect x="520" y="140" width="340" height="70" rx="8" class="new"/>
+  <text x="538" y="170" class="h">question-confirmation</text><text x="538" y="194" class="b">Live terms; retired id stale; equal unavailable</text>
+  <rect x="520" y="228" width="340" height="70" rx="8" class="new"/>
+  <text x="538" y="258" class="h">focus-question</text><text x="538" y="282" class="b">only confirmation writes Focus</text>
+  <path d="M380 87 H512" class="l"/><path d="M380 175 H512" class="l"/><path d="M380 263 H512" class="l"/>
+</svg>

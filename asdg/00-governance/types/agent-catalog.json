@@ -1,6 +1,6 @@
 {
   "version": "0.2",
-  "mode": "read-only-evaluation",
+  "mode": "evaluation-with-documentation",
   "agents": [
     {
       "stage": 0,

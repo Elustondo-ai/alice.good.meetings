@@ -27,10 +27,10 @@ Python 3.9+ and Git are required. Bootstrap uses the standard library and makes 
 For the fresh Speaker Coach project, run from its root:
 
 ```sh
-python3 asdg/scripts/init.py
+python3 asdg/scripts/init.py --client codex  # or --client claude, or --client both
 ```
 
-If you prefer to hand setup to Codex, copy the [Codex setup prompt](CODEX-PROMPT.md) into a chat opened in this project.
+To hand setup to an agent, ask it to run that command for its own client; for Codex you can copy the [Codex setup prompt](CODEX-PROMPT.md). [Client integrations](docs/client-integrations.md) explains the choice.
 
 This sets up local project instructions and state with the project marked as new; no sprint is started.
 See [installation details](docs/installation.md) for optional previews, checks and other starting states.

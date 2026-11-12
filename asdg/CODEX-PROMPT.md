@@ -16,7 +16,7 @@ Do not infer answers from the repository name, code presence or project status.
 When I provide answers, retain them as initial orientation, not accepted Purpose or completed Context.
 
 Inspect the actual repository and Git status, preserve existing work, and record application file hashes.
-Use the initializer's dry run before writing. Resolve conflicts without overwriting user changes.
+Use the initializer's dry run with `--client codex` before writing; add Claude only if I ask. Resolve conflicts without overwriting user changes.
 Default to the initializer's new-project status unless I explicitly supplied another initial status.
 Run local structure verification and factual status, then repeat initialization to check that it makes no further changes.
 Keep the Python initializer noninteractive; the conversational skill owns the optional questions.

@@ -1,0 +1,669 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-27T02:23:43.102043+00:00",
+  "objective": "Replace thirteen per-role picker shortcuts with a single ASDG Focus skill that interprets free text and clarifies ambiguity.",
+  "authorization": "Explicit user request to remove picker clutter, accept arbitrary natural phrases, recommend plausible alternatives when ambiguous, and show twelve specialists when no match is possible.",
+  "baseline": {
+    "head": "4952a131ed750b5428ce13e3e7487d6c55dad299",
+    "dirty_worktree": true,
+    "diff_basis": "Captured working bytes before this task; existing unrelated and prior-turn changes preserved."
+  },
+  "changes": [
+    {
+      "path": "asdg/skills/asdg-focus/SKILL.md",
+      "action": "modified",
+      "before_sha256": "750a0cb3233118077f5d34efcd0b37f1d64b09fd0d9a608935d14a2c6888859e",
+      "after_sha256": "aeeef3e3fedfd5003f12beb0a7cccfe931a650396560a222b95c4e355610b4c6",
+      "diff": "--- before/asdg/skills/asdg-focus/SKILL.md\n+++ after/asdg/skills/asdg-focus/SKILL.md\n@@ -1,23 +1,23 @@\n ---\n name: asdg-focus\n-description: Explicitly focus this conversation on ASDG governance 00 or a specialist stage 01-12, or clear focus. Purpose includes a read-only opening assessment; selection never grants general execution authority.\n+description: Interpret the user's free-text Focus request, select the matching ASDG specialist or governance role, clarify ambiguity, or clear focus. Selection preserves existing authority.\n ---\n \n-# ASDG Focus — shared activation workflow v0.2\n+# ASDG Focus — conversational selection\n \n Read [session policy](session-policy.md). Only explicit user selection activates focus.\n-Prefer a dedicated `asdg-focus-<NN>-<label>` skill: its fixed role ID needs no argument.\n-The generic skill remains a shortcut; trailing text is an instruction argument, not a shell command.\n+This is the single public Focus skill. Accept the user's own words, such as “focus on high level architecture.”\n+Trailing text is a conversational request, not a shell command; preserve its complete meaning and accompanying task context.\n \n ## Resolve the selection\n \n-Read [the existing catalogue](../../00-governance/types/agent-catalog.json) and [UI choices](focus-choices.md).\n-A dedicated adapter supplies its fixed catalogue role ID; preserve its actual invocation in the receipt.\n-Extra task text is context, not another selector. Conflicting explicit selections require clarification.\n-Generic input accepts one trimmed, case-insensitive role ID, native name, 00-12, catalogue folder basename or listed alias.\n-Missing generic input: direct the user to the thirteen named Focus skills; keep focus unchanged and stop.\n-For `clear`, skip role loading, clear only conversation focus, then rename and report Status.\n-Unknown, ambiguous or path-like input leaves focus unchanged.\n+Read [the existing catalogue](../../00-governance/types/agent-catalog.json) and the [interpretation and clarification guide](focus-choices.md).\n+Interpret intent using the phrase and relevant conversation context; match responsibilities, not just keywords. Numbers, role IDs and names remain valid shortcuts.\n+For one clear match, briefly state the interpreted role and continue without asking for confirmation.\n+For unresolved ambiguity, ask one question with the plausible specialists, a recommended option and its reason; await the user's choice before activation or renaming.\n+For missing or unrecognizable intent, ask which specialist the user wants and show all twelve; offer Governance separately.\n+Clarification preserves the previous focus, title and task. An unanswered or preselected recommendation is not a choice.\n+For an explicit clear request, including natural-language equivalents, skip role loading, clear only conversation focus, then rename and report Status.\n Resolve to exactly one catalogue entry, governance 00 or stage 01-12. Do not synthesize paths from user input.\n 00 selects ASDG-COORDINATOR / asdg_coordinator, an explicit management focus outside the twelve development stages.\n Governance is distinct from None; `clear` never selects it. Never create or renumber roles.\n@@ -38,7 +38,7 @@\n ## Activate, rename and report\n \n After successful reads, replace THIS conversation's focus with the selected canonical role.\n-Record actual source paths, available versions and the invoked skill; keep all canonical role/evaluation boundaries.\n+Record the original phrase, interpreted role, actual source paths and invoked skill; keep all canonical role/evaluation boundaries.\n Roles retain evaluation boundaries; ASDG-02 permits assigned Purpose documentation and ASDG-05 permits assigned decision packages under their contracts.\n Purpose selection begins its [opening assessment](../../02-purpose/skills/elicit-purpose/opening.md); activation alone writes no artifacts.\n After successful activation or explicit clear, follow [the current-chat rename step](rename-chat.md).\n"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "action": "modified",
+      "before_sha256": "50268b7dd25285c1f52477ce443262f7427da8ddae4e7b748c845e735ed75018",
+      "after_sha256": "cce807b79f8640ccd84cfa4acc5552449f86f191e45c173ae08b318e6575f953",
+      "diff": "--- before/asdg/skills/asdg-focus/session-policy.md\n+++ after/asdg/skills/asdg-focus/session-policy.md\n@@ -7,14 +7,14 @@\n ## Selection\n \n A genuinely new conversation starts with no selected specialist; general repository guidance still applies.\n-Explicitly selecting a named Focus skill, or a valid generic selector, requests governance 00 or one specialist, stages 01-12.\n+An explicit Focus request in natural language, or a role selector, requests governance 00 or one specialist, stages 01-12; unresolved ambiguity requires a choice before switching.\n Governance selects ASDG-COORDINATOR: whole-project coordination, distinct from a general session with no selected role.\n Select the role only after the canonical definition and required sources were successfully read.\n Inspecting, maintaining, mentioning or reading a role package by itself NEVER activates that role.\n Status, another ordinary skill, a topic change or a directory change NEVER selects or clears focus.\n An explicit focus-clear request clears the selection; it grants no new permissions.\n Invalid input or a failed activation leaves the previous selection unchanged and records the failure.\n-If its required guidance is unavailable, retain the declaration but block specialist work until resolved.\n+If an already active role's required guidance becomes unavailable, retain its declaration but block specialist work; missing guidance for a proposed switch leaves the previous focus unchanged.\n \n ## Later turns\n \n"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/focus-choices.md",
+      "action": "modified",
+      "before_sha256": "6873bac2289f067a0c0c45f8757bbd773038fc1ff92e184495b2fcafe46d54ef",
+      "after_sha256": "3d9aa1de6e3c3d1daf49572373455f82a94b86103e7e3ab4a7bb62f9f703f35e",
+      "diff": "--- before/asdg/skills/asdg-focus/focus-choices.md\n+++ after/asdg/skills/asdg-focus/focus-choices.md\n@@ -1,29 +1,45 @@\n-# Focus picker entries — UI mapping, not role definitions\n+# Interpret the user's Focus request\n \n-The [existing catalogue](../../00-governance/types/agent-catalog.json) owns IDs, paths and procedures.\n-The [lifecycle baseline](../../docs/lifecycle-baseline.md) owns numbering and full stage names.\n-These display labels follow the current baseline. Stage 02 is Purpose; canonical role, native and procedure identities use the ASDG namespace.\n-Each entry is a thin discovery adapter into the same shared [Focus workflow](SKILL.md).\n+The [catalogue](../../00-governance/types/agent-catalog.json) owns role identities, paths and procedures; the table below explains their responsibilities.\n+Use the complete phrase and relevant conversation context, including negation and distinctions such as strategy versus execution.\n+These are examples of meaning, not a keyword parser or an exhaustive list of accepted phrases. Tolerate ordinary spelling mistakes.\n \n-| Stage | Short display label | Picker skill | Canonical role | Generic short alias |\n-| --- | --- | --- | --- | --- |\n-| 00 | Governance | `asdg-focus-00-governance` | `ASDG-COORDINATOR` | `governance`, `coordinator`, `orchestrator`, `management` |\n-| 01 | Context & Domain Analysis | `asdg-focus-01-context` | `ASDG-01` | `context` |\n-| 02 | Purpose | `asdg-focus-02-purpose` | `ASDG-02` | `purpose`, `02-purpose`, `intent` |\n-| 03 | System Model & Use Cases | `asdg-focus-03-use-cases` | `ASDG-03` | `use-cases` |\n-| 04 | Benchmarks & Test Strategy | `asdg-focus-04-test-strategy` | `ASDG-04` | `test-strategy` |\n-| 05 | High-Level Architecture | `asdg-focus-05-architecture` | `ASDG-05` | `architecture` |\n-| 06 | Viable Proof of Concept | `asdg-focus-06-poc` | `ASDG-06` | `poc` |\n-| 07 | Planning | `asdg-focus-07-planning` | `ASDG-07` | `planning` |\n-| 08 | Low-Level Design | `asdg-focus-08-low-level-design` | `ASDG-08` | `low-level-design` |\n-| 09 | Build & Test Cycle | `asdg-focus-09-build-test` | `ASDG-09` | `build-test` |\n-| 10 | Document, Review & Release | `asdg-focus-10-review-release` | `ASDG-10` | `review-release` |\n-| 11 | Operations, DevOps & User Acceptance | `asdg-focus-11-operations` | `ASDG-11` | `operations` |\n-| 12 | Observability, Insights & Learning | `asdg-focus-12-insights` | `ASDG-12` | `insights` |\n+![One Focus entry interprets the phrase: clear intent loads the role, ambiguous intent asks among candidates, and no match offers the twelve specialists.](images/focus-selection.svg)\n \n-Prefer selecting the named skill in the native picker; it requires no parameter and no second menu.\n-Generic numeric selectors, canonical role IDs/native names and catalogue folder basenames also work.\n-`00`, `governance`, `ASDG-COORDINATOR` and `asdg_coordinator` select the same management focus; it is not None.\n-`purpose` / `02-purpose` / `intent` / `02-purpose` / `02` / `ASDG-02` / `asdg_02` identify the same Purpose role.\n-`asdg-focus clear` clears focus without granting permission or activating the coordinator.\n-Roles retain canonical evaluation limits, with ASDG-02's bounded documentation allowance; picker presence is not execution evidence.\n+## Resolve or clarify\n+\n+A clear request such as “focus on high level architecture” selects 05; “specify the exact API inputs and errors” fits 08.\n+\n+For overlapping meanings, inspect the plausible roles' responsibilities; do not invent a confidence percentage or let one keyword decide.\n+If ambiguity remains, ask which specialist the user wants. Offer the strongest candidate as Recommended with a short reason, then the relevant alternative(s).\n+For “focus on testing” without further context, distinguish 04's evaluation strategy from 09's build/test work; explain the recommendation as provisional.\n+Use a clarification tool when available, otherwise ask in the reply. Wait for an answer; a default selection or elapsed time is not consent to switch.\n+\n+If no useful match exists or the phrase is missing, ask “Which specialist would you like to focus on?” and show all twelve choices below, with Governance separately.\n+Keep the prior focus and title during clarification. The answer resolves the pending selection while preserving the original task.\n+\n+A clear match needs no extra confirmation; announce the interpretation, load required sources, and claim activation only after those reads succeed.\n+Role IDs/numbers/native names remain optional shortcuts. Explicit conflicting roles require clarification; do not treat a mentioned comparison partner as a second selection.\n+\n+A quoted example, hypothetical question or request to explain Focus does not activate it. Never turn user text into a filesystem path or shell command.\n+\n+## Twelve specialist choices\n+\n+| Stage | Short focus label | Responsibility and example intent |\n+| --- | --- | --- |\n+| 01 | Context & Domain Analysis | Understand the domain, stakeholders, terminology and source context. |\n+| 02 | Purpose | Clarify why the system exists, intended outcomes, scope and non-goals. |\n+| 03 | System Model & Use Cases | Model actors, domain concepts, scenarios and observable interactions. |\n+| 04 | Benchmarks & Test Strategy | Choose evaluation methods, benchmarks, measures and success criteria. |\n+| 05 | High-Level Architecture | Decide system boundaries, components, deployment and major trade-offs. |\n+| 06 | Viable Proof of Concept | Design a bounded experiment to resolve a specific uncertainty. |\n+| 07 | Planning | Sequence scoped work, dependencies and handoffs. |\n+| 08 | Low-Level Design | Specify detailed interfaces, contracts, edge cases and component behavior. |\n+| 09 | Build & Test Cycle | Assess or perform separately authorized component implementation and tests. |\n+| 10 | Document, Review & Release | Review an exact candidate, documentation and release readiness. |\n+| 11 | Operations, DevOps & User Acceptance | Assess real environments, rollout, recovery and acceptance evidence. |\n+| 12 | Observability, Insights & Learning | Interpret telemetry and feedback to propose learning and improvements. |\n+\n+Separately offer **00 Governance** for whole-project coordination, responsibility routing and review gates; its canonical role is ASDG-COORDINATOR.\n+An explicit “clear focus,” “stop specializing,” or “return to general” removes selection without selecting Governance.\n+All choices retain their role contracts. Selecting Build/Test or Operations does not itself authorize implementation or deployment.\n"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/TRY-IT.md",
+      "action": "modified",
+      "before_sha256": "b0d6020d176ab010fb1e95d3811e80327d3bf78db7ff226c2a756ff97c031943",
+      "after_sha256": "686fbc2bca9c848722fd0951a32ad705716333d63111b215c122d56c82f52b60",
+      "diff": "--- before/asdg/skills/asdg-focus/TRY-IT.md\n+++ after/asdg/skills/asdg-focus/TRY-IT.md\n@@ -1,51 +1,45 @@\n-# Governance and twelve specialist focuses — acceptance checks\n+# Conversational Focus — behavioral acceptance\n \n-Scope: the embedded client distribution and its local discovery adapters.\n-Governance selects the existing coordinator; no lifecycle stage or execution permission is added.\n-Wait for Drive sync. Select a named skill from the actual Codex picker; restart only if needed.\n-A skill/configuration file being present is not proof the app discovered or executed it.\n+One picker entry serves governance and twelve specialist roles. These scenarios are test requirements, not passing results.\n+Use disposable conversations and clients. File presence alone proves no native picker refresh, activation or title update.\n \n-## First test — separate messages\n+## Interpretation cases\n \n-Supply `Target project: Speaker Coach` explicitly; the provider folder is not the consumer.\n-1. New conversation: `$asdg-status` → None, no role activation and no rename.\n-2. Select **ASDG Focus 02 — Purpose**, or send `$asdg-focus-02-purpose` with no argument.\n-3. Expect canonical ASDG-02 reads, retained project context, a native rename attempt and the evidence-based Purpose opening.\n-4. Expected default for known Speaker Coach: `02 Purpose — Speaker Coach`.\n-5. `$asdg-status` → Purpose remains selected; actual rename receipt shown separately from focus.\n-6. `What is your role?` → grounded Purpose explanation; no reactivation required.\n-7. Request Intended / Actual / Planned for Speaker Coach Purpose; unknown evidence stays unknown.\n-8. Discuss one in-scope hypothetical task, then Status again → same focus and current substantive task.\n+| Request/context | Expected behavior |\n+| --- | --- |\n+| “Focus on high level architecture” | Announce 05, load its canonical sources, then activate; no extra confirmation. |\n+| “Help me specify exact request fields and error contracts” | Resolve 08 from responsibilities, not the word architecture. |\n+| “Focus on testing,” with no task detail | Ask among plausible 04/09 choices, with a provisional recommendation and reason; preserve focus/title. |\n+| “We need benchmark coverage; focus on testing” | Resolve 04 from context when unambiguous. |\n+| “Focus on design,” with unresolved scope | Ask among the relevant design/model roles, not an arbitrary default. |\n+| “High levl architecure” | Interpret the ordinary spelling errors when the intent is clear. |\n+| No phrase or “focus on something useful” | Ask which specialist and list all twelve; Governance separately. |\n+| Explicit conflicting role IDs | Clarify; no role switch or rename before the answer. |\n+| User answers a pending clarification | Resolve that choice; retain the original task and load the chosen sources. |\n+| Unanswered or preselected recommended option | Remain pending; no activation or title mutation. |\n+| Explicit “return to general” | Clear focus, attempt General title; no Governance activation. |\n+| Quoted example or “explain Focus” | Explain only; no activation. |\n+| Numeric ID, canonical ID or native name | Preserve valid shorthand without requiring it. |\n \n-## Other entries and boundaries\n+## Activation and integration\n \n-Test each of the thirteen [picker entries](focus-choices.md) in a separate disposable conversation.\n-Verify its fixed role ID, required source reads, canonical exclusions and title prefix; no parameter menu.\n-Roles retain evaluation limits, including Build/Test, POC, Operations and Release.\n-For ASDG-02, also test its bounded Purpose documentation allowance using its behavioral acceptance cases.\n-Choose Architecture after Purpose → successful switch loads ASDG-05 and updates the title; project remains.\n-Unknown/conflicting selector or missing source → old focus/title remain; no false activation receipt.\n-Generic `purpose`, `02-purpose`, `intent`, `02-purpose`, `02`, `ASDG-02`, `asdg_02` remain compatible.\n-Generic command without a selector → points to named skills; no silent default or focus change.\n-`asdg-focus-00-governance` → ASDG-COORDINATOR, whole-project coordination and `00 Governance — <project>` title attempt.\n-Generic `00`, `governance`, `coordinator`, `orchestrator`, `management`, `ASDG-COORDINATOR`, `asdg_coordinator` select that same role.\n-Switch Purpose → Governance → Purpose; retain the project, preserve actual role limits and report each successful change.\n-Governance Status reports 00, never None; selection must not delegate, grant approval, write files or change sprint state.\n-`asdg-focus clear` → None plus General title attempt; no permission change or coordinator activation.\n-Status twice → no rename, activation or state change. New conversation does not inherit another's focus.\n-Manual title edit alone → no role change. Explicit title override in activation → honor that title.\n-Rename denied/unavailable → report it and keep successful focus. Uncertain outcome → no blind retry.\n-Repeated selection refreshes the same role and can retry a known failed/unavailable rename.\n-No rename path may touch project files, internal stores, other chats, deletion or archiving.\n+1. New chat: Status reports None and does not rename.\n+2. Invoke Focus with “help me clarify the project's purpose”: load ASDG-02, attempt its title and begin the canonical read-only opening.\n+3. Status and a later role question retain Purpose; discuss a task without repeating activation.\n+4. Invoke Focus for Architecture: load 05 and attempt its title while retaining project context.\n+5. Ambiguous selection or missing role source preserves the previous focus and title; report the actual limitation.\n+6. Governance selects the coordinator; clear selects None. Neither adds authority, delegates work or changes state.\n+7. Rename failure preserves a successfully selected role; report the actual tool result and avoid blind retries.\n+8. Test repeat selection, resume and compaction in the actual client before claiming their behavior verified.\n+\n+Fresh installation exposes only `asdg-focus`; repeat setup neither recreates retired named picker entries nor changes lifecycle/sprint state.\n+Thirteen canonical role definitions and native role adapters remain; team setup uses the shared Focus path with explicit catalogue IDs.\n+An edited shared adapter remains a conflict, not permission for initialization to overwrite it.\n+A missing shared template or metadata, or a retired per-role Focus template, fails preflight before writes.\n+An older client may still contain retired adapters; inspect customizations and remove them only as an explicitly authorized migration.\n \n ## Evidence\n \n-Record surface/version, picker labels, actual read/rename tool trace, before/after replies and UI title.\n-Record project-file diff separately; title metadata is not an application-source change.\n-Multi-turn retention, thirteen runtime invocations, reload/resume/compaction need live tests; not assumed passed.\n-Run the [Purpose continuation exercise](continuation-tests.md) in disposable clients before extending other specialist openings.\n-Pablo's earlier screenshot verifies direct user-requested rename on his app, not these updated skills.\n-Static syntax and references are a separate check. No file state is self-approved by this update.\n-\n-[Official skills](https://developers.openai.com/codex/skills/)\n-[Native rename protocol](https://developers.openai.com/codex/app-server/)\n+Record original phrase/context, candidate reasoning summary, actual choice/read/rename trace, previous and resulting focus, and file effects.\n+Separate semantic interpretation tests from native activation, picker refresh, title behavior and hook enforcement.\n+Run the [Purpose continuation exercise](continuation-tests.md) separately; this change does not extend other specialists' opening procedures.\n"
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "action": "modified",
+      "before_sha256": "b6075dca13ad9160382d538132119c7174c4013ffc354942840fe9c6b3bcf6d8",
+      "after_sha256": "855608e3b5b3c530135bed8801655b477b3cd402629f68016afc46cfc31bc502",
+      "diff": "--- before/asdg/skills/asdg-create-team/SKILL.md\n+++ after/asdg/skills/asdg-create-team/SKILL.md\n@@ -15,7 +15,7 @@\n \n Resolve the client root as `../../..` from this canonical skill directory.\n Read [the catalogue](../../00-governance/types/agent-catalog.json) and [Focus choices](../asdg-focus/focus-choices.md).\n-Use their thirteen identities, labels and installed `.agents/skills/<focus-skill>/SKILL.md` adapters; verify each path and fixed selector.\n+Use their thirteen identities and labels; verify the single installed `.agents/skills/asdg-focus/SKILL.md` adapter and each catalogue role's sources.\n Run `python3 asdg/scripts/cli.py status --json`; inspect current facts without treating missing stage evidence as a setup blocker.\n If initialization or required role sources are missing, report the prerequisite; do not initialize or install as a side effect.\n Discover the native Codex project/chat tools and use their current schemas; this workflow requires user-visible project chat creation.\n@@ -38,7 +38,7 @@\n Use native `create_thread` for each confirmed missing role, in small batches, with the verified project ID and local environment.\n Omit model and reasoning overrides; honor any explicit user preferences. Do not create worktrees, subagents or cloud tasks.\n Use `NN <short focus label> — <project display name>` from Focus choices and the verified project.\n-Each initial prompt must explicitly request its named Focus skill with its verified absolute path and catalogue role ID.\n+Each initial prompt must explicitly request `$asdg-focus` with its verified absolute path and that chat's catalogue role ID; no per-role picker skill is needed.\n State the project root and request only activation, its required read-only opening/status, a brief role confirmation, then waiting for the user.\n State that team setup assigns no documentation or application work; preserve role boundaries, existing files, approvals and sprint state.\n A new chat has no inherited conversation history: pass relevant explicit user constraints with provenance, not a fabricated approval.\n"
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "action": "modified",
+      "before_sha256": "9ebff6ab39b18cb2dbd9d97405ddef70201f8bc8aec356c8c8b0bd7ec872adcb",
+      "after_sha256": "c267b298107d6d12020716668eac9829c63bc4c8073b2e9f0d4a74b3788c4434",
+      "diff": "--- before/asdg/skills/README.md\n+++ after/asdg/skills/README.md\n@@ -20,6 +20,6 @@\n \n Each numbered stage owns its bounded specialist procedure under its local `skills/` folder.\n Its optional `skills/decision/SKILL.md` enriches Decision through the [shared interface](asdg-decision/specialization.md); absence uses generic behavior.\n-The thirteen named Focus adapters reuse one canonical activation workflow; governance is distinct from no focus.\n+One Focus picker entry interprets natural-language requests for all thirteen roles; ambiguous intent prompts a choice, and governance remains distinct from no focus.\n Presentation/video and ASDG component-development tooling are outside this client core.\n Native discovery and actual behavior must be checked in the selected Codex runtime.\n"
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "action": "modified",
+      "before_sha256": "e50963b47e6f7a86db97d26793c4981d8bda3481bcf3627772f79acc0d2eb197",
+      "after_sha256": "818b7ef0168ad3a30c38513ddfcff5d86918cba4e71dd4c193bb1b926bc980c9",
+      "diff": "--- before/asdg/docs/usage.md\n+++ after/asdg/docs/usage.md\n@@ -16,10 +16,11 @@\n \n ## A specialist conversation\n \n-For whole-project management, select `$asdg-focus-00-governance`; its title is `00 Governance — <project>`.\n+For whole-project management, use `$asdg-focus on project governance`; its title is `00 Governance — <project>`.\n It selects the existing coordinator, distinct from a general chat with no focus; it grants no execution authority.\n \n-Select `$asdg-focus-01-context` or `$asdg-focus-02-purpose` in Codex.\n+Select **ASDG focus** in Codex and describe the role, for example “on high level architecture” or “help me clarify the project's purpose.”\n+Focus interprets the phrase; a clear match proceeds, ambiguity asks for a recommended choice and alternatives, and no match shows all twelve specialists plus Governance separately.\n Activation loads the role and reports focus; assign the review task in the following message.\n For example: “Read this project's existing code and purpose documents; explain the gaps and propose corrections.”\n Stage 02 is Purpose; `intent` remains a generic Focus alias. No `asdg-intent` adapter is installed.\n"
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "action": "modified",
+      "before_sha256": "f53e1b84b94fbf43c7b3831af8e9f522945e4b7bff689c418fb0db422b32defa",
+      "after_sha256": "9369f4885a3ddc80f73b29fb53a5fbf7899d8cd11957bd04cea74f5014d839e8",
+      "diff": "--- before/asdg/docs/installation.md\n+++ after/asdg/docs/installation.md\n@@ -51,7 +51,7 @@\n \n ## Repetition and upgrades\n \n-Repeat the same initializer to check/restore identical generated entries; valid state is preserved.\n+Repeat initialization preserves state and restores current generated entries; retire an older client's per-role Focus adapters only through an authorized migration after checking customizations.\n Deleting `logs/` loses observations only; it does not remove lifecycle or review history.\n Review package updates as diffs against this local working baseline; never replace the folder wholesale.\n Keep `.asdg/` across upgrades. Catalogue/version changes require a reviewed migration.\n"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.py",
+      "action": "modified",
+      "before_sha256": "df4c6f7c88ea37a50fd42e7c7aac3e5d3d4d8c23136684420e6df7c0335622a9",
+      "after_sha256": "4141b78d64183368e2a3faca7a488e5334ac0fa71e2dfe5c929d95d67a31e918",
+      "diff": "--- before/asdg/scripts/lib/cli_project.py\n+++ after/asdg/scripts/lib/cli_project.py\n@@ -149,9 +149,10 @@\n         if read_bytes(safe_path(repo, Path('asdg/templates') / agent['adapter'])) is None:\n             raise Conflict(f'Missing role adapter: {agent[\"native_name\"]}')\n     focus_root = safe_path(repo, 'asdg/templates/.agents/skills')\n-    if (len(list(focus_root.glob('asdg-focus-*/SKILL.md'))) != 13\n-            or not (focus_root / 'asdg-focus-00-governance/SKILL.md').is_file()):\n-        raise Conflict('Expected governance 00 and twelve specialist focus adapters.')\n+    if (list(focus_root.glob('asdg-focus-*/SKILL.md'))\n+            or not (focus_root / 'asdg-focus/SKILL.md').is_file()\n+            or not (focus_root / 'asdg-focus/agents/openai.yaml').is_file()):\n+        raise Conflict('Expected one shared Focus adapter and no per-role Focus picker templates.')\n     return agents, digest\n \n \n"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "action": "modified",
+      "before_sha256": "ba1e88b179daa136604b3a6b05e9849d93a361431618630269263175ea34c97c",
+      "after_sha256": "7c33f2dc19515cce8103736f211c5c8d9076a6943f311784a563cfe54e72cdb5",
+      "diff": "--- before/asdg/scripts/lib/cli_project.md\n+++ after/asdg/scripts/lib/cli_project.md\n@@ -29,7 +29,7 @@\n | `merge_block(old, block, begin, end, name)` | Returns preserved/extended bytes for a managed text block; rejects edited or incomplete blocks. |\n | `binding(root, catalog_hash)` | Validates project identity/catalogue/layout; returns the binding dict or None for a fresh area. |\n | `template_files(repo)` | Returns relative template paths and bytes; rejects symlinks and unexpected destination roots. |\n-| `preflight_package(repo)` | Checks role sources, adapters and all thirteen focus templates; returns agents and catalogue digest. |\n+| `preflight_package(repo)` | Checks thirteen role definitions/adapters and exactly one shared Focus picker template; rejects missing metadata or retired per-role Focus templates. Returns agents and catalogue digest. |\n | `initialize(root, repo=REPO, project_state=None, dry_run=False)` | Plans integration and documentation writes; dry_run returns plans only, otherwise applies changes and review receipts. |\n | `inspect(root, repo=REPO)` | Returns structure_ok, missing items, binding/version details and sprint state; does not mutate the project. |\n \n"
+    },
+    {
+      "path": "asdg/tests/test_portable.py",
+      "action": "modified",
+      "before_sha256": "fd81f21969f66b37f9817cf543533fbf659d1a8c3924e24b70b11d2c469691b5",
+      "after_sha256": "c7524d010c76ca6f6774a5e9b240ffcbd74e195da8759b8ca952f7fd191f3057",
+      "diff": "--- before/asdg/tests/test_portable.py\n+++ after/asdg/tests/test_portable.py\n@@ -132,7 +132,7 @@\n         self.assertIsNone(report['human_approval'])\n         self.assertFalse(report['sprint_started'])\n         self.assertNotIn('$asdg-status', self.run_cli('verify').stdout)\n-        adapter = self.root / '.agents/skills/asdg-focus-02-purpose/SKILL.md'\n+        adapter = self.root / '.agents/skills/asdg-focus/SKILL.md'\n         adapter.write_text(adapter.read_text() + '\\nClient customization.\\n')\n         before = snapshot(self.root)\n         self.assertNotIn('$asdg-status', self.init(expect=1).stdout)\n@@ -160,14 +160,14 @@\n             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)\n             self.assertEqual(snapshot(self.root), before)\n \n-    def test_purpose_focus_adapter_installs_exactly_without_resetting_unregistered_work(self):\n+    def test_shared_focus_preserves_unregistered_purpose_work(self):\n         self.init()\n         doc = self.root / 'docs/asdg/02-purpose/unregistered.md'\n         doc.write_text('# Purpose\\n\\nHelp new staff complete their first shift independently.\\n')\n         before = snapshot(self.root)\n         self.init()\n         self.assertEqual(snapshot(self.root), before)\n-        relative = Path('.agents/skills/asdg-focus-02-purpose/SKILL.md')\n+        relative = Path('.agents/skills/asdg-focus/SKILL.md')\n         self.assertEqual((self.root / relative).read_bytes(),\n                          (self.root / 'asdg/templates' / relative).read_bytes())\n         self.assertTrue((self.root / 'asdg/02-purpose/skills/elicit-purpose/opening.md').is_file())\n@@ -178,13 +178,14 @@\n         self.assertEqual(doc.read_text().splitlines()[-1],\n                          'Help new staff complete their first shift independently.')\n \n-    def test_governance_focus_installs_without_changing_lifecycle_or_authority(self):\n-        self.init()\n-        relative = Path('.agents/skills/asdg-focus-00-governance')\n+    def test_single_focus_installs_without_changing_roles_or_authority(self):\n+        self.init()\n+        relative = Path('.agents/skills/asdg-focus')\n         for name in ('SKILL.md', 'agents/openai.yaml'):\n             self.assertEqual((self.root / relative / name).read_bytes(),\n                              (self.root / 'asdg/templates' / relative / name).read_bytes())\n-        self.assertEqual(len(list((self.root / '.agents/skills').glob('asdg-focus-*/SKILL.md'))), 13)\n+        self.assertEqual([p.parent.name for p in (self.root / '.agents/skills').glob('asdg-focus*/SKILL.md')], ['asdg-focus'])\n+        self.assertEqual(len(list((self.root / '.codex/agents').glob('asdg*.toml'))), 13)\n         status = json.loads(self.run_cli('status', '--json').stdout)\n         self.assertEqual([s['number'] for s in status['lifecycle_stages']], list(range(1, 13)))\n         self.assertEqual(status['sprint_status'], 'inactive')\n@@ -244,8 +245,20 @@\n             if stage not in (4, 5):\n                 self.assertFalse((self.root / row['folder'] / 'skills/decision/SKILL.md').exists())\n \n-    def test_missing_governance_focus_template_fails_before_any_writes(self):\n-        shutil.rmtree(self.root / 'asdg/templates/.agents/skills/asdg-focus-00-governance')\n+    def test_missing_shared_focus_template_fails_before_any_writes(self):\n+        for name in ('SKILL.md', 'agents/openai.yaml'):\n+            path = self.root / 'asdg/templates/.agents/skills/asdg-focus' / name\n+            original = path.read_bytes()\n+            path.unlink()\n+            before = snapshot(self.root)\n+            self.init(expect=1)\n+            self.assertEqual(snapshot(self.root), before)\n+            path.write_bytes(original)\n+\n+    def test_retired_focus_template_is_rejected_before_any_writes(self):\n+        path = self.root / 'asdg/templates/.agents/skills/asdg-focus-05-architecture/SKILL.md'\n+        path.parent.mkdir(parents=True, exist_ok=True)\n+        path.write_text('---\\nname: asdg-focus-05-architecture\\ndescription: Retired fixture.\\n---\\n')\n         before = snapshot(self.root)\n         self.init(expect=1)\n         self.assertEqual(snapshot(self.root), before)\n@@ -309,7 +322,7 @@\n \n     def test_edited_adapter_is_preserved_and_verification_fails(self):\n         self.init()\n-        p=self.root/'.agents/skills/asdg-focus-02-purpose/SKILL.md';p.write_text(p.read_text()+'\\nLocal change.\\n')\n+        p=self.root/'.agents/skills/asdg-focus/SKILL.md';p.write_text(p.read_text()+'\\nLocal change.\\n')\n         before=snapshot(self.root)\n         self.init(expect=1); self.run_cli('verify', expect=1)\n         self.assertEqual(snapshot(self.root), before)\n"
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "action": "modified",
+      "before_sha256": "383844cc3982efecd6631d30373b7e72570eaead30b1cfc0c1417744250936a3",
+      "after_sha256": "95cc18c358144dfd9dc3fec50016916ff4a38af8fc8820c50ed1a6b9f987d2ec",
+      "diff": "--- before/asdg/tests/test_portable.md\n+++ after/asdg/tests/test_portable.md\n@@ -32,6 +32,7 @@\n The [test case guide](test_portable-cases.md) lists every `test_*` method and the behavior it checks.\n Decision discovery is exercised in a relocated client without SpeakerCoach files; repeat setup preserves unregistered decision evidence and lifecycle/sprint bytes.\n Optional local decision skills survive repeat setup from a specialist subdirectory; generic roles require no placeholder and state remains unchanged.\n+Focus installation keeps one picker entry and thirteen role adapters; preflight rejects missing shared metadata or retired per-role picker templates before writes.\n `test_dry_run_then_init_repeat_is_byte_identical` also checks portable stage introductions, embedded diagrams, empty Context recognition, absence of perspective directories and preservation on repeat setup.\n \n ## Effects and failure behavior\n"
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "action": "modified",
+      "before_sha256": "4c7f15db4202f7173268b432b751c0e8332b2b23d8fe884bec8f7ead5cec0c18",
+      "after_sha256": "d41f857bebd0379f257914fb538bac57afec18625ef9679660e9d1d163b2f729",
+      "diff": "--- before/asdg/tests/test_portable-cases.md\n+++ after/asdg/tests/test_portable-cases.md\n@@ -12,11 +12,12 @@\n | `test_init_guidance_resolves_to_installed_status_without_changing_state_on_repeat` | init guidance resolves to installed status without changing state on repeat. |\n | `test_init_guidance_is_only_emitted_after_successful_console_initialization` | init guidance is only emitted after successful console initialization. |\n | `test_factual_entry_points_never_import_advice_or_mutate_initialized_project` | factual entry points never import advice or mutate initialized project. |\n-| `test_purpose_focus_adapter_installs_exactly_without_resetting_unregistered_work` | purpose focus adapter installs exactly without resetting unregistered work. |\n-| `test_governance_focus_installs_without_changing_lifecycle_or_authority` | governance focus installs without changing lifecycle or authority. |\n+| `test_shared_focus_preserves_unregistered_purpose_work` | The shared adapter installs exactly and repeat setup preserves Purpose evidence. |\n+| `test_single_focus_installs_without_changing_roles_or_authority` | One Focus picker entry retains thirteen role adapters and unchanged lifecycle/authority. |\n | `test_decision_skill_relocates_and_preserves_unregistered_decisions` | Decision discovery survives relocation; repeat setup preserves decision evidence and state. |\n | `test_optional_decision_specialization_preserves_generic_roles_and_local_methods` | Optional specialist methods survive repeat setup; absent methods require no placeholders or state changes. |\n-| `test_missing_governance_focus_template_fails_before_any_writes` | missing governance focus template fails before any writes. |\n+| `test_missing_shared_focus_template_fails_before_any_writes` | Missing shared skill or UI metadata fails preflight without writes. |\n+| `test_retired_focus_template_is_rejected_before_any_writes` | A retired per-role picker template cannot silently restore menu clutter. |\n | `test_advice_report_creates_planning_parents_without_changing_state` | advice report creates planning parents without changing state. |\n | `test_preserves_client_instructions_documents_and_ignore` | preserves client instructions documents and ignore. |\n | `test_existing_codex_config_conflict_has_no_side_effects` | existing codex config conflict has no side effects. |\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus/SKILL.md",
+      "action": "modified",
+      "before_sha256": "f3b92e5172010d1184fa67d244678878e4b2279eecf0ddb58ce9bebab8eff8d7",
+      "after_sha256": "29a18cf6ae918368877725756f33d99530b1396cbf2edd96a53f03aa63eeb1a8",
+      "diff": "--- before/.agents/skills/asdg-focus/SKILL.md\n+++ after/.agents/skills/asdg-focus/SKILL.md\n@@ -1,13 +1,13 @@\n ---\n name: asdg-focus\n-description: Explicitly select ASDG governance 00 or a specialist stage 01-12 by alias, or clear focus. Prefer the thirteen no-argument named Focus skills. Discovery adapter; not an execution or delegation workflow.\n+description: Interpret a free-text request to focus this conversation on an ASDG specialist or governance; clarify ambiguous intent before switching. No role number required.\n ---\n \n-# asdg-focus — Codex discovery adapter\n+# ASDG focus — discovery adapter\n \n Read and follow [the canonical workflow](../../../asdg/skills/asdg-focus/SKILL.md).\n Resolve that link from this file's directory, not the terminal working directory.\n-Pass the user's complete skill argument text unchanged to that workflow.\n-If the target cannot be read, stop and report BLOCKED; do not invent a replacement.\n-This adapter contains no independent role definition and grants no action authority.\n-This YAML-first file records AI modification, not whole-file human approval.\n+Pass the user's complete phrase unchanged, including the relevant conversation context.\n+The shared workflow interprets the request, offers choices when needed, and loads the resolved role.\n+If the source cannot be read, stop and report the gap; do not invent another workflow.\n+This is the single public Focus entry. It defines no independent role and grants no action authority.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus/agents/openai.yaml",
+      "action": "modified",
+      "before_sha256": "b812dbc638ff173c1047c207b9cf44e963a6f019e072b90127e17c2f325023d8",
+      "after_sha256": "bcaef25988af99f52679450385bc99ad9d8845189aa95a8cea75ee75da5b4079",
+      "diff": "--- before/.agents/skills/asdg-focus/agents/openai.yaml\n+++ after/.agents/skills/asdg-focus/agents/openai.yaml\n@@ -1,6 +1,6 @@\n interface:\n   display_name: \"ASDG focus\"\n-  short_description: \"Use the local ASDG focus workflow\"\n-  default_prompt: \"Use $asdg-focus for this project.\"\n+  short_description: \"Choose a specialist using your own words\"\n+  default_prompt: \"Use $asdg-focus to select the specialist that fits my description.\"\n policy:\n   allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus/SKILL.md",
+      "action": "modified",
+      "before_sha256": "f3b92e5172010d1184fa67d244678878e4b2279eecf0ddb58ce9bebab8eff8d7",
+      "after_sha256": "29a18cf6ae918368877725756f33d99530b1396cbf2edd96a53f03aa63eeb1a8",
+      "diff": "--- before/asdg/templates/.agents/skills/asdg-focus/SKILL.md\n+++ after/asdg/templates/.agents/skills/asdg-focus/SKILL.md\n@@ -1,13 +1,13 @@\n ---\n name: asdg-focus\n-description: Explicitly select ASDG governance 00 or a specialist stage 01-12 by alias, or clear focus. Prefer the thirteen no-argument named Focus skills. Discovery adapter; not an execution or delegation workflow.\n+description: Interpret a free-text request to focus this conversation on an ASDG specialist or governance; clarify ambiguous intent before switching. No role number required.\n ---\n \n-# asdg-focus — Codex discovery adapter\n+# ASDG focus — discovery adapter\n \n Read and follow [the canonical workflow](../../../asdg/skills/asdg-focus/SKILL.md).\n Resolve that link from this file's directory, not the terminal working directory.\n-Pass the user's complete skill argument text unchanged to that workflow.\n-If the target cannot be read, stop and report BLOCKED; do not invent a replacement.\n-This adapter contains no independent role definition and grants no action authority.\n-This YAML-first file records AI modification, not whole-file human approval.\n+Pass the user's complete phrase unchanged, including the relevant conversation context.\n+The shared workflow interprets the request, offers choices when needed, and loads the resolved role.\n+If the source cannot be read, stop and report the gap; do not invent another workflow.\n+This is the single public Focus entry. It defines no independent role and grants no action authority.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus/agents/openai.yaml",
+      "action": "modified",
+      "before_sha256": "b812dbc638ff173c1047c207b9cf44e963a6f019e072b90127e17c2f325023d8",
+      "after_sha256": "bcaef25988af99f52679450385bc99ad9d8845189aa95a8cea75ee75da5b4079",
+      "diff": "--- before/asdg/templates/.agents/skills/asdg-focus/agents/openai.yaml\n+++ after/asdg/templates/.agents/skills/asdg-focus/agents/openai.yaml\n@@ -1,6 +1,6 @@\n interface:\n   display_name: \"ASDG focus\"\n-  short_description: \"Use the local ASDG focus workflow\"\n-  default_prompt: \"Use $asdg-focus for this project.\"\n+  short_description: \"Choose a specialist using your own words\"\n+  default_prompt: \"Use $asdg-focus to select the specialist that fits my description.\"\n policy:\n   allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/images/focus-selection.svg",
+      "action": "added",
+      "before_sha256": null,
+      "after_sha256": "3bd7799e1728a67b127c20fd0fb050daf83d8bed7f767ab7d8278d490430f439",
+      "diff": "--- /dev/null\n+++ after/asdg/skills/asdg-focus/images/focus-selection.svg\n@@ -0,0 +1,24 @@\n+<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"760\" height=\"330\" viewBox=\"0 0 760 330\" role=\"img\" aria-labelledby=\"title desc\">\n+  <title id=\"title\">One Focus entry, three interpretation outcomes</title>\n+  <desc id=\"desc\">Focus interprets the user's phrase and context. Clear intent proceeds to the selected role. Ambiguity asks among recommended candidates. No match shows twelve specialists and Governance separately. Pending clarification preserves the previous focus.</desc>\n+  <rect width=\"760\" height=\"330\" rx=\"16\" fill=\"#f3f7fb\"/>\n+  <g font-family=\"Arial, sans-serif\" fill=\"#203b50\">\n+    <text x=\"28\" y=\"36\" font-size=\"22\" font-weight=\"bold\">ASDG focus · describe the work in your own words</text>\n+    <rect x=\"170\" y=\"57\" width=\"420\" height=\"52\" rx=\"10\" fill=\"#fff\" stroke=\"#8ca7bc\"/>\n+    <text x=\"380\" y=\"89\" text-anchor=\"middle\" font-size=\"18\">Interpret phrase + conversation context</text>\n+    <path d=\"M380 109 V130 H140 V148 M380 130 V148 M380 130 H620 V148\" fill=\"none\" stroke=\"#506b83\" stroke-width=\"2\"/>\n+    <rect x=\"30\" y=\"150\" width=\"220\" height=\"112\" rx=\"10\" fill=\"#e1f1ea\" stroke=\"#40896b\"/>\n+    <text x=\"140\" y=\"180\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\">Clear match</text>\n+    <text x=\"140\" y=\"206\" text-anchor=\"middle\" font-size=\"15\">Announce the role</text>\n+    <text x=\"140\" y=\"232\" text-anchor=\"middle\" font-size=\"15\">Load sources → activate</text>\n+    <rect x=\"270\" y=\"150\" width=\"220\" height=\"112\" rx=\"10\" fill=\"#fff4df\" stroke=\"#b59a60\"/>\n+    <text x=\"380\" y=\"180\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\">Ambiguous</text>\n+    <text x=\"380\" y=\"206\" text-anchor=\"middle\" font-size=\"15\">Recommend + alternatives</text>\n+    <text x=\"380\" y=\"232\" text-anchor=\"middle\" font-size=\"15\">Ask which one</text>\n+    <rect x=\"510\" y=\"150\" width=\"220\" height=\"112\" rx=\"10\" fill=\"#e5edf8\" stroke=\"#8ca7bc\"/>\n+    <text x=\"620\" y=\"180\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\">No useful match</text>\n+    <text x=\"620\" y=\"206\" text-anchor=\"middle\" font-size=\"15\">Show all 12 specialists</text>\n+    <text x=\"620\" y=\"232\" text-anchor=\"middle\" font-size=\"15\">Governance separately</text>\n+    <text x=\"380\" y=\"303\" text-anchor=\"middle\" font-size=\"16\">While a choice is pending, keep the previous focus and title.</text>\n+  </g>\n+</svg>\n"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.5-review-conversational-focus.md",
+      "action": "added",
+      "before_sha256": null,
+      "after_sha256": "95eac9fdfe4d0098c4bd9544339a4725d8fcdf130d488cc069c105f2a45f487c",
+      "diff": "--- /dev/null\n+++ after/docs/asdg/07-planning/02.5-review-conversational-focus.md\n@@ -0,0 +1,36 @@\n+# One Focus entry that understands the user's words\n+\n+ASDG Focus now interprets a description such as “focus on high level architecture” through the existing role catalogue and conversation context.\n+The thirteen separate picker shortcuts were removed from this client and its installation templates; all thirteen specialist/coordinator definitions and native role adapters remain.\n+\n+![A clear match loads the role, ambiguity asks among recommended candidates, and no useful match offers all twelve specialists with Governance separately.](../../../asdg/skills/asdg-focus/images/focus-selection.svg)\n+\n+## Selection behavior\n+\n+A clear match announces the interpretation and loads the role without another confirmation.\n+\n+An ambiguous request offers the plausible specialists, a provisional recommendation with a reason, and alternatives; it waits for the user's choice.\n+If no useful match exists, Focus asks which specialist and lists all twelve, with Governance separately.\n+Pending questions preserve the previous focus and title. Clear requests return to General; quoted examples and explanation requests do not activate a role.\n+\n+The [interpretation guide](../../../asdg/skills/asdg-focus/focus-choices.md) supplies responsibilities and clarification behavior, rather than a fixed keyword parser.\n+\n+## Integration and validation\n+\n+Installed and packaged discovery now contain only `asdg-focus`; exact template comparisons confirmed the retired shortcuts had no local customizations before removal.\n+Initializer preflight requires the shared skill and UI metadata and rejects retired per-role Focus templates. Team setup uses the shared skill with explicit catalogue IDs.\n+\n+All 29 portable tests and 3 agent-configuration tests pass. Both canonical and installed Focus skills pass syntax validation; structure, local links and whitespace checks pass.\n+The first regression run exposed an existing empty fixture directory after file removal; the fixture setup was corrected to tolerate it, and all 29 tests passed on rerun.\n+\n+An independent read-only exercise covered nine interpretation cases, including contextual 04/09 and 05/08 distinctions, typos, no match, clear, explanation-only requests and clarification answers.\n+That exercise tested interpretation, not native activation, renaming or UI cache refresh. A provisional recommendation is contextual judgment, not an accepted selection.\n+\n+The new guide and diagram were rendered and inspected at a 720 px pane width with a 656 px image; updated source companions rendered without overflow.\n+The broader package checker still reports eight pre-existing external presentation links in unchanged `asdg/README.md`; no other failures remain.\n+\n+## Scope and evidence\n+\n+Application files, project/sprint/lifecycle state, catalogue identity and prior review history are preserved. No chat was activated, renamed, created or messaged by this maintenance task.\n+The [technical receipt](02.5-review-conversational-focus.json) records changes, retired-file hashes, checks and limitations; removed-file events preserve the old review binding.\n+An older client's customized shortcuts require explicit migration; ordinary initialization does not delete them silently.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-00-governance/SKILL.md",
+      "action": "removed",
+      "before_sha256": "09d9ed62ea5ced294ba31a281cf6ca6c3997a053d75836b8dea910d4679f71f2",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-00-governance\ndescription: Explicitly focus this conversation on ASDG 00 Governance, the whole-project management and coordination role. Loads the existing ASDG-COORDINATOR; no parameter, delegation or project execution.\n---\n\n# ASDG Focus 00 — Governance\n\nThis fixed-selector discovery adapter selects a real management focus, distinct from None.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-COORDINATOR`; no argument or second menu is required.\nRecord `asdg-focus-00-governance` as the activation entry; retain the target project and task context.\nLoad the catalogue's coordinator entry, contract, runtime rules and routing procedure before activation.\nThe shared workflow requests the current-chat title `00 Governance — <project>` and returns Status.\nRetain focus if native renaming is unavailable or fails; report the actual outcome.\nSelection alone never starts coordination work, spawns agents, grants approvals or changes files/state.\nGovernance is outside the twelve development stages; no role or lifecycle number is added or changed.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-00-governance/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "029358adb224606be200669ecd4a21c8463b4bdfc2370ae4bc18e470b731cbdd",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 00 governance\"\n  short_description: \"Focus on whole-project ASDG coordination\"\n  default_prompt: \"Use $asdg-focus-00-governance for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-01-context/SKILL.md",
+      "action": "removed",
+      "before_sha256": "cfa689c401b98d7aef28a8ea958dd77309b0a0173c0640f1ef57568e1adeafcf",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-01-context\ndescription: Explicitly focus this conversation on ASDG 01 Context & Domain Analysis. No parameter required. Loads the existing ASDG-01 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 01 — Context & Domain Analysis\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-01`; no argument or second selection menu is required.\nRecord `asdg-focus-01-context` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-01-context/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "f3f0d88942f6cff23cf7e2509b1ec0221733b6e1ae533f33f547c55cc15fa690",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 01 context\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-01-context for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-02-purpose/SKILL.md",
+      "action": "removed",
+      "before_sha256": "b767dd420b6e1b4eb160bdbd83dc054d6a4ffe73822e575fe2794cdc3d218a41",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-02-purpose\ndescription: Explicitly focus this conversation on ASDG 02 Purpose. No parameter required. Loads ASDG-02 and its workflow for clarifying purpose and saving illustrated project documentation; selection includes a read-only opening assessment.\n---\n\n# ASDG Focus 02 — Purpose\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nCanonical identities and Purpose paths follow the catalogue; legacy identities exist only in migration records.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-02`; no argument or second selection menu is required.\nRecord `asdg-focus-02-purpose` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the role/procedure, attempts chat renaming and begins the canonical read-only opening.\nActivation alone writes no artifacts and spawns no subagent; an accompanying assignment starts within the role contract.\nAssigned Purpose documentation work saves illustrated client documentation within that same contract.\nFollow the canonical procedure's required visual completion checks; activation alone creates no image.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-02-purpose/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "56be11b92ddae8499d81d1d2a9f88a56dee448ec2d112fa8c3531ec1260831bd",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 02 purpose\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-02-purpose for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-03-use-cases/SKILL.md",
+      "action": "removed",
+      "before_sha256": "4d453093e7bce3650ab5b84a23fdeefafecfae5881fc572d7fac44fb3bfdcd47",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-03-use-cases\ndescription: Explicitly focus this conversation on ASDG 03 System Model & Use Cases. No parameter required. Loads the existing ASDG-03 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 03 — System Model & Use Cases\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-03`; no argument or second selection menu is required.\nRecord `asdg-focus-03-use-cases` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-03-use-cases/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "32fa08a0be602fc444208d58cd6f9ceaf20d5513ed0d4ff437607017754506da",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 03 use cases\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-03-use-cases for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-04-test-strategy/SKILL.md",
+      "action": "removed",
+      "before_sha256": "cfc256c7f03ea84f5d9a59f407f2fdcecc1e685430b9dc66a97c26479d158c6e",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-04-test-strategy\ndescription: Explicitly focus this conversation on ASDG 04 Benchmarks & Test Strategy. No parameter required. Loads the existing ASDG-04 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 04 — Benchmarks & Test Strategy\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-04`; no argument or second selection menu is required.\nRecord `asdg-focus-04-test-strategy` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-04-test-strategy/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "3c5eafdc44e563b7b43332d9396ebdc35302d41c6863d3e8ba289c211db42748",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 04 test strategy\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-04-test-strategy for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-05-architecture/SKILL.md",
+      "action": "removed",
+      "before_sha256": "348b3f5ca466536d9afaa746db7a6c2f335e7439670c3b5a486797d1038e87eb",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-05-architecture\ndescription: Explicitly focus this conversation on ASDG 05 High-Level Architecture. No parameter required. Loads the existing ASDG-05 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 05 — High-Level Architecture\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-05`; no argument or second selection menu is required.\nRecord `asdg-focus-05-architecture` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-05-architecture/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "05a1b25608670b84278176e264232269ed6c254136cef04e2da1bb0d0b7cc2bf",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 05 architecture\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-05-architecture for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-06-poc/SKILL.md",
+      "action": "removed",
+      "before_sha256": "9cf691b66707db8c9dd66370678356b761058f0aaf2992c6b6c74635a900408c",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-06-poc\ndescription: Explicitly focus this conversation on ASDG 06 Viable Proof of Concept. No parameter required. Loads the existing ASDG-06 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 06 — Viable Proof of Concept\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-06`; no argument or second selection menu is required.\nRecord `asdg-focus-06-poc` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-06-poc/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "0a277d7ef8b560b9ab05368c6618ed2fa66f484c983a9f6dfbd3539bfcfe948c",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 06 poc\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-06-poc for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-07-planning/SKILL.md",
+      "action": "removed",
+      "before_sha256": "d79a0d7a3afa5c63696009f10f90aa4569bf3f7c79de4c60f5067137a779c0e0",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-07-planning\ndescription: Explicitly focus this conversation on ASDG 07 Planning. No parameter required. Loads the existing ASDG-07 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 07 — Planning\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-07`; no argument or second selection menu is required.\nRecord `asdg-focus-07-planning` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-07-planning/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "088551544b51a8b35aa15271716a5572cadbd8b3a79eabfdac0fe9571f35d1a5",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 07 planning\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-07-planning for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-08-low-level-design/SKILL.md",
+      "action": "removed",
+      "before_sha256": "33ca875654782dfeb38e3db91d24d95ed24e6a3505bd3a909255f855cf7ea22c",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-08-low-level-design\ndescription: Explicitly focus this conversation on ASDG 08 Low-Level Design. No parameter required. Loads the existing ASDG-08 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 08 — Low-Level Design\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-08`; no argument or second selection menu is required.\nRecord `asdg-focus-08-low-level-design` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-08-low-level-design/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "910fed590fa2f79ed37e7781830658bf926fa7690782a59dd35f5835c9438a0f",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 08 low level design\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-08-low-level-design for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-09-build-test/SKILL.md",
+      "action": "removed",
+      "before_sha256": "499361317cae22fb25fdafd26772e853d1dbb7139690fdbd7597d8aa59d75ae1",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-09-build-test\ndescription: Explicitly focus this conversation on ASDG 09 Build & Test Cycle. No parameter required. Loads the existing ASDG-09 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 09 — Build & Test Cycle\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-09`; no argument or second selection menu is required.\nRecord `asdg-focus-09-build-test` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-09-build-test/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "770403098d6061dd6824a73b72e49d2909fd5cd0c50200a2db1c5eda00736cc5",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 09 build test\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-09-build-test for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-10-review-release/SKILL.md",
+      "action": "removed",
+      "before_sha256": "0880cbecb4eed93f2ce04a0e251a943de7da29c2566f20f943df72b88d9251bf",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-10-review-release\ndescription: Explicitly focus this conversation on ASDG 10 Document, Review & Release. No parameter required. Loads the existing ASDG-10 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 10 — Document, Review & Release\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-10`; no argument or second selection menu is required.\nRecord `asdg-focus-10-review-release` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-10-review-release/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "2901a5f5d066a5ec3ccaacc0d9dce7e931ddaff4e9a3d1f482ac522b458130d2",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 10 review release\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-10-review-release for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-11-operations/SKILL.md",
+      "action": "removed",
+      "before_sha256": "2de3413a1ca7a8f3ddb17cba10212f73c6a6f0036e62562e10f5d539f04dd2fa",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-11-operations\ndescription: Explicitly focus this conversation on ASDG 11 Operations, DevOps & User Acceptance. No parameter required. Loads the existing ASDG-11 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 11 — Operations, DevOps & User Acceptance\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-11`; no argument or second selection menu is required.\nRecord `asdg-focus-11-operations` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-11-operations/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "b35666379df204d44f51bca4eec38448dedb15910871b3fe04abe8ea0b0c22bb",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 11 operations\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-11-operations for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-12-insights/SKILL.md",
+      "action": "removed",
+      "before_sha256": "a2d6802c71ba4e1ec132b3030b159fc73858df025a885949645fc8f4c1687d26",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-12-insights\ndescription: Explicitly focus this conversation on ASDG 12 Observability, Insights & Learning. No parameter required. Loads the existing ASDG-12 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 12 — Observability, Insights & Learning\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-12`; no argument or second selection menu is required.\nRecord `asdg-focus-12-insights` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": ".agents/skills/asdg-focus-12-insights/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "e6142d68ada6c34edce122e57e6fdcb2f3fed61b2536a46445f278fe32db7bcd",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 12 insights\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-12-insights for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-00-governance/SKILL.md",
+      "action": "removed",
+      "before_sha256": "09d9ed62ea5ced294ba31a281cf6ca6c3997a053d75836b8dea910d4679f71f2",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-00-governance\ndescription: Explicitly focus this conversation on ASDG 00 Governance, the whole-project management and coordination role. Loads the existing ASDG-COORDINATOR; no parameter, delegation or project execution.\n---\n\n# ASDG Focus 00 — Governance\n\nThis fixed-selector discovery adapter selects a real management focus, distinct from None.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-COORDINATOR`; no argument or second menu is required.\nRecord `asdg-focus-00-governance` as the activation entry; retain the target project and task context.\nLoad the catalogue's coordinator entry, contract, runtime rules and routing procedure before activation.\nThe shared workflow requests the current-chat title `00 Governance — <project>` and returns Status.\nRetain focus if native renaming is unavailable or fails; report the actual outcome.\nSelection alone never starts coordination work, spawns agents, grants approvals or changes files/state.\nGovernance is outside the twelve development stages; no role or lifecycle number is added or changed.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-00-governance/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "029358adb224606be200669ecd4a21c8463b4bdfc2370ae4bc18e470b731cbdd",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 00 governance\"\n  short_description: \"Focus on whole-project ASDG coordination\"\n  default_prompt: \"Use $asdg-focus-00-governance for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-01-context/SKILL.md",
+      "action": "removed",
+      "before_sha256": "cfa689c401b98d7aef28a8ea958dd77309b0a0173c0640f1ef57568e1adeafcf",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-01-context\ndescription: Explicitly focus this conversation on ASDG 01 Context & Domain Analysis. No parameter required. Loads the existing ASDG-01 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 01 — Context & Domain Analysis\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-01`; no argument or second selection menu is required.\nRecord `asdg-focus-01-context` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-01-context/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "f3f0d88942f6cff23cf7e2509b1ec0221733b6e1ae533f33f547c55cc15fa690",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 01 context\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-01-context for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-02-purpose/SKILL.md",
+      "action": "removed",
+      "before_sha256": "b767dd420b6e1b4eb160bdbd83dc054d6a4ffe73822e575fe2794cdc3d218a41",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-02-purpose\ndescription: Explicitly focus this conversation on ASDG 02 Purpose. No parameter required. Loads ASDG-02 and its workflow for clarifying purpose and saving illustrated project documentation; selection includes a read-only opening assessment.\n---\n\n# ASDG Focus 02 — Purpose\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nCanonical identities and Purpose paths follow the catalogue; legacy identities exist only in migration records.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-02`; no argument or second selection menu is required.\nRecord `asdg-focus-02-purpose` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the role/procedure, attempts chat renaming and begins the canonical read-only opening.\nActivation alone writes no artifacts and spawns no subagent; an accompanying assignment starts within the role contract.\nAssigned Purpose documentation work saves illustrated client documentation within that same contract.\nFollow the canonical procedure's required visual completion checks; activation alone creates no image.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-02-purpose/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "56be11b92ddae8499d81d1d2a9f88a56dee448ec2d112fa8c3531ec1260831bd",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 02 purpose\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-02-purpose for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-03-use-cases/SKILL.md",
+      "action": "removed",
+      "before_sha256": "4d453093e7bce3650ab5b84a23fdeefafecfae5881fc572d7fac44fb3bfdcd47",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-03-use-cases\ndescription: Explicitly focus this conversation on ASDG 03 System Model & Use Cases. No parameter required. Loads the existing ASDG-03 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 03 — System Model & Use Cases\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-03`; no argument or second selection menu is required.\nRecord `asdg-focus-03-use-cases` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-03-use-cases/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "32fa08a0be602fc444208d58cd6f9ceaf20d5513ed0d4ff437607017754506da",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 03 use cases\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-03-use-cases for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-04-test-strategy/SKILL.md",
+      "action": "removed",
+      "before_sha256": "cfc256c7f03ea84f5d9a59f407f2fdcecc1e685430b9dc66a97c26479d158c6e",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-04-test-strategy\ndescription: Explicitly focus this conversation on ASDG 04 Benchmarks & Test Strategy. No parameter required. Loads the existing ASDG-04 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 04 — Benchmarks & Test Strategy\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-04`; no argument or second selection menu is required.\nRecord `asdg-focus-04-test-strategy` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-04-test-strategy/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "3c5eafdc44e563b7b43332d9396ebdc35302d41c6863d3e8ba289c211db42748",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 04 test strategy\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-04-test-strategy for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-05-architecture/SKILL.md",
+      "action": "removed",
+      "before_sha256": "348b3f5ca466536d9afaa746db7a6c2f335e7439670c3b5a486797d1038e87eb",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-05-architecture\ndescription: Explicitly focus this conversation on ASDG 05 High-Level Architecture. No parameter required. Loads the existing ASDG-05 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 05 — High-Level Architecture\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-05`; no argument or second selection menu is required.\nRecord `asdg-focus-05-architecture` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-05-architecture/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "05a1b25608670b84278176e264232269ed6c254136cef04e2da1bb0d0b7cc2bf",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 05 architecture\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-05-architecture for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-06-poc/SKILL.md",
+      "action": "removed",
+      "before_sha256": "9cf691b66707db8c9dd66370678356b761058f0aaf2992c6b6c74635a900408c",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-06-poc\ndescription: Explicitly focus this conversation on ASDG 06 Viable Proof of Concept. No parameter required. Loads the existing ASDG-06 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 06 — Viable Proof of Concept\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-06`; no argument or second selection menu is required.\nRecord `asdg-focus-06-poc` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-06-poc/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "0a277d7ef8b560b9ab05368c6618ed2fa66f484c983a9f6dfbd3539bfcfe948c",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 06 poc\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-06-poc for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-07-planning/SKILL.md",
+      "action": "removed",
+      "before_sha256": "d79a0d7a3afa5c63696009f10f90aa4569bf3f7c79de4c60f5067137a779c0e0",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-07-planning\ndescription: Explicitly focus this conversation on ASDG 07 Planning. No parameter required. Loads the existing ASDG-07 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 07 — Planning\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-07`; no argument or second selection menu is required.\nRecord `asdg-focus-07-planning` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-07-planning/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "088551544b51a8b35aa15271716a5572cadbd8b3a79eabfdac0fe9571f35d1a5",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 07 planning\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-07-planning for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-08-low-level-design/SKILL.md",
+      "action": "removed",
+      "before_sha256": "33ca875654782dfeb38e3db91d24d95ed24e6a3505bd3a909255f855cf7ea22c",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-08-low-level-design\ndescription: Explicitly focus this conversation on ASDG 08 Low-Level Design. No parameter required. Loads the existing ASDG-08 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 08 — Low-Level Design\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-08`; no argument or second selection menu is required.\nRecord `asdg-focus-08-low-level-design` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-08-low-level-design/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "910fed590fa2f79ed37e7781830658bf926fa7690782a59dd35f5835c9438a0f",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 08 low level design\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-08-low-level-design for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-09-build-test/SKILL.md",
+      "action": "removed",
+      "before_sha256": "499361317cae22fb25fdafd26772e853d1dbb7139690fdbd7597d8aa59d75ae1",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-09-build-test\ndescription: Explicitly focus this conversation on ASDG 09 Build & Test Cycle. No parameter required. Loads the existing ASDG-09 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 09 — Build & Test Cycle\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-09`; no argument or second selection menu is required.\nRecord `asdg-focus-09-build-test` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-09-build-test/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "770403098d6061dd6824a73b72e49d2909fd5cd0c50200a2db1c5eda00736cc5",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 09 build test\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-09-build-test for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-10-review-release/SKILL.md",
+      "action": "removed",
+      "before_sha256": "0880cbecb4eed93f2ce04a0e251a943de7da29c2566f20f943df72b88d9251bf",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-10-review-release\ndescription: Explicitly focus this conversation on ASDG 10 Document, Review & Release. No parameter required. Loads the existing ASDG-10 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 10 — Document, Review & Release\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-10`; no argument or second selection menu is required.\nRecord `asdg-focus-10-review-release` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-10-review-release/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "2901a5f5d066a5ec3ccaacc0d9dce7e931ddaff4e9a3d1f482ac522b458130d2",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 10 review release\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-10-review-release for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-11-operations/SKILL.md",
+      "action": "removed",
+      "before_sha256": "2de3413a1ca7a8f3ddb17cba10212f73c6a6f0036e62562e10f5d539f04dd2fa",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-11-operations\ndescription: Explicitly focus this conversation on ASDG 11 Operations, DevOps & User Acceptance. No parameter required. Loads the existing ASDG-11 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 11 — Operations, DevOps & User Acceptance\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-11`; no argument or second selection menu is required.\nRecord `asdg-focus-11-operations` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-11-operations/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "b35666379df204d44f51bca4eec38448dedb15910871b3fe04abe8ea0b0c22bb",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 11 operations\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-11-operations for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-12-insights/SKILL.md",
+      "action": "removed",
+      "before_sha256": "a2d6802c71ba4e1ec132b3030b159fc73858df025a885949645fc8f4c1687d26",
+      "after_sha256": null,
+      "removed_content": "---\nname: asdg-focus-12-insights\ndescription: Explicitly focus this conversation on ASDG 12 Observability, Insights & Learning. No parameter required. Loads the existing ASDG-12 role and shared Focus workflow; does not perform project work.\n---\n\n# ASDG Focus 12 — Observability, Insights & Learning\n\nThis is a fixed-selector discovery adapter, not a second role definition.\nOnly an explicit user invocation selects this focus; reading this file alone does not.\nRead [the shared Focus workflow](../../../asdg/skills/asdg-focus/SKILL.md).\nRun it with fixed selector `ASDG-12`; no argument or second selection menu is required.\nRecord `asdg-focus-12-insights` as the actual activation entry. Extra user text remains task context.\nConflicting explicit role selections require clarification; never choose another specialist silently.\nResolve the workflow link from THIS file's directory, not the terminal working directory.\nStop if required sources are missing; preserve prior focus. Keep the target project unchanged.\nThe shared workflow loads the canonical role/procedure, attempts native chat renaming, and reports Status.\nDo not duplicate its policy, execute a project task, spawn a subagent or grant write permission.\nThis YAML-first file records AI modification, not whole-file human approval.\n"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-focus-12-insights/agents/openai.yaml",
+      "action": "removed",
+      "before_sha256": "e6142d68ada6c34edce122e57e6fdcb2f3fed61b2536a46445f278fe32db7bcd",
+      "after_sha256": null,
+      "removed_content": "interface:\n  display_name: \"ASDG focus 12 insights\"\n  short_description: \"Use the local ASDG focus workflow\"\n  default_prompt: \"Use $asdg-focus-12-insights for this project.\"\npolicy:\n  allow_implicit_invocation: false\n"
+    }
+  ],
+  "retirement": "52 files removed: 26 installed and 26 template files. Every installed retired file matched its template before removal; full removed text and old hashes retained here. Empty folders are non-discoverable and contain no skill files.",
+  "checks": [
+    {
+      "command": "python3 -B -m unittest discover -s asdg/tests -p 'test_portable.py'",
+      "result": "PASS: 29 tests on final run. First run found FileExistsError for an empty removed-adapter fixture directory; fixture creation made idempotent and rerun passed."
+    },
+    {
+      "command": "python3 -B -m unittest discover -s asdg/tests -p 'test_agent_config.py'",
+      "result": "PASS: 3 tests."
+    },
+    {
+      "command": "quick_validate.py asdg/skills/asdg-focus; quick_validate.py .agents/skills/asdg-focus",
+      "result": "PASS using existing virtualenv with PyYAML; no dependency installation."
+    },
+    {
+      "command": "python3 asdg/scripts/cli.py verify",
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --check -- asdg .agents",
+      "result": "PASS"
+    },
+    {
+      "command": "python3 asdg/scripts/check.py",
+      "result": "Eight pre-existing escaping links from unchanged asdg/README.md to sibling presentation files; no other final failures."
+    }
+  ],
+  "behavioral_exercise": {
+    "mode": "Independent fresh-context default subagent, read-only selection phase; no native Focus activation, chat renaming or real user questions.",
+    "root": "/private/tmp/asdg-focus-language-0t5q1cqz/WorkshopDesk",
+    "checked_files": 373,
+    "changes": [],
+    "cases": [
+      {
+        "input": "focus on high levl architecure",
+        "result": "05; typo tolerated"
+      },
+      {
+        "input": "focus on testing; no context",
+        "result": "Pending 04/09 choice, provisional recommendation and reason; previous 07 retained"
+      },
+      {
+        "input": "focus on testing; representative recordings and evaluation measures",
+        "result": "04"
+      },
+      {
+        "input": "focus on design; exact API fields and errors",
+        "result": "08"
+      },
+      {
+        "input": "focus on something useful; no context",
+        "result": "All twelve listed; Governance separately; previous 07 retained"
+      },
+      {
+        "input": "return to general; previous 05",
+        "result": "Clear/None, not Governance"
+      },
+      {
+        "input": "focus on 05 and 08",
+        "result": "Pending 05/08 choice; provisional recommendation and reason; previous 07 retained"
+      },
+      {
+        "input": "Explain what focus on high level architecture means",
+        "result": "Explanation only; previous 07 retained"
+      },
+      {
+        "input": "the detailed interface one; pending 05/08 clarification",
+        "result": "08 without redundant confirmation"
+      }
+    ],
+    "findings": [
+      "No contradictory selection rules found. Recommendations with insufficient context are explicitly provisional, not unique expected answers.",
+      "Clarified session policy after feedback: unavailable guidance on an active role differs from a failed proposed switch."
+    ]
+  },
+  "visual_review": [
+    {
+      "document": "asdg/skills/asdg-focus/focus-choices.md",
+      "asset": "images/focus-selection.svg",
+      "idea": "Interpretation branches into clear selection, ambiguous clarification, or a complete role choice list.",
+      "result": "PASS: rendered embedded at 656 px in a 720 px document pane, no horizontal overflow. New guide/diagram and review page inspected; existing companion visuals reused."
+    },
+    {
+      "document": "asdg/scripts/lib/cli_project.md",
+      "asset": "images/cli_project-flow.svg",
+      "idea": "Preflight and installation preserve state and validate the shared picker template.",
+      "result": "PASS: rendered embedded at 656 px in a 720 px document pane, no horizontal overflow. New guide/diagram and review page inspected; existing companion visuals reused."
+    },
+    {
+      "document": "asdg/tests/test_portable.md",
+      "asset": "images/test_portable-flow.svg",
+      "idea": "Disposable fixtures verify adapter counts, missing/retired templates and preservation.",
+      "result": "PASS: rendered embedded at 656 px in a 720 px document pane, no horizontal overflow. New guide/diagram and review page inspected; existing companion visuals reused."
+    },
+    {
+      "document": "docs/asdg/07-planning/02.5-review-conversational-focus.md",
+      "asset": "../../../asdg/skills/asdg-focus/images/focus-selection.svg",
+      "idea": "One Focus interface and its validation scope.",
+      "result": "PASS: rendered embedded at 656 px in a 720 px document pane, no horizontal overflow. New guide/diagram and review page inspected; existing companion visuals reused."
+    }
+  ],
+  "protected_files": {
+    ".asdg/project.json": {
+      "before": "567611ac3ddc8715c7e7d1827c27620d866bee0447c08157fef079f864b09404",
+      "after": "567611ac3ddc8715c7e7d1827c27620d866bee0447c08157fef079f864b09404",
+      "unchanged": true
+    },
+    ".asdg/sprint.json": {
+      "before": "7b67029aa3117e03c8e24f0a3fbc224a4793045997f4a6a6734eadedb87894b2",
+      "after": "7b67029aa3117e03c8e24f0a3fbc224a4793045997f4a6a6734eadedb87894b2",
+      "unchanged": true
+    },
+    ".asdg/lifecycle.json": {
+      "before": "b4f65255ada0acff20b0cb9ac26253e825334042b25a5cb2b1a05a1f5124f057",
+      "after": "b4f65255ada0acff20b0cb9ac26253e825334042b25a5cb2b1a05a1f5124f057",
+      "unchanged": true
+    },
+    "asdg/00-governance/types/agent-catalog.json": {
+      "before": "ee9db75fd35c26815a4070d012e91444c9020f62b31308797c755460c7861e17",
+      "after": "ee9db75fd35c26815a4070d012e91444c9020f62b31308797c755460c7861e17",
+      "unchanged": true
+    },
+    "app.js": {
+      "before": "188dadc7287357a1c6058d7f267e2055b75feb0c3057afab48cd79924ffadeca",
+      "after": "188dadc7287357a1c6058d7f267e2055b75feb0c3057afab48cd79924ffadeca",
+      "unchanged": true
+    },
+    "index.html": {
+      "before": "6963f1f6cf33385e4175c011d53392723c95090f9760d24d764d61728a5426cc",
+      "after": "6963f1f6cf33385e4175c011d53392723c95090f9760d24d764d61728a5426cc",
+      "unchanged": true
+    },
+    ".codex/hooks.json": {
+      "before": "73bb060aa3c1ea7b2e4f7cfc15e01ce32387317215d20aba14ac1a915f2c2fd5",
+      "after": "73bb060aa3c1ea7b2e4f7cfc15e01ce32387317215d20aba14ac1a915f2c2fd5",
+      "unchanged": true
+    },
+    "asdg/scripts/lib/cli_hook.py": {
+      "before": "2876725cbf6c1dccfd3f65707f17aa631cfa6166837bbfdc1c2bfe5c019d24ee",
+      "after": "2876725cbf6c1dccfd3f65707f17aa631cfa6166837bbfdc1c2bfe5c019d24ee",
+      "unchanged": true
+    }
+  },
+  "review_history": "Append-only AI modification/removal receipts; historical declarations remain bound to old hashes; no acceptance inferred.",
+  "limits": [
+    "Native picker refresh, actual role activation and title updates are not tested by the interpretation exercise.",
+    "No sibling methodology repository update, commit, push or packaging release.",
+    "Existing custom shortcuts in other clients require explicit migration; initialization never deletes them silently."
+  ],
+  "result_inventory": {
+    "installed_focus": [
+      "asdg-focus"
+    ],
+    "template_focus": [
+      "asdg-focus"
+    ],
+    "native_role_adapters": 13,
+    "retired_files_remaining": 0
+  }
+}

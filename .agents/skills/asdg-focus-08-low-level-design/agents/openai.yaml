@@ -1,6 +1,0 @@
-interface:
-  display_name: "ASDG focus 08 low level design"
-  short_description: "Use the local ASDG focus workflow"
-  default_prompt: "Use $asdg-focus-08-low-level-design for this project."
-policy:
-  allow_implicit_invocation: false

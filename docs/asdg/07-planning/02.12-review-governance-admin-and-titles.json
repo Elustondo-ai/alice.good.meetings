@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "objective": "Default every ASDG session to an accountable role (00 Governance), add ASDG Admin as the only role for agent changes to ASDG rules, and synchronize session titles with role transitions.",
+  "requested_by": "Pablo (repository owner), in this session; wording reviewed by ChatGPT acting as methodology reviewer",
+  "requests": [
+    "2026-10-30 default-session governance correction",
+    "2026-10-30 Admin role and title synchronization, including explicit bootstrap authorization"
+  ],
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-opus-5-5",
+    "client": "Claude desktop app, Code tab",
+    "session": "local_15c31fc2-e853-4e10-8d69-f4417296d9cf"
+  },
+  "starting_revision": "6c7999271aca1aed2980647b2bd57955651644c6",
+  "role_sequence": [
+    {
+      "phase": "default-session governance",
+      "role": "None (then-current rules permitted no-role maintenance)"
+    },
+    {
+      "phase": "Admin bootstrap",
+      "role": "ASDG-COORDINATOR",
+      "authorization": "Explicit: 'This message authorizes the bounded bootstrap needed to define Admin and perform these changes.'",
+      "files": [
+        "asdg/admin/AGENTS.md",
+        "asdg/admin/types/contract.md",
+        "asdg/admin/types/admin-role.json",
+        "asdg/admin/skills/maintain-rules/SKILL.md",
+        "asdg/skills/asdg-focus/focus-choices.md",
+        "asdg/skills/asdg-focus/SKILL.md"
+      ]
+    },
+    {
+      "phase": "Admin activation",
+      "role": "ASDG-ADMIN",
+      "selecting_instruction": "YOU SHOULD BECOME ASDG ADMIN",
+      "sources_read": [
+        "AGENTS.md",
+        "asdg/AGENTS.md",
+        "asdg/skills/asdg-focus/session-policy.md",
+        "asdg/admin/AGENTS.md",
+        "asdg/admin/types/contract.md",
+        "asdg/admin/skills/maintain-rules/SKILL.md",
+        "asdg/docs/review-loop.md"
+      ],
+      "title": {
+        "tool": "mcp__ccd_session_mgmt__set_session_title",
+        "requested": "ASDG Admin",
+        "outcome": "RENAMED",
+        "readback": "ASDG Admin"
+      }
+    },
+    {
+      "phase": "remaining changes",
+      "role": "ASDG-ADMIN"
+    }
+  ],
+  "changed_paths": [
+    ".asdg/document-reviews.json",
+    "AGENTS.md",
+    "asdg/00-governance/AGENTS.md",
+    "asdg/00-governance/docs/continuation.md",
+    "asdg/00-governance/docs/documentation-authority.md",
+    "asdg/00-governance/types/document-reviews.json",
+    "asdg/01-context-and-domain-analysis/AGENTS.md",
+    "asdg/02-purpose/AGENTS.md",
+    "asdg/03-system-model-and-use-cases/AGENTS.md",
+    "asdg/04-benchmarks-and-eval-strategy/AGENTS.md",
+    "asdg/05-high-level-design-and-architecture/AGENTS.md",
+    "asdg/05-high-level-design-and-architecture/tests/acceptance.md",
+    "asdg/06-viable-proof-of-concept/AGENTS.md",
+    "asdg/07-planning/AGENTS.md",
+    "asdg/08-low-level-design/AGENTS.md",
+    "asdg/09-build-and-test-cycle/AGENTS.md",
+    "asdg/10-document-review-and-release/AGENTS.md",
+    "asdg/11-operational-reality-devops-and-user-acceptance/AGENTS.md",
+    "asdg/12-observability-insights-and-learning/AGENTS.md",
+    "asdg/AGENTS.md",
+    "asdg/admin/AGENTS.md",
+    "asdg/admin/skills/maintain-rules/SKILL.md",
+    "asdg/admin/types/admin-role.json",
+    "asdg/admin/types/contract.md",
+    "asdg/docs/review-loop.md",
+    "asdg/scripts/lib/README.md",
+    "asdg/scripts/lib/cli_project.md",
+    "asdg/scripts/lib/cli_project.py",
+    "asdg/scripts/lib/cli_session.md",
+    "asdg/scripts/lib/cli_session.py",
+    "asdg/scripts/lib/cli_status.md",
+    "asdg/scripts/lib/cli_status.py",
+    "asdg/scripts/lib/images/cli_session-flow.svg",
+    "asdg/skills/asdg-decision/SKILL.md",
+    "asdg/skills/asdg-focus/SKILL.md",
+    "asdg/skills/asdg-focus/TRY-IT.md",
+    "asdg/skills/asdg-focus/focus-choices.md",
+    "asdg/skills/asdg-focus/rename-chat.md",
+    "asdg/skills/asdg-focus/session-policy.md",
+    "asdg/skills/asdg-focus/session-state.md",
+    "asdg/skills/asdg-focus/subject-focus.md",
+    "asdg/skills/asdg-status/SKILL.md",
+    "asdg/tests/test_portable-cases.md",
+    "asdg/tests/test_portable.md",
+    "asdg/tests/test_portable.py",
+    "docs/asdg/07-planning/02.12-review-governance-admin-and-titles.json",
+    "docs/asdg/07-planning/02.12-review-governance-admin-and-titles.md",
+    "docs/asdg/07-planning/README.md",
+    "docs/asdg/07-planning/images/02.12-governance-and-admin.svg"
+  ],
+  "also_touched_by_earlier_uncommitted_work": [
+    ".asdg/document-reviews.json",
+    "asdg/00-governance/types/document-reviews.json",
+    "asdg/AGENTS.md",
+    "asdg/tests/test_portable-cases.md",
+    "asdg/tests/test_portable.md",
+    "asdg/tests/test_portable.py"
+  ],
+  "earlier_uncommitted_work_not_part_of_this_record": [
+    "asdg/00-governance/docs/documentation-review.md",
+    "asdg/00-governance/docs/documentation-standard.md",
+    "asdg/00-governance/docs/gui-visuals.md",
+    "asdg/00-governance/docs/images/gui-visuals.svg",
+    "asdg/00-governance/docs/runtime-contract.md",
+    "asdg/skills/asdg-documentation/SKILL.md",
+    "docs/images/meeting-helper-page.png",
+    "index.md"
+  ],
+  "generated_by_setup": {
+    "command": "python3 asdg/scripts/cli.py init (twice, after dry runs)",
+    "writes": [
+      "AGENTS.md",
+      "gitignored .asdg/backups/AGENTS-before-<sha>.md",
+      "appended .asdg/document-reviews.json receipt"
+    ],
+    "sprint_started": false
+  },
+  "validation": [
+    {
+      "kind": "automated",
+      "command": "TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p 'test_*.py'",
+      "result": "PASS: 67 tests"
+    },
+    {
+      "kind": "automated",
+      "command": "python3 asdg/scripts/cli.py verify",
+      "result": "PASS"
+    },
+    {
+      "kind": "automated",
+      "command": "python3 asdg/scripts/check.py",
+      "result": "No new errors; 8 pre-existing external links in asdg/README.md"
+    },
+    {
+      "kind": "observed-claude",
+      "result": "set_session_title renamed this session to '00 Governance' then 'ASDG Admin'; get_session readback matched both"
+    },
+    {
+      "kind": "manual-not-run",
+      "result": "TRY-IT scenarios 1, 6, 8-13 and the Admin topic case"
+    },
+    {
+      "kind": "not-observed",
+      "result": "No Codex execution of any new behavior"
+    }
+  ],
+  "enforcement": "Instructional for role state; Codex guard path rules role-agnostic and trust unverified; no protection in Claude Code.",
+  "review_status": "REVIEW_REQUIRED; nothing committed, approved or pushed",
+  "follow_up_2026_10_31": {
+    "requested_by": "Pablo, explicit authorization of two bounded corrections under ASDG Admin",
+    "acting_role": "ASDG-ADMIN",
+    "fixes": [
+      "cli_hook.implementation_decision checks governance_bootstrap before any write, documentation included; read-only commands unaffected",
+      "cli_session.validate_admin called from cli_project.preflight_package (setup and verify)"
+    ],
+    "files": [
+      "asdg/scripts/lib/cli_hook.py",
+      "asdg/scripts/lib/cli_hook.md",
+      "asdg/scripts/lib/cli_session.py",
+      "asdg/scripts/lib/cli_session.md",
+      "asdg/scripts/lib/cli_project.py",
+      "asdg/scripts/lib/cli_project.md",
+      "asdg/tests/test_portable.py",
+      "asdg/tests/test_portable.md",
+      "asdg/tests/test_portable-cases.md",
+      "docs/asdg/07-planning/02.12-review-governance-admin-and-titles.md",
+      "docs/asdg/07-planning/02.12-review-governance-admin-and-titles.json",
+      "asdg/tests/test_portable-cases-roles.md"
+    ],
+    "automated": {
+      "command": "TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p 'test_*.py'",
+      "result": "PASS: 70 tests"
+    },
+    "fixtures": {
+      "location": "session scratchpad (disposable)",
+      "valid": "fixture-valid",
+      "rule_edit": "fixture-rule",
+      "broken": "fixture-broken (asdg/00-governance/types/contract.md removed)",
+      "post_run_state": "git status clean in fixture-valid and fixture-rule; fixture-broken only the deliberate deletion; docs/notes.md absent; session-policy.md hash unchanged"
+    },
+    "claude_sessions": [
+      {
+        "scenario": "new session",
+        "session": "local_1603a935-37ac-4c20-a71a-c653ae7ffb56",
+        "title_readback": "00 Governance",
+        "result": "PASS"
+      },
+      {
+        "scenario": "select 05 then clear",
+        "session": "local_92e201e0-abe1-4a95-9141-78ee69b1de83",
+        "title_readback": "00 Governance",
+        "reported_intermediate_title": "05 Architecture",
+        "result": "PASS"
+      },
+      {
+        "scenario": "explicit Admin",
+        "session": "local_00742526-8f7b-42e7-84d1-e544e4cb3225",
+        "title_readback": "ASDG Admin",
+        "result": "PASS"
+      },
+      {
+        "scenario": "legacy None (pasted receipt; simulated, not a real resume)",
+        "session": "local_c546a974-b1d8-46dd-bbe3-2e720bf38d83",
+        "title_readback": "00 Governance",
+        "result": "PASS"
+      },
+      {
+        "scenario": "rule edit without Admin",
+        "session": "local_1a7aa285-a9fa-47b4-9678-567b37845a52",
+        "title_readback": "ASDG test: rule edit without Admin",
+        "result": "Refusal PASS; start-up title sync MISSED"
+      },
+      {
+        "scenario": "bootstrap failure",
+        "session": "local_14f2cb64-acd6-4761-a576-56be2a6f34c3",
+        "title_readback": "ASDG test: bootstrap failure",
+        "result": "PASS: role Unknown, BLOCKED, no write; no rename"
+      }
+    ],
+    "codex_runs": [
+      {
+        "scenario": "new session",
+        "sandbox": "read-only",
+        "result": "Governance declared; title 00 Governance computed; rename tool unavailable"
+      },
+      {
+        "scenario": "rule edit without Admin",
+        "sandbox": "workspace-write",
+        "fixture": "fixture-valid",
+        "result": "Refused; did not self-select; asked user to select ASDG Admin; no file change"
+      },
+      {
+        "scenario": "bootstrap failure",
+        "sandbox": "workspace-write",
+        "result": "Role Unknown; BLOCKED: GOVERNANCE_BOOTSTRAP; no write"
+      }
+    ],
+    "not_run": [
+      "real session resume or compaction",
+      "native guard denial (agents refused before writing)",
+      "Codex clear/Admin/legacy scenarios"
+    ],
+    "review_status": "REVIEW_REQUIRED",
+    "package_check": "python3 asdg/scripts/check.py: only the 8 pre-existing external links in asdg/README.md; case index split to respect the 50-line limit"
+  }
+}

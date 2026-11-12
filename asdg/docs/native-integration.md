@@ -1,5 +1,7 @@
 # Native Codex integration: verify locally
 
+Claude Code integration and client selection are covered in [client integrations](client-integrations.md); this page covers Codex.
+
 The package generates repository skill adapters and thirteen custom-agent TOML files.
 It also generates hook configuration for the existing conservative implementation gate and public activity logging.
 These are configuration artifacts; actual client behavior must be observed before claiming them operational.
@@ -8,7 +10,7 @@ These are configuration artifacts; actual client behavior must be observed befor
 
 Codex discovers repository skills under `.agents/skills/` and custom agents under `.codex/agents/`.
 Custom agents inherit the parent's permissions. The former `sandbox_mode` adapter field is removed;
-the read-only role instructions remain, and a parent read-only session is needed for that runtime restriction.
+the role instructions were read-only at that check. Current roles share [documentation authority](../00-governance/docs/documentation-authority.md); parent runtime permissions still apply.
 Model/provider/approval settings are not installed or changed by this package.
 Hooks use `tool_input.command` for shell and patch events and supported deny JSON for blocked calls.
 Project and exact-hook trust must be handled in the actual local Codex client.

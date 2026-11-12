@@ -24,7 +24,7 @@ Owns CLI argument validation, command routing and exit status; optional advice i
 
 | Callable or interface | Contract |
 | --- | --- |
-| `main(argv: list[str] \| None=None) -> int` | Dispatches init, status, verify, next, dashboard, agent and sprint commands. Prints results; returns 0 for success and 1 for operational failure. |
+| `main(argv: list[str] \| None=None) -> int` | Dispatches init (with `--client codex\|claude\|both`), status, verify, next, dashboard, agent and sprint commands. Prints results; returns 0 for success and 1 for operational failure. |
 
 ## Effects and failure behavior
 

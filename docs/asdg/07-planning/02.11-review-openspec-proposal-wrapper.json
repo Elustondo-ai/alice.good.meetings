@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "objective": "Add one thin ASDG wrapper around the installed openspec-propose workflow and verify its integration; no real proposal.",
+  "starting_revision": "c7b911964f0c558849f17ab0edaec8aa89adeeec",
+  "scope": "Embedded methodology maintenance authorized by Pablo; no change to SPRINT-000.",
+  "changed_paths": [
+    ".agents/skills/asdg-openspec-propose/SKILL.md",
+    ".agents/skills/asdg-openspec-propose/agents/openai.yaml",
+    "asdg/skills/README.md",
+    "asdg/skills/asdg-openspec-propose/SKILL.md",
+    "asdg/skills/asdg-openspec-propose/TRY-IT.md",
+    "asdg/skills/asdg-openspec-propose/evidence.md",
+    "asdg/skills/asdg-openspec-propose/images/proposal-flow.svg",
+    "asdg/templates/.agents/skills/asdg-openspec-propose/SKILL.md",
+    "asdg/templates/.agents/skills/asdg-openspec-propose/agents/openai.yaml",
+    "asdg/tests/test_portable-cases.md",
+    "asdg/tests/test_portable.md",
+    "asdg/tests/test_portable.py",
+    "docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.md",
+    "docs/asdg/07-planning/README.md",
+    "asdg/00-governance/types/document-reviews.json",
+    ".asdg/document-reviews.json",
+    "docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.json",
+    "docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.diff"
+  ],
+  "native_discovery": {
+    "evidence": "Current Codex runtime Available skills catalogue, before file reads",
+    "observed": [
+      "openspec-propose",
+      "openspec-explore",
+      "openspec-update-change",
+      "openspec-apply-change",
+      "openspec-sync-specs",
+      "openspec-archive-change"
+    ],
+    "installed_skill_read": "Full .agents/skills/openspec-propose/SKILL.md; generatedBy 1.15.0",
+    "new_wrapper": "Thin adapter installed and byte-matched to template; fresh native picker invocation unverified"
+  },
+  "session": {
+    "role": "ASDG-COORDINATOR",
+    "focus": "OpenSpec integration",
+    "attitude": "NoAttitude",
+    "title": "00 Governance OpenSpec integration",
+    "native_title_result": "RENAMED; readback matched",
+    "thread": "01a15b01-2898-73e1-af72-deb1b287d424"
+  },
+  "versions": {
+    "asdg": "0.2.0-pilot.2",
+    "openspec": "1.15.0",
+    "python": "3.15.0"
+  },
+  "validation": [
+    {
+      "command": "python3 asdg/scripts/cli.py verify",
+      "result": "PASS"
+    },
+    {
+      "command": "python3 -B -m unittest discover -s asdg/tests -p 'test_*.py'",
+      "result": "Initial run: 59 tests, 2 failures from /var versus /private/var path comparisons; one pre-existing, one new"
+    },
+    {
+      "command": "TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p 'test_*.py'",
+      "result": "PASS: 59 tests; new expected path normalized; documented temporary directory used"
+    },
+    {
+      "command": "python3 asdg/scripts/check.py",
+      "result": "8 pre-existing links escaping client from unchanged asdg/README.md; no new errors"
+    },
+    {
+      "command": "python3 -B ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py asdg/skills/asdg-openspec-propose",
+      "result": "Unavailable: ModuleNotFoundError yaml; no dependency installed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    }
+  ],
+  "smoke_test": {
+    "kind": "Self-authored native CLI/schema/traceability smoke test, not independent end-to-end skill execution",
+    "fixture": "/private/tmp/asdg-openspec-review-kk9xdmvr/fixture-client",
+    "workflow": [
+      "openspec list --json",
+      "openspec context --json",
+      "openspec new change fixture-confirm-question",
+      "openspec status --change fixture-confirm-question --json",
+      "openspec instructions <proposal|specs|design|tasks> --change fixture-confirm-question --json",
+      "openspec list --specs",
+      "Author artifacts at resolved output paths; reread dependencies; check status between artifacts",
+      "openspec status --change fixture-confirm-question",
+      "openspec validate fixture-confirm-question --type change --strict --json"
+    ],
+    "result": "4/4 planning artifacts complete; strict validation true, zero issues; all tasks unexecuted",
+    "links_checked": 10,
+    "source_hashes_checked": 5,
+    "source_status": "All synthetic unreviewed fixture evidence; no accepted claims",
+    "preexisting_fixture_files_unchanged": 424,
+    "artifact_hashes": {
+      "openspec/changes/fixture-confirm-question/.openspec.yaml": "9e0a467e3934b14a2d9c9175305310e9359d34e2484a458af3d182c2956b9e2d",
+      "openspec/changes/fixture-confirm-question/tasks.md": "381f246730e31ff2ec8c352ea34c80f9429c9951fe15f1eab58e4c85e6f5b513",
+      "openspec/changes/fixture-confirm-question/design.md": "e41e4b8ddd025c3b889266025cb1d6dd33686092e9a3e3e613fd22648e129736",
+      "openspec/changes/fixture-confirm-question/proposal.md": "85537255d5c26369044021bb6a0ddcdfe249b6c3ed86a6eaeac1691600b1ed14",
+      "openspec/changes/fixture-confirm-question/specs/question-confirmation/spec.md": "bae4b638d6ebf2cdf6ea9e196c0a86ef8503e7b5f21ac2252c6acb960e85b336"
+    }
+  },
+  "preservation": {
+    "initial_protected_paths": 45,
+    "unchanged_before_review_receipts": true,
+    "upstream_sha256": {
+      ".agents/skills/openspec-apply-change/SKILL.md": "8ebce01b55784ed1f3198894fed19fbe4c613ebbe09b82bc83c3c52dec4f1f4b",
+      ".agents/skills/openspec-explore/SKILL.md": "6464b80e4c4c19b1ede13828348e123d23631a6d558bc30468114d15fcfd9ff1",
+      ".agents/skills/openspec-update-change/SKILL.md": "881a08bfe743f1c473cf31276e961e62b8f98a744d922e11507d640def631fe9",
+      ".agents/skills/openspec-archive-change/SKILL.md": "4eca0401139ee708c50c85e5e73e1dfa6d8bb39c981da0d0cad7237a54f9ca2c",
+      ".agents/skills/openspec-propose/SKILL.md": "df1f3c5849192a5c3df045f131b93a29680b595833ae4821a6c489e59eaab222",
+      ".agents/skills/openspec-sync-specs/SKILL.md": "5e036c570c71234c1c7b0d51f1b2c4cd066163986bbe0c9834ada2310cd41fb2"
+    },
+    "allowed_exception": ".asdg/document-reviews.json receives append-only AI modification receipts; lifecycle/sprint/project/hook files unchanged",
+    "prior_untracked": "Native OpenSpec skills, .agents/skills/.openspec-target and openspec/ predate this increment and are not included in the diff"
+  },
+  "visual_checks": {
+    "new_svg": "proposal-flow.svg rendered at 720 px and inspected; embedded by SKILL.md, evidence.md and review report",
+    "reused_svg": "test_portable-flow.svg rendered at 720 px and inspected for companion",
+    "limits": "Asset-only checks, not full Markdown preview; disposable fixture Mermaid not rendered"
+  },
+  "remaining_limits": [
+    "Fresh native wrapper picker invocation not observed",
+    "Separate stores, collision handling, missing upstream skill and denied writes not exercised",
+    "No independent model behavior test",
+    "Generic skill validator requires unavailable PyYAML",
+    "Real proposal awaits review decisions; no acceptance or enforcement claim"
+  ],
+  "current_project_observations": [
+    "Stage 02 Purpose and Stage 03 Use Cases review-stale",
+    "Stage 04 Evaluation and Stage 05 Architecture accepted at current inspected baseline",
+    "UC-04 is a proposed future interaction; not selected into SPRINT-000",
+    "Explicit confirmation versus evidence promotion and Pablo-only versus both-speaker input need reconciliation"
+  ],
+  "first_real_invocation": "$asdg-openspec-propose confirm-current-question\nUse UC-04, “Clarify and confirm the current interview question,” as the candidate next change. Load the relevant ASDG sources and current planning scope. Surface material conflicts and ask for decisions before drafting. Treat this as possible next-sprint work; keep SPRINT-000 unchanged. Planning only.",
+  "human_approval": null
+}

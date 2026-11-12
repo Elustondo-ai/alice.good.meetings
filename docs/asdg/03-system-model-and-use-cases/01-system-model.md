@@ -26,6 +26,8 @@ The diagram describes behavior and relationships, not execution order, software 
 | [UC-02 Open question](01.2-open-question.md) | Develop a coherent explanation. | Allow elaboration and signal drift, repetition or a suitable conclusion. |
 | [UC-03 Experience question](01.3-experience-question.md) | Tell a relevant, genuine story. | Support recall when grounded context exists and track context, personal action and result. |
 
+[UC-04: keep a Focus question and confirm each new one](01.4-confirm-current-question.md), redesigned on 4 November 2026, refines the diagram's shared “Identify and retain the current question” behavior for all three answer scenarios. Two areas stay visible: the Focus question, which changes only when Pablo presses Confirm question, and the Live question, which follows speech automatically. Confirm copies the Live wording into Focus and server-side conversation memory; the proposed panel does not claim existing implementation or a fourth answer category.
+
 ## Domain model and shared behavior
 
 An interview session contains participants and question-answer exchanges. Each exchange has a current question, the interviewee's developing response and any associated cues.

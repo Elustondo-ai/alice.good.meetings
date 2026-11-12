@@ -1,13 +1,13 @@
 ---
 name: asdg-focus
-description: Explicitly select ASDG governance 00 or a specialist stage 01-12 by alias, or clear focus. Prefer the thirteen no-argument named Focus skills. Discovery adapter; not an execution or delegation workflow.
+description: Choose an ASDG role using your own words, or use subject plus a topic to change focus within the retained role. Clarify ambiguous intent before changing either field.
 ---
 
-# asdg-focus — Codex discovery adapter
+# ASDG focus — discovery adapter
 
 Read and follow [the canonical workflow](../../../asdg/skills/asdg-focus/SKILL.md).
 Resolve that link from this file's directory, not the terminal working directory.
-Pass the user's complete skill argument text unchanged to that workflow.
-If the target cannot be read, stop and report BLOCKED; do not invent a replacement.
-This adapter contains no independent role definition and grants no action authority.
-This YAML-first file records AI modification, not whole-file human approval.
+Pass the user's complete phrase unchanged, including the relevant conversation context.
+The shared workflow distinguishes role selection from subject changes, clarifies ambiguity, and loads role sources only for role activation.
+If the source cannot be read, stop and report the gap; do not invent another workflow.
+This is the single public Focus entry. It defines no independent role and grants no action authority.

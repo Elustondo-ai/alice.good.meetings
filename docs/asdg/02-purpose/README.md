@@ -8,7 +8,7 @@ This folder explains the benefit SpeakerCoach should provide and the boundaries 
 
 The documented direction is brief visual guidance that supports attention, recall and clear answers during interviews and meetings. Preserving the speaker's attention matters more than delivering more advice.
 
-The Purpose discussion took place on 20 October 2026. The saved baseline has since changed and requires fresh review; agreement on direction does not establish approval of every current document or authorize implementation.
+The Purpose discussion took place on 20 October 2026. Review and acceptance status is recorded per exact version in the project lifecycle record, not in this page; agreement on direction does not approve unseen documents or authorize implementation.
 
 ## What belongs here as we develop
 

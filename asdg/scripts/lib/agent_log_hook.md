@@ -24,7 +24,7 @@ handle takes payload:dict and repo:Path (default installed root), returns a hook
 
 ## Effects and failure behavior
 
-Output root is derived from installation, never from payload data. Invalid cwd, oversized input and storage failures are reported without echoing payloads. Logging never grants work or approval permissions.
+Output root is derived from installation, never from payload data. Invalid cwd, oversized input and storage failures are reported without echoing payloads. Logging never grants work or approval permissions; its start notice preserves the shared documentation allowance and keeps log writes with the recorder.
 
 ## Example
 

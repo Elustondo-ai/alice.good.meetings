@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+<title id="title">PydanticAI</title><desc id="desc">Audio session: Realtime observations to Typed text agent: Separate structured work to State controller: Validate the proposal. Framework portability is useful when the needed provider features survive it.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#61758a" stroke-width="1.3"/></marker></defs>
+<rect x="1" y="1" width="718" height="358" rx="16" fill="#f5f8fb" stroke="#d8e1e9"/>
+<text x="24" y="31" font-family="Arial, sans-serif" font-size="13" fill="#526b80" font-weight="700">DEFERRED ALTERNATIVE</text>
+<text x="24" y="70" font-family="Arial, sans-serif" font-size="27" fill="#162c40" font-weight="700">PydanticAI</text>
+<rect x="24" y="112" width="200" height="124" rx="12" fill="#ffffff" stroke="#bfccd8" stroke-width="1.5"/>
+<text x="37" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">Audio session</text><text x="37" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Realtime observations</text><path d="M229 174 H250" fill="none" stroke="#61758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="260" y="112" width="200" height="124" rx="12" fill="#e1f3ec" stroke="#43977d" stroke-width="1.5"/>
+<text x="273" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">Typed text agent</text><text x="273" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Separate structured</text>
+<text x="273" y="196" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">work</text><path d="M465 174 H486" fill="none" stroke="#61758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="496" y="112" width="200" height="124" rx="12" fill="#ffffff" stroke="#bfccd8" stroke-width="1.5"/>
+<text x="509" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">State controller</text><text x="509" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Validate the proposal</text><path d="M24 277 H696" stroke="#d5dfe8"/><text x="24" y="306" font-family="Arial, sans-serif" font-size="16" fill="#405a70" font-weight="400">Framework portability is useful when the needed provider features survive it.</text>
+</svg>
+

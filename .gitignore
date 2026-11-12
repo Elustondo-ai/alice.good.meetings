@@ -5,3 +5,7 @@
 /.asdg/backups/
 /.asdg/cache/
 # ASDG generated files: END
+
+# Local POC credentials and dependencies
+.env.local
+/poc/node_modules/

@@ -7,7 +7,7 @@ description: "Clarify purpose and deliver ordered project documentation with a r
 
 Owner: `ASDG-02`; [entry point](../../AGENTS.md); [contract](../../types/contract.md).
 Read the [two-gate completion rule](../../types/completion.md) for readiness criteria and explicit User acceptance.
-Procedure for an explicitly selected Purpose role; use only its bounded documentation allowance.
+Procedure for an explicitly selected Purpose role; use shared documentation authority and the Purpose review contract.
 Read the owner's contract and shared runtime rules before applying this procedure.
 A non-owning caller may inspect the method, but must not use it to bypass role boundaries.
 

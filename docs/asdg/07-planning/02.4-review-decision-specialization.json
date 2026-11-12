@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-27T02:10:04.418035+00:00",
+  "objective": "Make ASDG Decision a shared default with optional specialist-local skills/decision/SKILL.md enrichment; create no unnecessary overrides.",
+  "authorization": "Explicit human request to make ASDG decisions work this way and allow optional specialist overrides.",
+  "baseline": {
+    "head": "4952a131ed750b5428ce13e3e7487d6c55dad299",
+    "dirty_worktree": true,
+    "diff_basis": "Working bytes captured at start of this task; prior uncommitted work preserved."
+  },
+  "changes": [
+    {
+      "path": "asdg/skills/asdg-decision/SKILL.md",
+      "before_sha256": "e7758f8a7127680c41f39099b6580e4809226a5c20453de9c6f7fed7909a6812",
+      "after_sha256": "c90bb3490fdc576a15795ce327584a1d43b1daa5499cb8e4e795365af8f554b3",
+      "diff": "--- before/asdg/skills/asdg-decision/SKILL.md\n+++ after/asdg/skills/asdg-decision/SKILL.md\n@@ -15,8 +15,9 @@\n Identify the decision subject, affected project, selected specialist (including None or Unknown), and requested action.\n A selected role defines the perspective; an explicit user assignment defines the subject. Neither reading this skill nor inferring an owner changes Focus.\n Distinguish methodology maintenance from a decision about the consuming application.\n-For an architecture subject assigned to ASDG-05, read [foundational guidance](../../05-high-level-design-and-architecture/docs/architectural-decisions.md) and its [contract](../../05-high-level-design-and-architecture/types/contract.md).\n-For another context, read the actual owner's contract; adapt criteria and destination to that responsibility. Do not send all decisions to Stage 05.\n+Resolve the selected specialist or explicit role assignment through the [catalogue](../../00-governance/types/agent-catalog.json); read that role's contract.\n+Apply [optional specialization](specialization.md): load `<catalogue folder>/skills/decision/SKILL.md` when present; otherwise use the generic method below.\n+The specialist folder supplies context, not a changed terminal working directory. Do not search unrelated roles for an override or route every decision to Stage 05.\n Without a selected role, use the explicit task and evidence to identify a proposed owner without activating it. If ownership or destination matters and remains ambiguous, clarify it.\n A request for analysis only returns analysis. A request to record/document, or an existing assigned documentation task, saves within applicable authority; never ask again for already granted authorization.\n A bare invocation continues the evident task; if intent is unknown, analyze provisionally and clarify the missing action before writing.\n@@ -34,8 +35,8 @@\n \n ## Boundaries\n \n-The ASDG-05 contract permits bounded decision-document authoring for assigned architecture work; no application sprint is needed for those documents.\n-Other contexts retain their own write limits. Discovery alone grants no writes, role activation, delegation, or state transitions.\n+The owning contract determines documentation authority and destination; a local specialization cannot expand either.\n+Discovery alone grants no writes, role activation, delegation, or state transitions; generic fallback grants no additional authority.\n Selection records describe the human's stated choice; they do not approve newly written bytes or trigger implementation.\n Preserve lifecycle/sprint state and review history. Formal acceptance uses the existing approval workflow only when explicitly requested.\n Respect runtime denials; preserve the analysis and report the exact blocked write rather than bypassing controls.\n"
+    },
+    {
+      "path": "asdg/skills/asdg-decision/record-format.md",
+      "before_sha256": "a3cf8b94d7013a5cb08b64cc9e9597c94419a5109dc8cf693d61d149cb1d14a5",
+      "after_sha256": "b0b01b33556d472a29db65e7b950dfe8ae335a48ef81884df01927049973c7bf",
+      "diff": "--- before/asdg/skills/asdg-decision/record-format.md\n+++ after/asdg/skills/asdg-decision/record-format.md\n@@ -7,7 +7,8 @@\n \n ## Location and reading order\n \n-Use the bound client's existing decision location within the responsible stage. ASDG-05 defaults to `docs/asdg/05-high-level-design-and-architecture/decisions/<Decision name>/`.\n+Honor the owning contract's existing artifact format and destination; integrate decision reasoning there when it prescribes a different layout. Otherwise use a named decision package within authorized scope.\n+ASDG-05 defaults to `docs/asdg/05-high-level-design-and-architecture/decisions/<Decision name>/`; another role does not inherit that destination or its write allowance.\n Honor a supplied safe folder name; otherwise use a descriptive decision title. Search existing decisions first and avoid duplicates.\n For an undecided question, use a neutral title. A later choice can update the record without silently moving it or breaking links.\n This is a topic-folder exception to the shared flat stage layout; its numbered filenames express reading order, not Intended/Actual/Planned categories.\n"
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "before_sha256": "ad4984892dcf03656da42c0b5eca380474537dbe0d6e385befcc7ef363947c18",
+      "after_sha256": "05de09b0de95b9254bb0f3dd425797d4f91eb9f5c0c008e03354c10bf0eb817b",
+      "diff": "--- before/asdg/AGENTS.md\n+++ after/asdg/AGENTS.md\n@@ -26,7 +26,7 @@\n \n Governance 00, all twelve specialists and methodology maintainers must follow the [documentation standard](00-governance/docs/documentation-standard.md).\n All reader-facing `docs/asdg/` artifacts explain the project to humans, with useful embedded visuals and technically precise prose.\n-Material architecture decisions use [ASDG Decision](skills/asdg-decision/SKILL.md): named folders, short visual explanations, meaningful alternatives and revisit evidence.\n+Material decisions across all roles use [ASDG Decision](skills/asdg-decision/SKILL.md), with generic defaults and an [optional local specialization](skills/asdg-decision/specialization.md); role authority remains unchanged.\n Every maintained source file requires a [CRC-inspired Markdown companion](00-governance/docs/code-companions.md), kept current with the code.\n Apply the [documentation review criteria](00-governance/docs/documentation-review.md) before claiming documentation complete; initialization alone proves no compliance.\n These portable requirements travel with this distribution and do not depend on SpeakerCoach or an external provider checkout.\n"
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "before_sha256": "046439c2e64ea20ee583d6377744c604ffebe5534e4cd187d5b23634ca5bb6f5",
+      "after_sha256": "bdba26b55758776b4035b3e8faf7aa35fa043a11f20b84273b5fe2298826ba0b",
+      "diff": "--- before/asdg/00-governance/docs/runtime-contract.md\n+++ after/asdg/00-governance/docs/runtime-contract.md\n@@ -47,7 +47,7 @@\n \n Load only this role's relevant local SKILL.md and any required shared capability.\n Discovery adapters reuse canonical workflows; local role procedures require explicit loading, and reading them alone never activates a role.\n-Client outputs follow the [stage layout](stage-layout.md), including its named decision-package exception; use [ASDG Decision](../../skills/asdg-decision/SKILL.md) in the actual specialist context.\n+Client outputs follow the [stage layout](stage-layout.md); [ASDG Decision](../../skills/asdg-decision/SKILL.md) uses generic defaults plus the role's optional local `skills/decision/SKILL.md`, without widening authority.\n Follow [the documentation standard](documentation-standard.md): at most 50 nonblank source lines per unit.\n Every role applies its human-audience, embedded-visual and source-companion rules and [review criteria](documentation-review.md) in every consuming project.\n Preserve spacing and normal prose; keep technical review events in the prescribed records.\n"
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "before_sha256": "492def730fba673c871d4536f833cfbb189e25daf4df050c10aa8a8c5823918a",
+      "after_sha256": "9ebff6ab39b18cb2dbd9d97405ddef70201f8bc8aec356c8c8b0bd7ec872adcb",
+      "diff": "--- before/asdg/skills/README.md\n+++ after/asdg/skills/README.md\n@@ -16,9 +16,10 @@\n | [Suggestion](asdg-suggestion/SKILL.md) | Recommend one useful next step from project evidence and priorities |\n | [Development view](asdg-view-dev/SKILL.md) | Open a useful project file and terminal alongside the chat |\n | [Documentation](asdg-documentation/SKILL.md) | Preserve readable, evidence-based project documents |\n-| [Decision](asdg-decision/SKILL.md) | Analyze and document material decisions in the current specialist context |\n+| [Decision](asdg-decision/SKILL.md) | Shared decision method with optional specialist-local enrichment |\n \n Each numbered stage owns its bounded specialist procedure under its local `skills/` folder.\n+Its optional `skills/decision/SKILL.md` enriches Decision through the [shared interface](asdg-decision/specialization.md); absence uses generic behavior.\n The thirteen named Focus adapters reuse one canonical activation workflow; governance is distinct from no focus.\n Presentation/video and ASDG component-development tooling are outside this client core.\n Native discovery and actual behavior must be checked in the selected Codex runtime.\n"
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "before_sha256": "f0318cd092cafed724e4f3e551841e6ee90ea5c3ff1967472ef5809931584400",
+      "after_sha256": "e50963b47e6f7a86db97d26793c4981d8bda3481bcf3627772f79acc0d2eb197",
+      "diff": "--- before/asdg/docs/usage.md\n+++ after/asdg/docs/usage.md\n@@ -27,7 +27,7 @@\n `$asdg-status` reports conversation focus; it is distinct from CLI workflow status.\n These skills do not create a new window or persistent agent process. Resume the same Codex conversation.\n Purpose and ASDG-05 have bounded documentation allowances; other roles retain their current evaluation limits.\n-Use `$asdg-decision` to analyze or document the current decision in context. Architecture records use named folders, concise option notes and explanatory visuals.\n+Use `$asdg-decision` in any role: it loads the role's optional `skills/decision/SKILL.md` or uses generic defaults, following the [specialization contract](../skills/asdg-decision/specialization.md).\n The skill preserves Focus and explicit selections; recording a decision does not implement it or approve a lifecycle baseline.\n \n ## Sprint transitions\n"
+    },
+    {
+      "path": "asdg/05-high-level-design-and-architecture/docs/architectural-decisions.md",
+      "before_sha256": "2fb6763fd4ca0309ca80df1f39457b95c240c67ef24d634649793b660b9b7e21",
+      "after_sha256": "da460cf8a0a6afa3e5edc4802110e7f6068266749ad5f4abaed6b79effe865f3",
+      "diff": "--- before/asdg/05-high-level-design-and-architecture/docs/architectural-decisions.md\n+++ after/asdg/05-high-level-design-and-architecture/docs/architectural-decisions.md\n@@ -1,6 +1,7 @@\n # Explain why the architecture takes this shape\n \n ASDG-05 treats every material high-level architecture decision as an evidence-based choice with consequences.\n+Its [local decision skill](../skills/decision/SKILL.md) enriches the shared method; these foundations supply the architectural judgment behind that specialization.\n A choice is material when it affects system boundaries, quality attributes, dependencies, data/control ownership, deployment, or expensive future change.\n Routine implementation details do not become architectural decisions merely to populate documentation.\n \n"
+    },
+    {
+      "path": "asdg/tests/test_portable.py",
+      "before_sha256": "f8a807a4c1fff21c51faecdb8cf6f0a2062e6ba4012a47c7ca1980ddd4a604c2",
+      "after_sha256": "fd81f21969f66b37f9817cf543533fbf659d1a8c3924e24b70b11d2c469691b5",
+      "diff": "--- before/asdg/tests/test_portable.py\n+++ after/asdg/tests/test_portable.py\n@@ -220,6 +220,30 @@\n         self.assertEqual((self.root / 'app.js').read_bytes(), self.app)\n         self.assertFalse((decisions / 'Use Open AI Agent SDK').exists())\n \n+    def test_optional_decision_specialization_preserves_generic_roles_and_local_methods(self):\n+        self.init()\n+        catalogue = json.loads((self.root / 'asdg/00-governance/types/agent-catalog.json').read_text())\n+        roles = {row['stage']: row for row in catalogue['agents']}\n+        architecture = self.root / roles[5]['folder'] / 'skills/decision/SKILL.md'\n+        generic_role = self.root / roles[4]['folder'] / 'skills/decision/SKILL.md'\n+        self.assertTrue(architecture.is_file())\n+        self.assertFalse(generic_role.exists())\n+        self.run_cli('verify', cwd=self.root / 'docs')\n+        protected = {p: (self.root / p).read_bytes()\n+                     for p in ('.asdg/project.json', '.asdg/lifecycle.json', '.asdg/sprint.json', 'app.js')}\n+        generic_role.parent.mkdir(parents=True)\n+        generic_role.write_text('---\\nname: decision\\ndescription: Evaluate a benchmark choice.\\n---\\n\\n'\n+                                '# Benchmark decision\\n\\nCompare representativeness and reproducibility.\\n')\n+        before = snapshot(self.root)\n+        self.init(cwd=generic_role.parent)\n+        self.assertEqual(snapshot(self.root), before)\n+        self.run_cli('verify')\n+        for p, data in protected.items():\n+            self.assertEqual((self.root / p).read_bytes(), data)\n+        for stage, row in roles.items():\n+            if stage not in (4, 5):\n+                self.assertFalse((self.root / row['folder'] / 'skills/decision/SKILL.md').exists())\n+\n     def test_missing_governance_focus_template_fails_before_any_writes(self):\n         shutil.rmtree(self.root / 'asdg/templates/.agents/skills/asdg-focus-00-governance')\n         before = snapshot(self.root)\n"
+    },
+    {
+      "path": "asdg/tests/test_portable.md",
+      "before_sha256": "a50324014dc2b224775e939843f8f0fe77e4df55ac762d167c74e512817b57cc",
+      "after_sha256": "383844cc3982efecd6631d30373b7e72570eaead30b1cfc0c1417744250936a3",
+      "diff": "--- before/asdg/tests/test_portable.md\n+++ after/asdg/tests/test_portable.md\n@@ -31,6 +31,7 @@\n \n The [test case guide](test_portable-cases.md) lists every `test_*` method and the behavior it checks.\n Decision discovery is exercised in a relocated client without SpeakerCoach files; repeat setup preserves unregistered decision evidence and lifecycle/sprint bytes.\n+Optional local decision skills survive repeat setup from a specialist subdirectory; generic roles require no placeholder and state remains unchanged.\n `test_dry_run_then_init_repeat_is_byte_identical` also checks portable stage introductions, embedded diagrams, empty Context recognition, absence of perspective directories and preservation on repeat setup.\n \n ## Effects and failure behavior\n"
+    },
+    {
+      "path": "asdg/tests/test_portable-cases.md",
+      "before_sha256": "83f80e3eb577ec1ce8f1190a6baa95788948e43b1b0b0af94d01284404352238",
+      "after_sha256": "4c7f15db4202f7173268b432b751c0e8332b2b23d8fe884bec8f7ead5cec0c18",
+      "diff": "--- before/asdg/tests/test_portable-cases.md\n+++ after/asdg/tests/test_portable-cases.md\n@@ -15,6 +15,7 @@\n | `test_purpose_focus_adapter_installs_exactly_without_resetting_unregistered_work` | purpose focus adapter installs exactly without resetting unregistered work. |\n | `test_governance_focus_installs_without_changing_lifecycle_or_authority` | governance focus installs without changing lifecycle or authority. |\n | `test_decision_skill_relocates_and_preserves_unregistered_decisions` | Decision discovery survives relocation; repeat setup preserves decision evidence and state. |\n+| `test_optional_decision_specialization_preserves_generic_roles_and_local_methods` | Optional specialist methods survive repeat setup; absent methods require no placeholders or state changes. |\n | `test_missing_governance_focus_template_fails_before_any_writes` | missing governance focus template fails before any writes. |\n | `test_advice_report_creates_planning_parents_without_changing_state` | advice report creates planning parents without changing state. |\n | `test_preserves_client_instructions_documents_and_ignore` | preserves client instructions documents and ignore. |\n"
+    },
+    {
+      "path": "asdg/skills/asdg-decision/specialization.md",
+      "before_sha256": null,
+      "after_sha256": "1eb919e4c6dffd46277d1187eb2d0625bcd1fe3f16a1514dafaa6992958b50b6",
+      "diff": "--- /dev/null\n+++ after/asdg/skills/asdg-decision/specialization.md\n@@ -0,0 +1,40 @@\n+# One decision method, optional specialist enrichment\n+\n+Every ASDG role can use the shared Decision method. A specialist needs a local method only when recurring domain guidance adds value.\n+This is instruction-level dispatch: the shared skill explicitly reads the local file; folder placement does not create a native runtime override.\n+\n+![The shared Decision skill checks the active specialist's folder, uses its optional local method or generic defaults, then returns a common decision result.](images/decision-specialization.svg)\n+\n+## Resolve the method\n+\n+Use the selected specialist or explicit role assignment to find its canonical `folder` in the existing agent catalogue.\n+Check exactly `<folder>/skills/decision/SKILL.md`, relative to the bound client root, independently of the terminal working directory.\n+If present, read it and its required references once, then continue the shared workflow with its enrichments. The local method must not recursively invoke the shared entrypoint.\n+If absent, apply the generic method using the task, domain evidence and role contract; absence is normal and creates no file or warning.\n+With no selected or assigned role, use the generic method provisionally; do not invent a specialist or change Focus.\n+If a local file exists but is invalid, cannot be read or contradicts the shared contract, report the specific gap; do not silently treat it as absent.\n+\n+## Shared interface and extension points\n+\n+Input is the current decision, project, role, requested action, constraints, evidence and explicit human choices.\n+The shared workflow owns purpose, alternatives, evidence distinctions, recommendation/selection, consequences and revisit conditions.\n+\n+| Optional local enrichment | What the specialist supplies |\n+| --- | --- |\n+| Frame the decision | Domain responsibilities and relevant alternatives. |\n+| Evaluate alternatives | Domain criteria, evidence requirements and common analytical mistakes. |\n+| Explain the result | Useful domain visuals and details within the shared documentation standard. |\n+| Revisit the choice | Domain-specific changes or observations that warrant reassessment. |\n+\n+Unspecified extension points inherit generic behavior. A local method need not repeat the common workflow or implement every extension point.\n+Every method returns the same decision meaning: rationale, comparable options, evidence/uncertainty, choice status, consequences and revisit conditions.\n+Return analysis or save authorized documentation according to the request and owning contract; neither the method nor its result approves execution.\n+\n+## Maintaining a specialization\n+\n+Use a real `skills/decision/SKILL.md` folder/file with YAML-first `name: decision` and a domain-specific description.\n+This is a role-local resource loaded by the shared entrypoint, not another globally registered `$asdg-decision` command.\n+A specialist may propose enrichment when the generic method is insufficient; create or update it within an authorized methodology-maintenance task.\n+Keep only meaningful differences, link domain foundations, and test the changed behavior. Do not generate empty methods for every role.\n+Local methods may refine criteria and presentation but cannot remove shared evidence obligations, change Focus, widen writes, or alter approval rules.\n+The [architecture specialization](../../05-high-level-design-and-architecture/skills/decision/SKILL.md) demonstrates this extension point; other roles may keep the generic method.\n"
+    },
+    {
+      "path": "asdg/05-high-level-design-and-architecture/skills/decision/SKILL.md",
+      "before_sha256": null,
+      "after_sha256": "e3149ee7e73adc1817565977d05e9e83aefcd084ec137476df8b71c83d5205fc",
+      "diff": "--- /dev/null\n+++ after/asdg/05-high-level-design-and-architecture/skills/decision/SKILL.md\n@@ -0,0 +1,30 @@\n+---\n+name: decision\n+description: Enrich the shared ASDG Decision method with high-level architecture criteria, evidence and explanatory views.\n+---\n+\n+# Architecture decision specialization\n+\n+Owner: ASDG-05. Apply this local method after the shared [Decision workflow](../../../skills/asdg-decision/SKILL.md) has resolved this role.\n+Inherit its common method and [extension contract](../../../skills/asdg-decision/specialization.md); do not invoke the shared entrypoint recursively.\n+Read [architecture foundations](../../docs/architectural-decisions.md) and the [role contract](../../types/contract.md).\n+\n+## Frame and compare\n+\n+Identify the system responsibility being allocated: boundaries, deployment, interfaces, data/control ownership, resilience or a dependency.\n+Compare alternative ways to fulfill that responsibility; distinguish complementary layers from competing choices.\n+Use relevant latency, reliability, consistency, security, operability, cost, portability and migration effort; explain which qualities drive this decision.\n+Include the current architecture when viable and prefer a commitment proportionate to the current outcome and change cost.\n+\n+## Evidence and explanation\n+\n+Connect alternatives to use cases, constraints, existing implementation and evaluation findings; a feature list or vendor identity does not demonstrate fitness.\n+Keep measured behavior distinct from intended architecture and untested expectations; identify the smallest useful evidence gap.\n+Choose a component, sequence, deployment or failure-boundary view that reveals responsibilities and consequences.\n+Use the shared short visual package for assigned architecture documentation within the role contract's existing paths.\n+\n+## Reconsideration\n+\n+Name concrete changes in load, failure tolerance, deployment, ownership, integration or user needs that would reopen the choice.\n+Distinguish a missing implementation of the selected design from evidence that the design itself is unsuitable.\n+All unmentioned behavior inherits the generic method. This specialization grants no additional write, implementation or acceptance authority.\n"
+    },
+    {
+      "path": "asdg/skills/asdg-decision/images/decision-specialization.svg",
+      "before_sha256": null,
+      "after_sha256": "345a8d0822affc01403dbaafdd629ad7958020761d6dce941ffc4f15fc121df2",
+      "diff": "--- /dev/null\n+++ after/asdg/skills/asdg-decision/images/decision-specialization.svg\n@@ -0,0 +1,25 @@\n+<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"760\" height=\"420\" viewBox=\"0 0 760 420\" role=\"img\" aria-labelledby=\"title desc\">\n+  <title id=\"title\">Shared decision method with optional specialization</title>\n+  <desc id=\"desc\">The shared Decision skill resolves the active role. When its local decision skill exists it enriches the method; otherwise generic defaults apply. Both return rationale, options, evidence, choice, consequences and revisit conditions.</desc>\n+  <defs><marker id=\"arrow\" markerWidth=\"8\" markerHeight=\"8\" refX=\"7\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8\" fill=\"none\" stroke=\"#506b83\" stroke-width=\"1.5\"/></marker></defs>\n+  <rect width=\"760\" height=\"420\" rx=\"16\" fill=\"#f3f7fb\"/>\n+  <g font-family=\"Arial, sans-serif\" fill=\"#203b50\">\n+    <text x=\"30\" y=\"36\" font-size=\"22\" font-weight=\"bold\">One interface · context enriches the method</text>\n+    <rect x=\"230\" y=\"58\" width=\"300\" height=\"64\" rx=\"10\" fill=\"#fff\" stroke=\"#8ca7bc\"/>\n+    <text x=\"380\" y=\"84\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\">Shared ASDG Decision</text>\n+    <text x=\"380\" y=\"107\" text-anchor=\"middle\" font-size=\"15\">Resolve role and check local skill</text>\n+    <path d=\"M300 122 V148 H190 V177\" fill=\"none\" stroke=\"#506b83\" stroke-width=\"2\" marker-end=\"url(#arrow)\"/>\n+    <path d=\"M460 122 V148 H570 V177\" fill=\"none\" stroke=\"#506b83\" stroke-width=\"2\" marker-end=\"url(#arrow)\"/>\n+    <text x=\"45\" y=\"165\" font-size=\"15\">Local skill present</text><text x=\"600\" y=\"165\" font-size=\"15\">No local skill</text>\n+    <rect x=\"40\" y=\"185\" width=\"300\" height=\"80\" rx=\"10\" fill=\"#e1f1ea\" stroke=\"#40896b\"/>\n+    <text x=\"190\" y=\"214\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\">Specialist enrichment</text>\n+    <text x=\"190\" y=\"239\" text-anchor=\"middle\" font-size=\"15\">Criteria, evidence, visuals, triggers</text>\n+    <rect x=\"420\" y=\"185\" width=\"300\" height=\"80\" rx=\"10\" fill=\"#fff\" stroke=\"#8ca7bc\"/>\n+    <text x=\"570\" y=\"214\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\">Generic method</text>\n+    <text x=\"570\" y=\"239\" text-anchor=\"middle\" font-size=\"15\">Use task context and role contract</text>\n+    <path d=\"M190 265 V290 H380 M570 265 V290 H380 V313\" fill=\"none\" stroke=\"#506b83\" stroke-width=\"2\" marker-end=\"url(#arrow)\"/>\n+    <rect x=\"90\" y=\"321\" width=\"580\" height=\"67\" rx=\"10\" fill=\"#e5edf8\" stroke=\"#8ca7bc\"/>\n+    <text x=\"380\" y=\"348\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\">Common decision result</text>\n+    <text x=\"380\" y=\"373\" text-anchor=\"middle\" font-size=\"15\">Why · options · evidence · choice · consequences · revisit</text>\n+  </g>\n+</svg>\n"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.4-review-decision-specialization.md",
+      "before_sha256": null,
+      "after_sha256": "5c1eb831f02efd93e118496f2a9056549b304345306e0f1f6b13849cf07bf0d3",
+      "diff": "--- /dev/null\n+++ after/docs/asdg/07-planning/02.4-review-decision-specialization.md\n@@ -0,0 +1,29 @@\n+# A shared decision method with optional specialization\n+\n+Every ASDG specialist now uses the common Decision method. A local skill adds domain judgment when useful; specialists that need no customization keep the generic behavior.\n+\n+![The shared skill checks the active specialist folder and combines an optional local method or generic defaults with a common decision result.](../../../asdg/skills/asdg-decision/images/decision-specialization.svg)\n+\n+## What changed\n+\n+The [shared workflow](../../../asdg/skills/asdg-decision/SKILL.md) resolves the role through the existing catalogue and checks its `skills/decision/SKILL.md`.\n+The [specialization contract](../../../asdg/skills/asdg-decision/specialization.md) defines optional enrichment of framing, criteria, evidence, visuals and revisit conditions.\n+Missing local methods are normal. Existing but unreadable or conflicting methods are reported explicitly; another role's method is never silently substituted.\n+The [ASDG-05 local method](../../../asdg/05-high-level-design-and-architecture/skills/decision/SKILL.md) connects architectural criteria to its existing foundations. Other roles use the generic method.\n+Shared guidance applies across ASDG; the role's existing contract still governs documentation destination and authority.\n+This is explicit instruction-level dispatch, independent of terminal working directory. It introduces no Python class hierarchy, extra public command or automatic role activation.\n+\n+## Validation\n+\n+Both shared and local skills pass the skill syntax validator. The structural verifier and whitespace checks pass.\n+All 28 portable tests and 3 agent-configuration tests pass; a new regression verifies generic roles need no placeholder and optional local methods survive repeat setup from a specialist subdirectory.\n+The new diagram and updated guidance were rendered within a 720 px document pane, with images displayed at 656 px; the shared-interface page was visually inspected.\n+An independent read-only exercise loaded ASDG-05's local method and used generic fallback for ASDG-04, with domain-appropriate criteria and unchanged hashes across 424 fixture files.\n+Its reported architecture-entry link concern was checked: the relative link correctly resolves inside `asdg/` to an existing shared skill; no repair was needed.\n+The full package checker retains eight pre-existing external presentation-link failures in unchanged `asdg/README.md`; no other issues were reported.\n+\n+## Scope and evidence\n+\n+This authorized methodology update preserves application files, role permissions, catalogue identity, project/sprint/lifecycle state and previous review history.\n+No placeholder overrides were created for other specialists. Creating a future override remains methodology maintenance, separate from using Decision on a client task.\n+The [technical receipt](02.4-review-decision-specialization.json) records exact changes, checks and limitations. Fresh native role invocation and runtime enforcement are not established by these tests.\n"
+    }
+  ],
+  "checks": [
+    {
+      "command": "python3 -B -m unittest discover -s asdg/tests -p 'test_portable.py'",
+      "result": "PASS: 28 tests, including optional-method absence, subdirectory initialization and preservation of local methods/state."
+    },
+    {
+      "command": "python3 -B -m unittest discover -s asdg/tests -p 'test_agent_config.py'",
+      "result": "PASS: 3 tests."
+    },
+    {
+      "command": "quick_validate.py asdg/skills/asdg-decision; quick_validate.py asdg/05-high-level-design-and-architecture/skills/decision",
+      "result": "PASS using existing /private/tmp/speakercoach-voice-profile-env/bin/python; no dependency installation."
+    },
+    {
+      "command": "python3 asdg/scripts/cli.py verify",
+      "result": "PASS: structure only."
+    },
+    {
+      "command": "git diff --check -- asdg",
+      "result": "PASS"
+    },
+    {
+      "command": "python3 asdg/scripts/check.py",
+      "result": "FAIL: eight pre-existing escaping presentation links from unchanged asdg/README.md; no additional reported issues."
+    }
+  ],
+  "behavioral_exercise": {
+    "method": "Fresh-context default subagent in a disposable relocated client; two explicit read-only role assignments, no native Focus activation.",
+    "fixture": "/private/tmp/asdg-override-check-4kym42hy/WorkshopDesk",
+    "filesChecked": 424,
+    "changed": [],
+    "linkCheck": {
+      "source": "/private/tmp/asdg-override-check-4kym42hy/WorkshopDesk/asdg/05-high-level-design-and-architecture/AGENTS.md",
+      "target": "/private/tmp/asdg-override-check-4kym42hy/WorkshopDesk/asdg/skills/asdg-decision/SKILL.md",
+      "exists": true,
+      "inside_asdg": true
+    },
+    "caseA": "Architecture local decision skill loaded; domain criteria applied; recommendation distinguished from unverified runtime behavior.",
+    "caseB": "ASDG-04 local path absent; generic method used with evaluation criteria; no architecture specialization reused.",
+    "source_note": "Fixture routing/local-method sources match the exercised implementation; later wording explicitly clarified single loading and invalid-file reporting.",
+    "finding_resolution": "The reported architecture AGENTS.md link defect was not reproduced: explicit path resolution proves that the existing link is valid."
+  },
+  "visual_review": [
+    {
+      "document": "asdg/skills/asdg-decision/specialization.md",
+      "visual": "images/decision-specialization.svg",
+      "purpose": "Shared workflow dispatches to optional specialist enrichment or generic behavior, retaining a common result.",
+      "result": "PASS: embedded image loads at 656 px within a 720 px document pane, with no overflow. New dispatch diagram and representative complete pages inspected; unchanged existing diagrams reused."
+    },
+    {
+      "document": "asdg/skills/asdg-decision/record-format.md",
+      "visual": "images/decision-record.svg",
+      "purpose": "Common decision reasoning and revisit evidence.",
+      "result": "PASS: embedded image loads at 656 px within a 720 px document pane, with no overflow. New dispatch diagram and representative complete pages inspected; unchanged existing diagrams reused."
+    },
+    {
+      "document": "asdg/05-high-level-design-and-architecture/docs/architectural-decisions.md",
+      "visual": "../../skills/asdg-decision/images/decision-record.svg",
+      "purpose": "Architecture judgment within the common reasoning process.",
+      "result": "PASS: embedded image loads at 656 px within a 720 px document pane, with no overflow. New dispatch diagram and representative complete pages inspected; unchanged existing diagrams reused."
+    },
+    {
+      "document": "asdg/tests/test_portable.md",
+      "visual": "images/test_portable-flow.svg",
+      "purpose": "Disposable inputs and assertions verify preservation and optional local methods.",
+      "result": "PASS: embedded image loads at 656 px within a 720 px document pane, with no overflow. New dispatch diagram and representative complete pages inspected; unchanged existing diagrams reused."
+    },
+    {
+      "document": "docs/asdg/07-planning/02.4-review-decision-specialization.md",
+      "visual": "../../../asdg/skills/asdg-decision/images/decision-specialization.svg",
+      "purpose": "Methodology change and optional specialization behavior.",
+      "result": "PASS: embedded image loads at 656 px within a 720 px document pane, with no overflow. New dispatch diagram and representative complete pages inspected; unchanged existing diagrams reused."
+    }
+  ],
+  "renderer": "Installed Google Chrome via bundled Playwright; /private/tmp/asdg-decision-skill-render.mjs",
+  "protected_files": {
+    ".asdg/project.json": {
+      "expected": "567611ac3ddc8715c7e7d1827c27620d866bee0447c08157fef079f864b09404",
+      "actual": "567611ac3ddc8715c7e7d1827c27620d866bee0447c08157fef079f864b09404",
+      "unchanged": true
+    },
+    ".asdg/sprint.json": {
+      "expected": "7b67029aa3117e03c8e24f0a3fbc224a4793045997f4a6a6734eadedb87894b2",
+      "actual": "7b67029aa3117e03c8e24f0a3fbc224a4793045997f4a6a6734eadedb87894b2",
+      "unchanged": true
+    },
+    ".asdg/lifecycle.json": {
+      "expected": "b4f65255ada0acff20b0cb9ac26253e825334042b25a5cb2b1a05a1f5124f057",
+      "actual": "b4f65255ada0acff20b0cb9ac26253e825334042b25a5cb2b1a05a1f5124f057",
+      "unchanged": true
+    },
+    "asdg/00-governance/types/agent-catalog.json": {
+      "expected": "ee9db75fd35c26815a4070d012e91444c9020f62b31308797c755460c7861e17",
+      "actual": "ee9db75fd35c26815a4070d012e91444c9020f62b31308797c755460c7861e17",
+      "unchanged": true
+    },
+    "app.js": {
+      "expected": "188dadc7287357a1c6058d7f267e2055b75feb0c3057afab48cd79924ffadeca",
+      "actual": "188dadc7287357a1c6058d7f267e2055b75feb0c3057afab48cd79924ffadeca",
+      "unchanged": true
+    },
+    "index.html": {
+      "expected": "6963f1f6cf33385e4175c011d53392723c95090f9760d24d764d61728a5426cc",
+      "actual": "6963f1f6cf33385e4175c011d53392723c95090f9760d24d764d61728a5426cc",
+      "unchanged": true
+    },
+    ".codex/hooks.json": {
+      "expected": "73bb060aa3c1ea7b2e4f7cfc15e01ce32387317215d20aba14ac1a915f2c2fd5",
+      "actual": "73bb060aa3c1ea7b2e4f7cfc15e01ce32387317215d20aba14ac1a915f2c2fd5",
+      "unchanged": true
+    },
+    "asdg/scripts/lib/cli_hook.py": {
+      "expected": "2876725cbf6c1dccfd3f65707f17aa631cfa6166837bbfdc1c2bfe5c019d24ee",
+      "actual": "2876725cbf6c1dccfd3f65707f17aa631cfa6166837bbfdc1c2bfe5c019d24ee",
+      "unchanged": true
+    }
+  },
+  "review_history": "Append-only exact-hash AI modification events; prior approvals remain bound to prior bytes.",
+  "limitations": [
+    "Instruction-level dispatch, not a native filesystem override or executable class hierarchy.",
+    "Live native role invocation and hook enforcement not tested.",
+    "Only ASDG-05 has a local decision method; other roles intentionally use the generic method.",
+    "Future specialization authoring follows methodology-maintenance authority; decision use does not widen role permissions."
+  ],
+  "no_transitions": [
+    "No application implementation",
+    "No catalogue identity or project/sprint/lifecycle state changes",
+    "No commit, push or packaging release"
+  ]
+}

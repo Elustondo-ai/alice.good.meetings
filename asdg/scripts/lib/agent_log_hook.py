@@ -26,7 +26,7 @@ def handle(payload, repo=REPO):
             'hookEventName': 'SubagentStart',
             'additionalContext': (
                 'ASDG logging: the trusted local hook recorded your start at ' + summary_path + '. '
-                'You remain read-only; do not write logs or broaden permissions. '
+                'Documentation authority is unchanged; do not write logs or broaden execution permissions. '
                 'Read asdg/00-governance/docs/session-logging.md. At the end of each reply, '
                 'include a short public ```asdg-log JSON block per that contract: request_summary, '
                 'outcome, summary, artifacts_read, artifacts_written, skills_used, handoff_state. '

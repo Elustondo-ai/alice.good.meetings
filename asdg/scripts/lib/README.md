@@ -9,6 +9,8 @@ Factual operations use the standard library; optional coordinator advice require
 | [cli_files.py](cli_files.md) | Conservative file transactions. |
 | [cli_model.py](cli_model.md) | Project identity and role catalogue. |
 | [cli_project.py](cli_project.md) | Initialize and inspect an embedded project. |
+| [cli_clients.py](cli_clients.md) | Choose Codex and Claude integrations and render Claude skill adapters. |
+| [cli_session.py](cli_session.md) | Check the default 00 Governance session role can load. |
 | [cli_status.py](cli_status.md) | Evaluate project status. |
 | [cli.py](cli.md) | ASDG command dispatcher. |
 | [cli_sprint.py](cli_sprint.md) | Sprint state and scope. |

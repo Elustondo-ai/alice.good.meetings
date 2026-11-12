@@ -5,7 +5,7 @@ description: Initialize or verify the embedded ASDG distribution in an explicitl
 
 # Initialize embedded ASDG
 
-Read [the installation contract](../../docs/installation.md) and client root instructions.
+Read [the installation contract](../../docs/installation.md), [client integrations](../../docs/client-integrations.md) and client root instructions.
 Resolve this distribution from this file: `../..` is `asdg/`, `../../..` is the client root.
 Verify the caller identified this client and its existing Git root; do not use a sibling provider.
 Keep current source, documents, configuration and state. Do not initialize Git or install dependencies.
@@ -18,7 +18,8 @@ If questions are offered, allow a reply before continuing; do not turn them into
 For an already initialized project, preserve its orientation and do not repeat onboarding questions during verification.
 The Python initializer stays noninteractive and creates generic introductions with embedded diagrams, without assuming a purpose or starting point.
 Fresh projects inherit the flat numbered layout, human-documentation rules, per-file visual checks and CRC source-companion standard; initialization preserves existing content.
-Run `python3 asdg/scripts/init.py --dry-run` from that root; a conflict stops the mutation path.
+Choose `--client` first: an explicit user choice wins; otherwise use `claude` when running in Claude Code and `codex` when running in Codex. If the host is uncertain, ask; never install both unasked.
+Run `python3 asdg/scripts/init.py --client <client> --dry-run` from that root; a conflict stops the mutation path. Adding a client keeps the other's files.
 For a first install, use the user's explicit project status when supplied; otherwise default to `new`.
 Never infer `defined`, approval or release readiness from code or document presence.
 An explicit initialization request authorizes the initializer's reported writes; no repeated confirmation is needed.
@@ -33,5 +34,5 @@ Report native discovery and hook trust separately; neither can be inferred from 
 If a runtime guard denies initialization, preserve the denial and provide the exact human-terminal command.
 Do not disable hooks, bypass trust, rewrite state by hand, start a sprint or activate a specialist.
 Report results and unresolved conflicts; apply [continuation](../../00-governance/docs/continuation.md).
-After successful setup, recommend `$asdg-status` to inspect project facts and receive a project-wide next step.
+After successful setup, recommend ASDG Status (`$asdg-status` in Codex, `/asdg-status` in Claude) to inspect project facts and receive a project-wide next step.
 Do not invoke another skill automatically, activate a specialist or continue into application work.

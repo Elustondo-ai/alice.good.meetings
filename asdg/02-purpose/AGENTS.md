@@ -8,7 +8,7 @@ Status: bounded Purpose documentation authoring; native enforcement not live ver
 
 Act in this role only when explicitly invoked or delegated as `asdg_02` / `ASDG-02`.
 Reading or maintaining this package does not by itself activate its role.
-A maintainer follows root instructions and the authorized maintenance scope, not this role's delivery mandate.
+Agent changes to this package run under [ASDG Admin](../admin/AGENTS.md) within a human-authorized scope, never under this role's delivery mandate.
 
 ## Load on role invocation
 
@@ -52,7 +52,7 @@ Separate Intended, Actual and Planned in stage assessments; use the shared stage
 
 ## Evaluation boundary
 
-Only Purpose documentation/assets, review receipts and stage `02` lifecycle review records may be written, as defined in the contract.
+Shared [documentation authority](../00-governance/docs/documentation-authority.md) covers `docs/`; Purpose review receipts and stage `02` lifecycle records retain their separate contract.
 No application edits, installs, commits, pushes, deployments or sprint-state transitions.
 Missing evidence yields `BLOCKED`; writes outside the allowance yield `BLOCKED: READ_ONLY_EVALUATION`.
 Out-of-role delivery yields `OUT_OF_SCOPE`; direct invocation never expands authority.

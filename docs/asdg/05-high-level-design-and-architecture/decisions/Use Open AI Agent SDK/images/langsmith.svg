@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">LangSmith</title><desc id="desc">Reasoner: Model request / result to Controller: Accepted / rejected to Browser: Visible update. LangSmith can observe this system without replacing its agent runtime.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#61758a" stroke-width="1.3"/></marker></defs>
+<rect x="1" y="1" width="718" height="418" rx="16" fill="#f5f8fb" stroke="#d8e1e9"/>
+<text x="24" y="31" font-family="Arial, sans-serif" font-size="13" fill="#526b80" font-weight="700">OPTIONAL COMPLEMENT</text>
+<text x="24" y="70" font-family="Arial, sans-serif" font-size="27" fill="#162c40" font-weight="700">LangSmith</text>
+<rect x="24" y="112" width="200" height="124" rx="12" fill="#ffffff" stroke="#bfccd8" stroke-width="1.5"/>
+<text x="37" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">Reasoner</text><text x="37" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Model request /</text>
+<text x="37" y="196" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">result</text><path d="M229 174 H250" fill="none" stroke="#61758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="260" y="112" width="200" height="124" rx="12" fill="#e1f3ec" stroke="#43977d" stroke-width="1.5"/>
+<text x="273" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">Controller</text><text x="273" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Accepted / rejected</text><path d="M465 174 H486" fill="none" stroke="#61758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="496" y="112" width="200" height="124" rx="12" fill="#ffffff" stroke="#bfccd8" stroke-width="1.5"/>
+<text x="509" y="143" font-family="Arial, sans-serif" font-size="18" fill="#18374b" font-weight="700">Browser</text><text x="509" y="175" font-family="Arial, sans-serif" font-size="16" fill="#486274" font-weight="400">Visible update</text><path d="M124 238 V278" stroke="#7a8da0" stroke-width="1.5" stroke-dasharray="5 5"/><path d="M360 238 V278" stroke="#7a8da0" stroke-width="1.5" stroke-dasharray="5 5"/><path d="M596 238 V278" stroke="#7a8da0" stroke-width="1.5" stroke-dasharray="5 5"/><rect x="24" y="278" width="672" height="47" rx="10" fill="#e9eef9" stroke="#abb9da"/><text x="38" y="307" font-family="Arial, sans-serif" font-size="17" fill="#304975" font-weight="700">Traces + evaluation: explain behavior and compare quality</text><path d="M24 337 H696" stroke="#d5dfe8"/><text x="24" y="366" font-family="Arial, sans-serif" font-size="16" fill="#405a70" font-weight="400">LangSmith can observe this system without replacing its agent runtime.</text>
+</svg>
+

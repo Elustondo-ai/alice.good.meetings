@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "objective": "Root AGENTS.md begins with a small mandatory ASDG bootstrap; shared rules live under asdg/; project-owned SpeakerCoach guidance follows the block.",
+  "requested_by": "Pablo (repository owner), 2026-10-31",
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-opus-5-5",
+    "client": "Claude desktop app, Code tab",
+    "session": "local_15c31fc2-e853-4e10-8d69-f4417296d9cf"
+  },
+  "starting_revision": "675df99",
+  "starting_tree": "clean",
+  "role_sequence": [
+    {
+      "role": "ASDG-ADMIN",
+      "selection": "explicit re-selection in the request",
+      "sources_reloaded": [
+        "AGENTS.md",
+        "asdg/AGENTS.md",
+        "asdg/skills/asdg-focus/session-policy.md",
+        "asdg/skills/asdg-focus/session-state.md",
+        "asdg/admin/AGENTS.md",
+        "asdg/admin/types/contract.md",
+        "asdg/admin/skills/maintain-rules/SKILL.md",
+        "asdg/docs/review-loop.md"
+      ],
+      "title": "UNCHANGED (observed 'ASDG Admin')",
+      "work": "methodology files, bootstrap generator, validation, tests, setup run"
+    },
+    {
+      "role": "ASDG-COORDINATOR",
+      "selection": "explicitly authorized switch for project-specific writing",
+      "sources_loaded": [
+        "AGENTS.md",
+        "asdg/AGENTS.md",
+        "asdg/skills/asdg-focus/session-policy.md",
+        "asdg/skills/asdg-focus/session-state.md",
+        "asdg/00-governance/AGENTS.md",
+        "asdg/00-governance/types/contract.md",
+        "asdg/00-governance/docs/runtime-contract.md",
+        "asdg/00-governance/types/interaction-contract.md",
+        "asdg/00-governance/skills/review-routing/SKILL.md"
+      ],
+      "title": {
+        "tool": "mcp__ccd_session_mgmt__set_session_title",
+        "requested": "00 Governance",
+        "outcome": "RENAMED",
+        "readback": "00 Governance"
+      },
+      "work": "project-owned section of AGENTS.md and this record"
+    }
+  ],
+  "changed_paths": [
+    ".asdg/document-reviews.json",
+    "AGENTS.md",
+    "asdg/00-governance/docs/runtime-contract.md",
+    "asdg/00-governance/docs/sprint-gate.md",
+    "asdg/00-governance/types/cli-project-contract.md",
+    "asdg/00-governance/types/document-reviews.json",
+    "asdg/AGENTS.md",
+    "asdg/docs/installation.md",
+    "asdg/scripts/lib/cli_project.md",
+    "asdg/scripts/lib/cli_project.py",
+    "asdg/scripts/lib/cli_session.md",
+    "asdg/scripts/lib/cli_session.py",
+    "asdg/skills/asdg-role/SKILL.md",
+    "asdg/tests/test_portable-cases-roles.md",
+    "asdg/tests/test_portable-cases.md",
+    "asdg/tests/test_portable.md",
+    "asdg/tests/test_portable.py",
+    "docs/asdg/07-planning/02.13-review-root-agents-bootstrap.json",
+    "docs/asdg/07-planning/02.13-review-root-agents-bootstrap.md",
+    "docs/asdg/07-planning/README.md",
+    "docs/asdg/07-planning/images/02.13-root-agents-layout.svg"
+  ],
+  "setup_runs": [
+    {
+      "command": "python3 asdg/scripts/cli.py init --dry-run --json",
+      "planned": [
+        ".asdg/document-reviews.json",
+        ".asdg/backups/AGENTS-before-6ec9192e2fa450e85db82d05dd7307207f23953f49078f96b45783908be82e24.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "command": "python3 asdg/scripts/cli.py init",
+      "result": "ASDG initialized and verified"
+    },
+    {
+      "command": "python3 asdg/scripts/cli.py init --dry-run --json (after project section)",
+      "planned": [],
+      "unchanged": true
+    }
+  ],
+  "legacy_blocks_verified_against": [
+    "AGENTS.md at 675df99",
+    "/.asdg/backups/AGENTS-before-abf9d0cd...md",
+    "/.asdg/backups/AGENTS-before-112cb477...md"
+  ],
+  "validation": [
+    {
+      "kind": "automated",
+      "command": "TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p 'test_*.py'",
+      "result": "PASS: 73 tests"
+    },
+    {
+      "kind": "automated",
+      "command": "python3 asdg/scripts/cli.py verify",
+      "result": "PASS"
+    },
+    {
+      "kind": "observed-codex",
+      "command": "codex exec --ephemeral -s read-only (fresh fixture of final tree)",
+      "result": "Read asdg/AGENTS.md and Governance startup sources; declared 00 Governance; used status --json for sprint state; used project section; no files changed"
+    },
+    {
+      "kind": "not-observed",
+      "result": "No fresh Claude session was started for this change"
+    }
+  ],
+  "limitations": [
+    "Startup and role behavior remain instructional",
+    "Codex guard protects root AGENTS.md, so agents there cannot edit the project section",
+    "Legacy project text lacking a final newline gains one on migration",
+    "docs/asdg/00-governance/README.md has a stale no-active-sprint note (outside scope)"
+  ],
+  "review_status": "REVIEW_REQUIRED; nothing committed, approved or pushed"
+}

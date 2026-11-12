@@ -39,6 +39,8 @@ def main(argv: list[str] | None = None) -> int:
             command.add_argument('--project-status', choices=('new', 'defining', 'defined'), default=None,
                                  help='initial declaration only; defaults to new, preserves existing state')
             command.add_argument('--dry-run', action='store_true', help='preflight all destinations without writing')
+            command.add_argument('--client', choices=('codex', 'claude', 'both'), default=None,
+                                 help='client integration to add; repeat setup without it keeps the recorded clients (Codex if none)')
         if name == 'status':
             mode = command.add_mutually_exclusive_group()
             mode.add_argument('--facts-only', action='store_true', help='skip coordinator advice')
@@ -141,7 +143,7 @@ def main(argv: list[str] | None = None) -> int:
                 print('ALL GOOD!')
             return 0
         if args.operation == 'init':
-            report = initialize(root, project_state=args.project_status, dry_run=args.dry_run)
+            report = initialize(root, project_state=args.project_status, dry_run=args.dry_run, client=args.client)
             if args.dry_run:
                 print(json.dumps(report, indent=2) if args.json else
                       f"Preflight passed: {len(report['planned_files'])} files planned; no files changed.")
@@ -157,7 +159,12 @@ def main(argv: list[str] | None = None) -> int:
                       else 'ASDG structure verified.')
                 print('ALL GOOD!')
                 if args.operation == 'init':
-                    print('Next: use $asdg-status to inspect project facts and receive a project-wide next step.')
+                    for note in report.get('notes', []):
+                        print(f'NOTE: {note}')
+                    recorded = report.get('clients_recorded', [])
+                    command = ' or '.join(prefix + 'asdg-status' for client, prefix in (('codex', '$'), ('claude', '/'))
+                                          if client in recorded) or '$asdg-status'
+                    print(f'Next: use {command} to inspect project facts and receive a project-wide next step.')
             else:
                 print('ASDG initialization failed.' if args.operation == 'init'
                       else 'ASDG verification failed.', file=sys.stderr)

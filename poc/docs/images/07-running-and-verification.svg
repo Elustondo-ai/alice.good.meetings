@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" role="img" aria-labelledby="title desc">
+<title id="title">Run the proof, then check its evidence</title><desc id="desc">Start the local service, enable listening, observe transcript and reply, then Stop. Deterministic tests and the live browser experiment establish different evidence.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52677b"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#1c3045}.node{font-size:22px;font-weight:700}.body{font-size:18px}.label{font-size:17px;fill:#465d72}.zone{font-size:17px;font-weight:700;letter-spacing:1px}.edge{fill:none;stroke:#52677b;stroke-width:2;stroke-linejoin:round}.heading{font-size:26px;font-weight:700}.kicker{font-size:13px;fill:#61778d;letter-spacing:1.6px}</style>
+<rect width="900" height="470" rx="16" fill="#f8fafc"/>
+<text x="24" y="29" class="kicker">SPEAKERCOACH · WORKING POC</text>
+<text x="24" y="64" class="heading">Run the proof, then check its evidence</text>
+<g><rect x="24" y="110" width="184" height="100" rx="12" fill="#eef2f6" stroke="#76879c" stroke-width="1.5"/>
+<text x="40" y="141" class="node">1 · Start server</text>
+<text x="40" y="169" class="body">bash poc/start.sh</text></g><g><rect x="246" y="110" width="184" height="100" rx="12" fill="#e7f0ff" stroke="#4275bb" stroke-width="1.5"/>
+<text x="262" y="141" class="node">2 · Listen</text>
+<text x="262" y="169" class="body">Wait for ready</text></g><g><rect x="468" y="110" width="184" height="100" rx="12" fill="#f0eaff" stroke="#8262ad" stroke-width="1.5"/>
+<text x="484" y="141" class="node">3 · Observe</text>
+<text x="484" y="169" class="body">Transcript + reply</text></g><g><rect x="690" y="110" width="186" height="100" rx="12" fill="#e4f5ee" stroke="#338064" stroke-width="1.5"/>
+<text x="706" y="141" class="node">4 · Stop</text>
+<text x="706" y="169" class="body">Release capture</text></g><path d="M208 160 H246" class="edge" marker-end="url(#arrow)"/>
+<path d="M430 160 H468" class="edge" marker-end="url(#arrow)"/>
+<path d="M652 160 H690" class="edge" marker-end="url(#arrow)"/>
+<g><rect x="24" y="300" width="408" height="115" rx="12" fill="#e4f5ee" stroke="#338064" stroke-width="1.5"/>
+<text x="40" y="331" class="node">Deterministic tests</text>
+<text x="40" y="359" class="body">Ordering, retention, cancellation, transport</text>
+<text x="40" y="383" class="body">No OpenAI calls</text></g><g><rect x="468" y="300" width="408" height="115" rx="12" fill="#f0eaff" stroke="#8262ad" stroke-width="1.5"/>
+<text x="484" y="331" class="node">Live browser proof</text>
+<text x="484" y="359" class="body">Synthetic microphone → cloud → page</text>
+<text x="484" y="383" class="body">Actual OpenAI calls</text></g><text x="24" y="260" class="label">Two complementary kinds of evidence</text>
+</svg>

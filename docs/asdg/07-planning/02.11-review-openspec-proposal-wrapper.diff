@@ -1,0 +1,647 @@
+diff --git a/.agents/skills/asdg-openspec-propose/SKILL.md b/.agents/skills/asdg-openspec-propose/SKILL.md
+new file mode 100644
+index 0000000..8e18f7c
+--- /dev/null
++++ b/.agents/skills/asdg-openspec-propose/SKILL.md
+@@ -0,0 +1,10 @@
++---
++name: asdg-openspec-propose
++description: Prepare an OpenSpec proposal from ASDG evidence and current planning scope using the installed openspec-propose workflow. Planning only.
++---
++
++# ASDG openspec propose — discovery adapter
++
++Read and follow [the canonical workflow](../../../asdg/skills/asdg-openspec-propose/SKILL.md).
++Resolve that link from this file's directory and pass the complete user request unchanged.
++Preserve role, subject, attitude and existing ASDG gates. Native OpenSpec remains a separately installed dependency.
+diff --git a/.agents/skills/asdg-openspec-propose/agents/openai.yaml b/.agents/skills/asdg-openspec-propose/agents/openai.yaml
+new file mode 100644
+index 0000000..fa8af70
+--- /dev/null
++++ b/.agents/skills/asdg-openspec-propose/agents/openai.yaml
+@@ -0,0 +1,4 @@
++interface:
++  display_name: "ASDG openspec propose"
++  short_description: "Propose a change from ASDG project evidence"
++  default_prompt: "Use $asdg-openspec-propose to prepare a planning-only OpenSpec proposal from the relevant ASDG evidence."
+diff --git a/.asdg/document-reviews.json b/.asdg/document-reviews.json
+index d7b46e5..e33e04b 100644
+--- a/.asdg/document-reviews.json
++++ b/.asdg/document-reviews.json
+@@ -4817,6 +4817,41 @@
+         "visible_review_markers": [],
+         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+       }
++    },
++    {
++      "path": "docs/asdg/07-planning/README.md",
++      "sha256": "19dc04e07f3dc5a717a89ddd14204b923944fc8844e2593a120a557cbf01ee96",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.356644+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      },
++      "previous_state": {
++        "sha256": "0bad71e10720e7dcc92a7fabfe3ca380daca05bd4065980ffb6c13929bda83db",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.md",
++      "sha256": "ab7e3e5b4f34428cde4d12909a065f5e9bed2f8b77ed8c33cb523ef7eff451d8",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.366806+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      }
++    },
++    {
++      "path": ".agents/skills/asdg-openspec-propose/SKILL.md",
++      "sha256": "00073cda62cd8627f4fa15633b60cda404aa8bac691438d90e40079daf73de9b",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.376461+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      }
+     }
+   ]
+ }
+diff --git a/asdg/00-governance/types/document-reviews.json b/asdg/00-governance/types/document-reviews.json
+index 18c4197..800989a 100644
+--- a/asdg/00-governance/types/document-reviews.json
++++ b/asdg/00-governance/types/document-reviews.json
+@@ -20020,6 +20020,101 @@
+         "visible_review_markers": [],
+         "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+       }
++    },
++    {
++      "path": "asdg/skills/README.md",
++      "sha256": "9f4d79c3a65da371ac446c68e79795130d54c63d7f37326225c8a69259525c85",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.250418+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      },
++      "previous_state": {
++        "sha256": "765d988e01a7b8cc2eb775972719f6b670c7b6b0a090c96f9c50b859e1adcb89",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/tests/test_portable.md",
++      "sha256": "863b0072747a13bc0b77204cd181cf2c16875edb77467acc94096e34a19241e1",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.261832+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      },
++      "previous_state": {
++        "sha256": "77b3331728354b14cef6ca9013672f7f3410ec41ec53e50fd32e252a90b08f08",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/tests/test_portable-cases.md",
++      "sha256": "0922ffc04d0c641469ccbeec82c9cb6537b9b785f89d3300fbac8d09f0779e75",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.270997+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      },
++      "previous_state": {
++        "sha256": "04c12cbdfd880ed4ecc364903263d0b0bae2339d63fdeca20d3b1c2d60e66524",
++        "visible_review_markers": [],
++        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-openspec-propose/SKILL.md",
++      "sha256": "ea127959d10715b2e4d7f6d02bf4eff2f44519cbc8be4f5edd3281458b90b90e",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.281238+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-openspec-propose/TRY-IT.md",
++      "sha256": "47d6757885fb6d1609cd9133302a028783493b5a9b87230acb9718f34e8bbfab",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.290907+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-openspec-propose/evidence.md",
++      "sha256": "75f815b8aa79a38a81e9124c474d1e3cdce3a120f4c204e4b13f5d473e4c3372",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.300049+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      }
++    },
++    {
++      "path": "asdg/skills/asdg-openspec-propose/images/proposal-flow.svg",
++      "sha256": "cb942ef5ac209f2db17be17af76e3d7745fa680fcf89b6cc9c108cfdf16e0f9c",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.309146+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      }
++    },
++    {
++      "path": "asdg/templates/.agents/skills/asdg-openspec-propose/SKILL.md",
++      "sha256": "00073cda62cd8627f4fa15633b60cda404aa8bac691438d90e40079daf73de9b",
++      "event": "AI-MODIFIED",
++      "recorded_at": "2026-10-29T00:49:43.319702+00:00",
++      "human_approval": null,
++      "provenance": {
++        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
++      }
+     }
+   ],
+   "distribution_version": "0.2.0-pilot.2"
+diff --git a/asdg/skills/README.md b/asdg/skills/README.md
+index 548a8fc..a32cf42 100644
+--- a/asdg/skills/README.md
++++ b/asdg/skills/README.md
+@@ -18,6 +18,7 @@ Canonical workflows live here; native discovery adapters remain thin references.
+ | [Development view](asdg-view-dev/SKILL.md) | Open a useful project file and terminal alongside the chat |
+ | [Documentation](asdg-documentation/SKILL.md) | Preserve readable, evidence-based project documents |
+ | [Decision](asdg-decision/SKILL.md) | Shared decision method with optional specialist-local enrichment |
++| [OpenSpec proposal](asdg-openspec-propose/SKILL.md) | Connect ASDG evidence to the installed native proposal workflow; planning only |
+ 
+ Each numbered stage owns its bounded specialist procedure under its local `skills/` folder.
+ Its optional `skills/decision/SKILL.md` enriches Decision through the [shared interface](asdg-decision/specialization.md); absence uses generic behavior.
+diff --git a/asdg/skills/asdg-openspec-propose/SKILL.md b/asdg/skills/asdg-openspec-propose/SKILL.md
+new file mode 100644
+index 0000000..6f16980
+--- /dev/null
++++ b/asdg/skills/asdg-openspec-propose/SKILL.md
+@@ -0,0 +1,43 @@
++---
++name: asdg-openspec-propose
++description: Prepare an OpenSpec proposal grounded in ASDG purpose, use cases, evaluation, architecture and planning scope. Uses the installed openspec-propose skill; planning only.
++---
++
++# Propose a change from ASDG evidence
++
++Use this wrapper when the user requests an ASDG-grounded OpenSpec proposal. It connects existing decisions to one proposed change, without replacing specialist ownership.
++`$asdg-openspec-propose <change description or name>` is a skill invocation, not a new terminal subcommand.
++Existing `asdg-prepare-plan`, `asdg-propose-architecture` and native `openspec-propose` keep their meanings.
++
++![ASDG evidence feeds the installed OpenSpec workflow; its change artifacts link back to the sources and stop for review.](images/proposal-flow.svg)
++
++## Establish the boundary and inputs
++
++Read client instructions and [session policy](../asdg-focus/session-policy.md); preserve role, subject, attitude and goal.
++Resolve the ASDG client root from this canonical directory as `../../..`; distinguish it from any external OpenSpec planning home.
++Check the current runtime skill catalogue for `openspec-propose`, then read that installed skill in full at its advertised path. Report catalogue discovery separately from successful file loading; neither proves workflow execution.
++If the skill is absent or unreadable, report the missing dependency and stop; do not install it, invent a native invocation or substitute a copied workflow.
++Read [the evidence and traceability contract](evidence.md) before drafting; it defines source selection, approval checks and authoritative locations.
++Resolve the user's bounded change. A bare invocation with no clear request asks what to propose; it does not choose a feature automatically.
++Report material conflicts or missing decisions before creating a change, and ask only for information that affects scope, behavior, compatibility or acceptance. Record minor assumptions explicitly.
++Missing unrelated stages do not block a bounded draft. Changed or unreviewed sources remain usable as drafts, never as accepted requirements.
++
++## Use the installed workflow
++
++Run the installed `openspec-propose` workflow inline in this chat, supplying the unchanged request and the source assessment. Do not copy its implementation into ASDG or start another agent.
++Follow its actual root/store checks, context handling, configured schema, artifact dependency order, output-path checks and conditional skips. Resolve the application root independently when planning occurs elsewhere.
++Use its CLI-provided instructions and paths for each artifact. Read dependencies again as instructed; preserve existing changes and ask about name collisions rather than overwriting them.
++Apply ASDG source links and decision status within the schema's appropriate sections, following [traceability](evidence.md). If the schema cannot accommodate required provenance, report the conflict before changing schema or adding a parallel artifact.
++Preserve human-readable explanations and useful visuals under the [documentation standard](../../00-governance/docs/documentation-standard.md), without rewriting upstream templates or splitting required artifacts into paths the schema does not support. Report a format conflict instead of silently weakening either contract.
++Never run apply, sync, archive or initialization as a side effect. Create only the requested planning artifacts and an optional short Stage 07 navigation link; no application, policy, approval or sprint-state writes follow.
++An active ASDG sprint is context, not authorization for a different change. Pending specialist choices stay review questions; the wrapper does not approve or replace their owning documents.
++Respect runtime refusals: report the denied action and stop dependent writes; do not relocate artifacts to bypass a gate.
++
++## Verify and return for review
++
++Use the native workflow's final status and `openspec validate <change-name> --type change --strict --json` with the same confirmed store selection, if any.
++Check source links, captured hashes, review coverage and artifact-to-source mappings. Reread changed sources and flag drift before claiming the proposal matches its baseline.
++Return the change location, created/skipped artifacts, validation results, accepted versus draft sources, conflicts, assumptions and decisions needing review.
++Distinguish OpenSpec artifact completion from ASDG acceptance and implementation authorization. If native output says implementation-ready, qualify it as artifact readiness only.
++Stop after presenting the proposal. A later explicit apply request still requires the existing ASDG role authority, active scoped sprint and per-target implementation checks.
++Use [the bounded verification cases](TRY-IT.md) to assess this integration; scenarios are not execution evidence.
+diff --git a/asdg/skills/asdg-openspec-propose/TRY-IT.md b/asdg/skills/asdg-openspec-propose/TRY-IT.md
+new file mode 100644
+index 0000000..adcd7a8
+--- /dev/null
++++ b/asdg/skills/asdg-openspec-propose/TRY-IT.md
+@@ -0,0 +1,18 @@
++# Verify the ASDG–OpenSpec wrapper
++
++These are bounded checks, not claims that they have run. Use a disposable client for write exercises; never create a real feature proposal merely to test installation.
++The [workflow diagram](images/proposal-flow.svg) shows the integration boundary; the [canonical skill](SKILL.md) supplies the procedure.
++
++| Scenario | Evidence to inspect |
++| --- | --- |
++| Native discovery | The current Codex catalogue lists `openspec-propose`; distinguish that from opening its file. Missing discovery stops the wrapper. |
++| Portable installation | Normal ASDG initialization copies the thin adapter; it resolves after relocation. Existing native OpenSpec files and state are unchanged. |
++| Clear fixture request | Use the installed workflow's resolved paths and artifact graph; create the required set, validate it, and check links to fixture ASDG evidence. |
++| Accepted and draft mix | Source table matches current hashes and exact review coverage; unregistered files and stale acceptances are not labeled accepted. |
++| Material conflict | A draft requiring explicit confirmation versus accepted automatic promotion produces a review question before scaffolding. |
++| Missing evidence | A missing unrelated stage remains a limitation; a missing decision that changes observable behavior pauses drafting. |
++| Existing name or missing root | Follow upstream collision/setup handling; do not overwrite, install or initialize silently. |
++| Boundary and preservation | Application, upstream skills, ASDG state and hook bytes match their starting snapshots; no apply/sync/archive or sprint transition occurs. |
++
++Record actual commands, versions, paths, statuses and limits. CLI validation proves only the rules it checks; a self-authored fixture is not an independent behavior test or human acceptance.
++Do not claim separate-store, failed-tool, fresh-picker or resume behavior unless exercised in that environment.
+diff --git a/asdg/skills/asdg-openspec-propose/evidence.md b/asdg/skills/asdg-openspec-propose/evidence.md
+new file mode 100644
+index 0000000..bbf36d0
+--- /dev/null
++++ b/asdg/skills/asdg-openspec-propose/evidence.md
+@@ -0,0 +1,44 @@
++# Carry decisions into a proposal without duplicating them
++
++ASDG explains the product and its development decisions. OpenSpec holds the proposed change and its implementation-facing delta. Links keep the two connected while each artifact has one authoritative location.
++
++![ASDG sources remain authoritative; one OpenSpec change records the proposed delta and links back for review.](images/proposal-flow.svg)
++
++## Load the relevant baseline
++
++From the client root, run `python3 asdg/scripts/cli.py status --json` and inspect Git status and revision. Read `.asdg/project.json`, `.asdg/lifecycle.json` and `.asdg/sprint.json`; do not modify them.
++Use the [catalogue](../../00-governance/types/agent-catalog.json) and the binding's artifacts root to locate stages; do not reuse paths from another project or an old handoff.
++Read each relevant stage's index, registered artifacts and linked decisions. Include user-named and relevant unregistered documents; an empty index does not mean an empty folder.
++
++| ASDG source | Contribution to the proposed change |
++| --- | --- |
++| 02 Purpose | Desired benefit, constraints, non-goals and selected priorities. |
++| 03 System Model and Use Cases | Actors, observable behavior, scenarios and unresolved interactions. |
++| 04 Evaluation Strategy | Success criteria, benchmarks, measurement limits and untested thresholds. |
++| 05 Architecture | Boundaries, accepted design decisions, current implementation evidence and alternatives. |
++| 07 Planning plus authoritative sprint/release state | Selected work, exclusions, dependencies and whether this is current or possible future work. |
++
++Inspect relevant application code/tests read-only as the native workflow requires. Source behavior is not proof of a successful runtime or user outcome.
++Do not adopt a methodology backlog as the application's delivery plan or widen an active sprint to include a proposed next feature.
++For absent inputs, name the missing evidence and its effect. Ask before writing if it materially changes the proposal; otherwise retain it as a visible limitation.
++
++## Establish decision status, not just document presence
++
++Record each source's relative path/link, SHA-256 of the bytes read, relevant claim and decision status in the proposal's source table, or another schema-supported section of that same change.
++Use current CLI completion plus the exact review records and covered artifact hashes. A stage-level ACCEPTED label does not approve every file in that folder.
++Separate accepted current bytes, stale acceptance of older bytes, draft/unreviewed material, explicit stakeholder direction and unresolved questions.
++AI-MODIFIED receipts record authorship only. “Accepted” prose, Git commits, existing files and successful validation are not human approval.
++If a review record cannot establish coverage of the current bytes, report acceptance as unverified; do not repair the ledger or carry acceptance forward.
++Document substantive conflicts with both source links, the behavior affected and the decision needed. Do not silently prefer the newest document or the older accepted one.
++For example, a new explicit-confirmation use case can conflict with an accepted automatic-promotion architecture. Preserve both claims until the human resolves the intended change.
++
++## Keep one authoritative copy
++
++Keep ASDG purpose, use cases, evaluation, architecture and cycle state at their existing locations.
++Keep the OpenSpec proposal, design, delta specs and tasks only at the paths resolved by the native CLI, not mirrored under `docs/asdg/`.
++Write a delta specific to the requested change; link existing decisions instead of pasting whole ASDG documents or creating a second task list.
++In every resulting artifact, link its relevant ASDG sources or the proposal's source table and identify which claims/scenarios/tasks those links support. For nested specs, calculate relative links from that file's directory.
++Use schema-compatible sections or short inline references without damaging requirement/scenario/task syntax. Do not copy raw OpenSpec context or rules into the artifacts.
++For a separate planning store, use stable repository URLs pinned to the observed revision when available. For uncommitted/local-only sources, identify the checkout and exact hash, disclose portability limits and never invent a remote URL.
++A Stage 07 navigation entry may point to the change and its pending review questions; it must not duplicate the plan or imply sprint selection.
++Recheck linked bytes before finishing. Source drift requires an updated assessment, not an inherited approval.
+diff --git a/asdg/skills/asdg-openspec-propose/images/proposal-flow.svg b/asdg/skills/asdg-openspec-propose/images/proposal-flow.svg
+new file mode 100644
+index 0000000..85f5a2b
+--- /dev/null
++++ b/asdg/skills/asdg-openspec-propose/images/proposal-flow.svg
+@@ -0,0 +1,30 @@
++<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" role="img" aria-labelledby="title desc">
++  <title id="title">One proposal, connected to its ASDG evidence</title>
++  <desc id="desc">Purpose, use cases, evaluation, architecture and scope feed a thin ASDG wrapper. The installed OpenSpec workflow creates one authoritative change whose artifacts link back to the sources. The flow ends at review, before implementation.</desc>
++  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#526477"/></marker></defs>
++  <rect width="720" height="300" rx="12" fill="#f5f7fb"/>
++  <g font-family="Arial, sans-serif" fill="#172d45">
++    <text x="24" y="31" font-size="20" font-weight="bold">One change, with evidence behind it</text>
++    <rect x="24" y="54" width="210" height="156" rx="10" fill="#e3edfa" stroke="#8aa9d0"/>
++    <text x="40" y="80" font-size="17" font-weight="bold">ASDG sources</text>
++    <text x="40" y="108" font-size="15">Purpose · Use cases</text>
++    <text x="40" y="132" font-size="15">Evaluation · Architecture</text>
++    <text x="40" y="156" font-size="15">Planning scope</text>
++    <text x="40" y="188" font-size="13">Accepted / draft / unresolved</text>
++    <path d="M235 126H265" fill="none" stroke="#526477" stroke-width="2" marker-end="url(#arrow)"/>
++    <rect x="274" y="81" width="164" height="94" rx="10" fill="#e4f3ee" stroke="#77af99"/>
++    <text x="289" y="107" font-size="16" font-weight="bold">ASDG wrapper</text>
++    <text x="289" y="132" font-size="14">Evidence + links</text>
++    <text x="289" y="155" font-size="14">No copied workflow</text>
++    <path d="M439 126H469" fill="none" stroke="#526477" stroke-width="2" marker-end="url(#arrow)"/>
++    <rect x="478" y="54" width="218" height="156" rx="10" fill="#fff0d8" stroke="#cca966"/>
++    <text x="494" y="80" font-size="17" font-weight="bold">Installed OpenSpec</text>
++    <text x="494" y="108" font-size="15">Native propose workflow</text>
++    <text x="494" y="136" font-size="14">Proposal · Design</text>
++    <text x="494" y="158" font-size="14">Delta specs · Tasks</text>
++    <text x="494" y="188" font-size="13">One authoritative change</text>
++    <path d="M584 211V235H130V212" fill="none" stroke="#526477" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
++    <text x="257" y="229" font-size="13">Artifacts link back to source evidence</text>
++    <text x="24" y="275" font-size="15" font-weight="bold">Stop for review. No implementation, approval or sprint transition.</text>
++  </g>
++</svg>
+diff --git a/asdg/templates/.agents/skills/asdg-openspec-propose/SKILL.md b/asdg/templates/.agents/skills/asdg-openspec-propose/SKILL.md
+new file mode 100644
+index 0000000..8e18f7c
+--- /dev/null
++++ b/asdg/templates/.agents/skills/asdg-openspec-propose/SKILL.md
+@@ -0,0 +1,10 @@
++---
++name: asdg-openspec-propose
++description: Prepare an OpenSpec proposal from ASDG evidence and current planning scope using the installed openspec-propose workflow. Planning only.
++---
++
++# ASDG openspec propose — discovery adapter
++
++Read and follow [the canonical workflow](../../../asdg/skills/asdg-openspec-propose/SKILL.md).
++Resolve that link from this file's directory and pass the complete user request unchanged.
++Preserve role, subject, attitude and existing ASDG gates. Native OpenSpec remains a separately installed dependency.
+diff --git a/asdg/templates/.agents/skills/asdg-openspec-propose/agents/openai.yaml b/asdg/templates/.agents/skills/asdg-openspec-propose/agents/openai.yaml
+new file mode 100644
+index 0000000..fa8af70
+--- /dev/null
++++ b/asdg/templates/.agents/skills/asdg-openspec-propose/agents/openai.yaml
+@@ -0,0 +1,4 @@
++interface:
++  display_name: "ASDG openspec propose"
++  short_description: "Propose a change from ASDG project evidence"
++  default_prompt: "Use $asdg-openspec-propose to prepare a planning-only OpenSpec proposal from the relevant ASDG evidence."
+diff --git a/asdg/tests/test_portable-cases.md b/asdg/tests/test_portable-cases.md
+index 023eb58..226dfc6 100644
+--- a/asdg/tests/test_portable-cases.md
++++ b/asdg/tests/test_portable-cases.md
+@@ -15,6 +15,7 @@ Names describe the intended regression checks; this index is not an execution re
+ | `test_shared_focus_preserves_unregistered_purpose_work` | The shared adapter installs exactly and repeat setup preserves Purpose evidence. |
+ | `test_single_focus_installs_without_changing_roles_or_authority` | One Focus picker entry retains thirteen role adapters and unchanged lifecycle/authority. |
+ | `test_attitude_adapter_relocates_and_preserves_state` | Installed Attitude adapters and canonical guides survive relocation and repeat setup without changing project state. |
++| `test_openspec_wrapper_preserves_upstream_and_relocates` | The wrapper installs and relocates without modifying upstream skills, configuration, state, hooks or application files. |
+ | `test_decision_skill_relocates_and_preserves_unregistered_decisions` | Decision discovery survives relocation; repeat setup preserves decision evidence and state. |
+ | `test_optional_decision_specialization_preserves_generic_roles_and_local_methods` | Optional specialist methods survive repeat setup; absent methods require no placeholders or state changes. |
+ | `test_missing_shared_focus_template_fails_before_any_writes` | Missing shared skill or UI metadata fails preflight without writes. |
+diff --git a/asdg/tests/test_portable.md b/asdg/tests/test_portable.md
+index a891050..4d13e74 100644
+--- a/asdg/tests/test_portable.md
++++ b/asdg/tests/test_portable.md
+@@ -34,6 +34,7 @@ Decision discovery is exercised in a relocated client without SpeakerCoach files
+ Optional local decision skills survive repeat setup from a specialist subdirectory; generic roles require no placeholder and state remains unchanged.
+ Focus installation keeps one picker entry and thirteen role adapters; preflight rejects missing shared metadata or retired per-role picker templates before writes.
+ Attitude discovery and its receipt guides survive relocation; repeat initialization preserves project, lifecycle, sprint and application bytes. Native chat semantics require separate observation.
++OpenSpec wrapper installation survives relocation and repeat setup while preserving a separately installed upstream skill, OpenSpec configuration, ASDG state, hooks and application bytes; it creates no proposal.
+ `test_dry_run_then_init_repeat_is_byte_identical` also checks portable stage introductions, embedded diagrams, empty Context recognition, absence of perspective directories and preservation on repeat setup.
+ 
+ ## Effects and failure behavior
+diff --git a/asdg/tests/test_portable.py b/asdg/tests/test_portable.py
+index 265c66b..8b78701 100644
+--- a/asdg/tests/test_portable.py
++++ b/asdg/tests/test_portable.py
+@@ -221,6 +221,34 @@ runpy.run_path(entry, run_name='__main__')
+             self.assertEqual((self.root / path).read_bytes(), data)
+         self.assertEqual(len(list((self.root / '.codex/agents').glob('asdg*.toml'))), 13)
+ 
++    def test_openspec_wrapper_preserves_upstream_and_relocates(self):
++        native = self.root / '.agents/skills/openspec-propose/SKILL.md'
++        native.parent.mkdir(parents=True)
++        native.write_text('---\nname: openspec-propose\ndescription: Independent upstream fixture.\n---\n')
++        config = self.root / 'openspec/config.yaml'
++        config.parent.mkdir()
++        config.write_text('schema: spec-driven\n')
++        self.init()
++        protected = {p: (self.root / p).read_bytes() for p in (
++            '.agents/skills/openspec-propose/SKILL.md', 'openspec/config.yaml',
++            '.asdg/project.json', '.asdg/lifecycle.json', '.asdg/sprint.json',
++            '.codex/hooks.json', 'app.js')}
++        self.root = self.root.rename(self.root.parent / 'relocated proposal client')
++        relative = Path('.agents/skills/asdg-openspec-propose')
++        for name in ('SKILL.md', 'agents/openai.yaml'):
++            self.assertEqual((self.root / relative / name).read_bytes(),
++                             (self.root / 'asdg/templates' / relative / name).read_bytes())
++        canonical = (self.root / relative / '../../../asdg/skills/asdg-openspec-propose/SKILL.md').resolve()
++        self.assertEqual(canonical, (self.root / 'asdg/skills/asdg-openspec-propose/SKILL.md').resolve())
++        self.assertTrue(canonical.is_file())
++        self.run_cli('verify', cwd=self.root / 'docs')
++        before = snapshot(self.root)
++        self.init(cwd=self.root / 'docs')
++        self.assertEqual(snapshot(self.root), before)
++        for path, data in protected.items():
++            self.assertEqual((self.root / path).read_bytes(), data)
++        self.assertFalse((self.root / 'openspec/changes').exists())
++
+     def test_decision_skill_relocates_and_preserves_unregistered_decisions(self):
+         self.init()
+         relative = Path('.agents/skills/asdg-decision')
+diff --git a/docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.json b/docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.json
+new file mode 100644
+index 0000000..8557a2e
+--- /dev/null
++++ b/docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.json
+@@ -0,0 +1,139 @@
++{
++  "schema_version": 1,
++  "objective": "Add one thin ASDG wrapper around the installed openspec-propose workflow and verify its integration; no real proposal.",
++  "starting_revision": "c7b911964f0c558849f17ab0edaec8aa89adeeec",
++  "scope": "Embedded methodology maintenance authorized by Pablo; no change to SPRINT-000.",
++  "changed_paths": [
++    ".agents/skills/asdg-openspec-propose/SKILL.md",
++    ".agents/skills/asdg-openspec-propose/agents/openai.yaml",
++    "asdg/skills/README.md",
++    "asdg/skills/asdg-openspec-propose/SKILL.md",
++    "asdg/skills/asdg-openspec-propose/TRY-IT.md",
++    "asdg/skills/asdg-openspec-propose/evidence.md",
++    "asdg/skills/asdg-openspec-propose/images/proposal-flow.svg",
++    "asdg/templates/.agents/skills/asdg-openspec-propose/SKILL.md",
++    "asdg/templates/.agents/skills/asdg-openspec-propose/agents/openai.yaml",
++    "asdg/tests/test_portable-cases.md",
++    "asdg/tests/test_portable.md",
++    "asdg/tests/test_portable.py",
++    "docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.md",
++    "docs/asdg/07-planning/README.md",
++    "asdg/00-governance/types/document-reviews.json",
++    ".asdg/document-reviews.json",
++    "docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.json",
++    "docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.diff"
++  ],
++  "native_discovery": {
++    "evidence": "Current Codex runtime Available skills catalogue, before file reads",
++    "observed": [
++      "openspec-propose",
++      "openspec-explore",
++      "openspec-update-change",
++      "openspec-apply-change",
++      "openspec-sync-specs",
++      "openspec-archive-change"
++    ],
++    "installed_skill_read": "Full .agents/skills/openspec-propose/SKILL.md; generatedBy 1.15.0",
++    "new_wrapper": "Thin adapter installed and byte-matched to template; fresh native picker invocation unverified"
++  },
++  "session": {
++    "role": "ASDG-COORDINATOR",
++    "focus": "OpenSpec integration",
++    "attitude": "NoAttitude",
++    "title": "00 Governance OpenSpec integration",
++    "native_title_result": "RENAMED; readback matched",
++    "thread": "01a15b01-2898-73e1-af72-deb1b287d424"
++  },
++  "versions": {
++    "asdg": "0.2.0-pilot.2",
++    "openspec": "1.15.0",
++    "python": "3.15.0"
++  },
++  "validation": [
++    {
++      "command": "python3 asdg/scripts/cli.py verify",
++      "result": "PASS"
++    },
++    {
++      "command": "python3 -B -m unittest discover -s asdg/tests -p 'test_*.py'",
++      "result": "Initial run: 59 tests, 2 failures from /var versus /private/var path comparisons; one pre-existing, one new"
++    },
++    {
++      "command": "TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p 'test_*.py'",
++      "result": "PASS: 59 tests; new expected path normalized; documented temporary directory used"
++    },
++    {
++      "command": "python3 asdg/scripts/check.py",
++      "result": "8 pre-existing links escaping client from unchanged asdg/README.md; no new errors"
++    },
++    {
++      "command": "python3 -B ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py asdg/skills/asdg-openspec-propose",
++      "result": "Unavailable: ModuleNotFoundError yaml; no dependency installed"
++    },
++    {
++      "command": "git diff --check",
++      "result": "PASS"
++    }
++  ],
++  "smoke_test": {
++    "kind": "Self-authored native CLI/schema/traceability smoke test, not independent end-to-end skill execution",
++    "fixture": "/private/tmp/asdg-openspec-review-kk9xdmvr/fixture-client",
++    "workflow": [
++      "openspec list --json",
++      "openspec context --json",
++      "openspec new change fixture-confirm-question",
++      "openspec status --change fixture-confirm-question --json",
++      "openspec instructions <proposal|specs|design|tasks> --change fixture-confirm-question --json",
++      "openspec list --specs",
++      "Author artifacts at resolved output paths; reread dependencies; check status between artifacts",
++      "openspec status --change fixture-confirm-question",
++      "openspec validate fixture-confirm-question --type change --strict --json"
++    ],
++    "result": "4/4 planning artifacts complete; strict validation true, zero issues; all tasks unexecuted",
++    "links_checked": 10,
++    "source_hashes_checked": 5,
++    "source_status": "All synthetic unreviewed fixture evidence; no accepted claims",
++    "preexisting_fixture_files_unchanged": 424,
++    "artifact_hashes": {
++      "openspec/changes/fixture-confirm-question/.openspec.yaml": "9e0a467e3934b14a2d9c9175305310e9359d34e2484a458af3d182c2956b9e2d",
++      "openspec/changes/fixture-confirm-question/tasks.md": "381f246730e31ff2ec8c352ea34c80f9429c9951fe15f1eab58e4c85e6f5b513",
++      "openspec/changes/fixture-confirm-question/design.md": "e41e4b8ddd025c3b889266025cb1d6dd33686092e9a3e3e613fd22648e129736",
++      "openspec/changes/fixture-confirm-question/proposal.md": "85537255d5c26369044021bb6a0ddcdfe249b6c3ed86a6eaeac1691600b1ed14",
++      "openspec/changes/fixture-confirm-question/specs/question-confirmation/spec.md": "bae4b638d6ebf2cdf6ea9e196c0a86ef8503e7b5f21ac2252c6acb960e85b336"
++    }
++  },
++  "preservation": {
++    "initial_protected_paths": 45,
++    "unchanged_before_review_receipts": true,
++    "upstream_sha256": {
++      ".agents/skills/openspec-apply-change/SKILL.md": "8ebce01b55784ed1f3198894fed19fbe4c613ebbe09b82bc83c3c52dec4f1f4b",
++      ".agents/skills/openspec-explore/SKILL.md": "6464b80e4c4c19b1ede13828348e123d23631a6d558bc30468114d15fcfd9ff1",
++      ".agents/skills/openspec-update-change/SKILL.md": "881a08bfe743f1c473cf31276e961e62b8f98a744d922e11507d640def631fe9",
++      ".agents/skills/openspec-archive-change/SKILL.md": "4eca0401139ee708c50c85e5e73e1dfa6d8bb39c981da0d0cad7237a54f9ca2c",
++      ".agents/skills/openspec-propose/SKILL.md": "df1f3c5849192a5c3df045f131b93a29680b595833ae4821a6c489e59eaab222",
++      ".agents/skills/openspec-sync-specs/SKILL.md": "5e036c570c71234c1c7b0d51f1b2c4cd066163986bbe0c9834ada2310cd41fb2"
++    },
++    "allowed_exception": ".asdg/document-reviews.json receives append-only AI modification receipts; lifecycle/sprint/project/hook files unchanged",
++    "prior_untracked": "Native OpenSpec skills, .agents/skills/.openspec-target and openspec/ predate this increment and are not included in the diff"
++  },
++  "visual_checks": {
++    "new_svg": "proposal-flow.svg rendered at 720 px and inspected; embedded by SKILL.md, evidence.md and review report",
++    "reused_svg": "test_portable-flow.svg rendered at 720 px and inspected for companion",
++    "limits": "Asset-only checks, not full Markdown preview; disposable fixture Mermaid not rendered"
++  },
++  "remaining_limits": [
++    "Fresh native wrapper picker invocation not observed",
++    "Separate stores, collision handling, missing upstream skill and denied writes not exercised",
++    "No independent model behavior test",
++    "Generic skill validator requires unavailable PyYAML",
++    "Real proposal awaits review decisions; no acceptance or enforcement claim"
++  ],
++  "current_project_observations": [
++    "Stage 02 Purpose and Stage 03 Use Cases review-stale",
++    "Stage 04 Evaluation and Stage 05 Architecture accepted at current inspected baseline",
++    "UC-04 is a proposed future interaction; not selected into SPRINT-000",
++    "Explicit confirmation versus evidence promotion and Pablo-only versus both-speaker input need reconciliation"
++  ],
++  "first_real_invocation": "$asdg-openspec-propose confirm-current-question\nUse UC-04, “Clarify and confirm the current interview question,” as the candidate next change. Load the relevant ASDG sources and current planning scope. Surface material conflicts and ask for decisions before drafting. Treat this as possible next-sprint work; keep SPRINT-000 unchanged. Planning only.",
++  "human_approval": null
++}
+diff --git a/docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.md b/docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.md
+new file mode 100644
+index 0000000..f20a0b3
+--- /dev/null
++++ b/docs/asdg/07-planning/02.11-review-openspec-proposal-wrapper.md
+@@ -0,0 +1,46 @@
++# An ASDG proposal, using the installed OpenSpec workflow
++
++This increment adds **ASDG openspec propose**: one thin wrapper that reads the project's evidence, uses the installed native workflow and links the resulting change back to its sources. It creates no real SpeakerCoach proposal yet.
++
++![ASDG evidence feeds a thin wrapper, then the installed OpenSpec workflow; one authoritative change links back to its sources and stops for review.](../../../asdg/skills/asdg-openspec-propose/images/proposal-flow.svg)
++
++The canonical [skill](../../../asdg/skills/asdg-openspec-propose/SKILL.md) and [evidence contract](../../../asdg/skills/asdg-openspec-propose/evidence.md) preserve existing command meanings. `asdg-prepare-plan`, `asdg-propose-architecture` and `openspec-propose` are unchanged. This adds a skill, not a terminal subcommand.
++
++## Discovery and scope
++
++Codex's live skill catalogue exposed all six installed OpenSpec skills: propose, explore, update-change, apply-change, sync-specs and archive-change. Their discovery was observed independently of reading `SKILL.md`; the full installed propose instructions were then read.
++OpenSpec CLI 1.15.0 resolved this client and reported no changes. Native discovery of the newly added ASDG wrapper in a fresh picker remains unverified; its adapter is installed and structurally verified.
++The current chat selected subject **OpenSpec integration**, preserving Governance and NoAttitude; native title readback matched `00 Governance OpenSpec integration`.
++Starting revision: `c7b911964f0c558849f17ab0edaec8aa89adeeec`. The native OpenSpec installation and `openspec/` were already untracked; they are preserved and excluded from this increment's diff.
++
++## What changed
++
++- Canonical wrapper, evidence/traceability contract, bounded verification cases and explanatory SVG under `asdg/skills/asdg-openspec-propose/`.
++- Thin adapter and UI metadata in both `asdg/templates/.agents/skills/asdg-openspec-propose/` and the installed `.agents/skills/asdg-openspec-propose/`.
++- Shared skill index; one relocation/preservation regression and its Markdown companions; this report/index and exact-hash AI modification receipts.
++
++The wrapper reads Purpose, Use Cases, Evaluation, Architecture and current Planning/state. It distinguishes current acceptance, stale approval, drafts and stakeholder direction, then follows the installed schema and paths. Source hashes/links live in the change; ASDG sources and OpenSpec artifacts are not mirrored.
++
++## Evidence and limits
++
++| Check | Observed result |
++| --- | --- |
++| ASDG structure | `python3 asdg/scripts/cli.py verify` passes. |
++| Regression suite | `TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p 'test_*.py'`: 59 passed on Python 3.15.0. |
++| Initial test run | Two path-comparison failures under macOS `/var` versus `/private/var`; the new test normalizes its expected path, and the documented TMPDIR fixes the existing test environment. |
++| Native CLI smoke test | A disposable fixture produced proposal, delta spec, design and tasks; 4/4 complete and strict validation passed with zero issues. |
++| Fixture traceability | Ten links resolve; five draft source hashes match; 424 pre-existing fixture files remained byte-identical. No accepted decisions were fabricated. |
++| Real project preservation | Initial 45-path snapshot unchanged before appending documentation receipts; upstream skills, application, hooks and lifecycle/sprint state remain unchanged. |
++| Package check | Eight existing external presentation-link errors in unchanged `asdg/README.md`; no new errors. |
++| Other checks | Whitespace and source-line limits pass. Generic skill validator unavailable because PyYAML is absent; no dependency installed. |
++
++The smoke test exercises the installed CLI, schema and provenance format; it is self-authored integration evidence, not an independent agent test of every instruction. Separate stores, collisions, denied writes, missing-native-skill handling and a fresh wrapper invocation remain unexercised.
++The wrapper/evidence pages and this report embed the new SVG, inspected at 720 px; the test companion's existing diagram was also inspected. These were asset rendering checks, not full Markdown preview checks. Fixture Mermaid rendering was not checked.
++
++## First real proposal
++
++Use the invocation in the [validation receipt](02.11-review-openspec-proposal-wrapper.json). It targets UC-04 as possible next-sprint work and asks for material conflicts before drafting.
++Current status marks Evaluation and Architecture accepted, but Purpose and Use Cases stale. UC-04 proposes explicit confirmation while the accepted architecture describes evidence-driven promotion; Purpose also requires distinguishing both speakers while UC-04 allows Pablo-only input. These are review decisions, not choices this wrapper makes silently.
++SPRINT-000 remains the existing streaming/agent POC. No application implementation, actual feature proposal, approval, sprint transition, commit or push occurred.
++
++[Exact increment diff](02.11-review-openspec-proposal-wrapper.diff) · [Validation receipt and changed paths](02.11-review-openspec-proposal-wrapper.json)
+diff --git a/docs/asdg/07-planning/README.md b/docs/asdg/07-planning/README.md
+index c983227..bbf9e59 100644
+--- a/docs/asdg/07-planning/README.md
++++ b/docs/asdg/07-planning/README.md
+@@ -14,6 +14,7 @@ Release plans describe a broader delivery objective. Sprint plans select a small
+ 
+ ## Explore
+ 
++- [ASDG–OpenSpec proposal wrapper](02.11-review-openspec-proposal-wrapper.md): source-linked planning through the installed native OpenSpec workflow.
+ - [Concise role, focus and attitude titles](02.10-review-concise-role-titles.md): the current naming convention, with the thirteen short role labels.
+ - [Shorter session names](02.9-review-short-session-names.md): role and attitude in titles, with NoAttitude and NoFocus for unset selections.
+ - [Attitude and session naming review](02.8-review-attitude-and-session-naming.md): independent role, subject and thinking attitude, with portable skills and native test evidence.

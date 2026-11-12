@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1150" viewBox="0 0 1100 1150" role="img" aria-labelledby="title desc">
+  <title id="title">Clarify, review and confirm the current question</title>
+  <desc id="desc">Automatic recognition of Pablo's spoken clarification or the Start question control opens a draft. Further speech refines the draft. Confirm question explicitly approves the visible version into server-side session memory. The confirmed question remains available during reflection and answering. Any previous confirmed question stays unchanged while the draft evolves. Stale or unseen updates must not silently replace approved text.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#365b70" stroke-width="2.3"/></marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #203b4a; }
+      .title { font-size: 30px; font-weight: 700; }
+      .sub { font-size: 21px; fill: #526b79; }
+      .heading { font-size: 23px; font-weight: 700; text-anchor: middle; }
+      .body { font-size: 21px; text-anchor: middle; }
+      .tag { font-size: 18px; font-weight: 700; fill: #26716c; text-anchor: middle; letter-spacing: 1px; }
+      .line { fill: none; stroke: #365b70; stroke-width: 2.6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1100" height="1150" fill="#fbfcfd"/>
+  <text x="50" y="55" class="title">Clarify, review and confirm the question</text>
+  <text x="50" y="90" class="sub">UC-04 · Proposed interaction · Pablo's voice is sufficient</text>
+  <rect x="50" y="125" width="450" height="110" rx="14" fill="#eff7f6" stroke="#397874" stroke-width="2"/>
+  <text x="275" y="166" class="heading">Automatic recognition</text>
+  <text x="275" y="201" class="body">Pablo restates or clarifies aloud</text>
+  <rect x="600" y="125" width="450" height="110" rx="14" fill="#eff7f6" stroke="#397874" stroke-width="2"/>
+  <text x="825" y="166" class="heading">Start question</text>
+  <text x="825" y="201" class="body">Manual reinforcement or override</text>
+  <path d="M275 235 V270 H470 V315" class="line"/>
+  <path d="M825 235 V270 H630 V315" class="line"/>
+  <rect x="275" y="315" width="550" height="145" rx="14" fill="#edf2f8" stroke="#57768d" stroke-width="2.5"/>
+  <text x="550" y="349" class="tag">DRAFT · NOT YET APPROVED</text>
+  <text x="550" y="388" class="heading">Read and refine the candidate</text>
+  <text x="550" y="422" class="body">Previous confirmed question stays unchanged</text>
+  <path d="M275 390 H80 V285 H360 V315" class="line"/>
+  <rect x="90" y="331" width="170" height="48" rx="5" fill="#fbfcfd"/>
+  <text x="175" y="350" text-anchor="middle" font-size="18">Further spoken</text>
+  <text x="175" y="374" text-anchor="middle" font-size="18">clarification</text>
+  <path d="M550 460 V520" class="line"/>
+  <rect x="350" y="520" width="400" height="90" rx="14" fill="#e6f4ef" stroke="#26716c" stroke-width="3"/>
+  <text x="550" y="557" class="heading">Confirm question</text>
+  <text x="550" y="588" class="body">Pablo explicitly approves what he sees</text>
+  <path d="M550 610 V690" class="line"/>
+  <rect x="335" y="634" width="430" height="30" rx="4" fill="#fbfcfd"/>
+  <text x="550" y="655" class="body">Service accepts that visible version</text>
+  <rect x="250" y="690" width="600" height="145" rx="14" fill="#e5f4ee" stroke="#26716c" stroke-width="2.5"/>
+  <text x="550" y="728" class="tag">CONFIRMED CURRENT QUESTION</text>
+  <text x="550" y="770" class="heading">Retain the approved wording</text>
+  <text x="550" y="803" class="body">Authoritative server-side session memory</text>
+  <path d="M550 835 V885" class="line"/>
+  <rect x="170" y="885" width="760" height="105" rx="14" fill="#ffffff" stroke="#95abb6" stroke-width="2"/>
+  <text x="550" y="926" class="heading">Pablo reflects, then answers</text>
+  <text x="550" y="961" class="body">The question remains available; answer strategy comes later</text>
+  <rect x="50" y="1030" width="1000" height="78" rx="10" fill="#fff5df" stroke="#c5a065" stroke-width="1.5"/>
+  <text x="550" y="1061" class="body">Proposed protection: obsolete responses cannot replace approved text.</text>
+  <text x="550" y="1091" class="body">If the visible version cannot be accepted, show the problem and retain prior state.</text>
+</svg>

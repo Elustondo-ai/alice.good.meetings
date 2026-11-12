@@ -1,21 +1,20 @@
 {
   "status": "active",
-  "sprint_id": "SPRINT-000",
-  "objective": "Demonstrate the SpeakerCoach architecture with streaming browser audio, server-side transcription and agent reasoning, validated interview state, and visible server responses using the existing page.",
+  "sprint_id": "SPRINT-002",
+  "objective": "Finish verifying UC-04 (openspec/changes/uc-04-confirm-current-question/) live and reduce agent result rejections, without loosening any Focus rule.",
   "scope": [
     "app.js",
     "index.html",
     "app.md",
     "index.md",
-    ".gitignore",
-    "poc/"
+    "poc/",
+    "openspec/changes/uc-04-confirm-current-question/"
   ],
   "acceptance_criteria": [
-    "The existing browser page streams microphone audio to a local service while server processing continues; display changes are limited to showing POC controls, status, and results.",
-    "A real server-side Agents SDK agent consumes incremental transcription and returns input-dependent question and phase proposals that appear in the browser after controller validation.",
-    "The state controller retains the established question during an answer and rejects invalid or obsolete proposals; manual P events remain declared hints rather than proof of speaker identity.",
-    "Progressive replay uses the same downstream audio interface, excludes future audio and evaluator references from analysis, and produces a meaningful response before replay ends, with delivery and access evidence.",
-    "Start and Stop clean up capture, connections, and pending work; failures show degraded status while preserving the last established question.",
-    "The POC report supplies reproducible steps, processing and browser-render timestamps, observed results, and limitations; the existing benchmark transcript and timestamps remain unchanged."
+    "Live sequence (task 4.1): a scripted live run with only Pablo audible covers a multipart question into Live, Confirm, reflection, an answer with a restatement, the ANSWER phase after Confirm, a new question in Live while Focus holds, a second Confirm and Clear live, recording displayed wording, identities and outcomes.",
+    "Failure cases (task 4.2): stale and retired confirmations, delayed acknowledgements, network loss, late model output and Stop/restart are exercised through browser plus service, with render, commit and transcript times.",
+    "Rejections: the causes of rejected agent results are measured from the text-free audit reasons, and a later live run rejects a smaller share than run 3 (5 of 11) without changing the rule that only Confirm writes Focus.",
+    "Feedback: the Confirmed... message clears once the answer starts, if Pablo confirms that behavior.",
+    "Tests: node --test poc/poc.test.mjs and poc/browser-protocol.mjs pass, and the benchmark transcript and timestamps in eval-data/ stay unchanged."
   ]
 }

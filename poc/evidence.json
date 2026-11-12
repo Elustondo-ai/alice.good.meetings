@@ -1,0 +1,193 @@
+{
+  "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+  "scope": "User-requested browser audio and server-agent proof; broader Sprint 0 remains active",
+  "deterministic_tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "live_browser": {
+    "status": "PASS",
+    "input": "Synthetic speech via Chromium fake microphone",
+    "audio_packets_at_reply": 72,
+    "audio_cutoff_samples": 139200,
+    "agent_started_at": 1792983212006,
+    "agent_finished_at": 1792983213488,
+    "browser_render_ack_at": 1792983213510,
+    "reply": "The question asks about your experience building distributed systems.",
+    "local_color_checks": [
+      "LAND IT / gold",
+      "STOP / red",
+      "GOOD / green"
+    ],
+    "microphone_stopped": true,
+    "audio_context_closed": true,
+    "remaining_server_sessions": 0,
+    "page_errors": []
+  },
+  "unverified": [
+    "Physical microphone and human usability",
+    "Speaker identity and P hints",
+    "Isolated progressive benchmark replay",
+    "Benchmark accuracy and full Sprint 0 acceptance"
+  ],
+  "sprint_sha256": "7b67029aa3117e03c8e24f0a3fbc224a4793045997f4a6a6734eadedb87894b2",
+  "source_hashes": {
+    "app.js": "188dadc7287357a1c6058d7f267e2055b75feb0c3057afab48cd79924ffadeca",
+    "index.html": "6963f1f6cf33385e4175c011d53392723c95090f9760d24d764d61728a5426cc",
+    "app.md": "58cbb512804e3d16a1077b633071c6f944f73961929ed8d256700f19da1228f4",
+    "index.md": "7264245266941e7b3958c597154598a135fe32bf0fc54c2ab247abea893e24c8",
+    ".gitignore": "5a3052e65829246a207ef8a2688334cca7b550f0bc0347a0ebd6d840abfcb245",
+    "poc/.env.example": "bb080f0861dc90b13d11846402cb1bb937e4aa28c68f725457a7682cdc3d376d",
+    "poc/README.md": "2485ae2ea956d80eabab186cb0f5a6d7617111b2f484975f7aba776e1e3872de",
+    "poc/RESULTS.md": "14e199362758ec1d1393902bf5d9d8790f7319bc3825d403419a1b28deaa3897",
+    "poc/agent.md": "46e3c10eaaa5d20a064423d6d4a2ca1cff57d88daa035115b46aaee345ca92f3",
+    "poc/agent.mjs": "43ff0a2c883ece40b2a2c14a6a9f627328d76f6a20100e1bdb65b20424dd8ce3",
+    "poc/audio-worklet.js": "f30f75200f7b6d87359e3dedfe607e0328b7be1e211aa9bf5b7720c0e6d5084f",
+    "poc/audio-worklet.md": "5f9dfa2067de39b499ac51ed2f71a2ac038fa5183a311353d7ebf2ebba6b797f",
+    "poc/browser-smoke.md": "5e8a2c290bb73dfa66771e60624a582671ce60d23e49933e78aa757b44cfa6b0",
+    "poc/browser-smoke.mjs": "053f648832084d0a293015f5f61e79f28c5b90e42e051e5732005be9130c8f7c",
+    "poc/package.json": "91e2d4e71d1cc6cfc663b88a98dca779036909bfc1fb3be0426ecfd9a3e6a116",
+    "poc/pnpm-lock.yaml": "4ab6bc74df417e4e90b9606c8010a1423cc519e184ff676f78278129078a0811",
+    "poc/poc.test.md": "be58d94a33c48a15cfd6730d84f9962d6ef5211e26d3fe5d57f5dd8d2e66ffcf",
+    "poc/poc.test.mjs": "c4b09aab4027c63bea3465490e54abb7702319b6e603b886ab789cb81624c3a0",
+    "poc/server.md": "d9affa327073f37ca5d659572a5762377d544e7ed787524a43c7526261414be3",
+    "poc/server.mjs": "0732aa9a158ef7c979d8e11a9a1ebbc6013e7bbca695c4735f90398a2ccf7db6",
+    "poc/session.md": "e1cc3281e70694a409c1f9ebb026843671bdecd04ba572ef8747f4c30d9ba00b",
+    "poc/session.mjs": "16ba46e7b8e5a3c97bb9e9a58407371b77bf31cb14a7a7f556bdd6c83615c0a8",
+    "poc/start.md": "155c06449914580f5ae60f2b9b97614a202dcdae01c9ce4e11411d886d8643ea",
+    "poc/start.sh": "7f7bf03441afbd22e175aebdba1331596e5b71d23330bc2b84548ce11556b956"
+  },
+  "document_reviews": [
+    {
+      "path": "app.md",
+      "sha256": "58cbb512804e3d16a1077b633071c6f944f73961929ed8d256700f19da1228f4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "8dfac8ed4127e0cbdec4882da377a6f63458b9986b89456ce70afcdc851e17d3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "index.md",
+      "sha256": "7264245266941e7b3958c597154598a135fe32bf0fc54c2ab247abea893e24c8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      },
+      "previous_state": {
+        "sha256": "de9eed6e62dae55efe2a7930a06d0a98d0eaa1b211e21d495581d588606d5812",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "poc/README.md",
+      "sha256": "2485ae2ea956d80eabab186cb0f5a6d7617111b2f484975f7aba776e1e3872de",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      }
+    },
+    {
+      "path": "poc/RESULTS.md",
+      "sha256": "14e199362758ec1d1393902bf5d9d8790f7319bc3825d403419a1b28deaa3897",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      }
+    },
+    {
+      "path": "poc/agent.md",
+      "sha256": "46e3c10eaaa5d20a064423d6d4a2ca1cff57d88daa035115b46aaee345ca92f3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      }
+    },
+    {
+      "path": "poc/audio-worklet.md",
+      "sha256": "5f9dfa2067de39b499ac51ed2f71a2ac038fa5183a311353d7ebf2ebba6b797f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      }
+    },
+    {
+      "path": "poc/browser-smoke.md",
+      "sha256": "5e8a2c290bb73dfa66771e60624a582671ce60d23e49933e78aa757b44cfa6b0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      }
+    },
+    {
+      "path": "poc/poc.test.md",
+      "sha256": "be58d94a33c48a15cfd6730d84f9962d6ef5211e26d3fe5d57f5dd8d2e66ffcf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      }
+    },
+    {
+      "path": "poc/server.md",
+      "sha256": "d9affa327073f37ca5d659572a5762377d544e7ed787524a43c7526261414be3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      }
+    },
+    {
+      "path": "poc/session.md",
+      "sha256": "e1cc3281e70694a409c1f9ebb026843671bdecd04ba572ef8747f4c30d9ba00b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      }
+    },
+    {
+      "path": "poc/start.md",
+      "sha256": "155c06449914580f5ae60f2b9b97614a202dcdae01c9ce4e11411d886d8643ea",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-26T02:54:58.181746+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "SpeakerCoach server POC",
+        "basis": "Current scoped implementation; no human approval inferred"
+      }
+    }
+  ]
+}

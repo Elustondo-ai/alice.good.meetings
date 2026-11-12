@@ -26,4 +26,4 @@ Report missing or stale documentation as review findings; file presence and stru
 `OUT_OF_SCOPE`: outside the owned responsibility; return for coordinator routing.
 `BLOCKED`: missing input, evidence, tool capability or evaluation-mode permission.
 `REVIEW_REQUIRED`: a proposal needs a human decision; no approval is inferred.
-In-scope mutations remain blocked while the native adapter is read-only.
+Save documentation under the client's `docs/` through [shared documentation authority](../../00-governance/docs/documentation-authority.md); application and state mutations retain their gates.

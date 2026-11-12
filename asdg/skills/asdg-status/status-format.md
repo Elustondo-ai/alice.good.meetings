@@ -6,8 +6,8 @@ Use a neutral project voice; the selected specialist remains conversation contex
 
 ## 1. Status lines
 
-Open with a short factual summary and a compact Area / Current status table or equivalent lines.
-Include the relevant project state, structure, stage progress/acceptance, sprint/release, implementation permission and chat focus.
+Start with the compact role/subject/attitude declaration from the session receipt, then a factual summary and Area / Current status table or equivalent lines.
+Include project state, structure, stage progress/acceptance, sprint/release and implementation permission; show goal, role, subject and attitude/scope separately when known.
 Distinguish agent readiness from human acceptance, including review staleness where recorded.
 Reflect explicit user deferrals separately from the CLI's missing-evidence heuristic.
 Include the latest substantive task/result when useful; keep role responsibilities in `$asdg-role`.

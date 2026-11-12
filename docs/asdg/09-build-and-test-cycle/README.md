@@ -6,7 +6,7 @@ This folder will record what a scoped implementation changed and what its tests 
 
 ## SpeakerCoach today
 
-The project has an existing browser prototype, but this stage currently contains no build-and-test report. There is no active application sprint, so this documentation update does not start implementation.
+As of 4 November 2026, SPRINT-001 closed unfinished after three live runs of the [Focus and Live design](../08-low-level-design/03-uc-04-focus-and-live-question.md), and SPRINT-002 is active to finish its live verification. The [live check plan](01-uc-04-live-check-plan.md) scripts run 4. No build-and-test report exists yet.
 
 ## What belongs here as we develop
 

@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+  "scope": "Eight new POC solution guide pages with eight SVG diagrams and a navigation link in poc/README.md. This is a documentation review, not a repository-wide semantic audit or sprint acceptance.",
+  "skill": "asdg/skills/asdg-documentation/SKILL.md",
+  "sprint_sha256": "7b67029aa3117e03c8e24f0a3fbc224a4793045997f4a6a6734eadedb87894b2",
+  "validation": {
+    "result": "PASS",
+    "embedded_visual_position": "Immediately after each page title",
+    "rendering": "Markdown rendered with marked in headless Chrome; 800 px viewport, 700 px embedded image width; every complete page inspected visually. Temporary previews are not durable project evidence.",
+    "local_links": "All local file and image links resolve, including the review receipt created with this record.",
+    "length": "Each new Markdown page is within 50 nonblank source lines.",
+    "source_comparison": "Compared explanations with the current POC implementation and relevant callers; all prior execution-record source hashes still match except the intentional poc/README.md navigation addition.",
+    "repairs": "Shortened the browser diagram capture label, completed the packet protocol diagram, and narrowed the code navigation table header; rerendered and reinspected affected pages.",
+    "new_application_test_runs": false,
+    "new_cloud_requests": false
+  },
+  "visual_checks": [
+    {
+      "path": "poc/docs/01-introduction.md",
+      "nonblank_source_lines": 22,
+      "visual": "poc/docs/images/01-introduction.svg",
+      "visual_sha256": "31532cbc1a043a521e6eccc513d9b53dd0e40315d756bbfcb442358e840a01a7",
+      "explains": "Existing local feedback and server/cloud interpretation work as two paths of the POC.",
+      "inspection": "PASS: inspected the complete rendered Markdown page and embedded SVG at 700 px image width; readable labels, meaningful relationships, no clipping or horizontal overflow.",
+      "markdown_sha256": "3a818b3872d68996202f403ee36d446677073f0f4030726cd268cebb49d17610"
+    },
+    {
+      "path": "poc/docs/02-architecture.md",
+      "nonblank_source_lines": 25,
+      "visual": "poc/docs/images/02-architecture.svg",
+      "visual_sha256": "5b06e8698b1c3b8ca1b3dc0487d8d28348abdd282a5bf56339fdfe9090d28358",
+      "explains": "Browser, one local Node process and two cloud operations, with component ownership and data flow.",
+      "inspection": "PASS: inspected the complete rendered Markdown page and embedded SVG at 700 px image width; readable labels, meaningful relationships, no clipping or horizontal overflow.",
+      "markdown_sha256": "b13cf7e78c17424a9f191af489ecc11f66a83730b9c2388f68fb8354a10eab8c"
+    },
+    {
+      "path": "poc/docs/03-browser-and-audio.md",
+      "nonblank_source_lines": 28,
+      "visual": "poc/docs/images/03-browser-and-audio.svg",
+      "visual_sha256": "afb54196a413e53c5e55be0034f31b38b48222d0a472cc43e5178b7b7168a017",
+      "explains": "One microphone stream branches into immediate local feedback and packetized server audio; Stop cleans resources.",
+      "inspection": "PASS: inspected the complete rendered Markdown page and embedded SVG at 700 px image width; readable labels, meaningful relationships, no clipping or horizontal overflow.",
+      "markdown_sha256": "6eac938fdc61c8de79c375794e992b7698527c71096bbf935916ebd080f5a826"
+    },
+    {
+      "path": "poc/docs/04-server-and-protocol.md",
+      "nonblank_source_lines": 29,
+      "visual": "poc/docs/images/04-server-and-protocol.svg",
+      "visual_sha256": "b0f75bd3bb126ebb6eb48be90cd8dbbbbde203b8612d6d0e1cda6a0a4ac46555",
+      "explains": "Packet header and PCM payload layout, continuity validation, append and speech-turn commit.",
+      "inspection": "PASS: inspected the complete rendered Markdown page and embedded SVG at 700 px image width; readable labels, meaningful relationships, no clipping or horizontal overflow.",
+      "markdown_sha256": "72f1ed9b5637710e446133e3d3478519c064401af6032311e6249bf772d21d85"
+    },
+    {
+      "path": "poc/docs/05-agent-and-state.md",
+      "nonblank_source_lines": 27,
+      "visual": "poc/docs/images/05-agent-and-state.svg",
+      "visual_sha256": "c2ccda2c4585060a9e542886c487a295536d91fe3942d00d87b213d615dae21e",
+      "explains": "Bounded snapshot, model proposal, deterministic acceptance, retained state and browser update.",
+      "inspection": "PASS: inspected the complete rendered Markdown page and embedded SVG at 700 px image width; readable labels, meaningful relationships, no clipping or horizontal overflow.",
+      "markdown_sha256": "4f968313b2d33997fac56a35531bb0b6dee0d66bcb41a86a485f9ed16e742c42"
+    },
+    {
+      "path": "poc/docs/06-code-navigation.md",
+      "nonblank_source_lines": 29,
+      "visual": "poc/docs/images/06-code-navigation.svg",
+      "visual_sha256": "523a397e61e5f767d3d59212e134a1f991f3422a9832f0b11303262c6c77c34c",
+      "explains": "Startup and browser source reading paths converge at the server.",
+      "inspection": "PASS: inspected the complete rendered Markdown page and embedded SVG at 700 px image width; readable labels, meaningful relationships, no clipping or horizontal overflow.",
+      "markdown_sha256": "f5b30547508d7263e554e075e1e16d3453108425f6ba50eb519e5828a90b72bd"
+    },
+    {
+      "path": "poc/docs/07-running-and-verification.md",
+      "nonblank_source_lines": 30,
+      "visual": "poc/docs/images/07-running-and-verification.svg",
+      "visual_sha256": "54b5800bcafc88d6c170c0c23be1f18bac84f1c3a963569d84ea5a631533a815",
+      "explains": "Start, listen, observe and stop; deterministic tests and live browser proof verify different boundaries.",
+      "inspection": "PASS: inspected the complete rendered Markdown page and embedded SVG at 700 px image width; readable labels, meaningful relationships, no clipping or horizontal overflow.",
+      "markdown_sha256": "f8e013fc0f93a31565ff79f4420e3acb999a9822cd27d26fb21a51435d446194"
+    },
+    {
+      "path": "poc/docs/README.md",
+      "nonblank_source_lines": 16,
+      "visual": "poc/docs/images/README.svg",
+      "visual_sha256": "2a1a55f506680df87502cf352c329f31ed013ff2552b125c96d3bdf9e22a447c",
+      "explains": "Reading map from purpose to architecture, execution details, source navigation and verification.",
+      "inspection": "PASS: inspected the complete rendered Markdown page and embedded SVG at 700 px image width; readable labels, meaningful relationships, no clipping or horizontal overflow.",
+      "markdown_sha256": "d76ba3d6f0d9e95c327edec9ccf77422e2e25f863490fe5d84367e9b403398c1"
+    }
+  ],
+  "implementation_baseline": {
+    "path": "poc/evidence.json",
+    "sha256": "ca525980bab0f1bf65d0aa8d009557485b3637dace91c493e9cf759297e57f8c",
+    "source_hashes": {
+      "app.js": "188dadc7287357a1c6058d7f267e2055b75feb0c3057afab48cd79924ffadeca",
+      "index.html": "6963f1f6cf33385e4175c011d53392723c95090f9760d24d764d61728a5426cc",
+      "app.md": "58cbb512804e3d16a1077b633071c6f944f73961929ed8d256700f19da1228f4",
+      "index.md": "7264245266941e7b3958c597154598a135fe32bf0fc54c2ab247abea893e24c8",
+      ".gitignore": "5a3052e65829246a207ef8a2688334cca7b550f0bc0347a0ebd6d840abfcb245",
+      "poc/.env.example": "bb080f0861dc90b13d11846402cb1bb937e4aa28c68f725457a7682cdc3d376d",
+      "poc/RESULTS.md": "14e199362758ec1d1393902bf5d9d8790f7319bc3825d403419a1b28deaa3897",
+      "poc/agent.md": "46e3c10eaaa5d20a064423d6d4a2ca1cff57d88daa035115b46aaee345ca92f3",
+      "poc/agent.mjs": "43ff0a2c883ece40b2a2c14a6a9f627328d76f6a20100e1bdb65b20424dd8ce3",
+      "poc/audio-worklet.js": "f30f75200f7b6d87359e3dedfe607e0328b7be1e211aa9bf5b7720c0e6d5084f",
+      "poc/audio-worklet.md": "5f9dfa2067de39b499ac51ed2f71a2ac038fa5183a311353d7ebf2ebba6b797f",
+      "poc/browser-smoke.md": "5e8a2c290bb73dfa66771e60624a582671ce60d23e49933e78aa757b44cfa6b0",
+      "poc/browser-smoke.mjs": "053f648832084d0a293015f5f61e79f28c5b90e42e051e5732005be9130c8f7c",
+      "poc/package.json": "91e2d4e71d1cc6cfc663b88a98dca779036909bfc1fb3be0426ecfd9a3e6a116",
+      "poc/pnpm-lock.yaml": "4ab6bc74df417e4e90b9606c8010a1423cc519e184ff676f78278129078a0811",
+      "poc/poc.test.md": "be58d94a33c48a15cfd6730d84f9962d6ef5211e26d3fe5d57f5dd8d2e66ffcf",
+      "poc/poc.test.mjs": "c4b09aab4027c63bea3465490e54abb7702319b6e603b886ab789cb81624c3a0",
+      "poc/server.md": "d9affa327073f37ca5d659572a5762377d544e7ed787524a43c7526261414be3",
+      "poc/server.mjs": "0732aa9a158ef7c979d8e11a9a1ebbc6013e7bbca695c4735f90398a2ccf7db6",
+      "poc/session.md": "e1cc3281e70694a409c1f9ebb026843671bdecd04ba572ef8747f4c30d9ba00b",
+      "poc/session.mjs": "16ba46e7b8e5a3c97bb9e9a58407371b77bf31cb14a7a7f556bdd6c83615c0a8",
+      "poc/start.md": "155c06449914580f5ae60f2b9b97614a202dcdae01c9ce4e11411d886d8643ea",
+      "poc/start.sh": "7f7bf03441afbd22e175aebdba1331596e5b71d23330bc2b84548ce11556b956"
+    }
+  },
+  "document_reviews": [
+    {
+      "path": "poc/docs/01-introduction.md",
+      "sha256": "3a818b3872d68996202f403ee36d446677073f0f4030726cd268cebb49d17610",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested visual solution guide",
+        "basis": "Current POC source and callers, companions, historical execution evidence and rendered-page inspection"
+      }
+    },
+    {
+      "path": "poc/docs/02-architecture.md",
+      "sha256": "b13cf7e78c17424a9f191af489ecc11f66a83730b9c2388f68fb8354a10eab8c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested visual solution guide",
+        "basis": "Current POC source and callers, companions, historical execution evidence and rendered-page inspection"
+      }
+    },
+    {
+      "path": "poc/docs/03-browser-and-audio.md",
+      "sha256": "6eac938fdc61c8de79c375794e992b7698527c71096bbf935916ebd080f5a826",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested visual solution guide",
+        "basis": "Current POC source and callers, companions, historical execution evidence and rendered-page inspection"
+      }
+    },
+    {
+      "path": "poc/docs/04-server-and-protocol.md",
+      "sha256": "72f1ed9b5637710e446133e3d3478519c064401af6032311e6249bf772d21d85",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested visual solution guide",
+        "basis": "Current POC source and callers, companions, historical execution evidence and rendered-page inspection"
+      }
+    },
+    {
+      "path": "poc/docs/05-agent-and-state.md",
+      "sha256": "4f968313b2d33997fac56a35531bb0b6dee0d66bcb41a86a485f9ed16e742c42",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested visual solution guide",
+        "basis": "Current POC source and callers, companions, historical execution evidence and rendered-page inspection"
+      }
+    },
+    {
+      "path": "poc/docs/06-code-navigation.md",
+      "sha256": "f5b30547508d7263e554e075e1e16d3453108425f6ba50eb519e5828a90b72bd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested visual solution guide",
+        "basis": "Current POC source and callers, companions, historical execution evidence and rendered-page inspection"
+      }
+    },
+    {
+      "path": "poc/docs/07-running-and-verification.md",
+      "sha256": "f8e013fc0f93a31565ff79f4420e3acb999a9822cd27d26fb21a51435d446194",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested visual solution guide",
+        "basis": "Current POC source and callers, companions, historical execution evidence and rendered-page inspection"
+      }
+    },
+    {
+      "path": "poc/docs/README.md",
+      "sha256": "d76ba3d6f0d9e95c327edec9ccf77422e2e25f863490fe5d84367e9b403398c1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "User-requested visual solution guide",
+        "basis": "Current POC source and callers, companions, historical execution evidence and rendered-page inspection"
+      }
+    },
+    {
+      "path": "poc/README.md",
+      "sha256": "719ecd137b0cb4948d4a8b919cdf008eec8f328b72137433633388747af5100c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-10-27T03:14:51.365678+00:00",
+      "human_approval": null,
+      "provenance": {
+        "task": "Link the visual solution guide",
+        "basis": "Navigation-only addition; historical evidence remains unchanged"
+      },
+      "previous_state": {
+        "sha256": "2485ae2ea956d80eabab186cb0f5a6d7617111b2f484975f7aba776e1e3872de",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    }
+  ],
+  "limits": [
+    "Guide describes the working POC, with incomplete architecture ideas and evaluation limits stated in the introduction and verification page.",
+    "User-reported success is recorded separately from instrumented measurements.",
+    "No application files, ASDG state, historical test evidence or approval history were changed by this documentation task."
+  ],
+  "human_approval": null
+}

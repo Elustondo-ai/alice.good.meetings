@@ -6,13 +6,23 @@ This folder connects desired outcomes to selected release and sprint work. A use
 
 ## SpeakerCoach today
 
-No application sprint is active and no release is declared in the current project state. The existing review reports concern documentation and ASDG evolution; they should not be mistaken for a committed product delivery plan.
+As of 28 October 2026, SPRINT-000 is active for the streaming/agent POC and no release is declared. The existing review reports concern documentation and ASDG evolution; they should not be mistaken for a committed product delivery plan.
 
 ## What belongs here as we develop
 
 Release plans describe a broader delivery objective. Sprint plans select a small, explicit scope within that direction. Both need clear decision status, dependencies and completion criteria.
 
 ## Explore
+
+- [Client-aware initialization](02.15-review-client-aware-initialization.md): `--client codex|claude|both`, thin Claude skill adapters from the shared templates, idempotent repeat setup.
+- [`$asdg-admin` skill](02.14-review-asdg-admin-skill.md): an explicit skill that switches a chat to ASDG Admin, and `clear` back to 00 Governance.
+- [Root AGENTS.md bootstrap and project guidance](02.13-review-root-agents-bootstrap.md): a seven-line ASDG bootstrap first, shared rules under `asdg/`, SpeakerCoach guidance after.
+- [Governance default, ASDG Admin and title sync](02.12-review-governance-admin-and-titles.md): every session has an accountable role, and only Admin changes ASDG rules.
+- [ASDG–OpenSpec proposal wrapper](02.11-review-openspec-proposal-wrapper.md): source-linked planning through the installed native OpenSpec workflow.
+- [Concise role, focus and attitude titles](02.10-review-concise-role-titles.md): the current naming convention, with the thirteen short role labels.
+- [Shorter session names](02.9-review-short-session-names.md): role and attitude in titles, with NoAttitude and NoFocus for unset selections.
+- [Attitude and session naming review](02.8-review-attitude-and-session-naming.md): independent role, subject and thinking attitude, with portable skills and native test evidence.
+- [Shared documentation authority review](02.7-review-documentation-authority.md): every agent can save documents while code and approval gates remain separate.
 
 - [ASDG evolution task list](03-asdg-evolution-tasks.md): methodology work and its recorded sequencing.
 - [Continuation increment review](current/reviews/asdg-continuation-increment-01.md): evidence from that methodology increment.
