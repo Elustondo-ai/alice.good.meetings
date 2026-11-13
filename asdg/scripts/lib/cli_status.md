@@ -11,7 +11,7 @@ Combines structure, lifecycle evidence, review freshness and sprint scope into o
 ![State + artifacts + structure → Read-only status evaluator → CLI / dashboard / guard](images/cli_status-flow.svg)
 
 - [cli_project](cli_project.md): Inspects installed structure.
-- Exact comparison with the packaged Context introduction recognizes new scaffolding; legacy scaffolds remain supported and edited introductions count as content.
+- Exact comparison with the packaged Context introduction recognizes new scaffolding; exact previously shipped introductions remain recognized across upgrades and edited introductions count as content.
 - [cli_policy](cli_policy.md): Computes scope permission.
 - [purpose_review](purpose_review.md): Checks Purpose acceptance.
 - [stage_review](stage_review.md): Checks other stage acceptance.
@@ -41,3 +41,5 @@ Read/validation failures appear in errors and block implementation. Missing evid
 ## Example
 
 `python3 asdg/scripts/cli.py status --json` exposes the factual snapshot without coordinator advice.
+
+Lifecycle rules and their baseline resolve from standalone source root or embedded consumer `asdg/`, preserving the same thirteen roles and twelve stages.

@@ -26,6 +26,14 @@ A known selection with unavailable guidance remains selected but blocked; Status
 State the latest substantive task and observed result, not this status request or an invented cross-chat activity.
 Retain the last actual title-update receipt; do not infer UI visibility or focus from the title alone.
 
+## After initialization — use the team receipt
+
+Successful canonical Init prepares the team through [Create team](../asdg-create-team/initialization.md); do not recommend a second setup when readiness is confirmed.
+Reuse verified team receipts from this chat. Native read-only discovery may inspect the verified project's roster using Create team's reuse criteria; titles alone never prove readiness.
+A file-only installation or partial native failure is incomplete initialization. Report the exact missing capability or unresolved roles and recommend resuming the canonical Init team phase, preserving confirmed chats.
+Unknown inventory stays unknown. Claude readiness means installed role adapters and Governance source loading, with manual specialist Focus; do not require Codex chats there.
+Use ordinary project-wide Suggestion once to recommend the next project contribution after readiness; do not create chats, start analysis or change session role on a Status request.
+
 ## Explain status without mixing roles
 
 Use this order: compact status lines/table, Project-wide next step, then Observations and technical debt.

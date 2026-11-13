@@ -9,11 +9,19 @@ from pathlib import Path
 from cli_files import Conflict, read_bytes, safe_path
 
 PREFIX = Path('docs/asdg/02-purpose')
-DOCUMENTS = ('01-purpose.md', '02-current-capabilities.md', '03-planned-improvements.md')
-LEGACY_DOCUMENTS = ('01-purpose.md', 'current/02-current-capabilities.md',
-                    'planned-release/03-planned-improvements.md')
-CRITERIA = ('purpose', 'outcomes', 'boundaries', 'current_evidence', 'next_improvement',
-            'acceptance_questions', 'visual', 'documentation')
+PURPOSE_DOCUMENT = '01-purpose.md'
+# Supplements of the retired perspective layouts. Unchanged registrations of these
+# still review and hash normally; ASDG no longer generates them.
+LEGACY_FLAT_DOCUMENTS = ('02-current-capabilities.md', '03-planned-improvements.md')
+LEGACY_NESTED_DOCUMENTS = ('current/02-current-capabilities.md',
+                           'planned-release/03-planned-improvements.md')
+# Purpose readiness assesses the definition itself, independent of evidence and plans.
+CRITERIA = ('purpose', 'outcomes', 'boundaries', 'coherence', 'acceptance_questions',
+            'visual', 'documentation')
+# Readiness histories recorded under the earlier rule remain valid input, never new output.
+LEGACY_CRITERIA = ('purpose', 'outcomes', 'boundaries', 'current_evidence', 'next_improvement',
+                   'acceptance_questions', 'visual', 'documentation')
+CRITERIA_SETS = (frozenset(CRITERIA), frozenset(LEGACY_CRITERIA))
 
 
 def validate_reviews(reviews: list) -> None:
@@ -34,9 +42,8 @@ def validate_reviews(reviews: list) -> None:
         hashes = event['artifacts']
         if not isinstance(hashes, dict) or not hashes:
             raise Conflict('Purpose reviews require exact artifact hashes.')
-        layouts = (DOCUMENTS, LEGACY_DOCUMENTS)
-        if not any({str(PREFIX / name) for name in (*layout, 'README.md')} <= hashes.keys()
-                   for layout in layouts):
+        required = {str(PREFIX / name) for name in (PURPOSE_DOCUMENT, 'README.md')}
+        if not required <= hashes.keys():
             raise Conflict('Purpose review omits a required document.')
         for name, digest in hashes.items():
             path = Path(name)
@@ -49,7 +56,7 @@ def validate_reviews(reviews: list) -> None:
         if decision == 'READY_FOR_ACCEPTANCE':
             criteria = event['criteria']
             if (event['actor'] != 'ASDG-02' or not isinstance(criteria, dict)
-                    or set(criteria) != set(CRITERIA)
+                    or frozenset(criteria) not in CRITERIA_SETS
                     or any(not isinstance(v, str) or not v.strip() for v in criteria.values())):
                 raise Conflict('Agent readiness requires evidence for every Purpose criterion.')
             ready.append(hashes)
@@ -60,9 +67,10 @@ def validate_reviews(reviews: list) -> None:
 
 def bundle_hashes(root: Path, files: list[str]) -> dict[str, str]:
     """Read the reviewed documents, navigation and their local image dependencies."""
-    required = {str(PREFIX / name) for name in DOCUMENTS}
-    if not required <= set(files):
-        raise Conflict('Register all three Purpose concept documents before review.')
+    if str(PREFIX / PURPOSE_DOCUMENT) not in files:
+        raise Conflict('Register the Purpose statement before review.')
+    if any('..' in Path(name).parts or not Path(name).is_relative_to(PREFIX) for name in files):
+        raise Conflict('Register only artifacts inside the Purpose evidence folder.')
     names = set(files) | {str(PREFIX / 'README.md')}
     image_found = False
     for name in sorted(names.copy()):
@@ -81,7 +89,7 @@ def bundle_hashes(root: Path, files: list[str]) -> dict[str, str]:
                 raise Conflict('Purpose images require alt text and a path inside the stage images/ folder.')
             safe_path(root, dependency)
             names.add(dependency.as_posix())
-            if name == str(PREFIX / DOCUMENTS[0]):
+            if name == str(PREFIX / PURPOSE_DOCUMENT):
                 image_found = True
         for target in re.findall(r'\]\(([^)]+)\)', text):
             if '://' in target or target.startswith('#'):

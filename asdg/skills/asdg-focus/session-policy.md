@@ -41,14 +41,14 @@ Unknown project does not block a role interview; project-specific work requires 
 ## Authority and utilities
 
 All attitudes preserve honesty, role boundaries and code, approval and state-transition gates.
-Every agent may save relevant documentation under the client's `docs/` through [shared documentation authority](../../00-governance/docs/documentation-authority.md); documents are the default handoff.
+Every role may read broadly and save documentation within its assigned ownership through [shared documentation authority](../../00-governance/docs/documentation-authority.md); documents are the default handoff.
 Purpose's two-gate review recording and explicit [Approve](../asdg-approve/SKILL.md) retain their separate documentation-acceptance contracts.
 Human-directed [Sprint start](../asdg-sprint-start/SKILL.md), [review](../asdg-sprint-review/SKILL.md) and [close](../asdg-sprint-close/SKILL.md) keep only their stated permissions.
 Mode changes, selected hats, agent readiness and successful structural checks never imply human approval or effective runtime enforcement.
 [Status](../asdg-status/SKILL.md) reports project facts and separate session fields; it never reactivates a role or silently renames.
 Direct Suggestion follows the selected role; Status requests project-wide advice under [continuation](../../00-governance/docs/continuation.md).
 An advisory recommendation can suggest a different role, subject or attitude but cannot activate it.
-Explicit [Create team](../asdg-create-team/SKILL.md) permits initial role-chat creation, preserving the caller's fields and existing peers.
+Explicit [Create team](../asdg-create-team/SKILL.md), or APPROVE of an exact Init plan including team effects, permits initial role-chat creation, preserving the caller's fields and existing peers.
 Routing verifies project, role, subject and stable thread ID; report ambiguous candidates without silently choosing a title match.
 
 ## Current-chat title and acceptance

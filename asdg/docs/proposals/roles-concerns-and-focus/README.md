@@ -37,4 +37,4 @@ Begin with same-chat focus. Introduce parallel investigation only when useful an
 The user endorsed the vocabulary and asked for a complete strategy; the mechanisms below remain recommendations.
 Review the separation of role and concern, the switching safeguard, and the initial Data/Security/Cost pilot.
 No runtime skill, role catalogue, team chat, application behavior or lifecycle approval is changed by this proposal.
-Evidence and review limits are recorded in [the review report](../../../../docs/asdg/07-planning/02.6-review-concern-strategy.md).
+The originating client's review is `docs/asdg/07-planning/02.6-review-concern-strategy.md` in Speaker Coach at the source commit recorded in distribution metadata; it is historical evidence, not a portable dependency.

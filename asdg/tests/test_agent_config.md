@@ -25,3 +25,5 @@ All test_* methods take self and return None; unittest reports assertion failure
 ## Example
 
 From the project root: `TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p 'test_agent_config.py'`.
+
+The maintained adapter fixture is resolved directly from this methodology core, independent of whether it is source root or embedded under `asdg/`.

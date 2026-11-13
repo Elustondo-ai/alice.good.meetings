@@ -6,7 +6,7 @@ Checks reusable ASDG files for structural problems before they are used or packa
 
 ## Responsibilities and collaborators
 
-Validates catalogue/rules, role adapters, Python 3.9 syntax, Markdown size/links and optional delivery hashes.
+Validates the selected portable catalogue/rules, role adapters, Python 3.9 syntax, Markdown size/links and optional candidate hashes.
 
 ![Embedded files + optional manifest → Static package checks → Issue list / exit status](images/check-flow.svg)
 
@@ -14,6 +14,7 @@ Validates catalogue/rules, role adapters, Python 3.9 syntax, Markdown size/links
 - [cli_model](lib/cli_model.md): Validates the catalogue.
 - [cli_status](lib/cli_status.md): Checks lifecycle rules.
 - [documentation](lib/documentation.md): Counts Markdown source lines.
+- [distribution_files](lib/distribution_files.md): Resolves the explicit, safe portable file list.
 
 ## Interface and data
 
@@ -21,13 +22,15 @@ validate takes core:Path and integrity:bool and returns list[str] of issues. COR
 
 | Callable or interface | Contract |
 | --- | --- |
-| `validate(core=CORE, integrity=False)` | Walks package files and returns all detected issues; optional integrity compares every delivered file hash with MANIFEST.json. |
+| `validate(core=CORE, integrity=False)` | Checks selected package files and link closure; optional integrity compares their hashes and version with MANIFEST.json. |
 | `main()` | Parses --integrity, prints failures with exit 1 or a validation summary with exit 0. |
 
 ## Effects and failure behavior
 
-This is a static check, not proof of live agent behavior or semantic completeness. The current working package has known external presentation links flagged as escaping the client. An evolved checkout can differ from the delivery manifest without implying corruption.
+This is a static check, not proof of live agent behavior or semantic completeness. A link must resolve inside the selected package even when an excluded provider file exists locally. Historical delivery manifests are retained separately; integrity checks the current candidate.
 
 ## Example
 
-`python3 asdg/scripts/check.py` checks structure and links; add --integrity only when comparing to the delivered package baseline.
+`python3 asdg/scripts/check.py` checks structure and links; add `--integrity` before building or checking an extracted distribution.
+
+Source validation projects files into a logical installed `asdg/` layout, independent of the source checkout’s directory name; consumer catalogue paths remain unchanged.

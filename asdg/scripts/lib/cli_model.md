@@ -14,7 +14,8 @@ Resolves the embedded project root through Git and validates the thirteen canoni
 
 ## Interface and data
 
-Catalogue rows are dictionaries with stage, native_name, role_id, folder, entry and title. Constants include REPO, VERSION, CATALOG, ARTIFACTS and BINDING. The legacy PERSPECTIVES mapping still names intended/planned; current folder creation is owned by cli_project.
+Catalogue rows are dictionaries with stage, native_name, role_id, folder, entry and title. Constants include REPO, VERSION, CATALOG, ARTIFACTS and BINDING. Stage folder creation is owned by cli_project, which creates no perspective directories.
+VERSION is `0.3.0-pilot.4` and matches the candidate in `metadata/distribution.json`; an older client binding is refused until a reviewed upgrade reconciles it.
 
 | Callable or interface | Contract |
 | --- | --- |
@@ -34,3 +35,5 @@ Malformed catalogue/root data raises Conflict or parse errors. Missing Git and t
 ## Example
 
 `agent_by_name('02')` returns the Purpose role definition; it does not activate an agent.
+
+Standalone source resolves its catalogue at repository root; embedded clients retain the catalogue’s `asdg/` paths. `distribution_core(repo)` resolves those two filesystem layouts without changing role identities.

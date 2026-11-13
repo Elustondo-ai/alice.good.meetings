@@ -5,11 +5,16 @@ description: Set up ASDG governance and twelve specialist chats in the current C
 
 # ASDG create team
 
-Give the user thirteen project chats: governance 00 and specialists 01–12, each with its own conversation focus.
+In Codex, give the user thirteen project chats: governance 00 and specialists 01–12, each with its own conversation focus.
 These are user-owned chats sharing one repository; creating them does not assign project work or start a sprint.
+For initialization, follow [init integration](initialization.md); it reuses this workflow, never a second team implementation.
 Read client instructions and [session policy](../asdg-focus/session-policy.md); preserve this chat's focus.
-A request to create the team, including invoking this skill for setup, authorizes the missing chats and their initial Focus prompts.
-Automatic skill discovery, a status request or editing the skill is not a request to create chats.
+A request to create the team, including invoking this skill for setup, authorizes the missing chats, their initial Focus prompts and project-local ordering below, subject to the shared-preference approval gate.
+An exact approved Init plan explicitly including team effects also authorizes those effects; discovery, status or editing this skill does not.
+
+## Client mode
+
+Codex uses native project chats below. Claude prepares the thirteen roles through canonical sources and generated skill adapters; no native Claude chat automation is supported. Verify those sources, load Governance for a new project chat and offer manual specialist Focus. Do not call Codex tools for a Claude-only target.
 
 ## Resolve the project and roles
 
@@ -35,19 +40,9 @@ Keep the role-to-chat mapping in this conversation; do not create shared active-
 
 ## Create the missing chats
 
-Use native `create_thread` for each confirmed missing role, in small batches, with the verified project ID and local environment.
-Omit model and reasoning overrides; honor any explicit user preferences. Do not create worktrees, subagents or cloud tasks.
-Let each new chat compose its title through [the current title contract](../asdg-focus/rename-chat.md): short role, optional focus, optional attitude; keep the project binding in its receipt.
-Each initial prompt must explicitly request `$asdg-focus` with its verified absolute path and that chat's catalogue role ID; no per-role picker skill is needed.
-State the project root and request only activation, its required read-only opening/status, a brief role confirmation, then waiting for the user.
-New chats start with subject NoFocus and attitude NoAttitude unless the user explicitly assigns them; never copy the caller's attitude or overwrite a reused chat's fields.
-State that team setup assigns no documentation or application work; preserve role boundaries, existing files, approvals and sprint state.
-A new chat has no inherited conversation history: pass relevant explicit user constraints with provenance, not a fabricated approval.
-Do not ask the new chats to create peers, message this chat, run a project task or continue autonomously.
-Retain each returned thread ID and host. After dispatch, use bounded `wait_threads` calls for up to eight targets, at most 60 seconds per wait.
-Creation success is not focus activation: confirm the returned progress/receipt or report activation pending or failed.
-For an uncertain creation outcome, inspect native inventory before retrying; never blindly create a duplicate.
-Stop further creation after a shared permission or service failure; retain successes and report remaining roles.
+Follow [missing-chat creation](create-chats.md); retain confirmed role-to-chat IDs before ordering.
+
+Follow [sidebar ordering](ordering.md) after confirming the roster.
 
 ## Show the team
 

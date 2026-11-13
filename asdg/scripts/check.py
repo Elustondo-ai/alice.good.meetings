@@ -16,19 +16,21 @@ from agent_config import loads
 from cli_model import catalogue
 from cli_status import lifecycle_rules
 from documentation import nonblank_source_lines
+from distribution_files import MANIFEST, package_files
 
 
 def validate(core=CORE, integrity=False):
     issues = []
     root = core.parent
     try:
-        agents, _ = catalogue(root)
-        lifecycle_rules(root)
+        selected = package_files(core)
+        agents, _ = catalogue(core)
+        lifecycle_rules(core)
     except (OSError, ValueError, KeyError, TypeError) as exc:
         return ['Invalid catalogue/rules: ' + str(exc)]
     for row in agents:
         for field in ('entry', 'skill'):
-            if not (root / row[field]).is_file():
+            if not (core / row[field].removeprefix('asdg/')).is_file():
                 issues.append('Missing role source: ' + row[field])
         adapter = core / 'templates' / row['adapter']
         try:
@@ -42,11 +44,9 @@ def validate(core=CORE, integrity=False):
                 issues.append('Obsolete standalone agent sandbox setting: ' + str(adapter))
         except (OSError, ValueError) as exc:
             issues.append('Invalid adapter: ' + str(exc))
-    for path in sorted(core.rglob('*')):
-        if path.is_symlink():
-            issues.append('Unexpected symlink: ' + str(path.relative_to(core)))
-        if not path.is_file():
-            continue
+    logical_core = root / 'asdg'
+    selected_set = {logical_core / p.relative_to(core) for p in selected}
+    for path in selected:
         if path.suffix == '.py':
             try:
                 ast.parse(path.read_text(), filename=str(path), feature_version=(3, 9))
@@ -60,7 +60,7 @@ def validate(core=CORE, integrity=False):
         if path.name == 'SKILL.md':
             if not re.match(r'\A---\nname: [a-z0-9-]+\ndescription: .+\n---\n', text):
                 issues.append('Invalid skill front matter: ' + str(path.relative_to(core)))
-        virtual = root / path.relative_to(core / 'templates') if path.is_relative_to(core / 'templates') else path
+        virtual = root / path.relative_to(core / 'templates') if path.is_relative_to(core / 'templates') else logical_core / path.relative_to(core)
         for link in re.findall(r'\]\(([^)]+)\)', text):
             link = link.split('#')[0]
             if not link or '://' in link or link.startswith('mailto:'):
@@ -69,19 +69,23 @@ def validate(core=CORE, integrity=False):
             if not target.is_relative_to(root):
                 issues.append('Link escapes client: ' + str(path.relative_to(core)) + ': ' + link)
                 continue
-            template_target = core / 'templates' / target.relative_to(root)
-            if not target.exists() and not template_target.exists():
-                issues.append('Broken link: ' + str(path.relative_to(core)) + ': ' + link)
+            template_target = logical_core / 'templates' / target.relative_to(root)
+            candidates = (target, template_target)
+            if not any(candidate in selected_set or any(candidate in p.parents for p in selected_set)
+                       for candidate in candidates):
+                issues.append('Link missing from package: ' + str(path.relative_to(core)) + ': ' + link)
     if integrity:
         try:
             manifest = json.loads((core / 'metadata/MANIFEST.json').read_text())
             expected = manifest['files']
             actual = {p.relative_to(core).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
-                      for p in core.rglob('*') if p.is_file() and p != core / 'metadata/MANIFEST.json'
-                      and '__pycache__' not in p.parts and p.suffix != '.pyc'}
+                      for p in selected if p != core / MANIFEST}
+            metadata = json.loads((core / 'metadata/distribution.json').read_text())
+            if manifest.get('version') != metadata.get('version'):
+                issues.append('Manifest version differs from distribution metadata.')
             for path in sorted(set(expected) | set(actual)):
                 if expected.get(path) != actual.get(path):
-                    issues.append('Delivery manifest differs: ' + path)
+                    issues.append('Package manifest differs: ' + path)
         except (OSError, ValueError, KeyError, TypeError) as exc:
             issues.append('Unavailable/invalid delivery manifest: ' + str(exc))
     return issues

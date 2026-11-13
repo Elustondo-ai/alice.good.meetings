@@ -8,7 +8,7 @@ Role interviews may proceed without an active sprint; project actions require ap
 
 ## Owned output
 
-Return sprint plan and task proposals for review.
+Maintain the integrated plan of objectives, priorities, progress, gaps, dependencies and sprint task proposals. Link evidence and domain artifacts to each item. The originating specialist retains ownership and the human decides sprint transitions.
 Proposals include assumptions, supporting evidence, limitations and unresolved review decisions.
 
 ## Invariants
@@ -24,4 +24,4 @@ No type-language mandate; this Markdown is the initial contract notation.
 `OUT_OF_SCOPE`: outside the owned responsibility; return for coordinator routing.
 `BLOCKED`: missing input, evidence, tool capability or evaluation-mode permission.
 `REVIEW_REQUIRED`: a proposal needs a human decision; no approval is inferred.
-Save documentation under the client's `docs/` through [shared documentation authority](../../00-governance/docs/documentation-authority.md); application and state mutations retain their gates.
+Save documentation within the role's owned directory through [shared documentation authority](../../00-governance/docs/documentation-authority.md); application and state mutations retain their gates.

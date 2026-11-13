@@ -22,11 +22,11 @@ PortableTests extends unittest.TestCase. Test methods use per-test state; simula
 | Callable or interface | Contract |
 | --- | --- |
 | `snapshot(root: Path) -> dict[str,str]` | Hashes files outside .git to compare before/after content. |
-| `setUp() -> None` | Copies the package to a disposable client, initializes Git and seeds app files; registers cleanup. |
+| `setUp() -> None` | Copies only files selected for the portable ZIP to a disposable client, seals disposable package hashes, initializes Git and seeds app files; registers cleanup. |
 | `run_cli(*args, entry='cli.py', expect=0, cwd=None) -> CompletedProcess` | Runs the local entry with a timeout and asserts the expected exit code. |
-| `init(*args, **kw) -> CompletedProcess` | Convenience wrapper around run_cli with init.py. |
+| `init(*args, **kw) -> CompletedProcess` | Fixture-only helper: obtains a preview token, then explicitly applies it; dry-run and rejection cases never apply. |
 | `active() -> None` | Starts the fixture's S1 sprint scoped to app.js. |
-| `hook(payload, event='PreToolUse', cwd=None) -> dict` | Runs the fixture's configured hook with JSON input and parses its response. |
+| `hook(payload, event='PreToolUse', cwd=None, role='ASDG-09', context=None) -> dict` | Runs the configured hook with synthetic session-bound role context and parses its response. |
 | `payload(paths) -> dict; denied(payload) -> None` | Constructs patch inputs and asserts hook denial. |
 | `bootstrap_module() -> module` | Imports the copied `cli_project` so tests compare against the exact `BRIDGE` and `LEGACY_BRIDGES`. |
 
@@ -38,10 +38,10 @@ Attitude discovery and its receipt guides survive relocation; repeat initializat
 OpenSpec wrapper installation survives relocation and repeat setup while preserving a separately installed upstream skill, OpenSpec configuration, ASDG state, hooks and application bytes; it creates no proposal.
 Status reports whether a new session can start under the default 00 Governance role; a missing coordinator source or a managed block without the `asdg/AGENTS.md` link blocks it and blocks implementation.
 Root `AGENTS.md` starts with the generic bootstrap; project text after it survives setup byte-for-byte, the three earlier blocks move to the top, and edited, moved or duplicated blocks conflict without writes.
-Every guarded write, documentation included, needs a READY governance bootstrap; docs still need no sprint, and read-only commands stay available. Admin preflight rejects an invalid package with a specific message.
+Every guarded write, documentation included, needs a READY governance bootstrap; owned docs still need no sprint, and read-only commands stay available. Admin preflight rejects an invalid package with a specific message.
 Client selection installs only the chosen Codex or Claude integration, adds clients without touching the other, repeats without changes and records legacy installations explicitly.
 The `$asdg-admin` skill adapter installs and relocates with implicit invocation off. ASDG Admin is registered outside the 13-role catalogue; the guard denies an in-sprint patch to an ASDG rule regardless of claimed role.
-A text check confirms the session and role instructions define no role-None path or old maintainer allowance; it does not show that an agent obeys them.
+A text check covers selected package instructions, excluding historical proposals and unshipped provider archives; it rejects old maintainer allowances but does not prove agent compliance.
 In a relocated client, the GUI visual rule, its diagram and resolving links from the all-role instructions, standard, review criteria, runtime contract and documentation skill remain present.
 `test_dry_run_then_init_repeat_is_byte_identical` also checks portable stage introductions, embedded diagrams, empty Context recognition, absence of perspective directories and preservation on repeat setup.
 
@@ -53,4 +53,9 @@ Documentation guard cases exercise docs-only and mixed patches, absent/malformed
 
 ## Example
 
-From the project root: `TMPDIR=/private/tmp python3 -B -m unittest discover -s asdg/tests -p 'test_portable.py'`.
+From the project root: `python3 -B -m unittest discover -s asdg/tests -p 'test_portable.py'`.
+
+Completion guidance tests require canonical team completion before the Governance Status assessment; preview emits no next-step offer, and repeat setup preserves state. They do not demonstrate native chat creation or a Context interview.
+
+Init now previews canonical team effects; Python reports client completion pending. The canonical Init skill completes native team validation and Governance Status under the displayed plan’s approval. Native behavior requires separate client observation.
+Fresh initialization checks the twelve human-facing names, unchanged stage links and absence of mandatory perspective families.

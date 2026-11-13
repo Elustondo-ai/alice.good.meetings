@@ -5,13 +5,31 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from pathlib import Path
 
 sys.dont_write_bytecode = True
 from cli_files import Conflict, safe_path
 from cli_model import COMMAND, REPO, SHORT_COMMAND, VERSION, agent_by_name, catalogue, project_root, require_python
-from cli_project import initialize, inspect
+from cli_project import inspect
 from cli_sprint import check_implementation, start, stop
 from cli_status import project_status, render_next, render_status
+
+
+def evaluate_write(root, paths, context, *, provider_assignment=None):
+    """Evaluate client writes or the scope of an operator-reviewed provider patch."""
+    if context.get('workflow') == 'provider-component':
+        core = Path(__file__).resolve().parents[2]
+        if root != core or not (core / '.git').exists() or (core / '.asdg').exists():
+            return False, 'Provider assignment requires the standalone provider checkout.'
+        if provider_assignment is None:
+            return False, 'Use the operator patch review in the standalone provider.'
+        from provider_component.policy import evaluate
+        return evaluate(root, paths, context, provider_assignment)
+    from cli_ownership import ownership_decision
+    allowed, reason, application = ownership_decision(root, paths, context)
+    if allowed and application:
+        return check_implementation(root, application, guidance=True)
+    return allowed, reason
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -20,6 +38,18 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog=SHORT_COMMAND, description=__doc__)
     parser.add_argument('--version', action='version', version=f'{COMMAND} {VERSION}')
     sub = parser.add_subparsers(dest='operation', required=True)
+    for name in ('promote', 'upgrade'):
+        sync = sub.add_parser(name, help='Preview or explicitly apply local methodology synchronization')
+        sync.add_argument('--source', required=True, help='source Git repository root')
+        sync.add_argument('--target', required=True, help='target Git repository root')
+        mode = sync.add_mutually_exclusive_group(required=True)
+        mode.add_argument('--dry-run', action='store_true', help='inspect without writing')
+        mode.add_argument('--apply', action='store_true', help='apply the reviewed, conflict-free plan')
+        sync.add_argument('--plan', help='exact plan digest returned by a reviewed dry run; required with --apply')
+        sync.add_argument('--json', action='store_true', help='machine-readable preview or result')
+    write = sub.add_parser('check-write', help='Read-only ownership and separate sprint preflight')
+    write.add_argument('--context', required=True, help='JSON declaration from this conversation; never a title')
+    write.add_argument('--path', action='append', required=True, help='every source and destination; repeatable')
     sprint = sub.add_parser('sprint', help='Manage authoritative project sprint state')
     sprint_actions = sprint.add_subparsers(dest='action', required=True)
     sprint_status = sprint_actions.add_parser('status')
@@ -38,7 +68,14 @@ def main(argv: list[str] | None = None) -> int:
         if name == 'init':
             command.add_argument('--project-status', choices=('new', 'defining', 'defined'), default=None,
                                  help='initial declaration only; defaults to new, preserves existing state')
-            command.add_argument('--dry-run', action='store_true', help='preflight all destinations without writing')
+            mode = command.add_mutually_exclusive_group()
+            mode.add_argument('--dry-run', action='store_true', help='preview without writing (the default)')
+            mode.add_argument('--apply', action='store_true', help='apply only a reviewed plan')
+            command.add_argument('--plan', help='exact preview token; required with --apply')
+            command.add_argument('--team-inventory', help='JSON file containing native inventory verified by the canonical Create team workflow')
+            command.add_argument('--source', help='existing canonical clone root; run its own entry point')
+            command.add_argument('--commit', help='explicit full commit ID of the canonical clone')
+            command.add_argument('--target', help='existing target Git root; defaults to caller project')
             command.add_argument('--client', choices=('codex', 'claude', 'both'), default=None,
                                  help='client integration to add; repeat setup without it keeps the recorded clients (Codex if none)')
         if name == 'status':
@@ -62,6 +99,19 @@ def main(argv: list[str] | None = None) -> int:
         if args.json and not args.advise:
             parser.error('--json --verbose requires --advise; plain --json never invokes the coordinator')
     try:
+        if args.operation == 'check-write':
+            context = json.loads(args.context)
+            if not isinstance(context, dict):
+                raise Conflict('Write context must be a JSON object.')
+            allowed, reason = evaluate_write(REPO, args.path, context)
+            print(reason)
+            return 0 if allowed else 1
+        if args.operation in ('promote', 'upgrade'):
+            from cli_sync import synchronize, render
+            result = synchronize(args.operation, args.source, args.target,
+                                 apply=args.apply, expected_plan=args.plan)
+            print(json.dumps(result, indent=2) if args.json else render(result))
+            return 1 if result['counts']['conflicting'] else 0
         if args.operation == 'agent':
             agents, _ = catalogue()
             if args.action == 'list':
@@ -75,6 +125,13 @@ def main(argv: list[str] | None = None) -> int:
                 item = agent_by_name(args.name)
                 print(f"Definition: {item['native_name']} ({item['role_id']})\n")
                 print(safe_path(REPO, item['entry']).read_text(encoding='utf-8'))
+            return 0
+        if args.operation == 'init':
+            from cli_install import install, render
+            report = install(source=args.source, target=args.target, commit=args.commit, client=args.client,
+                             project_state=args.project_status, apply_changes=args.apply, expected_plan=args.plan,
+                             team_inventory=json.loads(Path(args.team_inventory).read_text(encoding='utf-8')) if args.team_inventory else None)
+            print(json.dumps(report, indent=2) if args.json else render(report))
             return 0
         root = project_root()
         if args.operation == 'dashboard':
@@ -142,29 +199,13 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"Objective: {state['objective']}")
                 print('ALL GOOD!')
             return 0
-        if args.operation == 'init':
-            report = initialize(root, project_state=args.project_status, dry_run=args.dry_run, client=args.client)
-            if args.dry_run:
-                print(json.dumps(report, indent=2) if args.json else
-                      f"Preflight passed: {len(report['planned_files'])} files planned; no files changed.")
-                return 0
-            report.update(inspect(root))
-        else:
-            report = inspect(root)
+        report = inspect(root)
         if args.json:
             print(json.dumps(report, indent=2))
-        elif args.operation in ('init', 'verify'):
+        elif args.operation == 'verify':
             if report['structure_ok']:
-                print('ASDG initialized and verified.' if args.operation == 'init'
-                      else 'ASDG structure verified.')
+                print('ASDG structure verified.')
                 print('ALL GOOD!')
-                if args.operation == 'init':
-                    for note in report.get('notes', []):
-                        print(f'NOTE: {note}')
-                    recorded = report.get('clients_recorded', [])
-                    command = ' or '.join(prefix + 'asdg-status' for client, prefix in (('codex', '$'), ('claude', '/'))
-                                          if client in recorded) or '$asdg-status'
-                    print(f'Next: use {command} to inspect project facts and receive a project-wide next step.')
             else:
                 print('ASDG initialization failed.' if args.operation == 'init'
                       else 'ASDG verification failed.', file=sys.stderr)

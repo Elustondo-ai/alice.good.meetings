@@ -1,38 +1,57 @@
 ---
 name: asdg-init
-description: Initialize or verify the embedded ASDG distribution in an explicitly identified client Git repository. Use only for a direct installation request; never for application implementation, role activation or migration from a linked provider.
+description: Preview and explicitly apply ASDG initialization from an extracted package or verified local canonical clone. Use only for a direct installation request; includes approved initial team activation; never for application implementation or migration from a linked provider.
 ---
 
-# Initialize embedded ASDG
+# Initialize ASDG using one Python engine
 
-Read [the installation contract](../../docs/installation.md), [client integrations](../../docs/client-integrations.md) and client root instructions.
-Resolve this distribution from this file: `../..` is `asdg/`, `../../..` is the client root.
-Verify the caller identified this client and its existing Git root; do not use a sibling provider.
-Keep current source, documents, configuration and state. Do not initialize Git or install dependencies.
-Before a first install, offer two optional questions together, using answers already supplied rather than asking again:
-- What is this project for? A rough sentence is enough.
-- Are we starting from scratch, extending an existing project, integrating with other systems, or a combination?
-Say explicitly: “Answer either, both, or say skip, not sure, or initialize now.” No explanation is required to skip.
-An explicit skip or request to initialize immediately proceeds without questions; partial answers are sufficient and unknowns stay unspecified.
-If questions are offered, allow a reply before continuing; do not turn them into an interview or require answers to install.
-For an already initialized project, preserve its orientation and do not repeat onboarding questions during verification.
-The Python initializer stays noninteractive and creates generic introductions with embedded diagrams, without assuming a purpose or starting point.
-Fresh projects inherit the flat numbered layout, human-documentation rules, per-file visual checks and CRC source-companion standard; initialization preserves existing content.
-Choose `--client` first: an explicit user choice wins; otherwise use `claude` when running in Claude Code and `codex` when running in Codex. If the host is uncertain, ask; never install both unasked.
-Run `python3 asdg/scripts/init.py --client <client> --dry-run` from that root; a conflict stops the mutation path. Adding a client keeps the other's files.
-For a first install, use the user's explicit project status when supplied; otherwise default to `new`.
-Never infer `defined`, approval or release readiness from code or document presence.
-An explicit initialization request authorizes the initializer's reported writes; no repeated confirmation is needed.
-Run the matching initialization command, then `python3 asdg/scripts/cli.py verify` and `status --facts-only`.
-Repeat initialization and check that it reports no further managed changes.
-If the user supplied orientation, save a concise `docs/asdg/00-governance/project-orientation.md` after successful setup and link it from that stage's README.
-This bounded setup note records the user's rough purpose and starting point, with unknowns explicit; preserve existing content and record exact-hash documentation receipts.
-Follow the shared documentation standard; a compact table of purpose, starting point and known dependencies is sufficient for this short orientation note.
-If no answers were supplied, create no orientation note and leave generic introductions intact. Do not infer answers from the project name or lifecycle status.
-Orientation is not approved Purpose, completed Context, accepted-empty Context or permission to implement; do not register stage evidence or acceptance from it.
-Report native discovery and hook trust separately; neither can be inferred from generated files.
-If a runtime guard denies initialization, preserve the denial and provide the exact human-terminal command.
-Do not disable hooks, bypass trust, rewrite state by hand, start a sprint or activate a specialist.
-Report results and unresolved conflicts; apply [continuation](../../00-governance/docs/continuation.md).
-After successful setup, recommend ASDG Status (`$asdg-status` in Codex, `/asdg-status` in Claude) to inspect project facts and receive a project-wide next step.
-Do not invoke another skill automatically, activate a specialist or continue into application work.
+Read [installation](../../docs/installation.md), [client integrations](../../docs/client-integrations.md) and the target project's instructions.
+This skill is a conversational interface to source `scripts/init.py` or installed `asdg/scripts/init.py`; never reproduce its file writes in prompts or shell scripts.
+Use Python 3.9+ and an existing Git project. Never initialize Git or install dependencies automatically.
+Identify the target root and acquisition: an extracted ZIP or an existing local canonical clone.
+For ZIP, require its single `asdg/` folder; acquisition must never overwrite existing application or methodology files.
+For Clone, require the local clone path and explicit full commit ID. Never choose HEAD as consent or fetch a newer commit.
+Use the selected source's entry point; its engine verifies canonical origin, exact HEAD, selected committed bytes and integrity.
+A stale manifest blocks installation; obtain a matching package or stop for source review. Never refresh it to install.
+Select `--client claude` in Claude Code or `--client codex` in Codex; ask if unknown, never install both unasked.
+Use an explicitly supplied `--project-status`; otherwise retain `new`. Code presence establishes no stage acceptance.
+
+Before preview, load [Create team init integration](../asdg-create-team/initialization.md) and prepare its read-only team inventory. No chats or activation before APPROVE.
+
+## Mandatory approval presentation — both clients
+
+Run the [ZIP preview](../../docs/install-zip-prompt.md) or [Clone preview](../../docs/install-clone-prompt.md) with `--dry-run --json`.
+Capture the complete successful JSON report, including every file row, diff and plan token, in a uniquely named temporary file outside the target Git root; do not overwrite an existing file. Keep it accessible through the decision and verification.
+Check successful exit, valid JSON, `dry_run: true`, `installation_complete: false` and a nonempty `plan` before requesting approval. Errors or conflicts block; never present a failed preview as approvable.
+Read back the saved report and provide its actual accessible path as a clickable reference (or a terminal read command in text-only clients). If it cannot be accessed, show the complete report and diffs inline before asking.
+Display the following distinct section, replacing EVERY placeholder with values from that same preview; never show example numbers or claim installation has been applied:
+
+### ASDG INSTALLATION — APPROVAL REQUIRED
+
+**Target:** `<project_root>` · **Version:** `<source.version>` · **Client:** `<clients_applied>`
+**New files:** `<count files with action added>` · **Existing files modified:** `<count files with action modified>`
+**Integrity:** `<source.integrity>` · **Conflicts:** None (only after a successful conflict-free preview)
+Complete installation plan and diffs: `<actual accessible reference or complete inline report>`
+**Team:** `<team client modes, project ID, thirteen create/reuse effects and existing thread IDs from the same preview>`
+**Do you approve applying this exact installation plan?**
+**Reply APPROVE to proceed, or CANCEL to stop.**
+
+Counts describe the pending engine writes, including distribution files for Clone; already extracted ZIP members are unchanged and excluded. Identify that distinction separately; never invent an acquisition count.
+Separately explain: approval covers this file plan and its explicitly displayed team effects, including initial role activation. Hook trust requires separate human action; commits, pushes, publication, sprint starts and Context are not authorized.
+STOP. Only a standalone APPROVE (case-insensitive, surrounding whitespace ignored) approves the displayed plan; CANCEL stops. Ambiguous replies, initial install requests, silence or conditional approval do not authorize apply; clarify and wait.
+
+## Apply and verify
+
+After APPROVE, repeat identical options with `--apply --plan <token from the displayed preview>` instead of `--dry-run`; never use a different token silently.
+A collision, stale plan, source mismatch or runtime denial stops dependent writes; any fresh plan needs a new presentation and APPROVE.
+Never bypass hooks, grant trust, edit lifecycle state manually or resolve unrelated promotion conflicts. If the runtime blocks apply, report the exact terminal command for the human.
+The engine verifies structure inside its rollback boundary; then run the installed `python3 asdg/scripts/cli.py verify --json` in the target.
+Repeat the same preview for no further writes; repeat apply requires another approval. Report completion only after verification, with changed paths and preservation evidence.
+Distinguish structural checks from observed native discovery, invocation and human hook trust; unit tests prove no native operation.
+
+## Complete the team and report status
+
+Continue automatically with [Create team init integration](../asdg-create-team/initialization.md) under the same APPROVE; do not ask the user to invoke a separate setup operation.
+Complete and validate its client-specific team phase before reporting successful initialization, then report installed Status facts and one recommended next action from Governance.
+A plain Python run completes file installation only and reports team completion pending; unavailable native tools or unresolved roles must never be reported as team ready.
+Preserve explicit existing role selections. Initialization creates no Admin chat, Context analysis, project assignment, sprint, commit, push, publication or hook trust.

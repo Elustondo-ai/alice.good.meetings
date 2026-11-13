@@ -6734,6 +6734,168 @@
         "reason": "Sprint status updated for SPRINT-002 after Pablo's 4 Nov 2026 'Plan the live run'",
         "visual_review": "Existing visual unchanged"
       }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.1-asdg-install-lifecycle-plan.md",
+      "sha256": "a6e94c27895a2956943e73259410a1b47471bb2cfce6c095bd54cca8ff42c929",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:42:18.400193+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Proposed ASDG installation lifecycle plan (init/update/replace) saved at Pablo's request on 13 Nov 2026; not accepted."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.2-asdg-install-state-and-sources.md",
+      "sha256": "2d46df47973504df46ed54b3ee6b6b5d8c97671a0fdf543c7584066900388c42",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:42:18.400193+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Proposed ASDG installation lifecycle plan (init/update/replace) saved at Pablo's request on 13 Nov 2026; not accepted."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.3-asdg-install-increments.md",
+      "sha256": "f6a1c567a45b87af86e51d00b2387b4a70b952bf99cd93126f8de263a598674a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:42:18.400193+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Proposed ASDG installation lifecycle plan (init/update/replace) saved at Pablo's request on 13 Nov 2026; not accepted."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.4-asdg-install-alice-reconciliation.md",
+      "sha256": "f3c95585b429e5cd6224cd6024a4b293c5cdd1bebecdfe0b34f9729eb49c1c98",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:42:18.400193+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Proposed ASDG installation lifecycle plan (init/update/replace) saved at Pablo's request on 13 Nov 2026; not accepted."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "1629a86f2a23b5264d130508546d3e041e8bc94de4f1e96823baaf0652a5dae3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:42:18.400193+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Proposed ASDG installation lifecycle plan (init/update/replace) saved at Pablo's request on 13 Nov 2026; not accepted."
+      },
+      "previous_state": {
+        "sha256": "fc30fcf49c1eeb77b94fa6bbc857e47777844660eed87179f62b901023e90153",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.1-asdg-install-lifecycle-plan.md",
+      "sha256": "878d294ceeb37a99d0eca285ea8c5593a4ff4a01e62fbd5524432219fa8e1fd6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:53:20.668136+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Added the mandatory clean-Git invariant to the ASDG installation lifecycle plan at Pablo's request on 13 Nov 2026; proposed, not accepted."
+      },
+      "previous_state": {
+        "sha256": "a6e94c27895a2956943e73259410a1b47471bb2cfce6c095bd54cca8ff42c929",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.2-asdg-install-state-and-sources.md",
+      "sha256": "e08edda2fd4390fe3d28d118dfd5f384d29ed3e67099f29a36bff0a052800ab6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:53:20.668136+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Added the mandatory clean-Git invariant to the ASDG installation lifecycle plan at Pablo's request on 13 Nov 2026; proposed, not accepted."
+      },
+      "previous_state": {
+        "sha256": "2d46df47973504df46ed54b3ee6b6b5d8c97671a0fdf543c7584066900388c42",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.3-asdg-install-increments.md",
+      "sha256": "f68e027fba9d4149786e2597f09b458fe5744f47c0afaf05704123907a150fea",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:53:20.668136+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Added the mandatory clean-Git invariant to the ASDG installation lifecycle plan at Pablo's request on 13 Nov 2026; proposed, not accepted."
+      },
+      "previous_state": {
+        "sha256": "f6a1c567a45b87af86e51d00b2387b4a70b952bf99cd93126f8de263a598674a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.4-asdg-install-alice-reconciliation.md",
+      "sha256": "df4bd31b430cd89042b5e7d55b67f33f2047967b8f0496aa38e82284207fc032",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:53:20.668136+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Added the mandatory clean-Git invariant to the ASDG installation lifecycle plan at Pablo's request on 13 Nov 2026; proposed, not accepted."
+      },
+      "previous_state": {
+        "sha256": "f3c95585b429e5cd6224cd6024a4b293c5cdd1bebecdfe0b34f9729eb49c1c98",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.5-asdg-install-git-preconditions.md",
+      "sha256": "ad2205c7d26a608b3beed8851cc6c67ee96e1bd9932a8d4325324acb0f59c6e1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:53:20.668136+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Added the mandatory clean-Git invariant to the ASDG installation lifecycle plan at Pablo's request on 13 Nov 2026; proposed, not accepted."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "d0d6107308431633e411aca517bf08d525f5e154a32f8b4f54886545fdd16e9e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-13T18:53:20.668136+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-07",
+        "agent": "Claude (claude-opus-5-5)",
+        "reason": "Added the mandatory clean-Git invariant to the ASDG installation lifecycle plan at Pablo's request on 13 Nov 2026; proposed, not accepted."
+      },
+      "previous_state": {
+        "sha256": "1629a86f2a23b5264d130508546d3e041e8bc94de4f1e96823baaf0652a5dae3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
     }
   ]
 }

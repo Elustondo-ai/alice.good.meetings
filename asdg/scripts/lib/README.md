@@ -19,6 +19,9 @@ Factual operations use the standard library; optional coordinator advice require
 | [cli_runtime_env.py](cli_runtime_env.md) | Bounded coordinator environment. |
 | [agent_config.py](agent_config.md) | Read agent adapter configuration. |
 | [documentation.py](documentation.md) | Documentation length and review receipts. |
+| [distribution_files.py](distribution_files.md) | Resolve the portable file list for checks and builds. |
+| [cli_sync.py](cli_sync.md) | Preview and explicitly apply both methodology synchronization directions. |
+| [cli_sync_manifest.py](cli_sync_manifest.md) | Read repository identities, snapshots and adoption baselines. |
 | [purpose_review.py](purpose_review.md) | Purpose review and acceptance. |
 | [stage_review.py](stage_review.md) | Review other stage documents. |
 | [cli_advice.py](cli_advice.md) | Optional coordinator advice. |

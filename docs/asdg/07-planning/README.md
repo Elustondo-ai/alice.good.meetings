@@ -25,6 +25,7 @@ Release plans describe a broader delivery objective. Sprint plans select a small
 - [Shared documentation authority review](02.7-review-documentation-authority.md): every agent can save documents while code and approval gates remain separate.
 
 - [ASDG evolution task list](03-asdg-evolution-tasks.md): methodology work and its recorded sequencing.
+- [ASDG installation lifecycle plan](03.1-asdg-install-lifecycle-plan.md): proposed `init`, `update` and `replace` under a mandatory clean-Git rule, and reconciling Alice's manual swap.
 - [Continuation increment review](current/reviews/asdg-continuation-increment-01.md): evidence from that methodology increment.
 - [Purpose documentation review](current/reviews/purpose-documentation-authoring.md): a documentation-related review record.
 

@@ -1,62 +1,66 @@
-# ASDG Distribution — portable pilot 0.2.0-pilot.2
+# ASDG — portable methodology
 
-ASDG is Agentic Software Development Lifecycle Governance: twelve stages, specialist responsibilities, evidence rules and sprint controls carried inside your client repository.
-This pilot is an iteration baseline, not a claim of production enforcement or approved methodology.
+ASDG initialization installs the methodology and prepares the project’s ASDG team through the [canonical init workflow](skills/asdg-init/SKILL.md). Codex gets Governance and twelve specialist chats; Claude gets role adapters with manual specialist selection. One complete-plan APPROVE covers setup; native capability failures remain incomplete initialization.
 
-## Learn about ASDG
+Twelve specialists maintain the project’s engineering artifacts. Stage 07 integrates priorities and progress. The [project assessment](00-governance/docs/stage-perspectives.md) draws on approved artifacts, observed results and current plans.
+The canonical repository is [asdg](https://github.com/Elustondo-ai/asdg).
+This consolidated pilot is a review candidate; packaging does not establish human approval or native enforcement.
 
-Start with these three presentations (PowerPoint):
+![A verified ZIP carries one asdg folder into the developer's Git repository, where initialization creates local integrations and state.](docs/images/distribution-flow.svg)
 
-1. [ASDG introduction](../../agentic-sdlc-governance/docs/presentations/asdg-introduction/build/asdlc-introduction.pptx) — the ideas behind the method; [detailed version](../../agentic-sdlc-governance/docs/presentations/asdg-introduction/build/asdlc-introduction-detailed.pptx).
-2. [Formalization Gradient](../../agentic-sdlc-governance/docs/presentations/formalization-gradient/build/formalization-gradient.pptx) — choosing how much structure a project needs.
-3. [Codex agents, skills and adapters](../../agentic-sdlc-governance/docs/presentations/codex-agent-skills-and-adapters/build/codex-agent-skills-and-adapters.pptx) — how the method maps to development tools.
+## Standalone source and contributions
 
-Optional extra material:
+This repository root is the intended canonical development and distribution source; consumers receive it under `<project>/asdg/`.
+The prepared cutover is pending human review and commit. No release assets are published here by this migration.
+For a reviewed local clone, follow [Clone + Prompt](docs/install-clone-prompt.md); the source entry point is `scripts/init.py`.
+Source-only migration evidence is retained under `docs/migration/`; review it before cutover.
+Maintainers change definitions here, run the [build and verification commands](docs/distribution-build.md), review the resulting manifest and propose a focused change for human review.
+Do not initialize the source checkout as an application. Source checks use `scripts/check.py`; installed-client checks use `asdg/scripts/cli.py verify`.
+The catalogue's `asdg/` paths describe installed consumers, not a nested source directory.
 
-- [Coding-agent architecture](../../agentic-sdlc-governance/docs/presentations/coding-agents-architecture-article/build/coding-agents-architecture-article-detailed.pptx) — context, planning, tools and feedback loops.
-- [ASDG Sprint Governance](../../agentic-sdlc-governance/docs/presentations/asdg-sprint-governance-review/build/asdlc-sprint-governance-review-detailed.pptx) — proposed sprint gates and human decisions.
-- [Spec-Driven Development deep dive](../../agentic-sdlc-governance/docs/presentations/spec-driven-development-deep-dive/build/spec-driven-development-deep-dive.pptx) — a single research-reference slide.
-- [Agentic AI](../../agentic-sdlc-governance/docs/presentations/agentic-ai/build/agentic-ai.pptx) — development-time and runtime agents.
+## Quick Start — give your agent the repository URL
 
-These links require the sibling `agentic-sdlc-governance` working copy and its generated `build/` files. Presentations provide background; review drafts and historical terminology do not override this package's current contracts.
+Ask your agent to use this repository's reviewed full commit and [clone installation prompt](docs/install-clone-prompt.md) to prepare installation in an existing Git project.
+Review the complete preview before approving apply. Installation creates no sprint, hook trust or permission for project work.
+A release ZIP may be built locally with [the documented builder](docs/distribution-build.md); do not assume new-repository release URLs exist.
 
 ## Start
 
-Unpack this one `asdg/` folder beside the client's application files, inside its existing Git root.
-Python 3.9+ and Git are required. Bootstrap uses the standard library and makes no model calls.
-For the fresh Speaker Coach project, run from its root:
+Extract the ZIP so your existing Git root contains `asdg/scripts/init.py` beside the application files.
+Python 3.9+ and Git are required. From that root, run:
 
 ```sh
-python3 asdg/scripts/init.py --client codex  # or --client claude, or --client both
+python3 asdg/scripts/init.py --client codex --dry-run
+# After reviewing and explicitly approving that plan:
+python3 asdg/scripts/init.py --client codex --apply --plan TOKEN_FROM_PREVIEW
+python3 asdg/scripts/cli.py verify
 ```
 
-To hand setup to an agent, ask it to run that command for its own client; for Codex you can copy the [Codex setup prompt](CODEX-PROMPT.md). [Client integrations](docs/client-integrations.md) explains the choice.
-
-This sets up local project instructions and state with the project marked as new; no sprint is started.
-See [installation details](docs/installation.md) for optional previews, checks and other starting states.
-
-In Codex, choose **[ASDG create team](skills/asdg-create-team/SKILL.md)** to set up governance and twelve specialist chats, reusing existing focused chats.
-Each chat loads its role and waits for your assignment; team setup does not start project work.
-Use **[ASDG Sprint start](skills/asdg-sprint-start/SKILL.md)**, **[Sprint review](skills/asdg-sprint-review/SKILL.md)** and **[Sprint close](skills/asdg-sprint-close/SKILL.md)** for human-directed sprint events.
-Start defines active scope, review checks evidence, and close preserves the result before ending that scope; closure does not imply successful completion or release.
+Choose `codex`, `claude` or explicitly `both`; preview is the default and application requires the exact plan token.
+An existing canonical clone at an explicitly selected commit uses the same engine; see [installation](docs/installation.md).
+First setup records a new project without starting a sprint; use `--project-status defining` for an existing project.
+Repeat initialization preserves state and authored files. Conflicts stop setup; different versions require a reviewed upgrade.
+ZIP installs need no sibling checkout or global command. Review and trust Codex hooks separately in the native client.
 
 ## Included
 
-Governance 00, all twelve stages, thirteen role definitions and local procedures, Focus/Status skills,
-the initializer, status/evidence engine, sprint transitions, guards and central activity recorder.
-The optional existing Codex SDK advice adapter is retained; deterministic operation needs no SDK.
-Presentation/video production, historical work reports and the external-source baseline generator are omitted.
+Governance 00, stages 01–12, an explicit methodology Admin role, shared skills, client adapter templates,
+the initializer, deterministic status/evidence engine, sprint checks and activity recorder.
+Optional SDK advice and OpenSpec integration require their own dependencies and explicit workflows.
+Presentation/video production, component authoring and legacy provider automation stay in the canonical repository outside this core ZIP.
+Client evidence belongs in `docs/asdg/`; durable workflow state belongs in `.asdg/`; disposable logs belong in `logs/`.
 
 ## Read next
 
-- [Codex handoff prompt](CODEX-PROMPT.md): copy into a general Codex conversation in this client.
-- [Installation and ownership](docs/installation.md): generated files, conflict handling and native trust.
-- [Workflow usage](docs/usage.md): focus, status, sprint scope and optional advice.
-- [Lifecycle baseline](docs/lifecycle-baseline.md): exact twelve-stage order.
-- [Review loop](docs/review-loop.md): the embedded folder evolves through bounded local iterations.
-- [Verification](docs/verification.md): executed checks and remaining native-runtime work.
-- [Source and changes](docs/provenance.md): selected snapshot, exclusions and adaptations.
+- [Installation and ownership](docs/installation.md) and [client integrations](docs/client-integrations.md).
+- [Workflow usage](docs/usage.md), [Codex setup prompt](CODEX-PROMPT.md) and [lifecycle baseline](docs/lifecycle-baseline.md).
+- [Build and verification](docs/distribution-build.md), [source provenance](docs/provenance.md) and [review loop](docs/review-loop.md).
+- [Promote and upgrade](docs/synchronization.md): preview local methodology differences and explicitly apply a reviewed, conflict-free plan.
+- [Historical pilot checks](docs/verification.md) and [native integration limits](docs/native-integration.md).
 
-Runtime Python lives in `scripts/`, package records in `metadata/`, and verification in `docs/`.
-Keep `asdg/`, `.asdg/`, discovery adapters and engineering documents in Git; ignore disposable `logs/`.
-No sprint, release, human approval, specialist session or hook trust is created by extraction.
+Skill notation is `$name` in Codex and `/name` in Claude Code. Session roles and attitudes grant no extra authority.
+Initialization prepares the approved client team; it creates no sprint, release, human acceptance or hook trust.
+
+## Standalone component development
+
+Pablo assigns provider component work to ASDG-09 in a disposable checkout. He reviews the resulting Git patch and applies it from his own terminal. Admin maintains the policy and its checks. The source-only operator procedure is in `scripts/provider_component/review.md`.

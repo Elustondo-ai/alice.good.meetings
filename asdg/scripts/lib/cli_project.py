@@ -6,8 +6,8 @@ import shlex
 from pathlib import Path
 from cli_clients import (CLIENTS, INTEGRATIONS, claude_bridge, claude_bridge_problems, claude_files,
                          integrations_bytes, read_integrations, resolve_clients)
-from cli_files import Conflict, apply, plan, read_bytes, safe_path
-from cli_model import ARTIFACTS, BINDING, PROVIDER, REPO, VERSION, catalogue, json_bytes, now, sha
+from cli_files import Conflict, plan, read_bytes, safe_path
+from cli_model import ARTIFACTS, BINDING, PROVIDER, REPO, VERSION, catalogue, distribution_core, json_bytes, now, sha
 from cli_sprint import INACTIVE, SPRINT, read_state
 from documentation import nonblank_source_lines, review_record, PROJECT_REVIEWS
 
@@ -80,7 +80,7 @@ LEGACY_BRIDGES = (_LEGACY_BRIDGE_V1,
 
 
 def distribution(repo):
-    value = json.loads(read_bytes(safe_path(repo, 'asdg/metadata/distribution.json')) or b'{}')
+    value = json.loads(read_bytes(safe_path(distribution_core(repo), 'metadata/distribution.json')) or b'{}')
     if (value.get('schema_version') != 1 or value.get('provider') != PROVIDER
             or value.get('version') != VERSION or value.get('installation_mode') != 'embedded-distribution'):
         raise Conflict('Unsupported or missing embedded distribution metadata.')
@@ -157,7 +157,9 @@ def binding(root, catalog_hash):
     if value.get('installation_mode') != 'embedded-distribution':
         raise Conflict('Existing linked installation needs explicit migration; state was preserved.')
     if value.get('catalog_sha256') != catalog_hash or value.get('distribution_version') != VERSION:
-        raise Conflict('Distribution or catalogue changed; review an upgrade before reinitializing.')
+        from cli_sync_manifest import adopted_binding
+        if not adopted_binding(root, raw, VERSION, catalog_hash):
+            raise Conflict('Distribution or catalogue changed; review an upgrade before reinitializing.')
     if value.get('artifacts_root') != ARTIFACTS.as_posix() or value.get('distribution_root') != 'asdg':
         raise Conflict('Unsupported embedded layout; nothing overwritten.')
     return value
@@ -237,10 +239,9 @@ def preflight_package(repo):
     return agents, digest
 
 
-def initialize(root, repo=REPO, project_state=None, dry_run=False, client=None):
+def plan_initialization(root, repo=REPO, project_state=None, client=None, timestamp=None, source=None):
     from cli_status import LIFECYCLE, PROJECT_STATUSES, lifecycle_rules, read_lifecycle
-    if root.resolve() != repo.resolve():
-        raise Conflict('Embedded initialization must use this client repository.')
+    timestamp = timestamp or now()
     for legacy in ('.asdlc', 'docs/asdlc'):
         if safe_path(root, legacy).exists():
             raise Conflict('Legacy ASDLC data requires explicit migration; use a fresh client for this pilot.')
@@ -254,9 +255,10 @@ def initialize(root, repo=REPO, project_state=None, dry_run=False, client=None):
     if existing is None:
         value = {'schema_version': 1, 'provider': PROVIDER, 'cli_version': VERSION,
                  'project_id': root.name, 'artifacts_root': ARTIFACTS.as_posix(),
-                 'catalog_sha256': digest, 'methodology_revision_at_init': None,
+                 'catalog_sha256': digest, 'methodology_revision_at_init': (source or {}).get('commit'),
+                 'installation_source': {key: value for key, value in (source or {}).items() if key != 'path'},
                  'distribution_root': 'asdg', 'distribution_version': VERSION,
-                 'installation_mode': 'embedded-distribution', 'initialized_at': now(), 'stages': stage_names}
+                 'installation_mode': 'embedded-distribution', 'initialized_at': timestamp, 'stages': stage_names}
         changes.append(plan(root, BINDING, json_bytes(value)))
     elif existing.get('stages') != stage_names:
         raise Conflict('Recorded stage layout differs; explicit migration required.')
@@ -302,7 +304,9 @@ def initialize(root, repo=REPO, project_state=None, dry_run=False, client=None):
     if read_bytes(safe_path(root, index)) is None:
         text = '# Project documentation\n\nExplore the project from its purpose through design, delivery and learning.\n'
         text += 'These introductions explain each area; project evidence and decisions are added as work progresses.\n\n'
-        text += '\n'.join(f"- [{Path(a['folder']).name.replace('-', ' ')}]({Path(a['folder']).name}/README.md)" for a in agents) + '\n'
+        entries = [('00 Governance', Path(agents[0]['folder']).name)]
+        entries.extend((f"{rule['number']:02d} {rule['name']}", rule['slug']) for rule in rules)
+        text += '\n'.join(f'- [{label}]({slug}/README.md)' for label, slug in entries) + '\n'
         changes.append(plan(root, index, text.encode()))
     for agent in agents:
         folder = ARTIFACTS / Path(agent['folder']).name
@@ -320,19 +324,18 @@ def initialize(root, repo=REPO, project_state=None, dry_run=False, client=None):
     ledger = json.loads(ledger_raw) if ledger_raw is not None else {'schema_version': 1, 'events': []}
     if not isinstance(ledger, dict) or ledger.get('schema_version') != 1 or not isinstance(ledger.get('events'), list):
         raise Conflict('Invalid document review history; nothing initialized.')
-    records = [review_record(c.relative.as_posix(), c.before, c.after, now(), generator='asdg embedded init')
+    records = [review_record(c.relative.as_posix(), c.before, c.after, timestamp, generator='asdg embedded init')
                for c in changes if c.relative.suffix == '.md']
     if records:
         ledger['events'].extend(records)
         change = plan(root, PROJECT_REVIEWS, json_bytes(ledger), replace=True)
         if change:
             changes.insert(0, change)
-    written = [] if dry_run else apply(changes)
-    return {'operation': 'init', 'project_root': str(root), 'dry_run': dry_run,
-            'planned_files': [c.relative.as_posix() for c in changes], 'changed_files': written,
+    return {'operation': 'init', 'project_root': str(root),
+            'planned_files': [c.relative.as_posix() for c in changes], 'changed_files': [],
             'unchanged': not changes, 'sprint_started': False, 'human_approval': None,
             'clients_applied': applied, 'clients_recorded': sorted(recorded), 'notes': notes,
-            'native_runtime_enforcement': 'NOT_VERIFIED'}
+            'native_runtime_enforcement': 'NOT_VERIFIED'}, changes
 
 
 def inspect(root, repo=REPO):

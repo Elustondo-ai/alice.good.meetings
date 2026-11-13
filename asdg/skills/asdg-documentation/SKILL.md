@@ -11,7 +11,7 @@ Follow the [shared documentation standard](../../00-governance/docs/documentatio
 
 ## Workflow
 
-1. Read the existing topic and supplied sources. Preserve their useful narrative, meaning, uncertainty and proposal status; keep source archives intact.
+1. Resolve the acting role and every target through [ownership and pre-write checks](../../00-governance/docs/write-controls.md); propose or hand off changes outside ownership. Read the existing topic and supplied sources. Preserve their useful narrative, meaning, uncertainty and proposal status; keep source archives intact.
 2. Open with a meaningful title and explanation. Use paragraphs, headings and well-spaced lists.
 3. Keep units within 50 nonblank source lines; blank and whitespace-only lines do not count.
 4. Use the shared Python counter; never remove useful spacing or compress paragraphs to evade the limit.
@@ -41,9 +41,9 @@ Cover scripts and tests as well as application/library code; update the companio
 ## Evidence and review
 
 Use Intended / Actual / Planned in substantive assessments of the explicit target project.
-Follow the [stage layout](../../00-governance/docs/stage-layout.md): flat perspective files, with its named decision-folder exception.
+Follow the [stage layout](../../00-governance/docs/stage-layout.md). Organize domain documents by subject and link named decisions from the owning stage.
 For material decisions, use [ASDG Decision](../asdg-decision/SKILL.md) in the current specialist context and existing authority.
-At cycle closeout, consolidate verified outcomes into Current before removing only that completed cycle's plans.
+At cycle closeout, retain verified evidence with its owner and link it from the Stage 07 work item. Preserve existing decisions and review history.
 Technical provenance belongs in the standard's JSON records, not repeated labels in the prose.
 Do not invent measurements, tests, approval, deployment or user acceptance.
 Keep historical execution evidence intact rather than rewriting it as new observations.

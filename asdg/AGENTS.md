@@ -1,7 +1,8 @@
 # Using and maintaining embedded ASDG
 
-This directory is the client's local methodology distribution, not the client application's evidence.
-The client root `AGENTS.md` loads this file through its ASDG bootstrap block; also follow the project-owned guidance after that block and the user's explicit task.
+This repository root is the standalone ASDG methodology development and distribution source (`Elustondo-ai/asdg`).
+When installed under a consumer's `asdg/`, the client root bootstrap loads this file; follow that project's guidance and the user's explicit task.
+For source maintenance, use `python3 scripts/check.py --integrity` and `python3 -B -m unittest discover -s tests -v`; do not initialize this source repository as a client.
 Read [the lifecycle baseline](docs/lifecycle-baseline.md); preserve governance 00 and stages 01–12. No external provider checkout is required.
 Use [the catalogue](00-governance/types/agent-catalog.json) for identities and paths; Stage 02 is Purpose.
 
@@ -11,18 +12,18 @@ Before project work, read this file, then [the session policy](skills/asdg-focus
 Every session acts under an accountable role: 00 Governance by default, or a specialist only after explicit selection loads it.
 Read the selected role's entry, local procedure, [runtime contract](00-governance/docs/runtime-contract.md) and response envelope in full; [Governance's entry](00-governance/AGENTS.md) lists its own.
 A missing or contradictory startup source blocks dependent work as `BLOCKED: GOVERNANCE_BOOTSTRAP`; read-only diagnosis stays allowed.
-Before substantial work, run the local `python3 asdg/scripts/cli.py status --json` from the client root; a machine-wide `asdg` may resolve an older installation.
+In initialized clients, run `python3 asdg/scripts/cli.py status --json` before substantial work; a global `asdg` may be older. In the canonical provider, follow its root maintenance and package checks instead.
 `python3 asdg/scripts/cli.py verify` checks structure only; folders and passing checks do not prove compliance.
 
 ## Client work
 
 Keep goal, role, subject focus and attitude separate in this chat's receipt; title changes reflect selections and explicit expiry, never grant authority.
-Every agent may save project documentation under `docs/` without an active sprint or separate save approval; follow [documentation authority](00-governance/docs/documentation-authority.md).
+Every role may read broadly and save documentation within its assigned ownership without an active sprint or separate save approval; follow [documentation authority](00-governance/docs/documentation-authority.md).
 Purpose Focus begins a read-only opening assessment; assigned Purpose work produces saved client documentation.
 Use the [continuation contract](00-governance/docs/continuation.md); other specialist openings await the pilot review.
 Human-directed [Sprint start](skills/asdg-sprint-start/SKILL.md), [review](skills/asdg-sprint-review/SKILL.md) and [close](skills/asdg-sprint-close/SKILL.md) preserve Focus and specialist delivery boundaries.
 Use client sources as evidence; definitions in this folder never establish application behavior.
-Apply [Intended / Actual / Planned](00-governance/docs/stage-perspectives.md) to the stated client subject.
+Derive [Intended / Actual / Planned](00-governance/docs/stage-perspectives.md) assessments from approved artifacts, observed evidence and current Stage 07 plans.
 Skills are written `$name` here, as in Codex; in Claude Code invoke them as `/name`, per [client integrations](docs/client-integrations.md).
 `$asdg-status` combines project facts with session progress; `$asdg-role` explains the current role's mandate; [`$asdg-admin`](skills/asdg-admin/SKILL.md) explicitly switches to ASDG Admin, and `$asdg-admin clear` returns to Governance.
 Keep client artifacts in `docs/asdg/` and durable state and review history in `.asdg/`, preserving both; root `logs/` holds disposable activity records, and no role may claim complete logging without evidence.
@@ -48,8 +49,8 @@ These portable requirements travel with this distribution and do not depend on S
 
 Agent changes to these definitions run only under explicitly selected [ASDG Admin](admin/AGENTS.md) within a human-authorized scope; any role may propose them.
 Maintaining a definition never activates the specialist whose file is edited, and no agent selects Admin to escape a restriction.
-The user has chosen this embedded folder as an evolving working baseline; record bounded changes here.
-Do not silently pull or overwrite it from the old sibling repository, package or Google Drive source.
+The canonical methodology repository produces the reviewed distribution; each client owns its versioned embedded copy.
+Record bounded changes; propose reusable improvements upstream. Never overwrite client changes or state during an upgrade.
 Keep canonical skills here; native discovery adapters remain thin references generated from `templates/`.
 Preserve state, evidence, user configuration and prior review records through changes.
 Read [the iteration contract](docs/review-loop.md) before preparing a local maintenance handoff.

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="720" height="280" role="img" aria-labelledby="t d" font-family="Helvetica, Arial, sans-serif">
+  <title id="t">Reconciling Alice after the manual methodology swap</title>
+  <desc id="d">Today the methodology folder is version 0.3.0-pilot.4 and passes its manifest, but the binding still records 0.2.0-pilot.2, so status is invalid and the sprint gate blocks all implementation. Project state in .asdg is intact. First the human commits the swapped folder, because a clean working tree is required. Adopting the swap in place then writes only an installation record and refreshed adapters. Commit 768f399 keeps the 140 overwritten local methodology edits recoverable. After adoption, verify passes and SPRINT-002 work can be checked against its scope again.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3e4c59"/></marker></defs>
+  <rect width="720" height="280" fill="#ffffff"/>
+  <text x="130" y="24" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f2933">Today</text>
+  <rect x="20" y="36" width="220" height="56" rx="8" fill="#fffbea" stroke="#c99a2e" stroke-width="2"/>
+  <text x="130" y="59" text-anchor="middle" font-size="11" fill="#1f2933">asdg/ = 0.3.0-pilot.4 (manifest OK)</text>
+  <text x="130" y="77" text-anchor="middle" font-size="11" fill="#1f2933">binding = 0.2.0-pilot.2</text>
+  <rect x="20" y="102" width="220" height="56" rx="8" fill="#ffe3e3" stroke="#cf1124" stroke-width="2"/>
+  <text x="130" y="125" text-anchor="middle" font-size="11" fill="#1f2933">status INVALID; 24 stale adapters</text>
+  <text x="130" y="143" text-anchor="middle" font-size="11" fill="#1f2933">sprint gate blocks everything</text>
+  <rect x="20" y="168" width="220" height="56" rx="8" fill="#e3f9e5" stroke="#3f9142" stroke-width="2"/>
+  <text x="130" y="191" text-anchor="middle" font-size="11" fill="#1f2933">.asdg/ state intact: lifecycle,</text>
+  <text x="130" y="209" text-anchor="middle" font-size="11" fill="#1f2933">SPRINT-002, 457 review events</text>
+  <rect x="280" y="36" width="170" height="40" rx="8" fill="#ffe3e3" stroke="#cf1124" stroke-width="2"/>
+  <text x="365" y="53" text-anchor="middle" font-size="11" font-weight="bold" fill="#1f2933">1. Human commits swap</text>
+  <text x="365" y="68" text-anchor="middle" font-size="10" fill="#3e4c59">clean tree required</text>
+  <path d="M365,76 L365,92" stroke="#3e4c59" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <rect x="280" y="96" width="170" height="100" rx="10" fill="#e6f6ff" stroke="#2680c2" stroke-width="2"/>
+  <text x="365" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#1f2933">2. replace --adopt-in-place</text>
+  <text x="365" y="142" text-anchor="middle" font-size="11" fill="#3e4c59">--previous-ref 768f399</text>
+  <text x="365" y="162" text-anchor="middle" font-size="11" fill="#3e4c59">preview → approve →</text>
+  <text x="365" y="180" text-anchor="middle" font-size="11" fill="#3e4c59">Git recheck → apply</text>
+  <path d="M240,64 L276,56" stroke="#3e4c59" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M240,130 L276,140" stroke="#3e4c59" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="600" y="24" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f2933">After</text>
+  <rect x="490" y="36" width="210" height="44" rx="8" fill="#ffffff" stroke="#2680c2"/>
+  <text x="595" y="63" text-anchor="middle" font-size="11" fill="#1f2933">installation.json: adopt entry</text>
+  <rect x="490" y="90" width="210" height="44" rx="8" fill="#ffffff" stroke="#2680c2"/>
+  <text x="595" y="117" text-anchor="middle" font-size="11" fill="#1f2933">adapters refreshed, conflicts shown</text>
+  <rect x="490" y="144" width="210" height="44" rx="8" fill="#e3f9e5" stroke="#3f9142" stroke-width="2"/>
+  <text x="595" y="171" text-anchor="middle" font-size="11" fill="#1f2933">verify passes; gate uses scope</text>
+  <text x="595" y="204" text-anchor="middle" font-size="10" fill="#3e4c59">changes left for human review and commit</text>
+  <path d="M450,124 L486,60" stroke="#3e4c59" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M450,140 L486,112" stroke="#3e4c59" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M450,158 L486,164" stroke="#3e4c59" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <rect x="280" y="214" width="420" height="50" rx="8" fill="#f4f6f8" stroke="#7b8794"/>
+  <text x="490" y="236" text-anchor="middle" font-size="11" fill="#1f2933">Commit 768f399 keeps the 140 overwritten local methodology</text>
+  <text x="490" y="253" text-anchor="middle" font-size="11" fill="#1f2933">edits recoverable; they are listed, not restored</text>
+</svg>

@@ -7,12 +7,12 @@ Package maintenance runs only under explicitly selected [ASDG Admin](../../admin
 
 ## Scope and authority
 
-Every agent may create/update project documentation and supporting assets under the client's `docs/` without a sprint or separate save approval.
+Read broadly; write documentation and supporting assets only within the acting role's ownership and explicit exceptions, without a sprint or separate save approval.
 Read [documentation authority](documentation-authority.md): save substantive outcomes as the default shared handoff and preserve role ownership, evidence and review history.
 All roles may append exact-hash AI modification receipts to `.asdg/document-reviews.json`; this is provenance, never acceptance or lifecycle authority.
 ASDG-02 retains its separately defined two-gate Purpose review recording under its [contract](../../02-purpose/types/contract.md).
 Separately, explicit human use of [ASDG Approve](../../skills/asdg-approve/SKILL.md) authorizes only its bounded documentation-review recording workflow, without changing Focus or granting other role writes.
-Explicit human use of [Create team](../../skills/asdg-create-team/SKILL.md) permits native project-chat creation and initial Focus requests only; all project-action gates remain unchanged.
+Explicit human use of [Create team](../../skills/asdg-create-team/SKILL.md), or APPROVE of an exact Init plan including team effects, permits native project-chat creation and initial Focus requests only; all project-action gates remain unchanged.
 Explicit human [Sprint start](../../skills/asdg-sprint-start/SKILL.md) or [close](../../skills/asdg-sprint-close/SKILL.md) requests permit the sprint branch, local transition and closeout receipt only; [review](../../skills/asdg-sprint-review/SKILL.md) is read-only.
 Outside documentation and explicit utility allowances, retain evaluation limits. No installation, commit, push, merge, deletion, deployment or state transition follows from authoring.
 Save substantive documentation in `docs/` and link it in the conversation; brief advice or an explicit chat-only request may remain conversational. Claim execution only with evidence.
@@ -38,7 +38,7 @@ Direct coding requests do not bypass the gate; a trusted pre-tool hook enforces 
 For role interviews, no active sprint is needed. For project actions, missing gate evidence blocks them.
 Do not invent a state service or reconcile disputed sprint rules within a routing decision.
 Report proposed, attempted, observed, tested and approved states separately.
-Stage assessments use [Intended / Actual / Planned](stage-perspectives.md); neither a plan nor an approval proves implementation.
+Stage assessments derive [Intended / Actual / Planned](stage-perspectives.md) from approved domain artifacts, observed behavior and current Stage 07 plans. Missing evidence stays unknown.
 A different reviewer identity is not proof of independent evidence; disclose shared authorship.
 
 ## Skills and outputs

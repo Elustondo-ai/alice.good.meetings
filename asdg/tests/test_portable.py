@@ -19,6 +19,7 @@ from cli_files import apply, plan
 from cli_runtime_env import subprocess_environment
 from cli_advice import build_prompt
 from cli_advice_report import save_advice
+from distribution_files import package_files
 
 
 def snapshot(root):
@@ -32,7 +33,11 @@ class PortableTests(unittest.TestCase):
         self.addCleanup(self.area.cleanup)
         self.root = Path(self.area.name) / 'client project'
         self.root.mkdir()
-        shutil.copytree(CORE, self.root / 'asdg', ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
+        for source in package_files(CORE):
+            target = self.root / 'asdg' / source.relative_to(CORE)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, target)
+        self.seal_package()
         subprocess.run(['git', 'init', '-q', str(self.root)], check=True)
         (self.root / 'app.js').write_text('console.log("existing application");\n')
         (self.root / 'index.html').write_text('<script src="app.js"></script>\n')
@@ -44,17 +49,33 @@ class PortableTests(unittest.TestCase):
         self.assertEqual(result.returncode, expect, result.stdout + result.stderr)
         return result
 
+    def seal_package(self):
+        core = self.root / 'asdg'
+        manifest = core / 'metadata/MANIFEST.json'
+        value = json.loads(manifest.read_text())
+        value['files'] = {p.relative_to(core).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                          for p in package_files(core) if p != manifest}
+        manifest.write_text(json.dumps(value) + '\n')
+
     def init(self, *args, **kw):
-        return self.run_cli(*args, entry='init.py', **kw)
+        if '--dry-run' in args or kw.get('expect', 0):
+            return self.run_cli(*args, entry='init.py', **kw)
+        preview = self.run_cli(*args, '--dry-run', '--json', entry='init.py', **kw)
+        token = json.loads(preview.stdout)['plan']
+        return self.run_cli(*args, '--apply', '--plan', token, entry='init.py', **kw)
 
     def active(self):
         self.run_cli('sprint', 'start', '--id', 'S1', '--objective', 'One bounded behavior',
                      '--scope', 'app.js', '--acceptance', 'Existing behavior is retained')
 
-    def hook(self, payload, event='PreToolUse', cwd=None):
+    def hook(self, payload, event='PreToolUse', cwd=None, role='ASDG-09', context=None):
         config = json.loads((self.root / '.codex/hooks.json').read_text())
         command = config['hooks'][event][0]['hooks'][0]['command']
-        result = subprocess.run(command, shell=True, input=json.dumps(payload), text=True,
+        if event == 'PreToolUse':
+            payload = dict(payload, session_id='fixture-session')
+        declared = context or {'role_id': role}
+        env = dict(os.environ, ASDG_WRITE_CONTEXT=json.dumps(dict(declared, session_id='fixture-session')))
+        result = subprocess.run(command, shell=True, input=json.dumps(payload), text=True, env=env,
                                 cwd=cwd or self.root, capture_output=True, timeout=10)
         self.assertEqual(result.returncode, 0, result.stderr)
         return json.loads(result.stdout) if result.stdout.strip() else {}
@@ -95,7 +116,15 @@ class PortableTests(unittest.TestCase):
         preserved = snapshot(self.root)
         self.init()
         self.assertEqual(snapshot(self.root), preserved)
+        index = (self.root / 'docs/asdg/README.md').read_text()
+        self.assertEqual([s['name'] for s in status['lifecycle_stages']],
+                         ['Context', 'Purpose', 'Use Cases', 'Benchmarks', 'Architecture', 'POC',
+                          'Planning', 'Detailed Design', 'Build and Test', 'Review and Release',
+                          'Operations', 'Observability'])
         for stage in status['lifecycle_stages']:
+            self.assertIn(f"[{stage['number']:02d} {stage['name']}]({stage['slug']}/README.md)", index)
+            introduction = (self.root / 'docs/asdg' / stage['slug'] / 'README.md').read_text()
+            self.assertNotIn('Read root files in order:', introduction)
             folder = self.root / 'docs/asdg' / stage['slug']
             for name in ('current', 'planned-release', 'planned-sprint'):
                 self.assertFalse((folder / name).exists())
@@ -111,14 +140,18 @@ class PortableTests(unittest.TestCase):
 
     def test_init_guidance_resolves_to_installed_status_without_changing_state_on_repeat(self):
         result = self.init()
-        self.assertIn('$asdg-status', result.stdout)
+        self.assertIn('After team validation, run /asdg-status in Governance', result.stdout)
+        self.assertNotIn('/asdg-create-team', result.stdout.split('ASDG installation complete;', 1)[1])
+        self.assertNotIn('Create my ASDG team', result.stdout)
+        self.assertIn('Initialization pending: complete the approved canonical Create team workflow', result.stdout)
+        self.assertNotIn('Context survey', result.stdout)
         self.assertNotIn('$asdg-focus-', result.stdout)
         adapter = self.root / '.agents/skills/asdg-status/SKILL.md'
         self.assertTrue(adapter.is_file())
         self.assertEqual(adapter.read_bytes(),
                          (self.root / 'asdg/templates/.agents/skills/asdg-status/SKILL.md').read_bytes())
         before = snapshot(self.root)
-        self.assertIn('$asdg-status', self.init().stdout)
+        self.assertIn('After team validation, run /asdg-status in Governance', self.init().stdout)
         self.assertEqual(snapshot(self.root), before)
         status = json.loads(self.run_cli('status', '--json').stdout)
         self.assertEqual(status['project_status'], 'new')
@@ -127,11 +160,13 @@ class PortableTests(unittest.TestCase):
 
     def test_init_guidance_is_only_emitted_after_successful_console_initialization(self):
         before = snapshot(self.root)
-        self.assertNotIn('$asdg-status', self.init('--dry-run').stdout)
+        self.assertNotIn('After team validation, run /asdg-status in Governance', self.init('--dry-run').stdout)
         self.assertEqual(snapshot(self.root), before)
         report = json.loads(self.init('--json').stdout)
         self.assertIsNone(report['human_approval'])
         self.assertFalse(report['sprint_started'])
+        self.assertFalse(report['context_survey']['offered'])
+        self.assertFalse(report['context_survey']['executed'])
         self.assertNotIn('$asdg-status', self.run_cli('verify').stdout)
         adapter = self.root / '.agents/skills/asdg-focus/SKILL.md'
         adapter.write_text(adapter.read_text() + '\nClient customization.\n')
@@ -208,7 +243,7 @@ runpy.run_path(entry, run_name='__main__')
             self.assertEqual((self.root / relative / name).read_bytes(),
                              (self.root / 'asdg/templates' / relative / name).read_bytes())
         canonical = (self.root / relative / '../../../asdg/skills/asdg-attitude/SKILL.md').resolve()
-        self.assertEqual(canonical, self.root / 'asdg/skills/asdg-attitude/SKILL.md')
+        self.assertEqual(canonical, (self.root / 'asdg/skills/asdg-attitude/SKILL.md').resolve())
         self.assertTrue(canonical.is_file())
         for name in ('attitudes.md', 'TRY-IT.md'):
             self.assertTrue((canonical.parent / name).is_file())
@@ -385,8 +420,8 @@ runpy.run_path(entry, run_name='__main__')
         homes = {
             CORE / 'AGENTS.md': [
                 'session-policy.md), again on every turn', '00 Governance by default', 'BLOCKED: GOVERNANCE_BOOTSTRAP',
-                'read-only diagnosis stays allowed', 'Before substantial work, run the local `python3 asdg/scripts/cli.py status --json`',
-                'a machine-wide `asdg` may resolve an older installation', '`python3 asdg/scripts/cli.py verify` checks structure only',
+                'read-only diagnosis stays allowed', 'In initialized clients, run `python3 asdg/scripts/cli.py status --json` before substantial work',
+                'In the canonical provider, follow its root maintenance and package checks instead', '`python3 asdg/scripts/cli.py verify` checks structure only',
                 'sprint check-implementation --path <target>', "a sprint never widens a role's authority",
                 'hook definitions or ASDG policies', 'Codex hooks enforce nothing until a human reviews and trusts them',
                 'grant no approval, publication, commit, push, deletion, deployment or hook trust',
@@ -413,7 +448,7 @@ runpy.run_path(entry, run_name='__main__')
                          ('ASDG-ADMIN', 'ASDG Admin', None, False, None))
         self.assertEqual(registration['activation'], 'explicit-human-selection-only')
         for key in ('entry', 'contract', 'skill'):
-            self.assertTrue((CORE.parent / registration[key]).is_file(), key)
+            self.assertTrue((CORE / registration[key].removeprefix('asdg/')).is_file(), key)
         catalogue = json.loads((CORE / '00-governance/types/agent-catalog.json').read_text())
         self.assertEqual(len(catalogue['agents']), 13)
         self.assertNotIn('ASDG-ADMIN', json.dumps(catalogue))
@@ -447,7 +482,8 @@ runpy.run_path(entry, run_name='__main__')
     def fresh_client(self, name):
         self.root = Path(self.area.name) / name
         self.root.mkdir()
-        shutil.copytree(CORE, self.root / 'asdg', ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
+        shutil.copytree(CORE, self.root / 'asdg', ignore=shutil.ignore_patterns('.git', 'build', '__pycache__', '*.pyc'))
+        self.seal_package()
         subprocess.run(['git', 'init', '-q', str(self.root)], check=True)
         (self.root / 'app.js').write_text('console.log("existing application");\n')
 
@@ -650,8 +686,8 @@ runpy.run_path(entry, run_name='__main__')
                                r"runs under the session's accountable role|removes selection without selecting Governance|"
                                r'general assistance under root instructions|distinct from None|an implementation gate in AGENTS|'
                                r'Package maintenance follows root instructions|governance remains distinct from no focus')
-        for path in CORE.rglob('*.md'):
-            if 'proposals' not in path.parts:
+        for path in package_files(CORE):
+            if path.suffix == '.md' and 'proposals' not in path.parts:
                 self.assertIsNone(forbidden.search(path.read_text()), path)
 
     def test_decision_skill_relocates_and_preserves_unregistered_decisions(self):
@@ -834,7 +870,7 @@ runpy.run_path(entry, run_name='__main__')
         self.init()
         doc = ['docs/asdg/07-planning/handoff.md']
         self.assertEqual(json.loads((self.root / '.asdg/sprint.json').read_text())['status'], 'inactive')
-        self.assertEqual(self.hook(self.payload(doc)), {})
+        self.assertEqual(self.hook(self.payload(doc), role="ASDG-07"), {})
         for relative in ('asdg/00-governance/types/contract.md', 'asdg/skills/asdg-focus/session-state.md'):
             path = self.root / relative
             original = path.read_bytes()
@@ -847,7 +883,7 @@ runpy.run_path(entry, run_name='__main__')
                 self.assertEqual(self.hook({'tool_name': 'Bash', 'cwd': str(self.root),
                                             'tool_input': {'command': command}}), {}, command)
             path.write_bytes(original)
-            self.assertEqual(self.hook(self.payload(doc)), {})
+            self.assertEqual(self.hook(self.payload(doc), role="ASDG-07"), {})
 
     def test_valid_admin_package_passes_without_changing_catalogue_or_binding(self):
         catalogue = (self.root / 'asdg/00-governance/types/agent-catalog.json').read_bytes()
@@ -893,24 +929,24 @@ runpy.run_path(entry, run_name='__main__')
         self.init()
         targets = ['docs/asdg/03-system-model-and-use-cases/01.4-question.md',
                    'docs/asdg/03-system-model-and-use-cases/images/question.svg',
-                   'docs/shared/handoff.json', 'docs/shared/question.puml']
+                   'docs/asdg/03-system-model-and-use-cases/handoff.json', 'docs/asdg/03-system-model-and-use-cases/question.puml']
         before = snapshot(self.root)
-        self.assertEqual(self.hook(self.payload(targets)), {})
+        self.assertEqual(self.hook(self.payload(targets), role="ASDG-03"), {})
         self.assertEqual(snapshot(self.root), before)
         for relative in ('.asdg/sprint.json', '.asdg/lifecycle.json'):
             path = self.root / relative
             original = path.read_bytes()
             path.write_text('{malformed')
-            self.assertEqual(self.hook(self.payload(targets)), {})
+            self.assertEqual(self.hook(self.payload(targets), role="ASDG-03"), {})
             self.denied(self.payload(['app.js']))
             path.unlink()
-            self.assertEqual(self.hook(self.payload(targets)), {})
+            self.assertEqual(self.hook(self.payload(targets), role="ASDG-03"), {})
             self.denied(self.payload(['app.js']))
             path.write_bytes(original)
 
     def test_mixed_documentation_and_code_checks_every_code_target(self):
         self.init()
-        doc = 'docs/asdg/07-planning/03-plan.md'
+        doc = 'docs/asdg/09-build-and-test-cycle/03-plan.md'
         self.denied(self.payload([doc, 'app.js']))
         self.active()
         self.assertEqual(self.hook(self.payload([doc, 'app.js'])), {})
@@ -942,7 +978,7 @@ runpy.run_path(entry, run_name='__main__')
                     'tool_input': {'command': '*** Begin Patch\n*** Update File: '
                                    + source + '\n*** Move to: ' + destination
                                    + '\n@@\n-old\n+new\n*** End Patch'}}
-        self.assertEqual(self.hook(move('docs/old.md', 'docs/asdg/07-planning/new.md')), {})
+        self.assertEqual(self.hook(move('docs/asdg/09-build-and-test-cycle/old.md', 'docs/asdg/09-build-and-test-cycle/new.md')), {})
         self.denied(move('app.js', 'docs/app.md'))
         self.denied(move('docs/note.md', 'app.js'))
         self.denied(move('docs/note.md', '.asdg/sprint.json'))

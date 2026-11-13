@@ -3,14 +3,14 @@ import sys
 import unittest
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / 'asdg/scripts/lib'))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts/lib'))
 from agent_config import flat_strings, loads
 
 
 class AgentConfigTests(unittest.TestCase):
     def test_current_adapters_on_older_python(self):
-        paths = list((ROOT / 'asdg/templates/.codex/agents').glob('*.toml'))
+        paths = list((ROOT / 'templates/.codex/agents').glob('*.toml'))
         self.assertEqual(len(paths), 13)
         for path in paths:
             with self.subTest(path=path.name):

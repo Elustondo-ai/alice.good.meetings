@@ -1,6 +1,6 @@
 ---
 name: asdg-init
-description: Initialize or verify the project-local ASDG distribution after an explicit installation request. Preserves client files and state; does not activate roles or authorize application work.
+description: Initialize or verify the project-local ASDG distribution after an explicit installation request. Preserves client files and state; includes approved initial team activation, without authorizing application work.
 ---
 
 # ASDG initialization adapter

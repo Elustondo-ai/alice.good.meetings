@@ -40,7 +40,7 @@ class Change:
     root: Path
     relative: Path
     before: bytes | None
-    after: bytes
+    after: bytes | None
     mode: int = 0o644
 
     @property
@@ -48,7 +48,7 @@ class Change:
         return safe_path(self.root, self.relative)
 
 
-def plan(root: Path, relative: str | Path, data: bytes, *, replace: bool = False,
+def plan(root: Path, relative: str | Path, data: bytes | None, *, replace: bool = False,
          mode: int = 0o644) -> Change | None:
     path = safe_path(root, relative)
     old = read_bytes(path)
@@ -76,7 +76,7 @@ def atomic_replace(path: Path, data: bytes, mode: int) -> None:
             os.unlink(temporary)
 
 
-def apply(changes: list[Change]) -> list[str]:
+def apply(changes: list[Change], *, verify=None) -> list[str]:
     """Preflight all files; roll back only our own changes on ordinary failures.
 
     Not a transaction against concurrent hostile writers or machine crashes.
@@ -87,6 +87,7 @@ def apply(changes: list[Change]) -> list[str]:
             raise Conflict(f'File changed since inspection: {change.path}')
     made_dirs: list[Path] = []
     applied: list[Change] = []
+    created: dict[Path, tuple[int, int]] = {}
     try:
         for change in changes:
             path = change.path
@@ -100,24 +101,42 @@ def apply(changes: list[Change]) -> list[str]:
                 made_dirs.append(directory)
             if read_bytes(path) != change.before:
                 raise Conflict(f'File changed since inspection: {path}')
-            if change.before is None:
-                fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, change.mode)
+            if change.after is None:
+                path.unlink()
                 applied.append(change)
-                with os.fdopen(fd, 'wb') as stream:
+            elif change.before is None:
+                fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, change.mode)
+                identity = os.fstat(fd)
+                created[path] = (identity.st_dev, identity.st_ino)
+                applied.append(change)
+                try:
+                    stream = os.fdopen(fd, 'wb')
+                except BaseException:
+                    os.close(fd)  # Ownership was not transferred to a stream.
+                    raise
+                with stream:
                     stream.write(change.after)
                     stream.flush()
                     os.fsync(stream.fileno())
             else:
                 atomic_replace(path, change.after, change.mode)
                 applied.append(change)
+        if verify is not None:
+            verify()
     except BaseException:
         for change in reversed(applied):
             path = change.path
-            if read_bytes(path) == change.after:
-                if change.before is None:
+            if change.before is None:
+                # Interrupted writes need not match the complete intended content.
+                # Remove only the inode exclusively created by this transaction.
+                try:
+                    identity = path.lstat()
+                except FileNotFoundError:
+                    continue
+                if created.get(path) == (identity.st_dev, identity.st_ino):
                     path.unlink()
-                else:
-                    atomic_replace(path, change.before, change.mode)
+            elif read_bytes(path) == change.after:
+                atomic_replace(path, change.before, change.mode)
         for directory in reversed(made_dirs):
             try:
                 directory.rmdir()

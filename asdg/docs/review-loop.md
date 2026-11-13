@@ -1,7 +1,7 @@
 # Iterate with local Codex and a reviewer
 
-Pablo selected the embedded `asdg/` folder as the evolving working baseline on 20 October 2026.
-The delivery snapshot is its starting point. The old governance checkout becomes provenance, not a live dependency.
+The canonical `Elustondo-ai/asdg` repository owns reusable methodology and distribution builds.
+Each client keeps its embedded version; propose reusable pilot improvements upstream with source commits and validation.
 An iteration changes this baseline only through a visible, bounded diff and suitable validation.
 
 ## Responsibilities
@@ -21,8 +21,8 @@ A different conversation is not proof of independence: disclose shared source, a
 6. Return the exact diff plus a concise report for review; do not infer approval from passing tests.
 
 For the first iteration, finish installation and native discovery verification before application cleanup.
-Then review Context and Purpose against the real `app.js` and `index.html`, one conversation at a time.
-Every specialist may save project documentation under `docs/`; code, approval and state-transition limits remain separate.
+Then review Context and Purpose against that client's actual application, one assignment at a time.
+Every specialist may save project documentation within its assigned ownership; code, approval and state-transition limits remain separate.
 Source checks and observed documentation writes do not prove fresh-session native enforcement.
 ASDG rule maintenance is a separate explicit task under [ASDG Admin](../admin/AGENTS.md); an application sprint cannot silently authorize it.
 

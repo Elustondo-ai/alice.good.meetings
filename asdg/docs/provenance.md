@@ -7,7 +7,7 @@ The old October 17 local clone and the newer sibling `asdg` repository were not 
 The attached earlier SDLC2 essays remain background; they do not override the current catalogue or user decisions.
 
 `metadata/source-manifest.json` records source file IDs, paths, modification times and SHA-256 hashes.
-`metadata/MANIFEST.json` records this working snapshot; `metadata/deliveries/0.2.0-pilot.1.json` retains original delivery hashes.
+`metadata/MANIFEST.json` records the current candidate; `metadata/deliveries/0.2.0-pilot.1.json` retains original delivery hashes.
 These records establish provenance, not signatures or approval.
 The [Apache 2.0 license](../LICENSE) is retained from the source.
 Historical provider document-review events are preserved as history, not client evidence.
@@ -38,3 +38,9 @@ Existing conflicting configuration is preserved and reported before planned writ
 Native Mac trust/interception, live SDK advice, persisted-focus behavior and complete child-log callbacks
 must be verified in the target runtime. Configuration and local tests do not establish those outcomes.
 The [root-layout refactor](root-layout.md) is the first local revision; [review changes](review-loop.md) before promotion.
+
+## Canonical consolidation
+
+The current candidate records both source commits in `metadata/distribution.json`.
+The pilot.2 manifest is preserved byte-for-byte in `metadata/deliveries/0.2.0-pilot.2.json`.
+See [distribution build and verification](distribution-build.md); promotion grants no human approval.

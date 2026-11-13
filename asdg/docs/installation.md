@@ -1,59 +1,53 @@
-# Install ASDG in a client repository
+# Install ASDG and prepare its project team
 
-Extract the zip once so the Git root contains `asdg/scripts/init.py`, alongside the existing application.
-Do not nest it inside another `asdg/` or run it from the old governance project.
-Use Python 3.9+ and Git on macOS/Linux. Windows and remote/cloud hook enforcement are unverified.
-Nothing changes outside the selected client repository; no shell startup file or Python environment is edited.
+ASDG initialization installs the methodology and prepares the project’s ASDG team.
 
-| Location | Ownership |
-| --- | --- |
-| `asdg/` | Local versioned methodology, scripts, contracts, templates and tests |
-| `asdg/scripts/` | Python entry points and supporting runtime modules |
-| `asdg/metadata/` | Distribution records; original delivery manifest retained under `deliveries/` |
-| `.asdg/` | Durable project/release/sprint/evidence state, selected clients and document review history |
-| `.agents/skills/`, `.claude/skills/` | Codex and Claude skill adapters, only for selected clients; canonical instructions stay in `asdg/` |
-| `.codex/agents/` | Thirteen named-role adapters, Codex only |
-| `.codex/hooks.json` | Guard and attributed activity-log callbacks, Codex only; trust must be verified locally |
-| Root `AGENTS.md` | A short generated ASDG bootstrap first, then project-owned guidance |
-| `docs/asdg/` | Client evidence and stage README scaffolds; existing documents are preserved |
-| `logs/` | Ignored disposable records, centralized by session and child instance |
+The recommended [repository-URL Quick Start](https://github.com/Elustondo-ai/asdg#quick-start--give-your-agent-the-repository-url) lets the agent acquire the ZIP safely. Manual ZIP + Prompt and Clone + Prompt remain alternatives using one Python 3.9+ engine on macOS/Linux. The prompts select inputs, show the plan and wait for approval; they never implement a second installer.
 
-Choose Codex, Claude or both as described in [client integrations](client-integrations.md). For a first setup, run the command in a terminal or ask your agent to run it; the Init skill is not needed yet.
-Every adopting project inherits the [human documentation rules](../00-governance/docs/documentation-standard.md) through `asdg/AGENTS.md`; initialization neither creates all source companions nor certifies their quality.
-Optional commands, run from the project root:
+![Both acquisitions use one integrity, approval and verification engine; the approved team workflow prepares Governance before the final Status assessment.](images/installation-engine.svg)
+
+## Acquire and preview
+
+ZIP: extract into an existing Git root so it contains `asdg/scripts/init.py`. Inspect the archive first; never extract over an existing `asdg/` folder or application files. The engine checks extracted bytes; it cannot undo an earlier extraction overwrite.
+Clone: use an existing local clone of the canonical repository and an explicitly selected full commit. The engine checks origin, HEAD and every selected file against that commit. Unselected provider work is not copied.
+Run the selected package's own entry point; no global command, download, dependency installation or startup-file change is needed.
 
 ```sh
-python3 asdg/scripts/init.py --client claude --dry-run  # Preview a Claude setup without writing
-python3 asdg/scripts/cli.py status --facts-only  # Inspect recorded project state
-python3 asdg/scripts/cli.py verify  # Check project structure and integration
+# ZIP: from the target Git project
+python3 asdg/scripts/init.py --client codex --dry-run
+# Clone: substitute explicit paths and the reviewed full commit
+python3 /path/to/canonical/scripts/init.py --source /path/to/canonical --commit FULL_COMMIT --target /path/to/project --client claude --dry-run
 ```
 
-Add `--project-status defining` for an existing project; without it, a first setup records `new`.
-Use the project-local CLI; a global `asdg` command may point to an older checkout.
-The dry run validates all destinations and reports planned writes. A conflict causes no planned file writes.
-Initialization refuses conflicting hooks, Codex config or either client's adapters; it never resets them, and repeat setup never recreates or duplicates a file.
-Existing instructions and ignore rules are retained; the bootstrap goes first, earlier exact blocks move there, and an edited block requires review.
-An initial status argument does not change a previously recorded status.
-Missing or malformed existing state and incompatible versions require explicit repair/migration.
-This fresh-install pilot does not migrate `.asdlc/` or the old linked-provider installation.
+Choose `codex` or `claude`; `both` requires an explicit choice. Supply an initial `--project-status defining` only when that declaration is intended; otherwise first setup records `new`.
+No `--apply` means preview. Every selected methodology path, generated change/diff and canonical team requirement is shown; source/target files are unchanged. Temporary normalized package files are removed afterward.
+A matching manifest establishes package integrity, not release approval. A stale manifest or dirty selected clone file blocks installation; do not refresh it as an installation shortcut.
 
-## Native checks
+## Approve, apply and verify
 
-Open/reload the project in local Codex and inspect the skills picker and named-agent discovery.
-Review the generated hook definitions through `/hooks`; only the human/native trust flow grants trust.
-Confirm a harmless denied write in a disposable copy before relying on interception.
-In Claude Code, ask "What skills are available?" or open `/skills`, and check loaded instructions with `/memory`.
-Structural verification and direct hook execution are different from native runtime enforcement.
-The Codex guard blocks arbitrary shell/REPL execution, including builds and tests, and once trusted may block repeat setup; run those in a human terminal.
-Do not disable the guard merely to make a test or maintenance edit succeed.
-Custom agents inherit parent permissions; advisory instructions do not create a separate sandbox.
-See [native integration limits](native-integration.md) and the actual local runtime version.
+The [canonical Init skill](../skills/asdg-init/SKILL.md#mandatory-approval-presentation--both-clients) owns the mandatory text approval summary, actual preview field/count mapping, accessible complete-plan reference and APPROVE/CANCEL responses for both clients. The install request itself is not plan approval.
+After that approval, repeat the same command/options, replacing `--dry-run` with `--apply --plan TOKEN_FROM_PREVIEW`. The token binds the source, target, client and planned bytes; a changed plan requires fresh review.
+The engine uses existing collision protection and rollback, then checks the installed package and selected integrations before completing. A failed verification rolls back its own writes. It is not crash-safe against power loss or hostile concurrent writers.
+Run `python3 asdg/scripts/cli.py verify --json` in the target, and repeat the preview to confirm no further writes. No Git mutation occurs.
+The [canonical Create team workflow](../skills/asdg-create-team/initialization.md) prepares native inventory before preview; `--team-inventory PATH` binds Codex create/reuse effects to the same plan token. APPROVE covers those displayed effects without a second team question.
+After verified file installation, Init executes that workflow, confirms team readiness and reports Status from Governance. Native actions are outside file rollback; partial success is retained and rediscovered before retry.
+A plain Python invocation cannot operate native chats: it reports file installation complete and initialization pending. The canonical agent workflow completes the client phase automatically. Missing tools or ambiguous inventory prevent a readiness claim.
+Claude prepares role/skill sources and adapters with Governance available by default; specialists use manual Focus. Codex prepares thirteen activated project chats. Admin is excluded. See [client readiness](client-integrations.md).
 
-## Repetition and upgrades
+| Location | Ownership and protection |
+| --- | --- |
+| `asdg/` | Only selected portable methodology; `.git`, provider extras, source `docs/asdg/` and source `.asdg/` are never copied |
+| `.asdg/` | Target binding/provenance, inactive initial sprint, lifecycle, integration selection and append-only document receipts; existing state preserved |
+| `.agents/`, `.codex/` | Selected Codex adapters/configuration/hooks; collisions block, trust is separate |
+| `.claude/skills/` | Selected Claude adapters; existing files preserved or reported as conflicts |
+| `AGENTS.md`, optional `CLAUDE.md`, `.gitignore` | Managed integration plus preserved project text; instruction changes appear in preview, with instruction backups |
+| `docs/asdg/`, `logs/` | Missing generic stage introductions and log marker only; authored project content preserved |
 
-Repeat initialization preserves state and restores current generated entries; retire an older client's per-role Focus adapters only through an authorized migration after checking customizations.
-Deleting `logs/` loses observations only; it does not remove lifecycle or review history.
-Review package updates as diffs against this local working baseline; never replace the folder wholesale.
-Keep `.asdg/` across upgrades. Catalogue/version changes require a reviewed migration.
-`python3 asdg/scripts/check.py --integrity` compares package bytes to the delivered manifest; edits are visible.
-Ordinary status/verify remains usable for intentional local changes if contracts and generated adapters agree.
+Existing incompatible versions, edited adapters or legacy linked installations require explicit repair/upgrade. Initialization does not reconcile them or grant lifecycle acceptance.
+Ordinary status/verify remains available for local methodology modifications; new installation requires package integrity.
+
+## Human client tests
+
+Use the copy-ready [ZIP prompt](install-zip-prompt.md) or [Clone prompt](install-clone-prompt.md) in Claude Code or Codex. Check native skills and a harmless invocation in a disposable project after setup.
+Review [client integrations](client-integrations.md) and [native limits](native-integration.md); generated adapters/hooks do not prove runtime enforcement. Only the human/native flow grants hook trust.
+Only displayed team setup and initial activation are included. Context analysis, commits, pushes, releases, publication and sprint starts remain separate decisions.

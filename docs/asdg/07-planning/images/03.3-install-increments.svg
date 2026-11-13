@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="720" height="280" role="img" aria-labelledby="t d" font-family="Helvetica, Arial, sans-serif">
+  <title id="t">Increment order for the installation lifecycle</title>
+  <desc id="d">Increment 0 settles decisions and 1 fixes diagnostics. Increments 2 to 5 build the shared foundations: the Git guard, installation record, source reader and adapter planner. Increment 6 restricts init, 7 adds the compatibility check, 8 builds update and 9 builds replace, all using the Git guard. Increment 10 updates skills and documentation, 11 reconciles Alice and 12 proposes the work upstream later.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3e4c59"/></marker></defs>
+  <rect width="720" height="280" fill="#ffffff"/>
+  <g font-size="11" fill="#1f2933" text-anchor="middle">
+    <rect x="10" y="110" width="80" height="56" rx="7" fill="#f4f6f8" stroke="#7b8794"/>
+    <text x="50" y="134" font-weight="bold">0 Decide</text><text x="50" y="152">D1–D4</text>
+    <rect x="110" y="110" width="80" height="56" rx="7" fill="#fffbea" stroke="#c99a2e"/>
+    <text x="150" y="134" font-weight="bold">1 Diagnose</text><text x="150" y="152">clear errors</text>
+    <rect x="215" y="14" width="110" height="50" rx="7" fill="#ffe3e3" stroke="#cf1124" stroke-width="2"/>
+    <text x="270" y="36" font-weight="bold">2 Git guard</text><text x="270" y="53">clean tree + source</text>
+    <rect x="215" y="80" width="110" height="50" rx="7" fill="#e6f6ff" stroke="#2680c2"/>
+    <text x="270" y="102" font-weight="bold">3 Record</text><text x="270" y="119">installation.json</text>
+    <rect x="215" y="146" width="110" height="50" rx="7" fill="#e6f6ff" stroke="#2680c2"/>
+    <text x="270" y="168" font-weight="bold">4 Sources</text><text x="270" y="185">Git + package</text>
+    <rect x="215" y="212" width="110" height="50" rx="7" fill="#e6f6ff" stroke="#2680c2"/>
+    <text x="270" y="234" font-weight="bold">5 Adapters</text><text x="270" y="251">shared planner</text>
+    <rect x="350" y="44" width="90" height="50" rx="7" fill="#e3f9e5" stroke="#3f9142"/>
+    <text x="395" y="66" font-weight="bold">6 init</text><text x="395" y="83">new only</text>
+    <rect x="350" y="146" width="90" height="50" rx="7" fill="#e3f9e5" stroke="#3f9142"/>
+    <text x="395" y="168" font-weight="bold">7 Compat</text><text x="395" y="185">shared check</text>
+    <rect x="465" y="96" width="90" height="50" rx="7" fill="#e3f9e5" stroke="#3f9142"/>
+    <text x="510" y="118" font-weight="bold">8 update</text><text x="510" y="135">three-way</text>
+    <rect x="465" y="176" width="90" height="50" rx="7" fill="#e3f9e5" stroke="#3f9142"/>
+    <text x="510" y="198" font-weight="bold">9 replace</text><text x="510" y="215">+ adopt</text>
+    <rect x="580" y="44" width="130" height="44" rx="7" fill="#f4f6f8" stroke="#7b8794"/>
+    <text x="645" y="71" font-weight="bold">10 Skills and docs</text>
+    <rect x="580" y="128" width="130" height="44" rx="7" fill="#fffbea" stroke="#c99a2e"/>
+    <text x="645" y="155" font-weight="bold">11 Reconcile Alice</text>
+    <rect x="580" y="212" width="130" height="44" rx="7" fill="#f4f6f8" stroke="#7b8794" stroke-dasharray="4 3"/>
+    <text x="645" y="239" font-weight="bold">12 Upstream later</text>
+  </g>
+  <g stroke="#3e4c59" stroke-width="1.5" fill="none">
+    <path d="M90,138 L106,138" marker-end="url(#a)"/>
+    <path d="M190,124 L211,42" marker-end="url(#a)"/><path d="M190,132 L211,108" marker-end="url(#a)"/>
+    <path d="M190,144 L211,170" marker-end="url(#a)"/><path d="M190,152 L211,234" marker-end="url(#a)"/>
+    <path d="M325,42 L346,62" marker-end="url(#a)"/><path d="M325,108 L346,76" marker-end="url(#a)"/>
+    <path d="M325,171 L346,171" marker-end="url(#a)"/>
+    <path d="M440,164 L461,128" marker-end="url(#a)"/><path d="M440,178 L461,196" marker-end="url(#a)"/>
+    <path d="M325,237 L461,212" marker-end="url(#a)"/>
+    <path d="M555,114 L576,72" marker-end="url(#a)"/><path d="M555,196 L576,156" marker-end="url(#a)"/>
+    <path d="M645,172 L645,208" marker-end="url(#a)"/>
+  </g>
+</svg>

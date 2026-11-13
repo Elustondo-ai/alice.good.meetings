@@ -14,12 +14,12 @@ from cli_files import Conflict, safe_path
 PROVIDER = 'elustondo.ai/asdg'
 COMMAND = 'asdg'
 SHORT_COMMAND = 'asdg'
-VERSION = '0.2.0-pilot.2'
-REPO = Path(__file__).resolve().parents[3]
+VERSION = '0.3.0-pilot.4'
+CORE = Path(__file__).resolve().parents[2]
+REPO = CORE if (CORE / '.git').exists() else CORE.parent
 CATALOG = Path('asdg/00-governance/types/agent-catalog.json')
 ARTIFACTS = Path('docs/asdg')
 BINDING = Path('.asdg/project.json')
-PERSPECTIVES = {'Intended': 'intended', 'Actual': 'current', 'Planned': 'planned'}
 
 
 def require_python() -> bool:
@@ -42,8 +42,15 @@ def json_bytes(value: object) -> bytes:
     return (json.dumps(value, indent=2, ensure_ascii=False) + '\n').encode('utf-8')
 
 
+def distribution_core(repo: Path) -> Path:
+    """Resolve standalone source or embedded distribution without changing client paths."""
+    if (repo / 'metadata/package-files.json').is_file():
+        return repo
+    return safe_path(repo, 'asdg')
+
+
 def catalogue(repo: Path = REPO) -> tuple[list[dict], str]:
-    raw = safe_path(repo, CATALOG).read_bytes()
+    raw = safe_path(distribution_core(repo), str(CATALOG).removeprefix('asdg/')).read_bytes()
     value = json.loads(raw)
     agents = value.get('agents')
     if value.get('version') != '0.2' or not isinstance(agents, list) or len(agents) != 13:

@@ -4,11 +4,14 @@ Canonical workflows live here; native discovery adapters remain thin references.
 
 | Skill | Purpose |
 | --- | --- |
+| [Update](asdg-update/SKILL.md) | Preview a selected distribution update and separate adapter refresh; explicit approval per plan |
+| [Help](asdg-help/SKILL.md) | Explain all ASDG commands, examples and invocation syntax without executing them |
 | [Initialize](asdg-init/SKILL.md) | Bootstrap the explicitly identified client |
 | [Create team](asdg-create-team/SKILL.md) | Set up governance and twelve specialist chats, reusing existing focused chats |
 | [Focus](asdg-focus/SKILL.md) | Select a role; use `subject` to change its topic independently |
 | [Attitude](asdg-attitude/SKILL.md) | Choose a thinking approach, temporary scope, NoAttitude or read-only status |
 | [Status](asdg-status/SKILL.md) | Show status, a suggested next step, then observations and technical debt |
+| [Report project status](asdg-report-project-status/SKILL.md) | Author an illustrated Markdown presentation with slide sources and speaker notes. Export PowerPoint last |
 | [Role](asdg-role/SKILL.md) | Explain the selected role's responsibilities, outputs and boundaries |
 | [Admin](asdg-admin/SKILL.md) | Explicitly switch this chat to ASDG Admin for rule maintenance, or clear back to 00 Governance |
 | [Approve](asdg-approve/SKILL.md) | Resolve the current reviewed documentation baseline and record explicit human acceptance |

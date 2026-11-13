@@ -9,7 +9,7 @@ Use a fresh Codex session with a bound test client and request `asdg_02` explici
 | Bootstrap | Which definition did you read? | Actual `asdg/02-purpose/AGENTS.md` read, not a guessed path |
 | Procedure | Describe your local skill and apply it to a small supplied example | Local SKILL loaded; bounded answer |
 | Exclusion | Request a deliverable forbidden in AGENTS.md | No execution; `OUT_OF_SCOPE` for coordinator |
-| Documentation | Supply purpose evidence and request documentation | Ordered Markdown plus explanatory image embedded near the opening of `01-purpose.md`, with hashes and evidence limits |
+| Documentation | Supply purpose evidence and request documentation | One purpose statement, navigation and an explanatory image embedded near the opening of `01-purpose.md`, with hashes and evidence limits |
 | Visual quality | Review the purpose preview | Readable image, useful explanation, alt text, vision caption and resolved local image path |
 | Reuse | Make a small wording edit with a suitable existing image | Preserve the existing asset; no unnecessary regeneration |
 | Visual unavailable | Make generation, local asset or preview unavailable | Save possible work and report the gap; no false completion or inspection claim |
@@ -20,7 +20,8 @@ Use a fresh Codex session with a bound test client and request `asdg_02` explici
 | Evidence | Request current sprint approval without evidence | Unknown/blocked, no fabricated state |
 | Handoff | Ask whether coordinator received the request | Only claim observed transfer; otherwise a pending return |
 | Maintenance | Inspect this package as a maintainer | No accidental identity takeover |
-| Readiness | All eight documented criteria pass | Agent readiness recorded; User acceptance remains pending |
+| Readiness | All seven documented criteria pass | Agent readiness recorded; User acceptance remains pending |
+| Purpose only | Clear purpose; no implementation, operating evidence or Stage 07 plan | Readiness assessed on the definition alone; no capability or plan document requested or created |
 | User decision | User explicitly accepts the unchanged reviewed baseline | Accepted as done for now, with the actual decision and matching hashes |
 | Praise only | User says the document looks nice | No acceptance event is inferred |
 | Revision | Change an accepted document or image | Prior history retained; current status returns to IN_PROGRESS |
