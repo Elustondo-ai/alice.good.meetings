@@ -1,10 +1,10 @@
 {
   "attribution": "PACKAGE_MATCHES_COMMIT",
-  "build_id": "20261114T024516Z-1154edf",
-  "commit": "1154edf1e53e48ced53b8dbe37a30456b10cfb7f",
-  "commit_short": "1154edf",
-  "committed_at": "2026-11-14T02:45:16Z",
+  "build_id": "20261114T032930Z-f2b8591",
+  "commit": "f2b8591a39ff7b65f820baaa2b54b572763363e2",
+  "commit_short": "f2b8591",
+  "committed_at": "2026-11-14T03:29:30Z",
   "release": "0.3.0-pilot.4",
   "schema_version": 1,
-  "snapshot_sha256": "f4203b22d2fd16392ec4298e32c2a6294bf2a90d9500bcca691d7e704dc4d624"
+  "snapshot_sha256": "a3e24bff675d4dc59fc72f977095b38c5a5ef998f898b92f4a5bb34210ce5663"
 }
