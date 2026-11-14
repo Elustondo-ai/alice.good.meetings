@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "clients": {
+    "claude": {
+      "recorded_from": "--client both"
+    },
+    "codex": {
+      "recorded_from": "--client both"
+    }
+  }
+}

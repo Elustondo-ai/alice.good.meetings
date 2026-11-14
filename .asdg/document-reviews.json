@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "events": [
+    {
+      "path": ".agents/skills/asdg-admin/SKILL.md",
+      "sha256": "a5b0ec3ec5dd8df300f05ffc66728193c9bd0852621a55dd67b9bb6ded41bf35",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-approve/SKILL.md",
+      "sha256": "e536eff9d3c4a4444d607f0b3781b690b7108ff5ac39138edf64dd1241ef4223",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-attitude/SKILL.md",
+      "sha256": "2677aec69f0330d0db6fe0459ea41a07cfab8e0e3b16254cd10dcb1c3cbf1567",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-create-team/SKILL.md",
+      "sha256": "457fa162e27a19ee5130600fda9e1dbbfd16f86643ecbed4c7c6085f2099e803",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-decision/SKILL.md",
+      "sha256": "e0cb40d51d3b6a2081e528c02c8aa716bd062968fd73217611d0e0aa8e411975",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-documentation/SKILL.md",
+      "sha256": "3f48e9311915e02b8dd9d0d760148fb29d3eef0775e6638ccb0e6b91a7f546d7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-focus/SKILL.md",
+      "sha256": "dd0ebab9a3e4c60a59fb75e0425ee743918389ab025853537130e15afedbeec6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-help/SKILL.md",
+      "sha256": "989071edd7f93f1a827fcc05ea441b55480048eef16a7f546cb391effd16eeb4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-init/SKILL.md",
+      "sha256": "11641d2e0258dc3f4db7766522bb84dc5cb6c4ac5592d081465b40fd1b12550f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-openspec-propose/SKILL.md",
+      "sha256": "00073cda62cd8627f4fa15633b60cda404aa8bac691438d90e40079daf73de9b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-report-project-status/SKILL.md",
+      "sha256": "9bb4b56e5e92e008082bc2bff26544929a7cb9ed91d863f56206a7c4184c77e4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-role/SKILL.md",
+      "sha256": "e01a75c89793a4c5f0a78a215faba50da239ab70b0970005967b1520d9b9f796",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-sprint-close/SKILL.md",
+      "sha256": "1d127a79f3daeab96aaea99ebfb11c1b0c608d9b647eab713ffd9ba872d53e14",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-sprint-review/SKILL.md",
+      "sha256": "53979ce63fd664849496da1d8209e89b8343e9b272e6b38c0bb171f22984655d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-sprint-start/SKILL.md",
+      "sha256": "16e3cad2e9d4002df04289feba402f44bd4a75dbf12515bb4d74ff2c0eae05af",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-status/SKILL.md",
+      "sha256": "eada036d20117b8dc22cb1f3e2850a28cff4670e9457d1e416864f62a06ba935",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-suggestion/SKILL.md",
+      "sha256": "6b5d4aa2c201de8b05e34d98723dd6875ced8fa84e1706ef0de10227ab5e29e2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-update/SKILL.md",
+      "sha256": "9fc31ad5543fe814276d324d183eb4cbd2f6101d8e4ddafeaaae5e6651586cc3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-view-dev/SKILL.md",
+      "sha256": "e553ff1ee4faf586a5c4e6f33152b6369e8167ada94a5c3a22e19da6d732cd30",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-admin/SKILL.md",
+      "sha256": "054d97d7da391c95982533488abca23fa0afa424dba285573f219ac4cbe427e8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-approve/SKILL.md",
+      "sha256": "e536eff9d3c4a4444d607f0b3781b690b7108ff5ac39138edf64dd1241ef4223",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-attitude/SKILL.md",
+      "sha256": "2677aec69f0330d0db6fe0459ea41a07cfab8e0e3b16254cd10dcb1c3cbf1567",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-create-team/SKILL.md",
+      "sha256": "457fa162e27a19ee5130600fda9e1dbbfd16f86643ecbed4c7c6085f2099e803",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-decision/SKILL.md",
+      "sha256": "e0cb40d51d3b6a2081e528c02c8aa716bd062968fd73217611d0e0aa8e411975",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-documentation/SKILL.md",
+      "sha256": "2f69a019c6b226f2aedc4622f06c70b0250f01447aa831550e37dd7e338a32f6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-focus/SKILL.md",
+      "sha256": "b107b457dfe0d19b49d9738bfe6a83194dcd3c848f243e7cc966c1936b9eaa8b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-help/SKILL.md",
+      "sha256": "989071edd7f93f1a827fcc05ea441b55480048eef16a7f546cb391effd16eeb4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-init/SKILL.md",
+      "sha256": "e4c1aecc4b3354aeb7dd3aea7e0798226658880b60d68b45cd9ac6116ea00afb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-openspec-propose/SKILL.md",
+      "sha256": "00073cda62cd8627f4fa15633b60cda404aa8bac691438d90e40079daf73de9b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-report-project-status/SKILL.md",
+      "sha256": "2f82db0e70629bdb10392c5383d52ad8ffdf0eea3fe0fb39cd163e9c4ce12593",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-role/SKILL.md",
+      "sha256": "e01a75c89793a4c5f0a78a215faba50da239ab70b0970005967b1520d9b9f796",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-close/SKILL.md",
+      "sha256": "1d127a79f3daeab96aaea99ebfb11c1b0c608d9b647eab713ffd9ba872d53e14",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-review/SKILL.md",
+      "sha256": "53979ce63fd664849496da1d8209e89b8343e9b272e6b38c0bb171f22984655d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-start/SKILL.md",
+      "sha256": "16e3cad2e9d4002df04289feba402f44bd4a75dbf12515bb4d74ff2c0eae05af",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-status/SKILL.md",
+      "sha256": "24675e5d92b157d38eb30627c5ac2e3286827b059c35cb1a35a62c1737dc91d5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-suggestion/SKILL.md",
+      "sha256": "6b5d4aa2c201de8b05e34d98723dd6875ced8fa84e1706ef0de10227ab5e29e2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-update/SKILL.md",
+      "sha256": "9fc31ad5543fe814276d324d183eb4cbd2f6101d8e4ddafeaaae5e6651586cc3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-view-dev/SKILL.md",
+      "sha256": "e553ff1ee4faf586a5c4e6f33152b6369e8167ada94a5c3a22e19da6d732cd30",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-14T01:33:34Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    }
+  ]
+}
