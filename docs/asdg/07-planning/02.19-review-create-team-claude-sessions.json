@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "objective": "Create team creates or reuses role chats in Claude where the surface provides session tools; manual Focus remains the fallback.",
+  "requested_by": "Pablo (repository owner), 2026-11-16: asked why chats were no longer created in Claude, then chose \"Yes, fix the skill\"",
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-fable-5-2",
+    "client": "Claude desktop app, Code tab",
+    "session": "local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e"
+  },
+  "role": {
+    "id": "ASDG-ADMIN",
+    "selection": "retained from the earlier explicit selection in this session",
+    "title": "UNCHANGED"
+  },
+  "starting_revision": "8192a1f",
+  "preserved_uncommitted_work": [
+    "docs/asdg/07-planning/02.18*.md (three plan pages)",
+    ".claude/launch.json"
+  ],
+  "changed_paths": [
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "63a84df3c75af26445467f47a4f860239ff81e55a2d885e409f2207edaf0c358"
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "03be339d5d7d36887bbc108135e15c800b36231bfc15e4e4f0cd18500d32428a"
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/initialization.md",
+      "sha256": "bdf7b71e05c632bb17e4fec05b928e137225d539bd5848cf5cb2c647460e7b54"
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "f60d42ae9b735645dd41a577bf4758eb4f8c5221cd5ac19019f7a0347e45129b"
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "sha256": "c0c7eb1a06e81363eaf2bcaf8efcfbdb685130c1037d802f8648f9d79f618722"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_team.md",
+      "sha256": "1205b2699b3ba9b4d8922a4905f0c86f2a0cd20a3dcc375fa65a0dff77c2b621"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.md",
+      "sha256": "b124e5fca348b0813b9428397cbec4660397aaec4927e35efa2c2a16e679d974"
+    }
+  ],
+  "validation": {
+    "automated": [
+      "python3 asdg/scripts/cli.py verify: ASDG structure verified",
+      "relative links in the six changed pages resolve",
+      "python3 -B -m unittest discover -s asdg/tests: 196 tests, failures=3, errors=16, skipped=5; failing set identical to a copy of 8192a1f"
+    ],
+    "known_failures": "16 errors in test_build_identity and test_distribution follow the team-file move (stale package list and manifest); 3 failures in test_portable also occur on a copy of 224e564 and are not investigated",
+    "observed_in_client": {
+      "client": "Claude desktop app",
+      "date": "2026-11-16",
+      "created": 13,
+      "reused": 0,
+      "unresolved": 0,
+      "concurrency_limit_observed": "five started sessions at once; four further starts refused until those reported",
+      "activation_basis": "each chat's own first report plus its observed title; conversations not read",
+      "sessions": {
+        "ASDG-COORDINATOR": {
+          "session": "local_e0f201ae-5951-4cd7-8df5-e35c8b78f8b5",
+          "observed_title": "00 Governance"
+        },
+        "ASDG-01": {
+          "session": "local_ba00dc3e-32ea-462f-abc2-5c846b1051bd",
+          "observed_title": "01 Context"
+        },
+        "ASDG-02": {
+          "session": "local_4f904c19-90be-4650-9ab0-490b59f1a4da",
+          "observed_title": "02 Purpose"
+        },
+        "ASDG-03": {
+          "session": "local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+          "observed_title": "03 UseCases"
+        },
+        "ASDG-04": {
+          "session": "local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+          "observed_title": "04 EvalStrategy"
+        },
+        "ASDG-05": {
+          "session": "local_ef3e1367-85a1-450e-93a0-a47155faca88",
+          "observed_title": "05 Architecture"
+        },
+        "ASDG-06": {
+          "session": "local_28473edd-2e61-4c80-8561-6f4f0cb10902",
+          "observed_title": "06 POC"
+        },
+        "ASDG-07": {
+          "session": "local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+          "observed_title": "07 Planning"
+        },
+        "ASDG-08": {
+          "session": "local_bcd825d1-8c2d-48c4-8899-fa3f886181d2",
+          "observed_title": "08 Specs"
+        },
+        "ASDG-09": {
+          "session": "local_5a7faec7-e00e-4eb2-95fd-03a114d3f034",
+          "observed_title": "09 Coding"
+        },
+        "ASDG-10": {
+          "session": "local_0bc8cd42-2fe2-4d03-aa91-b7447688b40d",
+          "observed_title": "10 ReviewQA"
+        },
+        "ASDG-11": {
+          "session": "local_1a20ceae-5c85-4037-9769-7e04578653bd",
+          "observed_title": "11 Operations"
+        },
+        "ASDG-12": {
+          "session": "local_9e81c33b-e7ce-41f2-8ac7-1cc9a4532e28",
+          "observed_title": "12 Observability"
+        }
+      }
+    },
+    "not_exercised": [
+      "Claude terminal fallback",
+      "reuse of existing role chats",
+      "Codex flow"
+    ]
+  },
+  "recorded_at": "2026-11-16T20:01:51Z",
+  "review_status": "PROPOSED; human review pending. Uncommitted."
+}

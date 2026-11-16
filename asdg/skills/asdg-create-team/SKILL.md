@@ -14,8 +14,9 @@ An exact approved Init plan explicitly including team effects also authorizes th
 
 ## Client mode
 
-Codex uses native project chats below. Claude prepares the thirteen roles through canonical sources and generated skill adapters; no native Claude chat automation is supported. Verify those sources, load Governance for a new project chat and offer manual specialist Focus. Do not call Codex tools for a Claude-only target.
-Managed Claude teams, saved named agreements with a separate Start, follow [team workflows](../../00-governance/docs/team-workflows.md) only where the installed package provides the team command; otherwise report them unavailable and keep the manual Focus offer above.
+Codex uses native project chats below. Claude first verifies the thirteen role sources and generated skill adapters, then follows the same resolve, reuse and create steps wherever the current surface provides native session tools, as [Claude sessions](create-chats.md#in-claude) describes.
+Where the surface has none, such as a plain terminal, say so, load Governance for a new project chat and offer manual specialist Focus. Never call one client's tools for the other client's target, and never report prepared sources as created chats.
+Managed Claude teams, saved named agreements with a separate Start, follow [team workflows](../../00-governance/docs/team-workflows.md) only where the installed package provides the team command; otherwise report them unavailable; the role chats above are unaffected.
 Creating a managed team configures it and starts nothing. Never write team state, agent definitions or client settings directly from this skill.
 
 ## Resolve the project and roles

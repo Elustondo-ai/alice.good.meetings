@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "alice-poc",
+      "runtimeExecutable": "/Users/pablo.elustondo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "runtimeArgs": ["poc/server.mjs"],
+      "port": 3000
+    }
+  ]
+}

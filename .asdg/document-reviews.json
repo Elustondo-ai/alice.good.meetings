@@ -380,6 +380,83 @@
       "provenance": {
         "generator": "asdg embedded init"
       }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "63a84df3c75af26445467f47a4f860239ff81e55a2d885e409f2207edaf0c358",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "03be339d5d7d36887bbc108135e15c800b36231bfc15e4e4f0cd18500d32428a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/initialization.md",
+      "sha256": "bdf7b71e05c632bb17e4fec05b928e137225d539bd5848cf5cb2c647460e7b54",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "f60d42ae9b735645dd41a577bf4758eb4f8c5221cd5ac19019f7a0347e45129b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "sha256": "c0c7eb1a06e81363eaf2bcaf8efcfbdb685130c1037d802f8648f9d79f618722",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_team.md",
+      "sha256": "1205b2699b3ba9b4d8922a4905f0c86f2a0cd20a3dcc375fa65a0dff77c2b621",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.md",
+      "sha256": "b124e5fca348b0813b9428397cbec4660397aaec4927e35efa2c2a16e679d974",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
     }
   ]
 }
