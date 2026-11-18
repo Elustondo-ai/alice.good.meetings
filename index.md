@@ -36,15 +36,19 @@ Owns document structure, responsive inline CSS and the initial GOOD appearance; 
 
 ## Interface and data
 
-DOM contract: `#panel` is a div, `#debug` and `#server` are pre elements, `#listen` is the Start/Stop listening button, and `#controls button[data-state]` carries good, land or stop. The `#question` section holds `#focus-question` and `#focus-status`, `#live-question` with `#live-tag` and `#live-note`, a polite live `#question-feedback`, native `#confirm-question` and `#clear-live` buttons that start disabled, and `#confirm-hint`. There are no exported programming functions.
+DOM contract: layout B, cue first, in a `#page` grid of five rows. `#cue-band` holds `#panel` (the cue word) and `#controls` with `#listen` (Start listening), `#stop-listen`, the `button[data-state]` cue buttons (good, land, stop) and the reason line `#listen-reason`. `#focus` holds `#focus-question` and `#focus-status`. `#live` holds `#live-question`, `#live-tag`, a small line with `#live-note`, `#question-feedback` and `#confirm-hint`, and the native `#confirm-question` (label Confirm) and `#clear-live` buttons, which start disabled. `#answer` holds `#answer-tag`, `#answer-message`, the `#bullets` list and `#answer-reason`; `#details` holds `#details-text`. `#debug` and `#server` are hidden pre elements, shown with `#diagnostics` in the address. There are no exported programming functions.
+
+![The new page at 1280 x 900 with the longest sample answer: cue band with listening and cue buttons, Focus, Live with Confirm and Clear live, three bullets and scrolling details.](poc/docs/images/alice-page-shown-long-desktop.png)
+
+*Screenshot of the page at 1280 × 900, taken by `poc/browser-protocol.mjs` against the real service with fixtures and invented text, no OpenAI. A 390 × 844 capture is [alice-page-shown-long-narrow.png](poc/docs/images/alice-page-shown-long-narrow.png).*
 
 | Callable or interface | Contract |
 | --- | --- |
-| `Document load` | Initializes a green GOOD panel and loads app.js after the DOM elements. |
+| `Document load` | Initializes a green GOOD cue and loads app.js after the DOM elements. |
 | `Manual state controls` | Supply data-state values consumed by the script. |
-| `Viewport layout` | Uses viewport-relative sizes and fixed overlays; overflow is hidden. |
-| `Server response overlay` | A small scrollable status surface shows server counters, transcript and agent output; text is assigned through textContent. |
-| `Question panel` | Top right, up to 520 px wide and half the viewport tall, scrolling internally. Below 700 px wide it spans the top and the debug panel moves above the server overlay. |
+| `Viewport layout` | The approved preview's values: row heights 160, 124, 96 and 232 px at desktop (188, 190, 196 and 460 px up to 700 px wide), details taking the rest and scrolling inside itself, 8 px padding and gap; see [03.5.11](docs/asdg/08-low-level-design/03.5.11-s003-fixed-layout-values.md). No animation or transition. |
+| `Answer card and details` | Show the seven states of the proposed answer as plain text; no button, link or collapse control. |
+| `Diagnostic readouts` | `#debug` and `#server` stay off the glance layout and are shown only with `#diagnostics`. |
 
 ## Effects and failure behavior
 
@@ -52,4 +56,4 @@ Changing element IDs or data-state values requires a matching JavaScript change.
 
 ## Example
 
-Run `bash poc/start.sh` and open http://127.0.0.1:3000. The original feedback surface remains; the lower overlay provides the server/agent demonstration. See [POC results](poc/RESULTS.md).
+Run `bash poc/alice-run.sh` (or `bash poc/start.sh`) and open http://127.0.0.1:3000. See [POC results](poc/RESULTS.md).

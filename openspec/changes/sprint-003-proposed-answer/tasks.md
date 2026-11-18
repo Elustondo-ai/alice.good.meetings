@@ -5,9 +5,9 @@ These are proposed, unchecked tasks for SPRINT-003; they are not execution evide
 ## 1. Preview and limits (T20, T21, T22)
 
 - [ ] 1.1 [T20, 09] Build the static preview at `poc/preview/` for PV-1 to PV-5 (S003-PREVIEW, LAYOUT, GLANCE, DETAILS) with invented text. Verify: ST-53 passes, PC-17 and PC-18 pass, and file hashes are recorded.
-- [ ] 1.2 [T21, Pablo] Approve, change or reject the preview, including control placement. Verify: a dated approval naming the files by hash; this is not an agent task.
-- [ ] 1.3 [T19, 10 ReviewQA] Record the baseline cue, Focus and Live text sizes of the page at revision `7d60c0f` as constants for PG-3. Verify: 10 ReviewQA's record of the sizes and method exists (link to be added once the page exists) before task 4.1 starts.
-- [ ] 1.4 [T22, 08] Replace the provisional values of `BULLET_MAX`, `DETAILS_MAX`, the details-area height, label wording and control placement in the specification and these specs. Verify: no "provisional" remains for those rules (S003-GLANCE, DETAILS).
+- [ ] 1.2 [T21, Pablo] Approve, change or reject the preview, including control placement. Verify: a dated approval naming the files by hash; this is not an agent task. Recorded on 18 November 2026 in the [approval record](../../../docs/asdg/00-governance/03-sprint-003-preview-approval.md).
+- [ ] 1.3 [T19, 10 ReviewQA] Record the baseline cue, Focus and Live text sizes of the page at revision `7d60c0f` as constants for PG-3. Verify: 10 ReviewQA's [record](../../../docs/asdg/10-document-review-and-release/03.3-sprint-003-pg3-baseline-text-sizes.md) of the sizes and method exists before task 4.1 starts.
+- [x] 1.4 [T22, 08] Fixed on 18 November 2026: `BULLET_MAX` 120, `DETAILS_MAX` 1500, label wording, control placement and row heights, from the approved preview, in [03.5.11](../../../docs/asdg/08-low-level-design/03.5.11-s003-fixed-layout-values.md). Verify: no "provisional" remains for those rules (S003-GLANCE, DETAILS).
 
 ## 2. Service: loader, request, controller (T23, T25)
 
@@ -26,7 +26,7 @@ These are proposed, unchecked tasks for SPRINT-003; they are not execution evide
 
 Precondition for 4.1: task 1.2 (T21) is done, meaning a dated approval by Pablo names the preview files by hash and `index.html` is unchanged until then (PV-6, checked by the reviewer gate SH-15). Task 1.3 is also done.
 
-- [ ] 4.1 [T26, 09] New `index.html` and `app.js` with `index.md` and `app.md`, matching the approved preview, per LB-1 to LB-9, PG-1 to PG-14, HL-6 and NK-5 to NK-7. Verify: PC-01 to PC-16 and PC-19 to PC-27 pass, and SH-15 shows the approval gate held.
+- [ ] 4.1 [T26, 09] New `index.html` and `app.js` with `index.md` and `app.md`, matching the approved preview, per LB-1 to LB-10, PG-1 to PG-16, HL-6 and NK-5 to NK-7. Verify: PC-01 to PC-16 and PC-19 to PC-29 pass, and SH-15 shows the approval gate held.
 - [ ] 4.2 [T28, 09] Extend `poc/browser-protocol.mjs` to drive all seven states at both sizes and report separately from `node --test`. Verify: the page-check result for all seven states is recorded.
 
 ## 5. Service tests (T27)

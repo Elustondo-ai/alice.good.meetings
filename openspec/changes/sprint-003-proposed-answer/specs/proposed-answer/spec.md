@@ -14,7 +14,7 @@ The service SHALL ask for an answer with one request holding only the session, t
 - **THEN** the generator receives exactly those five fields, and the model input holds no session id, file name, audio, transcript or Live text.
 
 ### Requirement: One result with bullets and details
-The service SHALL accept a result only as separate bullets (one to three single-line items) and details, within the length limits, and SHALL reject a malformed or over-limit result whole, never cutting it. The limits for bullet and details length are provisional until the approved preview fixes them.
+The service SHALL accept a result only as separate bullets (one to three single-line items) and details, within the length limits (at most three bullets of at most 120 characters each, and details of at most 1500 characters), and SHALL reject a malformed or over-limit result whole, never cutting or trimming it; a bullet with leading or trailing white space is rejected.
 
 #### Scenario: Over-limit result
 - **WHEN** the generator returns four bullets or text over a limit
@@ -63,7 +63,7 @@ The service SHALL print the assembled model input to the terminal error stream o
 - **THEN** nothing of the request is printed.
 
 ### Requirement: Replaceable inputs for tests
-The service SHALL accept replacement generator, transcription connection, clock, timeout and package folder, so every state is reachable without OpenAI.
+The service SHALL accept replacement generator, transcription connection, clock, timeout, package folder and interview-agent delay, so every state is reachable without OpenAI.
 
 #### Scenario: Fake generator
 - **WHEN** a test supplies a generator

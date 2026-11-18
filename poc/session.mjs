@@ -1,9 +1,10 @@
 import { randomUUID } from 'node:crypto';
 import { proposalSchema, publicError } from './agent.mjs';
+import { AnswerArea } from './answer-area.mjs';
 
 // Each connection owns its controller and at most one in-flight reasoning request.
 export class InterviewSession {
-  constructor({ reason, emit, audit = () => {}, delayMs = 2500 }) {
+  constructor({ reason, emit, audit = () => {}, delayMs = 2500, generate, now = Date.now, answerTimeoutMs, print }) {
     this.id = randomUUID();
     this.reason = reason;
     this.emit = emit;
@@ -29,7 +30,18 @@ export class InterviewSession {
     this.pending = false;
     this.lastRun = 0;
     this.abort = new AbortController();
+    // The proposed answer is kept apart from `state`: never in snapshots, cached results or revisions.
+    this.answers = new AnswerArea({ sessionId: this.id, generate, now, timeoutMs: answerTimeoutMs, audit, print,
+      focusVersion: () => this.state.focusVersion,
+      publish: (proposed, proposedSeq) => this.send('proposed', { proposed, proposedSeq }) });
   }
+
+  answerFields() { return { proposed: this.answers.view(), proposedSeq: this.answers.seq }; }
+
+  // Service hooks: the first voiced packet (tS) and the page's render report (t3).
+  voiced() { this.answers.voiced(); }
+
+  rendered(message) { this.answers.rendered(message); }
 
   send(type, data = {}) {
     if (this.active) this.emit({ type, sessionId: this.id, serverAt: Date.now(), ...data });
@@ -109,7 +121,7 @@ export class InterviewSession {
       this.updateLive(next, p);
     }
     this.state = next;
-    this.send('answer', { ...this.state, audioCutoffSamples: snapshot.audioCutoffSamples });
+    this.send('answer', { ...this.state, audioCutoffSamples: snapshot.audioCutoffSamples, ...this.answerFields() });
     return true;
   }
 
@@ -156,6 +168,7 @@ export class InterviewSession {
       focus: live.text, focusVersion: focusVersion + 1, exchangeId, live: null,
     };
     this.liveCutoff = new Set(this.order);
+    this.answers.begin(this.state.focus, this.state.focusVersion);
     return { status: 'confirmed', changed: true, liveId, liveVersion, focusVersion: this.state.focusVersion };
   }
 
@@ -181,7 +194,7 @@ export class InterviewSession {
     const result = { requestId, ...outcome, state: { ...this.state } };
     this.requests.set(request.requestId, { fingerprint: request.fingerprint, result });
     reply(result);
-    if (changed) this.send('answer', { ...this.state, audioCutoffSamples: this.samples });
+    if (changed) this.send('answer', { ...this.state, audioCutoffSamples: this.samples, ...this.answerFields() });
   }
 
   schedule() {
@@ -218,6 +231,7 @@ export class InterviewSession {
   }
 
   stop() {
+    this.answers.stop();
     this.active = false;
     clearTimeout(this.timer);
     this.abort.abort();

@@ -7,18 +7,25 @@ Keep the cue, Focus, Live and the answer points readable at a glance, with the s
 ## ADDED Requirements
 
 ### Requirement: Seven states with their own wording
-The page SHALL show Empty, Preparing, Shown, General, Failed, Unavailable and Last known with the wording of the labels page, SHALL word Failed and Unavailable differently, SHALL show a reason with General and Unavailable, and SHALL give Failed no retry control. Wording is provisional until the preview is approved.
+The page SHALL show Empty, Preparing, Shown, General, Failed, Unavailable and Last known with the wording of the labels page, SHALL word Failed and Unavailable differently, SHALL show a reason with General and Unavailable, and SHALL give Failed no retry control. The wording shown in the approved preview is fixed.
 
 #### Scenario: General without a package
 - **WHEN** an answer arrives and no usable package exists
 - **THEN** the card is tagged as general points not from his documents, with the reason line.
 
 ### Requirement: Glance elements stay put
-With the longest content the cue, Focus, Live and bullet card SHALL be fully visible, unclipped, not overlapped and no smaller than at revision `7d60c0f` on a desktop window, and SHALL keep their size and position as content changes. Long details SHALL scroll only inside their own area, with no collapse control, motion or sound.
+With the longest content the cue, Focus, Live and bullet card SHALL be fully visible, unclipped, not overlapped and no smaller than at revision `7d60c0f` (cue word 128 px, Focus and Live 19.8 px at 1280 × 900) on a desktop window, and SHALL keep their size and position as content changes. Long details SHALL scroll only inside their own area, with no collapse control, motion or sound.
 
 #### Scenario: Longest details
 - **WHEN** the longest details are shown at 1280 × 900
 - **THEN** the details scroll inside their area and the four elements do not move.
+
+### Requirement: Fixed rows and control places
+At 1280 × 900 the cue band, Focus, Live and answer card SHALL be 160, 124, 96 and 232 px high and the details area SHALL take the rest (240 px); at 390 × 844 the five rows SHALL be 188, 190, 196, 460 and 260 px. Start and Stop listening, the manual cue buttons and their reason line SHALL sit in the cue band, and Confirm and Clear live at the right of the Live card, as in the preview Pablo approved on 18 November 2026.
+
+#### Scenario: Row heights
+- **WHEN** any answer state is shown at either size
+- **THEN** the four glance rows have the heights above and only the details area scrolls.
 
 ### Requirement: Replace in place
 A new Focus SHALL show Preparing with no earlier answer text in the same render. The page SHALL ignore an answer for another Focus version or a lower sequence, SHALL show text literally, and SHALL name the answer's Focus version and state in its render report.

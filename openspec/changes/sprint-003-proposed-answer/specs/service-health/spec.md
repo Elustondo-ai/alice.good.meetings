@@ -14,7 +14,7 @@ Let the page and the run script know what is available without opening a session
 - **THEN** the reply says not configured and holds no key text.
 
 ### Requirement: Three no-key cases
-The service SHALL start with no `poc/.env.local`, treat a blank key as absent and make no OpenAI connection without a key. A key that OpenAI rejects SHALL be found only when a session starts, end it with the existing public error text and leave the page Unavailable.
+The service SHALL start with no `poc/.env.local`, treat a blank key as absent and make no OpenAI connection without a key. A key that OpenAI rejects, recognized by its error code `invalid_api_key` or a 401 on the transcription handshake, SHALL be found only when a session starts, end it with the public error text and leave the page Unavailable. The rejection mapping is verified only against fixtures. `poc/start.sh` is outside this requirement.
 
 #### Scenario: Page loads without a key
 - **WHEN** the page loads and the reply says not configured

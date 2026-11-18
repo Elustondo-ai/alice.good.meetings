@@ -29,7 +29,7 @@ See the [proposal](proposal.md) for why. The exact contracts, with rule IDs, are
 
 [One call makes bullets wait for details] → bullets and details are separate fields; the live session measures the delay (S003-LIVE).
 [30-second attempt timeout may be too long or short] → provisional, reviewed after the live session.
-[R1 to R10 were accepted by Pablo on 18 November 2026; limits stay provisional until T21 and T22] → tasks 1.3 and 1.4 fix them.
+[Limits and layout values could drift from the approved preview] → they were fixed on 18 November 2026 from the approved files by hash; a changed preview needs a new approval (PV-6).
 [The package may hold a meeting link or benchmark text] → the print option and the reviewer-run package check; the loader cannot judge content.
 [Ending an older idle service by its port is a side effect] → Pablo accepted it as R6 on 18 November 2026; the script never ends a service with an active session.
 

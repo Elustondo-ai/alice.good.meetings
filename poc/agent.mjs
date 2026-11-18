@@ -42,7 +42,7 @@ Keep reply under 220 characters and question under 400 characters.`,
 export function publicError(error) {
   const status = error?.status;
   const code = error?.code || error?.error?.code;
-  if (status === 401) return 'OpenAI authentication failed';
+  if (status === 401 || code === 'invalid_api_key') return 'OpenAI authentication failed';
   if (status === 429 || code === 'insufficient_quota') return 'OpenAI quota or rate limit reached';
   if (status === 403 || code === 'model_not_found') return 'OpenAI model access unavailable';
   if (error?.name === 'TimeoutError' || error?.name === 'AbortError') return 'OpenAI request timed out';

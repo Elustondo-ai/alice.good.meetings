@@ -45,7 +45,7 @@ Source: docs/asdg/02-purpose/02-current-capabilities.md
 - The cue and the Focus question stay the first things he sees
 > The next improvement is a proposed answer. When Pablo confirms an interview question, a few short points appear beside it, with supporting details below in case the interviewer wants more.
 > The boundaries matter. The answer prompts his own answer, it never invents experience, and it draws only on the interview preparation package he prepares. That package text is sent to OpenAI together with the question.
-> The second Purpose review of the sprint ends with change required. It asked for five small wording amendments, and the pages are being updated for them. One decision stays with Pablo: whether the page itself must warn him that package text leaves his Mac, or whether the data statements are enough.
+> The second Purpose review of the sprint ended with change required, and its wording amendments are applied in the Purpose pages as drafts. The one open decision is settled: on 18 November 2026 Pablo decided the page gives no package notice before Start, and the data statements say that package text leaves his Mac. No acceptance of the exact Purpose pages is recorded.
 Source: docs/asdg/02-purpose/03-planned-improvements.md, docs/asdg/02-purpose/03.3-sprint-003-purpose-alignment-v2.md
 
 # Use cases
@@ -80,7 +80,7 @@ Source: docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md
 > Use case five is the heart of this sprint. Pablo confirms a question, then at most three short points and the details appear together, with no motion or sound.
 > Any new Confirm, even of a rewording, removes the old answer at once. A late answer to an earlier question is never shown.
 > The answer area is always in one of seven named states, shown in the preview.
-> The second use case review found three gaps. Two are now answered in the page: an oversized package, and the page with no key. One remains: long details are called collapsed here, while the criterion says they scroll. Pablo should also say whether the package shows as loaded before the interview.
+> The second use case review found three gaps, and all are answered in the pages: an oversized package, the page with no key, and long details. On 18 November 2026 Pablo decided that long details scroll inside their own area with no collapse control, and that the page shows no package notice before Start.
 Source: docs/asdg/03-system-model-and-use-cases/01.5-proposed-answer.md, docs/asdg/03-system-model-and-use-cases/01.5.1-proposed-answer-states.md, docs/asdg/03-system-model-and-use-cases/03.1-sprint-003-use-case-review-v2.md
 
 # Evaluation
@@ -104,6 +104,15 @@ Source: docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md, doc
 > The live session has seven steps and a pass rule he decided on 18 November. It passes when every step meets its expectation, no answer for an earlier question is shown, every statement about him is in the package, he takes in the cue, the question and the points at a glance, and he would keep the answer on. Delay is reported, not judged.
 > The second review found five gaps. The plan now adds checks, with no approval recorded. One session shows it works for him, not that he answers better.
 Source: docs/asdg/04-benchmarks-and-eval-strategy/03.6-sprint-003-evaluation-plan.md, docs/asdg/04-benchmarks-and-eval-strategy/03.6.1-sprint-003-live-session.md, docs/asdg/04-benchmarks-and-eval-strategy/03.7-sprint-003-evaluation-review-v2.md
+
+## Two reviewer-run checks keep the data honest
+- Package check before every billable run: file digests, then eight-word shingles against the private benchmark text, reporting counts only
+- Statement check: every sentence of the two data statements is compared with the request object
+- The reviewer script lives at poc/review/package-check.mjs, and no live code may import it
+> Two checks belong to a reviewer, not to the product. The package check makes sure no benchmark material is in the preparation package before any billable run. It never prints package or benchmark text, only file names, counts and line numbers.
+> The statement check makes sure the data statements in the root instructions and in the POC readme say exactly what leaves the Mac: the question and the package text for an answer request, plus the audio and transcript that already go to OpenAI for transcription.
+> Both procedures are drafts with no approval recorded. Pablo should know that a match he judges to be benchmark material makes the run invalid, not merely poor.
+Source: docs/asdg/04-benchmarks-and-eval-strategy/03.8-sprint-003-package-and-statement-checks.md
 
 # Architecture
 
@@ -132,65 +141,74 @@ Source: docs/asdg/05-high-level-design-and-architecture/02-current-architecture.
 ## Each answer is bound to its Focus version
 - One model call per Focus version returns points and details together
 - A result is accepted only for the current Focus version
-- Architecture review, version 2: change required, a notice is missing
+- No package notice before Start: Pablo decided on 18 November
 > This rule keeps the answer attached to the right question. Every request carries the session and the Focus version it was made for. Any Confirm raises the version, cancels the earlier request and removes the earlier answer.
 > A failed request is retried once by the service. After that the card shows a message, with no retry button.
 > The answer has no write path to the Focus or Live question, and the cue never depends on it.
-> The second architecture review says the design carries every commitment and needs no decision from Pablo. It asks for five amendments. The main one: no architecture page yet tells him, before a session, that package text will leave his Mac.
-Source: docs/asdg/05-high-level-design-and-architecture/01.3-proposed-answer.md, docs/asdg/05-high-level-design-and-architecture/03.3-sprint-003-architecture-review-v2.md
+> The second architecture review said the design carries every commitment and asked for five amendments. The one about a notice before Start was dropped by Pablo's decision on 18 November 2026: the data statements carry that message instead. The other amendments are applied in the architecture pages as drafts.
+Source: docs/asdg/05-high-level-design-and-architecture/01.3-proposed-answer.md, docs/asdg/05-high-level-design-and-architecture/03.3-sprint-003-architecture-review-v2.md, docs/asdg/05-high-level-design-and-architecture/01.4-service-start-and-key.md
 
 # Proof of concept
 
-## No delay experiment runs before the build
-- Pablo chose to learn the answer delay in the live session
-- The only timing on record: 1482 ms for a one-sentence reply
-- Cost: a delay that is too long is found only after building
-> Nobody knows how long the points take to appear after Confirm. Pablo was asked whether to measure it first, with about thirty billable requests, or to learn it in his live session. He chose the live session.
-> The reasoning is that the delay only matters compared with the pause he takes before answering, and that pause comes from a live session.
-> The cost is that a delay that is too long is found only after the feature is built. The fix order is a shorter details limit, then a smaller package limit, then a design change that is his decision.
-> One proposal still awaits his agreement: reconsider the design if the points become visible after he has started to answer.
-Source: docs/asdg/06-viable-proof-of-concept/03.1-sprint-003-poc-decision.md
+## No POC: the answer delay is learned in the live session
+- Pablo chose on 16 November to learn the delay live, not in an experiment of about thirty billable requests
+- Refreshed on 18 November for the twelve commitments: still no POC, no new experiment
+- The only timing on record is 1482 ms for a one-sentence reply in one synthetic trial
+- An answer sends the whole package and returns points plus details
+> The Stage 06 decision is that no experiment runs before the build. An experiment could not settle the question alone, because the delay is compared with the pause Pablo takes before answering, and that comes only from a live session.
+> The cost is that a delay that is too long is found only after the feature is built. At best the fix is changed settings and a second billable live session. At worst it changes the generator and its tests.
+> One risk stays unmeasured: whether the model states something about Pablo that his package does not contain. The live pass rule scores it, so one such statement fails the session. The decision page says he is not recorded as having been asked about this risk separately.
+Source: docs/asdg/06-viable-proof-of-concept/03.1-sprint-003-poc-decision.md, docs/asdg/06-viable-proof-of-concept/README.md
 
-## GAP: Stage 06 records no experiment and no result
-- Looked in the Proof of concept folder: a README and one decision page
-- The README says no experiment or result is documented in this stage yet
-- Unmeasured: do instructions alone stop invented statements about him?
-> The Proof of concept stage holds one decision page. Its README says that no experiment or result is documented in this stage yet.
-> The decision page names one uncertainty that is material and unmeasured: whether instructions alone keep the model from stating something about Pablo that his package does not contain. The stage recommends learning this in steps three and four of the live session. It also says that seven answers can show an invented statement, but cannot show that none will occur.
-> Pablo is not recorded as having been asked about this risk separately. Before coding, he should say whether he accepts learning it in the live session. The Proof of concept specialist owns recording that answer.
-Source: docs/asdg/06-viable-proof-of-concept/README.md, docs/asdg/06-viable-proof-of-concept/03.1-sprint-003-poc-decision.md
+## What would send the design back
+- Proposed, not agreed: reconsider if the points appear after he has started to answer, or he says they came too late
+- First a shorter details limit, then a smaller package limit, each measured again
+- Showing partial results or making two calls changes what he selected and is his decision
+> This is the return trigger the POC stage proposes for Pablo's agreement, because no limit exists. The delay limit and the trigger stay proposals, outside the live pass rule, so a session can pass while the points arrive late.
+> The evidence exists only if the timing points and text-free answer events are built with the feature. The audit log today times Confirm and the end of each utterance, not the moment speech starts, so a speech-start time or a number Pablo states is needed.
+> Pablo should decide whether he agrees with this trigger before the live session, or leave it as a proposal.
+Source: docs/asdg/06-viable-proof-of-concept/03.1-sprint-003-poc-decision.md
 
 # Sprint plan
 
-## SPRINT-003: a new layout and a proposed answer
-- Layout B, cue first: Focus and answer cards, Live bar with Confirm
-- Nine criteria; details area and package context are the two new ones
-- Pablo approves the layout from a preview before it replaces the page
-> The sprint objective is to give Alice a new page design and let her propose an answer to the Focus question: a few short points beside it and supporting details below, built from the question and an interview preparation package.
-> The sprint was closed as unfinished and restarted on 18 November with an amended record. It now has nine acceptance criteria and twelve commitments. The scope is unchanged: the page files, the images folder, the service folder and the OpenSpec changes folder.
-> The criteria include tests, a run command and one live session.
-> Pablo may still drop the scripted page check, which is the only work he did not name himself. He should decide that before coding.
-Source: docs/asdg/07-planning/03.8-sprint-003-review-brief-v2.md, docs/asdg/07-planning/03.8.1-sprint-003-brief-v2-direction.md
+## SPRINT-003 restarted with nine criteria
+- Same objective and scope; the proposed answer now has points beside it and details below
+- New criteria: a details area (8) and a prepared context from his package (9)
+- Criterion 5 adds a scripted page check; criteria 2, 3, 4 and 7 are reworded
+- The old record was closed as unfinished and restarted on the same branch
+> The sprint record was amended because two decisions Pablo made on 16 November were in none of its criteria: the details area and the interview preparation package. There is no amend command, so the old record was closed as unfinished and started again with the amended text.
+> The scope is unchanged. The page check in criterion 5 is the one addition Pablo had not named, and he may drop it.
+> Pablo should confirm that these nine criteria say what he wants checked, because the plan, the specification and the evaluation all trace to them.
+Source: docs/asdg/07-planning/03.7.4-sprint-003-record-amendment.md, docs/asdg/07-planning/03.8-sprint-003-review-brief-v2.md
 
-## Alignment so far: not ready for coding
-- Alignment report, version 3: close to aligned, but NOT_READY
-- All four second-pass stage reviews end with change required
-- The data statements for what goes to OpenAI have no owner
-> The alignment report, version three, says the foundations are close to aligned but the sprint is not ready for coding. That report checked the old record, before the restart.
-> It listed what must happen first: the sprint record amended, which the restart has now done, accepted defaults marked as decided in Purpose and Architecture, a plan from Planning, a specification from the Specs stage, and an owner for the data statements.
-> The second-pass reviews from Purpose, Use Cases, Evaluation and Architecture each end with change required. No reconciled report of that second run is in the Planning folder yet.
-> Planning proposes that Pablo assign the root guidance sentence to Governance and the service README to Coding. He should decide that.
-Source: docs/asdg/07-planning/03.7-sprint-003-alignment-report.md, docs/asdg/07-planning/03.7.3-sprint-003-amendments.md, docs/asdg/07-planning/03.8.2-sprint-003-brief-v2-prior-reviews.md
+## Alignment: foundations aligned, documents ready for coding
+- Purpose, Use Cases, Evaluation and Architecture agree on all twelve commitments
+- Planning's version 5 report says ready for stage 09, for the documentation
+- No page has a recorded approval; Pablo's decisions are relayed
+- The report names two conditions for coding: skill adapters and the AGENTS.md length
+> Four stages reviewed the amended record separately, reconciled six relationships, and the plan and specification were written. Planning's report treats Pablo's 18 November decision as his review of the specification and says plainly that this is not a formal approval of any page.
+> The two conditions in the report were true when it was saved. Check whether they are still open before relying on them.
+> What is left to Pablo is his own judgment on the running page: the layout, readability at a glance and the live session.
+Source: docs/asdg/07-planning/03.11-sprint-003-readiness-report-v5.md, docs/asdg/07-planning/03.11.2-sprint-003-remaining-work.md
 
-## GAP: No SPRINT-003 plan with tasks exists yet
-- Looked in the Planning folder: briefs and an alignment report, no plan
-- The alignment report says the Stage 07 plan is not started
-- The Planning README still names SPRINT-000 as the active sprint
-> There is no sprint plan to review. The Planning folder holds the review briefs and the alignment report for this sprint, but no page that lists tasks, their order and their completion evidence.
-> The alignment report says so directly: the plan from Stage 07 and the specification from Stage 08 are not started. The evaluation plan also expects Planning to schedule the scripted page check and the shell check.
-> The Planning README is stale too. Its status paragraph is dated 28 October and names an earlier sprint as active.
-> The Planning specialist owns writing the plan. Pablo should expect it, and review it, before any coding starts.
-Source: docs/asdg/07-planning/README.md, docs/asdg/07-planning/03.7-sprint-003-alignment-report.md, docs/asdg/07-planning/03.7.1-sprint-003-coverage.md
+## The plan: 26 tasks in one list
+- Specification round first, then the preview, which Pablo approves by hash
+- Only then may the page change; the service, run script and checks run in parallel
+- All checks and the package check pass before the one live session
+- Not planned: a POC, a second model call, a collapse control, a package notice
+> The plan keeps one task list. Each task names its owner and the commitment it serves. Nothing is coded before ready for stage 09, and the page file stays unchanged until Pablo approves the preview by hash.
+> The print option is an accepted default that Pablo may drop. The data statement in the root instructions belongs to Pablo or the ASDG Admin session, because that file is protected.
+> Pablo should look at the order: the live session comes last, and it is the only check that shows the feature helps him.
+Source: docs/asdg/07-planning/03.9-sprint-003-plan.md, docs/asdg/07-planning/03.9.1-sprint-003-plan-specification.md
+
+## The layout preview was approved by hash
+- Approved on 18 November 2026 at 19:09 UTC, as relayed
+- Three preview files named by SHA-256; the product page stays unchanged until then
+- Covers the layout and where the buttons sit; not the lengths or any document
+![The preview with the longest content at 1280 by 900: the cue, Focus and Live panels, the answer card and details](poc/preview/images/preview-shown-long-desktop.png)
+> This is the approval record for the layout preview. It names the three preview files by hash, so any later change needs a new approval.
+> It covers the layout and the proposed place of the buttons as he saw them. It does not cover bullet and details lengths, which were then fixed from the preview, and it approves no specification page.
+Source: docs/asdg/00-governance/03-sprint-003-preview-approval.md
 
 # Detailed design
 
@@ -215,12 +233,31 @@ Source: docs/asdg/08-low-level-design/03-uc-04-focus-and-live-question.md, docs/
 > One finding stays open. Many agent results are rejected, five of eleven in run three, and the causes are not yet known. Pablo should decide whether that needs attention before more is built on top.
 Source: docs/asdg/08-low-level-design/02-uc-04-verification.md
 
-## GAP: No detailed design for SPRINT-003 exists yet
-- Looked in the Detailed design folder: only UC-04 pages are there
-- Missing: layout B, answer card, details area, package, run command
-- The alignment report says the Stage 08 specification is not started
-> The Detailed design folder holds nothing for this sprint. There is no specification for the new layout, the answer card, the details area, the preparation package or the run command.
-> Earlier stages already hand work to it. Use Cases leaves exact wording, sizes and positions to Specs and the preview. Architecture lists points for the detailed design, such as a separate field and message name for the answer. The alignment coverage page adds that no OpenSpec change for this sprint exists.
-> The folder README also says nothing here is implemented, while the verification page reports live runs of the panel.
-> The Specs specialist owns this design. Pablo reviews it, and the preview, before coding.
-Source: docs/asdg/08-low-level-design/README.md, docs/asdg/07-planning/03.7.1-sprint-003-coverage.md, docs/asdg/05-high-level-design-and-architecture/01.3-proposed-answer.md
+## SPRINT-003 specification: 124 rules, each with a check
+- Ten contract pages cover the request, controller, labels, health, package, retry, fixtures, page and run script
+- 101 checks: 57 service tests, 29 page checks, 15 shell checks
+- Every rule has a check and every check a rule
+- An OpenSpec change for the sprint carries the same rules and tasks
+> The specification turns the stage pages into exact, testable rules for the builder. Each rule has an identifier, one testable statement and its source page.
+> The test map lists where each check runs: the service tests in the test file, the page checks in the browser protocol, and the shell checks of the run script. A reverse table shows the checks rule by rule.
+> Some things are deliberately not rules because they need a person: whether the cue, question and points are taken in at a glance, whether anything said about him is untrue, and the live pass rule.
+Source: docs/asdg/08-low-level-design/03.5-sprint-003-specification.md, docs/asdg/08-low-level-design/03.6-sprint-003-test-map.md
+
+## Fixed values from the approved preview
+- Four rows: cue band, Focus, Live, answer card, with fixed heights at each size
+- At most three bullets of 120 characters; details up to 1500, scrolling inside themselves
+- Cue word and question text no smaller than on the current page
+![The layout of the new page as specified](docs/asdg/08-low-level-design/images/s003-layout.svg)
+> The limits and layout values were fixed from the preview Pablo approved. The bullet limit of 120 is the nearest round number above the longest sample of 118, because bullets cannot scroll. The details limit of 1500 only bounds the wait and the reading time.
+> The reason lines for an oversized, empty or unreadable package, a missing service and a rejected key were not shown in the preview, so Pablo has not seen them rendered.
+Source: docs/asdg/08-low-level-design/03.5.11-s003-fixed-layout-values.md
+
+## Ten design choices accepted as written
+- After Stop an interrupted answer becomes last known, never empty
+- A rejected key shows unavailable only after a session starts; a result that is too long is refused whole
+- A 30-second timeout per attempt, so a failure shows after about a minute at most
+- The run script may end an older idle service, and never one with a session
+> These are choices the specification had to make where the stage pages left something open. Pablo accepted all ten as written on 18 November, as relayed by Governance.
+> The 30-second timeout is the one to revisit after the live session, because he set no delay limit.
+> The run script's behavior of ending an older idle service was proposed by Architecture and he had not been asked about it before.
+Source: docs/asdg/08-low-level-design/03.5.10-s003-review-items.md

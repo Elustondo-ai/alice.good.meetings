@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | `createReasoner(model?)` | Returns an async function accepting a snapshot and AbortSignal | Agents SDK `Agent` and `Runner` |
 | `proposalSchema` | Parses reply, phase, optional question, intent (`none`, `clarify`, `new-question`, `answer`) and evidence IDs | [Session controller](session.md) |
-| `publicError(error)` | Produces a limited public status without copying request headers or secrets | [Server](server.md) |
+| `publicError(error)` | Produces a limited public status without copying request headers or secrets; HTTP 401 or the code `invalid_api_key` gives `OpenAI authentication failed` | [Server](server.md) |
 
 The default reasoning model is `gpt-6-astra`, overridable with `OPENAI_MODEL`. Each run uses one model turn, a bounded output budget, low reasoning effort and no SDK tracing or stored response.
 The snapshot contains recent observations, current accepted state, a base revision and an audio cutoff. Its text is conversation data, not tool instructions.

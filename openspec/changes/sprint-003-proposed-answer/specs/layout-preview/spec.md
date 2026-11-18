@@ -7,7 +7,7 @@ Pablo approves the layout from a static preview, by hash, before the page change
 ## ADDED Requirements
 
 ### Requirement: A static preview of every state
-A preview SHALL be served at `/preview` from static files under `poc/`, showing the seven states and Shown with the shortest and the longest content at 1280 × 900 and 390 × 844, the longest with each cue, chosen by address fragment, with Clear live, Start and Stop listening and the cue buttons each in one proposed place.
+A preview SHALL be served at `/preview` from static files under `poc/`, showing the seven states and Shown with the shortest and the longest content at 1280 × 900 and 390 × 844, the longest with each cue, chosen by address fragment, with Clear live, Start and Stop listening and the cue buttons each in one place, which Pablo approved on 18 November 2026.
 
 #### Scenario: Choose a state
 - **WHEN** the preview is opened with `#state=shown-long&cue=stop`

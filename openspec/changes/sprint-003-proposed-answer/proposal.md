@@ -45,7 +45,7 @@ Touches `index.html`, `app.js`, `index.md`, `app.md`, `poc/server.mjs`, `poc/ses
 
 ## Source baseline and decision status
 
-Sprint SPRINT-003 is active on branch `sprint-03`; its nine criteria and twelve `S003-*` commitments are the sprint record. Every source below is a draft with no recorded human acceptance; "decided" means Pablo's direction of 16 and 18 November 2026 as relayed by 00 Governance. The [08 specification](../../../docs/asdg/08-low-level-design/03.5-sprint-003-specification.md) (122 rules) and [test map](../../../docs/asdg/08-low-level-design/03.6-sprint-003-test-map.md) carry the exact contracts; this change links to them rather than copying them. Choices 08 made that the stage pages left open are on its [review page](../../../docs/asdg/08-low-level-design/03.5.10-s003-review-items.md).
+Sprint SPRINT-003 is active on branch `sprint-03`; its nine criteria and twelve `S003-*` commitments are the sprint record. Every source below is a draft with no recorded human acceptance; "decided" means Pablo's direction of 16 and 18 November 2026 as relayed by 00 Governance. The [08 specification](../../../docs/asdg/08-low-level-design/03.5-sprint-003-specification.md) (124 rules) and [test map](../../../docs/asdg/08-low-level-design/03.6-sprint-003-test-map.md) carry the exact contracts; this change links to them rather than copying them. Choices 08 made that the stage pages left open are on its [review page](../../../docs/asdg/08-low-level-design/03.5.10-s003-review-items.md).
 
 | Source (SHA-256 of bytes read, 18 Nov 2026) | Claim used | Status |
 | --- | --- | --- |
@@ -60,6 +60,8 @@ Sprint SPRINT-003 is active on branch `sprint-03`; its nine criteria and twelve 
 | [05 package](../../../docs/asdg/05-high-level-design-and-architecture/decisions/Proposed%20answer%20and%20its%20context/02-preparation-package.md) `14cb7837e65958e87eb275338bd72d409f04331d0d6a520085360cf5d799e824` | Location, limit, README rule | Decided |
 | [05 data statements](../../../docs/asdg/05-high-level-design-and-architecture/decisions/Proposed%20answer%20and%20its%20context/03-data-statements.md) `466fb948365845dfe948b90e9d54d8cd915043e7fda26e6125e69a04b43edc03` | What is sent | Draft; reading of "only" decided |
 | [04 package and statement checks](../../../docs/asdg/04-benchmarks-and-eval-strategy/03.8-sprint-003-package-and-statement-checks.md) `1d411245a9743746dc5835821a502cddedb612cf2d5a93d1fa28f6ba62c41c9f` | Reviewer-run checks; script at `poc/review/package-check.mjs` (decided) | Draft |
+| [00 preview approval](../../../docs/asdg/00-governance/03-sprint-003-preview-approval.md) `69f9694d593116826d8430fe4b692b4e47ad31c83b43f225cb117b7675376188` | Pablo approved the preview on 18 Nov 2026 19:09 UTC; files `index.html`, `preview.css`, `preview.js` by hash | Recorded decision |
+| [10 PG-3 baseline](../../../docs/asdg/10-document-review-and-release/03.3-sprint-003-pg3-baseline-text-sizes.md) `194c03f4a7486fe7f3cd95a54b42a041cf0c599861d22e49d34c0d2be56e4952` | Cue 128 px, Focus and Live 19.8 px at 1280 × 900 | Draft |
 | [07 plan](../../../docs/asdg/07-planning/03.9-sprint-003-plan.md) `d9e417f155564b91d2e27f3aecff0087107e724252661d418c637ba2dad5fd02` | Tasks T10 to T43 | Draft |
 
 Recheck these hashes before apply; a changed source needs a new assessment, not an inherited approval.

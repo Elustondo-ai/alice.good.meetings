@@ -21,7 +21,7 @@ The loader SHALL use a package of at most 20,000 characters, SHALL NOT use a lar
 - **THEN** the first is used and the second is not, with status too-large.
 
 ### Requirement: Live code never reads the benchmark
-No `poc/` source other than the files in `poc/review/` SHALL name, open, read, import or resolve a path under `eval-data/`, and nothing outside `poc/review/` SHALL import the reviewer script `poc/review/package-check.mjs`. The service start, `alice-run.sh` and `node --test poc/poc.test.mjs` SHALL never run it. The one existing 404 probe is allowed and listed.
+No `poc/` source other than the files in `poc/review/` SHALL open, read, import or resolve a path under `eval-data/`, and nothing outside `poc/review/` SHALL import the reviewer script `poc/review/package-check.mjs`. The service start, `alice-run.sh` and `node --test poc/poc.test.mjs` SHALL never run it. The literal folder name MAY appear outside `poc/review/` only in the titles of the cases that assert this isolation and in the one existing 404 probe, each listed by the scan.
 
 #### Scenario: Static scan
 - **WHEN** the sources under `poc/` are scanned
