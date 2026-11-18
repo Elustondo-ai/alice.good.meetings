@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "alice-poc",
-      "runtimeExecutable": "/Users/pablo.elustondo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
-      "runtimeArgs": ["poc/server.mjs"],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["poc/start.sh"],
       "port": 3000
     }
   ]

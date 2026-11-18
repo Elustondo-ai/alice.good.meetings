@@ -2,7 +2,7 @@
 
 ## Why
 
-During an interview Pablo needs two things in view at once: the question being answered, which must never change behind Pablo's back, and what SpeakerCoach hears as a question right now. The 28 October version of this change confirmed only during clarification and tracked automatically everywhere else. In the 4 November live run, an automatic `new-question` replaced a question Pablo had just confirmed. The panel showed "(AUTOMATIC)" wording, with Confirm disabled.
+During an interview Pablo needs two things in view at once: the question being answered, which must never change behind Pablo's back, and what Alice.Good.Meetings hears as a question right now. The 28 October version of this change confirmed only during clarification and tracked automatically everywhere else. In the 4 November live run, an automatic `new-question` replaced a question Pablo had just confirmed. The panel showed "(AUTOMATIC)" wording, with Confirm disabled.
 
 ## What Changes
 

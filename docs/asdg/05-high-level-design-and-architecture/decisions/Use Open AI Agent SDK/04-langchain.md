@@ -2,9 +2,9 @@
 
 **Deferred alternative.** LangChain supplies an agent loop built from a model, tools, prompts, and middleware, with integrations across providers. It could reduce integration work once coaching uses several tools and data sources.
 
-![Models + tools: Provider integrations → Agent loop: Prompt and middleware → State proposal: SpeakerCoach validates.](images/langchain.svg)
+![Models + tools: Provider integrations → Agent loop: Prompt and middleware → State proposal: Alice.Good.Meetings validates.](images/langchain.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 The current reasoner has no tools. Moving to another agent abstraction now would add adaptation and debugging work without a demonstrated integration problem to remove.
 

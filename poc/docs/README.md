@@ -1,4 +1,4 @@
-# SpeakerCoach POC: solution guide
+# Alice.Good.Meetings POC: solution guide
 
 ![Reading paths from the introduction to architecture, module details, code navigation and operation.](images/README.svg)
 

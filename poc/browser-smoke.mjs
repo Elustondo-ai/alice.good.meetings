@@ -48,7 +48,7 @@ try {
   });
   assert.deepEqual(timerStates.map(s => s.label), ['LAND IT', 'STOP', 'GOOD']);
   assert.deepEqual(timerStates.map(s => s.color), ['gold', 'red', 'green']);
-  await page.screenshot({ path: '/tmp/speakercoach-poc-browser.png' });
+  await page.screenshot({ path: '/tmp/alice.good.meetings-poc-browser.png' });
   const displayed = await page.locator('#server').textContent();
   await page.getByRole('button', { name: 'Stop listening', exact: true }).click();
   await page.waitForFunction(() => window.testContext.state === 'closed' && window.testStream.getTracks().every(t => t.readyState === 'ended'));

@@ -4,11 +4,11 @@
 
 ![Browser audio: Continuous stream → Gemini Live: Live observations → Reason + validate: Explicit state boundary.](images/gemini-live.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 The reviewed Live API does not support `responseSchema` or `responseJsonSchema`. Native access therefore does not supply schema-constrained interview-state output through that configuration.
 
-A native audio path may retain vocal information that a plain transcript loses. Whether that improves question retention or advice remains unmeasured for SpeakerCoach.
+A native audio path may retain vocal information that a plain transcript loses. Whether that improves question retention or advice remains unmeasured for Alice.Good.Meetings.
 
 ## When to reconsider
 

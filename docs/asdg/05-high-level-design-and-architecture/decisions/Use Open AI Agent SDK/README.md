@@ -1,6 +1,6 @@
 # Use Open AI Agent SDK
 
-Use the OpenAI Agents SDK for SpeakerCoach's current proof of concept, running inside the local Node.js service on the MacBook.
+Use the OpenAI Agents SDK for Alice.Good.Meetings's current proof of concept, running inside the local Node.js service on the MacBook.
 Cloud services perform transcription and model inference; the application controls the interview state and the browser display.
 The user selected this direction in the architecture discussion on 26 October 2026. This record explains that decision and its limits.
 

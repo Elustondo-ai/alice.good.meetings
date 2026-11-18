@@ -1,9 +1,9 @@
-# Purpose of Speaker Coach
+# Purpose of Alice.Good.Meetings
 
-Speaker Coach helps User stay focused, recall relevant experience, and give clear, structured answers during interviews and meetings.
+Alice.Good.Meetings helps User stay focused, recall relevant experience, and give clear, structured answers during interviews and meetings.
 It follows the conversation and offers brief, immediately understandable visual cues that he can absorb while continuing to listen and speak.
 
-![Speaker Coach vision: an interviewee uses a glanceable visual companion to stay focused, recall experience and answer clearly.](images/speaker-coach-purpose.png)
+![Alice.Good.Meetings vision: an interviewee uses a glanceable visual companion to stay focused, recall experience and answer clearly.](images/alice.good.meetings-purpose.png)
 
 Concept illustration of the desired experience, including future capabilities; this is not a screenshot of the current application.
 
@@ -20,8 +20,15 @@ Guidance should be understandable at a glance on a second screen or phone, with 
 Spoken coaching previously interrupted User's thinking; visual guidance should avoid recreating that disruption.
 The helper supports User in forming his own answer. Choosing architecture or committing implementation scope is outside this purpose definition.
 
+## Proposed answers and personal material: draft boundaries
+
+A proposed answer supports User's own answer: it states nothing about his experience that is not in material he supplied.
+Longer supporting details may sit below the glanceable guidance for reference; they never crowd or replace the cue, the question or the short points.
+So that answers can draw on his real experience, User chose to send an interview preparation package, with his résumé and other documents he prepares, to OpenAI together with the question.
+These three sentences were drafted from User's direction of 16 November 2026 and await his review of the exact words. [Planned improvements](03-planned-improvements.md) describes the outcome they bound.
+
 ## Source and decision status
 
-Source: User's Purpose interview in this Codex conversation, 20 October 2026.
-User agreed with the intended purpose and reported-current-value synthesis, then clarified and confirmed the next outcome.
-This is stakeholder agreement on direction, not measured effectiveness or approval of the exact saved document.
+Source: User's Purpose interview in a Codex conversation, 20 October 2026, and his direction of 16 November 2026 as relayed in the Stage 07 [brief addendum](../07-planning/03.6.3-sprint-003-brief-addendum.md).
+In October User agreed with the intended purpose and reported-current-value synthesis, then clarified and confirmed the next outcome.
+This is stakeholder agreement on direction, not measured effectiveness or approval of the exact saved document; no acceptance of this version is recorded.

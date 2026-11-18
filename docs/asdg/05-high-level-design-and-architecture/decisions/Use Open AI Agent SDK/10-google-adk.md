@@ -2,9 +2,9 @@
 
 **Deferred agent-framework alternative.** Google ADK combines agents, tools, sessions, workflows, evaluation, and live-agent integration. It supports Gemini and other model providers, making it a credible alternative as coaching orchestration grows.
 
-![Audio / observations: Gemini Live when live → ADK runtime: Tools, sessions, workflow → SpeakerCoach: Validate proposed state.](images/google-adk.svg)
+![Audio / observations: Gemini Live when live → ADK runtime: Tools, sessions, workflow → Alice.Good.Meetings: Validate proposed state.](images/google-adk.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 Its general TypeScript availability does not establish live-feature parity: the reviewed live-agent documentation lists Python and Java. A migration must check the exact language and feature path.
 

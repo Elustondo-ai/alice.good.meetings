@@ -30,6 +30,8 @@ Selection is additive: adding one client never removes or rewrites the other's f
 | Invoking a skill | `$asdg-status` | `/asdg-status` |
 | Human-only skills | `allow_implicit_invocation: false` | `disable-model-invocation: true` |
 | Named role agents | `.codex/agents/*.toml` | None |
+| Interface mods | None | `.claude/skills/<mod>/`, from [`asdg/mods`](../mods/README.md) |
+| OpenSpec, when its command is installed | `.agents/skills/openspec-*` | `.claude/skills/openspec-*`, `.claude/commands/opsx/` |
 | Guard and activity hooks | `.codex/hooks.json`, active once trusted | None installed |
 
 Each template in `asdg/templates/.agents/skills/` is the single source for both adapters: setup copies it for Codex and renders the Claude adapter from the same name, description and body.
@@ -44,6 +46,8 @@ Versions before 2.1.277 need the same import, added by hand. Check loaded files 
 ## Repeat setup and verification
 
 Repeat setup creates nothing that already exists: identical files are skipped; differing files and edited managed blocks are conflicts; no entry, import or receipt is duplicated.
+A project that edited its embedded `asdg/` can still repeat setup: the preview says `LOCAL CHANGES`, plans integration files from the local copy and leaves the delivery manifest and build record untouched. A first install still requires a matching package.
+Setup also plans [OpenSpec's missing project files](../scripts/lib/cli_openspec.md) for the clients of that run, add-only, using the `openspec` command already installed; it never downloads it, and `--no-openspec` skips the step.
 `verify` always checks the shared package, then each client: `NOT_SELECTED`, `COMPLETE` or `DAMAGED`, with runtime behavior `NOT_VERIFIED`.
 An installation made before client tracking reports Codex as `legacy-unrecorded`; the next setup records it explicitly and says so.
 

@@ -2,7 +2,7 @@
 
 ![One microphone feeds immediate local colors and a separate server-to-cloud path that returns a visible agent reply.](images/01-introduction.svg)
 
-SpeakerCoach now demonstrates a complete audio-to-agent round trip while preserving the original speaking-duration feedback.
+Alice.Good.Meetings now demonstrates a complete audio-to-agent round trip while preserving the original speaking-duration feedback.
 The page continues listening, showing sound level, tracking the current speaking turn and changing between GOOD, LAND IT and STOP.
 A second path sends that microphone audio to a local Node.js service, which uses OpenAI transcription and an OpenAI Agents SDK agent.
 

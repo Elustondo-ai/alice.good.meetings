@@ -11,7 +11,7 @@ const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright')
 const dryRun = process.argv.includes('--dry-run');
 const origin = process.env.POC_URL || 'http://127.0.0.1:3000';
 const out = process.argv.slice(2).find(arg => !arg.startsWith('--')) ||
-  `/tmp/speakercoach-live-${new Date().toISOString().replace(/[:.]/g, '-')}`;
+  `/tmp/alice.good.meetings-live-${new Date().toISOString().replace(/[:.]/g, '-')}`;
 await mkdir(out, { recursive: true });
 const log = { origin, dryRun, startedAt: Date.now(), audioPacketsSent: 0, frames: [], checkpoints: [], pageErrors: [] };
 const save = () => writeFile(join(out, 'capture.json'), JSON.stringify(log, null, 2));
@@ -53,12 +53,12 @@ const checkpoint = label => (checkpoints = checkpoints.then(async () => {
 }));
 
 // Capture-only page helper: the hotkey calls back here and briefly shows a confirmation in the corner.
-await page.exposeBinding('speakercoachCheckpoint', () => checkpoint('page hotkey'));
+await page.exposeBinding('aliceGoodMeetingsCheckpoint', () => checkpoint('page hotkey'));
 await page.addInitScript(() => {
   addEventListener('keydown', async event => {
     if (!(event.altKey && event.shiftKey && event.code === 'KeyK')) return;
     event.preventDefault();
-    const n = await window.speakercoachCheckpoint();
+    const n = await window.aliceGoodMeetingsCheckpoint();
     const note = document.createElement('div');
     note.textContent = n ? `capture checkpoint ${n} saved` : 'capture checkpoint failed';
     note.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:8px 14px;' +

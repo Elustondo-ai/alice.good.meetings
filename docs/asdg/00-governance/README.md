@@ -1,9 +1,9 @@
-# How we manage SpeakerCoach
+# How we manage Alice.Good.Meetings
 
-SpeakerCoach is a small project exploring how visual guidance can help someone stay focused and answer clearly during interviews and meetings.
+Alice.Good.Meetings is a small project exploring how visual guidance can help someone stay focused and answer clearly during interviews and meetings.
 This section explains how we choose its next steps, make decisions and review progress.
 
-![SpeakerCoach development loop: clarify the benefit, describe a scenario, define evaluation, agree on a small scope, and build and review results. Pablo chooses the direction and next work; assistants bring proposals and evidence. Current position: reviewing documentation, with no active release or sprint.](images/development-loop.svg)
+![Alice.Good.Meetings development loop: clarify the benefit, describe a scenario, define evaluation, agree on a small scope, and build and review results. Pablo chooses the direction and next work; assistants bring proposals and evidence. Current position: reviewing documentation, with no active release or sprint.](images/development-loop.svg)
 
 One small, useful increment at a time. Results inform the next decision; the snapshot below the loop is dated 23 October 2026.
 
@@ -16,7 +16,7 @@ ASDG is the development method we use to organize that collaboration. The amount
 
 ## How we move forward
 
-We start with the benefit we want SpeakerCoach to provide, describe a concrete situation in which it would help, and decide how to evaluate that benefit.
+We start with the benefit we want Alice.Good.Meetings to provide, describe a concrete situation in which it would help, and decide how to evaluate that benefit.
 We then choose a manageable piece of work, agree on its scope and review the results before deciding what comes next.
 Open questions and disagreements remain visible so that a proposal is never mistaken for an agreed decision.
 
@@ -28,9 +28,9 @@ No release or development sprint is currently active.
 
 ## Explore the project
 
-- [Purpose](../02-purpose/01-purpose.md): the problem SpeakerCoach aims to address and the outcomes we want.
+- [Purpose](../02-purpose/01-purpose.md): the problem Alice.Good.Meetings aims to address and the outcomes we want.
 - [System model](../03-system-model-and-use-cases/01-system-model.md): how the proposed experience fits together, with interview scenarios.
 - [Evaluation strategy](../04-benchmarks-and-eval-strategy/01-evaluation-strategy.md): how we intend to find out whether the product works and helps its users.
 - [All project documentation](../README.md): the full collection, organized by development topic.
 
-Everything in `docs/asdg/` is intended for human readers: clear explanations of SpeakerCoach, its decisions, plans and results, with links to supporting detail.
+Everything in `docs/asdg/` is intended for human readers: clear explanations of Alice.Good.Meetings, its decisions, plans and results, with links to supporting detail.

@@ -4,9 +4,9 @@ This folder will explain whether a candidate change is ready to deliver, using i
 
 ![Candidate and evidence → Review findings → Human release decision. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
 
-## SpeakerCoach today
+## Alice.Good.Meetings today
 
-No release-readiness assessment or release decision is documented in this stage yet. A structurally valid ASDG installation does not establish that SpeakerCoach is ready for release.
+No release-readiness assessment or release decision is documented in this stage yet. A structurally valid ASDG installation does not establish that Alice.Good.Meetings is ready for release.
 
 ## What belongs here as we develop
 

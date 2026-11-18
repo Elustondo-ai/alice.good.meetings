@@ -10,7 +10,7 @@ Shared rules retain the bounded Purpose allowance; other stages' layouts and app
 The purpose illustration was generated with the built-in `image_gen.imagegen` tool and copied into the client documentation.
 It depicts the desired interview experience and the outcomes of attention, recall and clear answers.
 Its caption identifies it as a vision illustration, including future capabilities, rather than an implemented UI.
-The full generation prompt is retained in [asset metadata](../../../02-purpose/images/speaker-coach-purpose.json).
+The full generation prompt is retained in [asset metadata](../../../02-purpose/images/alice.good.meetings-purpose.json).
 The image was visually inspected: the question, keywords and three outcome labels are readable and correctly spelled.
 
 ## Verification and limits

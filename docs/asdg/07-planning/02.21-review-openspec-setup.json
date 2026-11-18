@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "objective": "ASDG setup adds OpenSpec's missing project files for the selected clients, add-only, using the openspec command already installed.",
+  "requested_by": "Pablo (repository owner), 2026-11-16: asked \"should we install open spec at the begining ? during setup?\", then \"please make the asdg setup instakll openspec\", then selected Admin with \"Switch to Admin\".",
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-fable-5-2",
+    "client": "Claude desktop app, Code tab",
+    "session": "local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e"
+  },
+  "role": {
+    "id": "ASDG-ADMIN",
+    "selection": "explicit \"Switch to Admin\" on 2026-11-16, after a return to 00 Governance",
+    "title": "RENAMED to \"ASDG Admin\" (was \"00 Governance\")"
+  },
+  "starting_revision": "7d60c0ffbec9dd211eceb3b0bb0957750f0519e0",
+  "branch": "sprint-03",
+  "preserved_uncommitted_work": [
+    ".asdg/sprint.json (SPRINT-003 record)",
+    "the uncommitted change recorded in docs/asdg/07-planning/02.20-review-sprint-status-mod.json",
+    ".claude/skills/asdg-sprint-status/ (installed by the approved setup)"
+  ],
+  "design_decisions": [
+    "OpenSpec's project files only; the openspec command is never downloaded",
+    "add-only; existing files are never overwritten",
+    "a missing, failing or misbehaving command never blocks setup",
+    "--no-openspec and ASDG_OPENSPEC=0 skip the step",
+    "verify reports native skill presence as information"
+  ],
+  "changed_paths": [
+    {
+      "path": "asdg/scripts/lib/cli_openspec.py",
+      "sha256": "64abfdbe84c44b7fa021e009a104ea38d31cb728e6036ccd4cfb7bd6a3465a99"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_openspec.md",
+      "sha256": "a16604a959ad51dd512e9b2afb9e85835a47e13fc1f4a6a7e345c2a28465a67c"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_install.py",
+      "sha256": "e1c36cf6bfb991e2b5e594acd9bcee25f4002d25c6775972691964d6b8324f7b"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_install.md",
+      "sha256": "b9f81c10a85a87e722d2a46ff7ad9bf00938e0dfe20f8a470e68c3831b17467c"
+    },
+    {
+      "path": "asdg/scripts/lib/cli.py",
+      "sha256": "19c009d070145ac9c19739a254de92f7e0e9fb7b0b09cb9092e282975674fb96"
+    },
+    {
+      "path": "asdg/scripts/lib/cli.md",
+      "sha256": "e82c7f037b229d6f39369a7a775a4161f39567380e162ce047a79680c10fec93"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.py",
+      "sha256": "c649f9e4591ef333978bdec6f954107011a7cac52bbd5774afeca6880573bc2c"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "sha256": "b45455969e84a410e809f2e12719fbfb6fe4c8f75e798583e683c00312d1a482"
+    },
+    {
+      "path": "asdg/tests/test_openspec_setup.py",
+      "sha256": "f917254fa829ee0fed3cb7a70910e634637979af633c3e07e594e31c1a18565a"
+    },
+    {
+      "path": "asdg/tests/test_openspec_setup.md",
+      "sha256": "452810f7bb0527101a67bf7d672c0c5173a338216125837da2057e195dcdfc6d"
+    },
+    {
+      "path": "asdg/tests/test_claude_mods.py",
+      "sha256": "a23d17c0d91e2a44192229c27efbd55a30c2d8475d1bfe55bb9f6caa4e2be75d"
+    },
+    {
+      "path": "asdg/tests/continuation_fixture.py",
+      "sha256": "b84761f457005aa2a7718b362b788acac1c7eadb44ee279461b00d0eca832949"
+    },
+    {
+      "path": "asdg/tests/test_build_identity.py",
+      "sha256": "fa7f8d4073a870bdbc1cde3f15fd599efb98144356bcb044d69d6e7bc8b2ba47"
+    },
+    {
+      "path": "asdg/tests/test_distribution.py",
+      "sha256": "f32826680e8ad408bb997e182a1bc0461253d496a3fbab6a9b750929036e317d"
+    },
+    {
+      "path": "asdg/tests/test_portable.py",
+      "sha256": "4429dcc6ad812eb669ccc0e035323b12e528180b645dfdc88bad88b362f4a353"
+    },
+    {
+      "path": "asdg/tests/test_install.py",
+      "sha256": "620f913244035635385baf37025df66251106dd65a5f90356953fb74cc4dad96"
+    },
+    {
+      "path": "asdg/tests/test_ownership.py",
+      "sha256": "f0e28b4c7073f42387d1cb2018ecb1ba1580abdb949b9f64a1504e67a573285f"
+    },
+    {
+      "path": "asdg/tests/test_sync.py",
+      "sha256": "d8fe151231e107eda2af5beeca52bd1d231567c4b9489bda12890fefa1907282"
+    },
+    {
+      "path": "asdg/tests/test_team_claim.py",
+      "sha256": "6ced87bb96b2c39991fb2adf0cbf38daca1329c426c13365ada22748ec5518b6"
+    },
+    {
+      "path": "asdg/tests/test_team_store.py",
+      "sha256": "3298e53d639557eb8ecf81d9faba65eafb4562151c7432ce88191f682b54142d"
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "1e9b946ce15b59b642bf74a33274315766261f1e4ecc5e7ebf27ae0e9584b9f6"
+    },
+    {
+      "path": "asdg/metadata/package-files.json",
+      "sha256": "a7d57f3319689d886a775e9104d92da5eb75e57bd57efde8f821d72975159c70"
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "126607b5a20c788b945375105a2e185826d613ac62f23535b9c425fcf10e1154"
+    },
+    {
+      "path": "asdg/skills/asdg-openspec-propose/SKILL.md",
+      "sha256": "9c6bc86477f11477d8f47b7b825beb9966fbb628e51b41a579a754b0466a61dd"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.21-review-openspec-setup.md",
+      "sha256": "1187156b8218cf59da4da89993b66c7ada825e158ac4007dbc63b40bae780a66"
+    }
+  ],
+  "validation": {
+    "automated": [
+      "python3 asdg/scripts/check.py: PASS",
+      "python3 -B -m unittest discover -s asdg/tests -p test_openspec_setup.py: 6 tests, OK (stand-in openspec command)",
+      "python3 -B -m unittest discover -s asdg/tests: 208 tests, failures=3, skipped=5"
+    ],
+    "known_failures": {
+      "tests": [
+        "test_portable.PortableTests.test_fresh_setup_installs_only_the_selected_clients",
+        "test_portable.PortableTests.test_repeat_setup_and_dry_run_create_nothing_new",
+        "test_portable.PortableTests.test_clients_add_in_either_order_without_touching_the_other"
+      ],
+      "cause": "unchanged from 02.20: the fixture copies metadata/build.json, which never matches a resealed copy"
+    },
+    "manual_probe": {
+      "tool": "OpenSpec 1.15.0",
+      "what": "openspec init <disposable folder> --tools claude and --tools codex,claude with --no-animation --no-copilot-cloud: no prompt; two runs byte-identical; output compared with Alice: Codex files and openspec/config.yaml identical, 12 Claude files missing",
+      "telemetry": "DO_NOT_TRACK=1 and OPENSPEC_TELEMETRY=0 were set; not verified that OpenSpec honours them"
+    },
+    "setup_preview_in_alice": {
+      "command": "python3 asdg/scripts/init.py --dry-run",
+      "integrity": "LOCAL_CHANGES",
+      "openspec_state": "PLANNED",
+      "openspec_version": "1.15.0",
+      "planned_file_count": 12,
+      "applied": true,
+      "plan": "2026-11-16T23:54:50Z.6071b64b2ae7939f3b40ced82afa42c3a73e222a5c59e8642ecc5013b7c436e4",
+      "approval": "Pablo replied APPROVE to the displayed plan on 2026-11-16"
+    },
+    "setup_applied_in_alice": {
+      "installed_paths": [
+        {
+          "path": ".claude/commands/opsx/apply.md",
+          "sha256": "9a980fe310f04f662f8426c89a69c286cf764a73191c2541f0f281c11d97dbe0"
+        },
+        {
+          "path": ".claude/commands/opsx/archive.md",
+          "sha256": "0c48963c41c06b12553b405cd87b0ce0af09b3a8d93dce27a8505fe32d8d88e6"
+        },
+        {
+          "path": ".claude/commands/opsx/explore.md",
+          "sha256": "e00d9352b42e9ff02ef262c132ccbd02ff36e7e6c4e038d3d8540ea7efc709d6"
+        },
+        {
+          "path": ".claude/commands/opsx/propose.md",
+          "sha256": "2680d809cd4dcfceafa2614acaff4adf8522d6899f34bdc62ece7b7cb1c79359"
+        },
+        {
+          "path": ".claude/commands/opsx/sync.md",
+          "sha256": "a946e1a29b7421e1a6fd1fe1008f23c8b3739b8345f8487bbe1ffcf934fd0bec"
+        },
+        {
+          "path": ".claude/commands/opsx/update.md",
+          "sha256": "9a7db84558012013c5556bec4caf7e4ac890b84695de391902feb46d9254e233"
+        },
+        {
+          "path": ".claude/skills/openspec-apply-change/SKILL.md",
+          "sha256": "a33287996c088cbbfc7dec4ac2e71baf483a6cced44cb8c851528e4955d11224"
+        },
+        {
+          "path": ".claude/skills/openspec-archive-change/SKILL.md",
+          "sha256": "3189aca95867ad4a870e37ebb8421c9cca2d9b152276dee3c5cbd0ea15b87845"
+        },
+        {
+          "path": ".claude/skills/openspec-explore/SKILL.md",
+          "sha256": "b8cb9ccc5534fef2bf850fbaf48533fe9586d82f9aa7318b244929e5df6f8079"
+        },
+        {
+          "path": ".claude/skills/openspec-propose/SKILL.md",
+          "sha256": "e8edfbb0ec679fe1e3efc0c5f216a08c915fa015a3c73e449d7895295fc612d5"
+        },
+        {
+          "path": ".claude/skills/openspec-sync-specs/SKILL.md",
+          "sha256": "b3cf8e44692bae2155d28a0894a6f7ff91731573eb1bb1adae24d549486841c2"
+        },
+        {
+          "path": ".claude/skills/openspec-update-change/SKILL.md",
+          "sha256": "3342c26063664a6c1cb6f878fb3cfb820a4763f8c843027ec4d17cc37bfed596"
+        }
+      ],
+      "repeat_preview_planned_files": [],
+      "manifest_and_build_record_changed": false,
+      "verify": "structure_ok true; Codex COMPLETE, Claude COMPLETE; openspec_skills codex PRESENT, claude PRESENT"
+    },
+    "observed_in_client": {
+      "client": "Claude desktop app",
+      "date": "2026-11-16",
+      "what": "the acting session's skill list gained openspec-propose, five other openspec-* skills and six opsx: commands right after apply",
+      "not_observed": "running any of them"
+    }
+  },
+  "not_done": [
+    "no commit, push or promotion to canonical",
+    "companions of the ten test modules not edited for the hermetic line",
+    "Init skill and installation pages not rewritten",
+    "no OpenSpec skill has been run in Claude yet"
+  ],
+  "review_status": "REVIEW_REQUIRED: human review pending; no approval inferred."
+}

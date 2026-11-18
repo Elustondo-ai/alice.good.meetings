@@ -66,7 +66,7 @@ try {
           overlaps: ['debug', 'server', 'controls'].filter(id => overlap(box('question'), box(id))) };
       });
       assert.deepEqual([layout.pageOverflow, layout.questionOverflow, layout.overlaps], [false, false, []], `${name} ${width}`);
-      await page.screenshot({ path: `/tmp/speakercoach-uc04-${name}-${width}.png` });
+      await page.screenshot({ path: `/tmp/alice.good.meetings-uc04-${name}-${width}.png` });
     }
     await page.setViewportSize({ width: 1280, height: 900 });
     results.layout[name] = 'PASS';

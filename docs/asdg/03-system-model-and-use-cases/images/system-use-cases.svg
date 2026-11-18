@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1300" viewBox="0 0 1800 1300" role="img" aria-labelledby="title desc">
-  <title id="title">Speaker Coach interview use cases</title>
-  <desc id="desc">Interviewee receives coaching. Interviewer contributes the question. Three specialized use cases are direct answer, open answer and experience story. General coaching includes question retention and brief answer cues. Conditional corrective guidance extends open answer and experience story.</desc>
+  <title id="title">Alice (Alice.Good.Meetings) interview use cases</title>
+  <desc id="desc">Interviewee receives coaching. Interviewer contributes the question. Three specialized use cases are direct answer, open answer and experience story. General coaching includes question retention, refined by UC-04, and brief answer cues, refined by UC-05. Conditional corrective guidance extends open answer and experience story.</desc>
   <defs>
     <marker id="generalization" markerWidth="18" markerHeight="16" refX="16" refY="8" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L16 8 L1 15 Z" fill="#fff" stroke="#31576a" stroke-width="2"/></marker>
     <marker id="dependency" markerWidth="15" markerHeight="15" refX="13" refY="7.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L13 7.5 L1 14" fill="none" stroke="#31576a" stroke-width="2"/></marker>
@@ -22,10 +22,10 @@
     </style>
   </defs>
   <rect width="1800" height="1300" fill="#fbfcfd"/>
-  <text x="70" y="65" class="heading">Speaker Coach interview use cases</text>
+  <text x="70" y="65" class="heading">Alice (Alice.Good.Meetings) interview use cases</text>
   <text x="70" y="102" class="sub">One coaching goal, three answer scenarios, private visual guidance</text>
   <rect x="250" y="140" width="1450" height="980" rx="4" fill="#ffffff" stroke="#95abb6" stroke-width="2"/>
-  <text x="282" y="182" font-size="26" font-weight="700">Speaker Coach</text>
+  <text x="282" y="182" font-size="26" font-weight="700">Alice (Alice.Good.Meetings)</text>
   <!-- Actor associations have no directional arrows. -->
   <path d="M143 270 L800 270" class="line"/>
   <path d="M143 780 L360 780" class="line"/>
@@ -56,9 +56,11 @@
   <text x="1350" y="464" class="id">UC-03</text>
   <text x="1350" y="491" class="label"><tspan x="1350">Tell an experience</tspan><tspan x="1350" dy="27">story</tspan></text>
   <ellipse cx="550" cy="780" rx="190" ry="65" class="case"/>
-  <text x="550" y="772" class="label"><tspan x="550">Identify and retain</tspan><tspan x="550" dy="30">the current question</tspan></text>
+  <text x="550" y="760" class="id">Refined by UC-04</text>
+  <text x="550" y="787" class="label"><tspan x="550">Identify and retain</tspan><tspan x="550" dy="27">the current question</tspan></text>
   <ellipse cx="1350" cy="780" rx="190" ry="65" class="case"/>
-  <text x="1350" y="772" class="label"><tspan x="1350">Prepare brief</tspan><tspan x="1350" dy="30">answer cues</tspan></text>
+  <text x="1350" y="760" class="id">Refined by UC-05</text>
+  <text x="1350" y="787" class="label"><tspan x="1350">Prepare brief</tspan><tspan x="1350" dy="27">answer cues</tspan></text>
   <ellipse cx="950" cy="1000" rx="230" ry="60" class="optional"/>
   <text x="950" y="992" class="label"><tspan x="950">Signal drift, repetition</tspan><tspan x="950" dy="30">or need to conclude</tspan></text>
   <text x="950" y="1093" text-anchor="middle" class="small">Condition: correction warranted while an answer is underway.</text>

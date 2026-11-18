@@ -4,7 +4,7 @@ This folder will turn observed behavior and user feedback into lessons and candi
 
 ![Observations and feedback → Supported insight → Candidate improvement. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
 
-## SpeakerCoach today
+## Alice.Good.Meetings today
 
 No observability or learning assessment is documented in this stage yet. This folder does not imply that telemetry, analytics or automatic recording has been installed.
 

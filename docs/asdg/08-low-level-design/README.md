@@ -4,7 +4,7 @@ This folder will describe the contracts an implementation needs: inputs, outputs
 
 ![Scenario and boundaries → Interface contract → Examples and edge cases. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
 
-## SpeakerCoach today
+## Alice.Good.Meetings today
 
 No implemented behaviour is documented here yet. One proposed design awaits Pablo's review:
 

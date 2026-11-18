@@ -1,41 +1,45 @@
-# What the current browser page actually does
+# What runs today: the page and its local service
 
-Source inspection on 25 October 2026 establishes a browser page with microphone-level timing and three visual states. No application runtime, microphone session or deployed build was tested for this assessment.
+Pablo opens one web page during an interview. It shows a full-screen GOOD, LAND IT or STOP cue, the Focus question he confirmed and the Live question the service is hearing.
+This page records what the source at Git revision `7d60c0f` (branch `sprint-03`) does, as read on 16 November 2026. Nothing was run for this assessment, except one Node start check named below.
 
-![The existing browser connects microphone samples to a sound-level threshold and elapsed-turn timer, then renders GOOD, LAND IT or STOP. All shown behavior is source-inspected browser code.](images/current-browser.svg)
+![On the MacBook the web page computes the cue from the microphone and shows the Focus and Live questions; it exchanges audio, controls and state with a local service, which sends audio to OpenAI live transcription and a snapshot to a reasoning model.](images/current-system.svg)
 
-## Existing responsibilities
+*Drawn from the source, not captured from a running page. [Editable SVG](images/current-system.svg). A labelled mockup of the question panel is in the [UC-04 design](../08-low-level-design/03-uc-04-focus-and-live-question.md).*
+
+## Parts and what each one does
 
 | Source | Responsibility |
 | --- | --- |
-| [index.html](../../../index.html) and [its companion](../../../index.md) | Full-screen color panel, manual state buttons, Start Listening control, debug overlay and inline styling. |
-| [app.js](../../../app.js) and [its companion](../../../app.md) | Microphone acquisition, Web Audio analysis, sound-level activity timing and DOM updates. |
+| [index.html](../../../index.html), [app.js](../../../app.js) | The cue: microphone sound level, a turn timer and the three colors, computed in the page alone. The question panel: Focus, Live, Confirm question and Clear live. One WebSocket carries 100 ms audio packets and question controls out, and state back. |
+| [poc/server.mjs](../../../poc/server.mjs) | Serves a fixed list of files on `127.0.0.1`, answers `/health`, accepts one session at a time, forwards audio to OpenAI live transcription and holds the key. |
+| [poc/session.mjs](../../../poc/session.mjs) | The state controller. It owns the revision, phase, reply, Focus question with its version, and Live question. It validates each model proposal; only Confirm question writes Focus. |
+| [poc/agent.mjs](../../../poc/agent.mjs) | One Agents SDK agent without tools. From recent transcript and the current state it proposes a short reply, a phase and a Live question. |
+| [poc/start.sh](../../../poc/start.sh) | Finds Node and starts the service with `--env-file=.env.local`. |
 
-Start Listening requests microphone permission, creates an AudioContext and AnalyserNode, then samples every 100 ms.
-An RMS level above 0.02 starts or sustains a detected turn. The short speaking indicator uses a 300 ms hold; more than 2.5 seconds without threshold-crossing sound clears the turn timer.
-The panel displays LAND IT above 25 seconds and STOP above 35 seconds; otherwise it displays GOOD. Pauses shorter than the reset interval count toward elapsed turn time.
-Manual color selections can be overwritten by the next automatic tick. The existing source has no stop-listening control or complete cleanup after partial startup failure.
-The timer reacts to sound activity, including possible interviewer speech or noise. It neither establishes speaker identity nor judges whether an answer is relevant.
+## Behavior the next change depends on
 
-## Gap to the proposed architecture
+The cue shows LAND IT after 25 seconds of a turn and STOP after 35; 2.5 seconds without sound ends the turn. It keeps working when the service is absent, refuses the session or disconnects.
+Focus has a version that rises by one at each Confirm, including a confirmed rewording. The page applies a state only if its revision is newer than the one displayed, and tells the service which revision it has rendered.
+The service runs one reasoning request at a time, started at least 2.5 seconds apart and limited to 30 seconds. A proposal based on an older revision is rejected.
+Without a key, `/health` reports `configured: false` and a session is refused with "Server needs OPENAI_API_KEY". Nothing is transcribed, so no Live or Focus question can appear.
+`start.sh` cannot start the service when `poc/.env.local` is missing: Node exits with code 9. This was observed on 16 November with Node v24.22.1 and a throwaway file name. The real file was absent from this checkout when first inspected that day and present a few hours later; its content was not read.
+On Stop or a disconnect the page releases the microphone and shows Focus as "last known, not live". A new session starts with both questions empty.
 
-The two application files contain no audio-upload connection, local session service, live transcription, agent integration, interview-state controller or retained-question display.
-No application replay harness, session recording pipeline or versioned display-event history is implemented in those files.
-The proposed 100 ms transport packets are separate from the existing 100 ms volume-sampling interval; matching numbers do not establish an existing audio stream.
-The initial GOOD label describes the display's default appearance, not a recognized interview phase or demonstrated answer quality.
+## What leaves the Mac today
 
-## Offline evaluation materials
+Microphone audio goes to OpenAI live transcription while listening. The last six transcript segments and the session state, including the Focus and Live questions, go to the reasoning model.
+No résumé, document or other prepared material is read or sent. The audit log records events, versions and timings, never transcript or question text.
 
-The [evaluation-data guide](../../../eval-data/README.md) identifies the longer mock interview, Pablo's solo recording and the stored experimental voice profile.
-The [analysis guide](../../../eval-data/interview-analysis-2026-10-25/README.md) distinguishes a separate 85-second interview and its transcript from the profile comparison on the first 90 seconds of the longer MP3.
-Pablo considers the short transcript and timestamps good enough for the current evaluation. They remain unchanged working references, with estimated speaker/overlap labels and no claim of independent ground truth.
-Offline processing of complete files does not establish incremental transcription, online identity recognition, input isolation, end-to-end latency or live usefulness.
-The two confirmed examples from the longer recording do not establish an automatic recognition threshold or general accuracy.
+## Gap to SPRINT-003
 
-## Workflow facts and evidence limits
+Nothing at this revision prepares an answer: there is no answer generator, preparation package, bullet card or details area, and `poc/alice-run.sh` does not exist. `/health` carries no start marker.
+The [proposed answer](01.3-proposed-answer.md) and [service start](01.4-service-start-and-key.md) pages describe what is intended. From the wider [intended design](01-architecture.md), the P toggle, speaker identification, isolated replay and automatic reconnection are also not built.
 
-Fresh project-local status and structure verification are separate from application validation. The sprint is inactive and no release is recorded.
-Stage 04's documentation is accepted and current. Purpose and use-case approval records are stale after document changes, while the user retains their working direction.
-Stage 01 is intentionally empty for this seed; its missing-evidence index entry does not require restarting that definition exercise.
-This document describes inspected sources and reported evaluation provenance, not a benchmark result, implementation approval or deployment claim.
-[Proposed architecture](01-architecture.md) · [Planned decisions](03-planned-decisions.md) · [Architecture index](README.md)
+## Evidence and limits
+
+The deterministic suite in [poc.test.mjs](../../../poc/poc.test.mjs) has 19 cases, counted from source. The [POC results](../../../poc/RESULTS.md) record one synthetic browser trial on 26 October 2026, and [UC-04](../03-system-model-and-use-cases/01.4-confirm-current-question.md) records a live run on 4 November. None was repeated here.
+Physical microphone behavior, question accuracy, speaker identity and usefulness in a real interview remain unmeasured. The recordings in [eval-data](../../../eval-data/README.md) are evaluation references, described in the [Stage 04 evidence page](../04-benchmarks-and-eval-strategy/02-evidence-and-reconciliation.md), and are not inputs to the service.
+SPRINT-003 is active. This page replaces the 25 October description of a browser-only page; no acceptance of this version is recorded.
+
+[Intended architecture](01-architecture.md) · [Planned decisions](03-planned-decisions.md) · [Architecture index](README.md)

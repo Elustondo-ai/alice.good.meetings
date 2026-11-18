@@ -1,6 +1,6 @@
 # Compare the responsibility before the framework
 
-SpeakerCoach needs continuous observations, accurate interpretation, authoritative state, and useful visual feedback.
+Alice.Good.Meetings needs continuous observations, accurate interpretation, authoritative state, and useful visual feedback.
 Choose a framework for the complexity it removes from one of these responsibilities. Several products below can complement the selected SDK.
 
 ![Media produces observations, reasoning proposes changes, and application code validates and displays state; tracing observes the flow.](images/comparison.svg)

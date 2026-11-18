@@ -1,10 +1,10 @@
 # OpenAI Agents SDK
 
-**Selected for the POC.** Keep one interview reasoner inside the local Node service. The SDK runs the agent loop while SpeakerCoach owns audio intake, accepted state, and the display. Its tool and handoff capabilities leave room for later growth.
+**Selected for the POC.** Keep one interview reasoner inside the local Node service. The SDK runs the agent loop while Alice.Good.Meetings owns audio intake, accepted state, and the display. Its tool and handoff capabilities leave room for later growth.
 
 ![Transcript snapshot: Permitted observations → Agent + Runner: Structured proposal → State controller: Accept or reject.](images/openai-agents.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 The present reasoner makes one structured call and has no tools. A direct model API call remains a credible simpler baseline; the SDK has not been shown to improve model accuracy or latency.
 

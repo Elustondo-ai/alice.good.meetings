@@ -2,7 +2,7 @@
 
 ![Source inspection establishes prototype behavior; stakeholder reports describe experience; benchmark execution remains unverified.](images/evidence-limits.svg)
 
-Assessment of Speaker Coach’s local working tree and documentation on 21 October 2026; no deployed build or runtime behavior was tested.
+Assessment of Alice.Good.Meetings’s local working tree and documentation on 21 October 2026; no deployed build or runtime behavior was tested.
 The embedded CLI reports accepted, current Purpose and use-case reviews. Stage 04 had no registered evidence at the start of this documentation update.
 The new Stage 04 package is a draft for review; its existence does not establish acceptance or measured product capability.
 
@@ -39,6 +39,12 @@ The preceding observations describe the 21 October assessment. User has now supp
 Local metadata inspection found 14 minutes 32.620 seconds of stereo MP3 audio at 44.1 kHz. A full local decode completed without reported errors; this does not establish speech quality, transcription accuracy or application behavior.
 The [candidate card](03.3-first-recording-case.md) records the intake and remaining references. The application source still has no transcription, speaker identification or replay harness; no such evaluation ran here.
 The current CLI reports Purpose and use-case reviews as stale after document changes; their acceptance status described above is historical. The sprint remains inactive, and this intake changes no workflow decisions.
+
+## SPRINT-003 update — 16 November 2026
+
+The sections above are dated observations. At Git revision `7d60c0f`, read as source and not run, `index.html` and `app.js` contain the Focus and Live question panel with Confirm question and Clear live, and [poc/](../../../poc/README.md) holds a local service that sends microphone audio to OpenAI transcription and an agent, with 19 deterministic test cases.
+The 21 October statement that neither file implements transcription or question display is therefore historical. That revision still has no proposed answer tied to the Focus question, no details area, no preparation package, no isolated replay and no speaker identification.
+SPRINT-003 is active. Stage 04 holds a [first-pass review](03.5-sprint-003-evaluation-review.md) and a draft [evaluation plan](03.6-sprint-003-evaluation-plan.md) for it; no check in that plan has been run and no SPRINT-003 result exists.
 
 ## Scope changes and decisions
 

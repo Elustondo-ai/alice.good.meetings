@@ -11,6 +11,9 @@ They describe the maintained code; an execution result must come from an actual 
 - [Stage acceptance tests](test_stage_review.md): Checks stage-local documentation acceptance, dependency hashing and readback without mutating lifecycle state.
 - [Distribution tests](test_distribution.md): Builds the real ZIP and checks isolated installation, relocation, file exclusion and reproducibility.
 - [Build identity tests](test_build_identity.md): Builds, ZIP and clone installs, client-only commits, legacy installs and update after a fresh install, keyed by canonical commit.
+- [Claude mod setup tests](test_claude_mods.md): Checks that setup installs Claude mods unchanged and that an initialized client can refresh integrations after local methodology edits.
+- [OpenSpec setup tests](test_openspec_setup.md): Checks that setup adds OpenSpec's missing project files for the selected clients, add-only, and never depends on that tool.
+- [Sprint align skill tests](test_sprint_align_skill.md): Checks the skill's pages, cross-references, scenario list and both client adapters; no workflow is executed.
 - [Synchronization tests](test_sync.md): Exercises promote/upgrade, conflicts, deletion protection, dry runs and adopted versions in disposable Git repositories.
 
 Return to the [runtime modules](../scripts/lib/README.md).

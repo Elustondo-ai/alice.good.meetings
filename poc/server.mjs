@@ -153,7 +153,7 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const server = createPocServer();
   server.listen(Number(process.env.PORT || 3000), '127.0.0.1', () => {
-    console.log(`SpeakerCoach POC: http://127.0.0.1:${server.address().port}`);
+    console.log(`Alice.Good.Meetings POC: http://127.0.0.1:${server.address().port}`);
   });
   process.once('SIGINT', () => server.shutdown());
   process.once('SIGTERM', () => server.shutdown());

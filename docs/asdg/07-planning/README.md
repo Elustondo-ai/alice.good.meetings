@@ -4,7 +4,7 @@ This folder connects desired outcomes to selected release and sprint work. A use
 
 ![Desired outcome → Bounded scope → Completion evidence. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
 
-## SpeakerCoach today
+## Alice.Good.Meetings today
 
 As of 28 October 2026, SPRINT-000 is active for the streaming/agent POC and no release is declared. The existing review reports concern documentation and ASDG evolution; they should not be mistaken for a committed product delivery plan.
 
@@ -16,7 +16,7 @@ Release plans describe a broader delivery objective. Sprint plans select a small
 
 - [Client-aware initialization](02.15-review-client-aware-initialization.md): `--client codex|claude|both`, thin Claude skill adapters from the shared templates, idempotent repeat setup.
 - [`$asdg-admin` skill](02.14-review-asdg-admin-skill.md): an explicit skill that switches a chat to ASDG Admin, and `clear` back to 00 Governance.
-- [Root AGENTS.md bootstrap and project guidance](02.13-review-root-agents-bootstrap.md): a seven-line ASDG bootstrap first, shared rules under `asdg/`, SpeakerCoach guidance after.
+- [Root AGENTS.md bootstrap and project guidance](02.13-review-root-agents-bootstrap.md): a seven-line ASDG bootstrap first, shared rules under `asdg/`, Alice.Good.Meetings guidance after.
 - [Governance default, ASDG Admin and title sync](02.12-review-governance-admin-and-titles.md): every session has an accountable role, and only Admin changes ASDG rules.
 - [ASDG–OpenSpec proposal wrapper](02.11-review-openspec-proposal-wrapper.md): source-linked planning through the installed native OpenSpec workflow.
 - [Concise role, focus and attitude titles](02.10-review-concise-role-titles.md): the current naming convention, with the thirteen short role labels.
@@ -24,6 +24,9 @@ Release plans describe a broader delivery objective. Sprint plans select a small
 - [Attitude and session naming review](02.8-review-attitude-and-session-naming.md): independent role, subject and thinking attitude, with portable skills and native test evidence.
 - [Shared documentation authority review](02.7-review-documentation-authority.md): every agent can save documents while code and approval gates remain separate.
 
+- [SPRINT-003 review brief](03.6-sprint-003-review-brief.md): the shared baseline, commitment IDs, direction and sources for the Purpose, Use Case, Evaluation and Architecture reviews.
+- [SPRINT-003 brief addendum](03.6.3-sprint-003-brief-addendum.md): Pablo's answers of 16 November and the two commitments they add.
+- [SPRINT-003 alignment report](03.7-sprint-003-alignment-report.md): version 2 after the four reviews and Pablo's answers; foundations not yet aligned, with coverage, conflicts and proposed amendments.
 - [ASDG evolution task list](03-asdg-evolution-tasks.md): methodology work and its recorded sequencing.
 - [ASDG installation lifecycle plan](03.1-asdg-install-lifecycle-plan.md): proposed `init`, `update` and `replace` under a mandatory clean-Git rule, and reconciling Alice's manual swap.
 - [Continuation increment review](current/reviews/asdg-continuation-increment-01.md): evidence from that methodology increment.

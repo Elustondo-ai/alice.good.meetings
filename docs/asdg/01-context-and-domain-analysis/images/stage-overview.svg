@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="190" viewBox="0 0 960 190" role="img" aria-labelledby="title desc">
-<title id="title">Context: where SpeakerCoach starts</title><desc id="desc">Starting point leads to Relevant surroundings leads to Context when needed. This illustrates the stage's purpose, not its completion status.</desc>
+<title id="title">Context: where Alice.Good.Meetings starts</title><desc id="desc">Starting point leads to Relevant surroundings leads to Context when needed. This illustrates the stage's purpose, not its completion status.</desc>
 <rect width="960" height="190" rx="16" fill="#f1f5f9"/>
 <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#475569"/></marker></defs>
 <rect x="24" y="48" width="272" height="94" rx="12" fill="#ffffff" stroke="#94a3b8"/><text x="160" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#0f172a">Starting point</text>

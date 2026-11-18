@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "objective": "Add the team skill asdg-sprint-align: independent 02-05 reviews, reconciliation, POC decision, plan and specifications, ending in a readiness result, with no sprint-state change.",
+  "requested_by": "Pablo (repository owner), 2026-11-16, with ASDG Admin selected: supplied the specification 'Sprint Top-Down Consistency and Implementation Readiness' v0.2 and asked to \"implement `asdg-sprint-align` as a bounded ASDG Admin change\" using the existing setup/distribution mechanism and the OpenSpec integration.",
+  "source_specification": {
+    "title": "ASDG — Sprint Top-Down Consistency and Implementation Readiness, v0.2, 16 November 2026",
+    "location": "Google document supplied by Pablo in the conversation; not stored in this repository"
+  },
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-fable-5-2",
+    "client": "Claude desktop app, Code tab",
+    "session": "local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e"
+  },
+  "role": {
+    "id": "ASDG-ADMIN",
+    "selection": "retained from the explicit \"Switch to Admin\" earlier on 2026-11-16",
+    "title": "UNCHANGED (ASDG Admin)"
+  },
+  "starting_revision": "7d60c0ffbec9dd211eceb3b0bb0957750f0519e0",
+  "branch": "sprint-03",
+  "preserved_uncommitted_work": [
+    ".asdg/sprint.json (SPRINT-003 record)",
+    "changes recorded in 02.20 and 02.21",
+    "files installed by the two approved setup runs under .claude/"
+  ],
+  "implementation_choices": [
+    "no engine, guard or sprint-state change",
+    "stage reviews saved in each stage's own folder; the report is Planning's",
+    "an Admin chat does not run an alignment (routing case R4)",
+    "single-agent sequential reviews only on explicit human instruction, reported as not independent"
+  ],
+  "changed_paths": [
+    {
+      "path": "asdg/skills/asdg-sprint-align/SKILL.md",
+      "sha256": "92713058311fcfc36466c931ff564aead0932823706dea0f092b94ce09b09a00"
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/routing.md",
+      "sha256": "d9b8e7648a5584748b2d15d3914f0d9a55b17e38a3039c839fcbfbdb989b6139"
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/reviews.md",
+      "sha256": "8e4484f6bd936283fb14d2100b33139849148f56e36a2d5e5582630366138a42"
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/readiness.md",
+      "sha256": "9e6bdb9dad130e4fb61d6b6301259d5cf51b39603d795f4aa66213be41d81329"
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/report.md",
+      "sha256": "c58432bfb1f3f810991cc8139ef46a4d5c4ca3736732db948dd06042a7ac482f"
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/TRY-IT.md",
+      "sha256": "c9c969c79e77e15d2b047a194b4c82c54f2edd3b4a35251202dd49213bdab74b"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-sprint-align/SKILL.md",
+      "sha256": "3e7b81c24bb2f2097cd23b83fdfb42ecc93e9f9d53a3bb69677f559d7b124a7e"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-sprint-align/agents/openai.yaml",
+      "sha256": "0e3df65d00d7219ea331bf40d2658883edcdd13f0c2ecde9ec5de258757ebb66"
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "f2ae206071847eb7d2b63882f254a118a4c3730cfa5d15067ff012f4ed83c55b"
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "23e80d273ee22e2cc934f2aeef10e48e3512b6c913d6d49b32e6eec5b9a469c8"
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "sha256": "4304db94d33790eb9bbc5c6781ac4826a21dffcd0877d9229cc9aee0909bc7d3"
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-start/SKILL.md",
+      "sha256": "b858c3042384063d8a2ea4c3113714a562c00de1b281319c9496cac5bb8de1cf"
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/skills/review-build-task/SKILL.md",
+      "sha256": "a777605c8351ff2fc9b5d83daaf19c8ebeb22c9614fda88a75e5a1dad60f1333"
+    },
+    {
+      "path": "asdg/07-planning/skills/prepare-plan/SKILL.md",
+      "sha256": "c20eeb5e03312eeabd42d583d203183f43a22b61369d6406f654c43052a7cc30"
+    },
+    {
+      "path": "asdg/00-governance/docs/sprint-gate.md",
+      "sha256": "2f0e1195f6581de2898114fa294df36e32a242be26e8d226be75f56ba8d7e24f"
+    },
+    {
+      "path": "asdg/tests/test_sprint_align_skill.py",
+      "sha256": "0a7422f63f8f71eb46197bc0e78d2061ae97fd6e4bcff88b23ed1e3f2671cfa5"
+    },
+    {
+      "path": "asdg/tests/test_sprint_align_skill.md",
+      "sha256": "cef78d2b796de874d0dc4f859086e93c5f15079804b14a1e1b5457ec3c25f680"
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "37eea668c4048dac8c9f066617d984c0d6ad6178953eb5d039137fb49d918793"
+    },
+    {
+      "path": "asdg/metadata/package-files.json",
+      "sha256": "1b2840ebc59a88353695d532cc2b10f20e25bc72b1a648a2ad0fc7958d6cd7ac"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.22-review-sprint-align-skill.md",
+      "sha256": "74a3898bb8adb17c1fa9e9be179730ea5ef7b245b21d049a09fc6c6e44f2c25d"
+    }
+  ],
+  "validation": {
+    "automated": [
+      "python3 asdg/scripts/check.py: PASS",
+      "python3 -B -m unittest discover -s asdg/tests -p test_sprint_align_skill.py: 7 tests, OK",
+      "python3 -B -m unittest discover -s asdg/tests: 215 tests, failures=3, skipped=5"
+    ],
+    "known_failures": "unchanged from 02.20: three test_portable tests whose fixture copies metadata/build.json",
+    "setup_preview_in_alice": {
+      "command": "python3 asdg/scripts/init.py --dry-run",
+      "added": [
+        ".claude/skills/asdg-sprint-align/SKILL.md",
+        ".agents/skills/asdg-sprint-align/SKILL.md",
+        ".agents/skills/asdg-sprint-align/agents/openai.yaml"
+      ],
+      "modified": [
+        ".asdg/document-reviews.json (two authorship receipts appended by setup)"
+      ],
+      "applied": true,
+      "plan": "2026-11-17T00:10:04Z.0e0bfeb3a3bcef46fee4f40cbcaadb6409354e76b92d0405cdb90885aa8e5ee1",
+      "approval": "Pablo replied APPROVE to the displayed plan"
+    },
+    "setup_applied_in_alice": {
+      "installed_paths": [
+        {
+          "path": ".claude/skills/asdg-sprint-align/SKILL.md",
+          "sha256": "3e7b81c24bb2f2097cd23b83fdfb42ecc93e9f9d53a3bb69677f559d7b124a7e"
+        },
+        {
+          "path": ".agents/skills/asdg-sprint-align/SKILL.md",
+          "sha256": "3e7b81c24bb2f2097cd23b83fdfb42ecc93e9f9d53a3bb69677f559d7b124a7e"
+        },
+        {
+          "path": ".agents/skills/asdg-sprint-align/agents/openai.yaml",
+          "sha256": "0e3df65d00d7219ea331bf40d2658883edcdd13f0c2ecde9ec5de258757ebb66"
+        }
+      ],
+      "verify": "ASDG structure verified; repeat preview plans nothing; sprint status unchanged (SPRINT-003 active)"
+    },
+    "observed_in_client": {
+      "client": "Claude desktop app",
+      "date": "2026-11-16 (local)",
+      "discovery": "the acting session's skill list gained asdg-sprint-align right after apply",
+      "routing_R1": {
+        "specialist": "ASDG-09, session local_5a7faec7-e00e-4eb2-95fd-03a114d3f034",
+        "request": "relayed by the parent session for Pablo: run /asdg-sprint-align for SPRINT-003",
+        "outcome": "forwarded to its parent, resolved from parentSessionId in its own session record; passed project, branch, revision, sprint snapshot SHA-256 c81510f0…, reason and reply route; ran no review, wrote no file, made no sprint change",
+        "basis": "the cross-session message received from that session"
+      },
+      "routing_R4": "the specialist noted the parent title \"ASDG Admin\" and asked the parent to verify its own role before starting",
+      "also_reported": "a linked chat titled \"00 Governance\" exists and was not chosen as run owner because it is not the specialist's parent"
+    }
+  },
+  "not_done": [
+    "no commit, push or promotion to canonical",
+    "Codex not tried",
+    "a full alignment run is recorded separately by its report"
+  ],
+  "review_status": "REVIEW_REQUIRED: human review pending; no approval inferred."
+}

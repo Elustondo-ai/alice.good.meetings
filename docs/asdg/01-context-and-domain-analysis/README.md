@@ -1,12 +1,12 @@
-# Context: where SpeakerCoach starts
+# Context: where Alice.Good.Meetings starts
 
 Context explains the world a product must fit into: existing systems, people, vocabulary, dependencies and constraints. In an established organization, this is where we would map the systems and processes being extended.
 
 ![Starting point → Relevant surroundings → Context when needed. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
 
-## SpeakerCoach today
+## Alice.Good.Meetings today
 
-SpeakerCoach started from scratch. Pablo has explicitly chosen to leave the context assessment empty for now; there is no inherited-system assessment to fill in merely to satisfy the methodology.
+Alice.Good.Meetings started from scratch. Pablo has explicitly chosen to leave the context assessment empty for now; there is no inherited-system assessment to fill in merely to satisfy the methodology.
 
 This README explains the folder's purpose. It is not a completed context study, and it does not mean the product will never have external constraints.
 

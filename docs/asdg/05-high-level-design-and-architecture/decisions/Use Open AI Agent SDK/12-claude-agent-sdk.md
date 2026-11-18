@@ -4,7 +4,7 @@
 
 ![Task + context: Permitted files / tools → Claude agent loop: Sessions and permissions → Task result: Validate before use.](images/claude-agent.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 Its strongest fit here would be autonomous work involving tools, files, and multiple steps. Our current tool-free interpretation call uses little of that capability.
 

@@ -1,7 +1,23 @@
 {
-  "status": "inactive",
-  "sprint_id": null,
-  "objective": null,
-  "scope": [],
-  "acceptance_criteria": []
+  "status": "active",
+  "sprint_id": "SPRINT-003",
+  "objective": "Give Alice a new page design and let her propose an answer to the Focus question.",
+  "scope": [
+    "index.html",
+    "index.md",
+    "app.js",
+    "app.md",
+    "images/",
+    "poc/",
+    "openspec/changes/"
+  ],
+  "acceptance_criteria": [
+    "Pablo approves the new page layout from a preview before it replaces the current page.",
+    "The Focus question, the Live question and the GOOD / LAND IT / STOP cue stay readable at a glance in the new layout.",
+    "When a Focus question is set, Alice shows a proposed answer for it; it is replaced when the Focus question changes and never overwrites the question.",
+    "Without an OpenAI key the page still works and says that proposed answers are unavailable.",
+    "node --test poc/poc.test.mjs passes, with new tests for the proposed answer.",
+    "bash poc/alice-run.sh starts the server or reuses one already running.",
+    "Pablo runs one live session and the result is recorded as pass or fail."
+  ]
 }

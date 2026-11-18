@@ -19,7 +19,7 @@ PLAYWRIGHT_MODULE=/path/to/playwright/index.mjs CHROME_PATH="/Applications/Googl
 
 | Input | Meaning |
 | --- | --- |
-| `output-folder` | Default `/tmp/speakercoach-live-<time>`, outside the repository |
+| `output-folder` | Default `/tmp/alice.good.meetings-live-<time>`, outside the repository |
 | `POC_URL` | Service origin, default `http://127.0.0.1:3000`; microphone permission is granted for it |
 | Option+Shift+K in the page (Alt+Shift+K elsewhere) | Saves `checkpoint-NN.png` and the Focus, Live (with tag and note), feedback, hint, signal and server text, then shows "capture checkpoint N saved" briefly |
 | A label then Enter in the terminal | The same checkpoint, labelled |

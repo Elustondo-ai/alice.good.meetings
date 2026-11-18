@@ -4,7 +4,7 @@ This folder will record what a scoped implementation changed and what its tests 
 
 ![Authorized task → Code and companions → Observed test results. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
 
-## SpeakerCoach today
+## Alice.Good.Meetings today
 
 As of 4 November 2026, SPRINT-001 closed unfinished after three live runs of the [Focus and Live design](../08-low-level-design/03-uc-04-focus-and-live-question.md), and SPRINT-002 is active to finish its live verification. The [live check plan](01-uc-04-live-check-plan.md) scripts run 4. No build-and-test report exists yet.
 

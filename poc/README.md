@@ -1,4 +1,4 @@
-# SpeakerCoach server POC
+# Alice.Good.Meetings server POC
 
 Read the [visual solution guide](docs/README.md) for the introduction, architecture, module details and code navigation.
 

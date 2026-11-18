@@ -3,7 +3,7 @@
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52677b"/></marker></defs>
 <style>text{font-family:Arial,Helvetica,sans-serif;fill:#1c3045}.node{font-size:22px;font-weight:700}.body{font-size:18px}.label{font-size:17px;fill:#465d72}.zone{font-size:17px;font-weight:700;letter-spacing:1px}.edge{fill:none;stroke:#52677b;stroke-width:2;stroke-linejoin:round}.heading{font-size:26px;font-weight:700}.kicker{font-size:13px;fill:#61778d;letter-spacing:1.6px}</style>
 <rect width="900" height="530" rx="16" fill="#f8fafc"/>
-<text x="24" y="29" class="kicker">SPEAKERCOACH · WORKING POC</text>
+<text x="24" y="29" class="kicker">ALICE.GOOD.MEETINGS · WORKING POC</text>
 <text x="24" y="64" class="heading">Two paths share one audio stream</text>
 <g><rect x="290" y="100" width="320" height="80" rx="12" fill="#eef2f6" stroke="#76879c" stroke-width="1.5"/>
 <text x="306" y="131" class="node">Microphone capture</text>

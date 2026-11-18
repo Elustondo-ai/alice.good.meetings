@@ -4,7 +4,7 @@
 
 ![Provider adapters: OpenAI / Google / others → TypeScript AI SDK: Structured generation → Application + UI: Controller remains ours.](images/vercel-ai.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 A common provider interface still requires checking feature differences for our exact models. Switching abstractions creates work unless portability or UI integration solves an actual problem.
 
