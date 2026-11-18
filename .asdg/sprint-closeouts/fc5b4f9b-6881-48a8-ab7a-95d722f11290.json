@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "prepared_at": "2026-11-18T17:43:20Z",
+  "sprint_sha256": "c81510f030ff0e85aa758a7145477807739839bd9e2943dcf36a062850e1ddc4",
+  "sprint_snapshot": {
+    "status": "active",
+    "sprint_id": "SPRINT-003",
+    "objective": "Give Alice a new page design and let her propose an answer to the Focus question.",
+    "scope": [
+      "index.html",
+      "index.md",
+      "app.js",
+      "app.md",
+      "images/",
+      "poc/",
+      "openspec/changes/"
+    ],
+    "acceptance_criteria": [
+      "Pablo approves the new page layout from a preview before it replaces the current page.",
+      "The Focus question, the Live question and the GOOD / LAND IT / STOP cue stay readable at a glance in the new layout.",
+      "When a Focus question is set, Alice shows a proposed answer for it; it is replaced when the Focus question changes and never overwrites the question.",
+      "Without an OpenAI key the page still works and says that proposed answers are unavailable.",
+      "node --test poc/poc.test.mjs passes, with new tests for the proposed answer.",
+      "bash poc/alice-run.sh starts the server or reuses one already running.",
+      "Pablo runs one live session and the result is recorded as pass or fail."
+    ]
+  },
+  "review": {
+    "assessed_at": "2026-11-18T17:43:20Z",
+    "revision": "cebe9419e10195a8579832bd0a98f25538084b7c",
+    "working_tree": "Clean at assessment (git status --porcelain empty); branch sprint-03. No application files (index.html, app.js, poc/*.mjs) changed in this sprint so far; the commits since the baseline hold documentation and ASDG skill edits.",
+    "criteria": [
+      {
+        "criterion": "Pablo approves the new page layout from a preview before it replaces the current page.",
+        "result": "UNVERIFIED",
+        "evidence": [],
+        "gap": "No layout preview has been built or shown; layout B controls (C9) are left to the preview."
+      },
+      {
+        "criterion": "The Focus question, the Live question and the GOOD / LAND IT / STOP cue stay readable at a glance in the new layout.",
+        "result": "UNVERIFIED",
+        "evidence": [],
+        "gap": "No new layout exists; the current page was not assessed against this criterion."
+      },
+      {
+        "criterion": "When a Focus question is set, Alice shows a proposed answer for it; it is replaced when the Focus question changes and never overwrites the question.",
+        "result": "FAIL",
+        "evidence": [
+          "No code reads poc/context/interview/ or generates a proposed answer (searched poc/*.mjs and app.js on 2026-11-18).",
+          "Specified but unbuilt: docs/asdg/03-system-model-and-use-cases/01.5-proposed-answer.md; docs/asdg/05-high-level-design-and-architecture/01.3-proposed-answer.md"
+        ],
+        "gap": "Feature not implemented."
+      },
+      {
+        "criterion": "Without an OpenAI key the page still works and says that proposed answers are unavailable.",
+        "result": "FAIL",
+        "evidence": [
+          "The proposed-answer feature does not exist, so no unavailable message exists."
+        ],
+        "gap": "Message and behavior not implemented; the existing page works without a key only as far as the timer and cue, not observed in this review."
+      },
+      {
+        "criterion": "node --test poc/poc.test.mjs passes, with new tests for the proposed answer.",
+        "result": "FAIL",
+        "evidence": [
+          "node --test poc/poc.test.mjs on 2026-11-18: 19 tests, 19 pass, 0 fail (Node v26.13.1)."
+        ],
+        "gap": "The existing tests pass, but there are no new tests for the proposed answer."
+      },
+      {
+        "criterion": "bash poc/alice-run.sh starts the server or reuses one already running.",
+        "result": "FAIL",
+        "evidence": [
+          "ls poc/alice-run.sh on 2026-11-18: No such file or directory; only poc/start.sh exists."
+        ],
+        "gap": "Script not written."
+      },
+      {
+        "criterion": "Pablo runs one live session and the result is recorded as pass or fail.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "Pablo ran the existing page live on 2026-11-18 and reported it works but is slow; no pass or fail was recorded against the sprint's live-session script."
+        ],
+        "gap": "No recorded live-session result for the sprint's features."
+      }
+    ],
+    "limitations": [
+      "Review done by 00 Governance in this chat from file and command observation; no independent reviewer.",
+      "The live behavior of the existing page was not exercised in this review.",
+      "Stage documents (02-05, 07) are unapproved drafts; no human approval is recorded for any page."
+    ]
+  },
+  "outcome": "unfinished",
+  "carry_forward": [
+    "Amended SPRINT-003 record: add S003-DETAILS and S003-CONTEXT as criteria 8 and 9 and reword criteria 2-5 and 7, per docs/asdg/07-planning/03.7.4-sprint-003-record-amendment.md (criterion 5 scripted page check kept by default; Pablo may drop it).",
+    "Layout preview and approval; proposed-answer generator and its tests; poc/alice-run.sh; live session with recorded pass or fail.",
+    "Stages 02 and 05 accepted-default wording, 06 POC decision, 07 plan, 08 specification; N5 data statements in root AGENTS.md and poc/README.md."
+  ],
+  "human_decision": "In chat on 2026-11-18 Pablo answered 'Yes, commit first' to 'Commit the round, then close and restart the sprint?', then 'Yes, same ID and branch' to 'Close SPRINT-003 and restart it on sprint-03?'. He earlier said he triggers the amendment himself. Closure is as unfinished, with an amended restart under the same ID on the existing branch sprint-03.",
+  "closure_observations": [
+    {
+      "observed_at": "2026-11-18T17:45:00Z",
+      "command": "python3 asdg/scripts/cli.py sprint stop",
+      "exit_code": 0,
+      "observed_state": "sprint status --json: status inactive, sprint_id null, objective null, scope [], acceptance_criteria []. Active sprint.json hash was c81510f0...1dc4 immediately before the stop, matching the reviewed snapshot.",
+      "result": "closed"
+    }
+  ]
+}
