@@ -10,7 +10,7 @@ The saved model describes one interview-coaching use case with three answer scen
 
 The illustrations depict a desired experience. The system overview explains actors, boundaries and shared behavior without choosing a technical meeting integration.
 The 4 November 2026 [Focus and Live question use case](01.4-confirm-current-question.md) keeps a confirmed Focus question fixed while a Live question follows speech, and Confirm question copies Live into Focus. Its panel is in the page at Git revision `7d60c0f`, which this stage read as source and did not run.
-For SPRINT-003, the 16 November 2026 [proposed-answer use case](01.5-proposed-answer.md) adds a few short points beside the Focus question and supporting details below, built from the question and an interview preparation package. It is a draft, and nothing of it is implemented.
+For SPRINT-003, the 16 November 2026 [proposed-answer use case](01.5-proposed-answer.md) adds a few short points beside the Focus question and supporting details below, built from the question and an interview preparation package. It is a draft; at Git HEAD `fe3c00e` (18 November 2026) the page has no answer card, details area or package.
 
 ## What belongs here as we develop
 

@@ -1679,6 +1679,92 @@
         "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
         "record": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json"
       }
+    },
+    {
+      "path": "docs/asdg/00-governance/presentation/outline.md",
+      "sha256": "bcc990d5003e33d63f08a1d4a6fa092cbe9db4e64db31b5cdccd78316ad98c90",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b, by Pablo's direction outside Admin's ordinary scope",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.md",
+      "sha256": "8a95d5be6c50301be5b16ad1b61f56126a27f4b45233fd47a03a9c67f2461624",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json",
+      "sha256": "54fee93b33b22e5d4d7a2febf1b58fc1a9d30b193592e5ea13639dd365700bf8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "09af6e1737a11d456c834845450ce8a7ebb898d469ae327eb033102bec8d99a2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:34:26Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.md",
+      "sha256": "2cea8f35351b52bab61730a90b47fb79fd4a6d5fb4baed7960ce3aa135f97030",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:34:26Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json",
+      "sha256": "83c812525f6430acf5d2b04eac70c8881773cdc2226822caf411e24ff6962807",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:34:26Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-pre-code-review/SKILL.md",
+      "sha256": "959770350a685a1623a4e67ca6a3f4cbbe60a6170c5a5f267ff261dee304c992",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:41:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-pre-code-review/SKILL.md",
+      "sha256": "959770350a685a1623a4e67ca6a3f4cbbe60a6170c5a5f267ff261dee304c992",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:41:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
     }
   ]
 }

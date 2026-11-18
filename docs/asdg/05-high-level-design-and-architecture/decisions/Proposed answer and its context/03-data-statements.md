@@ -11,7 +11,7 @@ Today:
 
 Proposed replacement:
 
-> While the POC listens, microphone audio and selected transcript text go to OpenAI. Each time a Focus question is confirmed, that question and the text of the interview preparation package also go to OpenAI (`[POC README](poc/README.md)`).
+> While the POC listens, microphone audio and selected transcript text go to OpenAI. Each time a Focus question is confirmed, that question and the text of the interview preparation package (within 20,000 characters, without a `README.md`) also go to OpenAI (`[POC README](poc/README.md)`).
 
 Proposed additions, after the line about the OpenAI key:
 
@@ -35,7 +35,16 @@ Today, at the end of the Run section:
 
 Proposed replacement:
 
-> Microphone audio and selected transcript text are sent to OpenAI while listening. Each time you confirm a Focus question, that question and the full text of the files in `poc/context/interview/` are sent to OpenAI to prepare the proposed answer. The service reads those files when a session starts, keeps them in memory for that session and stores nothing. This remains a local single-session POC with no persistent conversation storage.
+> Microphone audio and selected transcript text are sent to OpenAI while listening. Each time you confirm a Focus question, that question and the text of the files in `poc/context/interview/` (plain text or Markdown, within 20,000 characters, except `README.md`) are sent to OpenAI to prepare the proposed answer. The service reads those files when a session starts, keeps them in memory for that session and stores nothing. This remains a local single-session POC with no persistent conversation storage.
+
+## Scope of "only"
+
+Criterion 9 says only the question and the package are sent. That holds for the answer request alone: the answer generator receives the question, fixed instructions and the package, and no audio or transcript.
+Audio and selected transcript text still go to OpenAI for transcription and to the interview agent, as the statements above say. A package over the limit is not sent at all.
+
+## Decision of 18 November 2026
+
+Pablo decided there is no package notice on the page before Start, as relayed by 00 Governance ("Accept both"). Purpose's rule B2 is therefore met by these two statements, which say the package text is sent to OpenAI each time a Focus question is confirmed. No `/health` usable flag is added.
 
 ## Conditions
 

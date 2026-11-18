@@ -24,7 +24,7 @@ The helper supports User in forming his own answer. Choosing architecture or com
 
 Decided by User on 18 November 2026, as relayed by 00 Governance from his reply "Accept all"; the exact page version is not yet approved.
 
-- A proposed answer prompts his own answer and never presents invented experience as his: it states nothing about his experience that his preparation package does not contain.
+- A proposed answer prompts his own answer and never presents invented experience as his: it states nothing about his experience that his preparation package does not contain. Without a package, its points are general and say so.
 - Longer supporting details may sit below the glanceable guidance for reference; they never crowd or replace the cue, the question or the short points. Attention to them is checked in the live session.
 - So that answers can draw on his real experience, User chose to send an interview preparation package, with his résumé and other documents he prepares, to OpenAI together with the question. Only material he placed in that package leaves his Mac, the package never holds benchmark recordings, evaluator labels or reference answers, and interviews come first: other meetings need their own decision. The [prepared context decision](03.2-sprint-003-prepared-context-proposal.md) lists the five boundaries.
 

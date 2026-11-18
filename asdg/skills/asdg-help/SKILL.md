@@ -36,6 +36,7 @@ For “all commands,” include the terminal commands in [the reference](command
 | [/asdg-approve](../asdg-approve/SKILL.md) | Record explicit human acceptance of a previously presented exact documentation bundle. |
 | [/asdg-sprint-start](../asdg-sprint-start/SKILL.md) | Start a human-requested scoped sprint from clean Git on a new sprint branch. |
 | [/asdg-sprint-align](../asdg-sprint-align/SKILL.md) | Have the team check a sprint from purpose to specifications before coding; reports readiness only. |
+| [/asdg-pre-code-review](../asdg-pre-code-review/SKILL.md) | Build a pre-code review PowerPoint with speaker notes from stages 01 to 08. |
 | [/asdg-sprint-review](../asdg-sprint-review/SKILL.md) | Assess the active sprint's evidence without changing its state. |
 | [/asdg-sprint-close](../asdg-sprint-close/SKILL.md) | Preserve review/unfinished work and end the explicitly selected sprint. |
 | [/asdg-suggestion](../asdg-suggestion/SKILL.md) | Recommend one useful next contribution; advice only. |

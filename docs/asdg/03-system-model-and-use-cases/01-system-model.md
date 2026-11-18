@@ -42,7 +42,7 @@ Unclear questions, overlapping speech, late cues, unavailable context and mixed 
 ## Actual evidence and planned work
 
 [The accepted purpose](../02-purpose/01-purpose.md) prioritizes attention, focus, recall and visual guidance. [Current capabilities](../02-purpose/02-current-capabilities.md) record stakeholder reports of duration-based signals; the richer behaviors here remain unverified.
-At Git revision `7d60c0f` the page contains the UC-04 Focus and Live panel; Stage 03 read that code on 16 November 2026 and did not run it. Nothing of UC-05 is implemented.
+The page files are unchanged since Git revision `7d60c0f`, and at HEAD `fe3c00e` (18 November 2026) the page contains the UC-04 Focus and Live panel but no answer card, details area or package; Stage 03 read the code and did not run it. UC-05 is not yet implemented.
 Planned: SPRINT-003, active since 16 November 2026, selects a new page layout and the proposed answer. Its commitments are in Planning's [review brief](../07-planning/03.6-sprint-003-review-brief.md) and [addendum](../07-planning/03.6.3-sprint-003-brief-addendum.md); a sprint is not permission to code.
 Review should still resolve exact versus summarized question text, relevance and duration criteria and mixed-flow transitions. These remain candidate decisions with no Stage 07 work item, owner or schedule.
 

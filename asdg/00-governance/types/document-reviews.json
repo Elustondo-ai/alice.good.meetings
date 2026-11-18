@@ -35502,6 +35502,193 @@
         "visible_review_markers": [],
         "approval_binding": "No approval inferred or transferred."
       }
+    },
+    {
+      "path": "skills/asdg-pre-code-review/SKILL.md",
+      "sha256": "a8bc8505d494dc0ecc0160c7e3e3a16d4bc926c8210ec3aa563fee11a0bde863",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": null,
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "skills/asdg-pre-code-review/build_deck.md",
+      "sha256": "3aad2fb1961f025584c0c685a111a168fef21f8b842094bf2a52da1803b4cedf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": null,
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "skills/asdg-pre-code-review/build_deck.py",
+      "sha256": "d3b4e7d0f68aa5af5e3ca6dfa760e68f194a0a1f219847ffb0f5b3b3f580f206",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": null,
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "templates/.agents/skills/asdg-pre-code-review/SKILL.md",
+      "sha256": "959770350a685a1623a4e67ca6a3f4cbbe60a6170c5a5f267ff261dee304c992",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": null,
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "templates/.agents/skills/asdg-pre-code-review/agents/openai.yaml",
+      "sha256": "babf3c66312cf450b6d661a79110b46878f2c770be2f7f2d46ff1db51245b5da",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": null,
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "tests/test_pre_code_review.md",
+      "sha256": "68e33de17da4acfd7255fc8a4ed537f51fc38c91ba9a55933cb20e28d0cb6ef8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": null,
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "tests/test_pre_code_review.py",
+      "sha256": "41da13e1e656a26b98b40771503b9ff64d60d7b6f60753c50bcc7058461871cb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": null,
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "metadata/package-files.json",
+      "sha256": "ad9b506a0b4b211091554dc438d58e337f69af3baa6be925b4f4556d4c488e19",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": "1b2840ebc59a88353695d532cc2b10f20e25bc72b1a648a2ad0fc7958d6cd7ac",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "skills/README.md",
+      "sha256": "e911357ab43dd92ee046b79deadc280a46c070dd0d250985dbbf428697035935",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": "f2ae206071847eb7d2b63882f254a118a4c3730cfa5d15067ff012f4ed83c55b",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "skills/asdg-help/SKILL.md",
+      "sha256": "45847a72b703f94f8b9446950e9e61e98a98526eeff40cbd4e4ce37be80ebe6b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": "23e80d273ee22e2cc934f2aeef10e48e3512b6c913d6d49b32e6eec5b9a469c8",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "8ed14adaae8436e9989361ab8fd577e5f2e8db583c229c12257a261d19fb9cb1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Pre-code review skill",
+        "review": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      },
+      "previous_state": {
+        "sha256": "37eea668c4048dac8c9f066617d984c0d6ad6178953eb5d039137fb49d918793",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.3.0-pilot.2"

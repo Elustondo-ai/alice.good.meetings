@@ -1,7 +1,25 @@
 {
-  "status": "inactive",
-  "sprint_id": null,
-  "objective": null,
-  "scope": [],
-  "acceptance_criteria": []
+  "status": "active",
+  "sprint_id": "SPRINT-003",
+  "objective": "Give Alice a new page design and let her propose an answer to the Focus question: a few short points beside it and supporting details below, built from the question and an interview preparation package.",
+  "scope": [
+    "index.html",
+    "index.md",
+    "app.js",
+    "app.md",
+    "images/",
+    "poc/",
+    "openspec/changes/"
+  ],
+  "acceptance_criteria": [
+    "Pablo approves the new page layout from a preview before it replaces the current page.",
+    "The Focus question, the Live question, the proposed-answer points and the GOOD / LAND IT / STOP cue stay readable at a glance in the new layout, and the details area never shrinks, covers or moves them.",
+    "When a Focus question is confirmed, Alice shows a proposed answer for it: at most three short points beside the question and details below, from one model call. Any change to the Focus question, a confirmed rewording included, replaces both. The answer never overwrites the question.",
+    "Without an OpenAI key the page still loads, the timer and cue work, and a clear message says question recognition and proposed answers are unavailable.",
+    "node --test poc/poc.test.mjs passes, with new tests for the proposed answer, and the scripted page check passes for all seven answer states.",
+    "bash poc/alice-run.sh starts the server or reuses one already running.",
+    "Pablo runs one live session following the live-session script and the result is recorded as pass or fail by the pass rule he decided on 18 November.",
+    "S003-DETAILS: a details area below the cards shows supporting details from the same call as the points; it is read on demand, scrolls only inside itself and causes no motion or sound.",
+    "S003-CONTEXT: the answer is built from the question and the package in the Git-ignored poc/context/interview/ (plain text or Markdown, up to 20,000 characters); only those are sent to OpenAI; the package never holds benchmark recordings, evaluator labels or reference answers; with no package the points are general and say so; and the data statements in the root AGENTS.md and poc/README.md match."
+  ]
 }

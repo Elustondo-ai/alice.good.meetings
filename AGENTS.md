@@ -34,36 +34,20 @@ This repository contains:
 - Implementation: the [POC solution guide](poc/docs/README.md) and its [code map](poc/docs/06-code-navigation.md).
 - Running and tests: the [POC README](poc/README.md) and [running and verification](poc/docs/07-running-and-verification.md).
 
-### Installing the app
+### Installing and starting the app
 
-Do this once on a fresh checkout or a new machine. All dependencies are npm packages declared in [poc/package.json](poc/package.json); the root page (`index.html`, `app.js`) has none.
+Steps with commands are in the [README](README.md) (Initialize, Run); detail is in [running and verification](poc/docs/07-running-and-verification.md).
 
-1. Install Node.js 22 or newer, which also provides `npm`; the project's documented package manager is `pnpm` (`npm install -g pnpm`).
-2. Install the dependencies inside `poc/` from the lockfile, skipping package install scripts:
-
-   ```bash
-   cd poc
-   pnpm install --frozen-lockfile --ignore-scripts
-   ```
-
-   Without `pnpm`, `npm install --ignore-scripts` installs the same packages, but it ignores `pnpm-lock.yaml` and may resolve newer versions. If `pnpm` is missing, run `corepack enable` (it ships with Node).
-3. The packages are `@openai/agents` (pinned to 0.21.0), `ws` (^8.18.3) and `zod` (^4.0.0).
-4. Create `poc/.env.local`, which Git ignores, by copying [poc/.env.example](poc/.env.example) and filling in `OPENAI_API_KEY`; the other names there are optional overrides. Never print or commit the key.
-5. Check the install with `node --test poc/poc.test.mjs`; these tests do not call OpenAI.
-
-`poc/node_modules` is a poor fit for Google Drive: sync breaks its package links, and Node needs minutes to load packages from a Drive folder. Run the app from a working copy outside Drive instead, for example `~/dev/alice.good.meetings` holding `index.html`, `app.js` and `poc/` (without `node_modules`), and run steps 2 to 5 there. On 18 November 2026 this took 5 seconds to install, 19 offline tests passed, and `/health` reported `configured: true` on Node 24.22.3 with pnpm 12.21.0. Re-copy changed source files from Drive when needed.
-
-### Starting the app
-
-The app is the local Node service in `poc/`; open the page through it, not as a file. Details are in [running and verification](poc/docs/07-running-and-verification.md).
-
-1. Requirements: the install above is done and `poc/.env.local` holds `OPENAI_API_KEY`.
-2. If startup or tests fail with `Cannot find package`, repeat the install step above.
-3. From the repository root, run `bash poc/start.sh`, then open http://127.0.0.1:3000.
-4. Press **Start Listening**, allow the microphone and wait for **listening on server** before speaking; press **Stop listening** to end, and Ctrl+C in the terminal to stop the server.
-
+- Requires Node.js 22 or newer. All dependencies are npm packages in [poc/package.json](poc/package.json): `@openai/agents` (pinned to 0.21.0), `ws` (^8.18.3) and `zod` (^4.0.0); the root page (`index.html`, `app.js`) has none.
+- Install once per machine inside `poc/`: `pnpm install --frozen-lockfile --ignore-scripts`. `npm install --ignore-scripts` also works but ignores `pnpm-lock.yaml` and may resolve newer versions; if `pnpm` is missing, run `corepack enable` or `npm install -g pnpm`.
+- Create `poc/.env.local`, which Git ignores, by copying [poc/.env.example](poc/.env.example) and filling in `OPENAI_API_KEY`; the other names there are optional overrides. Never print or commit the key.
+- Check the install with `node --test poc/poc.test.mjs`; these tests do not call OpenAI.
+- Start from the repository root with `bash poc/start.sh`, then open http://127.0.0.1:3000; open the page through the service, not as a file.
+- Press **Start Listening**, allow the microphone and wait for **listening on server** before speaking; press **Stop listening** to end, and Ctrl+C in the terminal to stop the server.
 - [`poc/start.sh`](poc/start.md) uses `ALICE_GOOD_MEETINGS_NODE` if set, then `node` on PATH, then the bundled Codex Node runtime; `PORT` changes the port from 3000.
-- If startup fails with `Cannot find package '@openai/agents'`, the package links in `poc/node_modules` are broken: Google Drive sync does not preserve them. Repeat step 2 on that machine.
+- If startup or tests fail with `Cannot find package`, the package links in `poc/node_modules` are broken; repeat the install in `poc/` on that machine.
+- Google Drive sync breaks `poc/node_modules` and makes Node need minutes to load packages. Run from a working copy outside Drive, for example `~/dev/alice.good.meetings` holding `index.html`, `app.js` and `poc/` without `node_modules`, install there, and re-copy changed source files when needed.
+- Observed on 18 November 2026: the install took 5 seconds, 19 offline tests passed, and `/health` reported `configured: true` on Node 24.22.3 with pnpm 12.21.0.
 
 ### Project constraints
 

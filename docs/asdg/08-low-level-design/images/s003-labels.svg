@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-labelledby="t d">
+  <title id="t">Answer card in seven states</title>
+  <desc id="d">Seven small cards, one per answer state, each showing the label text the card carries.</desc>
+  <style>
+    .c{fill:#fff;stroke:#555;stroke-width:1.5}.h{font:700 13px sans-serif;fill:#111}
+    .t{font:12px sans-serif;fill:#222}.g{font:italic 11px sans-serif;fill:#666}.b{fill:#e8f0fe;stroke:#7a9cd6}
+  </style>
+  <rect width="760" height="420" fill="#f6f6f6"/>
+  <g transform="translate(10,10)"><rect class="c" width="175" height="95" rx="6"/><text class="h" x="8" y="20">Empty</text><text class="t" x="8" y="45">An answer appears after</text><text class="t" x="8" y="62">you confirm a question.</text></g>
+  <g transform="translate(195,10)"><rect class="c" width="175" height="95" rx="6"/><text class="h" x="8" y="20">Preparing</text><text class="t" x="8" y="45">Preparing an answer for</text><text class="t" x="8" y="62">this question.</text></g>
+  <g transform="translate(380,10)"><rect class="c" width="175" height="95" rx="6"/><text class="h" x="8" y="20">Shown</text><rect class="b" x="8" y="30" width="159" height="16" rx="3"/><rect class="b" x="8" y="52" width="159" height="16" rx="3"/><rect class="b" x="8" y="74" width="120" height="16" rx="3"/></g>
+  <g transform="translate(565,10)"><rect class="c" width="185" height="95" rx="6"/><text class="h" x="8" y="20">General</text><text class="g" x="8" y="38">General points, not from your</text><text class="g" x="8" y="51">documents</text><rect class="b" x="8" y="58" width="169" height="14" rx="3"/><text class="t" x="8" y="87">+ one reason line</text></g>
+  <g transform="translate(10,120)"><rect class="c" width="240" height="95" rx="6"/><text class="h" x="8" y="20">Failed</text><text class="t" x="8" y="45">No proposed answer for this</text><text class="t" x="8" y="62">question.  (no retry control)</text></g>
+  <g transform="translate(260,120)"><rect class="c" width="250" height="95" rx="6"/><text class="h" x="8" y="20">Unavailable</text><text class="t" x="8" y="42">Question recognition and proposed</text><text class="t" x="8" y="58">answers are unavailable.</text><text class="g" x="8" y="80">+ reason; Start listening disabled</text></g>
+  <g transform="translate(520,120)"><rect class="c" width="230" height="95" rx="6"/><text class="h" x="8" y="20">Last known</text><text class="g" x="8" y="38">Last known, not live</text><rect class="b" x="8" y="46" width="214" height="16" rx="3"/><rect class="b" x="8" y="68" width="150" height="16" rx="3"/></g>
+  <text class="t" x="10" y="250">The cue, timer, Focus and Live are the same in every state; only this card and the details area below it change.</text>
+</svg>

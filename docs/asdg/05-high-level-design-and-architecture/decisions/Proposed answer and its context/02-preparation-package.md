@@ -40,7 +40,7 @@ Files are plain text or Markdown, a default Pablo accepted. Proposed detail: the
 ## Observed on 18 November 2026
 
 The folder exists with five files, 10,733 characters in all, about half of the limit. `poc/context/.gitignore` ignores everything in it except itself, and `git check-ignore` confirms the files are ignored; the root `.gitignore` is unchanged. No code reads them yet.
-Besides the documents, the folder holds a `README.md` addressed to an agent and a meeting link and folder address. Everything in the folder would be sent with each question. Decided on 18 November 2026: the loader skips a file named `README.md` and lists the skipped file. This is a rule for the future loader only; his files are not edited, and he removes any link he does not want sent.
+Besides the documents, the folder holds a `README.md` addressed to an agent and a meeting link and folder address. Everything in the folder would be sent with each question. Decided on 18 November 2026: the loader skips a file named `README.md` and lists the skipped file in the audit and the start log only, never on `/health` or the page. This is a rule for the future loader only; his files are not edited, and he removes any link he does not want sent.
 Decided on 18 November 2026: the service reads only regular files inside the folder and follows no link out of it, so a recording or an evaluator file cannot enter by shortcut. The fixed instructions tell the model that package text is reference material, never instructions: a pasted job description could otherwise steer the answer.
 
 ## Size, cost and delay
