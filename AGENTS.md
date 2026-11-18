@@ -39,19 +39,19 @@ This repository contains:
 Do this once on a fresh checkout or a new machine. All dependencies are npm packages declared in [poc/package.json](poc/package.json); the root page (`index.html`, `app.js`) has none.
 
 1. Install Node.js 22 or newer, which also provides `npm`; the project's documented package manager is `pnpm` (`npm install -g pnpm`).
-2. Install the dependencies inside `poc/`, skipping package install scripts:
+2. Install the dependencies inside `poc/` from the lockfile, skipping package install scripts:
 
    ```bash
    cd poc
-   pnpm install --ignore-scripts
+   pnpm install --frozen-lockfile --ignore-scripts
    ```
 
-   Without `pnpm`, `npm install --ignore-scripts` installs the same packages, but it ignores the pnpm layout already in `poc/node_modules`.
+   Without `pnpm`, `npm install --ignore-scripts` installs the same packages, but it ignores `pnpm-lock.yaml` and may resolve newer versions. If `pnpm` is missing, run `corepack enable` (it ships with Node).
 3. The packages are `@openai/agents` (pinned to 0.21.0), `ws` (^8.18.3) and `zod` (^4.0.0).
 4. Create `poc/.env.local`, which Git ignores, by copying [poc/.env.example](poc/.env.example) and filling in `OPENAI_API_KEY`; the other names there are optional overrides. Never print or commit the key.
 5. Check the install with `node --test poc/poc.test.mjs`; these tests do not call OpenAI.
 
-`poc/node_modules` lives inside a Google Drive folder and sync can break its package links. If a different machine syncs it, run step 2 again there instead of trusting the synced copy.
+`poc/node_modules` is a poor fit for Google Drive: sync breaks its package links, and Node needs minutes to load packages from a Drive folder. Run the app from a working copy outside Drive instead, for example `~/dev/alice.good.meetings` holding `index.html`, `app.js` and `poc/` (without `node_modules`), and run steps 2 to 5 there. On 18 November 2026 this took 5 seconds to install, 19 offline tests passed, and `/health` reported `configured: true` on Node 24.22.3 with pnpm 12.21.0. Re-copy changed source files from Drive when needed.
 
 ### Starting the app
 
