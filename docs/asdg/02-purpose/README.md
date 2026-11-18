@@ -17,10 +17,11 @@ Purpose should help us judge whether a proposed capability advances the desired 
 
 ## Explore
 
-- [Purpose and concept illustration](01-purpose.md): outcomes, constraints and non-goals, with draft boundaries for proposed answers and personal material.
+- [Purpose and concept illustration](01-purpose.md): outcomes, constraints and non-goals, with the boundaries decided on 18 November 2026 for proposed answers and personal material.
 - [Current capabilities](02-current-capabilities.md): what User reports, what the page does at the current revision, and the limits of that evidence.
 - [Planned improvements](03-planned-improvements.md): a proposed answer beside the Focus question, with its boundaries and acceptance questions.
 - [SPRINT-003 review](03.1-sprint-003-purpose-review.md): the first-pass check of the sprint against these pages, written before User's answers of 16 November.
+- [Prepared context proposal](03.2-sprint-003-prepared-context-proposal.md): the decided boundary for the package sent to OpenAI, the details area against "short text", and the decisions of 18 November 2026.
 - [Acceptance process](../../../asdg/02-purpose/types/completion.md): readiness review followed by explicit human acceptance of the reviewed version.
 
 Read files in order: **01 Intended**, **02 Current**, **03 Planned**. Additional topics use dotted numbers such as `01.1` or `03.2`; release and sprint plans identify their horizon in the filename and text.

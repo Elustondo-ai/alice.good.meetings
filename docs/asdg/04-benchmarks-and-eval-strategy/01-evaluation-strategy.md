@@ -24,7 +24,8 @@ No analysis component—including transcription, retrieval and coaching—may ac
 List permitted background explicitly and keep it constant across comparisons. A voice sample must be independently recorded and reveal no future case speech.
 The proposed-answer generator is one of these components. Its declared inputs are the Focus question, fixed instructions and the interview preparation package: Pablo's résumé and other documents he prepares, whose text is sent to OpenAI.
 The package is permitted background: plain text or Markdown up to 20,000 characters, kept in `poc/context/interview/` and ignored by Git. List its files and digests for each run. It never contains benchmark recordings, their transcripts, evaluator labels or reference answers.
-Proposed and awaiting Pablo's agreement: the package is also not written from a benchmark case's questions, or it would work as reference answers.
+Two checks enforce this: the request body is asserted to hold only the declared inputs, and the package's file list and digests are compared with `eval-data/` before each run (see the [plan](03.6-sprint-003-evaluation-plan.md)).
+Decided by Pablo on 18 November 2026: the package is also not written from a benchmark case's questions, or it would work as reference answers.
 Enforce the boundary through delivery and resource access, then inspect both access and timing evidence. An instruction not to look ahead is insufficient.
 
 ## Build a small collection that lasts

@@ -1657,6 +1657,28 @@
         "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
         "run": "asdg-sprint-align SPRINT-003, correction round"
       }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.md",
+      "sha256": "2928f5be9fd81ee69afbb5ea925eba023a0fac5fa6c3e7e3be370289fac2223f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T16:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json",
+      "sha256": "f1d007f96b2420dcc788c13c91207d70ff3912894924cc1d1c186a701aa08f49",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T16:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json"
+      }
     }
   ]
 }

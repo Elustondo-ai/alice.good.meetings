@@ -8,20 +8,30 @@ The answer model, cost tolerance and delivery dates remain unselected. Integrate
 ## Direction and choices
 
 In October Pablo selected question retention, progressive replay, Air QA, live usefulness validation and the P turn toggle. On 16 November 2026 he selected the proposed answer, its form and its inputs.
-"Selected" records his stated choice. It is not formal acceptance of a document, and "proposed" marks Architecture's recommendation awaiting his review.
+"Selected" records his stated choice; on 18 November 2026 he accepted the recommended defaults listed below ("Accept all", relayed by 00 Governance). It is not formal acceptance of a document, and "proposed" marks Architecture's recommendation awaiting his review.
 
 | Decision | Status and trade-off |
 | --- | --- |
 | Service placement | Selected for the POC: on the MacBook beside the browser. No hosted deployment for one user; the process must stay available during the interview. |
 | Agent harness | Selected for the POC: one Agents SDK agent with bounded proposals and application-owned state ([record](decisions/Use%20Open%20AI%20Agent%20SDK/README.md)). A direct model call may suffice while there are no tools. |
-| Proposed answer | Selected by Pablo: built from the Focus question and an interview preparation package, one call for bullets and details, replaced on every Focus change. Proposed: a separate generator in the local service ([record](decisions/Proposed%20answer%20and%20its%20context/README.md)). |
-| Capture and data | Selected by Pablo: the package text is sent to OpenAI, and the package is kept in the project at `poc/context/interview/`, ignored by Git, as plain text or Markdown up to 20,000 characters. Whether recordings or traces are retained stays open; recording is an explicit option, not implied by listening. |
+| Proposed answer | Selected by Pablo: built from the Focus question and an interview preparation package, one call for bullets and details, replaced on every Focus change. Selected on 18 November 2026: a separate generator in the local service ([record](decisions/Proposed%20answer%20and%20its%20context/README.md)). |
+| Where answers are generated | Selected by Pablo on 18 November 2026: a separate generator in the local service, so the Live question stays quick and the key and package stay local ([record](decisions/Proposed%20answer%20and%20its%20context/01-where-answers-are-generated.md)). |
+| Capture and data | Selected by Pablo: the package text is sent to OpenAI, and the package is kept in the project at `poc/context/interview/`, ignored by Git, as plain text or Markdown up to 20,000 characters. The package folder and its Git ignore were observed on 18 November; what is sent is listed in the [package page](decisions/Proposed%20answer%20and%20its%20context/02-preparation-package.md). Whether recordings or traces are retained stays open; recording is an explicit option, not implied by listening. |
 | Service start | Selected by Pablo: without a key the page, timer and cue still work. Proposed: one run command that reuses a current service, replaces a stale idle one and starts without a key file ([service start and key](01.4-service-start-and-key.md)). |
 | Display and exchanges | Decided on 4 November (UC-04): Focus changes only through Confirm question, and Live follows speech. Where the cards sit is decided through the layout preview. |
 | Speech and reasoning | Cloud live transcription followed by text-based interpretation keeps intermediate errors inspectable; it adds delay. Direct audio reasoning remains an alternative. |
 | Speaker identity | Open. Keep estimates and unknowns explicit; the stored voice profile has no calibrated online threshold. |
 | Audio source | Begin with a microphone hearing both participants. Headphones, system-audio capture and meeting integrations need an explicit choice. |
 | Timing and recovery | Bounded queues and versioned updates exist in the POC. Reconnect rules remain to be specified. The [answer delay](03.2-answer-delay-question.md) is unmeasured; Pablo chose to learn it in the live session. |
+
+## Accepted on 18 November 2026
+
+| Decision | Accepted default |
+| --- | --- |
+| Approve the separate answer generator | Yes: one request per confirmed question, Live question untouched |
+| Skip `README.md` in the package folder | Yes; he removes any link he does not want sent |
+| Treat an oversized package as not used, with a message | Yes, rather than cutting it silently |
+| Allow the off-by-default option that prints the exact request | Yes, terminal only |
 
 ## Harness alternatives
 

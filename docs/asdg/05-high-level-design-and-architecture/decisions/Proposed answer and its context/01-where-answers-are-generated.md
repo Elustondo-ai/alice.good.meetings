@@ -1,7 +1,7 @@
 # Where the answer is generated
 
 Something has to turn the Focus question and the preparation package into bullets and details. That work could sit in a new part of the local service, inside the existing interview agent, or in the page.
-Architecture recommends a separate answer generator in the local service. This is a proposal of 16 November 2026. It was not among the questions put to Pablo that day, so he has not selected it.
+Architecture recommended a separate answer generator in the local service on 16 November 2026. Pablo accepted it on 18 November 2026 ("Accept all" to Governance's list of recommended defaults, relayed by 00 Governance), so it is selected. The wording of that list was Governance's.
 
 ```mermaid
 flowchart LR
@@ -18,7 +18,7 @@ flowchart LR
 
 | Option | What it offers | What it costs | Status |
 | --- | --- | --- | --- |
-| A. Separate generator in the local service | One request per Focus version; the key and the package stay in the service; the controller still validates everything shown; the Live question is untouched | A second model request can run beside the interview agent, and the answer gains its own failure state | Recommended |
+| A. Separate generator in the local service | One request per Focus version; the key and the package stay in the service; the controller still validates everything shown; the Live question is untouched | A second model request can run beside the interview agent, and the answer gains its own failure state | Selected on 18 November 2026 |
 | B. Add the answer to the interview agent's output | No new part | That agent reruns while speech arrives, so the answer would be rewritten and the whole package resent each time; the Live question would wait for a long output; the result could not be tied to one Focus version | Set aside |
 | C. The page calls OpenAI | No service change | The key and the package would be in the browser, against the rule that the key lives only in the service | Rejected |
 | D. Two calls, bullets first | Bullets could appear sooner | Two requests per question, each carrying the package | Not selected by Pablo: "for now is one call" |

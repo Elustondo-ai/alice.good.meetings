@@ -26,5 +26,5 @@ Start one session per confirmed missing role in that folder: a fresh conversatio
 Each initial prompt names the project root, asks the session to follow the canonical Focus workflow at `asdg/skills/asdg-focus/SKILL.md` for its catalogue role ID, to confirm the role briefly, and then to wait for the user.
 Retain every returned session identifier. A started session is not an activated role: confirm its first report shows the role loaded, or report activation pending or failed.
 Create in the batches the surface accepts. A refusal for a limit on sessions running at once is not a failure: wait for the started chats to report, then continue.
-Sidebar ordering stays a Codex step. Group or order Claude sessions only on the user's request.
+After the roster is confirmed, follow [ordering in Claude](ordering.md#in-claude): one offered sort by name, changed only with approval, and the team lead title for the calling chat. Group, pin or move Claude sessions only on the user's request.
 What a surface actually did is reported per run; this page promises no session creation on a surface where it has not been observed.

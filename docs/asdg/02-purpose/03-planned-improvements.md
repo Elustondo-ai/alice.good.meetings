@@ -49,7 +49,7 @@ Also decided: the preparation package is kept in the project, in the Git-ignored
 Not known: what the package contains, and what happens to an answer that arrives after he has started speaking. Use Cases and Architecture own those answers.
 One live session can show that the feature works for him once. It does not measure whether it helps.
 The details area and the preparation package are S003-DETAILS and S003-CONTEXT in the addendum. User chose to keep the sprint record as it is: its seven criteria stay, and these two are tracked in the alignment report, the plan and the specifications.
-Still awaiting his review of the exact words: the three draft boundaries in [purpose](01-purpose.md), the "quietly" in the fifth boundary above, and the product name.
-This page is a draft of 16 November 2026: no acceptance of these words is recorded, and saving it approves nothing.
+Decided on 18 November 2026 (his "Accept all", relayed by 00 Governance): the boundaries in [purpose](01-purpose.md), the details area outside the glance path with attention checked in the live session, no delay limit in advance with one service retry, and the product name Alice.Good.Meetings in documents, "Alice" where the sprint record is quoted. The "quietly" in the fifth boundary above was not named separately in that relay.
+This page is a draft updated on 18 November 2026: no acceptance of this exact version is recorded, and saving it approves nothing.
 
 Source: User's Purpose discussion of 20 October 2026 and his direction of 16 November 2026, as relayed. See [purpose](01-purpose.md), [current capabilities](02-current-capabilities.md) and the earlier [SPRINT-003 review](03.1-sprint-003-purpose-review.md).

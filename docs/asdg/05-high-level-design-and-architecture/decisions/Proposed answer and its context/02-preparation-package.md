@@ -14,7 +14,7 @@ flowchart TD
     A --> O["OpenAI reasoning model"]
 ```
 
-*The location, the size limit and the answer without a package are decided; reading at session start and refusing an oversized package are proposed. The service writes the text nowhere.*
+*The location, the size limit and the answer without a package are decided, as are skipping `README.md`, reading only regular files and refusing an oversized package with a message; reading at session start is proposed. The service writes the text nowhere.*
 
 ## What leaves the Mac
 
@@ -34,15 +34,21 @@ Response storage and tracing stay off, as for the interview agent. Those setting
 | 2. A folder outside the checkout, named by a setting in `poc/.env.local` | Personal documents stay out of the working tree and out of Drive | One more setting; the place is less visible |
 | 3. Under `docs/` or `eval-data/` | None | Tracked by Git, and `eval-data/` holds evaluation references |
 
-Decided: option 1. On 16 November 2026 Pablo chose "In the project, Git-ignored (Recommended)", with the Drive sync stated to him; option 2 is not selected. Proposed: the service takes the folder as a setting, so tests point at a synthetic folder.
+Decided: option 1. On 16 November 2026 Pablo chose "In the project, Git-ignored (Recommended)", with the Drive sync stated to him; option 2 is not selected. Proposed detail: the service takes the folder as a setting, so tests point at a synthetic folder.
 Files are plain text or Markdown, a default Pablo accepted. Proposed detail: they are read in name order, and other formats are ignored and reported. No document parser is added, so he sees exactly the text that is sent; a résumé kept as PDF or Word needs a text copy.
+
+## Observed on 18 November 2026
+
+The folder exists with five files, 10,733 characters in all, about half of the limit. `poc/context/.gitignore` ignores everything in it except itself, and `git check-ignore` confirms the files are ignored; the root `.gitignore` is unchanged. No code reads them yet.
+Besides the documents, the folder holds a `README.md` addressed to an agent and a meeting link and folder address. Everything in the folder would be sent with each question. Decided on 18 November 2026: the loader skips a file named `README.md` and lists the skipped file. This is a rule for the future loader only; his files are not edited, and he removes any link he does not want sent.
+Decided on 18 November 2026: the service reads only regular files inside the folder and follows no link out of it, so a recording or an evaluator file cannot enter by shortcut. The fixed instructions tell the model that package text is reference material, never instructions: a pasted job description could otherwise steer the answer.
 
 ## Size, cost and delay
 
 The whole package travels with every answer request. Input size and cost per confirmed question therefore grow in step with the package, and are paid again for each rewording.
-A larger input also delays the start of the answer by an amount nobody has measured; the length of the details adds more.
+A larger input also delays the start of the answer by an amount nobody has measured; the length of the details adds more, and the bullets wait for them ([01.5](../../01.5-pending-state-and-inspectable-inputs.md)).
 Decided: a limit of 20,000 characters, about a two-page résumé and six pages of notes, which Pablo accepted as the default. He chose to learn the [answer delay](../../03.2-answer-delay-question.md) in the live session, so no measurement precedes it and he can change the number at the specification review.
-Proposed: a package over the limit is not used at all. Cutting it silently would drop documents without Pablo knowing which.
+Decided on 18 November 2026: a package over the limit is not used at all, and the page says so. Cutting it silently would drop documents without Pablo knowing which.
 OpenAI may charge less for repeated input. That was not verified and the design does not rely on it.
 
 ## No package, and other meetings

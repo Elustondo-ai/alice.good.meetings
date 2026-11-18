@@ -1,7 +1,7 @@
 # What runs today: the page and its local service
 
 Pablo opens one web page during an interview. It shows a full-screen GOOD, LAND IT or STOP cue, the Focus question he confirmed and the Live question the service is hearing.
-This page records what the source at Git revision `7d60c0f` (branch `sprint-03`) does, as read on 16 November 2026. Nothing was run for this assessment, except one Node start check named below.
+This page records what the source on branch `sprint-03` does, read at revision `7d60c0f` on 16 November 2026 and rechecked on 18 November at `bde3f7a`. The later commits only renamed the product in the service, `poc/start.sh` and `poc/package.json`; behavior is unchanged. Nothing was run for this assessment, except one Node start check named below.
 
 ![On the MacBook the web page computes the cue from the microphone and shows the Focus and Live questions; it exchanges audio, controls and state with a local service, which sends audio to OpenAI live transcription and a snapshot to a reasoning model.](images/current-system.svg)
 
@@ -15,7 +15,7 @@ This page records what the source at Git revision `7d60c0f` (branch `sprint-03`)
 | [poc/server.mjs](../../../poc/server.mjs) | Serves a fixed list of files on `127.0.0.1`, answers `/health`, accepts one session at a time, forwards audio to OpenAI live transcription and holds the key. |
 | [poc/session.mjs](../../../poc/session.mjs) | The state controller. It owns the revision, phase, reply, Focus question with its version, and Live question. It validates each model proposal; only Confirm question writes Focus. |
 | [poc/agent.mjs](../../../poc/agent.mjs) | One Agents SDK agent without tools. From recent transcript and the current state it proposes a short reply, a phase and a Live question. |
-| [poc/start.sh](../../../poc/start.sh) | Finds Node and starts the service with `--env-file=.env.local`. |
+| [poc/start.sh](../../../poc/start.sh) | Finds Node (`ALICE_GOOD_MEETINGS_NODE`, then `node` on the path) and starts the service with `--env-file=.env.local`. |
 
 ## Behavior the next change depends on
 
@@ -29,7 +29,7 @@ On Stop or a disconnect the page releases the microphone and shows Focus as "las
 ## What leaves the Mac today
 
 Microphone audio goes to OpenAI live transcription while listening. The last six transcript segments and the session state, including the Focus and Live questions, go to the reasoning model.
-No résumé, document or other prepared material is read or sent. The audit log records events, versions and timings, never transcript or question text.
+No résumé, document or other prepared material is read or sent. A preparation package has been placed in `poc/context/interview/` (five files, 10,733 characters, counted without reading them for content), and Git ignores it through `poc/context/.gitignore`; no code reads it yet. The audit log records events, versions and timings, never transcript or question text.
 
 ## Gap to SPRINT-003
 
@@ -38,7 +38,7 @@ The [proposed answer](01.3-proposed-answer.md) and [service start](01.4-service-
 
 ## Evidence and limits
 
-The deterministic suite in [poc.test.mjs](../../../poc/poc.test.mjs) has 19 cases, counted from source. The [POC results](../../../poc/RESULTS.md) record one synthetic browser trial on 26 October 2026, and [UC-04](../03-system-model-and-use-cases/01.4-confirm-current-question.md) records a live run on 4 November. None was repeated here.
+The deterministic suite in [poc.test.mjs](../../../poc/poc.test.mjs) has 19 cases, counted from source again at `bde3f7a`, which settles the 18-versus-19 difference noted in item C15. The [POC results](../../../poc/RESULTS.md) record one synthetic browser trial on 26 October 2026, and [UC-04](../03-system-model-and-use-cases/01.4-confirm-current-question.md) records a live run on 4 November. None was repeated here.
 Physical microphone behavior, question accuracy, speaker identity and usefulness in a real interview remain unmeasured. The recordings in [eval-data](../../../eval-data/README.md) are evaluation references, described in the [Stage 04 evidence page](../04-benchmarks-and-eval-strategy/02-evidence-and-reconciliation.md), and are not inputs to the service.
 SPRINT-003 is active. This page replaces the 25 October description of a browser-only page; no acceptance of this version is recorded.
 

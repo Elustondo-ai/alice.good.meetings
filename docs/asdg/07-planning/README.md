@@ -26,7 +26,8 @@ Release plans describe a broader delivery objective. Sprint plans select a small
 
 - [SPRINT-003 review brief](03.6-sprint-003-review-brief.md): the shared baseline, commitment IDs, direction and sources for the Purpose, Use Case, Evaluation and Architecture reviews.
 - [SPRINT-003 brief addendum](03.6.3-sprint-003-brief-addendum.md): Pablo's answers of 16 November and the two commitments they add.
-- [SPRINT-003 alignment report](03.7-sprint-003-alignment-report.md): version 2 after the four reviews and Pablo's answers; foundations not yet aligned, with coverage, conflicts and proposed amendments.
+- [SPRINT-003 alignment report](03.7-sprint-003-alignment-report.md): version 3 after the correction round and Pablo's "Accept all" of 18 November; foundations close to aligned, `NOT_READY`, with coverage, conflicts and amendments.
+- [SPRINT-003 record amendment](03.7.4-sprint-003-record-amendment.md): draft text for S003-DETAILS and S003-CONTEXT, and the human route to the sprint record.
 - [ASDG evolution task list](03-asdg-evolution-tasks.md): methodology work and its recorded sequencing.
 - [ASDG installation lifecycle plan](03.1-asdg-install-lifecycle-plan.md): proposed `init`, `update` and `replace` under a mandatory clean-Git rule, and reconciling Alice's manual swap.
 - [Continuation increment review](current/reviews/asdg-continuation-increment-01.md): evidence from that methodology increment.

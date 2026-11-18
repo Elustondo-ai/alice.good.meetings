@@ -35434,6 +35434,74 @@
         "visible_review_markers": [],
         "approval_binding": "No approval inferred or transferred."
       }
+    },
+    {
+      "path": "skills/asdg-focus/rename-chat.md",
+      "sha256": "7ddcacc1bb9b102bb01b113c2901d65fab32d2ba952bd24a5461bce2ea3235c8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T16:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Team lead title and name sort for Claude role teams",
+        "review": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json"
+      },
+      "previous_state": {
+        "sha256": "e37c9284a61db66d7e18482e4e565015826551bf4a4cc1939aa4463cfd3e5e79",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "skills/asdg-focus/session-policy.md",
+      "sha256": "cfed2204ce19d0c721845ba8ef050d24a1aeacac344c5f3a5a96cc40d124e47a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T16:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Team lead title and name sort for Claude role teams",
+        "review": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json"
+      },
+      "previous_state": {
+        "sha256": "3c52c70c2d05b2528f493121a431700c9caf4ac69828a27fc6eb3b91f3f63c1a",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "skills/asdg-create-team/ordering.md",
+      "sha256": "fc1ff279110f0fe0a0e548511ce448283c9a94bf3ee0de8c8e2ef719a4b918b0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T16:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Team lead title and name sort for Claude role teams",
+        "review": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json"
+      },
+      "previous_state": {
+        "sha256": "93d6fa76d190fe062d689a9838362492598ce85ddb2a633329c4bdd342922e8e",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "skills/asdg-create-team/create-chats.md",
+      "sha256": "5296df04210a34df2b802b6e5812b220e9bae904ce787a04281d7c8d109ad90f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T16:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Team lead title and name sort for Claude role teams",
+        "review": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json"
+      },
+      "previous_state": {
+        "sha256": "03be339d5d7d36887bbc108135e15c800b36231bfc15e4e4f0cd18500d32428a",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.3.0-pilot.2"
