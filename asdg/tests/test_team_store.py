@@ -20,6 +20,7 @@ from test_team_model import ROLES, spec
 
 RULES = dict(role_ids=ROLES, coordinator='ASDG-COORDINATOR')
 IDS = ('team-0123456789abcdef', 'team-1111111111111111', 'team-2222222222222222')
+os.environ.setdefault('ASDG_OPENSPEC', '0')  # Hermetic: setup's OpenSpec step would run a separately installed command.
 
 
 def git(root, *arguments):

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alice layout preview (static)</title>
+  <link rel="stylesheet" href="/preview/preview.css">
+</head>
+<body>
+  <main id="list" hidden>
+    <h1>Alice layout preview, static, nothing approved</h1>
+    <p>Layout B, cue first. Invented sample text only. No microphone, key, network request or OpenAI. Buttons do nothing. Open each link at 1280 &times; 900 and at 390 &times; 844 (browser device mode or a resized window).</p>
+    <h2>States</h2>
+    <ul id="state-links"></ul>
+    <h2>Longest Shown with each cue</h2>
+    <ul id="cue-links"></ul>
+    <h2>Also shown (preview addition)</h2>
+    <ul id="extra-links"></ul>
+  </main>
+
+  <div id="page" class="page" hidden>
+    <section id="cue-band" class="cue-band" aria-label="Cue">
+      <div id="cue-word" class="cue-word">GOOD</div>
+      <div id="listen-controls" class="controls" aria-label="Proposed place for listening and cue buttons">
+        <div class="row">
+          <button id="listen" type="button">Start listening</button>
+          <button id="stop-listen" type="button">Stop listening</button>
+        </div>
+        <div class="row">
+          <button type="button">Good</button>
+          <button type="button">Land it</button>
+          <button type="button">Stop</button>
+        </div>
+        <p id="listen-reason" class="reason"></p>
+      </div>
+    </section>
+
+    <section id="focus" class="card focus" aria-label="Focus question">
+      <div class="label">Focus question <span id="focus-mark" class="tag"></span></div>
+      <p id="focus-text" class="focus-text"></p>
+    </section>
+
+    <section id="live" class="card live" aria-label="Live question">
+      <div class="live-text-area">
+        <div class="label">Live question <span id="live-tag" class="tag"></span></div>
+        <p id="live-text" class="live-text"></p>
+      </div>
+      <div class="live-buttons">
+        <button id="confirm" type="button" class="primary">Confirm</button>
+        <button id="clear-live" type="button">Clear live</button>
+      </div>
+    </section>
+
+    <section id="answer" class="card answer" aria-label="Proposed answer">
+      <div class="label">Proposed answer <span id="answer-tag" class="tag"></span></div>
+      <p id="answer-message" class="answer-message"></p>
+      <ul id="bullets" class="bullets"></ul>
+      <p id="answer-reason" class="reason"></p>
+    </section>
+
+    <section id="details" class="card details" aria-label="Details">
+      <div class="label">Details</div>
+      <div id="details-text" class="details-text" tabindex="0"></div>
+      <p id="note" class="note"></p>
+    </section>
+  </div>
+  <script src="/preview/preview.js"></script>
+</body>
+</html>

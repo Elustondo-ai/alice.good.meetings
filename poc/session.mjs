@@ -1,10 +1,16 @@
 import { randomUUID } from 'node:crypto';
 import { proposalSchema, publicError } from './agent.mjs';
+import { AnswerArea } from './answer-area.mjs';
+import { validateResult } from './answer.mjs';
 
 // Each connection owns its controller and at most one in-flight reasoning request.
 export class InterviewSession {
-  constructor({ reason, emit, audit = () => {}, delayMs = 2500 }) {
+  constructor({ reason, emit, audit = () => {}, delayMs = 2500, generate, now = Date.now, answerTimeoutMs, print, canAsk = () => true, autoFocus = true }) {
+    // true: a clear question read after a pause becomes Focus with no Confirm. false: the manual Live then Confirm path only.
+    this.autoFocus = autoFocus;
     this.id = randomUUID();
+    // The guidance request goes out only while Pablo is pausing; the server passes the pause test, tests default to always.
+    this.canAsk = canAsk;
     this.reason = reason;
     this.emit = emit;
     this.audit = audit;
@@ -15,6 +21,8 @@ export class InterviewSession {
       focus: null, focusVersion: 0, exchangeId: null, live: null,
     };
     this.exchanges = 0;
+    // The package terms and documents for this session only: given to the question reader, never kept in state.
+    this.context = { terms: [], documents: [] };
     // Observations present at the last Confirm or Clear live; they can never refill Live.
     this.liveCutoff = new Set();
     this.liveIds = new Set();
@@ -29,7 +37,20 @@ export class InterviewSession {
     this.pending = false;
     this.lastRun = 0;
     this.abort = new AbortController();
+    // The proposed answer is kept apart from `state`: never in snapshots, cached results or revisions.
+    this.answers = new AnswerArea({ sessionId: this.id, generate, now, timeoutMs: answerTimeoutMs, audit, print,
+      focusVersion: () => this.state.focusVersion,
+      publish: (proposed, proposedSeq) => this.send('proposed', { proposed, proposedSeq }) });
   }
+
+  setContext(context) { this.context = context; }
+
+  answerFields() { return { proposed: this.answers.view(), proposedSeq: this.answers.seq }; }
+
+  // Service hooks: the first voiced packet (tS) and the page's render report (t3).
+  voiced() { this.answers.voiced(); }
+
+  rendered(message) { this.answers.rendered(message); }
 
   send(type, data = {}) {
     if (this.active) this.emit({ type, sessionId: this.id, serverAt: Date.now(), ...data });
@@ -86,6 +107,7 @@ export class InterviewSession {
     const parsed = proposalSchema.safeParse(proposal);
     if (!parsed.success) return { reason: 'schema', fields: [...new Set(parsed.error.issues.map(i => String(i.path[0] ?? '')))].slice(0, 8) };
     const p = parsed.data;
+    this.proposalIntent = p.intent;
     const ids = new Set(snapshot.observations.map(o => o.id));
     if (!p.reply.trim() || p.reply.length > 500 || (p.question?.length || 0) > 600) return { reason: 'length' };
     if (p.evidenceIds.some(id => !ids.has(id))) return { reason: 'unknown-evidence' };
@@ -102,15 +124,43 @@ export class InterviewSession {
     this.lastRejection = p ? null : rejection;
     if (!p) return false;
     const next = { ...this.state, revision: this.state.revision + 1, reply: p.reply.trim() };
+    this.adopted = false;
     if (!snapshot.observations.length) next.phase = 'STARTED';
     else {
       // ANSWER needs a Focus question. Without one the phase is held, but the Live update and reply still apply.
       next.phase = p.phase === 'ANSWER' && !this.state.focus ? this.state.phase : p.phase;
-      this.updateLive(next, p);
+      this.adopted = this.adopt(next, p);
+      if (!this.adopted) this.updateLive(next, p);
     }
     this.state = next;
-    this.send('answer', { ...this.state, audioCutoffSamples: snapshot.audioCutoffSamples });
+    if (this.adopted) this.startAnswer(p);
+    this.send('answer', { ...this.state, audioCutoffSamples: snapshot.audioCutoffSamples, ...this.answerFields() });
     return true;
+  }
+
+  // The automatic flow: a clear question read after a pause becomes the Focus question at once, with no Confirm.
+  // A question that repeats the Focus wording, or cites only speech already used, changes nothing.
+  adopt(next, p) {
+    const text = p.question?.trim();
+    if (!this.autoFocus || !text || !['clarify', 'new-question'].includes(p.intent)) return false;
+    if (!p.evidenceIds.some(id => !this.liveCutoff.has(id)) || text === this.state.focus) return false;
+    const keep = p.intent === 'clarify' && this.state.focus;
+    // Live keeps showing what was heard, so Pablo sees the reading; its id is retired because Focus already holds it.
+    const live = { id: randomUUID(), version: (this.state.live?.version ?? 0) + 1, text, kind: p.intent === 'new-question' ? 'new' : 'restatement' };
+    Object.assign(next, { phase: 'QUESTION', focus: text, focusVersion: this.state.focusVersion + 1,
+      exchangeId: keep ? this.state.exchangeId : ++this.exchanges, live });
+    if (this.state.live) this.retiredLiveIds.add(this.state.live.id);
+    this.liveIds.add(live.id); this.retiredLiveIds.add(live.id);
+    this.liveCutoff = new Set(this.order);
+    return true;
+  }
+
+  // One call produced the reading and the answer. A valid answer is shown as it is; anything else uses the answer request.
+  startAnswer(p) {
+    const check = validateResult({ bullets: p.bullets, details: p.details }, { hasDocuments: this.answers.package.documents.length > 0 });
+    const { focus, focusVersion } = this.state;
+    if (check.ok) this.answers.present(focus, focusVersion, check.value, p.covered !== false);
+    else this.answers.begin(focus, focusVersion);
   }
 
   // Only clarify and new-question with text, citing speech after the Live cutoff, change Live.
@@ -156,6 +206,7 @@ export class InterviewSession {
       focus: live.text, focusVersion: focusVersion + 1, exchangeId, live: null,
     };
     this.liveCutoff = new Set(this.order);
+    this.answers.begin(this.state.focus, this.state.focusVersion);
     return { status: 'confirmed', changed: true, liveId, liveVersion, focusVersion: this.state.focusVersion };
   }
 
@@ -181,7 +232,7 @@ export class InterviewSession {
     const result = { requestId, ...outcome, state: { ...this.state } };
     this.requests.set(request.requestId, { fingerprint: request.fingerprint, result });
     reply(result);
-    if (changed) this.send('answer', { ...this.state, audioCutoffSamples: this.samples });
+    if (changed) this.send('answer', { ...this.state, audioCutoffSamples: this.samples, ...this.answerFields() });
   }
 
   schedule() {
@@ -194,6 +245,8 @@ export class InterviewSession {
 
   async run() {
     if (!this.active || this.running || !this.pending) return;
+    // Not pausing: keep the request pending; the next transcript after a pause schedules it again.
+    if (!this.canAsk()) return;
     this.pending = false;
     this.running = true;
     this.lastRun = Date.now();
@@ -202,10 +255,11 @@ export class InterviewSession {
     this.audit('agent_started', { sessionId: this.id, packets: this.packets });
     try {
       const signal = AbortSignal.any([this.abort.signal, AbortSignal.timeout(30000)]);
-      const proposal = await this.reason(snapshot, signal);
+      const proposal = await this.reason(snapshot, signal, this.context);
       if (this.active) {
         const accepted = this.accept(proposal, snapshot);
-        this.send('agent', { status: accepted ? 'ready' : 'proposal rejected; keeping previous answer' });
+        this.send('agent', { status: !accepted ? 'proposal rejected; keeping previous answer'
+          : this.adopted || this.proposalIntent === 'answer' ? 'ready' : 'no question heard; keeping the last answer' });
         this.audit('agent_finished', { sessionId: this.id, accepted, ...(accepted ? {} : { rejection: this.lastRejection }), durationMs: Date.now() - this.lastRun, packets: this.packets });
       }
     } catch (error) {
@@ -218,6 +272,7 @@ export class InterviewSession {
   }
 
   stop() {
+    this.answers.stop();
     this.active = false;
     clearTimeout(this.timer);
     this.abort.abort();

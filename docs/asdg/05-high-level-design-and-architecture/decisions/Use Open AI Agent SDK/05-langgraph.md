@@ -4,11 +4,11 @@
 
 ![Interpret: Current question → Retrieve: Relevant experience → Verify: Evidence check → Publish: If still relevant.](images/langgraph.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 Interview phases describe the conversation; a graph describes work to execute. `GREETINGS`, `QUESTION`, and `ANSWER` alone do not justify a workflow engine. Checkpoints and graph state introduce another state model to maintain.
 
-Even with durable execution, SpeakerCoach must reject advice tied to an obsolete question. Workflow recovery does not decide semantic relevance.
+Even with durable execution, Alice.Good.Meetings must reject advice tied to an obsolete question. Workflow recovery does not decide semantic relevance.
 
 ## When to reconsider
 

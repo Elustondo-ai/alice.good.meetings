@@ -25,7 +25,7 @@ Question controls (`question.reset`, `question.confirm`) are described in [quest
 
 The server opens a dedicated transcription WebSocket and configures 24 kHz PCM with `session.update`.
 After `session.updated`, it tells the page to begin sending. PCM is base64-encoded for `input_audio_buffer.append`.
-The server's own RMS threshold is 0.012. Once speech is observed, it commits after 800 ms silence or eight seconds of buffered audio.
+The server's own RMS threshold is 0.012. Once speech is observed, it commits only after 800 ms of silence (tunable with `ALICE_PAUSE_MS`); continuous speech is not cut, apart from a 120-second backstop for the upstream buffer limit. The agent is asked for guidance only during such a pause.
 Pure-silence buffers clear every five seconds. These transcription boundaries are independent of the browser's 2.5-second local turn reset.
 Committed item IDs preserve segment order; delta and completed events feed `session.observe()`.
 

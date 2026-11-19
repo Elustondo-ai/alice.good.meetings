@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 240" role="img" aria-labelledby="t d">
+  <title id="t">Confirm, answer area and result messages</title>
+  <desc id="d">The page sends Confirm; the service replies with the question result, then an answer message carrying the Preparing area; later a proposed message carries the result, which the page accepts only for the current Focus version and a higher sequence.</desc>
+  <style>.b{fill:#fff;stroke:#555;stroke-width:1.5}.t{font:12px sans-serif;fill:#222}.h{font:700 13px sans-serif;fill:#111}.l{stroke:#555;stroke-width:1.5;fill:none}</style>
+  <rect width="700" height="240" fill="#f6f6f6"/>
+  <rect class="b" x="20" y="20" width="150" height="40" rx="6"/><text class="h" x="40" y="45">Page</text>
+  <rect class="b" x="530" y="20" width="150" height="40" rx="6"/><text class="h" x="550" y="45">Service</text>
+  <line class="l" x1="95" y1="60" x2="95" y2="220"/><line class="l" x1="605" y1="60" x2="605" y2="220"/>
+  <line class="l" x1="95" y1="85" x2="605" y2="85"/><text class="t" x="260" y="80">question.confirm</text>
+  <line class="l" x1="605" y1="115" x2="95" y2="115"/><text class="t" x="215" y="110">question.result confirmed</text>
+  <line class="l" x1="605" y1="145" x2="95" y2="145"/><text class="t" x="170" y="140">answer: Focus n + proposed = preparing</text>
+  <line class="l" x1="605" y1="180" x2="95" y2="180"/><text class="t" x="160" y="175">proposed: bullets + details, seq k, Focus n</text>
+  <text class="t" x="110" y="210">accepted only if Focus n is shown and k is higher</text>
+</svg>

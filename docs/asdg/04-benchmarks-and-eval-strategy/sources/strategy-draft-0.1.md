@@ -1,18 +1,18 @@
 AI-MODIFIED - 2026-10-21T16:13Z
 
-# Speaker Coach Benchmark and Evaluation Strategy
+# Alice.Good.Meetings Benchmark and Evaluation Strategy
 
 **Draft 0.1 for Pablo's review · ASDG Step 04 · 21 October 2026**
 
-Speaker Coach will be evaluated through a permanent automatic replay harness and microphone-based Air QA, followed by validation during real interviews. An initial set of ten recorded conversations will provide repeatable test inputs. Live use will also capture new recordings that can become additional test cases after review.
+Alice.Good.Meetings will be evaluated through a permanent automatic replay harness and microphone-based Air QA, followed by validation during real interviews. An initial set of ten recorded conversations will provide repeatable test inputs. Live use will also capture new recordings that can become additional test cases after review.
 
 ## Intended evaluation mechanisms
 
 | Mechanism | Input and execution | What it evaluates |
 | --- | --- | --- |
 | Automatic replay testing | A harness feeds a recorded conversation progressively into the application's audio-processing path at normal conversation speed. | Repeatable evaluation of speaker identification, question understanding, coaching behavior and response timing across versions. |
-| Air QA | Speaker Coach listens through the real microphone while an interview takes place on another computer, or a recording plays aloud through a loudspeaker. | The physical audio path, room conditions, capture quality and the complete application experience. A person operates and assesses the session. |
-| Live interview validation | Speaker Coach listens, analyzes and provides assistance during an actual interview, while recording the conversation when recording is agreed and enabled. | Practical usefulness under authentic conditions, including whether guidance helps the user retain the question and answer effectively. |
+| Air QA | Alice.Good.Meetings listens through the real microphone while an interview takes place on another computer, or a recording plays aloud through a loudspeaker. | The physical audio path, room conditions, capture quality and the complete application experience. A person operates and assesses the session. |
+| Live interview validation | Alice.Good.Meetings listens, analyzes and provides assistance during an actual interview, while recording the conversation when recording is agreed and enabled. | Practical usefulness under authentic conditions, including whether guidance helps the user retain the question and answer effectively. |
 
 ## Automatic replay harness
 
@@ -56,4 +56,4 @@ The POC will take one recorded conversation, feed its audio progressively at nor
 
 Pablo has completed mock-interview trials and selected this evaluation direction. The ten-case suite, replay harness, simultaneous live recording and measured results are planned outcomes; this draft does not establish that they exist or work. No implementation sprint or release commitment is created here. Review this first-round Step 04 strategy before deciding whether to accept it and proceed to the next stage; the POC's design and execution remain subsequent work.
 
-Source: Pablo's Speaker Coach discussions and strategy statement, 21 October 2026. The fixed ten-recording target, automatic progressive replay, Air QA, live validation and accumulating session recordings come from that statement; case admission, evidence details and the comparison check are supporting proposals for review.
+Source: Pablo's Alice.Good.Meetings discussions and strategy statement, 21 October 2026. The fixed ten-recording target, automatic progressive replay, Air QA, live validation and accumulating session recordings come from that statement; case admission, evidence details and the comparison check are supporting proposals for review.

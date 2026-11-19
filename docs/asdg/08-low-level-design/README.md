@@ -4,11 +4,13 @@ This folder will describe the contracts an implementation needs: inputs, outputs
 
 ![Scenario and boundaries → Interface contract → Examples and edge cases. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
 
-## SpeakerCoach today
+## Alice.Good.Meetings today
 
 No implemented behaviour is documented here yet. One proposed design awaits Pablo's review:
 
 - [UC-04 · Focus question and Live question](03-uc-04-focus-and-live-question.md) (proposed 4 November 2026): two always-visible areas in the question panel, with mockups, state rules, protocol changes and an OpenSpec update proposal.
+- [SPRINT-003 specification](03.5-sprint-003-specification.md) (draft, 18 November 2026): exact contracts for the proposed answer, the new page and `poc/alice-run.sh`, with its [test map](03.6-sprint-003-test-map.md) and [items for Pablo's review](03.5.10-s003-review-items.md); the OpenSpec change is `openspec/changes/sprint-003-proposed-answer/`.
+- [SPRINT-004 screen specification](03.7-sprint-004-screen-specification.md) (draft, 19 November 2026): areas, states, controls, Upload and Download buttons and the meeting log of the planned new screen, with its [test map](03.8-sprint-004-test-map.md) and [open questions for Pablo](03.7.7-s004-open-questions.md).
 - [UC-04 verification](02-uc-04-verification.md) (4 November 2026, by 09 Coding, awaiting review): live-run results per scenario, timings and findings for the implemented Focus/Live panel.
 
 ## What belongs here as we develop

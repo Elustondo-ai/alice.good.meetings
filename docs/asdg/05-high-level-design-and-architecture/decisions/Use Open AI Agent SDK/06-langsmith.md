@@ -4,7 +4,7 @@
 
 ![Reasoner: Model request / result → Controller: Accepted / rejected → Browser: Visible update.](images/langsmith.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 Instrumenting and operating a tracing service adds integration work and decisions about which interview data to retain. Agent traces alone do not establish microphone-to-visible-cue delay.
 

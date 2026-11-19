@@ -1,6 +1,6 @@
 # ASDG evolution task list
 
-This work evolves the embedded methodology. Speaker Coach is the pilot client; its product features and lifecycle decisions are outside this assignment.
+This work evolves the embedded methodology. Alice.Good.Meetings is the pilot client; its product features and lifecycle decisions are outside this assignment.
 Complete one bounded increment, return its diff and observed results, then wait for the human's review before starting the next.
 Implementation authorization does not record acceptance of documentation or authorize a sprint, release or project transition.
 

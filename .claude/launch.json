@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "alice-poc",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["poc/start.sh"],
+      "port": 3000
+    }
+  ]
+}

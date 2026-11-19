@@ -11,8 +11,17 @@ const SPEECH_RMS_THRESHOLD = 0.02;
 const SPEAKING_HOLD_MS = 300;
 
 const panel = document.getElementById('panel');
+const bandEl = document.getElementById('cue-band');
 const debugEl = document.getElementById('debug');
 const listenBtn = document.getElementById('listen');
+const stopBtn = document.getElementById('stop-listen');
+const listenReasonEl = document.getElementById('listen-reason');
+const answerEl = document.getElementById('answer');
+const answerTagEl = document.getElementById('answer-tag');
+const answerMessageEl = document.getElementById('answer-message');
+const bulletsEl = document.getElementById('bullets');
+const answerReasonEl = document.getElementById('answer-reason');
+const detailsEl = document.getElementById('details-text');
 const serverEl = document.getElementById('server');
 const focusEl = document.getElementById('focus-question');
 const focusStatusEl = document.getElementById('focus-status');
@@ -25,6 +34,33 @@ const confirmBtn = document.getElementById('confirm-question');
 const clearLiveBtn = document.getElementById('clear-live');
 const CONFIRM_UNCERTAIN_MS = 5000;
 const LIVE_TAGS = { new: 'new question', restatement: 'restatement' };
+// Wording of the seven answer states (LB-1 to LB-7) and the reason lines (LB-9).
+const LB = {
+  empty: 'An answer appears when Alice hears a question and you pause.',
+  preparing: 'Preparing an answer for this question.',
+  failed: 'No proposed answer for this question.',
+  unavailable: 'Question recognition and proposed answers are unavailable.',
+  liveUnavailable: 'Question recognition is unavailable.',
+  generalTag: 'General points, not from your documents',
+  lastKnownTag: 'Last known, not live',
+  lastKnownNone: 'No answer arrived before listening stopped.',
+};
+const GENERAL_REASONS = {
+  null: 'No preparation package was found.',
+  'too-large': 'The package is over 20,000 characters and was not used.',
+  empty: 'The package is empty and was not used.',
+  unreadable: 'The package could not be read and was not used.',
+  'not-covered': 'Your documents do not cover this question.',
+};
+const UNAVAILABLE_REASONS = {
+  'no-key': 'No OpenAI key is set up.',
+  'no-service': 'The Alice service is not running.',
+  'key-rejected': 'OpenAI did not accept the key.',
+};
+const REJECTED_KEY_STATUS = 'OpenAI authentication failed';
+const emptyAnswer = (status = 'empty', focusVersion = 0) => ({ status, focusVersion, bullets: [], details: '', reason: null, lastKnown: false, lastStatus: null });
+// `answer` is the proposed answer area; `unavailable` is a page state (no-key, no-service, key-rejected) before or after a session.
+const view = { answer: emptyAnswer(), seq: 0, unavailable: null, healthKnown: false };
 let current = null;
 const freshRemote = () => ({
   status: 'not connected', agent: 'idle', packets: 0, seconds: 0, revision: 0, transcript: '', reply: '',
@@ -34,11 +70,34 @@ const remote = freshRemote();
 // The confirmation in flight ({message, timer, uncertain}) and the latest Clear live request.
 const ask = { pending: null, resetId: null, feedback: '' };
 
+// Subtle monitor: a dot that lights while audio packets arrive, seconds of audio sent, the agent state and the last few heard words.
+const monitorEl = document.getElementById('monitor');
+let monitorLastPackets = 0;
+let monitorLastAt = 0;
+function renderMonitor() {
+  if (!monitorEl) return;
+  const live = remote.status === 'listening on server';
+  if (remote.packets !== monitorLastPackets) { monitorLastPackets = remote.packets; monitorLastAt = Date.now(); }
+  if (!live) { monitorEl.textContent = ''; return; }
+  const receiving = Date.now() - monitorLastAt < 1500;
+  const heard = (remote.transcript || '').replace(/\s+/g, ' ').trim().slice(-48);
+  const dot = document.createElement('span');
+  dot.className = receiving ? 'dot on' : 'dot';
+  const mmss = (ms) => { const s = Math.floor(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+  const line1 = document.createElement('div');
+  line1.append(dot, `speaking ${mic.turnS.toFixed(0)}s · total ${mmss(mic.totalMs)}`);
+  const line2 = document.createElement('div');
+  line2.textContent = `${remote.seconds.toFixed(0)}s audio · agent ${remote.agent}${heard ? ` · …${heard}` : ''}`;
+  monitorEl.replaceChildren(line1, line2);
+}
+setInterval(renderMonitor, 1000);
+
 function renderServer() {
   serverEl.textContent = `server: ${remote.status}\nagent: ${remote.agent}\n` +
     `audio received: ${remote.packets} packets / ${remote.seconds.toFixed(1)}s\n` +
     `heard: ${remote.transcript || '—'}\n` +
     `reply: ${remote.reply || '—'}`;
+  renderMonitor();
   renderQuestion();
 }
 
@@ -48,6 +107,7 @@ function connected() {
 
 // Why Confirm is disabled, in the design's order of precedence; empty when it is enabled.
 function confirmHint(live) {
+  if (view.unavailable && !connected()) return UNAVAILABLE_REASONS[view.unavailable];
   if (!connected()) return 'Start listening to continue.';
   if (ask.pending && !ask.pending.uncertain) return 'Waiting for the server…';
   if (ask.pending) return '';
@@ -65,7 +125,8 @@ function renderQuestion() {
   focusEl.classList.toggle('historical', remote.historical);
   // Without a live session, Live shows nothing heard: the panel no longer listens.
   const shownLive = connected() ? live : null;
-  liveEl.textContent = pending ? pending.text : shownLive?.text || (connected() ? 'Listening for a question…' : 'Not listening');
+  const idleLive = view.unavailable ? LB.liveUnavailable : connected() ? 'Listening for a question…' : 'Not listening';
+  liveEl.textContent = pending ? pending.text : shownLive?.text || idleLive;
   liveTagEl.textContent = pending ? 'confirming…' : LIVE_TAGS[shownLive?.kind] || '';
   const newer = pending && live && (live.id !== pending.liveId || live.version !== pending.liveVersion);
   liveNoteEl.textContent = newer ? 'Newer wording arrived; review it after this result.' : '';
@@ -73,8 +134,64 @@ function renderQuestion() {
   const hint = confirmHint(live);
   hintEl.textContent = hint;
   confirmBtn.disabled = Boolean(hint);
-  confirmBtn.textContent = ask.pending?.uncertain ? 'Retry confirmation' : 'Confirm question';
+  confirmBtn.textContent = ask.pending?.uncertain ? 'Retry confirmation' : 'Confirm';
   clearLiveBtn.disabled = !connected() || Boolean(ask.pending);
+  renderControls();
+  renderAnswer();
+}
+
+// Start is disabled while listening, while health is unknown and while recognition is unavailable (LB-6, NK-5).
+function renderControls() {
+  const listening = Boolean(current);
+  listenBtn.disabled = listening || !view.healthKnown || Boolean(view.unavailable);
+  stopBtn.disabled = !listening;
+  listenReasonEl.textContent = view.unavailable && !listening ? UNAVAILABLE_REASONS[view.unavailable] : listening ? remote.status : '';
+}
+
+// What the answer card and details area hold for the current answer and page state.
+function answerContent() {
+  const a = view.answer;
+  if (view.unavailable) return { cls: 'unavailable', message: LB.unavailable, reasonLine: UNAVAILABLE_REASONS[view.unavailable], bullets: [], details: '', tag: '' };
+  const kept = a.lastKnown ? a.lastStatus : a.status;
+  const base = { cls: a.lastKnown ? 'last-known' : '', message: '', reasonLine: '', bullets: [], details: '', tag: '' };
+  if (a.status === 'empty') return { ...base, message: LB.empty };
+  if (a.status === 'preparing') return { ...base, message: LB.preparing };
+  if (a.lastKnown && kept === 'preparing') return { ...base, message: LB.lastKnownNone, tag: LB.lastKnownTag };
+  const lastTag = a.lastKnown ? LB.lastKnownTag : '';
+  if (kept === 'failed') return { ...base, cls: a.lastKnown ? 'last-known' : 'failed', message: LB.failed, tag: lastTag };
+  const general = kept === 'general';
+  return { ...base, bullets: a.bullets, details: a.details, reasonLine: general ? GENERAL_REASONS[String(a.reason)] || '' : '',
+    tag: [general ? LB.generalTag : '', lastTag].filter(Boolean).join(' · ') };
+}
+
+// Plain text only (PG-12); content is replaced in place with no animation (PG-6).
+function renderAnswer() {
+  const c = answerContent();
+  answerEl.className = `card answer ${c.cls}`;
+  answerTagEl.textContent = c.tag;
+  answerMessageEl.textContent = c.message;
+  answerMessageEl.hidden = !c.message;
+  bulletsEl.replaceChildren(...c.bullets.map(text => Object.assign(document.createElement('li'), { textContent: text })));
+  answerReasonEl.textContent = c.reasonLine;
+  answerReasonEl.hidden = !c.reasonLine;
+  detailsEl.textContent = c.details;
+}
+
+// A proposed message applies only with a higher sequence and the displayed Focus version (CT-9, PG-10).
+function applyProposed(message) {
+  const { proposed, proposedSeq } = message;
+  if (!proposed || !Number.isSafeInteger(proposedSeq) || proposedSeq <= view.seq || proposed.focusVersion !== remote.focusVersion) return false;
+  view.seq = proposedSeq;
+  view.answer = { ...emptyAnswer(), ...proposed };
+  return true;
+}
+
+// Stop or disconnect: content stays as last known; an interrupted Preparing keeps no content (CT-13).
+function markLastKnown() {
+  const a = view.answer;
+  if (a.lastKnown || a.status === 'empty') return;
+  view.answer = a.status === 'preparing' ? { ...emptyAnswer('last-known', a.focusVersion), lastKnown: true, lastStatus: 'preparing' }
+    : { ...a, status: 'last-known', lastKnown: true, lastStatus: a.status };
 }
 
 // Applies server state only when it is newer than what is displayed, so old results cannot roll back.
@@ -83,7 +200,10 @@ function applyState(state) {
   if (!state || state.revision <= remote.revision) return false;
   const { revision, reply, focus, focusVersion, live } = state;
   if (!ask.pending && (live?.id !== remote.live?.id || live?.version !== remote.live?.version)) ask.feedback = '';
+  const newFocus = focusVersion > remote.focusVersion;
   Object.assign(remote, { revision, reply, focus, focusVersion, live });
+  // A new Focus shows Preparing and none of the earlier answer in the same render (PG-9).
+  if (newFocus) view.answer = emptyAnswer('preparing', focusVersion);
   return true;
 }
 
@@ -114,7 +234,9 @@ function acknowledgeRender(state) {
   const live = state.live ? { liveId: state.live.id, liveVersion: state.live.version } : {};
   requestAnimationFrame(() => {
     if (current === resources && resources?.socket?.readyState === WebSocket.OPEN) {
-      resources.socket.send(JSON.stringify({ type: 'rendered', revision: state.revision, ...live }));
+      // After paint: the answer's Focus version and status sit beside the revision fields (PG-8).
+      resources.socket.send(JSON.stringify({ type: 'rendered', revision: state.revision, ...live,
+        answerFocusVersion: view.answer.focusVersion, answerStatus: view.answer.status }));
     }
   });
 }
@@ -166,8 +288,8 @@ function endQuestionSession(reason) {
 function setState(name) {
   const s = STATES[name];
   panel.textContent = s.text;
-  panel.style.background = s.bg;
-  panel.style.color = s.fg;
+  bandEl.style.setProperty('--cue-bg', s.bg);
+  bandEl.style.setProperty('--cue-fg', s.fg);
 }
 
 document.querySelectorAll('#controls button[data-state]').forEach((btn) => {
@@ -180,6 +302,9 @@ const mic = {
   speaking: false,
   turnStart: null,
   lastVoice: -Infinity,
+  turnS: 0,       // seconds of the current speaking turn (what drives GOOD / LAND IT / STOP)
+  totalMs: 0,     // speaking time accumulated since Start listening
+  lastTickAt: null,
 };
 
 function renderDebug(durationS) {
@@ -202,12 +327,15 @@ function tick(analyser, buf) {
     if (mic.turnStart === null) mic.turnStart = now;
   }
   mic.speaking = now - mic.lastVoice < SPEAKING_HOLD_MS;
+  if (mic.speaking && mic.lastTickAt !== null) mic.totalMs += Math.min(now - mic.lastTickAt, 250);
+  mic.lastTickAt = now;
 
   if (mic.turnStart !== null && now - mic.lastVoice > SILENCE_END_MS) {
     mic.turnStart = null;
   }
 
   const durationS = mic.turnStart === null ? 0 : (now - mic.turnStart) / 1000;
+  mic.turnS = durationS;
   if (durationS > STOP_AFTER_S) setState('stop');
   else if (durationS > LAND_AFTER_S) setState('land');
   else setState('good');
@@ -217,7 +345,7 @@ function tick(analyser, buf) {
 async function startListening() {
   const resources = { stream: null, ctx: null, socket: null, timer: null, capture: null, ready: false, sequence: 0 };
   current = resources;
-  listenBtn.textContent = 'Stop listening';
+  view.answer = emptyAnswer(); view.seq = 0;
   mic.status = 'requesting permission';
   // A new session starts with no question memory and no pending controls from the previous one.
   clearTimeout(ask.pending?.timer);
@@ -240,6 +368,7 @@ async function startListening() {
     const buf = new Float32Array(analyser.fftSize);
     mic.lastVoice = -Infinity;
     mic.turnStart = null;
+    mic.turnS = 0; mic.totalMs = 0; mic.lastTickAt = null;
     mic.status = 'listening';
     resources.timer = setInterval(() => tick(analyser, buf), 100);
     stream.getTracks().forEach(track => track.addEventListener('ended', () => {
@@ -293,7 +422,13 @@ async function connectServer(resources, source) {
       if (message.type === 'agent') remote.agent = message.status;
       if (message.type === 'audio') { remote.packets = message.packets; remote.seconds = message.seconds; }
       if (message.type === 'transcript') remote.transcript = message.text;
-      if (message.type === 'answer' && applyState(message)) acknowledgeRender(message);
+      if (message.type === 'answer') {
+        const changed = applyState(message);
+        if (applyProposed(message) || changed) acknowledgeRender({ revision: remote.revision, live: remote.live });
+      }
+      if (message.type === 'proposed' && applyProposed(message)) acknowledgeRender({ revision: remote.revision, live: remote.live });
+      // A refused key ends the session with the public error text; recognition is then unavailable (NK-3).
+      if (message.type === 'status' && message.status === REJECTED_KEY_STATUS) view.unavailable = 'key-rejected';
       renderServer();
     };
     socket.onerror = () => {
@@ -303,6 +438,7 @@ async function connectServer(resources, source) {
       resources.ready = false;
       if (current !== resources) return;
       remote.agent = 'disconnected';
+      markLastKnown();
       endQuestionSession('Disconnected');
       if (['connecting', 'listening on server'].includes(remote.status)) remote.status = 'server disconnected; local meter still running';
       renderServer();
@@ -326,16 +462,30 @@ function stopListening() {
     if (resources.socket?.readyState === WebSocket.OPEN) resources.socket.send(JSON.stringify({ type: 'stop' }));
     resources.socket?.close();
   }
-  Object.assign(mic, { status: 'off', speaking: false, level: 0, turnStart: null, lastVoice: -Infinity });
-  listenBtn.textContent = 'Start Listening';
+  Object.assign(mic, { status: 'off', speaking: false, level: 0, turnStart: null, lastVoice: -Infinity, turnS: 0, totalMs: 0, lastTickAt: null });
   remote.status = 'stopped'; remote.agent = 'stopped';
+  markLastKnown();
   endQuestionSession('Stopped');
   renderDebug(0); renderServer();
 }
 
-listenBtn.addEventListener('click', () => current ? stopListening() : void startListening());
+listenBtn.addEventListener('click', () => { if (!current) void startListening(); });
+stopBtn.addEventListener('click', () => { if (current) stopListening(); });
 clearLiveBtn.addEventListener('click', resetLive);
 confirmBtn.addEventListener('click', confirmQuestion);
 window.addEventListener('beforeunload', stopListening);
+if (location.hash === '#diagnostics') { debugEl.hidden = false; serverEl.hidden = false; }
 renderDebug(0);
 renderServer();
+
+// One health request on load (HL-6): only `service` and `configured` are used; the package fact is never read.
+async function readHealth() {
+  try {
+    const health = await (await fetch('/health', { cache: 'no-store', signal: AbortSignal.timeout(3000) })).json();
+    if (health?.service !== 'alice-good-meetings') view.unavailable = 'no-service';
+    else if (health.configured !== true) view.unavailable = 'no-key';
+  } catch { view.unavailable = 'no-service'; }
+  view.healthKnown = true;
+  renderServer();
+}
+void readHealth();

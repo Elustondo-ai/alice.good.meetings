@@ -1,6 +1,6 @@
 # UC-04 · Focus question and Live question
 
-Pablo uses the question panel in the top-right corner of the SpeakerCoach page while answering interview questions. It must show, at a glance, the question being answered and what the service is hearing now, without ever changing the question behind Pablo's back.
+Pablo uses the question panel in the top-right corner of the Alice.Good.Meetings page while answering interview questions. It must show, at a glance, the question being answered and what the service is hearing now, without ever changing the question behind Pablo's back.
 
 ![Mockup of the proposed panel (not implemented): FOCUS QUESTION holds the confirmed "Tell me about your last two jobs…", LIVE QUESTION shows a new question tagged "new question", with Confirm question and Clear live below; the GOOD timer is behind.](images/uc04-state-5-new-question.svg)
 

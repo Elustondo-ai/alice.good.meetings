@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "objective": "Ship a Claude mod that keeps the ASDG sprint status visible, installed by setup into each project that selected Claude; let an initialized project run setup after local methodology edits.",
+  "requested_by": "Pablo (repository owner), 2026-11-16: asked to keep the sprint status visible through Claude mods, chose \"Ship the mod inside asdg/ and let setup generate it per project\", invoked /asdg-admin and said \"try again now you should have asdg admin rights\".",
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-fable-5-2",
+    "client": "Claude desktop app, Code tab",
+    "session": "local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e"
+  },
+  "role": {
+    "id": "ASDG-ADMIN",
+    "selection": "explicit /asdg-admin on 2026-11-16; required sources reread",
+    "title": "RENAMED to \"ASDG Admin\" (was \"Alice Good Meeting project\")"
+  },
+  "starting_revision": "7d60c0ffbec9dd211eceb3b0bb0957750f0519e0",
+  "branch": "sprint-03",
+  "preserved_uncommitted_work": [
+    ".asdg/sprint.json (SPRINT-003 record)"
+  ],
+  "owner_directed_rule_change": {
+    "constraint": "Setup refused any asdg/ that differs from its delivery manifest or build record (\"working-tree snapshots cannot be installed\").",
+    "new_rule": "An initialized client running setup on its own copy, with no --source, is previewed as LOCAL_CHANGES and proceeds; no build is attributed.",
+    "unchanged": [
+      "first install",
+      "clone install with --source/--commit",
+      "invalid manifest or another version",
+      "manifest and build record are never rewritten"
+    ],
+    "decision_basis": "Pablo's words quoted in requested_by, given after the blocker was reported to him."
+  },
+  "changed_paths": [
+    {
+      "path": "asdg/mods/README.md",
+      "sha256": "a697240d4701c8f95cfd72127a08b3e5dc5f4c629bddc1dad6819bb0059837db"
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/.claude-plugin/plugin.json",
+      "sha256": "56997dfe1e771fdabff3de77f08f89752bbd22bc883b4078ac0db200a14b9a7c"
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/hooks/hooks.json",
+      "sha256": "d842d789476d67282d0f04b7e5fdc68a3d981ccec65dd79cfa2d11eed13fb828"
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/hooks/register.tsx",
+      "sha256": "5768a0fdef9ab95e1d24c4a4f6ea9c769c62b996efc82b2f784e979738635a9f"
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/hooks/register.md",
+      "sha256": "380f618f90119f8d5894f64211fb590abf731d2dc56582c19dd6a626023ed559"
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/hooks/register.test.tsx",
+      "sha256": "b3f2fa26dfa851cddb81ca975cddb5d2631163f89e72b01afbd238ec88c864ae"
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/hooks/register.test.md",
+      "sha256": "f6c58f956671ff514d35d5f0dafbfd2dc2672a5ff77cc782926ff34be39630e9"
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/types/index.d.ts",
+      "sha256": "ed69a5036bb0549e46eafa135678f63af177a8051f2c599b73550d68b362eb36"
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/types/index.d.md",
+      "sha256": "b07501076e77e18540c2cf3772739b20e1ea0a1ba313e4c965160653eeb19bef"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_clients.py",
+      "sha256": "27506537561194f2e88a54b7e6de761da18d3aa1a598f79990a30d56db0100b3"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_clients.md",
+      "sha256": "3f98774dae1aadeb251a14d8112b98556ac33daf2fa7581283a7ec82803f9574"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_install_source.py",
+      "sha256": "5eee9e0436fa13889d03614c6e38eba8a36bcb324f0d0148b18f7b0dd755a921"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_install_source.md",
+      "sha256": "28342ad100dfa8ab3b9cd3af58ebdfd0bdba67031602c453ba55d4924e0eccc0"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_install.py",
+      "sha256": "9b307323875323e64fb863791d64c683275813bc675692964e6e8dc161890b64"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_install.md",
+      "sha256": "709f12fc1fd9dcf0e805a37e9674fd98245d04a4c8f4238b9ace386a65e44843"
+    },
+    {
+      "path": "asdg/tests/test_claude_mods.py",
+      "sha256": "1c55d1746128cac62a7411c8445ca547b0cf0f861c6574df693e50c64d7e86d3"
+    },
+    {
+      "path": "asdg/tests/test_claude_mods.md",
+      "sha256": "d5f5800dfab8a35a44de45eb08ec171efe6fe19bd7f900eded2a43fdf999d309"
+    },
+    {
+      "path": "asdg/metadata/package-files.json",
+      "sha256": "246cd1e9bfd3e3bd68d660644fb914cf7e76360b5d3908acf8959a0307904695"
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "65d51ea31f0968d75c62cc4665335b61861a634988427a37e07f8be1ab2b05e0"
+    },
+    {
+      "path": "asdg/skills/asdg-update/SKILL.md",
+      "sha256": "f467a177c0122a22ce9c6b936b4848eb20e3afad79bbf590bf13fd002c1c1432"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.20-review-sprint-status-mod.md",
+      "sha256": "9ddbf213e3cd1e1b30b2c4e8aed73b5343fca6a8db0d9916451dd742875fd061"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_sync_manifest.py",
+      "sha256": "bc0b408380b30e7458306851e0463ddd13ab31af315366ad65032e47d21d01e6"
+    },
+    {
+      "path": "asdg/scripts/lib/cli_sync_manifest.md",
+      "sha256": "7cdaaf2c03227f297d1af67dca2a9110438926dc4010100baf90cb2b0362a664"
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "19791f75a638ba4ce94d06fe1661d2a695075ef2752f8f1ff34c22d75e1490c2"
+    }
+  ],
+  "validation": {
+    "automated": [
+      "python3 asdg/scripts/check.py: PASS (before the package list was completed: 4 FAIL, links to team-workflows.md missing from package)",
+      "python3 -B -m unittest discover -s asdg/tests -p test_claude_mods.py: 6 tests, OK",
+      "python3 -B -m unittest discover -s asdg/tests: 202 tests, failures=3, skipped=5 (before: 196 tests, failures=3, errors=16, skipped=5)",
+      "claude plugin validate asdg/mods/asdg-sprint-status (Claude Code 2.1.325): passed with warnings (no author, README, license or icon)",
+      "claude plugin test asdg/mods/asdg-sprint-status: 3 pass, 0 fail"
+    ],
+    "known_failures": {
+      "tests": [
+        "test_portable.PortableTests.test_fresh_setup_installs_only_the_selected_clients",
+        "test_portable.PortableTests.test_repeat_setup_and_dry_run_create_nothing_new",
+        "test_portable.PortableTests.test_clients_add_in_either_order_without_touching_the_other"
+      ],
+      "cause": "fresh_client copies asdg/ including metadata/build.json; the record cannot match the resealed copy, so the first install is refused. Failing before this change; not fixed here."
+    },
+    "observed_in_client": {
+      "client": "Claude desktop app",
+      "date": "2026-11-16",
+      "what": "sprint row above the prompt and details pane drawn from the real SPRINT-003 record",
+      "loaded_from": "session mods folder, not .claude/skills"
+    },
+    "manual_probe": "claude plugin list in a disposable folder holding the mod under .claude/skills: listed as a project-scope skills-dir plugin, skipped until the workspace is trusted",
+    "setup_preview_in_alice": {
+      "command": "python3 asdg/scripts/init.py --dry-run",
+      "integrity": "LOCAL_CHANGES",
+      "build": null,
+      "planned_files": [
+        ".claude/skills/asdg-sprint-status/.claude-plugin/plugin.json",
+        ".claude/skills/asdg-sprint-status/hooks/hooks.json",
+        ".claude/skills/asdg-sprint-status/hooks/register.tsx",
+        ".claude/skills/asdg-sprint-status/types/index.d.ts"
+      ],
+      "applied": true,
+      "plan": "2026-11-16T23:33:50Z.c40b0c0e4cc1d978483ffc70de3f93b2c9f38a40daeb244bdc73de32d56f5f5d",
+      "plan_note": "Token of the approved and applied plan.",
+      "approval": "Pablo replied APPROVE to the displayed plan on 2026-11-16"
+    },
+    "verify": "python3 asdg/scripts/cli.py verify after apply: structure_ok true; Codex COMPLETE, Claude COMPLETE (before apply: Claude DAMAGED for the four missing files)",
+    "setup_applied_in_alice": {
+      "changed_files": [
+        ".claude/skills/asdg-sprint-status/.claude-plugin/plugin.json",
+        ".claude/skills/asdg-sprint-status/hooks/hooks.json",
+        ".claude/skills/asdg-sprint-status/hooks/register.tsx",
+        ".claude/skills/asdg-sprint-status/types/index.d.ts"
+      ],
+      "byte_identical_to_source": true,
+      "repeat_preview_planned_files": [],
+      "manifest_and_build_record_changed": false
+    },
+    "observed_plugin_list": "claude plugin list in Alice: asdg-sprint-status@skills-dir, version 0.1.0, scope project, status loaded",
+    "observed_from_project_copy": {
+      "by": "Pablo",
+      "client": "Claude desktop app",
+      "date": "2026-11-16",
+      "what": "sprint row shows in a new session opened in Alice after setup",
+      "basis": "his reply \"Yes, it shows\"; pane and command not checked"
+    }
+  },
+  "not_done": [
+    "delivery manifest not refreshed, by rule",
+    "no commit, push or promotion to canonical"
+  ],
+  "review_status": "REVIEW_REQUIRED: human review pending; no approval inferred.",
+  "installed_paths": [
+    {
+      "path": ".claude/skills/asdg-sprint-status/.claude-plugin/plugin.json",
+      "sha256": "56997dfe1e771fdabff3de77f08f89752bbd22bc883b4078ac0db200a14b9a7c"
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-status/hooks/hooks.json",
+      "sha256": "d842d789476d67282d0f04b7e5fdc68a3d981ccec65dd79cfa2d11eed13fb828"
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-status/hooks/register.tsx",
+      "sha256": "5768a0fdef9ab95e1d24c4a4f6ea9c769c62b996efc82b2f784e979738635a9f"
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-status/types/index.d.ts",
+      "sha256": "ed69a5036bb0549e46eafa135678f63af177a8051f2c599b73550d68b362eb36"
+    }
+  ],
+  "cleanup": "Deleted the trial copy in the session mods folder ~/.claude/dev-mods/<session>/asdg-sprint after setup."
+}

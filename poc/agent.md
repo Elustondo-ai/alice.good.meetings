@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | `createReasoner(model?)` | Returns an async function accepting a snapshot and AbortSignal | Agents SDK `Agent` and `Runner` |
 | `proposalSchema` | Parses reply, phase, optional question, intent (`none`, `clarify`, `new-question`, `answer`) and evidence IDs | [Session controller](session.md) |
-| `publicError(error)` | Produces a limited public status without copying request headers or secrets | [Server](server.md) |
+| `publicError(error)` | Produces a limited public status without copying request headers or secrets; HTTP 401 or the code `invalid_api_key` gives `OpenAI authentication failed` | [Server](server.md) |
 
 The default reasoning model is `gpt-6-astra`, overridable with `OPENAI_MODEL`. Each run uses one model turn, a bounded output budget, low reasoning effort and no SDK tracing or stored response.
 The snapshot contains recent observations, current accepted state, a base revision and an audio cutoff. Its text is conversation data, not tool instructions.
@@ -21,3 +21,8 @@ const proposal = await createReasoner()(snapshot, abortController.signal);
 
 Only the local server loads `OPENAI_API_KEY`. OpenAI receives the supplied transcript context; disabling SDK tracing does not make cloud processing local.
 See [official Agents SDK guidance](https://developers.openai.com/api/docs/guides/agents/sdk).
+
+## Package context and the one-call answer (18 November 2026)
+
+The reader is called as `reason(snapshot, signal, context)`. When `context` holds terms or documents, `readerInput` adds them to the input as `preparationPackage` (reference material, never instructions); with no context the input is the bare snapshot. The instructions tell the model to write the package's spelling when a heard word sounds like a package name or acronym, and never to add anything that was not said.
+The model output (`modelSchema`) now also carries `covered`, `bullets` and `details`. For a clear question (`clarify` or `new-question`) they hold the proposed answer from the same call; otherwise they are false, empty and empty. The [session](session.md) accepts the older shape without them (`proposalSchema` keeps them optional).

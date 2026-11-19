@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="920" viewBox="0 0 960 920" role="img" aria-labelledby="title desc">
+  <title id="title">Proposed answer for the Focus question: three moments</title>
+  <desc id="desc">Three concept panels of the page. First, Pablo confirms a question: the Focus card shows it and the answer card says an answer is being prepared, while the green GOOD cue continues. Second, a few short points appear in the answer card beside the question and supporting details appear in an area below, both from the same request. Third, Pablo confirms a different or reworded question: the old points and details are removed at once and a new answer is prepared. Concept, not a screenshot; positions are settled by the layout preview.</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #203b4a; }
+      .title { font-size: 28px; font-weight: 700; }
+      .sub { font-size: 18px; fill: #526b79; }
+      .num { font-size: 22px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+      .heading { font-size: 20px; font-weight: 700; }
+      .body { font-size: 17px; }
+      .page { fill: #2e7d32; }
+      .cue { font-size: 46px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+      .card { fill: #10231a; fill-opacity: 0.82; }
+      .lab { font-size: 12px; font-weight: 700; letter-spacing: 1px; fill: #cfe3d4; }
+      .txt { font-size: 15px; fill: #ffffff; }
+      .muted { font-size: 15px; fill: #cfe3d4; font-style: italic; }
+      .btn { fill: #f4f6f7; }
+      .btntxt { font-size: 13px; font-weight: 700; fill: #203b4a; text-anchor: middle; }
+      .note { font-size: 15px; fill: #526b79; }
+    </style>
+  </defs>
+  <rect width="960" height="920" fill="#fbfcfd"/>
+  <text x="20" y="42" class="title">Proposed answer for the Focus question</text>
+  <text x="20" y="72" class="sub">UC-05 · Draft of 16 November 2026 · Only Pablo's Confirm changes the answer</text>
+
+  <!-- Step 1: confirm, answer being prepared -->
+  <circle cx="38" cy="126" r="18" fill="#26716c"/>
+  <text x="38" y="134" class="num">1</text>
+  <text x="66" y="133" class="heading">Pablo confirms</text>
+  <text x="20" y="168" class="body">Focus shows the exact</text>
+  <text x="20" y="191" class="body">wording. The answer card</text>
+  <text x="20" y="214" class="body">says an answer is being</text>
+  <text x="20" y="237" class="body">prepared. The cue and</text>
+  <text x="20" y="260" class="body">timer carry on.</text>
+  <rect x="280" y="100" width="660" height="240" rx="8" class="page"/>
+  <text x="610" y="152" class="cue">GOOD</text>
+  <rect x="296" y="170" width="316" height="84" rx="6" class="card"/>
+  <text x="308" y="190" class="lab">FOCUS QUESTION</text>
+  <text x="308" y="213" class="txt">Tell me about a time you</text>
+  <text x="308" y="233" class="txt">handled conflict.</text>
+  <rect x="624" y="170" width="300" height="84" rx="6" class="card"/>
+  <text x="636" y="190" class="lab">PROPOSED ANSWER</text>
+  <text x="636" y="218" class="muted">Preparing an answer…</text>
+  <rect x="296" y="262" width="628" height="36" rx="6" class="card"/>
+  <text x="308" y="285" class="lab">DETAILS</text>
+  <rect x="296" y="306" width="628" height="26" rx="6" class="card"/>
+  <text x="308" y="324" class="lab">LIVE QUESTION</text>
+  <text x="428" y="324" class="muted">Listening for a question…</text>
+  <rect x="806" y="309" width="112" height="20" rx="4" class="btn" fill-opacity="0.45"/>
+  <text x="862" y="324" class="btntxt">Confirm question</text>
+
+  <!-- Step 2: bullets and details shown -->
+  <circle cx="38" cy="396" r="18" fill="#26716c"/>
+  <text x="38" y="404" class="num">2</text>
+  <text x="66" y="403" class="heading">Points and details</text>
+  <text x="20" y="438" class="body">A few short points beside</text>
+  <text x="20" y="461" class="body">the question; supporting</text>
+  <text x="20" y="484" class="body">details below, from the</text>
+  <text x="20" y="507" class="body">same request. Nothing</text>
+  <text x="20" y="530" class="body">moves or flashes.</text>
+  <rect x="280" y="370" width="660" height="240" rx="8" class="page"/>
+  <text x="610" y="422" class="cue">GOOD</text>
+  <rect x="296" y="440" width="316" height="84" rx="6" class="card"/>
+  <text x="308" y="460" class="lab">FOCUS QUESTION</text>
+  <text x="308" y="483" class="txt">Tell me about a time you</text>
+  <text x="308" y="503" class="txt">handled conflict.</text>
+  <rect x="624" y="440" width="300" height="84" rx="6" class="card"/>
+  <text x="636" y="460" class="lab">PROPOSED ANSWER</text>
+  <text x="636" y="480" class="txt">• Short point one</text>
+  <text x="636" y="499" class="txt">• Short point two</text>
+  <text x="636" y="518" class="txt">• Short point three</text>
+  <rect x="296" y="532" width="628" height="36" rx="6" class="card"/>
+  <text x="308" y="555" class="lab">DETAILS</text>
+  <text x="384" y="555" class="txt">Supporting detail for each point, from the preparation package.</text>
+  <rect x="296" y="576" width="628" height="26" rx="6" class="card"/>
+  <text x="308" y="594" class="lab">LIVE QUESTION</text>
+  <text x="428" y="594" class="muted">Listening for a question…</text>
+  <rect x="806" y="579" width="112" height="20" rx="4" class="btn" fill-opacity="0.45"/>
+  <text x="862" y="594" class="btntxt">Confirm question</text>
+
+  <!-- Step 3: Focus changes, old answer removed -->
+  <circle cx="38" cy="666" r="18" fill="#a5521b"/>
+  <text x="38" y="674" class="num">3</text>
+  <text x="66" y="673" class="heading">Focus changes</text>
+  <text x="20" y="708" class="body">Any Confirm, even of a</text>
+  <text x="20" y="731" class="body">rewording, removes the old</text>
+  <text x="20" y="754" class="body">answer at once and prepares</text>
+  <text x="20" y="777" class="body">a new one. A late answer to</text>
+  <text x="20" y="800" class="body">the old question never shows.</text>
+  <rect x="280" y="640" width="660" height="240" rx="8" class="page"/>
+  <text x="610" y="692" class="cue">GOOD</text>
+  <rect x="296" y="710" width="316" height="84" rx="6" class="card"/>
+  <text x="308" y="730" class="lab">FOCUS QUESTION</text>
+  <text x="308" y="753" class="txt">What would your manager say</text>
+  <text x="308" y="773" class="txt">is your biggest weakness?</text>
+  <rect x="624" y="710" width="300" height="84" rx="6" class="card"/>
+  <text x="636" y="730" class="lab">PROPOSED ANSWER</text>
+  <text x="636" y="758" class="muted">Preparing an answer…</text>
+  <rect x="296" y="802" width="628" height="36" rx="6" class="card"/>
+  <text x="308" y="825" class="lab">DETAILS</text>
+  <rect x="296" y="846" width="628" height="26" rx="6" class="card"/>
+  <text x="308" y="864" class="lab">LIVE QUESTION</text>
+  <text x="428" y="864" class="muted">Listening for a question…</text>
+  <rect x="806" y="849" width="112" height="20" rx="4" class="btn" fill-opacity="0.45"/>
+  <text x="862" y="864" class="btntxt">Confirm question</text>
+
+  <text x="20" y="906" class="note">CONCEPT, NOT A SCREENSHOT · Positions are settled by the layout preview · Sample text is a placeholder</text>
+</svg>

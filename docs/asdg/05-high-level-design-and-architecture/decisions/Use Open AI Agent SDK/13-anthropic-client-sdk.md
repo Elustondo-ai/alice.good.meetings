@@ -4,7 +4,7 @@
 
 ![Transcript snapshot: Same comparison input → Claude Messages API: Structured proposal → State controller: Same acceptance rules.](images/anthropic-client.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 The reviewed Claude model documentation lists text and image input, with text output. Use a separate streaming transcription service for audio; plain transcripts do not preserve every vocal cue.
 

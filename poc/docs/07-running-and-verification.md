@@ -19,7 +19,7 @@ Press **Stop listening** to release capture; use Ctrl+C in the server terminal t
 | OPENAI_MODEL | `gpt-6-astra` for reasoning |
 | TRANSCRIPTION_MODEL | `gpt-live-transcribe` for live transcription |
 | PORT | 3000; binding remains 127.0.0.1 |
-| SPEAKERCOACH_NODE | Optional explicit Node executable for start.sh |
+| ALICE_GOOD_MEETINGS_NODE | Optional explicit Node executable for start.sh |
 
 Only one browser session can listen at a time. A health response confirms the process and configuration presence, not a successful OpenAI request.
 

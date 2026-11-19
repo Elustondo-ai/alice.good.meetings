@@ -1,10 +1,10 @@
 # Real-world operation: does it work for people?
 
-This folder will record how SpeakerCoach behaves in realistic environments and whether users find it useful. It covers delivery, browser and device conditions, recovery from failures and user acceptance.
+This folder will record how Alice.Good.Meetings behaves in realistic environments and whether users find it useful. It covers delivery, browser and device conditions, recovery from failures and user acceptance.
 
 ![Real environment → Observed behavior → User acceptance. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
 
-## SpeakerCoach today
+## Alice.Good.Meetings today
 
 No operational or user-acceptance report is documented in this stage yet. The existing prototype and historical hosting descriptions do not establish a verified deployment or a successful live interview experience.
 

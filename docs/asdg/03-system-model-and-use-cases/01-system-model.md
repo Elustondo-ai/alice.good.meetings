@@ -1,24 +1,24 @@
-# Speaker Coach system and UML use cases
+# Alice.Good.Meetings system and UML use cases
 
-Speaker Coach supports one main use case: help an interviewee answer questions during a meeting through brief private visual coaching.
-The model covers intended product behavior from the 20 October 2026 discussion, without selecting a meeting provider or implementation architecture.
+Alice.Good.Meetings, which the SPRINT-003 record calls Alice, supports one main use case: help Pablo, the user, stay focused and answer questions during a meeting through brief private visual coaching. Interviews are the scenarios modelled so far (UC-01 to UC-03); other meetings use the same flow, as Pablo directed on 19 November 2026.
+The model covers intended product behavior from the 20 October 2026 discussion and Pablo's later decisions, without selecting a meeting provider or implementation architecture.
 
 ## Actors and system boundary
 
 The interviewee is the primary actor who receives cues and decides what to say. The interviewer is an external actor whose questions and follow-ups enter through the meeting conversation.
-Speaker Coach is the system inside the boundary, rather than another actor. It follows the meeting and presents coaching privately; technical meeting participation is undecided.
+Alice.Good.Meetings is the system inside the boundary, rather than another actor. It follows the meeting and presents coaching privately; technical meeting participation is undecided.
 Question recognition, question retention and cue preparation belong inside the boundary. Human answers, hiring decisions and the meeting service itself remain outside it.
 
 ## UML use case model
 
-![UML use-case diagram with two external actors, a Speaker Coach boundary, three specialized scenarios, included shared behaviors and conditional corrective guidance.](images/system-use-cases.png)
+![UML use-case diagram with two external actors, an Alice (Alice.Good.Meetings) boundary, three specialized scenarios, two included shared behaviors refined by UC-04 and UC-05, and conditional corrective guidance.](images/system-use-cases.png)
 
 [Vector diagram](images/system-use-cases.svg) · [Editable PlantUML source](system-use-cases.puml)
 
 Solid actor associations show participation, not screen access. The interviewer contributes speech; coaching is delivered to the interviewee.
 Hollow-triangle arrows point from each specialized scenario to the general coaching use case. Dashed «include» arrows point to shared required behavior.
 Dashed «extend» arrows point from conditional corrective guidance to the open-answer and experience-story use cases. Their condition is that correction is warranted while an answer is underway.
-The diagram describes behavior and relationships, not execution order, software components or a technical connection to the meeting.
+The diagram describes behavior and relationships, not execution order, software components or a technical connection to the meeting. It does not yet show UC-06 to UC-09; Pablo accepted a text-only model for now (19 November 2026, relayed by 00 Governance).
 
 | Scenario | Interviewee goal | Distinctive coach behavior |
 | --- | --- | --- |
@@ -26,12 +26,15 @@ The diagram describes behavior and relationships, not execution order, software 
 | [UC-02 Open question](01.2-open-question.md) | Develop a coherent explanation. | Allow elaboration and signal drift, repetition or a suitable conclusion. |
 | [UC-03 Experience question](01.3-experience-question.md) | Tell a relevant, genuine story. | Support recall when grounded context exists and track context, personal action and result. |
 
-[UC-04: keep a Focus question and confirm each new one](01.4-confirm-current-question.md), redesigned on 4 November 2026, refines the diagram's shared “Identify and retain the current question” behavior for all three answer scenarios. Two areas stay visible: the Focus question, which changes only when Pablo presses Confirm question, and the Live question, which follows speech automatically. Confirm copies the Live wording into Focus and server-side conversation memory; the proposed panel does not claim existing implementation or a fourth answer category.
+[UC-04: keep a Focus question, set after a pause or confirmed by hand](01.4-confirm-current-question.md), redesigned on 4 November and revised in draft on 18 November 2026, refines the diagram's shared “Identify and retain the current question” behavior for all three answer scenarios. Two areas stay visible: the Focus question, which a pause after a clear question sets automatically, read in the context of the preparation package, and the Live question, which follows speech. Confirm question and Clear live remain an optional manual tool; Confirm copies the Live wording into Focus and conversation memory. Neither is a fourth answer category.
+
+[UC-05: see a proposed answer for the Focus question](01.5-proposed-answer.md), drafted on 16 November 2026 for SPRINT-003, refines the shared “Prepare brief answer cues” behavior in the same way. When a pause sets the Focus question, a few short points appear beside it with supporting details below; both are replaced whenever Focus changes. Its [answer states](01.5.1-proposed-answer-states.md) are the list the layout preview must show. [UC-06: input channels](01.6-inputs-and-future-channels.md) says that speech, buttons and, as planned and not built, gestures and video are channels beside one another, none removed. [UC-07: load the preparation package](01.7-load-preparation-package.md) lets Pablo upload it from the page and see its status before listening. [UC-08](01.8-meeting-log-and-download.md) keeps and downloads a meeting log, and [UC-09](01.9-new-screen.md) describes the new screen.
 
 ## Domain model and shared behavior
 
 An interview session contains participants and question-answer exchanges. Each exchange has a current question, the interviewee's developing response and any associated cues.
 A question can contain several parts and invite more than one answer flow. A cue is a brief private visual prompt tied to the current exchange; grounded personal context is optional supporting material.
+The context is the preparation package Pablo loads for the meeting; for an interview, decided on 16 November 2026, it holds his résumé and other documents. A cue or proposed answer states nothing about him that the package does not contain.
 All flows identify and retain the question, allow reflection, prepare brief cues and follow the answer. A pause or restatement helps but is not required to activate support.
 The coach should keep the question stable during the interviewee's speech, preserve relevant multipart content and replace stale cues when a genuine follow-up changes the exchange.
 Unclear questions, overlapping speech, late cues, unavailable context and mixed flows require graceful fallback. Specific fallback proposals appear in each scenario document.
@@ -39,9 +42,10 @@ Unclear questions, overlapping speech, late cues, unavailable context and mixed 
 ## Actual evidence and planned work
 
 [The accepted purpose](../02-purpose/01-purpose.md) prioritizes attention, focus, recall and visual guidance. [Current capabilities](../02-purpose/02-current-capabilities.md) record stakeholder reports of duration-based signals; the richer behaviors here remain unverified.
-[The selected next improvement](../02-purpose/03-planned-improvements.md) is distinguishing speakers and keeping the interviewer question visible. This scenario package expands the intended model without changing that priority or creating an implementation commitment.
-Review should resolve exact versus summarized question text, cue timing, relevance and duration criteria, personal-context sources and mixed-flow transitions. These are candidate decisions; no Stage 07 work item, owner or schedule is established.
+Stage 03 last read the code at HEAD `fe3c00e` (18 November 2026): the UC-04 Focus and Live panel, no answer card. The 18 November handoff reports later work (monitor line, pause behavior); Stage 03 has not re-read it and did not run any code.
+Planned: SPRINT-003, active since 16 November 2026, selects a new page layout and the proposed answer. Its commitments are in Planning's [review brief](../07-planning/03.6-sprint-003-review-brief.md) and [addendum](../07-planning/03.6.3-sprint-003-brief-addendum.md); a sprint is not permission to code.
+Review should still resolve exact versus summarized question text, relevance and duration criteria and mixed-flow transitions. These remain candidate decisions with no Stage 07 work item, owner or schedule.
 
-Source: the user's scenario discussion on 20 October 2026, the linked Purpose baseline and the documentation-only authorization. The UML relationships and fallback details are modeling proposals; saving the package does not record lifecycle acceptance.
+Source: the user's scenario discussion on 20 October 2026, the linked Purpose baseline, the documentation-only authorization and Pablo's SPRINT-003 decisions of 16 November 2026 as relayed by 00 Governance. The UML relationships and fallback details are modeling proposals; saving the package does not record lifecycle acceptance.
 
 [Use-case package](README.md) · [Illustration prompts](images/illustration-prompts.json)

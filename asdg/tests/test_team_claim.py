@@ -42,6 +42,8 @@ try:
 except claim.Conflict as error:
     print('CONFLICT', error)
 '''
+import os
+os.environ.setdefault('ASDG_OPENSPEC', '0')  # Hermetic: setup's OpenSpec step would run a separately installed command.
 
 
 class TeamClaimTests(unittest.TestCase):

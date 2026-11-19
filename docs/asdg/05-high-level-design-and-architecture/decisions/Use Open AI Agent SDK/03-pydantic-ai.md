@@ -4,7 +4,7 @@
 
 ![Audio session: Realtime observations → Typed text agent: Separate structured work → State controller: Validate the proposal.](images/pydantic-ai.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 Our existing service is Node.js, so adoption would change the implementation stack. Realtime sessions do not directly support normal `output_type` and output validators; the documented pattern delegates structured work to a text agent.
 

@@ -2,9 +2,9 @@
 
 **Deferred media option.** LiveKit Agents brings Python or Node programs into realtime rooms, carrying media and data through AI pipelines. It is relevant if reliable media delivery, participant connections, or meeting interaction becomes the dominant engineering problem.
 
-![Browser / room: Audio and data → LiveKit agent: Media + AI pipeline → SpeakerCoach: State and visual cues.](images/livekit.svg)
+![Browser / room: Audio and data → LiveKit agent: Media + AI pipeline → Alice.Good.Meetings: State and visual cues.](images/livekit.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
 A room and agent-session model introduces infrastructure and lifecycle integration beyond our current single-browser local service. The benefit must justify that operational work.
 

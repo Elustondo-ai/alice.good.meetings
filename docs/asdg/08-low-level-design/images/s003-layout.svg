@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="t d">
+  <title id="t">Page layout B, cue first</title>
+  <desc id="d">A cue band at the top; below it the Focus question, a Live bar with Confirm and Clear live, a card with up to three bullets, and a details area that scrolls inside itself.</desc>
+  <style>
+    .r{fill:#fff;stroke:#555;stroke-width:1.5}.h{font:700 13px sans-serif;fill:#111}.t{font:12px sans-serif;fill:#333}
+    .cue{fill:#2e9e5b}.cw{font:700 24px sans-serif;fill:#fff}.k{fill:#e8f0fe;stroke:#7a9cd6}.n{font:italic 11px sans-serif;fill:#666}
+  </style>
+  <rect width="640" height="420" fill="#f2f2f2"/>
+  <rect class="cue" x="10" y="10" width="620" height="70" rx="6"/><text class="cw" x="30" y="55">GOOD</text><text class="t" x="480" y="50" fill="#fff" style="fill:#fff">timer 0:42   Start / Stop</text>
+  <rect class="r" x="10" y="90" width="620" height="60" rx="6"/><text class="h" x="22" y="112">FOCUS QUESTION</text><text class="t" x="22" y="134">Tell me about a time you led a team through change.</text>
+  <rect class="r" x="10" y="160" width="620" height="44" rx="6"/><text class="h" x="22" y="187">LIVE QUESTION</text><text class="t" x="150" y="187">(follows speech)</text>
+  <rect class="k" x="470" y="170" width="70" height="24" rx="4"/><text class="t" x="480" y="187">Confirm</text><rect class="k" x="548" y="170" width="74" height="24" rx="4"/><text class="t" x="552" y="187">Clear live</text>
+  <rect class="r" x="10" y="214" width="620" height="92" rx="6"/><text class="h" x="22" y="234">PROPOSED ANSWER (at most three points)</text>
+  <rect class="k" x="22" y="244" width="590" height="16" rx="3"/><rect class="k" x="22" y="266" width="590" height="16" rx="3"/><rect class="k" x="22" y="288" width="420" height="12" rx="3"/>
+  <rect class="r" x="10" y="316" width="620" height="94" rx="6"/><text class="h" x="22" y="336">DETAILS (read on demand; scrolls inside this box)</text><text class="n" x="22" y="356">Longer text stays inside this box and never moves the four areas above.</text>
+  <rect x="616" y="326" width="6" height="40" rx="3" fill="#999"/>
+</svg>

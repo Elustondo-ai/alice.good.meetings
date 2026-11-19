@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "objective": "Add the skill asdg-pre-code-review: an agent assembles stages 01 to 08 into an editable outline and a small script renders it to PowerPoint with speaker notes.",
+  "requested_by": "Pablo (repository owner), 2026-11-18, with ASDG Admin selected: \"I want to work on a skill/script to give me a pre code presentation to review everything before start coding\"; supplied a prompt written by Codex; after four corrections were put to him, replied \"Yes, build it\".",
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-fable-5-2",
+    "client": "Claude desktop app, Code tab",
+    "session": "local_76b82554-3d13-429d-8123-87899d5c580b",
+    "subagent": "one general-purpose subagent wrote Alice's outline"
+  },
+  "role": {
+    "id": "ASDG-ADMIN",
+    "selection": "retained from Pablo's explicit /asdg-admin on 2026-11-18",
+    "title": "UNCHANGED (ASDG Admin)"
+  },
+  "starting_revision": "fe3c00edc3ca4008b0b203317593acb6ab87e851",
+  "branch": "sprint-03",
+  "preserved_uncommitted_work": [
+    ".asdg/sprint.json",
+    "other chats' stage documents under docs/asdg/02 to 07"
+  ],
+  "implementation_choices": [
+    "named asdg-pre-code-review; asdg-presentation is reserved by tests/test_distribution.py for an upstream repository-only tool",
+    "kept separate from asdg-report-project-status",
+    "SVG via rsvg-convert or headless Chrome; Mermaid not placed",
+    "python-pptx in a private environment under .asdg/cache/asdg-pre-code-review/venv"
+  ],
+  "override": {
+    "human_decision": "Pablo's accepted prompt: \"Use Alice as the first working example. Generate the presentation\"",
+    "constraint_bypassed": "check-write returns OUT_OF_SCOPE for ASDG-ADMIN on docs/asdg/00-governance/presentation/outline.md; Admin does no project documents",
+    "scope": "docs/asdg/00-governance/presentation/outline.md and its Git-ignored build/ folder",
+    "verification": "structure checked by build_deck.py --check; fidelity to the stage documents not reviewed"
+  },
+  "changed_paths": [
+    {
+      "path": "asdg/skills/asdg-pre-code-review/SKILL.md",
+      "sha256": "a8bc8505d494dc0ecc0160c7e3e3a16d4bc926c8210ec3aa563fee11a0bde863",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/skills/asdg-pre-code-review/build_deck.md",
+      "sha256": "3aad2fb1961f025584c0c685a111a168fef21f8b842094bf2a52da1803b4cedf",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/skills/asdg-pre-code-review/build_deck.py",
+      "sha256": "d3b4e7d0f68aa5af5e3ca6dfa760e68f194a0a1f219847ffb0f5b3b3f580f206",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-pre-code-review/SKILL.md",
+      "sha256": "959770350a685a1623a4e67ca6a3f4cbbe60a6170c5a5f267ff261dee304c992",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-pre-code-review/agents/openai.yaml",
+      "sha256": "babf3c66312cf450b6d661a79110b46878f2c770be2f7f2d46ff1db51245b5da",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/tests/test_pre_code_review.md",
+      "sha256": "68e33de17da4acfd7255fc8a4ed537f51fc38c91ba9a55933cb20e28d0cb6ef8",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/tests/test_pre_code_review.py",
+      "sha256": "41da13e1e656a26b98b40771503b9ff64d60d7b6f60753c50bcc7058461871cb",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/metadata/package-files.json",
+      "sha256": "ad9b506a0b4b211091554dc438d58e337f69af3baa6be925b4f4556d4c488e19",
+      "previous_sha256": "1b2840ebc59a88353695d532cc2b10f20e25bc72b1a648a2ad0fc7958d6cd7ac"
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "e911357ab43dd92ee046b79deadc280a46c070dd0d250985dbbf428697035935",
+      "previous_sha256": "f2ae206071847eb7d2b63882f254a118a4c3730cfa5d15067ff012f4ed83c55b"
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "45847a72b703f94f8b9446950e9e61e98a98526eeff40cbd4e4ce37be80ebe6b",
+      "previous_sha256": "23e80d273ee22e2cc934f2aeef10e48e3512b6c913d6d49b32e6eec5b9a469c8"
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "8ed14adaae8436e9989361ab8fd577e5f2e8db583c229c12257a261d19fb9cb1",
+      "previous_sha256": "37eea668c4048dac8c9f066617d984c0d6ad6178953eb5d039137fb49d918793"
+    },
+    {
+      "path": "docs/asdg/00-governance/presentation/outline.md",
+      "sha256": "bcc990d5003e33d63f08a1d4a6fa092cbe9db4e64db31b5cdccd78316ad98c90",
+      "previous_sha256": null
+    },
+    {
+      "path": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.md",
+      "sha256": "2cea8f35351b52bab61730a90b47fb79fd4a6d5fb4baed7960ce3aa135f97030",
+      "previous_sha256": null
+    }
+  ],
+  "generated_not_tracked": [
+    "docs/asdg/00-governance/presentation/build/pre-code-review.pptx (ignored by build/.gitignore)",
+    ".asdg/cache/asdg-pre-code-review/ (converted images, Python environment)"
+  ],
+  "verification": {
+    "automated": [
+      "python3 scripts/check.py (in asdg/): PASS",
+      "tests.test_pre_code_review: 6 pass in the private environment; 5 pass, 1 skipped under system Python 3.9.6",
+      "python3 -B -m unittest discover -s tests (in asdg/): 221 tests, failures=3, skipped=6; the three fixture failures recorded in 02.20",
+      "python3 asdg/scripts/cli.py verify: FAILED, three adapter files not installed",
+      "python3 asdg/scripts/init.py --dry-run: refused, 'AGENTS.md would exceed 50 nonblank lines' (root AGENTS.md has 54; predates this change)"
+    ],
+    "observed": [
+      "build_deck.py rendered Alice's outline: 21 slides, all with notes, 8 with a visual, 4 marked GAP; exit 0",
+      "one converted SVG was viewed and was legible"
+    ],
+    "not_done": [
+      "deck not opened in PowerPoint or Keynote",
+      "adapters not installed; the slash command does not exist yet",
+      "Codex"
+    ]
+  },
+  "review_status": "REVIEW_REQUIRED: unstaged changes awaiting Pablo; nothing staged, committed or pushed",
+  "human_approval": null,
+  "follow_up_agents_md": {
+    "requested_by": "Pablo, 2026-11-18, in the Admin chat: \"Yes, shorten it\", after the Team Lead chat (local_04a9b5e5-ea2b-4d36-9815-8e93fbba47b4) relayed the task and Admin asked him directly",
+    "scope": "root AGENTS.md, project-owned sections 'Installing the app' and 'Starting the app' only",
+    "result": "merged into 'Installing and starting the app'; 54 to 45 nonblank lines; every fact kept; bootstrap block byte-identical",
+    "path": "AGENTS.md",
+    "previous_sha256": "54355e32e14b85930ddb09b8010a7ec022e9ce80ae19a12979d7054c8b170d5f",
+    "sha256": "09af6e1737a11d456c834845450ce8a7ebb898d469ae327eb033102bec8d99a2",
+    "not_done": [
+      "setup preview and apply",
+      "commit"
+    ]
+  }
+}

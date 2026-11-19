@@ -4,9 +4,9 @@
 
 ![Audio frames: Streaming transport → Pipeline processors: Speech and model stages → Observations / cues: Application controller.](images/pipecat.svg)
 
-## Trade-off for SpeakerCoach
+## Trade-off for Alice.Good.Meetings
 
-Adoption means integrating a new pipeline and transport model. SpeakerCoach currently delivers private visual guidance, so some conversational speech features may offer little immediate value.
+Adoption means integrating a new pipeline and transport model. Alice.Good.Meetings currently delivers private visual guidance, so some conversational speech features may offer little immediate value.
 
 A voice framework can complement model reasoning. It does not remove the need to preserve an active question or reject late suggestions.
 

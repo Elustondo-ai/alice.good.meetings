@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Show Pablo, at all times, what SpeakerCoach currently interprets as the question, updated automatically from speech and never treated as approved. The [proposal decisions and sources](../../proposal.md#decisions-and-source-baseline) bind this delta to UC-04 and the attention and fidelity criteria.
+Show Pablo, at all times, what Alice.Good.Meetings currently interprets as the question, updated automatically from speech and never treated as approved. The [proposal decisions and sources](../../proposal.md#decisions-and-source-baseline) bind this delta to UC-04 and the attention and fidelity criteria.
 
 ![Speech fills Live and refines it; Confirm or Clear live clears it, and only later speech can fill it again.](../../images/clarification-flow.svg)
 

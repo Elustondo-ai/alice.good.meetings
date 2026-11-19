@@ -380,6 +380,1391 @@
       "provenance": {
         "generator": "asdg embedded init"
       }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "63a84df3c75af26445467f47a4f860239ff81e55a2d885e409f2207edaf0c358",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "03be339d5d7d36887bbc108135e15c800b36231bfc15e4e4f0cd18500d32428a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/initialization.md",
+      "sha256": "bdf7b71e05c632bb17e4fec05b928e137225d539bd5848cf5cb2c647460e7b54",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "f60d42ae9b735645dd41a577bf4758eb4f8c5221cd5ac19019f7a0347e45129b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "sha256": "c0c7eb1a06e81363eaf2bcaf8efcfbdb685130c1037d802f8648f9d79f618722",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_team.md",
+      "sha256": "1205b2699b3ba9b4d8922a4905f0c86f2a0cd20a3dcc375fa65a0dff77c2b621",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.md",
+      "sha256": "b124e5fca348b0813b9428397cbec4660397aaec4927e35efa2c2a16e679d974",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T20:01:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.19-review-create-team-claude-sessions.json"
+      }
+    },
+    {
+      "path": "asdg/mods/README.md",
+      "sha256": "a697240d4701c8f95cfd72127a08b3e5dc5f4c629bddc1dad6819bb0059837db",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/hooks/register.md",
+      "sha256": "380f618f90119f8d5894f64211fb590abf731d2dc56582c19dd6a626023ed559",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/hooks/register.test.md",
+      "sha256": "f6c58f956671ff514d35d5f0dafbfd2dc2672a5ff77cc782926ff34be39630e9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/mods/asdg-sprint-status/types/index.d.md",
+      "sha256": "b07501076e77e18540c2cf3772739b20e1ea0a1ba313e4c965160653eeb19bef",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_clients.md",
+      "sha256": "3f98774dae1aadeb251a14d8112b98556ac33daf2fa7581283a7ec82803f9574",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_install_source.md",
+      "sha256": "28342ad100dfa8ab3b9cd3af58ebdfd0bdba67031602c453ba55d4924e0eccc0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_install.md",
+      "sha256": "709f12fc1fd9dcf0e805a37e9674fd98245d04a4c8f4238b9ace386a65e44843",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/tests/test_claude_mods.md",
+      "sha256": "d5f5800dfab8a35a44de45eb08ec171efe6fe19bd7f900eded2a43fdf999d309",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "65d51ea31f0968d75c62cc4665335b61861a634988427a37e07f8be1ab2b05e0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-update/SKILL.md",
+      "sha256": "f467a177c0122a22ce9c6b936b4848eb20e3afad79bbf590bf13fd002c1c1432",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.20-review-sprint-status-mod.md",
+      "sha256": "a8c851c25f6e2abd04a90c179c1ebe423c12c88e760b3320beeba42a3b04438c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_sync_manifest.md",
+      "sha256": "7cdaaf2c03227f297d1af67dca2a9110438926dc4010100baf90cb2b0362a664",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "19791f75a638ba4ce94d06fe1661d2a695075ef2752f8f1ff34c22d75e1490c2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:33:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.20-review-sprint-status-mod.md",
+      "sha256": "6751d0ad548f1455c1a76e1e0d9ab154cdba3f170de45631abe967ba805b394d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:36:55Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.20-review-sprint-status-mod.md",
+      "sha256": "9ddbf213e3cd1e1b30b2c4e8aed73b5343fca6a8db0d9916451dd742875fd061",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:37:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.20-review-sprint-status-mod.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_openspec.md",
+      "sha256": "a16604a959ad51dd512e9b2afb9e85835a47e13fc1f4a6a7e345c2a28465a67c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:54:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_install.md",
+      "sha256": "b9f81c10a85a87e722d2a46ff7ad9bf00938e0dfe20f8a470e68c3831b17467c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:54:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli.md",
+      "sha256": "e82c7f037b229d6f39369a7a775a4161f39567380e162ce047a79680c10fec93",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:54:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "sha256": "b45455969e84a410e809f2e12719fbfb6fe4c8f75e798583e683c00312d1a482",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:54:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "asdg/tests/test_openspec_setup.md",
+      "sha256": "452810f7bb0527101a67bf7d672c0c5173a338216125837da2057e195dcdfc6d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:54:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "1e9b946ce15b59b642bf74a33274315766261f1e4ecc5e7ebf27ae0e9584b9f6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:54:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "126607b5a20c788b945375105a2e185826d613ac62f23535b9c425fcf10e1154",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:54:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-openspec-propose/SKILL.md",
+      "sha256": "9c6bc86477f11477d8f47b7b825beb9966fbb628e51b41a579a754b0466a61dd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:54:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.21-review-openspec-setup.md",
+      "sha256": "61f4b5cae1e901b10ad39a8f5adb428ea3c4064a9d3dd8603037bddee62a278a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:54:39Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.21-review-openspec-setup.md",
+      "sha256": "a1ef774bf9bb31ab68d4cccd33a9732e12b79404bd715609ea6eb463c2468a60",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-16T23:57:21Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.21-review-openspec-setup.md",
+      "sha256": "1187156b8218cf59da4da89993b66c7ada825e158ac4007dbc63b40bae780a66",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:02:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.21-review-openspec-setup.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/SKILL.md",
+      "sha256": "92713058311fcfc36466c931ff564aead0932823706dea0f092b94ce09b09a00",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/routing.md",
+      "sha256": "d9b8e7648a5584748b2d15d3914f0d9a55b17e38a3039c839fcbfbdb989b6139",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/reviews.md",
+      "sha256": "8e4484f6bd936283fb14d2100b33139849148f56e36a2d5e5582630366138a42",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/readiness.md",
+      "sha256": "9e6bdb9dad130e4fb61d6b6301259d5cf51b39603d795f4aa66213be41d81329",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/report.md",
+      "sha256": "c58432bfb1f3f810991cc8139ef46a4d5c4ca3736732db948dd06042a7ac482f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-align/TRY-IT.md",
+      "sha256": "c9c969c79e77e15d2b047a194b4c82c54f2edd3b4a35251202dd49213bdab74b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-sprint-align/SKILL.md",
+      "sha256": "3e7b81c24bb2f2097cd23b83fdfb42ecc93e9f9d53a3bb69677f559d7b124a7e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "f2ae206071847eb7d2b63882f254a118a4c3730cfa5d15067ff012f4ed83c55b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "23e80d273ee22e2cc934f2aeef10e48e3512b6c913d6d49b32e6eec5b9a469c8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/docs/usage.md",
+      "sha256": "4304db94d33790eb9bbc5c6781ac4826a21dffcd0877d9229cc9aee0909bc7d3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-sprint-start/SKILL.md",
+      "sha256": "b858c3042384063d8a2ea4c3113714a562c00de1b281319c9496cac5bb8de1cf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/skills/review-build-task/SKILL.md",
+      "sha256": "a777605c8351ff2fc9b5d83daaf19c8ebeb22c9614fda88a75e5a1dad60f1333",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/07-planning/skills/prepare-plan/SKILL.md",
+      "sha256": "c20eeb5e03312eeabd42d583d203183f43a22b61369d6406f654c43052a7cc30",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/sprint-gate.md",
+      "sha256": "2f0e1195f6581de2898114fa294df36e32a242be26e8d226be75f56ba8d7e24f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/tests/test_sprint_align_skill.md",
+      "sha256": "cef78d2b796de874d0dc4f859086e93c5f15079804b14a1e1b5457ec3c25f680",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "37eea668c4048dac8c9f066617d984c0d6ad6178953eb5d039137fb49d918793",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.22-review-sprint-align-skill.md",
+      "sha256": "07f1b7e7bbe0fc135808b5406e695d1440e724d148e9ed4b2e3ace08f5123c15",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-align/SKILL.md",
+      "sha256": "3e7b81c24bb2f2097cd23b83fdfb42ecc93e9f9d53a3bb69677f559d7b124a7e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-sprint-align/SKILL.md",
+      "sha256": "3e7b81c24bb2f2097cd23b83fdfb42ecc93e9f9d53a3bb69677f559d7b124a7e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:10:04Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.22-review-sprint-align-skill.md",
+      "sha256": "74a3898bb8adb17c1fa9e9be179730ea5ef7b245b21d049a09fc6c6e44f2c25d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:13:24Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin",
+        "record": "docs/asdg/07-planning/02.22-review-sprint-align-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.6-sprint-003-review-brief.md",
+      "sha256": "3a1a604830617a0fb4f570afbea0b685822725b7e9bbb63c92c3e8bad89fefe4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:19:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, from the hashes the author returned and verified against the files",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.6.1-sprint-003-brief-direction.md",
+      "sha256": "1d12fda94108057cda7eb797ff9d93b002713b47f63a4f1b1911ff158d826cda",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:19:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, from the hashes the author returned and verified against the files",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.6.2-sprint-003-brief-sources.md",
+      "sha256": "a8bf687090d661a68744f71c531af8f2b55a01511302ddfb7268b2ae0c767a31",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:19:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, from the hashes the author returned and verified against the files",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "54cb673a2fd468d0751ec90b672ede88274daf2e06060456d898eef656710584",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:19:54Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, from the hashes the author returned and verified against the files",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/03.1-sprint-003-purpose-review.md",
+      "sha256": "afc8c4c67d8077649afcbafe33c25200cd8f420a29b3ce15ded45df89e01882c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:27:49Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-02 Purpose, session local_4f904c19-90be-4650-9ab0-490b59f1a4da",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, from the hash the author returned, verified against the file",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/03-sprint-003-use-case-review.md",
+      "sha256": "a73f531857400da5de62146f0c7bedea4335a9637efdfe69880922940ee2a057",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:27:49Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, from the hash the author returned, verified against the file",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/README.md",
+      "sha256": "fac9547ef1299358c6e1d22e5cd67b85c8860e6fa01f2b24e78ce00de55db4ec",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:27:49Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, from the hash the author returned, verified against the file",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.5-sprint-003-evaluation-review.md",
+      "sha256": "b5010a0011d061586c7e185aea31bc99a9621330f3abbea48d54456e2822acf8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:27:49Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-04 Evaluation, session local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, from the hash the author returned, verified against the file",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "627856d9c096646fe8f611ae25e2bbae3ca9ae57a7896205f68b6de94be4943b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:27:49Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-04 Evaluation, session local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, hash computed by the coordinator from the file; the author returned no hash for it",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/03.1-sprint-003-architecture-review.md",
+      "sha256": "93894a2ffb3649255f687b0f99ece873606a7bae68113652c992ceb64d4565f2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:27:49Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e, from the hash the author returned, verified against the file",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.7-sprint-003-alignment-report.md",
+      "sha256": "94580b3794af39fd29c3a9d0884be2a4065b764c1178bc1ab8cce7811ac39b87",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:35:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.7.1-sprint-003-coverage.md",
+      "sha256": "05be0edb4cee0cdc6e01a98ca95117e57905d224cc543ea8416b618d4676ba22",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:35:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.7.2-sprint-003-conflicts.md",
+      "sha256": "6f26cf291f09d75a8a39da29c2b1d09815a7fe0d339c5eaab5f51494eecc0b94",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:35:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.7.3-sprint-003-amendments.md",
+      "sha256": "a2df1ef826558b6e540b7ee150c29ca55b5931b31d5447f265b9584cfbd38d49",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:35:10Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.6.3-sprint-003-brief-addendum.md",
+      "sha256": "9863773d88bf78400f49ac885b48e1dcdc034e8f8529d4fe3292e93c35c8db12",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:37:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003, report version 2"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.7-sprint-003-alignment-report.md",
+      "sha256": "dd74105a040e2239b22deb1050d6148eb24336e754dc633fd6fa06a1443b9504",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:37:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003, report version 2"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.7.1-sprint-003-coverage.md",
+      "sha256": "078bc85d6a57026a259f64c1bada64515a96fc7a62ec427e7ae1cd4fc3dc7dcf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:37:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003, report version 2"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.7.2-sprint-003-conflicts.md",
+      "sha256": "3e25ff437e6641080cd31e482192f717bd833ce22b6b3cabad7299a1fcd053d6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:37:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003, report version 2"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/03.7.3-sprint-003-amendments.md",
+      "sha256": "c06f8b7ed2f5d754690906394607445f6c6a13708226209314e63ea30db57515",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:37:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003, report version 2"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/README.md",
+      "sha256": "941b84701671b81e0e6f5fb8652de47076cc0a0a4a4b533fb737efd08b9a03bf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:37:51Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-07 Planning, session local_abc9e4bf-6bb7-4082-aeb5-b7a9242925bc",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; matches the hash the author returned",
+        "run": "asdg-sprint-align SPRINT-003, report version 2"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/01-purpose.md",
+      "sha256": "aff0fac71ecc5872f7547b6518c00eadfa3af2e1f2d0a1daa479a0edcd6cfc6f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-02 Purpose, session local_4f904c19-90be-4650-9ab0-490b59f1a4da",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/02-current-capabilities.md",
+      "sha256": "86dea4c93ff2cdf848fe8cbaac6adab30a3d5bb1ad72b40fab03f1ec196c3e28",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-02 Purpose, session local_4f904c19-90be-4650-9ab0-490b59f1a4da",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/03-planned-improvements.md",
+      "sha256": "86fec74581ebd0b37177b2c45e74bdd306dfc773f58e34cc04810cbe11d2b004",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-02 Purpose, session local_4f904c19-90be-4650-9ab0-490b59f1a4da",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/02-purpose/README.md",
+      "sha256": "e7106a038806db37008866c5fdec54f5fb9ea3945f290eaf2683e56701049bff",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-02 Purpose, session local_4f904c19-90be-4650-9ab0-490b59f1a4da",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01-system-model.md",
+      "sha256": "9f80b161b39711e058b6baad95c6846f485e514e04ad39def8e3cd22eeed4e38",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.1-direct-question.md",
+      "sha256": "42dd74eceff2bed49abe1c99268e1906bd1efc070d16985ac6b52fbd8bbf6d7e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.2-open-question.md",
+      "sha256": "01a9939b4d6fa03ae7b215dbe4df91744ab890e893856f0a4a6ac37d4e7b02d7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.3-experience-question.md",
+      "sha256": "f8cd930b1fbd65e79a00dc7a7b8293dcb5016ad3cdbcf632ecc6320810059f59",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.4-confirm-current-question.md",
+      "sha256": "e39ec1693bee44ac7329937b4aec19a9e41fd95b3e9377e64beb90d868524a93",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/README.md",
+      "sha256": "d81dba165a531337f5844163a42f6b5aa85a8dee55189aafa29c0fbbb0cf6545",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/images/system-use-cases.png",
+      "sha256": "944535c66155794fbf8561e80582c7d3e3db523b6466d49fdb6563cdbc8e8c85",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/images/system-use-cases.svg",
+      "sha256": "3ffe04478dd384f6d9d5a6956ad5fc905225857d197f6cb6fbd048b7ff5c07ae",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/system-use-cases.puml",
+      "sha256": "69fee66354b2cc0dc69062366b98a6eb9ec0cab5a7ea29b1b8c265a999dab550",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md",
+      "sha256": "5783de5d339050fed59ac04df168baa2418483278dfc4ac3d52a1da01d8b1058",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-04 Evaluation, session local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/01.2-evaluation-criteria.md",
+      "sha256": "ed443a0d7ba64e83d0466422dbf63a1ce6825fe04e49241a17d9f9ddbad83eab",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-04 Evaluation, session local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/02-evidence-and-reconciliation.md",
+      "sha256": "eec731aba0f98ae5338d3c5c7abc5b8b2758c8863f0ade1b739f23a9fe9b2902",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-04 Evaluation, session local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.2-release-alternatives-and-review-decisions.md",
+      "sha256": "6505d4dd66b31febf462ec5f9ef02aac5419c127817de3446f487be697601b23",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-04 Evaluation, session local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/README.md",
+      "sha256": "9e7dd369b4b8aeb8a2bf4385bc73e5ffbe9368616796a46a91a8c47a3c5f9e92",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-04 Evaluation, session local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/01-architecture.md",
+      "sha256": "87c1a68ec65c12cc9cdd502b3a204509742b7c0050f726d51d6fdcbf8c082bd0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/01.1-streaming-and-replay.md",
+      "sha256": "5ceec42d717f6079fec7ecbfcf43bdef4a7e45af50a64f2f1c77e03c2a9f27b1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/01.2-interview-state.md",
+      "sha256": "3567d9ae0c5396960fbd2ebdf0baece6b5d32818b7b25a67a3990346171914a6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/02-current-architecture.md",
+      "sha256": "b0971c9242155ad093d3f50f2aa5c4ba8368335db9d1ec4db5d80c8c29a7f431",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/03-planned-decisions.md",
+      "sha256": "dbdbe3a689b1d54836a3db65d3c10e36a315cbb6a9ee8061da645d6f216904e9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/README.md",
+      "sha256": "6b73315ea105af9433dea7f81fb9416572564667bd4e7101979aebf799f6af15",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/images/deployment.svg",
+      "sha256": "4f23d343984ab1fb468d60b509174fb814040e6a058c22ab5b68e78198656818",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.5-proposed-answer.md",
+      "sha256": "bc97744226a463e2f61eeeccd7f8739859e5d21dbf14bf23e7a9187a92515e21",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/01.5.1-proposed-answer-states.md",
+      "sha256": "1e5ebf33fed4c87611269c75e8a50de2c0c8765cc9385f9482afe0ed26d7138d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/03-system-model-and-use-cases/images/proposed-answer-storyboard.svg",
+      "sha256": "75af0e4824643250a89bc9df66ca5a3f911119ead588107667a00392c29cecd3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-03 Use Cases, session local_d4a6a733-5151-42aa-b9cd-2d4d8cceb5e4",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.6-sprint-003-evaluation-plan.md",
+      "sha256": "1155ac0bebe8ba8049903b72b4f03b7894122b8d14cc97629cf0dc5f4bd35953",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-04 Evaluation, session local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/04-benchmarks-and-eval-strategy/03.6.1-sprint-003-live-session.md",
+      "sha256": "f07eabd2951a7c09b0912f03723abf336942841e773ad65153a314bcde10a4d8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-04 Evaluation, session local_0cfb4e27-d183-4546-a9bd-7b01496eca38",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/01.3-proposed-answer.md",
+      "sha256": "400d3af4f5990d6cfa55f745c4071e53297684ee02011718b1cb7ab289503390",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/01.4-service-start-and-key.md",
+      "sha256": "626b8f87bd486fea17dc8c48d0f1a398ce40b6e1a0308b3931fb463996f0c7c5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/03.2-answer-delay-question.md",
+      "sha256": "8bba8040f2662e47df7ee894a24b8cd0789f5933e28b8b92765d7822a3f5aec5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Proposed answer and its context/01-where-answers-are-generated.md",
+      "sha256": "a0ed636ebef18807fc6d022af8aa86e1d8f2086c362f88edc631ae32ced4c23f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Proposed answer and its context/02-preparation-package.md",
+      "sha256": "72821d15a8415f31231e8f258dcaedb1d5592b0694c5210e47182c2ddc705a82",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Proposed answer and its context/03-data-statements.md",
+      "sha256": "685d291b98676f5da7cbd95a88dca68883be74ea56985310f614a62b3e85a941",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/decisions/Proposed answer and its context/README.md",
+      "sha256": "3ee696a834dec9bf16cce607fa002f7d5aa968cbfa9cb30b7b2c484467657ea1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/05-high-level-design-and-architecture/images/current-system.svg",
+      "sha256": "8fe6043d1815e9fe061701bef9cba1602e8f38813ffd430c8e9d1003a5dbc117",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-17T00:50:38Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG-05 Architecture, session local_ef3e1367-85a1-450e-93a0-a47155faca88",
+        "recorded_by": "00 Governance coordinator, session local_f340552a-28b4-4ef1-b4de-e7cfb25abb2e; hash computed from the file after the author reported its correction round",
+        "run": "asdg-sprint-align SPRINT-003, correction round"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.md",
+      "sha256": "2928f5be9fd81ee69afbb5ea925eba023a0fac5fa6c3e7e3be370289fac2223f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T16:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json",
+      "sha256": "f1d007f96b2420dcc788c13c91207d70ff3912894924cc1d1c186a701aa08f49",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T16:54:18Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.json"
+      }
+    },
+    {
+      "path": "docs/asdg/00-governance/presentation/outline.md",
+      "sha256": "bcc990d5003e33d63f08a1d4a6fa092cbe9db4e64db31b5cdccd78316ad98c90",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b, by Pablo's direction outside Admin's ordinary scope",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.md",
+      "sha256": "8a95d5be6c50301be5b16ad1b61f56126a27f4b45233fd47a03a9c67f2461624",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json",
+      "sha256": "54fee93b33b22e5d4d7a2febf1b58fc1a9d30b193592e5ea13639dd365700bf8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:07:45Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "09af6e1737a11d456c834845450ce8a7ebb898d469ae327eb033102bec8d99a2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:34:26Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.md",
+      "sha256": "2cea8f35351b52bab61730a90b47fb79fd4a6d5fb4baed7960ce3aa135f97030",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:34:26Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json",
+      "sha256": "83c812525f6430acf5d2b04eac70c8881773cdc2226822caf411e24ff6962807",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:34:26Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "Claude as ASDG Admin, session local_76b82554-3d13-429d-8123-87899d5c580b",
+        "record": "docs/asdg/07-planning/02.24-review-pre-code-review-skill.json"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-pre-code-review/SKILL.md",
+      "sha256": "959770350a685a1623a4e67ca6a3f4cbbe60a6170c5a5f267ff261dee304c992",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:41:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
+    },
+    {
+      "path": ".agents/skills/asdg-pre-code-review/SKILL.md",
+      "sha256": "959770350a685a1623a4e67ca6a3f4cbbe60a6170c5a5f267ff261dee304c992",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-18T18:41:20Z",
+      "human_approval": null,
+      "provenance": {
+        "generator": "asdg embedded init"
+      }
     }
   ]
 }

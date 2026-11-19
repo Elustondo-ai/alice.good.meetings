@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 578" role="img" aria-labelledby="t d">
+  <title id="t">SPRINT-004 screen areas</title>
+  <desc id="d">Five areas from top to bottom: a slim cue-coloured bar with the application name and buttons, the confirmed question in one large bold box, a smaller candidate question line with Confirm and Clear, and two columns: Alice suggests on the left and What I am saying on the right.</desc>
+  <style>
+    .r{fill:#fff;stroke:#555;stroke-width:1.5}.h{font:700 13px sans-serif;fill:#111}.t{font:12px sans-serif;fill:#333}
+    .bar{fill:#1b7f2a}.w{font:700 13px sans-serif;fill:#fff}.q{font:700 30px sans-serif;fill:#111}.k{fill:#e8f0fe;stroke:#7a9cd6}
+    .m{fill:#fffdf3;stroke:#c9a227}.n{font:italic 11px sans-serif;fill:#555}.b{fill:#f4f4f4;stroke:#888}.s{font:11px sans-serif;fill:#b3261e}
+  </style>
+  <rect width="800" height="578" fill="#f4f4f4"/>
+  <rect class="bar" x="10" y="10" width="780" height="62" rx="6"/>
+  <circle cx="58" cy="30" r="20" fill="#f4f4f4" stroke="#fff" stroke-width="2"/><text class="t" x="47" y="34" style="font-size:9px">Alice</text>
+  <text class="w" x="26" y="62" style="font-size:8px;font-weight:400">Alice Good Meetings</text>
+  <text class="s" x="330" y="46" style="fill:#fff;font-size:9px">(centre empty: reserved for "Alice says")</text>
+  <rect class="b" x="440" y="16" width="76" height="22" rx="3"/><text class="t" x="446" y="31" style="font-size:9px">Start listening</text>
+  <rect class="b" x="520" y="16" width="76" height="22" rx="3"/><text class="t" x="526" y="31" style="font-size:9px">Stop listening</text>
+  <rect class="b" x="608" y="16" width="52" height="22" rx="3"/><text class="t" x="612" y="31" style="font-size:9px">Upload</text>
+  <rect class="b" x="664" y="16" width="52" height="22" rx="3"/><text class="t" x="666" y="31" style="font-size:9px">Download</text>
+  <circle cx="768" cy="27" r="11" fill="#f4f4f4"/>
+  <text class="w" x="520" y="60" style="font-size:10px">LAND IT</text><text class="t" x="578" y="60" style="fill:#fff;font-size:9px">● monitor line, under the buttons</text>
+  <text class="s" x="14" y="86">1  Bar: 80 px, sticky; avatar 56 px and small name left like a logo, empty centre, buttons right</text>
+  <g transform="translate(0,18)">
+  <rect class="r" x="10" y="76" width="780" height="104" rx="6" style="stroke-width:3;stroke:#111"/>
+  <text class="t" x="22" y="94">QUESTION  confirmed 10:42:07</text><text class="q" x="22" y="134">Give me an example of AI innovation you led</text><text class="q" x="22" y="168">at CIBC and what the result was.</text>
+  <text class="s" x="14" y="194">2  Question: bold, 34 to 64 px by length, grows, never cut</text>
+  <rect class="r" x="10" y="202" width="780" height="54" rx="6" style="stroke-left:4px"/><rect x="10" y="202" width="4" height="54" fill="#ffd54a"/>
+  <text class="t" x="24" y="220">HEARD NOW (CANDIDATE)  new question</text><text class="n" x="24" y="244" style="font-size:16px">And how did you measure the impact?</text>
+  <rect class="b" x="610" y="214" width="84" height="30" rx="3"/><text class="h" x="632" y="234">Confirm</text><rect class="b" x="702" y="214" width="70" height="30" rx="3"/><text class="t" x="722" y="234">Clear</text>
+  <text class="s" x="14" y="272">3  Candidate: italic 22 px, Space confirms</text>
+  <rect class="k" x="10" y="280" width="385" height="260" rx="6"/><text class="t" x="22" y="298">ALICE SUGGESTS</text>
+  <text class="h" x="30" y="330" style="font-size:20px">• Bold bullets, 22 to 32 px</text><text class="h" x="30" y="362" style="font-size:20px">• At most three</text><text class="h" x="30" y="394" style="font-size:20px">• Larger than speech text</text>
+  <text class="t" x="22" y="528">Package: 3 files · 18,843 chars · uploaded</text>
+  <rect class="m" x="405" y="280" width="385" height="260" rx="6"/><text class="t" x="417" y="298">WHAT I HEAR  live, last 30 s</text>
+  <text class="t" x="417" y="440" style="fill:#706f6b;font-size:16px">older words, faded (contrast 4.5)</text><text class="h" x="417" y="470" style="font-size:16px">newest words, bold</text>
+  <text class="t" x="417" y="528">Saved to the meeting log with time stamps</text>
+  <text class="s" x="14" y="554">4  Two equal columns, min 300 px, stack under 800 px; the page scrolls, nothing is clipped</text>
+</g>
+</svg>

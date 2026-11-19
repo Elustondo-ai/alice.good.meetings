@@ -29,7 +29,7 @@ All four conversational fixture snapshots remained byte-identical. Simulated acc
 
 ## Preservation and limits
 
-Speaker Coach application files, all existing `.asdg/` files, accepted client documentation and unrelated pre-existing edits were preserved.
+Alice.Good.Meetings application files, all existing `.asdg/` files, accepted client documentation and unrelated pre-existing edits were preserved.
 Methodology modification receipts append exact hashes without human approval; no sprint, release or project transition was recorded.
 This review is implementation evidence, not human acceptance. No commit, push, deployment or live project closure occurred.
 Fresh agents share methodology source and fixture authorship; their replies do not establish independent product evidence.

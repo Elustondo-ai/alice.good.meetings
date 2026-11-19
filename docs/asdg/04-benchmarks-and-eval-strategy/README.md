@@ -1,6 +1,6 @@
-# How we will know SpeakerCoach helps
+# How we will know Alice.Good.Meetings helps
 
-We need evidence that SpeakerCoach follows the conversation correctly, works through real audio capture and helps a person answer without losing focus.
+We need evidence that Alice.Good.Meetings follows the conversation correctly, works through real audio capture and helps a person answer without losing focus.
 
 ![Replay tests behavior, Air QA tests the physical path, and live interviews test practical usefulness.](images/evaluation-strategy.svg)
 
@@ -10,8 +10,8 @@ We need evidence that SpeakerCoach follows the conversation correctly, works thr
 | --- | --- |
 | [01 Evaluation strategy](01-evaluation-strategy.md) | The overall approach: automatic replay, Air QA and live interviews. |
 | [01.1 Benchmark collection](01.1-benchmark-collection.md) | How one recording can grow into a trustworthy ten-recording suite. |
-| [01.2 Evaluation criteria](01.2-evaluation-criteria.md) | What correct, timely and useful behavior looks like, and how to assess it. |
-| [02 Current evidence](02-evidence-and-reconciliation.md) | What the 21 October assessment inspected, reported and left unverified. |
+| [01.2 Evaluation criteria](01.2-evaluation-criteria.md) | What correct, timely and useful behavior looks like, including a proposed answer and the glance check. |
+| [02 Current evidence](02-evidence-and-reconciliation.md) | What the 21 October assessment inspected and left unverified, with a 16 November update. |
 
 ## Then review the first experiment
 
@@ -22,6 +22,14 @@ We need evidence that SpeakerCoach follows the conversation correctly, works thr
 | [03.2 Alternatives and decisions](03.2-release-alternatives-and-review-decisions.md) | Compare approaches fairly and identify choices still needing review. |
 | [03.3 First recording candidate](03.3-first-recording-case.md) | Inspect the supplied MP3 and define the first listening, transcription and speaker-separation probe. |
 | [03.4 First voice-profile comparison](03.4-voice-profile-probe.md) | Inspect the opening 90 seconds and two User-confirmed speaker examples. |
+| [03.5 SPRINT-003 evaluation review](03.5-sprint-003-evaluation-review.md) | See how each SPRINT-003 commitment could be shown to pass or fail, and which criteria were missing on the first pass. |
+| [03.6 SPRINT-003 evaluation plan](03.6-sprint-003-evaluation-plan.md) | Decide whether service tests, the page check, the preview and one live session are enough for the new layout and the proposed answer. |
+| [03.12 SPRINT-004 evaluation review](03.12-sprint-004-evaluation-review.md) | See how each SPRINT-004 commitment could be shown to pass or fail, and what is missing (draft first pass). |
+| [03.10 SPRINT-004 upload, log and screen checks](03.10-sprint-004-upload-log-and-screen-checks.md) | See what a pass looks like for the package upload, the meeting log and the new screen, and who runs each check (draft). |
+| [03.11 SPRINT-004 live session and statement check](03.11-sprint-004-live-session-and-statement-check.md) | Agree the live pass rule, the log review and the statement check (draft). |
+| [03.9 SPRINT-003 automatic flow and channels](03.9-sprint-003-automatic-flow-and-channels.md) | Measure the pause-triggered answer, contextual reading and several input channels (draft). |
+| [03.8 SPRINT-003 package and statement checks](03.8-sprint-003-package-and-statement-checks.md) | Follow the reviewer-run procedures that show no benchmark material is sent and the data statements are true. |
+| [03.6.1 SPRINT-003 live session](03.6.1-sprint-003-live-session.md) | Agree the live script, the pass rule and the viewing surface for the glance check. |
 
 The [original source draft](sources/strategy-draft-0.1.md) supplies the central evaluation story and remains unchanged.
 The user selected replay, Air QA, live validation and a ten-recording target. Detailed protocols, scoring and numerical targets remain proposals.

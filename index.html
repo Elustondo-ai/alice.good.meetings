@@ -5,129 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meeting Helper</title>
   <style>
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    #panel {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: green;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: sans-serif;
-      font-size: min(8rem, 20vw, 20vh);
-      font-weight: bold;
-      white-space: nowrap;
-    }
-    #controls {
-      position: fixed;
-      bottom: min(8px, 1vmin);
-      right: min(8px, 1vmin);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      max-width: 100%;
-      gap: min(4px, 0.5vmin);
-    }
-    #controls button {
-      max-width: 100%;
-      padding: min(2px, 0.5vmin) min(6px, 1vmin);
-      font-size: min(11px, 2vmin);
-      cursor: pointer;
-    }
-    #debug {
-      position: fixed;
-      top: min(8px, 1vmin);
-      left: min(8px, 1vmin);
-      max-width: calc(100% - 2 * min(8px, 1vmin));
-      max-height: calc(100% - 2 * min(8px, 1vmin));
-      margin: 0;
-      overflow: hidden;
-      overflow-wrap: anywhere;
-      padding: min(8px, 1vmin) min(16px, 2vmin);
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      font-family: monospace;
-      font-size: min(24px, 2.5vmin);
-      border-radius: min(8px, 1vmin);
-    }
-    #server {
-      position: fixed;
-      bottom: 44px;
-      left: min(8px, 1vmin);
-      max-width: min(760px, 96vw);
-      max-height: 34vh;
-      overflow: auto;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      margin: 0;
-      padding: 8px;
-      background: rgba(0, 0, 0, 0.72);
-      color: white;
-      font: clamp(12px, 1.8vmin, 17px) monospace;
-      border-radius: 6px;
-    }
-    #question {
-      position: fixed;
-      top: min(8px, 1vmin);
-      right: min(8px, 1vmin);
-      width: min(520px, 48vw);
-      max-height: 50vh;
-      overflow: auto;
-      padding: 10px 12px;
-      background: rgba(0, 0, 0, 0.78);
-      color: white;
-      font: clamp(14px, 2.2vmin, 20px) sans-serif;
-      border-radius: 6px;
-    }
-    #question p { margin: 4px 0 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
-    #question .label { font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.85; }
-    #question hr { border: 0; border-top: 1px solid rgba(255, 255, 255, 0.25); margin: 6px 0; }
-    #question .tag { text-transform: none; letter-spacing: 0; color: #ffd54a; opacity: 0.9; }
-    #focus-question { font-weight: bold; }
-    #focus-question.historical { opacity: 0.6; }
-    #live-question { border-left: 3px solid #ffd54a; padding-left: 8px; font-style: italic; }
-    #live-note, #question-feedback, #confirm-hint { font-size: 0.85em; }
-    #confirm-hint { opacity: 0.8; margin-bottom: 0; }
-    #question button { font-size: 0.85em; padding: 4px 10px; cursor: pointer; }
-    #question button.primary:enabled { font-weight: bold; }
-    #question button:disabled { cursor: not-allowed; }
-    #question button:focus-visible { outline: 3px solid #ffd54a; outline-offset: 2px; }
+    :root { --cue-bg: green; --cue-fg: white; --ink: #111; --paper: #f4f4f4; --line: #555; --accent: #ffd54a; }
+    *, *::before, *::after { box-sizing: border-box; animation: none !important; transition: none !important; }
+    html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: sans-serif; }
+    [hidden] { display: none !important; }
+    /* Layout B, cue first. Fixed row heights keep the four glance rows still (PG-15); only details scroll. */
+    .page { height: 100vh; display: grid; grid-template-rows: 160px 124px 96px 232px minmax(0, 1fr); gap: 8px; padding: 8px; overflow: hidden; }
+    .card { background: #fff; border: 1.5px solid var(--line); border-radius: 6px; padding: 8px 12px; min-height: 0; overflow: hidden; }
+    .label { font-size: 14.85px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.85; }
+    .tag { text-transform: none; letter-spacing: 0; color: #8a5a00; font-weight: bold; }
+    .reason { font-size: 16px; margin: 4px 0 0; }
+    .cue-band { background: var(--cue-bg); color: var(--cue-fg); border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; overflow: hidden; }
+    .cue-word { font-size: min(8rem, 20vw, 20vh); font-weight: bold; white-space: nowrap; line-height: 1; }
+    .controls { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .controls .row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .controls button { font-size: 14px; padding: 5px 10px; cursor: pointer; }
+    .controls .reason { font-size: 14px; margin: 0; max-width: 360px; text-align: right; }
+    /* Subtle monitor line: one fixed-height line, so it never moves the glance rows. */
+    .controls .monitor { font-size: 17px; line-height: 21px; height: 42px; margin: 0; max-width: 520px; opacity: 0.9; text-align: right; }
+    .monitor div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .monitor .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: currentColor; margin-right: 7px; opacity: 0.35; }
+    .monitor .dot.on { opacity: 1; }
+    .focus, .live { font-size: clamp(14px, 2.2vmin, 20px); }
+    .focus-text { font-weight: bold; margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; overflow: auto; max-height: calc(100% - 22px); }
+    .focus-text.historical { opacity: 0.6; }
+    .live { display: flex; gap: 12px; align-items: stretch; justify-content: space-between; border-left: 3px solid var(--accent); }
+    .live-text-area { min-width: 0; flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+    .live-text { font-style: italic; margin: 4px 0 0; overflow-wrap: anywhere; overflow: auto; flex: 1 1 auto; min-height: 0; white-space: pre-wrap; }
+    .live-meta { flex: none; margin: 2px 0 0; font-size: 0.85em; max-height: 2.6em; overflow: auto; }
+    .live-meta:empty { display: none; }
+    .live-buttons { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+    .live-buttons button { font-size: 16.83px; padding: 4px 10px; cursor: pointer; }
+    .live-buttons button.primary:enabled { font-weight: bold; }
+    .live-buttons button:focus-visible, .controls button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    button:disabled { cursor: not-allowed; }
+    .answer { background: #e8f0fe; border-color: #7a9cd6; }
+    .answer-message { font-size: 24px; margin: 6px 0 0; }
+    .bullets { margin: 6px 0 0; padding-left: 26px; font-size: 24px; line-height: 1.25; }
+    .bullets li { margin-bottom: 4px; overflow-wrap: anywhere; }
+    .answer.failed { background: #fbe9e7; border-color: #c0392b; }
+    .answer.unavailable { background: #eceff1; border-color: #455a64; border-style: dashed; }
+    .answer.last-known .bullets, .answer.last-known .answer-message { opacity: 0.8; }
+    .details { display: flex; flex-direction: column; }
+    .details-text { flex: 1; min-height: 0; overflow-y: auto; margin-top: 4px; font-size: 18px; line-height: 1.4; white-space: pre-wrap; overflow-wrap: anywhere; }
+    /* Diagnostic readouts are off the glance layout; add #diagnostics to the address to show them. */
+    #debug, #server { position: fixed; margin: 0; background: rgba(0, 0, 0, 0.72); color: #fff; font-family: monospace; padding: 8px; border-radius: 6px; white-space: pre-wrap; overflow-wrap: anywhere; z-index: 2; }
+    #debug { top: 8px; left: 8px; font-size: 14px; }
+    #server { bottom: 8px; left: 8px; max-width: min(760px, 96vw); max-height: 34vh; overflow: auto; font-size: 14px; }
     @media (max-width: 700px) {
-      #question { left: min(8px, 1vmin); width: auto; max-height: 40vh; }
-      #debug { top: auto; bottom: calc(44px + 34vh + 8px); }
+      .page { height: auto; min-height: 100vh; grid-template-rows: 188px 190px 196px 460px 260px; overflow: visible; }
+      .cue-band { flex-direction: column; align-items: flex-start; justify-content: center; padding: 8px 12px; gap: 6px; }
+      .controls { align-items: flex-start; }
+      .controls .row { justify-content: flex-start; }
+      .controls .reason { text-align: left; }
+      .live { flex-direction: column; }
+      .live-buttons { flex-direction: row; justify-content: flex-start; }
+      .answer-message, .bullets { font-size: 20px; }
     }
   </style>
 </head>
 <body>
-  <div id="panel">GOOD</div>
-  <pre id="debug"></pre>
-  <pre id="server" role="status" aria-label="Server and agent responses"></pre>
-  <section id="question" aria-label="Interview question">
-    <div class="label">Focus question <span id="focus-status"></span></div>
-    <p id="focus-question">No focus question yet</p>
-    <hr>
-    <div class="label">Live question <span id="live-tag" class="tag"></span></div>
-    <p id="live-question">Not listening</p>
-    <p id="live-note"></p>
-    <p id="question-feedback" role="status" aria-live="polite"></p>
-    <button id="confirm-question" class="primary" type="button" disabled aria-describedby="confirm-hint">Confirm question</button>
-    <button id="clear-live" type="button" disabled>Clear live</button>
-    <p id="confirm-hint"></p>
-  </section>
-  <div id="controls">
-    <button id="listen">Start Listening</button>
-    <button data-state="good">Good</button>
-    <button data-state="land">Land it</button>
-    <button data-state="stop">Stop</button>
+  <div id="page" class="page">
+    <section id="cue-band" class="cue-band" aria-label="Cue">
+      <div id="panel" class="cue-word">GOOD</div>
+      <div id="controls" class="controls" aria-label="Listening and cue buttons">
+        <div class="row">
+          <button id="listen" type="button" disabled>Start listening</button>
+          <button id="stop-listen" type="button" disabled>Stop listening</button>
+        </div>
+        <div class="row">
+          <button type="button" data-state="good">Good</button>
+          <button type="button" data-state="land">Land it</button>
+          <button type="button" data-state="stop">Stop</button>
+        </div>
+        <p id="listen-reason" class="reason" role="status"></p>
+        <p id="monitor" class="monitor" aria-hidden="true"></p>
+      </div>
+    </section>
+
+    <section id="focus" class="card focus" aria-label="Focus question">
+      <div class="label">Focus question <span id="focus-status" class="tag"></span></div>
+      <p id="focus-question" class="focus-text">No focus question yet</p>
+    </section>
+
+    <section id="live" class="card live" aria-label="Live question">
+      <div class="live-text-area">
+        <div class="label">Live question <span id="live-tag" class="tag"></span></div>
+        <p id="live-question" class="live-text">Not listening</p>
+        <p id="live-meta" class="live-meta"><span id="live-note"></span> <span id="question-feedback" role="status" aria-live="polite"></span> <span id="confirm-hint"></span></p>
+      </div>
+      <div class="live-buttons">
+        <button id="confirm-question" class="primary" type="button" disabled aria-describedby="confirm-hint">Confirm</button>
+        <button id="clear-live" type="button" disabled>Clear live</button>
+      </div>
+    </section>
+
+    <section id="answer" class="card answer" aria-label="Proposed answer">
+      <div class="label">Proposed answer <span id="answer-tag" class="tag"></span></div>
+      <p id="answer-message" class="answer-message"></p>
+      <ul id="bullets" class="bullets"></ul>
+      <p id="answer-reason" class="reason"></p>
+    </section>
+
+    <section id="details" class="card details" aria-label="Details">
+      <div class="label">Details</div>
+      <div id="details-text" class="details-text" tabindex="0"></div>
+    </section>
   </div>
+  <pre id="debug" hidden></pre>
+  <pre id="server" role="status" aria-label="Server and agent responses" hidden></pre>
   <script src="app.js"></script>
 </body>
 </html>

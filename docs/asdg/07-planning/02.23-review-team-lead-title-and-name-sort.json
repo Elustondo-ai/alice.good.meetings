@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "objective": "In Claude, make Create team offer one sidebar sort by name as its default ordering step, and give the team's lead chat the canonical title '<Project Nickname> ASDG Team Lead'.",
+  "requested_by": "Pablo (repository owner), 2026-11-18, with ASDG Admin selected by his own /asdg-admin: \"the way it show now is perfect\", \"I like the name of the project instead of 00 governance\", \"we should hacve a more canonical name\", \"I think I prefer more explicit Alice ASDG Team Lead\", \"In general <Project Nickname> ASDG Team Lead\". Relayed by the Governance chat, not verified first-hand: \"I need this sorting as default in asdg\".",
+  "scope": "Alice's embedded asdg/ copy only. Pablo did not answer the local-versus-upstream question; the narrower scope was taken and no upstream text was drafted.",
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-fable-5-2",
+    "client": "Claude desktop app, Code tab",
+    "session": "local_76b82554-3d13-429d-8123-87899d5c580b"
+  },
+  "role": {
+    "id": "ASDG-ADMIN",
+    "selection": "explicit /asdg-admin by Pablo on 2026-11-18",
+    "title": "RENAMED to 'ASDG Admin' (was 'ASDG admin'), confirmed by readback"
+  },
+  "proposal_source": "Governance chat, session local_04a9b5e5-ea2b-4d36-9815-8e93fbba47b4; its item 3 (title the lead '00 Governance') was dropped on Pablo's reply",
+  "starting_revision": "bde3f7a4202381fe6fed19a7d4bb29e6b32a7d03",
+  "branch": "sprint-03",
+  "preserved_uncommitted_work": [
+    "poc/context/ (untracked)"
+  ],
+  "decisions_reversed": [
+    "sidebar ordering was Codex-only; in Claude it is now an offered default behind the shared-preference approval",
+    "the default role always displayed '00 Governance' and no title carried a project name; the team lead chat is the one exception"
+  ],
+  "changed_paths": [
+    {
+      "path": "asdg/skills/asdg-focus/rename-chat.md",
+      "sha256": "7ddcacc1bb9b102bb01b113c2901d65fab32d2ba952bd24a5461bce2ea3235c8",
+      "previous_sha256": "e37c9284a61db66d7e18482e4e565015826551bf4a4cc1939aa4463cfd3e5e79"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "cfed2204ce19d0c721845ba8ef050d24a1aeacac344c5f3a5a96cc40d124e47a",
+      "previous_sha256": "3c52c70c2d05b2528f493121a431700c9caf4ac69828a27fc6eb3b91f3f63c1a"
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/ordering.md",
+      "sha256": "fc1ff279110f0fe0a0e548511ce448283c9a94bf3ee0de8c8e2ef719a4b918b0",
+      "previous_sha256": "93d6fa76d190fe062d689a9838362492598ce85ddb2a633329c4bdd342922e8e"
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "5296df04210a34df2b802b6e5812b220e9bae904ce787a04281d7c8d109ad90f",
+      "previous_sha256": "03be339d5d7d36887bbc108135e15c800b36231bfc15e4e4f0cd18500d32428a"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.23-review-team-lead-title-and-name-sort.md",
+      "sha256": "2928f5be9fd81ee69afbb5ea925eba023a0fac5fa6c3e7e3be370289fac2223f",
+      "previous_sha256": null
+    }
+  ],
+  "not_changed": [
+    "asdg/metadata/ (delivery manifest kept as provenance; package integrity now reports local changes)",
+    "templates, adapters, engine, tests",
+    ".asdg/sprint.json and application code"
+  ],
+  "verification": {
+    "automated": [
+      "python3 asdg/scripts/cli.py verify: structure verified",
+      "python3 asdg/scripts/check.py: PASS",
+      "python3 -B -m unittest discover -s tests (in asdg/): 215 tests, failures=3, skipped=6; the three failures are the fixture failures recorded in 02.20 (build.json never matches a resealed copy)"
+    ],
+    "observed": [
+      "Pablo's screenshot of the Claude desktop sidebar: role chats 01 to 12 listed in order under the lead chat"
+    ],
+    "not_run": [
+      "Create team with the new text; the sort offer and the team lead rename are untested",
+      "Codex"
+    ]
+  },
+  "review_status": "REVIEW_REQUIRED: unstaged diff awaiting Pablo; nothing staged, committed or pushed",
+  "human_approval": null
+}

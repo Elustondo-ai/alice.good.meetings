@@ -4,7 +4,7 @@ This folder will record small experiments that answer a concrete technical quest
 
 ![Uncertain assumption → Small experiment → Evidence for a decision. Diagram of this stage's purpose, not a completion claim.](images/stage-overview.svg)
 
-## SpeakerCoach today
+## Alice.Good.Meetings today
 
 No proof-of-concept experiment or result is documented in this stage yet. The existence of the speaking-duration prototype alone does not answer every question about future coaching capabilities.
 
@@ -14,6 +14,8 @@ For example, an experiment might investigate whether a candidate approach can id
 
 ## Explore
 
+- [03.1 SPRINT-003 POC decision](03.1-sprint-003-poc-decision.md): no answer-delay experiment before the build; the live session supplies the evidence. Draft of 16 November 2026, refreshed 18 November 2026 for the twelve-commitment baseline.
+- [03.2 SPRINT-004 POC decision](03.2-sprint-004-poc-decision.md): no proof of concept before the build; three uncertainties settled by tests and the live session. Draft of 19 November 2026.
 - Use the [evaluation strategy](../04-benchmarks-and-eval-strategy/README.md) to define convincing evidence and [architecture](../05-high-level-design-and-architecture/README.md) to identify assumptions worth testing.
 
 Read files in order: **01 Intended**, **02 Current**, **03 Planned**. Additional topics use dotted numbers such as `01.1` or `03.2`; release and sprint plans identify their horizon in the filename and text.

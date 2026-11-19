@@ -16,6 +16,8 @@ Canonical workflows live here; native discovery adapters remain thin references.
 | [Admin](asdg-admin/SKILL.md) | Explicitly switch this chat to ASDG Admin for rule maintenance, or clear back to 00 Governance |
 | [Approve](asdg-approve/SKILL.md) | Resolve the current reviewed documentation baseline and record explicit human acceptance |
 | [Sprint start](asdg-sprint-start/SKILL.md) | Require clean Git status, create a sprint branch, then activate the chosen scope |
+| [Sprint align](asdg-sprint-align/SKILL.md) | Coordinate stage reviews from purpose to specifications and report implementation readiness; no state change |
+| [Pre-code review](asdg-pre-code-review/SKILL.md) | Assemble stages 01 to 08 into a pre-code review PowerPoint with speaker notes; no state change |
 | [Sprint review](asdg-sprint-review/SKILL.md) | Assess evidence against the sprint criteria without changing state |
 | [Sprint close](asdg-sprint-close/SKILL.md) | Preserve the review and end the explicitly selected sprint, retaining unfinished work |
 | [Suggestion](asdg-suggestion/SKILL.md) | Recommend one useful next step from project evidence and priorities |

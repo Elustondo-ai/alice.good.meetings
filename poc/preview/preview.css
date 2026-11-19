@@ -1,0 +1,65 @@
+:root { --cue-bg: green; --cue-fg: white; --ink: #111; --paper: #f4f4f4; --line: #555; --accent: #ffd54a; }
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: sans-serif; }
+[hidden] { display: none !important; }
+/* No animation, transition or sound anywhere (PG-6). */
+* { animation: none !important; transition: none !important; }
+
+/* Link list shown with no fragment */
+#list { max-width: 760px; margin: 0 auto; padding: 16px; line-height: 1.5; }
+#list h1 { font-size: 1.3rem; }
+#list h2 { font-size: 1.05rem; margin-top: 1.2em; }
+
+/* Page, desktop: fixed row heights so the glance elements keep position and size (PG-4) */
+.page { height: 100vh; display: grid; grid-template-rows: 160px 124px 96px 232px minmax(0, 1fr); gap: 8px; padding: 8px; overflow: hidden; }
+.card { background: #fff; border: 1.5px solid var(--line); border-radius: 6px; padding: 8px 12px; min-height: 0; overflow: hidden; }
+.label { font-size: 14.85px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.85; }
+.tag { text-transform: none; letter-spacing: 0; color: #8a5a00; font-weight: bold; }
+.reason { font-size: 16px; margin: 4px 0 0; }
+.note { margin: 4px 0 0; font-size: 12px; color: #555; border-top: 1px solid #ccc; padding-top: 2px; }
+
+/* Cue band: word as on the old page (min(8rem, 20vw, 20vh) = 128px at 1280 x 900) */
+.cue-band { background: var(--cue-bg); color: var(--cue-fg); border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; overflow: hidden; }
+.cue-word { font-size: min(8rem, 20vw, 20vh); font-weight: bold; white-space: nowrap; line-height: 1; }
+.controls { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.controls .row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.controls button { font-size: 14px; padding: 5px 10px; cursor: pointer; }
+.controls .reason { font-size: 14px; margin: 0; max-width: 360px; text-align: right; }
+
+/* Focus: 19.8px bold at 1280 x 900, as on the old page */
+.focus, .live { font-size: clamp(14px, 2.2vmin, 20px); }
+.focus-text { font-weight: bold; margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; overflow: auto; max-height: calc(100% - 22px); }
+.focus.last-known { }
+.live { display: flex; gap: 12px; align-items: stretch; justify-content: space-between; border-left: 3px solid var(--accent); }
+.live-text-area { min-width: 0; flex: 1; overflow: hidden; }
+.live-text { font-style: italic; margin: 4px 0 0; overflow-wrap: anywhere; overflow: auto; max-height: calc(100% - 22px); }
+.live-buttons { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+.live-buttons button { font-size: 16.83px; padding: 4px 10px; cursor: pointer; }
+.live-buttons button.primary:enabled { font-weight: bold; }
+.live-buttons button:disabled, .controls button:disabled { cursor: not-allowed; }
+
+/* Answer card: bullets 24px, no button, no link */
+.answer { background: #e8f0fe; border-color: #7a9cd6; }
+.answer-message { font-size: 24px; margin: 6px 0 0; }
+.bullets { margin: 6px 0 0; padding-left: 26px; font-size: 24px; line-height: 1.25; }
+.bullets li { margin-bottom: 4px; overflow-wrap: anywhere; }
+.answer.failed { background: #fbe9e7; border-color: #c0392b; }
+.answer.unavailable { background: #eceff1; border-color: #455a64; border-style: dashed; }
+.answer.last-known .bullets, .answer.last-known .answer-message { opacity: 0.8; }
+
+/* Details: scrolls inside itself only; no collapse control */
+.details { display: flex; flex-direction: column; }
+.details-text { flex: 1; min-height: 0; overflow-y: auto; margin-top: 4px; font-size: 18px; line-height: 1.4; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* Narrow: the page may scroll (PG-2); glance rows keep fixed heights */
+@media (max-width: 700px) {
+  .page { height: auto; min-height: 100vh; grid-template-rows: 188px 190px 196px 460px 260px; overflow: visible; }
+  .cue-band { flex-direction: column; align-items: flex-start; justify-content: center; padding: 8px 12px; gap: 6px; }
+  .cue-word { font-size: min(8rem, 20vw, 20vh); }
+  .controls { align-items: flex-start; }
+  .controls .row { justify-content: flex-start; }
+  .controls .reason { text-align: left; }
+  .live { flex-direction: column; }
+  .live-buttons { flex-direction: row; justify-content: flex-start; }
+  .answer-message, .bullets { font-size: 20px; }
+}
