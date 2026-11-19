@@ -4,8 +4,10 @@ import { AnswerArea } from './answer-area.mjs';
 
 // Each connection owns its controller and at most one in-flight reasoning request.
 export class InterviewSession {
-  constructor({ reason, emit, audit = () => {}, delayMs = 2500, generate, now = Date.now, answerTimeoutMs, print }) {
+  constructor({ reason, emit, audit = () => {}, delayMs = 2500, generate, now = Date.now, answerTimeoutMs, print, canAsk = () => true }) {
     this.id = randomUUID();
+    // The guidance request goes out only while Pablo is pausing; the server passes the pause test, tests default to always.
+    this.canAsk = canAsk;
     this.reason = reason;
     this.emit = emit;
     this.audit = audit;
@@ -207,6 +209,8 @@ export class InterviewSession {
 
   async run() {
     if (!this.active || this.running || !this.pending) return;
+    // Not pausing: keep the request pending; the next transcript after a pause schedules it again.
+    if (!this.canAsk()) return;
     this.pending = false;
     this.running = true;
     this.lastRun = Date.now();

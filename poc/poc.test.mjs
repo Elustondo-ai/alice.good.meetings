@@ -17,7 +17,7 @@ import { createGenerator, answerModel, buildRequest, modelInput, validateResult,
 
 // The existing cases never read a real preparation package: every server gets an empty temporary folder.
 const noPackage = await mkdtemp(join(tmpdir(), 'alice-nopkg-'));
-const createPocServer = (options = {}) => createRealServer({ packageDir: noPackage, log: () => {}, ...options });
+const createPocServer = (options = {}) => createRealServer({ packageDir: noPackage, log: () => {}, requirePause: false, ...options });
 
 const proposal = (changes = {}) => ({ reply: 'I heard the question.', phase: 'QUESTION', question: 'Tell me about yourself.', intent: 'new-question', evidenceIds: ['one'], ...changes });
 const clarify = (question, evidenceIds) => proposal({ intent: 'clarify', question, evidenceIds });
@@ -697,7 +697,7 @@ async function liveServer(t, { files = {}, ...options } = {}) {
   const packageDir = await tempDir(t, files);
   let connects = 0;
   const server = createRealServer({ apiKey: 'sk-test-sentinel', connect: () => { connects += 1; return f.connect(); }, generate: f.generate, packageDir,
-    audit: (name, data) => audits.push({ name, ...data }), log: line => logs.push(line), reasonDelayMs: 0,
+    audit: (name, data) => audits.push({ name, ...data }), log: line => logs.push(line), reasonDelayMs: 0, requirePause: false,
     reason: async snapshot => proposal({ question: snapshot.observations.at(-1)?.text ?? null, evidenceIds: snapshot.observations.map(o => o.id) }), ...options });
   server.listen(0, '127.0.0.1'); await once(server, 'listening'); t.after(() => server.shutdown());
   const origin = `http://127.0.0.1:${server.address().port}`;
@@ -1159,4 +1159,45 @@ test('no poc source outside poc/review names eval-data, nothing outside poc/revi
     }
   }
   assert.deepEqual(hits, [`for (const path of ['/poc/.env.local', '/.git/config', '/poc/server.mjs', '/${benchmark}/secret.mp3']) {`]);
+});
+
+test('guidance is asked only after a one-second pause; no commit or request happens mid-speech', async t => {
+  const sent = []; let upstream, asks = 0;
+  class Upstream extends EventEmitter {
+    readyState = WebSocket.OPEN;
+    bufferedAmount = 0;
+    constructor() { super(); upstream = this; setImmediate(() => this.emit('open')); }
+    send(raw) {
+      const event = JSON.parse(raw); sent.push(event);
+      if (event.type === 'session.update') setImmediate(() => this.emit('message', Buffer.from('{"type":"session.updated"}')));
+    }
+    close() { this.readyState = WebSocket.CLOSED; this.emit('close'); }
+  }
+  const server = createRealServer({ apiKey: 'test-only', connect: () => new Upstream(), audit: () => {}, packageDir: noPackage, log: () => {}, reasonDelayMs: 0,
+    reason: async () => { asks += 1; return proposal(); } });
+  server.listen(0, '127.0.0.1'); await once(server, 'listening'); t.after(() => server.shutdown());
+  const socket = new WebSocket(`ws://127.0.0.1:${server.address().port}/session`, { origin: `http://127.0.0.1:${server.address().port}` });
+  const events = []; socket.on('message', raw => events.push(JSON.parse(raw)));
+  await until(() => events.some(e => e.type === 'ready'));
+  const commits = () => sent.filter(e => e.type === 'input_audio_buffer.commit').length;
+  const finish = (id, text) => upstream.emit('message', Buffer.from(JSON.stringify({ type: 'conversation.item.input_audio_transcription.completed', item_id: id, transcript: text })));
+  let n = 0;
+  const send = (loud) => { socket.send(loud ? loudPacket(n) : packet(n)); n += 1; };
+  // Twelve seconds of continuous speech: no commit, and a transcript that arrives meanwhile asks nothing.
+  for (let i = 0; i < 120; i += 1) send(true);
+  await until(() => sent.filter(e => e.type === 'input_audio_buffer.append').length === 120, 3000);
+  assert.equal(commits(), 0);
+  finish('mid', 'A transcript that arrives while still speaking.');
+  await new Promise(r => setTimeout(r, 150));
+  assert.equal(asks, 0);
+  // Seven silent packets (700 ms) are not yet a pause; the eighth (800 ms) commits.
+  for (let i = 0; i < 7; i += 1) send(false);
+  await until(() => sent.filter(e => e.type === 'input_audio_buffer.append').length === 127, 3000);
+  assert.equal(commits(), 0);
+  send(false);
+  await until(() => commits() === 1, 3000);
+  // The transcript of that turn, arriving during the pause, asks for guidance.
+  finish('after', 'The turn that ended with a pause.');
+  await until(() => asks === 1, 3000);
+  socket.send(JSON.stringify({ type: 'stop' })); await once(socket, 'close');
 });

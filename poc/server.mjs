@@ -9,6 +9,11 @@ import { loadPackage, DEFAULT_PACKAGE_DIR } from './package-loader.mjs';
 import { InterviewSession } from './session.mjs';
 
 const root = new URL('../', import.meta.url);
+// A pause (silence after speech) is the only trigger for transcription and for asking for guidance. Default 800 ms;
+// ALICE_PAUSE_MS tunes it in steps of 100 ms (300 to 5000), the size of one audio packet.
+const PAUSE_MS = (value => Number.isFinite(value) ? Math.min(5000, Math.max(300, Math.round(value / 100) * 100)) : 800)(Number(process.env.ALICE_PAUSE_MS || NaN));
+// Backstop only (upstream audio buffer limit); a turn never commits mid-speech before this.
+const MAX_BUFFER_MS = 120000;
 const PRIVATE_WARNING = 'WARNING: ALICE_PRINT_REQUEST is on. The text below is private (question and preparation documents); other tools may read this terminal. Clear it afterwards.';
 const assets = new Map([
   ['/', ['index.html', 'text/html']], ['/index.html', ['index.html', 'text/html']],
@@ -21,7 +26,7 @@ const assets = new Map([
 
 export function createPocServer({ reason = createReasoner(), apiKey = process.env.OPENAI_API_KEY,
   generate = createGenerator(), now = Date.now, answerTimeoutMs = answerTimeout(), packageDir = process.env.ALICE_PACKAGE_DIR || DEFAULT_PACKAGE_DIR,
-  log = console.log, reasonDelayMs = 2500, printRequest = process.env.ALICE_PRINT_REQUEST === '1', stderr = process.stderr,
+  log = console.log, reasonDelayMs = 2500, requirePause = true, printRequest = process.env.ALICE_PRINT_REQUEST === '1', stderr = process.stderr,
   transcriptionModel = process.env.TRANSCRIPTION_MODEL || 'gpt-live-transcribe',
   connect = () => new WebSocket('wss://api.openai.com/v1/realtime?intent=transcription', {
     headers: { Authorization: `Bearer ${apiKey}` }, handshakeTimeout: 15000,
@@ -66,7 +71,9 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
 
   wss.on('connection', client => {
     let upstream, ready = false, speech = false, silentMs = 0, bufferedMs = 0, closed = false;
-    const session = new InterviewSession({ reason, audit, delayMs: reasonDelayMs, generate, now, answerTimeoutMs, print, emit: event => {
+    // Pause tracking: the signal that Pablo is thinking and waiting for help is PAUSE_MS of silence after speech.
+    let pauseMs = 0, heardSpeech = false;
+    const session = new InterviewSession({ reason, audit, canAsk: () => !requirePause || (heardSpeech && pauseMs >= PAUSE_MS), delayMs: reasonDelayMs, generate, now, answerTimeoutMs, print, emit: event => {
       if (client.readyState === WebSocket.OPEN && client.bufferedAmount < 65536) client.send(JSON.stringify(event));
       else cleanup();
     } });
@@ -159,10 +166,13 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
         const voiced = Math.sqrt(sum / 2400) > 0.012;
         if (voiced) session.voiced();
         speech ||= voiced;
+        heardSpeech ||= voiced;
+        pauseMs = voiced ? 0 : pauseMs + 100;
         silentMs = voiced ? 0 : silentMs + 100;
         bufferedMs += 100;
         upstream.send(JSON.stringify({ type: 'input_audio_buffer.append', audio: pcm.toString('base64') }));
-        if (speech && (silentMs >= 800 || bufferedMs >= 8000)) {
+        // Commit only on a pause. MAX_BUFFER_MS is a backstop for the upstream buffer limit, not a trigger.
+        if (speech && (silentMs >= PAUSE_MS || bufferedMs >= MAX_BUFFER_MS)) {
           upstream.send(JSON.stringify({ type: 'input_audio_buffer.commit' }));
           speech = false; bufferedMs = 0; silentMs = 0;
         } else if (!speech && bufferedMs >= 5000) {

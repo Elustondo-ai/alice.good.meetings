@@ -21,6 +21,11 @@
     .controls .row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
     .controls button { font-size: 14px; padding: 5px 10px; cursor: pointer; }
     .controls .reason { font-size: 14px; margin: 0; max-width: 360px; text-align: right; }
+    /* Subtle monitor line: one fixed-height line, so it never moves the glance rows. */
+    .controls .monitor { font-size: 17px; line-height: 21px; height: 42px; margin: 0; max-width: 520px; opacity: 0.9; text-align: right; }
+    .monitor div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .monitor .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: currentColor; margin-right: 7px; opacity: 0.35; }
+    .monitor .dot.on { opacity: 1; }
     .focus, .live { font-size: clamp(14px, 2.2vmin, 20px); }
     .focus-text { font-weight: bold; margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; overflow: auto; max-height: calc(100% - 22px); }
     .focus-text.historical { opacity: 0.6; }
@@ -74,6 +79,7 @@
           <button type="button" data-state="stop">Stop</button>
         </div>
         <p id="listen-reason" class="reason" role="status"></p>
+        <p id="monitor" class="monitor" aria-hidden="true"></p>
       </div>
     </section>
 

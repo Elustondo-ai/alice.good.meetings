@@ -69,11 +69,34 @@ const remote = freshRemote();
 // The confirmation in flight ({message, timer, uncertain}) and the latest Clear live request.
 const ask = { pending: null, resetId: null, feedback: '' };
 
+// Subtle monitor: a dot that lights while audio packets arrive, seconds of audio sent, the agent state and the last few heard words.
+const monitorEl = document.getElementById('monitor');
+let monitorLastPackets = 0;
+let monitorLastAt = 0;
+function renderMonitor() {
+  if (!monitorEl) return;
+  const live = remote.status === 'listening on server';
+  if (remote.packets !== monitorLastPackets) { monitorLastPackets = remote.packets; monitorLastAt = Date.now(); }
+  if (!live) { monitorEl.textContent = ''; return; }
+  const receiving = Date.now() - monitorLastAt < 1500;
+  const heard = (remote.transcript || '').replace(/\s+/g, ' ').trim().slice(-48);
+  const dot = document.createElement('span');
+  dot.className = receiving ? 'dot on' : 'dot';
+  const mmss = (ms) => { const s = Math.floor(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+  const line1 = document.createElement('div');
+  line1.append(dot, `speaking ${mic.turnS.toFixed(0)}s · total ${mmss(mic.totalMs)}`);
+  const line2 = document.createElement('div');
+  line2.textContent = `${remote.seconds.toFixed(0)}s audio · agent ${remote.agent}${heard ? ` · …${heard}` : ''}`;
+  monitorEl.replaceChildren(line1, line2);
+}
+setInterval(renderMonitor, 1000);
+
 function renderServer() {
   serverEl.textContent = `server: ${remote.status}\nagent: ${remote.agent}\n` +
     `audio received: ${remote.packets} packets / ${remote.seconds.toFixed(1)}s\n` +
     `heard: ${remote.transcript || '—'}\n` +
     `reply: ${remote.reply || '—'}`;
+  renderMonitor();
   renderQuestion();
 }
 
@@ -278,6 +301,9 @@ const mic = {
   speaking: false,
   turnStart: null,
   lastVoice: -Infinity,
+  turnS: 0,       // seconds of the current speaking turn (what drives GOOD / LAND IT / STOP)
+  totalMs: 0,     // speaking time accumulated since Start listening
+  lastTickAt: null,
 };
 
 function renderDebug(durationS) {
@@ -300,12 +326,15 @@ function tick(analyser, buf) {
     if (mic.turnStart === null) mic.turnStart = now;
   }
   mic.speaking = now - mic.lastVoice < SPEAKING_HOLD_MS;
+  if (mic.speaking && mic.lastTickAt !== null) mic.totalMs += Math.min(now - mic.lastTickAt, 250);
+  mic.lastTickAt = now;
 
   if (mic.turnStart !== null && now - mic.lastVoice > SILENCE_END_MS) {
     mic.turnStart = null;
   }
 
   const durationS = mic.turnStart === null ? 0 : (now - mic.turnStart) / 1000;
+  mic.turnS = durationS;
   if (durationS > STOP_AFTER_S) setState('stop');
   else if (durationS > LAND_AFTER_S) setState('land');
   else setState('good');
@@ -338,6 +367,7 @@ async function startListening() {
     const buf = new Float32Array(analyser.fftSize);
     mic.lastVoice = -Infinity;
     mic.turnStart = null;
+    mic.turnS = 0; mic.totalMs = 0; mic.lastTickAt = null;
     mic.status = 'listening';
     resources.timer = setInterval(() => tick(analyser, buf), 100);
     stream.getTracks().forEach(track => track.addEventListener('ended', () => {
@@ -431,7 +461,7 @@ function stopListening() {
     if (resources.socket?.readyState === WebSocket.OPEN) resources.socket.send(JSON.stringify({ type: 'stop' }));
     resources.socket?.close();
   }
-  Object.assign(mic, { status: 'off', speaking: false, level: 0, turnStart: null, lastVoice: -Infinity });
+  Object.assign(mic, { status: 'off', speaking: false, level: 0, turnStart: null, lastVoice: -Infinity, turnS: 0, totalMs: 0, lastTickAt: null });
   remote.status = 'stopped'; remote.agent = 'stopped';
   markLastKnown();
   endQuestionSession('Stopped');

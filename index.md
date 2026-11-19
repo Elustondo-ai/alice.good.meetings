@@ -48,6 +48,7 @@ DOM contract: layout B, cue first, in a `#page` grid of five rows. `#cue-band` h
 | `Manual state controls` | Supply data-state values consumed by the script. |
 | `Viewport layout` | The approved preview's values: row heights 160, 124, 96 and 232 px at desktop (188, 190, 196 and 460 px up to 700 px wide), details taking the rest and scrolling inside itself, 8 px padding and gap; see [03.5.11](docs/asdg/08-low-level-design/03.5.11-s003-fixed-layout-values.md). No animation or transition. |
 | `Answer card and details` | Show the seven states of the proposed answer as plain text; no button, link or collapse control. |
+| `Monitor line` | `#monitor`, two fixed-height lines under the listening buttons: a dot that lights while audio arrives, the current speaking turn in seconds and the total speaking time since Start listening (m:ss); then seconds of audio sent, the agent state and the last words heard. Empty when not listening. |
 | `Diagnostic readouts` | `#debug` and `#server` stay off the glance layout and are shown only with `#diagnostics`. |
 
 ## Effects and failure behavior
