@@ -4,7 +4,7 @@
 
 When a clear interview question is set as the Focus question, Alice.Good.Meetings proposes an answer to it: a few short bullet points beside the Focus question, and supporting details in a separate area below, in case the interviewer wants more.
 The purpose is to help him organize his own answer and recall his real experience without taking his attention from the conversation.
-The answer draws on the Focus question and on an interview preparation package that he prepares, with his résumé and other documents. Other kinds of meeting come later.
+The answer draws on the Focus question and on a preparation package that he prepares (an interview preparation package at first), with his résumé and other documents. From SPRINT-004 the scope is every meeting, not interviews first.
 User gave this direction on 16 November 2026 for SPRINT-003. It reached this page as relayed in the Stage 07 [review brief](../07-planning/03.6-sprint-003-review-brief.md) and its [addendum](../07-planning/03.6.3-sprint-003-brief-addendum.md); the sprint record stays the authority for what is committed.
 
 ```mermaid
@@ -31,6 +31,11 @@ flowchart LR
 ## Direction of 18 November 2026: automatic question, more input tools
 
 Pablo's purpose is unchanged; only how the question is set and read changes, as relayed by 00 Governance. A clear question followed by a speech pause sets the Focus question automatically, read with the help of the preparation package; Confirm and Clear live stay as an optional manual tool. Alice is also meant to become multimodal: speech cues now, later gestures, video, buttons or other devices, and every input tool stays. Each added input or cue keeps the constraint above: brief, glanceable, and never interrupting his thinking. Use Cases, Evaluation and Architecture own the detail; the decisions of 18 November above on "confirmed" are superseded where they say the trigger is Confirm.
+
+## SPRINT-004 direction, 19 November 2026
+
+Pablo wants to use Alice in every meeting he can, so the most practical stories come first, as relayed by 00 Governance: upload his preparation package from the page (several `.md` or `.txt` files), see the package status before Start, download a complete time-stamped log of each meeting for his own review, and work from a clearer screen with one very big question and "Alice suggests" and "What I hear" columns. Security is deferred.
+The details area is not part of SPRINT-004: the model is no longer asked for details, and the earlier details wording on this page is history. The purpose is unchanged. "Brief, glanceable visual cues" still governs: the new screen keeps the cue the strongest signal and adds no motion, sound or crowding. The [record and upload boundary](03.4-sprint-004-record-and-upload-boundary.md) holds what Pablo settled on 19 November: the log is kept in `poc/logs/`, Git-ignored, until he deletes it; other people's speech is kept, local only; the log never copies the package files, but the answers shown may quote them; the scope is every meeting, not interviews first; and "no persistent storage" no longer holds. The earlier decision of no package notice before Start is superseded by package status before Start. This is a draft; no sprint is started.
 
 ## What changed since 20 October
 

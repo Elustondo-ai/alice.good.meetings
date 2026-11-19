@@ -18,7 +18,7 @@ Audio, selected text and, with SPRINT-003, the text of Pablo's preparation packa
 | Audio intake | Accepts live or replay packets, checks order and coverage, and normalizes audio for the selected transcription service. |
 | Speech interpretation | Combines incremental text with separately obtained speaker estimates, uncertainty and manual turn hints. Recognition placement remains open. |
 | Interview agent | Reads permitted observations and current state; proposes a phase and a Live question with supporting observation references. |
-| Answer generator | Makes one bounded model call per Focus version from the question, fixed instructions and the preparation package; returns bullets and details. See [proposed answer](01.3-proposed-answer.md). |
+| Answer generator | Makes one bounded model call per Focus version from the question, fixed instructions and the preparation package; returns bullets only from SPRINT-004 (details were returned until then). See [proposed answer](01.3-proposed-answer.md). |
 | Preparation package | Pablo's documents as text files on local disk, read by the service and never sent to the page. See the [decision record](decisions/Proposed%20answer%20and%20its%20context/README.md). |
 | State controller | Owns accepted session state in memory, validates updates, and rejects obsolete proposals and late answers before publishing to the page. |
 | Cloud adapters | Connect to transcription and reasoning APIs, handle errors and retain provider credentials on the local service. |
