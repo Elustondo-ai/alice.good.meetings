@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "prepared_at": "2026-11-19T05:13:19Z",
+  "sprint_sha256": "90d6dab6bb3d43b1b16d71a153796a27c3c757339a4291682d7d979b05d69131",
+  "sprint_snapshot": {
+    "status": "active",
+    "sprint_id": "SPRINT-003",
+    "objective": "Give Alice a new page design and let her propose an answer to the Focus question: a few short points beside it and supporting details below, built from the question and an interview preparation package.",
+    "scope": [
+      "index.html",
+      "index.md",
+      "app.js",
+      "app.md",
+      "images/",
+      "poc/",
+      "openspec/changes/"
+    ],
+    "acceptance_criteria": [
+      "Pablo approves the new page layout from a preview before it replaces the current page.",
+      "The Focus question, the Live question, the proposed-answer points and the GOOD / LAND IT / STOP cue stay readable at a glance in the new layout, and the details area never shrinks, covers or moves them.",
+      "When a Focus question is confirmed, Alice shows a proposed answer for it: at most three short points beside the question and details below, from one model call. Any change to the Focus question, a confirmed rewording included, replaces both. The answer never overwrites the question.",
+      "Without an OpenAI key the page still loads, the timer and cue work, and a clear message says question recognition and proposed answers are unavailable.",
+      "node --test poc/poc.test.mjs passes, with new tests for the proposed answer, and the scripted page check passes for all seven answer states.",
+      "bash poc/alice-run.sh starts the server or reuses one already running.",
+      "Pablo runs one live session following the live-session script and the result is recorded as pass or fail by the pass rule he decided on 18 November.",
+      "S003-DETAILS: a details area below the cards shows supporting details from the same call as the points; it is read on demand, scrolls only inside itself and causes no motion or sound.",
+      "S003-CONTEXT: the answer is built from the question and the package in the Git-ignored poc/context/interview/ (plain text or Markdown, up to 20,000 characters); only those are sent to OpenAI; the package never holds benchmark recordings, evaluator labels or reference answers; with no package the points are general and say so; and the data statements in the root AGENTS.md and poc/README.md match."
+    ]
+  },
+  "review": {
+    "assessed_at": "2026-11-19T05:13:19Z",
+    "revision": "10697c5c8bb6cd143a6b02ac010c09d4deaa42da",
+    "working_tree": "Clean at review time; branch sprint-03 pushed to origin. Not attributed by file; specialists 02-05, 07 and 09 contributed drafts and code review notes.",
+    "criteria": [
+      {
+        "criterion": "Pablo approves the new page layout from a preview before it replaces the current page.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "docs/asdg/07-planning/03.9.2-sprint-003-plan-build.md T21 requires a dated approval naming files by hash; none found"
+        ],
+        "gap": "No dated layout approval is recorded. Pablo used the new layout live on 19 Nov and called it 'a bit clumsy' but 'doing what I was expecting' (chat, informal)."
+      },
+      {
+        "criterion": "The Focus question, the Live question, the proposed-answer points and the GOOD / LAND IT / STOP cue stay readable at a glance in the new layout, and the details area never shrinks, covers or moves them.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "Pablo's live screenshots of 19 Nov show Focus, Live, bullets, details and the cue readable"
+        ],
+        "gap": "No formal glance check of the 'never shrinks, covers or moves' rule was recorded."
+      },
+      {
+        "criterion": "When a Focus question is confirmed, Alice shows a proposed answer for it: at most three short points beside the question and details below, from one model call. Any change to the Focus question, a confirmed rewording included, replaces both. The answer never overwrites the question.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "Live run 19 Nov: question adopted automatically, 2-3 bullets and details from one call",
+          "node --test poc/poc.test.mjs: 85 pass (observed 19 Nov)"
+        ],
+        "gap": "Wording is superseded: the built flow answers after each pause with no Confirm step (Confirm stays as an optional tool). The record cannot be edited, so it cannot pass as worded."
+      },
+      {
+        "criterion": "Without an OpenAI key the page still loads, the timer and cue work, and a clear message says question recognition and proposed answers are unavailable.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "poc.test.mjs: 'no key means no session and no request', 'session opened without a key says it needs a key and never connects', health tests"
+        ],
+        "gap": "Server side covered by tests; the page behaviour without a key (timer, cue, message) was not re-checked in a browser in this review."
+      },
+      {
+        "criterion": "node --test poc/poc.test.mjs passes, with new tests for the proposed answer, and the scripted page check passes for all seven answer states.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "node --test poc/poc.test.mjs: 85 tests, 85 pass, 0 fail (observed 19 Nov 2026 at 10697c5)"
+        ],
+        "gap": "The scripted page check for all seven answer states was not re-run in this review; an earlier 09 Coding report said it ran but warned its hashes were stale after later edits."
+      },
+      {
+        "criterion": "bash poc/alice-run.sh starts the server or reuses one already running.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "bash poc/alice-run.sh exists in poc/"
+        ],
+        "gap": "Not run in this review; the service was started through .claude/launch.json (bash poc/start.sh) instead."
+      },
+      {
+        "criterion": "Pablo runs one live session following the live-session script and the result is recorded as pass or fail by the pass rule he decided on 18 November.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "Pablo ran informal live questions on 19 Nov (how do I present myself; two examples of AI innovation at CIBC) and said it works"
+        ],
+        "gap": "No run following the live-session script and no result recorded as pass or fail by the pass rule."
+      },
+      {
+        "criterion": "S003-DETAILS: a details area below the cards shows supporting details from the same call as the points; it is read on demand, scrolls only inside itself and causes no motion or sound.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "Pablo's live screenshots show a populated details area below the cards"
+        ],
+        "gap": "Scroll-only-inside-itself and no motion or sound were not checked formally."
+      },
+      {
+        "criterion": "S003-CONTEXT: the answer is built from the question and the package in the Git-ignored poc/context/interview/ (plain text or Markdown, up to 20,000 characters); only those are sent to OpenAI; the package never holds benchmark recordings, evaluator labels or reference answers; with no package the points are general and say so; and the data statements in the root AGENTS.md and poc/README.md match.",
+        "result": "FAIL",
+        "evidence": [
+          "poc/README.md data statement updated for the 18 Nov flow",
+          "root AGENTS.md left unchanged (protected agent-policy scope)"
+        ],
+        "gap": "Root AGENTS.md still says only audio and transcript go to OpenAI, but term hints and package text also go; 'only those are sent' no longer matches the built flow; no statement or package check result recorded."
+      }
+    ],
+    "limitations": [
+      "Review by 00 Governance; no independent review by 10 Review and Release of the built candidate (T41).",
+      "No billable real-OpenAI measurement of one-call quality, cost or latency.",
+      "Page check and run script were not re-run in this review.",
+      "Package files are private and Git-ignored; their text is not retained here."
+    ]
+  },
+  "outcome": "unfinished",
+  "carry_forward": [
+    "Product backlog B-01 to B-14: docs/asdg/07-planning/03.12-product-backlog.md and 03.12.1-product-backlog-later.md",
+    "SPRINT-004 proposal and smaller Option B: 03.13-sprint-004-proposal.md and 03.13.1-sprint-004-option-b-and-closeout.md",
+    "Amend criteria 3 and 9 wording in a new sprint; update the root AGENTS.md data statement (Pablo or Admin)",
+    "Record a live session following the live-session script by the 04 pass rule",
+    "Independent review by 10 of the built candidate",
+    "Re-run the scripted page check and bash poc/alice-run.sh",
+    "05 open questions Q1 to Q4 on package upload; draft documents from stages 02 to 05 and 07 await human acceptance"
+  ],
+  "human_decision": "Pablo invoked /asdg-sprint-close on 19 November 2026 after saying 'I guess we can close the sprint?' and being told the outcome would be unfinished.",
+  "closure_observations": [
+    {
+      "observed_at": "2026-11-19T05:13:27Z",
+      "command": "python3 asdg/scripts/cli.py sprint stop",
+      "exit_code": 0,
+      "observed_state": "sprint status --json: status inactive, sprint_id null, objective null, scope [], acceptance_criteria []",
+      "result": "closed"
+    }
+  ]
+}
