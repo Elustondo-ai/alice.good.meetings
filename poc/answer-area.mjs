@@ -43,6 +43,24 @@ export class AnswerArea {
     queueMicrotask(() => this.launch(run));
   }
 
+  // The one-call flow: the reader already returned a valid answer, so no second request goes out.
+  // The caller publishes the view with the Focus update; covered false means the package says nothing on the question.
+  present(question, version, value, covered = true) {
+    if (this.stopped) return;
+    const old = this.run;
+    this.finishTiming(old, 'superseded');
+    old?.abort.abort('superseded');
+    const request = buildRequest({ sessionId: this.sessionId, focusVersion: version, question, documents: this.package.documents });
+    const t = this.now();
+    const run = { version, request, abort: new AbortController(), attempts: 0, timed: false, dropped: false,
+      t: { t0: t, t1: t, t2: t, t3: null, tS: null } };
+    this.run = run;
+    const usable = this.package.status === 'usable';
+    this.set({ ...EMPTY, status: usable && covered ? 'shown' : 'general', focusVersion: version, ...value,
+      reason: !usable ? reasonOf(this.package.status) : covered ? null : 'not-covered' });
+    this.audit('answer_accepted', { sessionId: this.sessionId, focusVersion: version, durationMs: 0, attempts: 0, oneCall: true });
+  }
+
   live(run) { return !this.stopped && this.run === run && !run.abort.signal.aborted; }
 
   async launch(run) {

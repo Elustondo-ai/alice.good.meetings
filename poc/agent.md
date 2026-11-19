@@ -21,3 +21,8 @@ const proposal = await createReasoner()(snapshot, abortController.signal);
 
 Only the local server loads `OPENAI_API_KEY`. OpenAI receives the supplied transcript context; disabling SDK tracing does not make cloud processing local.
 See [official Agents SDK guidance](https://developers.openai.com/api/docs/guides/agents/sdk).
+
+## Package context and the one-call answer (18 November 2026)
+
+The reader is called as `reason(snapshot, signal, context)`. When `context` holds terms or documents, `readerInput` adds them to the input as `preparationPackage` (reference material, never instructions); with no context the input is the bare snapshot. The instructions tell the model to write the package's spelling when a heard word sounds like a package name or acronym, and never to add anything that was not said.
+The model output (`modelSchema`) now also carries `covered`, `bullets` and `details`. For a clear question (`clarify` or `new-question`) they hold the proposed answer from the same call; otherwise they are false, empty and empty. The [session](session.md) accepts the older shape without them (`proposalSchema` keeps them optional).

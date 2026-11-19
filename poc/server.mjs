@@ -7,6 +7,7 @@ import { createReasoner, publicError } from './agent.mjs';
 import { createGenerator, answerTimeout, modelInput } from './answer.mjs';
 import { loadPackage, DEFAULT_PACKAGE_DIR } from './package-loader.mjs';
 import { InterviewSession } from './session.mjs';
+import { extractTerms, hintPrompt } from './vocabulary.mjs';
 
 const root = new URL('../', import.meta.url);
 // A pause (silence after speech) is the only trigger for transcription and for asking for guidance. Default 800 ms;
@@ -26,7 +27,7 @@ const assets = new Map([
 
 export function createPocServer({ reason = createReasoner(), apiKey = process.env.OPENAI_API_KEY,
   generate = createGenerator(), now = Date.now, answerTimeoutMs = answerTimeout(), packageDir = process.env.ALICE_PACKAGE_DIR || DEFAULT_PACKAGE_DIR,
-  log = console.log, reasonDelayMs = 2500, requirePause = true, printRequest = process.env.ALICE_PRINT_REQUEST === '1', stderr = process.stderr,
+  log = console.log, reasonDelayMs = 2500, requirePause = true, autoFocus = true, printRequest = process.env.ALICE_PRINT_REQUEST === '1', stderr = process.stderr,
   transcriptionModel = process.env.TRANSCRIPTION_MODEL || 'gpt-live-transcribe',
   connect = () => new WebSocket('wss://api.openai.com/v1/realtime?intent=transcription', {
     headers: { Authorization: `Bearer ${apiKey}` }, handshakeTimeout: 15000,
@@ -73,7 +74,7 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
     let upstream, ready = false, speech = false, silentMs = 0, bufferedMs = 0, closed = false;
     // Pause tracking: the signal that Pablo is thinking and waiting for help is PAUSE_MS of silence after speech.
     let pauseMs = 0, heardSpeech = false;
-    const session = new InterviewSession({ reason, audit, canAsk: () => !requirePause || (heardSpeech && pauseMs >= PAUSE_MS), delayMs: reasonDelayMs, generate, now, answerTimeoutMs, print, emit: event => {
+    const session = new InterviewSession({ reason, audit, canAsk: () => !requirePause || (heardSpeech && pauseMs >= PAUSE_MS), delayMs: reasonDelayMs, autoFocus, generate, now, answerTimeoutMs, print, emit: event => {
       if (client.readyState === WebSocket.OPEN && client.bufferedAmount < 65536) client.send(JSON.stringify(event));
       else cleanup();
     } });
@@ -98,12 +99,13 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
     if (!configured) { fail('Server needs OPENAI_API_KEY'); return; }
     session.schedule();
     // The package is read once, before ready, and held in memory for this session only (CT-15, PK-8).
+    let hint;
     const openUpstream = () => {
       try { upstream = connect(); } catch { fail('Could not connect to transcription'); return; }
       upstream.on('open', () => upstream.send(JSON.stringify({
         type: 'session.update', session: { type: 'transcription', audio: { input: {
           format: { type: 'audio/pcm', rate: 24000 },
-          transcription: { model: transcriptionModel }, turn_detection: null,
+          transcription: { model: transcriptionModel, ...(hint ? { prompt: hint } : {}) }, turn_detection: null,
         } } },
       })));
       upstream.on('message', raw => {
@@ -132,7 +134,11 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
     loadPackage(packageDir).then(pkg => {
       if (closed) return;
       session.answers.setPackage(pkg);
-      audit('package_loaded', { sessionId: session.id, status: pkg.status, files: pkg.files, chars: pkg.chars, skipped: pkg.skipped });
+      // Terms are picked locally from the package; they go to transcription as a prompt and, with the documents, to the question reader.
+      const terms = pkg.status === 'usable' ? extractTerms(pkg.documents) : [];
+      hint = hintPrompt(terms);
+      session.setContext({ terms, documents: pkg.documents });
+      audit('package_loaded', { sessionId: session.id, status: pkg.status, files: pkg.files, chars: pkg.chars, skipped: pkg.skipped, terms: terms.length });
       log(`package: status=${pkg.status} files=${pkg.files.length} chars=${pkg.chars} skipped=${pkg.skipped.join(',') || 'none'}`);
       openUpstream();
     });

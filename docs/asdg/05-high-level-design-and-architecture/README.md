@@ -16,6 +16,10 @@ This package began with the architecture discussion of 25 October 2026 and was a
 | [01.3 Proposed answer](01.3-proposed-answer.md) | The answer generator, one result with bullets and details, and its tie to the Focus version. |
 | [01.4 Service start and key](01.4-service-start-and-key.md) | What the run command does, and what the page shows with and without a key. |
 | [01.5 Pending state and inputs](01.5-pending-state-and-inspectable-inputs.md) | The pending answer state, how the request inputs are inspected, the answer after Stop, the start marker and what one call does to the delay. |
+| [01.6 Input channels](01.6-input-channels.md) | How speech, buttons and later gestures, video and devices send cues to one controller. |
+| [01.7 Automatic question flow](01.7-automatic-question-flow.md) | The pause-driven reading, one call, term hints and what now leaves the Mac. |
+| [01.8 Package upload and vocabulary](01.8-package-upload-and-vocabulary.md) | Draft: adding the package and names from the page, where it lives, status, open questions; [limits and wording](01.8.1-upload-limits-and-statements.md). |
+| [03.4 Code assessment](03.4-18-november-code-assessment.md) | What to change in the built code and where it strains the Purpose. |
 | [02 Current architecture](02-current-architecture.md) | What the source at revision `7d60c0f` (rechecked at `bde3f7a`) does today, and what it does not establish. |
 | [03 Planned decisions](03-planned-decisions.md) | Choices selected, proposed and open, and the evidence still needed. |
 | [03.1 SPRINT-003 review](03.1-sprint-003-architecture-review.md) | The first-pass review of 16 November 2026. Its amendments are now applied in the pages above. |

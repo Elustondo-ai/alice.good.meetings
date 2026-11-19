@@ -65,3 +65,12 @@ Sprint SPRINT-003 is active on branch `sprint-03`; its nine criteria and twelve 
 | [07 plan](../../../docs/asdg/07-planning/03.9-sprint-003-plan.md) `d9e417f155564b91d2e27f3aecff0087107e724252661d418c637ba2dad5fd02` | Tasks T10 to T43 | Draft |
 
 Recheck these hashes before apply; a changed source needs a new assessment, not an inherited approval.
+
+## Change of 18 November 2026 (directed by Pablo in chat)
+
+After his first live runs Pablo decided the following; this section supersedes the confirm-then-answer wording above and in the nine criteria until the sprint record is amended by the human.
+
+- A clear question is the last thing said before a pause (800 ms for now). The service takes the pause as the end of the question and sets the Focus question itself; Confirm is no longer needed, but the Confirm and Clear live buttons stay on the page as an optional second tool (Pablo, 18 November).
+- One model call after each pause returns the cleaned question, whether the documents cover it, and the points and details. If no clear question is heard, the last good answer stays and the page says no question was heard. The separate answer request is only a fallback when the one-call answer is not valid.
+- The reader reads the question in the context of the package: package names and acronyms are given to transcription as a hint and to the reader, so "BBC" is corrected to "CIBC" when the package is about CIBC. Nothing unsaid is added.
+- Data change: a short list of terms picked locally from the package goes to transcription at session start, and the package text goes to OpenAI in the one request after each pause, not only in the answer request. The statements in `poc/README.md` match. The root `AGENTS.md` sentence needs Pablo or Admin.

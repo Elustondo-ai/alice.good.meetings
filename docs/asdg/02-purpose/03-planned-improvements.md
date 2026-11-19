@@ -2,14 +2,14 @@
 
 ## Next improvement: a proposed answer beside the Focus question
 
-When User confirms an interview question, Alice.Good.Meetings proposes an answer to it: a few short bullet points beside the Focus question, and supporting details in a separate area below, in case the interviewer wants more.
+When a clear interview question is set as the Focus question, Alice.Good.Meetings proposes an answer to it: a few short bullet points beside the Focus question, and supporting details in a separate area below, in case the interviewer wants more.
 The purpose is to help him organize his own answer and recall his real experience without taking his attention from the conversation.
 The answer draws on the Focus question and on an interview preparation package that he prepares, with his résumé and other documents. Other kinds of meeting come later.
 User gave this direction on 16 November 2026 for SPRINT-003. It reached this page as relayed in the Stage 07 [review brief](../07-planning/03.6-sprint-003-review-brief.md) and its [addendum](../07-planning/03.6.3-sprint-003-brief-addendum.md); the sprint record stays the authority for what is committed.
 
 ```mermaid
 flowchart LR
-    Q["Focus question<br/>confirmed by User"] --> A["Proposed answer"]
+    Q["Focus question<br/>set after a pause, or by Confirm"] --> A["Proposed answer"]
     P["Interview preparation package<br/>résumé and other documents"] --> A
     A --> B["A few short bullet points<br/>beside the question"]
     A --> D["Supporting details<br/>below, just in case"]
@@ -25,8 +25,12 @@ flowchart LR
 - The details area is reference material. He can ignore it, and nothing in it is needed to read the cue, the question or the bullet points.
 - A proposed answer supports his own answer. It states nothing about his experience that is not in the material he supplied. Without a preparation package the points are general and say so.
 - An answer belongs to its Focus question. Any change to that question, including a confirmed rewording, brings a new answer, and an answer never replaces the question.
-- It appears on its own once a Focus question is confirmed, and quietly: no sound, and nothing that demands a look.
+- It appears on its own once a Focus question is set, and quietly: no sound, and nothing that demands a look.
 - When no answer is available the page says so briefly, and the cue and timer keep working. Without an OpenAI key it also says that question recognition is unavailable.
+
+## Direction of 18 November 2026: automatic question, more input tools
+
+Pablo's purpose is unchanged; only how the question is set and read changes, as relayed by 00 Governance. A clear question followed by a speech pause sets the Focus question automatically, read with the help of the preparation package; Confirm and Clear live stay as an optional manual tool. Alice is also meant to become multimodal: speech cues now, later gestures, video, buttons or other devices, and every input tool stays. Each added input or cue keeps the constraint above: brief, glanceable, and never interrupting his thinking. Use Cases, Evaluation and Architecture own the detail; the decisions of 18 November above on "confirmed" are superseded where they say the trigger is Confirm.
 
 ## What changed since 20 October
 

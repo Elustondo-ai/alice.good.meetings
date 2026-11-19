@@ -31,6 +31,10 @@ On Stop or a disconnect the page releases the microphone and shows Focus as "las
 Microphone audio goes to OpenAI live transcription while listening. The last six transcript segments and the session state, including the Focus and Live questions, go to the reasoning model.
 No résumé, document or other prepared material is read or sent. A preparation package has been placed in `poc/context/interview/` (five files, 10,733 characters, counted without reading them for content), and Git ignores it through `poc/context/.gitignore`; no code reads it yet. The audit log records events, versions and timings, never transcript or question text.
 
+## Later change, 18 November 2026
+
+This page describes revision `7d60c0f`. Later commits added the answer area, the preview and the run script, and the working tree holds an automatic flow with local term hints. See [automatic flow](01.7-automatic-question-flow.md) and the [code assessment](03.4-18-november-code-assessment.md); this page's gap list below is out of date and a full rewrite waits for the code to settle.
+
 ## Gap to SPRINT-003
 
 Nothing at this revision prepares an answer: there is no answer generator, preparation package, bullet card or details area, and `poc/alice-run.sh` does not exist. `/health` carries no start marker.

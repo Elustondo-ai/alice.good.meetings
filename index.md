@@ -58,3 +58,7 @@ Changing element IDs or data-state values requires a matching JavaScript change.
 ## Example
 
 Run `bash poc/alice-run.sh` (or `bash poc/start.sh`) and open http://127.0.0.1:3000. See [POC results](poc/RESULTS.md).
+
+## Confirm and Clear live stay as a second tool (18 November 2026)
+
+A clear question read after a pause now becomes the Focus question by itself, but the Confirm and Clear live buttons stay on the page for use when Pablo wants them, for example in an online meeting. Live shows `Listening for a question…` between questions. The empty answer text reads `An answer appears when Alice hears a question and you pause.` and a General answer can say `Your documents do not cover this question.` The server still understands the Confirm and reset messages.

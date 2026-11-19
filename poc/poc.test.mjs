@@ -21,7 +21,7 @@ const createPocServer = (options = {}) => createRealServer({ packageDir: noPacka
 
 const proposal = (changes = {}) => ({ reply: 'I heard the question.', phase: 'QUESTION', question: 'Tell me about yourself.', intent: 'new-question', evidenceIds: ['one'], ...changes });
 const clarify = (question, evidenceIds) => proposal({ intent: 'clarify', question, evidenceIds });
-const makeSession = (options = {}) => new InterviewSession({ reason: async () => proposal(), emit: () => {}, delayMs: 0, ...options });
+const makeSession = (options = {}) => new InterviewSession({ reason: async () => proposal(), emit: () => {}, delayMs: 0, autoFocus: false, ...options });
 const packet = sequence => {
   const buffer = Buffer.alloc(4808);
   buffer.writeUInt32LE(sequence, 0); buffer.writeUInt32LE(sequence * 2400, 4);
@@ -400,7 +400,7 @@ let obsCount = 0;
 // A session wired to a fake generator; `confirm(text)` makes Live and then confirms it through control().
 function answering({ generate, pkg, now, timeoutMs } = {}) {
   const events = [], audits = [];
-  const s = new InterviewSession({ reason: () => new Promise(() => {}), emit: e => events.push(e), delayMs: 0,
+  const s = new InterviewSession({ reason: () => new Promise(() => {}), emit: e => events.push(e), delayMs: 0, autoFocus: false,
     audit: (name, data) => audits.push({ name, ...data }), generate, now, answerTimeoutMs: timeoutMs });
   if (pkg) s.answers.setPackage(pkg);
   const confirm = (text = 'Why this company?') => {
@@ -697,7 +697,7 @@ async function liveServer(t, { files = {}, ...options } = {}) {
   const packageDir = await tempDir(t, files);
   let connects = 0;
   const server = createRealServer({ apiKey: 'sk-test-sentinel', connect: () => { connects += 1; return f.connect(); }, generate: f.generate, packageDir,
-    audit: (name, data) => audits.push({ name, ...data }), log: line => logs.push(line), reasonDelayMs: 0, requirePause: false,
+    audit: (name, data) => audits.push({ name, ...data }), log: line => logs.push(line), reasonDelayMs: 0, requirePause: false, autoFocus: false,
     reason: async snapshot => proposal({ question: snapshot.observations.at(-1)?.text ?? null, evidenceIds: snapshot.observations.map(o => o.id) }), ...options });
   server.listen(0, '127.0.0.1'); await once(server, 'listening'); t.after(() => server.shutdown());
   const origin = `http://127.0.0.1:${server.address().port}`;
@@ -1200,4 +1200,108 @@ test('guidance is asked only after a one-second pause; no commit or request happ
   finish('after', 'The turn that ended with a pause.');
   await until(() => asks === 1, 3000);
   socket.send(JSON.stringify({ type: 'stop' })); await once(socket, 'close');
+});
+
+// ---- Contextual interpretation and the automatic one-call flow (fixture package only, never the private one) ----
+import { extractTerms, hintPrompt, MAX_TERMS, MAX_HINT_CHARS } from './vocabulary.mjs';
+import { readerInput, modelSchema, proposalSchema } from './agent.mjs';
+
+const fixturePackage = [{ name: 'brief.md', text: 'Aurora Bank hired Pat for the CIBC project. The CIBC team and the CPPIB team use OpenData daily. Pat led the Harbor Platform work.' }];
+const oneCall = (changes = {}) => proposal({ covered: true, bullets: ['Led the Harbor Platform work.', 'Worked with the CIBC team.'], details: 'Invented fixture detail.', ...changes });
+
+test('vocabulary hints come from the package locally: acronyms, camel-case words and names, ranked and capped', () => {
+  const terms = extractTerms(fixturePackage);
+  for (const term of ['CIBC', 'CPPIB', 'OpenData', 'Harbor Platform', 'Aurora Bank']) assert.ok(terms.includes(term), term);
+  assert.equal(terms[0], 'CIBC', 'the most frequent term comes first');
+  assert.deepEqual(extractTerms([]), []);
+  const many = [{ name: 'x.txt', text: Array.from({ length: 200 }, (_, i) => `ABC${String.fromCharCode(65 + i % 26)}${i}`).join(' and ') }];
+  const capped = extractTerms(many);
+  assert.ok(capped.length <= MAX_TERMS && capped.join(', ').length <= MAX_HINT_CHARS);
+  assert.equal(hintPrompt([]), undefined);
+  assert.match(hintPrompt(['CIBC']), /CIBC/);
+});
+
+test('the transcription session gets the vocabulary hint, and none without a usable package', async t => {
+  const withPackage = await liveServer(t, { files: { 'a.txt': fixturePackage[0].text } });
+  await withPackage.open();
+  const update = withPackage.f.upstream().sent.find(e => e.type === 'session.update');
+  assert.match(update.session.audio.input.transcription.prompt, /CIBC/);
+  const without = await liveServer(t, { files: {} });
+  await without.open();
+  assert.equal('prompt' in without.f.upstream().sent.find(e => e.type === 'session.update').session.audio.input.transcription, false);
+});
+
+test('the question reader receives the package terms and documents; the audit holds only the term count', async t => {
+  const seen = [];
+  const { open, audits } = await liveServer(t, { files: { 'a.txt': fixturePackage[0].text },
+    reason: async (snapshot, signal, context) => { seen.push(context); return proposal({ phase: 'GREETINGS', question: null, evidenceIds: [] }); } });
+  await open();
+  await until(() => seen.length > 0);
+  assert.deepEqual(seen[0].documents, [{ name: 'a.txt', text: fixturePackage[0].text }]);
+  assert.ok(seen[0].terms.includes('CIBC'));
+  const loaded = named(audits, 'package_loaded')[0];
+  assert.equal(typeof loaded.terms, 'number');
+  assert.equal(JSON.stringify(audits).includes('Harbor'), false);
+});
+
+test('reader input is the bare snapshot without context and carries the package as reference material with it', () => {
+  const snapshot = { sessionId: 's', observations: [] };
+  assert.equal(readerInput(snapshot), JSON.stringify(snapshot));
+  const input = JSON.parse(readerInput(snapshot, { terms: ['CIBC'], documents: fixturePackage }));
+  assert.deepEqual(input.preparationPackage, { terms: ['CIBC'], documents: fixturePackage });
+  assert.deepEqual(Object.keys(modelSchema.shape).sort(), ['bullets', 'covered', 'details', 'evidenceIds', 'intent', 'phase', 'question', 'reply']);
+  assert.equal(proposalSchema.safeParse(proposal()).success, true, 'a reading without an answer stays valid');
+});
+
+test('automatic flow: a clear question after a pause becomes Focus and its answer shows from the same call', () => {
+  const f = createFixtures(), events = [];
+  const s = new InterviewSession({ reason: async () => proposal(), emit: e => events.push(e), delayMs: 0, generate: f.generate });
+  s.answers.setPackage(packageOf(fixturePackage));
+  s.observe('o1', 'Tell me about CIBC.', true);
+  assert.equal(s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o1'] }), s.snapshot()), true);
+  assert.deepEqual([s.state.focus, s.state.focusVersion, s.state.live.text, s.state.phase], ['Tell me about CIBC.', 1, 'Tell me about CIBC.', 'QUESTION']);
+  assert.equal(f.calls.length, 0, 'no second model call');
+  const answer = events.filter(e => e.type === 'answer').at(-1);
+  assert.deepEqual([answer.proposed.status, answer.proposed.focusVersion, answer.proposed.bullets.length, answer.proposed.reason], ['shown', 1, 2, null]);
+  s.stop();
+});
+
+test('automatic flow: a repeated question, an unrelated reading and speech already used change nothing', () => {
+  const s = makeSession({ autoFocus: true });
+  s.answers.setPackage(packageOf(fixturePackage));
+  s.observe('o1', 'Tell me about CIBC.', true);
+  s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o1'] }), s.snapshot());
+  const shown = s.answers.view();
+  s.observe('o2', 'Tell me about CIBC.', true);
+  s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o2'] }), s.snapshot());
+  assert.deepEqual([s.state.focusVersion, s.answers.view()], [1, shown], 'same wording keeps the answer');
+  s.observe('o3', 'Mm, right.', true);
+  s.accept(proposal({ intent: 'none', question: null, evidenceIds: ['o3'] }), s.snapshot());
+  assert.deepEqual([s.state.focus, s.state.focusVersion, s.answers.view()], ['Tell me about CIBC.', 1, shown], 'no question: the last good answer stays');
+  s.accept(oneCall({ question: 'Something else?', evidenceIds: ['o1'] }), s.snapshot());
+  assert.equal(s.state.focusVersion, 1, 'cited speech was already used');
+  s.stop();
+});
+
+test('automatic flow: a later pause replaces the earlier reading, and covered false gives a general answer', () => {
+  const s = makeSession({ autoFocus: true });
+  s.answers.setPackage(packageOf(fixturePackage));
+  s.observe('o1', 'Tell me about the BBC.', true);
+  s.accept(oneCall({ question: 'Tell me about the BBC.', evidenceIds: ['o1'] }), s.snapshot());
+  s.observe('o2', 'I said CIBC. Tell me about CIBC.', true);
+  s.accept(oneCall({ intent: 'clarify', question: 'Tell me about CIBC.', evidenceIds: ['o2'], covered: false }), s.snapshot());
+  const view = s.answers.view();
+  assert.deepEqual([s.state.focus, s.state.focusVersion, s.state.exchangeId, view.status, view.reason], ['Tell me about CIBC.', 2, 1, 'general', 'not-covered']);
+  s.stop();
+});
+
+test('automatic flow: an invalid answer in the one call falls back to the separate answer request', async () => {
+  const f = createFixtures();
+  const s = new InterviewSession({ reason: async () => proposal(), emit: () => {}, delayMs: 0, generate: f.generate });
+  s.answers.setPackage(packageOf(fixturePackage));
+  s.observe('o1', 'Tell me about CIBC.', true);
+  s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o1'], bullets: [], details: '' }), s.snapshot());
+  assert.equal(s.answers.view().status, 'preparing');
+  await until(() => f.calls.length === 1);
+  s.stop();
 });

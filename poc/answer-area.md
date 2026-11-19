@@ -35,3 +35,7 @@ stateDiagram-v2
 Each attempt runs `generate(request, {signal})` with the attempt timeout; a failed attempt (throw, timeout, rejected result) is retried once at once with the same request object, invisibly. A result is accepted only while the session is active and the request is current; otherwise it is dropped and audited as `stale-version`, `stopped` or `superseded`. An accepted result is published as one `proposed` message `{proposed, proposedSeq}`.
 Audit events never hold text: `answer_requested`, `answer_accepted`, `answer_dropped`, `answer_failed` and one `answer_timing` per Focus version with `t0` to `t3`, `tS`, `delayMs`, `generationMs`, `pauseMs` and `visibleBeforeSpeech`. Times come from the injected clock.
 Collaborators: [answer](answer.md) builds the request and checks results; [package loader](package-loader.md) supplies documents.
+
+## One-call presentation (18 November 2026)
+
+`present(question, version, value, covered)` shows an answer that the question reader already returned, with no second request. It starts the run for timing at one instant and sets `shown`, or `general` with the reason `not-covered` when the documents do not cover the question. The caller publishes the view with the Focus update, so the page never sees an answer for a Focus version it has not received.

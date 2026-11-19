@@ -42,3 +42,8 @@ These checks constrain updates; they do not establish semantic accuracy or speak
 Network failure keeps the last result in the browser. A new connection starts a new session rather than silently reconstructing missing audio.
 
 The proposed answer lives in `answers` (an [AnswerArea](answer-area.md)), apart from `state`: it is not in snapshots or cached results and never changes `revision`. `answer` messages also carry `proposed` and `proposedSeq`; a finished result is published as one `proposed` message. The interview agent never sees the answer or the package.
+
+## Automatic flow (18 November 2026)
+
+With `autoFocus` on (the default), a clear question read after a pause becomes the Focus question at once; there is no Confirm. `adopt` sets Focus, raises the Focus version, keeps Live showing the reading (its id is retired, so Confirm stays disabled while Live matches Focus) and moves the Live cutoff so the same speech cannot be used twice. A question that repeats the Focus wording, or cites only speech already used, changes nothing. A reading with no clear question keeps the last answer and the agent status says `no question heard; keeping the last answer`. A later clear question replaces the earlier reading, and a `clarify` keeps the exchange.
+The answer comes from the same call: `startAnswer` checks its bullets and details with `validateResult` and shows them through `AnswerArea.present`; if they are not valid it falls back to the separate answer request (`begin`). `setContext` gives the package terms and documents to the reader. With `autoFocus` off only the manual Live then Confirm path exists; the tests use it for the older cases.

@@ -51,3 +51,7 @@ A status of `OpenAI authentication failed` makes recognition unavailable (key re
 ## Example
 
 Run `bash poc/start.sh`, open http://127.0.0.1:3000 and press Start listening. See [POC results](poc/RESULTS.md) for observed synthetic-browser behavior and physical-microphone limitations.
+
+## Automatic focus (18 November 2026)
+
+The Confirm and Clear live buttons and `confirmHint` are unchanged and stay visible as an optional second tool. `GENERAL_REASONS` gains `not-covered`, and the empty answer wording no longer mentions confirming.

@@ -37,6 +37,10 @@ Proposed replacement:
 
 > Microphone audio and selected transcript text are sent to OpenAI while listening. Each time you confirm a Focus question, that question and the text of the files in `poc/context/interview/` (plain text or Markdown, within 20,000 characters, except `README.md`) are sent to OpenAI to prepare the proposed answer. The service reads those files when a session starts, keeps them in memory for that session and stores nothing. This remains a local single-session POC with no persistent conversation storage.
 
+## Change of 18 November 2026
+
+The automatic flow changes what is sent. At session start, up to 40 terms (500 characters) picked locally from the package go to transcription as a hint. After each pause the transcript text, the state, the terms and the package text go to OpenAI in one request, not only at each Confirm. Replace "each time a Focus question is confirmed" above with "after each pause". The `poc/README.md` working tree already carries this; the root `AGENTS.md` sentence needs Pablo or Admin, who own it, and criterion 9's "only" must follow.
+
 ## Scope of "only"
 
 Criterion 9 says only the question and the package are sent. That holds for the answer request alone: the answer generator receives the question, fixed instructions and the package, and no audio or transcript.

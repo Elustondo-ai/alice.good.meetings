@@ -25,3 +25,7 @@ Text controls `question.reset` and `question.confirm` go to [the session](sessio
 `stop`, socket closure, SIGINT and SIGTERM release sessions and pending work. Public errors omit provider request details and credentials.
 Audit stdout contains event names, times, counts and revisions, without audio, transcripts or API keys. `transcript_final` records an item ID when its transcript completes; `question_control` records each question request's ID, type, status, whether it was a replay, and versions, never wording. `browser_rendered` is a client acknowledgement, not a human acceptance decision; when it names a Live id and version it records display, never consent.
 See [live transcription guidance](https://developers.openai.com/api/docs/guides/realtime-transcription).
+
+## Vocabulary hints and automatic focus (18 November 2026)
+
+After the package loads, the server extracts terms ([vocabulary](vocabulary.md)) for a usable package, adds `prompt` to the transcription session when there are terms, and calls `session.setContext({ terms, documents })`. The `package_loaded` audit gains a `terms` count and nothing else. The option `autoFocus` (default on) passes through to the session; tests turn it off for the manual Confirm cases.

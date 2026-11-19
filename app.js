@@ -36,7 +36,7 @@ const CONFIRM_UNCERTAIN_MS = 5000;
 const LIVE_TAGS = { new: 'new question', restatement: 'restatement' };
 // Wording of the seven answer states (LB-1 to LB-7) and the reason lines (LB-9).
 const LB = {
-  empty: 'An answer appears after you confirm a question.',
+  empty: 'An answer appears when Alice hears a question and you pause.',
   preparing: 'Preparing an answer for this question.',
   failed: 'No proposed answer for this question.',
   unavailable: 'Question recognition and proposed answers are unavailable.',
@@ -50,6 +50,7 @@ const GENERAL_REASONS = {
   'too-large': 'The package is over 20,000 characters and was not used.',
   empty: 'The package is empty and was not used.',
   unreadable: 'The package could not be read and was not used.',
+  'not-covered': 'Your documents do not cover this question.',
 };
 const UNAVAILABLE_REASONS = {
   'no-key': 'No OpenAI key is set up.',

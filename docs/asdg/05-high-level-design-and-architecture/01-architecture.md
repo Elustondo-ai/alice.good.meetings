@@ -28,9 +28,9 @@ These are logical components within a small service, not separately deployed ser
 ## What each model call owns
 
 The interview agent interprets meaning: a greeting, a developing question, an answer, a clarification or a closing exchange.
-It receives recent observations plus the retained question and session context; it does not own audio transport, render the page or directly overwrite accepted state.
-Since UC-04 it can change only the Live question. Pablo's Confirm question is the only writer of the Focus question.
-The answer generator turns one confirmed question and the package into text. It has no tools, sees no audio or transcript, and may state about Pablo only what the package contains.
+It receives recent observations plus the retained question and session context and, since 18 November 2026, the package terms and text as reference material; it does not own audio transport, render the page or directly overwrite accepted state.
+Since 18 November 2026 a clear question read after a pause also sets the Focus question, through the controller; Confirm stays as an optional command ([automatic flow](01.7-automatic-question-flow.md), [input channels](01.6-input-channels.md)).
+The answer generator turns one question and the package into text; it is now the fallback when the reader's own answer is not valid. It has no tools, sees no audio or transcript, and may state about Pablo only what the package contains.
 Both return bounded proposals. The controller owns the transition rules and revision checks described in [interview state](01.2-interview-state.md).
 Speaker identity remains an estimate unless established by suitable evidence; the Agents SDK itself does not solve speaker recognition.
 
