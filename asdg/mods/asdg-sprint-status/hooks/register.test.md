@@ -7,6 +7,8 @@
 | The band names the active sprint and its branch | On the terminal and desktop surfaces the row reads `SPRINT-003 active`, and the second text carries the branch and the objective |
 | The pane lists scope and acceptance criteria | The pane shows a scope path and the second criterion with its number |
 | An inactive sprint says so | The row reads `No active sprint` |
+| With no active sprint, the band and pane show the proposed next one | The row carries `next: SPRINT-004 awaiting approval`; the pane reads `Next sprint: SPRINT-004 · awaiting approval` |
+| An active sprint hides the proposed one | With an active record the row carries no `next:` |
 
 ## Fixture
 

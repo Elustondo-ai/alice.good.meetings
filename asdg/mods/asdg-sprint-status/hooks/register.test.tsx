@@ -97,3 +97,48 @@ test('an inactive sprint says so', async ($, on) => {
   expect((await ui.find({ type: 'Text', text: /sprint/ }))?.text).toBe('No active sprint')
   await ui.unmount()
 })
+
+const NEXT = {
+  sprint_id: 'SPRINT-004',
+  state: 'awaiting approval',
+  objective: 'Load the package from the page, keep a meeting log, use the new screen.',
+  plan: 'docs/asdg/07-planning/03.14-sprint-004-working-plan.md',
+  previous: 'SPRINT-003 closed (unfinished)',
+}
+
+test('with no active sprint, the band and pane show the proposed next one', async ($, on) => {
+  engine(on, {
+    '.asdg/sprint.json': JSON.stringify({ status: 'inactive', sprint_id: null, scope: [] }),
+    'docs/asdg/07-planning/proposed-sprint.json': JSON.stringify(NEXT),
+    '.git/HEAD': 'ref: refs/heads/sprint-03\n',
+  })
+  await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
+
+  const band = await $.ui.mount({ ...BAND, surface: 'desktop' })
+
+  expect((await band.find({ type: 'Text', text: /sprint-03/ }))?.text).toContain(
+    'next: SPRINT-004 awaiting approval',
+  )
+  await band.unmount()
+
+  const pane = await $.ui.mount({ ...PANE, surface: 'desktop' })
+
+  expect((await pane.find({ type: 'Text', text: /Next sprint/ }))?.text).toBe(
+    'Next sprint: SPRINT-004 · awaiting approval',
+  )
+  await pane.unmount()
+})
+
+test('an active sprint hides the proposed one', async ($, on) => {
+  engine(on, {
+    '.asdg/sprint.json': JSON.stringify(RECORD),
+    'docs/asdg/07-planning/proposed-sprint.json': JSON.stringify(NEXT),
+    '.git/HEAD': 'ref: refs/heads/sprint-03\n',
+  })
+  await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
+
+  const band = await $.ui.mount({ ...BAND, surface: 'desktop' })
+
+  expect((await band.find({ type: 'Text', text: /sprint-03/ }))?.text).not.toContain('next:')
+  await band.unmount()
+})
