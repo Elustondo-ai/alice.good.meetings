@@ -35689,6 +35689,125 @@
         "visible_review_markers": [],
         "approval_binding": "No approval inferred or transferred."
       }
+    },
+    {
+      "path": "mods/asdg-sprint-status/hooks/register.tsx",
+      "sha256": "a8101b903375c5aa9c0a30cb6806714b039a4b61b84c8ef7036dc0820fcabdd7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md"
+      },
+      "previous_state": {
+        "sha256": "5768a0fdef9ab95e1d24c4a4f6ea9c769c62b996efc82b2f784e979738635a9f",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "mods/asdg-sprint-status/hooks/register.md",
+      "sha256": "a04bdc4dab85c2f1f1fd79f77cacd5ca45efb2724cbcd216c0c84cae4bb05ba8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md"
+      },
+      "previous_state": {
+        "sha256": "380f618f90119f8d5894f64211fb590abf731d2dc56582c19dd6a626023ed559",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "mods/asdg-sprint-status/hooks/register.test.tsx",
+      "sha256": "0884de23b98f05bebf57c5ab6144197d4cd3097bb344db0c3c9d23c6f94e3786",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md"
+      },
+      "previous_state": {
+        "sha256": "b3f2fa26dfa851cddb81ca975cddb5d2631163f89e72b01afbd238ec88c864ae",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "mods/asdg-sprint-status/hooks/register.test.md",
+      "sha256": "844548ab2bc63438edc41f4de395bc38e877481a699e4adc0cc25bc44eb52be9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md"
+      },
+      "previous_state": {
+        "sha256": "f6c58f956671ff514d35d5f0dafbfd2dc2672a5ff77cc782926ff34be39630e9",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "mods/asdg-sprint-status/types/index.d.ts",
+      "sha256": "af482ff0fa1fd3b614e3675542da76f35a1e7057784531c6d9ba6b41d1293f52",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md"
+      },
+      "previous_state": {
+        "sha256": "ed69a5036bb0549e46eafa135678f63af177a8051f2c599b73550d68b362eb36",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "mods/asdg-sprint-status/types/index.d.md",
+      "sha256": "7560d731de23c5e0fe42c5f0618cc0d11d623036c59ce12a5362ec0a15934e85",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md"
+      },
+      "previous_state": {
+        "sha256": "b07501076e77e18540c2cf3772739b20e1ea0a1ba313e4c965160653eeb19bef",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "mods/asdg-sprint-status/.claude-plugin/plugin.json",
+      "sha256": "06e402628b33dbe870cd758b7047cb7a0c44229bd0d68f96880e87f5cc3a54f0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md"
+      },
+      "previous_state": {
+        "sha256": "56997dfe1e771fdabff3de77f08f89752bbd22bc883b4078ac0db200a14b9a7c",
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
     }
   ],
   "distribution_version": "0.3.0-pilot.2"

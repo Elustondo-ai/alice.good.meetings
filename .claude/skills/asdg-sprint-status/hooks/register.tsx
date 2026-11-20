@@ -1,21 +1,46 @@
 import { atom, read, update } from 'claude-code'
 import type { EngineInterface, Register } from 'claude-code'
 
-import type { Sprint } from '../types'
+import type { NextSprint, Sprint } from '../types'
 
 const PANE = 'sprint'
 const TITLE = 'ASDG sprint'
 const RECORD = '.asdg/sprint.json'
+// Kept by 07 Planning: the next sprint while it is proposed and being approved.
+const PROPOSED = 'docs/asdg/07-planning/proposed-sprint.json'
 const REFRESH_MS = 20000
 
 // Change the tag when Sprint's fields change: it declines what an earlier
 // version stored, which outlives a reload.
 const sprint = atom({ plugin: 'asdg-sprint-status', key: 'sprint' } as const, null, {
-  shape: 'sprint-1',
+  shape: 'sprint-2',
 })
 
 const strings = (value: unknown): string[] =>
   Array.isArray(value) ? value.filter(one => typeof one === 'string') : []
+
+const text = (value: unknown): string | null => (typeof value === 'string' ? value : null)
+
+// Read-only: the proposed next sprint, or null when the file is absent or
+// unusable. It never changes or stands in for the sprint record.
+const loadNext = async ($: EngineInterface): Promise<NextSprint | null> => {
+  try {
+    const file = JSON.parse(await $.fs.read(PROPOSED))
+    const id = text(file.sprint_id)
+
+    return id === null
+      ? null
+      : {
+          id,
+          state: text(file.state) ?? 'proposed',
+          objective: text(file.objective),
+          plan: text(file.plan),
+          previous: text(file.previous),
+        }
+  } catch {
+    return null
+  }
+}
 
 // Read-only: the sprint record the ASDG CLI writes, and the checked-out branch.
 const load = async ($: EngineInterface): Promise<Sprint> => {
@@ -27,6 +52,7 @@ const load = async ($: EngineInterface): Promise<Sprint> => {
     scope: [],
     acceptance: [],
     branch: null,
+    next: null,
   }
   let branch: string | null = null
 
@@ -41,15 +67,17 @@ const load = async ($: EngineInterface): Promise<Sprint> => {
 
   try {
     const record = JSON.parse(await $.fs.read(RECORD))
+    const status = typeof record.status === 'string' ? record.status : 'unknown'
 
     return {
       isAsdgProject: true,
-      status: typeof record.status === 'string' ? record.status : 'unknown',
+      status,
       id: typeof record.sprint_id === 'string' ? record.sprint_id : null,
       objective: typeof record.objective === 'string' ? record.objective : null,
       scope: strings(record.scope),
       acceptance: strings(record.acceptance_criteria),
       branch,
+      next: status === 'active' ? null : await loadNext($),
     }
   } catch {
     return { ...none, branch }
@@ -127,6 +155,7 @@ export const register: Register = on => {
         <Text dimColor wrap="truncate-end">
           {where}
           {isActive && now.objective !== null ? ` · ${now.objective}` : ''}
+          {!isActive && now.next !== null ? ` · next: ${now.next.id} ${now.next.state}` : ''}
         </Text>
         <Button
           key="details"
@@ -154,6 +183,11 @@ export const register: Register = on => {
         <Box flexDirection="column">
           <Text bold>{now.status === 'active' ? `${now.id} active` : 'No active sprint'}</Text>
           <Text dimColor>{now.branch ?? ''}</Text>
+          {now.status !== 'active' && now.next !== null && (
+            <Text dimColor>
+              Next: {now.next.id} {now.next.state}
+            </Text>
+          )}
         </Box>
       )
     }
@@ -166,6 +200,16 @@ export const register: Register = on => {
           </Text>
           <Text dimColor>Branch: {now.branch ?? 'unknown'}</Text>
         </Box>
+        {now.status !== 'active' && now.next !== null && (
+          <Box flexDirection="column">
+            <Text bold>
+              Next sprint: {now.next.id} · {now.next.state}
+            </Text>
+            {now.next.previous !== null && <Text dimColor>{now.next.previous}</Text>}
+            {now.next.objective !== null && <Text>{now.next.objective}</Text>}
+            {now.next.plan !== null && <Text dimColor>Plan: {now.next.plan}</Text>}
+          </Box>
+        )}
         {now.objective !== null && (
           <Box flexDirection="column">
             <Text bold>Objective</Text>

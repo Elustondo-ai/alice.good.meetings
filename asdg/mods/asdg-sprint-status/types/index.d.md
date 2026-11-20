@@ -9,7 +9,8 @@
 | `id`, `objective` | `sprint_id` and `objective` from the record, or `null` |
 | `scope`, `acceptance` | The record's `scope` and `acceptance_criteria`, strings only |
 | `branch` | Checked-out branch, short commit when detached, or `null` |
+| `next` | The proposed next sprint (`id`, `state`, `objective`, `plan`, `previous`) from `docs/asdg/07-planning/proposed-sprint.json`; `null` when a sprint is active or the file is absent or has no `sprint_id` |
 
 The module augmentation registers the key `asdg-sprint-status.sprint` as `Shaped<Sprint | null>`.
-`Shaped` lets the module tag what it stores (`sprint-1`); change the tag whenever these fields change, so a value stored by earlier code is read as empty instead of trusted.
+`Shaped` lets the module tag what it stores (`sprint-2`); change the tag whenever these fields change, so a value stored by earlier code is read as empty instead of trusted.
 The value lives for the session only. Nothing is written to `$.store` or to the project.

@@ -1765,6 +1765,57 @@
       "provenance": {
         "generator": "asdg embedded init"
       }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md",
+      "sha256": "04362b71b9732e7881759f86718878d5df6732569c8e29189c6a7700249a91d5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-status/hooks/register.tsx",
+      "sha256": "a8101b903375c5aa9c0a30cb6806714b039a4b61b84c8ef7036dc0820fcabdd7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md",
+        "owner_override": "Pablo: 'Yes, copy them'"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-status/types/index.d.ts",
+      "sha256": "af482ff0fa1fd3b614e3675542da76f35a1e7057784531c6d9ba6b41d1293f52",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md",
+        "owner_override": "Pablo: 'Yes, copy them'"
+      }
+    },
+    {
+      "path": ".claude/skills/asdg-sprint-status/.claude-plugin/plugin.json",
+      "sha256": "06e402628b33dbe870cd758b7047cb7a0c44229bd0d68f96880e87f5cc3a54f0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-19T18:15:32Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Sprint status mod: show the proposed next sprint",
+        "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md",
+        "owner_override": "Pablo: 'Yes, copy them'"
+      }
     }
   ]
 }
