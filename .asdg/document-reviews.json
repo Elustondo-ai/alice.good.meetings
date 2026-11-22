@@ -1816,6 +1816,40 @@
         "review": "docs/asdg/07-planning/02.25-review-sprint-status-next-sprint.md",
         "owner_override": "Pablo: 'Yes, copy them'"
       }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.26-review-numbered-teams.md",
+      "sha256": "461ac42a390890058f429a52b0e12dbec17395e21a583c28c3a5ac860010190f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-22T22:45:00Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Numbered teams: a worktree and branch per team, and the create-team-admin skill",
+        "review": "docs/asdg/07-planning/02.26-review-numbered-teams.md"
+      },
+      "previous_state": {
+        "sha256": null,
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "docs/asdg/07-planning/02.26-review-numbered-teams.json",
+      "sha256": "cf1a8f8fc02f29ebec3bc6222060de108401a35df72ce259e23f934b47c7184a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-22T22:45:00Z",
+      "human_approval": null,
+      "provenance": {
+        "role": "ASDG-ADMIN",
+        "task": "Numbered teams: a worktree and branch per team, and the create-team-admin skill",
+        "review": "docs/asdg/07-planning/02.26-review-numbered-teams.md"
+      },
+      "previous_state": {
+        "sha256": null,
+        "visible_review_markers": [],
+        "approval_binding": "No approval inferred or transferred."
+      }
     }
   ]
 }
