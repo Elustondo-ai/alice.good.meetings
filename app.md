@@ -95,3 +95,12 @@ The Question's confirmation time and source come from the page: it records the c
 - **What I hear.** Items with no words are ignored, so an empty item from the service cannot blank the column.
 - **Error row.** A refused microphone now shows "Microphone access was refused." at once (another microphone error shows "The microphone could not be opened."), and any service status outside a normal session (quota, model access, time-out) shows the service's own public text in the row.
 - **Wording.** Feedback lines say "candidate", not "Live"; an old upload result is cleared at Start so "Stop listening to load a package." shows.
+
+## Access code on a hosted service (22 November 2026)
+
+| Callable or interface | Contract |
+| --- | --- |
+| `api(path, init)` | Every call to `/package` and `/log` goes through it. With a held code it adds the header `X-Alice-Code`; without one the request is exactly as before. A 401 answer calls `askForCode`. |
+| `askForCode(message)` | Builds, once and only when the service asks, a row above the error row: a password field labelled "Access code", an Enter button and a status note. Start and Upload are disabled while it shows. Nothing of it exists in the page on a local service. |
+| `submitCode(input, note)` | Checks the typed code with `GET /package`. If accepted it is kept in `sessionStorage` under `alice.code` (this tab only) and the row is hidden; otherwise the note says "That code was not accepted." or "The Alice service did not answer." |
+| Session socket | With a held code the page offers the subprotocols `alice` and `alice-code.<base64url of the code>`; without one it opens the socket as before. The code is never in an address. |

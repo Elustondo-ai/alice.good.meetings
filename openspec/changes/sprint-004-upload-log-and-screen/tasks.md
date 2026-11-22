@@ -10,7 +10,7 @@ These are proposed, unchecked tasks for SPRINT-004; they are not execution evide
 ## 2. Meeting log and download (S004-LOG, S004-DOWNLOAD)
 
 - [ ] 2.1 Add the one append-only log writer with the header (the version once), two clocks and every event type, per ML-1 to ML-15. Verify: ST4-12 to ST4-23, ST4-41 and ST4-42 pass and a write failure does not stop the session.
-- [ ] 2.2 Store logs in `poc/logs/` with its `.gitignore`, `ALICE_LOG_DIR`, modes 0700 and 0600, the 5 MB cap and no deletion, per MS-1 to MS-9 and ML-13. Verify: ST4-24 to ST4-30 and ST4-34 pass and SH4-1 confirms the folder is ignored.
+- [ ] 2.2 Store logs in `poc/logs/` with its `.gitignore`, `ALICE_LOG_DIR`, file mode 0600 (the folder keeps the mode it is given), the 5 MB cap and no deletion, per MS-1 to MS-9 and ML-13. Verify: ST4-24 to ST4-30 and ST4-34 pass and SH4-1 confirms the folder is ignored.
 - [ ] 2.3 Add `GET /log` with its headers, 404 and caller checks, per SD-1, SD-3 and SD-4. Verify: ST4-08 to ST4-10 pass.
 
 ## 3. Bullets only and the transcript items (S004-SCREEN)

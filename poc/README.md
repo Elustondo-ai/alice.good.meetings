@@ -36,5 +36,6 @@ Apart from that log, this remains a local single-session POC that stores no conv
 
 `node --test poc/poc.test.mjs` runs deterministic checks. The [page check](browser-protocol.md) (`node poc/browser-protocol.mjs`) drives the real page in an installed Chrome with fixtures; it needs the dev dependency Playwright and makes no OpenAI call. [Browser smoke](browser-smoke.md) exercises the actual cloud path with synthetic speech; it still expects the cue buttons of the earlier page and must be updated before it is run again.
 The avatar's files are vendored in `poc/vendor/` ([pins, hashes and licences](vendor/VENDOR.md)) and are loaded from this service only.
+To try Alice from another device over HTTPS, the same service can run on Google Cloud Run behind an access code: see [deploy](deploy/README.md). Nothing is published until Pablo runs those commands.
 [Observed results](RESULTS.md) separate tested behavior from remaining Sprint 0 acceptance work.
 This increment does not implement isolated benchmark replay, speaker identification, P-toggle interpretation, automatic reconnection or production deployment.

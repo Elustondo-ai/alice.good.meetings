@@ -52,3 +52,11 @@ Three cases: an item with no words is skipped and does not cut the transcript sn
 ## Second pass of review fixes (22 November 2026)
 
 Six cases, one per fix: the `log_full` line holds no event data and the file stays under its cap; an answer in flight at Stop is logged as dropped before the last line; a failed reading is logged as an `error` with its public message only; a control is logged before its effects and a refused one as `invalid`; a reader reply with any unknown field falls back; Download log offers an older log when the newest file is gone.
+
+## Uploaded file names (ST4-07 as amended)
+
+The package-text case now carries the amended name and also checks that no name of an uploaded file, kept or skipped, reaches the audit or the console (counts only), and that the folder package's start-up audit still keeps its names (PK-9).
+
+## Hosted mode (22 November 2026)
+
+Five cases. The public host is served over https only, beside the local address, and the socket takes its https origin; with an access code the package, the log and the session need it and the code is never logged or echoed; `ALICE_LOG=off` writes no log on a hosted service and changes nothing on a local one; `ALICE_AVATAR=off` serves no avatar file; and the publish list holds every module the service imports and nothing private or test-only.

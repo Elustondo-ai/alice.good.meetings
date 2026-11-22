@@ -1,0 +1,8 @@
+# The stage holds only publishable files already; these lines are a second guard.
+Dockerfile
+.dockerignore
+**/node_modules
+**/.env*
+**/*.jsonl
+**/context
+**/logs

@@ -7,6 +7,7 @@ import { createReasoner, publicError } from './agent.mjs';
 import { createGenerator, answerTimeout, modelInput, answerModel } from './answer.mjs';
 import { createLogStore, LOG_VERSION } from './meeting-log.mjs';
 import { execFile } from 'node:child_process';
+import { createHash, timingSafeEqual } from 'node:crypto';
 import { loadPackage, DEFAULT_PACKAGE_DIR, PACKAGE_MAX } from './package-loader.mjs';
 import { createPackageStore, buildUpload, BODY_MAX } from './package-store.mjs';
 import { InterviewSession } from './session.mjs';
@@ -44,10 +45,25 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
   generate = createGenerator(), now = Date.now, answerTimeoutMs = answerTimeout(), packageDir = process.env.ALICE_PACKAGE_DIR || DEFAULT_PACKAGE_DIR,
   logDir = process.env.ALICE_LOG_DIR || undefined, logMaxBytes, mono, revision, log = console.log, reasonDelayMs = 2500, requirePause = true, autoFocus = true, printRequest = process.env.ALICE_PRINT_REQUEST === '1', stderr = process.stderr,
   transcriptionModel = process.env.TRANSCRIPTION_MODEL || 'gpt-live-transcribe',
+  // Hosted mode. All unset, the service behaves exactly as a local one: loopback only, no code, every session logged.
+  publicHost = process.env.ALICE_PUBLIC_HOST, accessCode = process.env.ALICE_ACCESS_CODE,
+  logOff = process.env.ALICE_LOG === 'off', avatarOff = process.env.ALICE_AVATAR === 'off',
   connect = () => new WebSocket('wss://api.openai.com/v1/realtime?intent=transcription', {
     headers: { Authorization: `Bearer ${apiKey}` }, handshakeTimeout: 15000,
   }), audit = (event, data) => console.log(JSON.stringify({ event, at: Date.now(), ...data })) } = {}) {
   const sessions = new Set();
+  // ALICE_PUBLIC_HOST names the host or hosts (comma-separated) this service is published under, behind a platform that ends TLS.
+  const publicHosts = new Set(String(publicHost || '').split(',').map(h => h.trim().toLowerCase()).filter(Boolean));
+  const isPublic = host => publicHosts.has(String(host || '').toLowerCase());
+  // On a public host only https is served; the platform reports the caller's scheme in X-Forwarded-Proto.
+  const secure = req => !isPublic(req.headers.host) || String(req.headers['x-forwarded-proto'] || '').split(',')[0].trim() === 'https';
+  const pageOrigin = req => `${isPublic(req.headers.host) ? 'https' : 'http'}://${req.headers.host}`;
+  // ALICE_ACCESS_CODE: compared as digests in constant time; the code is never logged, audited or echoed.
+  const code = typeof accessCode === 'string' ? accessCode.trim() : '';
+  const digest = text => createHash('sha256').update(text).digest();
+  const codeOk = given => !code || (typeof given === 'string' && timingSafeEqual(digest(given.trim()), digest(code)));
+  // The meeting log can be turned off only on a hosted service; a local one logs every session (ML-13).
+  const noLog = logOff && publicHosts.size > 0;
   const store = createPackageStore(packageDir);
   const logs = createLogStore({ dir: logDir, wallNow: now, mono, maxBytes: logMaxBytes });
   // The app revision for the log header: the Git commit, or "unknown"; looked up once, never on the audio path.
@@ -59,7 +75,7 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
   const print = printRequest ? ({ instructions, input }) => stderr.write(`${PRIVATE_WARNING}\n${instructions}\n\n${input}\n`) : undefined;
   if (printRequest) stderr.write(`${PRIVATE_WARNING}\n`);
   const route = async (req, res) => {
-    if (!validHost(req.headers.host)) { res.writeHead(403).end(); return; }
+    if (!validHost(req.headers.host) || !secure(req)) { res.writeHead(403).end(); return; }
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Content-Type-Options', 'nosniff');
     if (req.url === '/package') { await packageRoute(req, res); return; }
@@ -71,7 +87,8 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
       res.end(JSON.stringify({ status: 'alive', service: 'alice-good-meetings', startedAt, configured, sessions: sessions.size, package: { found, chars } }));
       return;
     }
-    const asset = assets.get(req.url);
+    // ALICE_AVATAR=off: the avatar's files are not served, and the page then drops the avatar silently (AV-6).
+    const asset = avatarOff && (req.url === '/poc/avatar.js' || req.url.startsWith('/poc/vendor/')) ? null : assets.get(req.url);
     if (!asset) { res.writeHead(404).end(); return; }
     try {
       const body = await readFile(new URL(asset[0], root));
@@ -89,8 +106,8 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
   // or none): another site can then not make the browser fetch or download the log. Tools that send neither header are local.
   function validCaller(req) {
     const { origin } = req.headers, site = req.headers['sec-fetch-site'];
-    if (!validHost(req.headers.host)) return false;
-    if (origin !== undefined) return origin === `http://${req.headers.host}`;
+    if (!validHost(req.headers.host) || !secure(req)) return false;
+    if (origin !== undefined) return origin === pageOrigin(req);
     return req.method === 'GET' && (site === undefined || site === 'same-origin' || site === 'none');
   }
   const sendJson = (res, status, body) => { res.setHeader('Content-Type', 'application/json; charset=utf-8'); res.writeHead(status).end(JSON.stringify(body)); };
@@ -102,6 +119,7 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
   // GET, PUT and DELETE /package (SU-3 to SU-10): counts only come back; text never does (SU-9).
   async function packageRoute(req, res) {
     if (!validCaller(req)) { res.writeHead(403).end(); return; }
+    if (!codeOk(req.headers['x-alice-code'])) { res.writeHead(401).end(); return; }
     const refuse = async (status, reason, extra = {}) => sendJson(res, status, { result: 'refused', reason, package: await store.status(), skipped: [], ...extra });
     if (req.method === 'GET') { sendJson(res, 200, await store.status()); return; }
     if (req.method !== 'PUT' && req.method !== 'DELETE') { res.writeHead(405).end(); return; }
@@ -126,8 +144,9 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
   // GET /log (SD-1, SD-3): the current or most recent meeting log, complete lines only; no list and no other method.
   async function logRoute(req, res) {
     if (!validCaller(req)) { res.writeHead(403).end(); return; }
+    if (!codeOk(req.headers['x-alice-code'])) { res.writeHead(401).end(); return; }
     if (req.method !== 'GET') { res.writeHead(405).end(); return; }
-    const found = await logs.read();
+    const found = noLog ? null : await logs.read();
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     if (!found) { res.writeHead(404).end('No meeting log yet.'); return; }
     res.setHeader('Content-Disposition', `attachment; filename="${found.filename}"`);
@@ -135,12 +154,22 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
   }
 
   function validHost(host) {
-    return ['127.0.0.1', 'localhost'].some(name => host === `${name}:${server.address()?.port}`);
+    return isPublic(host) || ['127.0.0.1', 'localhost'].some(name => host === `${name}:${server.address()?.port}`);
   }
-  const wss = new WebSocketServer({ noServer: true, maxPayload: 8192 });
+  // A page that holds the access code offers the subprotocols `alice` and `alice-code.<base64url of the code>`. A header is used,
+  // not the address, because a hosting platform records request addresses in its own logs. Only `alice` is ever echoed back.
+  const socketCode = req => {
+    const offer = String(req.headers['sec-websocket-protocol'] || '').split(',').map(p => p.trim()).find(p => p.startsWith('alice-code.'));
+    return offer ? Buffer.from(offer.slice(11), 'base64url').toString('utf8') : undefined;
+  };
+  const wss = new WebSocketServer({ noServer: true, maxPayload: 8192, handleProtocols: protocols => (protocols.has('alice') ? 'alice' : false) });
   server.on('upgrade', (req, socket, head) => {
     const origin = req.headers.origin;
-    if (req.url !== '/session' || !validHost(req.headers.host) || origin !== `http://${req.headers.host}` || sessions.size) {
+    if (req.url !== '/session' || !validHost(req.headers.host) || !secure(req) || origin !== pageOrigin(req)) {
+      socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n'); return;
+    }
+    if (!codeOk(socketCode(req))) { socket.end('HTTP/1.1 401 Unauthorized\r\nConnection: close\r\n\r\n'); return; }
+    if (sessions.size) {
       socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n'); return;
     }
     wss.handleUpgrade(req, socket, head, client => wss.emit('connection', client));
@@ -216,21 +245,27 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
     // The package in use at Start is the snapshot of this session (SU-7).
     store.current().then(async ({ source, pkg }) => {
       if (closed) return;
-      // Every listening session writes a log; no setting turns it off (ML-13). The header has counts only (ML-14).
+      // Every listening session of a local service writes a log; no setting turns it off (ML-13). A hosted one may run with
+      // ALICE_LOG=off, where the container's disk is its memory. The header has counts only (ML-14).
       const counts = { source, status: pkg.status, files: pkg.files.length, chars: pkg.chars, terms: pkg.status === 'usable' ? extractTerms(pkg.documents).length : 0 };
-      const rev = await revisionOnce();
+      const rev = noLog ? null : await revisionOnce();
       if (closed) return;
-      mlog = logs.start(session.id, () => session.send('log', { status: 'not saved' }));
-      mlog.write('log_started', { version: LOG_VERSION, sessionId: session.id, startedAt: new Date(mlog.startedAt).toISOString(), tzOffsetMin: -new Date(mlog.startedAt).getTimezoneOffset(),
-        revision: rev, models: { transcription: transcriptionModel, reader: process.env.OPENAI_MODEL || 'gpt-6-astra', answer: answerModel() }, keyConfigured: configured, pauseMs: PAUSE_MS, package: counts });
-      mlog.write('package', { ...counts, skipped: pkg.skipped.length });
+      if (!noLog) {
+        mlog = logs.start(session.id, () => session.send('log', { status: 'not saved' }));
+        mlog.write('log_started', { version: LOG_VERSION, sessionId: session.id, startedAt: new Date(mlog.startedAt).toISOString(), tzOffsetMin: -new Date(mlog.startedAt).getTimezoneOffset(),
+          revision: rev, models: { transcription: transcriptionModel, reader: process.env.OPENAI_MODEL || 'gpt-6-astra', answer: answerModel() }, keyConfigured: configured, pauseMs: PAUSE_MS, package: counts });
+        mlog.write('package', { ...counts, skipped: pkg.skipped.length });
+      }
       session.answers.setPackage(pkg);
       // Terms are picked locally from the package; they go to transcription as a prompt and, with the documents, to the question reader.
       const terms = pkg.status === 'usable' ? extractTerms(pkg.documents) : [];
       hint = hintPrompt(terms);
       session.setContext({ terms, documents: pkg.documents });
-      audit('package_loaded', { sessionId: session.id, source, status: pkg.status, files: pkg.files, chars: pkg.chars, skipped: pkg.skipped, terms: terms.length });
-      log(`package: status=${pkg.status} files=${pkg.files.length} chars=${pkg.chars} skipped=${pkg.skipped.join(',') || 'none'}`);
+      // SU-9: an uploaded file's name never reaches the audit or the console, only counts. The folder package keeps its names (PK-9).
+      const named = source !== 'uploaded';
+      audit('package_loaded', { sessionId: session.id, source, status: pkg.status, files: named ? pkg.files : pkg.files.length, chars: pkg.chars,
+        skipped: named ? pkg.skipped : pkg.skipped.length, terms: terms.length });
+      log(`package: status=${pkg.status} files=${pkg.files.length} chars=${pkg.chars} skipped=${named ? pkg.skipped.join(',') || 'none' : pkg.skipped.length}`);
       session.schedule();
       openUpstream();
     });
@@ -296,10 +331,13 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
   return server;
 }
 
+// Loopback only, unless ALICE_PUBLIC_HOST says the service is published behind a platform that forwards requests to it.
+export const listenHost = (env = process.env) => (String(env.ALICE_PUBLIC_HOST || '').trim() ? '0.0.0.0' : '127.0.0.1');
+
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const server = createPocServer();
-  server.listen(Number(process.env.PORT || 3000), '127.0.0.1', () => {
-    console.log(`Alice.Good.Meetings POC: http://127.0.0.1:${server.address().port}`);
+  server.listen(Number(process.env.PORT || 3000), listenHost(), () => {
+    console.log(`Alice.Good.Meetings POC: http://${listenHost()}:${server.address().port}`);
     if (!process.env.OPENAI_API_KEY?.trim()) console.log('No OpenAI key is set up: question recognition and proposed answers are unavailable.');
   });
   process.once('SIGINT', () => server.shutdown());

@@ -17,7 +17,7 @@ import { loadPackage, DEFAULT_PACKAGE_DIR } from './package-loader.mjs';
 import { MeetingLog, createLogStore, DEFAULT_LOG_DIR } from './meeting-log.mjs';
 import { readFile as readFileAsync, stat, appendFile } from 'node:fs/promises';
 import { createStateMachine, TIMES as AVATAR_TIMES, MOODS as AVATAR_MOODS } from './avatar.js';
-import { VENDOR_ASSETS } from './server.mjs';
+import { VENDOR_ASSETS, listenHost } from './server.mjs';
 import { createGenerator, answerModel, buildRequest, modelInput, validateResult, INSTRUCTIONS, BULLET_MAX, answerSchema } from './answer.mjs';
 
 // The existing cases never read a real preparation package: every server gets an empty temporary folder.
@@ -1422,10 +1422,11 @@ test('uploaded package survives Stop and is replaced by the next upload', async 
   assert.deepEqual([next.status, next.body.package.files, next.body.package.chars], [200, 1, 7]);
 });
 
-test('package text is never returned, written or logged', async t => {
+test('package text is never returned, written or logged, and no uploaded file name reaches the audit or console', async t => {
   const sentinel = 'SENTINEL-PACKAGE-TEXT-7731';
   const ctx = await liveServer(t);
-  const loaded = await putPackage(ctx, upload(['secret-name.md', `Alice ${sentinel} details.`]));
+  const loaded = await putPackage(ctx, upload(['secret-name.md', `Alice ${sentinel} details.`], ['skipped-secret.pdf', 'x'], ['README.md', 'y']));
+  assert.deepEqual(loaded.body.skipped.map(s => s.name).sort(), ['README.md', 'skipped-secret.pdf'], 'names appear only in the answer to the page');
   assert.ok(!JSON.stringify(loaded.body).includes(sentinel));
   assert.ok(!JSON.stringify(await getPackage(ctx)).includes(sentinel));
   const session = await ctx.open();
@@ -1433,8 +1434,21 @@ test('package text is never returned, written or logged', async t => {
   await new Promise(r => setTimeout(r, 60));
   assert.ok(!JSON.stringify(ctx.audits).includes(sentinel) && !ctx.logs.join('\n').includes(sentinel));
   assert.ok(!JSON.stringify(session.events).includes(sentinel));
-  assert.ok(!JSON.stringify(ctx.audits.filter(a => a.name === 'package_uploaded')).includes('secret-name'));
+  // SU-9: counts and reasons only; no name of an uploaded file, kept or skipped, in the audit or on the console.
+  for (const name of ['secret-name', 'skipped-secret', 'README.md']) {
+    assert.ok(!JSON.stringify(ctx.audits).includes(name), `audit holds ${name}`);
+    assert.ok(!ctx.logs.join('\n').includes(name), `console holds ${name}`);
+  }
+  const started = named(ctx.audits, 'package_loaded')[0];
+  assert.deepEqual([started.source, started.files, started.skipped, started.chars > 0], ['uploaded', 1, 2, true]);
+  assert.ok(ctx.logs.some(line => /^package: status=usable files=1 chars=\d+ skipped=2$/.test(line)), ctx.logs.join(' | '));
   assert.deepEqual(await readdir(ctx.packageDir), [], 'nothing is written to the package folder');
+  // PK-9 is unchanged: the folder package's start-up audit keeps its names.
+  const folder = await liveServer(t, { files: { 'folder-name.txt': 'Folder text.', 'README.md': 'not used' } });
+  (await folder.open()).socket.close();
+  await new Promise(r => setTimeout(r, 60));
+  const fromFolder = named(folder.audits, 'package_loaded')[0];
+  assert.deepEqual([fromFolder.source, fromFolder.files.map(f => f.name), fromFolder.skipped], ['folder', ['folder-name.txt'], ['README.md']]);
 });
 
 test('package and log routes refuse a wrong Host or Origin', async t => {
@@ -2100,4 +2114,102 @@ test('GET log offers the most recent older log when the newest file is gone (SD-
   await rm(log.path);
   const older = await store.read();
   assert.deepEqual([older.filename, older.text], ['alice-meeting-20261102T000000Z.jsonl', '{"type":"log_started","older":2}\n']);
+});
+
+// Hosted mode (ALICE_PUBLIC_HOST, ALICE_ACCESS_CODE, ALICE_LOG, ALICE_AVATAR). With none of them set the service is local,
+// as every case above shows; these cases turn one setting on at a time.
+const HOSTED = 'alice-test-abc.a.run.app';
+const hostedRequest = (ctx, path, { host = HOSTED, proto = 'https', headers = {}, method = 'GET', body } = {}) => new Promise((resolve, reject) => {
+  const req = http.request({ host: '127.0.0.1', port: new URL(ctx.origin).port, path, method, headers: { Host: host, ...(proto ? { 'X-Forwarded-Proto': proto } : {}), ...headers } }, res => {
+    let text = ''; res.on('data', chunk => { text += chunk; }); res.on('end', () => resolve({ status: res.statusCode, text }));
+  });
+  req.on('error', reject); req.end(body);
+});
+// Resolves with {ready, protocol} when the session is ready, or {status} when the handshake is refused.
+const socketOutcome = (ctx, { protocols = [], origin = ctx.origin, headers = {} } = {}) => new Promise(resolve => {
+  const ws = new WebSocket(ctx.origin.replace('http:', 'ws:') + '/session', protocols, { origin, headers });
+  ws.on('unexpected-response', (req, res) => { resolve({ status: res.statusCode }); req.destroy(); });
+  ws.on('message', raw => { if (JSON.parse(raw).type === 'ready') { resolve({ ready: true, protocol: ws.protocol }); ws.close(); } });
+  ws.on('error', () => {});
+});
+
+test('hosted: the public host is served over https only, beside the local one, and the socket takes its https origin', async t => {
+  assert.deepEqual([listenHost({}), listenHost({ ALICE_PUBLIC_HOST: '  ' }), listenHost({ ALICE_PUBLIC_HOST: HOSTED })], ['127.0.0.1', '127.0.0.1', '0.0.0.0']);
+  const ctx = await liveServer(t, { publicHost: `${HOSTED}, second.example.run.app` });
+  assert.equal((await hostedRequest(ctx, '/')).status, 200);
+  assert.equal((await hostedRequest(ctx, '/', { host: 'second.example.run.app' })).status, 200, 'a second named host');
+  assert.equal((await hostedRequest(ctx, '/', { proto: 'http' })).status, 403, 'plain http on the public host');
+  assert.equal((await hostedRequest(ctx, '/', { proto: null })).status, 403, 'no scheme reported');
+  assert.equal((await hostedRequest(ctx, '/', { host: 'evil.example' })).status, 403, 'another host');
+  assert.equal((await fetch(ctx.origin + '/')).status, 200, 'the local address still works');
+  const body = JSON.stringify(upload(['a.md', 'Hosted text.']));
+  const put = origin => hostedRequest(ctx, '/package', { method: 'PUT', body, headers: { 'Content-Type': 'application/json', Origin: origin } });
+  assert.deepEqual([(await put(`http://${HOSTED}`)).status, (await put('https://evil.example')).status, (await put(`https://${HOSTED}`)).status], [403, 403, 200]);
+  const hosted = { headers: { Host: HOSTED, 'X-Forwarded-Proto': 'https' } };
+  assert.deepEqual(await socketOutcome(ctx, { ...hosted, origin: `http://${HOSTED}` }), { status: 403 });
+  assert.deepEqual(await socketOutcome(ctx, { ...hosted, origin: `https://${HOSTED}` }), { ready: true, protocol: '' });
+});
+
+test('hosted: with an access code the package, the log and the session need it; the code is never logged or echoed', async t => {
+  const code = 'correct horse 42';
+  const ctx = await liveServer(t, { accessCode: ` ${code}\n` });
+  const withCode = value => ({ 'X-Alice-Code': value });
+  const status = async (path, init) => (await fetch(ctx.origin + path, init)).status;
+  assert.deepEqual([await status('/'), await status('/app.js'), await status('/health')], [200, 200, 200], 'the page itself needs no code');
+  assert.deepEqual([await status('/package'), await status('/package', { headers: withCode('wrong') }), await status('/package', { headers: withCode(code) })], [401, 401, 200]);
+  assert.deepEqual([await status('/log'), await status('/log', { headers: withCode(code) })], [401, 404]);
+  const change = (method, headers) => status('/package', { method, headers: { 'Content-Type': 'application/json', Origin: ctx.origin, ...headers }, body: method === 'PUT' ? JSON.stringify(upload(['a.md', 'Text.'])) : undefined });
+  assert.deepEqual([await change('PUT', {}), await change('DELETE', {}), await change('PUT', withCode(code)), await change('DELETE', withCode(code))], [401, 401, 200, 200]);
+  const offer = value => ['alice', `alice-code.${Buffer.from(value).toString('base64url')}`];
+  assert.deepEqual(await socketOutcome(ctx), { status: 401 }, 'no code');
+  assert.deepEqual(await socketOutcome(ctx, { protocols: offer('wrong') }), { status: 401 });
+  assert.deepEqual(await socketOutcome(ctx, { protocols: offer(code) }), { ready: true, protocol: 'alice' }, 'only the plain subprotocol is echoed');
+  await new Promise(resolve => setTimeout(resolve, 60));
+  const written = JSON.stringify(ctx.audits) + ctx.logs.join('\n') + JSON.stringify(await (await fetch(ctx.origin + '/health')).json());
+  for (const secret of [code, Buffer.from(code).toString('base64url')]) assert.equal(written.includes(secret), false);
+});
+
+test('hosted: ALICE_LOG=off writes no meeting log and Download log answers 404; on a local service it changes nothing', async t => {
+  const hosted = await liveServer(t, { publicHost: HOSTED, logOff: true });
+  const session = await hosted.open();
+  hosted.f.say('Words that would have been logged.');
+  await until(() => session.events.some(e => e.type === 'transcript'));
+  await stopped(hosted, session);
+  const res = await getLog(hosted);
+  assert.deepEqual([res.status, await res.text()], [404, 'No meeting log yet.']);
+  assert.deepEqual(await readdir(hosted.logDir), [], 'no file is created');
+  assert.equal(session.events.some(e => e.type === 'log'), false);
+  const local = await liveServer(t, { logOff: true });
+  await stopped(local, await local.open());
+  assert.equal((await readdir(local.logDir)).filter(n => n.endsWith('.jsonl')).length, 1, 'a local service logs every session (ML-13)');
+});
+
+test('ALICE_AVATAR=off serves no avatar file, and the rest of the page is served', async t => {
+  const ctx = await liveServer(t, { avatarOff: true });
+  const status = async path => { const r = await fetch(ctx.origin + path); await r.body?.cancel(); return r.status; };
+  assert.deepEqual([await status('/poc/avatar.js'), await status(VENDOR_ASSETS[0]), await status(VENDOR_ASSETS.at(-1))], [404, 404, 404]);
+  assert.deepEqual([await status('/'), await status('/app.js'), await status('/poc/audio-worklet.js')], [200, 200, 200]);
+});
+
+test('the publish list holds what the hosted service imports and serves, and nothing private or test-only', async () => {
+  const root = new URL('../', import.meta.url);
+  const list = (await readFile(new URL('./deploy/publish-files.txt', import.meta.url), 'utf8')).split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#'));
+  for (const path of list) await stat(new URL(path, root));
+  // Every module reachable from the service by a relative import is listed.
+  const seen = new Set(), queue = ['poc/server.mjs'];
+  while (queue.length) {
+    const file = queue.pop();
+    if (seen.has(file)) continue;
+    seen.add(file);
+    const source = await readFile(new URL(file, root), 'utf8');
+    for (const match of source.matchAll(/from\s+'(\.\/[^']+)'/g)) queue.push(`poc/${match[1].slice(2)}`);
+  }
+  assert.deepEqual([...seen].filter(file => !list.includes(file)), [], 'modules missing from the list');
+  for (const needed of ['index.html', 'app.js', 'poc/audio-worklet.js', 'poc/avatar.js', 'poc/vendor', 'poc/package.json', 'poc/pnpm-lock.yaml']) assert.ok(list.includes(needed), needed);
+  // The benchmark folder's name is put together here, because no poc source may name it.
+  const banned = new RegExp(['\\.env', 'context', 'logs', 'docs', 'asdg', 'openspec', 'eval' + '-data', '\\.test\\.', 'browser-', 'fixtures', 'live-capture', 'node_modules', 'preview', '\\.\\.', '^/'].join('|'));
+  for (const path of list) assert.doesNotMatch(path, banned, path);
+  const dockerfile = await readFile(new URL('./deploy/Dockerfile', import.meta.url), 'utf8');
+  assert.match(dockerfile, /--prod --frozen-lockfile --ignore-scripts/);
+  assert.doesNotMatch(dockerfile, /OPENAI_API_KEY=|ALICE_ACCESS_CODE=/, 'no secret is set in the image');
 });

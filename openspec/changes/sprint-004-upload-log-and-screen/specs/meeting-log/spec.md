@@ -35,7 +35,7 @@ The log SHALL NOT hold package file content or names, the key, the prompts, hint
 - **THEN** the sentinel is in no log line except where a shown bullet quotes it.
 
 ### Requirement: Stored in poc/logs, kept until Pablo deletes it
-Logs SHALL be written only by the service to `poc/logs/` (or `ALICE_LOG_DIR`), which `poc/logs/.gitignore` keeps out of Git, with folder mode 0700 and file mode 0600, and SHALL never be deleted, rotated or expired by Alice. A write failure SHALL NOT stop the session and the monitor line SHALL say "log not saved".
+Logs SHALL be written only by the service to `poc/logs/` (or `ALICE_LOG_DIR`), which `poc/logs/.gitignore` keeps out of Git, with each file at mode 0600 and the folder left at the mode it is given, and SHALL never be deleted, rotated or expired by Alice. A write failure SHALL NOT stop the session and the monitor line SHALL say "log not saved".
 
 #### Scenario: Unwritable folder
 - **WHEN** the log folder cannot be written

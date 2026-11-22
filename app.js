@@ -45,6 +45,10 @@ const removeBtn = document.getElementById('remove-package');
 const packageTextEl = document.getElementById('package-text');
 const packageNoticeEl = document.getElementById('package-notice');
 const avatar = { api: null, on: true, failed: false };
+// Hosted mode only: a published service may ask for an access code by answering 401. A local service never does, and none of this shows.
+const ACCESS_KEY = 'alice.code';
+const access = { code: '', needed: false };
+try { access.code = sessionStorage.getItem(ACCESS_KEY) || ''; } catch { /* no storage: the code is asked once per page load */ }
 const packageState = { info: null, busy: false, notice: '', logNotice: '' };
 const CONFIRM_UNCERTAIN_MS = 5000;
 const LIVE_TAGS = { new: 'new question', restatement: 'restatement' };
@@ -191,7 +195,7 @@ function errorCause() {
 function renderControls() {
   const listening = Boolean(current);
   renderPackage();
-  listenBtn.disabled = listening || !view.healthKnown || Boolean(view.unavailable);
+  listenBtn.disabled = listening || !view.healthKnown || Boolean(view.unavailable) || access.needed;
   stopBtn.disabled = !listening;
   const cause = errorCause();
   errorRowEl.textContent = cause;
@@ -466,7 +470,9 @@ async function connectServer(resources, source) {
     const mute = resources.ctx.createGain();
     mute.gain.value = 0;
     source.connect(capture).connect(mute).connect(resources.ctx.destination);
-    const socket = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/session`);
+    const address = `${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/session`;
+    // A held access code travels as a subprotocol header, never in the address, which a hosting platform would record.
+    const socket = access.code ? new WebSocket(address, ['alice', `alice-code.${b64url(access.code)}`]) : new WebSocket(address);
     resources.socket = socket;
     remote.status = 'connecting'; renderServer();
     capture.port.onmessage = event => {
@@ -566,6 +572,56 @@ async function readHealth() {
 }
 void readHealth();
 
+// Hosted mode: every call to the service goes through here. A held code is sent in a header; a 401 means a code is wanted.
+const b64url = text => btoa(String.fromCharCode(...new TextEncoder().encode(text))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+async function api(path, init = {}) {
+  const response = await fetch(path, access.code ? { ...init, headers: { ...init.headers, 'X-Alice-Code': access.code } } : init);
+  if (response.status === 401) askForCode(access.code ? 'That code was not accepted.' : '');
+  return response;
+}
+
+// One plain row, built only when the service asks: a password field, so the code is not readable from across the room.
+function askForCode(message) {
+  access.needed = true; access.code = '';
+  try { sessionStorage.removeItem(ACCESS_KEY); } catch { /* nothing was stored */ }
+  let form = document.getElementById('access-form');
+  if (!form) {
+    form = Object.assign(document.createElement('form'), { id: 'access-form', className: 'box' });
+    form.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:18px';
+    const input = Object.assign(document.createElement('input'), { id: 'access-code', type: 'password', autocomplete: 'off', required: true });
+    input.setAttribute('autocapitalize', 'off');
+    input.style.cssText = 'font-size:18px;padding:4px 8px';
+    const label = Object.assign(document.createElement('label'), { textContent: 'Access code ' });
+    label.append(input);
+    const button = Object.assign(document.createElement('button'), { type: 'submit', textContent: 'Enter' });
+    button.style.cssText = 'font-size:16px;padding:4px 12px';
+    const note = Object.assign(document.createElement('span'), { id: 'access-note' });
+    note.setAttribute('role', 'status'); note.style.fontWeight = '700';
+    form.append(label, button, note);
+    form.addEventListener('submit', event => { event.preventDefault(); void submitCode(input, note); });
+    errorRowEl.before(form);
+  }
+  form.hidden = false;
+  form.querySelector('#access-note').textContent = message;
+  renderControls();
+}
+
+// The code is checked against the service before it is kept, and kept for this tab only (sessionStorage).
+async function submitCode(input, note) {
+  const code = input.value.trim();
+  if (!code) return;
+  note.textContent = 'Checking…';
+  let status = 0;
+  try { status = (await fetch('/package', { cache: 'no-store', headers: { 'X-Alice-Code': code } })).status; } catch { /* no answer */ }
+  if (status !== 200) { note.textContent = status === 401 ? 'That code was not accepted.' : 'The Alice service did not answer.'; return; }
+  access.code = code; access.needed = false;
+  try { sessionStorage.setItem(ACCESS_KEY, code); } catch { /* kept in memory for this page only */ }
+  input.value = ''; note.textContent = '';
+  document.getElementById('access-form').hidden = true;
+  renderControls();
+  void readPackage();
+}
+
 // The package: GET /package gives counts only (SU-8); Upload and Remove are disabled while listening (SU-6, SU-10).
 const PACKAGE_REFUSALS = {
   'too-many-files': 'more than 20 files',
@@ -596,13 +652,13 @@ function renderPackage() {
   const loaded = Boolean(packageState.info) && packageState.info.source !== 'none';
   removeBtn.hidden = !loaded;
   removeBtn.disabled = listening || packageState.busy;
-  uploadBtn.disabled = listening || packageState.busy || !view.healthKnown || Boolean(view.unavailable);
+  uploadBtn.disabled = listening || packageState.busy || !view.healthKnown || Boolean(view.unavailable) || access.needed;
   packageNoticeEl.textContent = listening && !packageState.notice ? 'Stop listening to load a package.' : packageState.notice;
 }
 
 async function readPackage() {
   try {
-    const response = await fetch('/package', { cache: 'no-store', signal: AbortSignal.timeout(3000) });
+    const response = await api('/package', { cache: 'no-store', signal: AbortSignal.timeout(3000) });
     if (response.ok) packageState.info = await response.json();
   } catch { /* the line keeps what it had */ }
   renderPackage();
@@ -634,7 +690,7 @@ async function uploadPackage(fileList) {
     packageState.notice = `Not loaded: ${read.failed} could not be read as text. Your previous package is still in use.`;
   } else {
     try {
-      const response = await fetch('/package', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ files: read.files }) });
+      const response = await api('/package', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ files: read.files }) });
       const body = await response.json().catch(() => null);
       if (response.ok && body?.result === 'loaded') {
         packageState.info = body.package;
@@ -655,7 +711,7 @@ async function removePackage() {
   if (current || packageState.busy) return;
   packageState.busy = true; packageState.notice = ''; renderPackage();
   try {
-    const response = await fetch('/package', { method: 'DELETE' });
+    const response = await api('/package', { method: 'DELETE' });
     const body = await response.json().catch(() => null);
     if (response.ok && body?.result === 'removed') { packageState.info = body.package; packageState.notice = 'Package removed.'; }
     else packageState.notice = `Not removed: ${refusalText(body, response.status)}.`;
@@ -679,7 +735,7 @@ function showLogNotice(text) {
 }
 async function downloadLog() {
   try {
-    const response = await fetch('/log', { cache: 'no-store' });
+    const response = await api('/log', { cache: 'no-store' });
     if (response.status === 404) { showLogNotice('No meeting log yet.'); return; }
     if (!response.ok) { showLogNotice('The meeting log could not be downloaded.'); return; }
     const name = /filename="([^"]+)"/.exec(response.headers.get('Content-Disposition') || '')?.[1] || 'alice-meeting.jsonl';

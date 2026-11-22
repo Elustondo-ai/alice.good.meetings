@@ -20,7 +20,7 @@ The upstream connection uses `session.update` for 24 kHz PCM transcription. Star
 Server RMS above 0.012 marks speech. A turn commits only after 800 ms of silence following speech (tune with `ALICE_PAUSE_MS`, 300 to 5000 in steps of 100); continuous speech is never cut (a 120-second backstop protects the upstream buffer limit). The agent is asked for guidance only while Pablo is pausing (speech heard, then the pause): a transcript that arrives mid-speech waits for the next pause, and the `requirePause` option (default on) exists so tests can turn the gate off. Pure silence buffers clear every five seconds.
 Agent reasoning can start from partial transcription. Audio intake continues while that request runs.
 Audio send backlog above two seconds closes the connection with a degraded status. Sessions have a 30-minute POC limit and must be explicitly restarted after failures.
-At session start, before `ready`, the server loads the package, audits `package_loaded` (names, sizes, digests, never text) and logs one status line. A refused key (an `error` event or a 401 handshake) ends the session with `OpenAI authentication failed`. Voiced packets and the page's `rendered` report (with `answerFocusVersion` and `answerStatus`) feed the answer timing events. With `ALICE_PRINT_REQUEST=1` the assembled model input is printed to standard error only, after a private-text warning at startup and before each request.
+At session start, before `ready`, the server loads the package, audits `package_loaded` and logs one status line: names, sizes and digests for the folder package, counts only for an uploaded one, never text. A refused key (an `error` event or a 401 handshake) ends the session with `OpenAI authentication failed`. Voiced packets and the page's `rendered` report (with `answerFocusVersion` and `answerStatus`) feed the answer timing events. With `ALICE_PRINT_REQUEST=1` the assembled model input is printed to standard error only, after a private-text warning at startup and before each request.
 Text controls `question.reset` and `question.confirm` go to [the session](session.md), which replies with `question.result`; a malformed question control returns `invalid` and leaves the session open. Other unknown controls still close it. See [the protocol guide](docs/04-server-and-protocol.md) for payloads.
 `stop`, socket closure, SIGINT and SIGTERM release sessions and pending work. Public errors omit provider request details and credentials.
 Audit stdout contains event names, times, counts and revisions, without audio, transcripts or API keys. `transcript_final` records an item ID when its transcript completes; `question_control` records each question request's ID, type, status, whether it was a replay, and versions, never wording. `browser_rendered` is a client acknowledgement, not a human acceptance decision; when it names a Live id and version it records display, never consent.
@@ -50,3 +50,20 @@ Options `logDir` (default `ALICE_LOG_DIR`, else `poc/logs/`), `logMaxBytes`, `mo
 ## Fix of 22 November 2026
 
 `cleanup` stops the session before it writes `session_stopped` and closes the meeting log, so anything the session records on stopping is in the log and `session_stopped` stays the last line.
+
+## Uploaded file names (22 November 2026, SU-9 as amended)
+
+For an uploaded package the `package_loaded` audit holds `files` and `skipped` as counts, and the console line prints the number skipped, not their names. An uploaded file's name appears only in the upload's answer to the page (SU-4). The folder package's start-up audit keeps its names, sizes and digests, as built in SPRINT-003 (PK-9).
+
+## Hosted mode (22 November 2026)
+
+Four settings, read as options of `createPocServer` and from the environment. With none set the service is the local one described above, unchanged.
+
+| Setting (option) | Contract |
+| --- | --- |
+| `ALICE_PUBLIC_HOST` (`publicHost`) | One or more host names, comma-separated. `listenHost()` then returns `0.0.0.0` in place of `127.0.0.1`. A request for a named host is served only when `X-Forwarded-Proto` is `https`, and its page origin is `https://<host>` for `PUT`, `DELETE` and the session socket. Local addresses are still served. Any other host gets 403. |
+| `ALICE_ACCESS_CODE` (`accessCode`) | Trimmed. `/package` (all methods) and `/log` answer 401 without the header `X-Alice-Code`; `/session` answers 401 unless the client offers the subprotocols `alice` and `alice-code.<base64url of the code>`. Codes are compared as SHA-256 digests with `timingSafeEqual`. Only `alice` is echoed; the code is never logged, audited or put in an address. The page, `/health` and static files need no code. |
+| `ALICE_LOG=off` (`logOff`) | Only with a public host: no meeting log is started and `/log` answers 404 "No meeting log yet." Without a public host it has no effect (ML-13). |
+| `ALICE_AVATAR=off` (`avatarOff`) | `/poc/avatar.js` and everything under `/poc/vendor/` answer 404, so the page drops the avatar silently. |
+
+The access code travels in a header and not in the socket's address, because a hosting platform records request addresses in its own logs. The files and commands for Google Cloud Run are in [deploy](deploy/README.md).
