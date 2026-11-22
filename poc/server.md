@@ -46,3 +46,7 @@ Options `logDir` (default `ALICE_LOG_DIR`, else `poc/logs/`), `logMaxBytes`, `mo
 
 - A request that fails part-way, such as an upload cut off mid-body, is caught in one place (`route(...).catch`) and answered or dropped; before, the rejected promise ended the service process.
 - `validCaller` also reads `Sec-Fetch-Site` on a GET with no Origin: `cross-site` and `same-site` get 403 on `/log` and `/package`, so another site cannot make the browser fetch or save the log; `same-origin`, `none` (the address bar) and tools that send neither header are allowed.
+
+## Fix of 22 November 2026
+
+`cleanup` stops the session before it writes `session_stopped` and closes the meeting log, so anything the session records on stopping is in the log and `session_stopped` stays the last line.

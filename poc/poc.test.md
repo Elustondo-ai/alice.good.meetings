@@ -48,3 +48,7 @@ ST4-43 checks that the 19 vendored files and `/poc/avatar.js` are served with th
 ## Review fixes (21 November 2026)
 
 Three cases: an item with no words is skipped and does not cut the transcript snapshot; an upload cut off mid-body leaves the service running; a browser GET marked `cross-site` or `same-site` is refused on `/log` and `/package` while `same-origin`, `none` and no header are served.
+
+## Second pass of review fixes (22 November 2026)
+
+Six cases, one per fix: the `log_full` line holds no event data and the file stays under its cap; an answer in flight at Stop is logged as dropped before the last line; a failed reading is logged as an `error` with its public message only; a control is logged before its effects and a refused one as `invalid`; a reader reply with any unknown field falls back; Download log offers an older log when the newest file is gone.

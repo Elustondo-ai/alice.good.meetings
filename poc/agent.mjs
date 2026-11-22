@@ -9,10 +9,9 @@ const baseFields = {
   evidenceIds: z.array(z.string()),
 };
 // What the session accepts: the one-call fields are optional so a reading without an answer is still valid.
-export const proposalSchema = z.object({
+// Unknown fields are kept, not stripped: the session then refuses the answer part whole and keeps the reading (AD-3).
+export const proposalSchema = z.looseObject({
   ...baseFields, covered: z.boolean().optional(), bullets: z.array(z.string()).optional(),
-  // A reader that adds details anyway still gives its reading; the answer part is then refused whole (AD-3).
-  details: z.unknown().optional(),
 });
 // What the model must return: every field, empty when there is no clear question.
 export const modelSchema = z.object({ ...baseFields, covered: z.boolean(), bullets: z.array(z.string()) });

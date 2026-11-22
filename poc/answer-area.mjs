@@ -157,6 +157,8 @@ export class AnswerArea {
     this.stopped = true;
     const run = this.run;
     this.finishTiming(run, 'stopped');
+    // Recorded now, not when the aborted request settles: by then the meeting log is closed (ML-8).
+    if (run && !run.dropped && this.proposed.status === 'preparing') this.drop(run);
     run?.abort.abort('stopped');
     const { status } = this.proposed;
     if (status === 'preparing') this.set({ ...EMPTY, status: 'last-known', focusVersion: this.proposed.focusVersion, lastKnown: true, lastStatus: 'preparing' });

@@ -22,3 +22,8 @@ flowchart LR
 
 Failure: if the folder or file cannot be opened or a write fails, `onFail` runs once (the page is told `log` / `not saved`) and later lines are dropped; the session goes on. The download name is `alice-meeting-<UTC start>.jsonl`. Rules: ML-1 to ML-15 and MS-1 to MS-9.
 Never written: package text or names, the key, prompts, hints, replies, audio. Bullets shown may quote the package and are logged (decided).
+
+## Fixes of 22 November 2026
+
+- **`log_full`.** The last line now holds only `t`, `ms`, `type` and `maxBytes`. Before, it carried the whole event that did not fit, so a long transcript could push the file over its cap (MS-4).
+- **`read()`.** If this process's newest log file is missing or unreadable, the most recent other log in the folder is returned, so Download log still works (SD-1).

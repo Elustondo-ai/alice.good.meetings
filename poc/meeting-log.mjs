@@ -45,7 +45,8 @@ export class MeetingLog {
     let size = Buffer.byteLength(line);
     if (this.bytes + size + FULL_RESERVE > this.maxBytes) {
       this.full = true;
-      line = `${JSON.stringify({ ...event, type: 'log_full', maxBytes: this.maxBytes })}\n`;
+      // The last line names the cap and nothing of the event that did not fit, so the file stays under the cap (MS-4).
+      line = `${JSON.stringify({ t: event.t, ms: event.ms, type: 'log_full', maxBytes: this.maxBytes })}\n`;
       size = Buffer.byteLength(line);
     }
     this.bytes += size;
@@ -77,16 +78,17 @@ export function createLogStore({ dir = process.env.ALICE_LOG_DIR || DEFAULT_LOG_
     },
     // `{filename, text}` holding complete lines only, or null when there is no log.
     async read() {
-      let log = latest, path, name;
-      if (log) { await log.flush(); path = log.path; name = log.name; } else {
-        try { name = (await readdir(dir)).filter(n => NAME.test(n)).sort().at(-1); } catch { return null; }
-        if (!name) return null;
-        path = join(dir, name);
+      // This process's own log first; if its file is missing or unreadable, the most recent one in the folder (SD-1).
+      const names = [];
+      if (latest) { await latest.flush(); names.push(latest.name); }
+      try { names.push(...(await readdir(dir)).filter(n => NAME.test(n) && n !== latest?.name).sort().reverse()); } catch { /* no folder yet */ }
+      for (const name of names) {
+        let text;
+        try { text = await readFile(join(dir, name), 'utf8'); } catch { continue; }
+        const end = text.lastIndexOf('\n');
+        return { filename: `alice-${name.replace(NAME, 'meeting-$1.jsonl')}`, text: end < 0 ? '' : text.slice(0, end + 1) };
       }
-      let text;
-      try { text = await readFile(path, 'utf8'); } catch { return null; }
-      const end = text.lastIndexOf('\n');
-      return { filename: `alice-${name.replace(NAME, 'meeting-$1.jsonl')}`, text: end < 0 ? '' : text.slice(0, end + 1) };
+      return null;
     },
   };
 }

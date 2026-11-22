@@ -2015,3 +2015,89 @@ test('a browser GET from another site is refused on log and package; this page a
   for (const site of ['cross-site', 'same-site']) assert.deepEqual([await get('/log', site), await get('/package', site)], [403, 403], site);
   for (const site of ['same-origin', 'none', undefined]) assert.deepEqual([await get('/log', site), await get('/package', site)], [404, 200], String(site));
 });
+
+// Second pass of review fixes (22 November 2026): the log's last line, missing events, control order, unknown reader fields, older logs.
+test('the log_full line holds nothing of the event that did not fit and the file stays under its cap (MS-4)', async t => {
+  const dir = await tempDir(t);
+  const log = new MeetingLog({ dir, sessionId: 'abcdef12-0000-0000', maxBytes: 1500 });
+  log.write('log_started', { version: 1 });
+  log.write('transcript', { itemId: 'big', text: 'x'.repeat(2000) });
+  log.write('transcript', { itemId: 'later', text: 'never written' });
+  await log.close();
+  const text = await readFile(log.path, 'utf8');
+  const lines = text.trim().split('\n').map(line => JSON.parse(line));
+  assert.deepEqual(lines.map(l => l.type), ['log_started', 'log_full']);
+  assert.deepEqual(Object.keys(lines[1]).sort(), ['maxBytes', 'ms', 't', 'type']);
+  assert.ok(Buffer.byteLength(text) <= 1500, `file is ${Buffer.byteLength(text)} bytes`);
+});
+
+test('an answer still being prepared at Stop is logged as dropped before the last line (ML-8)', async t => {
+  const ctx = await liveServer(t, { files: { 'a.md': 'Some package text.' } });
+  const session = await ctx.open();
+  await session.confirm('Why this company?');
+  await until(() => ctx.f.calls.length === 1);
+  await stopped(ctx, session);
+  const lines = await readLines(ctx), types = typesOf(lines);
+  assert.deepEqual(lines.filter(l => l.type === 'answer_dropped').map(l => l.reason), ['stopped']);
+  assert.ok(types.indexOf('answer_dropped') < types.indexOf('session_stopped'));
+  assert.equal(types.at(-1), 'session_stopped');
+  assert.equal(named(ctx.audits, 'answer_dropped').length, 1, 'and it is audited once');
+});
+
+test('a failed reading is logged as an error with its public message only (ML-10)', async t => {
+  const ctx = await liveServer(t, { reason: async () => { throw Object.assign(new Error('PROVIDER-DETAIL-SENTINEL'), { status: 429 }); } });
+  const session = await ctx.open();
+  ctx.f.say('Tell me about this project please.');
+  await until(() => ctx.audits.some(a => a.name === 'agent_failed'));
+  await stopped(ctx, session);
+  const lines = await readLines(ctx);
+  // The reader may also be asked once at the start of the session, so there can be more than one failure.
+  const errors = lines.filter(l => l.type === 'error');
+  assert.ok(errors.length >= 1 && errors.every(l => l.code === 'reader' && l.message === 'OpenAI quota or rate limit reached'), JSON.stringify(errors));
+  assert.equal(JSON.stringify(lines).includes('PROVIDER-DETAIL-SENTINEL'), false);
+});
+
+test('a control is logged before its own effects, and a refused one is logged as invalid (ML-7, ML-12)', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  ctx.f.say('First question here?');
+  await until(() => session.events.some(e => e.live));
+  const e = session.events.filter(m => m.live).at(-1);
+  const results = () => session.events.filter(m => m.type === 'question.result');
+  control(session, { type: 'question.confirm', requestId: 'c1', liveId: e.live.id, liveVersion: e.live.version, expectedFocusVersion: e.focusVersion, text: e.live.text });
+  await until(() => results().length === 1);
+  control(session, { type: 'question.confirm', requestId: 'c1', liveId: 'other', liveVersion: 9, expectedFocusVersion: 9, text: 'a changed retry' });
+  await until(() => results().length === 2);
+  control(session, { type: 'question.reset', via: 'escape' });
+  await until(() => results().length === 3);
+  assert.deepEqual(results().map(r => r.status), ['confirmed', 'invalid', 'invalid']);
+  await stopped(ctx, session);
+  const lines = await readLines(ctx), types = typesOf(lines);
+  assert.ok(types.indexOf('control') < types.indexOf('live_cleared') && types.indexOf('control') < types.indexOf('focus_changed'), types.join(','));
+  assert.deepEqual(lines.filter(l => l.type === 'control').map(c => [c.control, c.via, c.result]),
+    [['confirm', 'button', 'confirmed'], ['confirm', 'button', 'invalid'], ['clear', 'escape', 'invalid']]);
+});
+
+test('a reader reply with any unknown field gives its reading but not its answer, which falls back (AD-3)', async () => {
+  const f = createFixtures();
+  const s = new InterviewSession({ reason: async () => proposal(), emit: () => {}, delayMs: 0, generate: f.generate });
+  s.answers.setPackage(packageOf(fixturePackage));
+  s.observe('o1', 'Tell me about CIBC.', true);
+  s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o1'], notes: 'not in the contract' }), s.snapshot());
+  assert.equal(s.state.focus, 'Tell me about CIBC.');
+  assert.equal(s.answers.view().status, 'preparing', 'the bullets were not shown');
+  await until(() => f.calls.length === 1);
+  s.stop();
+});
+
+test('GET log offers the most recent older log when the newest file is gone (SD-1)', async t => {
+  const dir = await tempDir(t, { 'meeting-20261101T000000Z-aaaaaaaa.jsonl': '{"type":"log_started","older":1}\n', 'meeting-20261102T000000Z-bbbbbbbb.jsonl': '{"type":"log_started","older":2}\n' });
+  const store = createLogStore({ dir });
+  const log = store.start('cccccccc-0000-0000');
+  log.write('log_started', { version: 1 });
+  await log.close();
+  assert.match((await store.read()).text, /"version":1/);
+  await rm(log.path);
+  const older = await store.read();
+  assert.deepEqual([older.filename, older.text], ['alice-meeting-20261102T000000Z.jsonl', '{"type":"log_started","older":2}\n']);
+});

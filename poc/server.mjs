@@ -160,13 +160,14 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
     function cleanup(reason = 'disconnect') {
       if (closed) return;
       closed = true;
+      clearTimeout(readyTimer); clearTimeout(lifetime);
+      // The session stops first, so what it records on stopping (an answer dropped in flight) is in the log before its last line.
+      session.stop(); sessions.delete(session);
       if (mlog) {
         if (heardSpeech && pauseMs >= 800) mlog.write('pause', { startMs: session.packets * 100 - pauseMs, durationMs: pauseMs });
         mlog.write('session_stopped', { reason, seconds: Math.round(session.samples / 240) / 100 });
         mlog.close();
       }
-      clearTimeout(readyTimer); clearTimeout(lifetime);
-      session.stop(); sessions.delete(session);
       if (upstream?.readyState === WebSocket.CONNECTING) upstream.terminate();
       else upstream?.close();
       client.close();

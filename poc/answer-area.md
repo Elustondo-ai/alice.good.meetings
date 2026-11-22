@@ -43,3 +43,7 @@ Collaborators: [answer](answer.md) builds the request and checks results; [packa
 ## Log events (SPRINT-004)
 
 An optional `record` hook receives `answer_shown` (focus version, status, reason, the bullets, delay from the question to the answer), `answer_failed` and `answer_dropped` (text-free reasons), for the [meeting log](meeting-log.md). It is never given the question text or package text.
+
+## Fix of 22 November 2026
+
+`stop()` records an answer that is still being prepared as `answer_dropped` with reason `stopped` at once, not when the aborted request settles. The service stops the session before it closes the meeting log, so the event is in the log before `session_stopped` (ML-8). The audit still receives it once.

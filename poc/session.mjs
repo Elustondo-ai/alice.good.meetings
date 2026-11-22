@@ -7,7 +7,10 @@ import { validateResult } from './answer.mjs';
 export class InterviewSession {
   constructor({ reason, emit, audit = () => {}, delayMs = 2500, generate, now = Date.now, answerTimeoutMs, print, canAsk = () => true, autoFocus = true, record = () => {} }) {
     // Text events for the meeting log (poc/meeting-log.mjs); it never blocks and never reaches the audit.
-    this.record = record;
+    // While a control runs, its effects are held so the `control` line is written before them (ML-12).
+    this.sink = record;
+    this.held = null;
+    this.record = (type, data) => { if (this.held) this.held.push([type, data]); else this.sink(type, data); };
     this.clock = now;
     this.startedAt = now();
     this.seen = new Map();
@@ -48,7 +51,7 @@ export class InterviewSession {
     // The proposed answer is kept apart from `state`: never in snapshots, cached results or revisions.
     this.answers = new AnswerArea({ sessionId: this.id, generate, now, timeoutMs: answerTimeoutMs, audit, print,
       focusVersion: () => this.state.focusVersion,
-      record, publish: (proposed, proposedSeq) => this.send('proposed', { proposed, proposedSeq }) });
+      record: this.record, publish: (proposed, proposedSeq) => this.send('proposed', { proposed, proposedSeq }) });
   }
 
   setContext(context) { this.context = context; }
@@ -207,7 +210,9 @@ export class InterviewSession {
 
   // One call produced the reading and the answer. A valid answer is shown as it is; anything else uses the answer request.
   startAnswer(p) {
-    const check = validateResult({ bullets: p.bullets, ...('details' in p ? { details: p.details } : {}) }, { hasDocuments: this.answers.package.documents.length > 0 });
+    // AD-3: a reply with `details` or any other field the contract does not name gives its reading but not its answer.
+    const extra = Object.keys(p).some(key => !PROPOSAL_FIELDS.has(key));
+    const check = extra ? { ok: false } : validateResult({ bullets: p.bullets }, { hasDocuments: this.answers.package.documents.length > 0 });
     const { focus, focusVersion } = this.state;
     if (check.ok) this.answers.present(focus, focusVersion, check.value, p.covered !== false);
     else this.answers.begin(focus, focusVersion);
@@ -273,16 +278,28 @@ export class InterviewSession {
       this.audit('question_control', { sessionId: this.id, requestId, type: request?.type ?? null, status: result.status,
         replayed, liveVersion: request?.liveVersion ?? null, focusVersion: this.state.focusVersion, revision: this.state.revision });
     };
-    if (!request) return reply({ requestId, status: 'invalid', state: { ...this.state } });
+    // ML-7: every Confirm or Clear is logged with its result; a refused one (malformed, changed retry, over the limit) is `invalid`.
+    const kind = CONTROLS[request?.type ?? message?.type];
+    const refused = status => {
+      if (kind) this.record('control', { control: kind, via: request?.via ?? viaOf(message), result: 'invalid' });
+      return reply({ requestId, status, state: { ...this.state } });
+    };
+    if (!request) return refused('invalid');
     const cached = this.requests.get(request.requestId);
     if (cached) {
       if (cached.fingerprint === request.fingerprint) return reply(cached.result, true);
-      return reply({ requestId, status: 'invalid', state: { ...this.state } });
+      return refused('invalid');
     }
-    if (this.requests.size >= 256) return reply({ requestId, status: 'limit', state: { ...this.state } });
-    const { changed, ...outcome } = request.type === 'question.reset' ? this.resetLive() : this.confirm(request);
+    if (this.requests.size >= 256) return refused('limit');
+    this.held = [];
+    let changed, outcome;
+    try { ({ changed, ...outcome } = request.type === 'question.reset' ? this.resetLive() : this.confirm(request)); }
+    finally {
+      const held = this.held; this.held = null;
+      if (outcome) this.record('control', { control: kind, via: request.via, result: outcome.status });
+      for (const [type, data] of held) this.record(type, data);
+    }
     const result = { requestId, ...outcome, state: { ...this.state } };
-    this.record('control', { control: request.type === 'question.confirm' ? 'confirm' : 'clear', via: request.via, result: outcome.status === 'limit' ? 'invalid' : outcome.status });
     this.requests.set(request.requestId, { fingerprint: request.fingerprint, result });
     reply(result);
     if (changed) this.send('answer', { ...this.state, audioCutoffSamples: this.samples, ...this.answerFields() });
@@ -316,6 +333,8 @@ export class InterviewSession {
         this.audit('agent_finished', { sessionId: this.id, accepted, ...(accepted ? {} : { rejection: this.lastRejection }), durationMs: Date.now() - this.lastRun, packets: this.packets });
       }
     } catch (error) {
+      // ML-10: a failed reading is an error with its public message; an abort at Stop is not.
+      if (this.active) this.record('error', { code: 'reader', message: publicError(error) });
       this.send('agent', { status: publicError(error) });
       this.audit('agent_failed', { sessionId: this.id, status: error?.status || null, code: publicError(error) });
     } finally {
@@ -339,13 +358,16 @@ export class InterviewSession {
   }
 }
 
+const CONTROLS = { 'question.confirm': 'confirm', 'question.reset': 'clear' };
+const PROPOSAL_FIELDS = new Set(['reply', 'phase', 'question', 'intent', 'evidenceIds', 'covered', 'bullets']);
+const viaOf = message => (['button', 'space', 'escape'].includes(message?.via) ? message.via : 'button');
 const boundedId = value => typeof value === 'string' && value.length > 0 && value.length <= 100;
 const version = value => Number.isSafeInteger(value) && value >= 0;
 
 // Returns null for any malformed or wrong-session control; otherwise the fields that identify it.
 function parseControl(message, sessionId) {
   if (!message || message.sessionId !== sessionId || !boundedId(message.requestId)) return null;
-  const via = ['button', 'space', 'escape'].includes(message.via) ? message.via : 'button';
+  const via = viaOf(message);
   if (message.type === 'question.reset') {
     return { type: message.type, requestId: message.requestId, via, fingerprint: message.type };
   }

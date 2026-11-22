@@ -55,3 +55,10 @@ The constructor takes `record(type, data)`, which the service points at the [mee
 ## Fix after the review of 21 November 2026
 
 `items()` skips an item whose text is empty or white space (a noise-only commit comes back empty) and no longer stops at it, so the snapshot keeps the earlier items of the last 30 seconds. The empty final item is still logged as a `transcript` event (ML-4) and still given to the reader as an observation.
+
+## Fixes of 22 November 2026
+
+- **Control order.** While a Confirm or Clear runs, the events it causes are held; the `control` line is written first, then `live_cleared` and `focus_changed` (ML-12).
+- **Refused controls.** A malformed Confirm or Clear, a retry with a changed payload and a request over the 256 limit are each logged as `control` with result `invalid` (ML-7). An identical retry is still not logged again.
+- **Reader failures.** A reading that fails writes an `error` event with code `reader` and the public message (ML-10); the abort at Stop does not.
+- **Unknown fields.** `startAnswer` refuses the answer part of a reply that carries any field outside reply, phase, question, intent, evidenceIds, covered and bullets, and falls back to the answer request (AD-3). Before, only `details` was refused.
