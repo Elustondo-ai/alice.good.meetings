@@ -27,7 +27,7 @@ stateDiagram-v2
 | --- | --- |
 | `new AnswerArea({sessionId, generate, publish, audit?, now?, timeoutMs?, print?, focusVersion})` | Without `generate` the area stays `empty` (older callers). `now` is the clock for timing; `focusVersion()` reads the session's current version. |
 | `begin(question, version)` | Called by Confirm: aborts and supersedes the earlier request, sets `preparing` with no content, records `t0` and starts one request. Never more than one in flight. |
-| `view()` / `seq` | A copy of `{status, focusVersion, bullets, details, reason, lastKnown, lastStatus}` and the publication sequence, which rises with every change. |
+| `view()` / `seq` | A copy of `{status, focusVersion, bullets, reason, lastKnown, lastStatus}` and the publication sequence, which rises with every change. |
 | `setPackage(pkg)` | Holds the package read once at session start. |
 | `voiced()` / `rendered({answerFocusVersion, answerStatus})` | Record the speech-start time `tS` and the render time `t3`. |
 | `stop()` | Aborts, writes the timing event and turns `shown`, `general`, `failed` or `preparing` into `last-known`, keeping content and the earlier status in `lastStatus`. |
@@ -39,3 +39,7 @@ Collaborators: [answer](answer.md) builds the request and checks results; [packa
 ## One-call presentation (18 November 2026)
 
 `present(question, version, value, covered)` shows an answer that the question reader already returned, with no second request. It starts the run for timing at one instant and sets `shown`, or `general` with the reason `not-covered` when the documents do not cover the question. The caller publishes the view with the Focus update, so the page never sees an answer for a Focus version it has not received.
+
+## Log events (SPRINT-004)
+
+An optional `record` hook receives `answer_shown` (focus version, status, reason, the bullets, delay from the question to the answer), `answer_failed` and `answer_dropped` (text-free reasons), for the [meeting log](meeting-log.md). It is never given the question text or package text.

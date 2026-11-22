@@ -5,7 +5,7 @@
 | Component | Responsibility | Collaborator |
 | --- | --- | --- |
 | HTTP server | Serves seven explicitly listed public paths and `/health` | Existing HTML/JS, capture worklet and the static [preview](preview/index.md) |
-| Package loader | Reads the preparation package once per session before `ready` | [Package loader](package-loader.md) |
+| Package store | Holds the uploaded or folder package; a session takes a snapshot once before `ready` | [Package store](package-store.md), [loader](package-loader.md) |
 | Answer generator | Prepares one proposed answer per confirmed question | [Answer area](answer-area.md), [answer](answer.md) |
 | `/session` WebSocket | Accepts one same-origin browser session at a time | [Session](session.md) |
 | Transcription socket | Streams PCM and forwards partial/final text | OpenAI Realtime transcription |
@@ -29,3 +29,20 @@ See [live transcription guidance](https://developers.openai.com/api/docs/guides/
 ## Vocabulary hints and automatic focus (18 November 2026)
 
 After the package loads, the server extracts terms ([vocabulary](vocabulary.md)) for a usable package, adds `prompt` to the transcription session when there are terms, and calls `session.setContext({ terms, documents })`. The `package_loaded` audit gains a `terms` count and nothing else. The option `autoFocus` (default on) passes through to the session; tests turn it off for the manual Confirm cases.
+
+## Package routes (SPRINT-004)
+
+`GET /package` returns `{source, status, files, chars, terms}` (`source` is `uploaded`, `folder` or `none`) and never a name or text. `PUT /package` takes `application/json` `{files:[{name,text}]}` (200 KB) and answers `{result, reason, package, skipped}`; `DELETE /package` clears the package in use, the folder one until restart. Both change only while no session listens (else 409 `listening`); a refusal keeps the previous package and gives 400 `refused`, 413 `body-too-large`, 415 `content-type` or 422 `too-large`, `empty`, `unreadable` or `too-many-files`. A caller needs this Host; a change also needs an Origin that is this page, a GET may omit it; anything else gets 403. The audit gains `package_uploaded` and `package_removed` (counts only, no names) and `package_loaded` gains `source`. The session is scheduled only after its package snapshot is taken, so the first reading always sees it. Rules: [package store](package-store.md).
+
+## Meeting log and download (SPRINT-004)
+
+Options `logDir` (default `ALICE_LOG_DIR`, else `poc/logs/`), `logMaxBytes`, `mono` and `revision` (default: the short Git commit, else `unknown`). After the package snapshot every listening session starts a [meeting log](meeting-log.md) with `log_started` (header: version, session id, UTC start with `tzOffsetMin`, revision, models, key state, pause setting and package counts) and `package` (counts only), then `speech_start` and `pause` (silences of 800 ms or more, from voiced packets), `error` with the public message and `session_stopped` with its reason (`user`, `error`, `limit`, `disconnect`) and seconds heard. A session that ends before the package is read (no key) writes no log. Logging cannot be turned off. A write failure sends the page `{type:'log', status:'not saved'}` and the session continues. `GET /log` returns the current or newest log as `text/plain; charset=utf-8`, complete lines only, with an attachment filename `alice-meeting-<UTC start>.jsonl`, 404 `No meeting log yet.` when none exists, 403 for another Host or Origin and 405 for any other method; there is no list or delete route. Uploads happen only while no session listens, so they are not log events; the next session's `package` event shows the package it used.
+
+## Avatar files (SPRINT-004, AV-7)
+
+`VENDOR_FILES` is a fixed list of 19 files under `poc/vendor/` (TalkingHead's four modules, three's two builds and twelve addons, and `models/mpfb.glb`), served at `/poc/vendor/<file>`, plus `/poc/avatar.js`. The model is sent as `model/gltf-binary` with no charset. Everything else under `poc/vendor`, including licences, `VENDOR.md` and any `..` path, is 404. `VENDOR_ASSETS` exports the served paths for the tests.
+
+## Fixes after the review of 21 November 2026
+
+- A request that fails part-way, such as an upload cut off mid-body, is caught in one place (`route(...).catch`) and answered or dropped; before, the rejected promise ended the service process.
+- `validCaller` also reads `Sec-Fetch-Site` on a GET with no Origin: `cross-site` and `same-site` get 403 on `/log` and `/package`, so another site cannot make the browser fetch or save the log; `same-origin`, `none` (the address bar) and tools that send neither header are allowed.

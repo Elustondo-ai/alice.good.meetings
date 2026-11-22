@@ -7,11 +7,11 @@ Architecture owns neither page. This reference gives their owners the exact word
 
 Today:
 
-> While the POC listens, microphone audio and selected transcript text go to OpenAI (`[POC README](poc/README.md)`).
+> While the POC listens, microphone audio and selected transcript text go to OpenAI (`POC README (poc/README.md)`).
 
 Proposed replacement:
 
-> While the POC listens, microphone audio and selected transcript text go to OpenAI. Each time a Focus question is confirmed, that question and the text of the interview preparation package (within 20,000 characters, without a `README.md`) also go to OpenAI (`[POC README](poc/README.md)`).
+> While the POC listens, microphone audio and selected transcript text go to OpenAI. Each time a Focus question is confirmed, that question and the text of the interview preparation package (within 20,000 characters, without a `README.md`) also go to OpenAI (`POC README (poc/README.md)`).
 
 Proposed additions, after the line about the OpenAI key:
 

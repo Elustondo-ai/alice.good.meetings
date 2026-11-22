@@ -22,7 +22,10 @@ Purpose should help us judge whether a proposed capability advances the desired 
 - [Planned improvements](03-planned-improvements.md): a proposed answer beside the Focus question, with its boundaries and acceptance questions.
 - [SPRINT-003 review](03.1-sprint-003-purpose-review.md): the first-pass check of the sprint against these pages, written before User's answers of 16 November.
 - [Prepared context proposal](03.2-sprint-003-prepared-context-proposal.md): the decided boundary for the package sent to OpenAI, the details area against "short text", and the decisions of 18 November 2026, including B2 settled as data statements only.
+- [SPRINT-003 alignment, version 2](03.3-sprint-003-purpose-alignment-v2.md): the first-pass check of the amended SPRINT-003 baseline.
 - [Record and upload boundary](03.4-sprint-004-record-and-upload-boundary.md): the SPRINT-004 draft boundary for a stored meeting record and package upload, with open questions.
+- [SPRINT-004 alignment](03.5-sprint-004-purpose-alignment.md): the first-pass check of the proposed SPRINT-004 against these pages.
+- [Avatar assessment](03.6-avatar-purpose-assessment.md): the small animated avatar as a secondary, silent state signal, with Pablo's decisions and the conditions that still apply.
 - [Acceptance process](../../../asdg/02-purpose/types/completion.md): readiness review followed by explicit human acceptance of the reviewed version.
 
 Read files in order: **01 Intended**, **02 Current**, **03 Planned**. Additional topics use dotted numbers such as `01.1` or `03.2`; release and sprint plans identify their horizon in the filename and text.

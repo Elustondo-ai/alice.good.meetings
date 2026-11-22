@@ -15,6 +15,7 @@ Start with the introduction, then use the architecture and code map to locate th
 | [05 · Agent and state](05-agent-and-state.md) | Model calls, observation snapshots and validated updates |
 | [06 · Code navigation](06-code-navigation.md) | Where to start reading and where to make a particular change |
 | [07 · Running and verification](07-running-and-verification.md) | Startup, configuration, test commands and evidence |
+| [08 · Response time](08-response-time.md) | Measured delay from speech to answer, its causes and a proposed faster design |
 
 For a quick source tour, read [the code map](06-code-navigation.md). For a specific interface, follow its link to the existing Markdown companion beside the code.
 These documents describe the inspected source. The earlier [POC results](../RESULTS.md) and [technical evidence](../evidence.json) retain the original execution record.

@@ -26,7 +26,7 @@ if [ "$port" -lt 1 ] || [ "$port" -gt 65535 ]; then echo 'PORT must be a number 
 address="http://127.0.0.1:$port"
 
 # RN-8: service sources are the poc/*.mjs files the service imports, plus .env.local.
-sources="server.mjs agent.mjs session.mjs answer.mjs answer-area.mjs package-loader.mjs .env.local"
+sources="server.mjs agent.mjs session.mjs answer.mjs answer-area.mjs package-loader.mjs package-store.mjs meeting-log.mjs vocabulary.mjs .env.local"
 
 # RN-4: prints none, other, current or older <sessions>. A silent listener counts as another program.
 probe() {

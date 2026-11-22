@@ -1,7 +1,7 @@
 import { buildRequest, modelInput, validateResult, failureCode, DEFAULT_ANSWER_TIMEOUT_MS } from './answer.mjs';
 import { reasonOf } from './package-loader.mjs';
 
-const EMPTY = { status: 'empty', focusVersion: 0, bullets: [], details: '', reason: null, lastKnown: false, lastStatus: null };
+const EMPTY = { status: 'empty', focusVersion: 0, bullets: [], reason: null, lastKnown: false, lastStatus: null };
 const NO_PACKAGE = { status: 'none', documents: [], files: [], chars: 0, skipped: [] };
 
 // Rejects when the signal aborts, so a generator that ignores its signal cannot hold an attempt open.
@@ -14,8 +14,8 @@ const race = (promise, signal) => new Promise((resolve, reject) => {
 // The proposed-answer area of one session: kept apart from `state`, one request in flight, one retry.
 export class AnswerArea {
   constructor({ sessionId, generate, publish, audit = () => {}, now = Date.now, timeoutMs = DEFAULT_ANSWER_TIMEOUT_MS,
-    print, focusVersion = () => 0 }) {
-    Object.assign(this, { sessionId, generate, publish, audit, now, timeoutMs, print, currentVersion: focusVersion });
+    print, focusVersion = () => 0, record = () => {} }) {
+    Object.assign(this, { sessionId, generate, publish, audit, record, now, timeoutMs, print, currentVersion: focusVersion });
     this.proposed = { ...EMPTY };
     this.seq = 0;
     this.run = null;
@@ -59,6 +59,13 @@ export class AnswerArea {
     this.set({ ...EMPTY, status: usable && covered ? 'shown' : 'general', focusVersion: version, ...value,
       reason: !usable ? reasonOf(this.package.status) : covered ? null : 'not-covered' });
     this.audit('answer_accepted', { sessionId: this.sessionId, focusVersion: version, durationMs: 0, attempts: 0, oneCall: true });
+    this.recordShown(version, 0);
+  }
+
+  // ML-8: the answer shown, with its bullets, for the meeting log.
+  recordShown(focusVersion, delayMs) {
+    const { status, reason, bullets } = this.proposed;
+    this.record('answer_shown', { focusVersion, status, reason, bullets: [...bullets], delayMs });
   }
 
   live(run) { return !this.stopped && this.run === run && !run.abort.signal.aborted; }
@@ -98,12 +105,14 @@ export class AnswerArea {
       reason: usable ? null : reasonOf(this.package.status) });
     this.publish(this.view(), this.seq);
     this.audit('answer_accepted', { sessionId: this.sessionId, focusVersion: run.version, durationMs: run.t.t2 - run.t.t1, attempts: run.attempts });
+    this.recordShown(run.version, run.t.t2 - run.t.t0);
   }
 
   fail(run, error) {
     this.set({ ...EMPTY, status: 'failed', focusVersion: run.version });
     this.publish(this.view(), this.seq);
     this.audit('answer_failed', { sessionId: this.sessionId, focusVersion: run.version, attempts: 2, code: failureCode(error) });
+    this.record('answer_failed', { focusVersion: run.version, attempts: 2, code: failureCode(error) });
     this.finishTiming(run, 'failed');
   }
 
@@ -112,6 +121,7 @@ export class AnswerArea {
     run.dropped = true;
     const reason = this.stopped ? 'stopped' : run.version !== this.currentVersion() ? 'stale-version' : 'superseded';
     this.audit('answer_dropped', { sessionId: this.sessionId, focusVersion: run.version, reason });
+    this.record('answer_dropped', { focusVersion: run.version, reason });
     this.finishTiming(run, reason);
   }
 

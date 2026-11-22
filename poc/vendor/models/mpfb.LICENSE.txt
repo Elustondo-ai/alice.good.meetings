@@ -1,0 +1,6 @@
+mpfb.glb
+
+Source: https://github.com/met4citizen/TalkingHead/blob/v1.8.2/avatars/mpfb.glb (the library's example avatar).
+Licence: CC0 1.0 (public domain dedication), https://creativecommons.org/public-domain/cc0/
+Basis: the TalkingHead v1.8.2 README states that the example avatar "mpfb.glb" was created using Blender and the MPFB Blender extension and is licensed under CC0.
+This file is a note written when the model was vendored (21 November 2026); the repository ships no separate licence file for the model.

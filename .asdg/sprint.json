@@ -1,7 +1,26 @@
 {
-  "status": "inactive",
-  "sprint_id": null,
-  "objective": null,
-  "scope": [],
-  "acceptance_criteria": []
+  "status": "active",
+  "sprint_id": "SPRINT-004",
+  "objective": "Let Pablo load his package from the page, see what is loaded, work from the new screen, and keep a complete local log of each meeting that he can download.",
+  "scope": [
+    "index.html",
+    "index.md",
+    "app.js",
+    "app.md",
+    "poc/",
+    "openspec/changes/"
+  ],
+  "acceptance_criteria": [
+    "S004-STATUS: before Start and after a reload the page shows the package file count, characters and source, or 'no package'; GET /package returns the same without package text.",
+    "S004-UPLOAD: several .md or .txt files replace the package within 05's limits and stay in memory; skipped files are named; a small Remove sits in the package line; over-limit, unreadable or refused uploads keep the old package; none during listening; the package survives Stop.",
+    "S004-LOG: a time-stamped log of each listening session is written as it goes, one file per session, to Git-ignored poc/logs/; complete up to 5 MB then one log_full event; no package file content copied into it; Alice deletes nothing.",
+    "S004-DOWNLOAD: Download log saves the current or last session's file; local callers only.",
+    "S004-SCREEN: the screen follows 08's design: slim bar with name, cue word, Start, Stop, Upload package, Download log; one very big question; smaller candidate line; Alice suggests (three bullets) left and What I hear (newest words per item) right; no hide control for the monitor line.",
+    "S004-CUE: keys G, L and S set the cue with nothing on screen and it holds 10 seconds before the timer resumes; Esc clears; every existing input stays.",
+    "S004-MEETING: pages, statements and screen say 'meeting' with interviews as one case; Purpose lists 'review a past meeting' as an outcome.",
+    "S004-CARRY: an answer follows a pause, Confirm is optional, package text goes to the post-pause request and only terms go to transcription.",
+    "S004-STATEMENTS: root AGENTS.md and poc/README.md carry the new statements; 04's statement check passes; tests, page check and bash poc/alice-run.sh are re-run and recorded.",
+    "S004-CARRY: one recorded live session with an uploaded package and a downloaded log; then 10 reviews that exact revision.",
+    "S004-AVATAR: avatar at the left end of the bar as a logo with 'Alice Good Meetings' caption, on by default, six states through one adapter, centre of the bar empty; library, three.js and mpfb.glb vendored and pinned in poc/vendor/ and added to the asset list in poc/server.mjs; visible toggle and key A; reduced motion and any failure turn it off silently; no speech, AI call, log or state write, or off-origin request."
+  ]
 }
