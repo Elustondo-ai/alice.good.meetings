@@ -7,7 +7,8 @@ Canonical workflows live here; native discovery adapters remain thin references.
 | [Update](asdg-update/SKILL.md) | Preview a selected distribution update and separate adapter refresh; explicit approval per plan |
 | [Help](asdg-help/SKILL.md) | Explain all ASDG commands, examples and invocation syntax without executing them |
 | [Initialize](asdg-init/SKILL.md) | Bootstrap the explicitly identified client |
-| [Create team](asdg-create-team/SKILL.md) | Set up governance and twelve specialist chats, reusing existing focused chats |
+| [Create team](asdg-create-team/SKILL.md) | Set up governance and twelve specialist chats, or the next numbered team in its own worktree and branch |
+| [Create team admin](asdg-create-team-admin/SKILL.md) | On explicit request, create one ASDG Admin chat in its own numbered worktree and branch for changes to ASDG |
 | [Focus](asdg-focus/SKILL.md) | Select a role; use `subject` to change its topic independently |
 | [Attitude](asdg-attitude/SKILL.md) | Choose a thinking approach, temporary scope, NoAttitude or read-only status |
 | [Status](asdg-status/SKILL.md) | Show status, a suggested next step, then observations and technical debt |

@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "objective": "Let create-team create a further numbered team in its own Git worktree and branch when a complete team exists, and add asdg-create-team-admin for a team that changes ASDG itself.",
+  "requested_by": "Pablo (repository owner), 2026-11-20, with ASDG Admin selected: \"I want to be able to create more than one team\"; clarified \"we only have one folder for the clone [...] each time we create a new team, we create a worktree on the same folder and a new branch\"; on 2026-11-22: \"can we implement this ASAP?\"",
+  "acting_agent": {
+    "agent": "Claude",
+    "model": "claude-fable-5-2",
+    "client": "Claude desktop app, Code tab"
+  },
+  "role": {
+    "id": "ASDG-ADMIN",
+    "selection": "retained from Pablo's explicit /asdg-admin on 2026-11-18",
+    "title": "UNCHANGED (ASDG Admin)"
+  },
+  "starting_revision": "ac01aaf02691031f406f6e42f3ed722428d8c819",
+  "branch": "sprint-04-2",
+  "worktree": ".claude/worktrees/sprint-04-2",
+  "preserved_uncommitted_work": [
+    ".asdg/sprint.json",
+    "docs/asdg/00-governance/presentation/outline-sprint-004.md",
+    "four files under docs/asdg/07-planning copied from sprint-04"
+  ],
+  "implementation_choices_unconfirmed": [
+    "an admin team is one ASDG Admin chat",
+    "branch <stem>-<number> cut from the calling folder's current branch",
+    "a new team starts from the last commit; uncommitted files copied only on the human's yes",
+    "last team found from worktree folders and branch names, plus numbers the agent saw in titles",
+    "team number placed after the role label in titles",
+    "Admin activation widened: the human's own create-team-admin request selects Admin for the chat it creates"
+  ],
+  "changed_paths": [
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "42a95ad79331faca5a90d16ec8a0d7cd6433870ff6bb545776b955946d519ee8",
+      "previous_sha256": "63a84df3c75af26445467f47a4f860239ff81e55a2d885e409f2207edaf0c358"
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/numbered-teams.md",
+      "sha256": "2ca0aa2faecf4ac28d0851e6bb859e73901f0324f6554445a63b1237289bbbc4",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/team_worktree.py",
+      "sha256": "70e1ab5103945248f54a9779fb47bb15f4d26127564ec8503b78a8d7468ffa03",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/team_worktree.md",
+      "sha256": "010bdf3ad7ec6a2afb3f2be99b93f2e87691abda887668f90385dd51384ec0aa",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "f2f4b32d549bb4968f310c39ca965134fe05ca546087bf1eac7946e47c08e3a4",
+      "previous_sha256": "5296df04210a34df2b802b6e5812b220e9bae904ce787a04281d7c8d109ad90f"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/rename-chat.md",
+      "sha256": "14f7779cd5de02efdaa70ae5c83dd1d6ce300e0757abb2a3e0e7ac282ebd345a",
+      "previous_sha256": "7ddcacc1bb9b102bb01b113c2901d65fab32d2ba952bd24a5461bce2ea3235c8"
+    },
+    {
+      "path": "asdg/skills/asdg-create-team-admin/SKILL.md",
+      "sha256": "1e3b70c8e32b3f957b0d78ec87ef3e6a6f167e711b4b8da545d94339b945ca6e",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-create-team-admin/SKILL.md",
+      "sha256": "c702970e947c42734ab63ec1017a66b82a66b62694f9180ac346a19dd332d2e9",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-create-team-admin/agents/openai.yaml",
+      "sha256": "805056f7f00aa498e0550fc954de714f48dcabd3f1dc5515f99193d6c0e1a941",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/admin/AGENTS.md",
+      "sha256": "ad809cb437ab1cbe45909aa84130b0926278e4d34a87c663a6367ff178e979d1",
+      "previous_sha256": "9f636bbdff9a9750960c3ea596a16ab93428dfd6e10482b8ba28cc8ee59a7c30"
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "6d31cac948b9b03fa07a2fe9968ac1a5dda21116184e889ef433fa6c811b4e45",
+      "previous_sha256": "e911357ab43dd92ee046b79deadc280a46c070dd0d250985dbbf428697035935"
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "57d9cf98631b21cc3a9d979218b4c076e290233f8f64a329bf53e9afefaa13fa",
+      "previous_sha256": "45847a72b703f94f8b9446950e9e61e98a98526eeff40cbd4e4ce37be80ebe6b"
+    },
+    {
+      "path": "asdg/metadata/package-files.json",
+      "sha256": "56cb5f269e9af607f3d6ada1bc7de972071530c3c2c2061ec5b2abf56e77c303",
+      "previous_sha256": "ad9b506a0b4b211091554dc438d58e337f69af3baa6be925b4f4556d4c488e19"
+    },
+    {
+      "path": "asdg/tests/test_numbered_teams.py",
+      "sha256": "b0c5e262379ee4fdaf0ea467358836d4dc6f3f331288866060bc608b987e7485",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/tests/test_numbered_teams.md",
+      "sha256": "93f1ed836320e91a455bdae618db2bfbf4b63a237d7fea01b48a7770a288fd8c",
+      "previous_sha256": null
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "febb19b99641eb96d4cd723aaf3637c178780d43c8e0df0217de6b6cf92b052f",
+      "previous_sha256": "8ed14adaae8436e9989361ab8fd577e5f2e8db583c229c12257a261d19fb9cb1"
+    }
+  ],
+  "verification": {
+    "check_py": "PASS",
+    "skill_tests": "7 pass (tests.test_numbered_teams)",
+    "suite": "228 tests, 3 failures, 7 skipped; the 3 are the known test_portable fixture failures",
+    "cli_verify": "FAIL: three adapter files not yet installed by setup",
+    "init_dry_run": "plans 3 adapter files, logs/.gitkeep and a receipts update; not applied",
+    "observed": "plan mode in this worktree returned team 3, branch sprint-04-3",
+    "not_done": "no team created through either skill; no client run"
+  },
+  "review_status": "REVIEW_REQUIRED",
+  "human_approval": null,
+  "committed": false
+}
