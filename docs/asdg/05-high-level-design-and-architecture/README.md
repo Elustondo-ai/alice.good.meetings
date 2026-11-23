@@ -22,6 +22,7 @@ This package began with the architecture discussion of 25 October 2026 and was a
 | [01.9 SPRINT-004 review](01.9-sprint-004-architecture-review.md) | Draft position on upload, C1, C3, F3 and the differences with 08. |
 | [01.10 Meeting log and transcript message](01.10-meeting-log-and-transcript-message.md) | Draft: the log's place, location, access, retention, and the transcript message; [statements](01.10.1-upload-and-log-statements.md). |
 | [03.5 SPRINT-004 architecture review](03.5-sprint-004-architecture-review.md) | First-pass report on the SPRINT-004 brief: verdict, four amendments. |
+| [03.6 SPRINT-005 architecture review](03.6-sprint-005-architecture-review.md) | First-pass report on the faster-Alice brief: Stop, versioning, caching, verdict. |
 | [01.11 Avatar adapter](01.11-avatar-adapter.md) | Draft: loading TalkingHead, licences, failure and limits. |
 | [03.4 Code assessment](03.4-18-november-code-assessment.md) | What to change in the built code and where it strains the Purpose. |
 | [02 Current architecture](02-current-architecture.md) | What the source at revision `7d60c0f` (rechecked at `bde3f7a`) does today, and what it does not establish. |

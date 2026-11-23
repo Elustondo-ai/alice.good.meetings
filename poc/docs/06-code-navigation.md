@@ -28,6 +28,7 @@ The same-name Markdown companions provide interface notes without requiring you 
 | Change question retention or stale-result rules | `InterviewSession.accept()` and the corresponding deterministic tests |
 | Change transcription or connection recovery | server.mjs transport and cleanup; app.js connection status |
 | Investigate a missing reply | Server status → transcript events → agent status → acceptance → browser revision |
+| Change what the log measures | `callEvent()` in agent.mjs and `endTurn()` in session.mjs; keep [the measurement lines](09-measurement-events.md) and tests ST5-5 to ST5-7 aligned |
 
 [package.json](../package.json) declares dependencies and scripts; [pnpm-lock.yaml](../pnpm-lock.yaml) records installed versions. Generated `node_modules/` is not application source.
 The original product intent lives under [docs/asdg](../../docs/asdg/README.md); embedded methodology rules live under [asdg](../../asdg/README.md).

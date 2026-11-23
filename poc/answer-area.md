@@ -32,7 +32,7 @@ stateDiagram-v2
 | `voiced()` / `rendered({answerFocusVersion, answerStatus})` | Record the speech-start time `tS` and the render time `t3`. |
 | `stop()` | Aborts, writes the timing event and turns `shown`, `general`, `failed` or `preparing` into `last-known`, keeping content and the earlier status in `lastStatus`. |
 
-Each attempt runs `generate(request, {signal})` with the attempt timeout; a failed attempt (throw, timeout, rejected result) is retried once at once with the same request object, invisibly. A result is accepted only while the session is active and the request is current; otherwise it is dropped and audited as `stale-version`, `stopped` or `superseded`. An accepted result is published as one `proposed` message `{proposed, proposedSeq}`.
+Each attempt runs `generate(request, {signal, meter})` with the attempt timeout; a failed attempt (throw, timeout, rejected result) is retried once at once with the same request object, invisibly. A result is accepted only while the session is active and the request is current; otherwise it is dropped and audited as `stale-version`, `stopped` or `superseded`. An accepted result is published as one `proposed` message `{proposed, proposedSeq}`.
 Audit events never hold text: `answer_requested`, `answer_accepted`, `answer_dropped`, `answer_failed` and one `answer_timing` per Focus version with `t0` to `t3`, `tS`, `delayMs`, `generationMs`, `pauseMs` and `visibleBeforeSpeech`. Times come from the injected clock.
 Collaborators: [answer](answer.md) builds the request and checks results; [package loader](package-loader.md) supplies documents.
 
@@ -47,3 +47,7 @@ An optional `record` hook receives `answer_shown` (focus version, status, reason
 ## Fix of 22 November 2026
 
 `stop()` records an answer that is still being prepared as `answer_dropped` with reason `stopped` at once, not when the aborted request settles. The service stops the session before it closes the meeting log, so the event is in the log before `session_stopped` (ML-8). The audit still receives it once.
+
+## Measurement lines (SPRINT-005)
+
+Three more optional hooks feed the meeting log and nothing else: `elapsed()` is the log's clock, `callId()` the session's call counter, and `stage(version, times, outcome)` tells the session the answer times of a Focus version and how it ended. Each attempt writes one `model_call` when it ends, through `endCall`: `question` when its result is shown, `failed` with a fixed reason, or `dropped` as `stopped`, `superseded` or `stale-version`. `stop()` writes the attempt in flight at once, before the log closes. The `meter` given to `generate` receives the attempt's token counts. See [the measurement lines](docs/09-measurement-events.md).

@@ -17,18 +17,12 @@
 <text x="28.0" y="177.2" font-size="8" fill="#555" text-anchor="start">Alice suggests</text>
 <text x="294.2" y="177.2" font-size="8" fill="#555" text-anchor="start">What I hear</text>
 <text x="533.0" y="175.2" font-size="9" fill="#a00" text-anchor="end" font-weight="700">D</text>
-<rect x="24.0" y="274.2" width="82.8" height="24.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
-<text x="65.4" y="289.4" font-size="7" fill="#222" text-anchor="middle">Confirm</text>
-<rect x="109.8" y="274.2" width="82.8" height="24.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
-<text x="151.2" y="289.4" font-size="7" fill="#222" text-anchor="middle">Clear</text>
-<rect x="195.7" y="274.2" width="82.8" height="24.5" rx="3" fill="#d9f0e2" stroke="#7a9cd6" stroke-width="1"/>
-<text x="237.1" y="289.4" font-size="7" fill="#222" text-anchor="middle">GOOD</text>
-<rect x="281.5" y="274.2" width="82.8" height="24.5" rx="3" fill="#f6e3c4" stroke="#7a9cd6" stroke-width="1"/>
-<text x="322.9" y="289.4" font-size="7" fill="#222" text-anchor="middle">LAND IT</text>
-<rect x="367.3" y="274.2" width="82.8" height="24.5" rx="3" fill="#f5cfcf" stroke="#7a9cd6" stroke-width="1"/>
-<text x="408.8" y="289.4" font-size="7" fill="#222" text-anchor="middle">STOP</text>
-<rect x="453.2" y="274.2" width="82.8" height="24.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
-<text x="494.6" y="289.4" font-size="7" fill="#222" text-anchor="middle">Avatar</text>
+<rect x="24.0" y="274.2" width="168.7" height="24.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="108.3" y="289.4" font-size="7" fill="#222" text-anchor="middle">Confirm</text>
+<rect x="195.7" y="274.2" width="168.7" height="24.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="280.0" y="289.4" font-size="7" fill="#222" text-anchor="middle">Clear</text>
+<rect x="367.3" y="274.2" width="168.7" height="24.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="451.7" y="289.4" font-size="7" fill="#222" text-anchor="middle">Avatar</text>
 <text x="533.0" y="283.2" font-size="9" fill="#a00" text-anchor="end" font-weight="700">E</text>
 <rect x="24.0" y="301.7" width="48.5" height="28.0" rx="3" fill="#fff3d6" stroke="#7a9cd6" stroke-width="1"/>
 <text x="27.0" y="309.7" font-size="6" fill="#666" text-anchor="start">1</text>
@@ -85,18 +79,12 @@
 <text x="578.0" y="149.4" font-size="8" fill="#555" text-anchor="start">Alice suggests</text>
 <text x="714.2" y="149.4" font-size="8" fill="#555" text-anchor="start">What I hear</text>
 <text x="833.0" y="147.4" font-size="9" fill="#a00" text-anchor="end" font-weight="700">D</text>
-<rect x="574.0" y="238.6" width="41.2" height="18.0" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
-<text x="594.6" y="249.8" font-size="7" fill="#222" text-anchor="middle">Confirm</text>
-<rect x="618.2" y="238.6" width="41.2" height="18.0" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
-<text x="638.8" y="249.8" font-size="7" fill="#222" text-anchor="middle">Clear</text>
-<rect x="662.3" y="238.6" width="41.2" height="18.0" rx="3" fill="#d9f0e2" stroke="#7a9cd6" stroke-width="1"/>
-<text x="682.9" y="249.8" font-size="7" fill="#222" text-anchor="middle">GOOD</text>
-<rect x="706.5" y="238.6" width="41.2" height="18.0" rx="3" fill="#f6e3c4" stroke="#7a9cd6" stroke-width="1"/>
-<text x="727.1" y="249.8" font-size="7" fill="#222" text-anchor="middle">LAND IT</text>
-<rect x="750.7" y="238.6" width="41.2" height="18.0" rx="3" fill="#f5cfcf" stroke="#7a9cd6" stroke-width="1"/>
-<text x="771.2" y="249.8" font-size="7" fill="#222" text-anchor="middle">STOP</text>
-<rect x="794.8" y="238.6" width="41.2" height="18.0" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
-<text x="815.4" y="249.8" font-size="7" fill="#222" text-anchor="middle">Avatar</text>
+<rect x="574.0" y="238.6" width="85.3" height="18.0" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="616.7" y="249.8" font-size="7" fill="#222" text-anchor="middle">Confirm</text>
+<rect x="662.3" y="238.6" width="85.3" height="18.0" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="705.0" y="249.8" font-size="7" fill="#222" text-anchor="middle">Clear</text>
+<rect x="750.7" y="238.6" width="85.3" height="18.0" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="793.3" y="249.8" font-size="7" fill="#222" text-anchor="middle">Avatar</text>
 <text x="833.0" y="247.6" font-size="9" fill="#a00" text-anchor="end" font-weight="700">E</text>
 <rect x="574.0" y="259.6" width="50.0" height="25.5" rx="3" fill="#fff3d6" stroke="#7a9cd6" stroke-width="1"/>
 <text x="577.0" y="267.6" font-size="6" fill="#666" text-anchor="start">1</text>
@@ -197,7 +185,7 @@
 <text x="870.0" y="306.0" font-size="11" fill="#222" text-anchor="start">B Question (existing)</text>
 <text x="870.0" y="322.0" font-size="11" fill="#222" text-anchor="start">C candidate (existing)</text>
 <text x="870.0" y="338.0" font-size="11" fill="#222" text-anchor="start">D two columns (existing)</text>
-<text x="870.0" y="354.0" font-size="11" fill="#222" text-anchor="start">E touch strip: touch screens only (new)</text>
+<text x="870.0" y="354.0" font-size="11" fill="#222" text-anchor="start">E touch strip: Confirm, Clear, Avatar; touch only (new)</text>
 <text x="870.0" y="370.0" font-size="11" fill="#222" text-anchor="start">F presets: label + small number (new)</text>
 <text x="870.0" y="386.0" font-size="11" fill="#222" text-anchor="start">G write field and Send (new)</text>
 <text x="20.0" y="410.0" font-size="10" fill="#555" text-anchor="start">Red letters mark areas; everything above E is unchanged from SPRINT-004. Not to scale; the preview fixes sizes.</text>

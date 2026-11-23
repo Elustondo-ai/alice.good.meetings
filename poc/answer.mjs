@@ -1,5 +1,6 @@
 import { Agent, Runner } from '@openai/agents';
 import { z } from 'zod';
+import { EFFORT, usageOf } from './agent.mjs';
 
 export const BULLET_MAX = 120;
 export const QUESTION_MAX = 600;
@@ -54,14 +55,15 @@ export function answerTimeout(value = process.env.ANSWER_TIMEOUT_MS) {
 export function createGenerator({ model = answerModel(), runner = new Runner({ tracingDisabled: true }) } = {}) {
   const agent = new Agent({
     name: 'Alice.Good.Meetings proposed answer', model, instructions: INSTRUCTIONS, tools: [],
-    outputType: answerSchema, modelSettings: { store: false, maxTokens: 1200, reasoning: { effort: 'low' } },
+    outputType: answerSchema, modelSettings: { store: false, maxTokens: 1200, reasoning: { effort: EFFORT } },
   });
-  const generate = async (request, { signal } = {}) => {
+  // `meter`, when given, receives the call's token counts for the meeting log (RT5-4).
+  const generate = async (request, { signal, meter } = {}) => {
     const result = await runner.run(agent, modelInput(request).input, { signal, maxTurns: 1 });
+    meter?.(usageOf(result));
     return result.finalOutput;
   };
-  generate.agent = agent;
-  return generate;
+  return Object.assign(generate, { agent, model, effort: EFFORT });
 }
 
 // A text-free failure code for the audit.

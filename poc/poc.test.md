@@ -60,3 +60,7 @@ The package-text case now carries the amended name and also checks that no name 
 ## Hosted mode (22 November 2026)
 
 Five cases. The public host is served over https only, beside the local address, and the socket takes its https origin; with an access code the package, the log and the session need it and the code is never logged or echoed; `ALICE_LOG=off` writes no log on a hosted service and changes nothing on a local one; `ALICE_AVATAR=off` serves no avatar file; and the publish list holds every module the service imports and nothing private or test-only.
+
+## SPRINT-005 logging alone (ST5-5, ST5-6, ST5-7, ST5-11)
+
+Nine cases for [the measurement lines](docs/09-measurement-events.md). A session on a hand-moved clock checks the exact `model_call` and `question_timing` lines for a reading thrown away and the one kept, a turn with no Focus, a failed and a repeated answer attempt, an answer overtaken by a new question, Stop with calls in flight, and the manual Confirm flow. Two cases cover token counts: `null` without usage, and a stubbed Responses reply passed through the real Agents SDK with no network. One runs the service and checks the times against each line's `ms`, and one reads back a log holding an unknown event type and field. The header version stays 1.

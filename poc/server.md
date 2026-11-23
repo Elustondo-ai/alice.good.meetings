@@ -67,3 +67,7 @@ Four settings, read as options of `createPocServer` and from the environment. Wi
 | `ALICE_AVATAR=off` (`avatarOff`) | `/poc/avatar.js` and everything under `/poc/vendor/` answer 404, so the page drops the avatar silently. |
 
 The access code travels in a header and not in the socket's address, because a hosting platform records request addresses in its own logs. The files and commands for Google Cloud Run are in [deploy](deploy/README.md).
+
+## Measurement clock (SPRINT-005)
+
+The service gives each session `elapsed`, the clock of its meeting log, so the times inside `model_call` and `question_timing` match the `ms` of the lines around them. Nothing else changed here; see [the measurement lines](docs/09-measurement-events.md).

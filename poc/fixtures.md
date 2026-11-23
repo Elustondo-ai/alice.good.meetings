@@ -20,7 +20,7 @@ flowchart LR
 | `createFixtures()` | Returns `{connect, generate, say, release, fail, calls, waiting, upstream}`. Also the default export. |
 | `connect()` | A fake upstream socket: answers `session.update` with `session.updated` and records what it is sent. |
 | `say(text)` | Emits committed, one delta and completed transcription events for a new item. |
-| `generate(request, {signal})` | Records a clone of the request in `calls` with its signal, then waits. An abort rejects it and removes it from the queue. |
-| `release(result)` / `fail(error)` | Settle the oldest waiting request; throw if none waits. |
+| `generate(request, {signal, meter})` | Records a clone of the request in `calls` with its signal, then waits. An abort rejects it and removes it from the queue. |
+| `release(result, usage?)` / `fail(error)` | Settle the oldest waiting request; throw if none waits. With `usage`, `release` first reports it through `meter` as the call's token counts; without it the call has none. |
 
 The module reads no file and never refers to the benchmark folder or a real preparation package; each test builds its synthetic package in a temporary folder.

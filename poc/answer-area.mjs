@@ -1,5 +1,6 @@
 import { buildRequest, modelInput, validateResult, failureCode, DEFAULT_ANSWER_TIMEOUT_MS } from './answer.mjs';
 import { reasonOf } from './package-loader.mjs';
+import { callEvent, failureReason } from './agent.mjs';
 
 const EMPTY = { status: 'empty', focusVersion: 0, bullets: [], reason: null, lastKnown: false, lastStatus: null };
 const NO_PACKAGE = { status: 'none', documents: [], files: [], chars: 0, skipped: [] };
@@ -14,8 +15,10 @@ const race = (promise, signal) => new Promise((resolve, reject) => {
 // The proposed-answer area of one session: kept apart from `state`, one request in flight, one retry.
 export class AnswerArea {
   constructor({ sessionId, generate, publish, audit = () => {}, now = Date.now, timeoutMs = DEFAULT_ANSWER_TIMEOUT_MS,
-    print, focusVersion = () => 0, record = () => {} }) {
-    Object.assign(this, { sessionId, generate, publish, audit, record, now, timeoutMs, print, currentVersion: focusVersion });
+    print, focusVersion = () => 0, record = () => {}, elapsed = () => 0, callId = (n => () => ++n)(0), stage = () => {} }) {
+    // RT5-4, RT5-5: `elapsed` is the log's clock, `callId` numbers the session's model calls, and `stage` tells the
+    // session what happened to the answer of a Focus version. All three only feed the meeting log.
+    Object.assign(this, { sessionId, generate, publish, audit, record, now, timeoutMs, print, currentVersion: focusVersion, elapsed, callId, stage });
     this.proposed = { ...EMPTY };
     this.seq = 0;
     this.run = null;
@@ -36,7 +39,7 @@ export class AnswerArea {
     this.finishTiming(old, 'superseded');
     old?.abort.abort('superseded');
     const request = buildRequest({ sessionId: this.sessionId, focusVersion: version, question, documents: this.package.documents });
-    const run = { version, request, abort: new AbortController(), attempts: 0, timed: false, dropped: false,
+    const run = { version, request, abort: new AbortController(), attempts: 0, timed: false, dropped: false, call: null,
       t: { t0: this.now(), t1: null, t2: null, t3: null, tS: null } };
     this.run = run;
     this.set({ ...EMPTY, status: 'preparing', focusVersion: version });
@@ -52,7 +55,7 @@ export class AnswerArea {
     old?.abort.abort('superseded');
     const request = buildRequest({ sessionId: this.sessionId, focusVersion: version, question, documents: this.package.documents });
     const t = this.now();
-    const run = { version, request, abort: new AbortController(), attempts: 0, timed: false, dropped: false,
+    const run = { version, request, abort: new AbortController(), attempts: 0, timed: false, dropped: false, call: null,
       t: { t0: t, t1: t, t2: t, t3: null, tS: null } };
     this.run = run;
     const usable = this.package.status === 'usable';
@@ -66,6 +69,7 @@ export class AnswerArea {
   recordShown(focusVersion, delayMs) {
     const { status, reason, bullets } = this.proposed;
     this.record('answer_shown', { focusVersion, status, reason, bullets: [...bullets], delayMs });
+    this.stage(focusVersion, { bulletsMs: this.elapsed() }, 'bullets');
   }
 
   live(run) { return !this.stopped && this.run === run && !run.abort.signal.aborted; }
@@ -91,19 +95,43 @@ export class AnswerArea {
 
   async attempt(run) {
     const signal = AbortSignal.any([run.abort.signal, AbortSignal.timeout(this.timeoutMs)]);
-    const result = await race((async () => this.generate(run.request, { signal }))(), signal);
-    const check = validateResult(result, { hasDocuments: run.request.documents.length > 0 });
-    if (!check.ok) throw Object.assign(new Error('invalid result'), { code: 'invalid-result', detail: check.code });
-    return check.value;
+    // RT5-4: each attempt is one model call. Its line is written once, when the attempt ends.
+    const call = run.call = { kind: 'answer', callId: this.callId(), startMs: this.elapsed(), model: this.generate.model, effort: this.generate.effort, usage: null };
+    this.stage(run.version, { answerStartMs: call.startMs });
+    try {
+      const result = await race((async () => this.generate(run.request, { signal, meter: usage => { call.usage = usage; } }))(), signal);
+      const check = validateResult(result, { hasDocuments: run.request.documents.length > 0 });
+      if (!check.ok) throw Object.assign(new Error('invalid result'), { code: 'invalid-result', detail: check.code });
+      return check.value;
+    } catch (error) {
+      if (this.live(run)) this.endCall(run, 'failed', failureReason(error)); else this.endCall(run, 'dropped', this.dropReason(run));
+      throw error;
+    }
   }
 
+  // RT5-4: the `model_call` line of the attempt in flight; a second call for the same attempt writes nothing.
+  // A fault here is dropped: the log line must never disturb the answer.
+  endCall(run, outcome, reason = null) {
+    const call = run.call;
+    if (!call) return;
+    run.call = null;
+    try {
+      const endMs = this.elapsed();
+      this.stage(run.version, { answerEndMs: endMs });
+      this.record('model_call', callEvent(call, endMs, outcome, reason));
+    } catch { /* measurement only */ }
+  }
+
+  dropReason(run) { return this.stopped ? 'stopped' : run.version !== this.currentVersion() ? 'stale-version' : 'superseded'; }
+
   accept(run, value) {
-    if (!this.live(run)) { this.drop(run); return; }
+    if (!this.live(run)) { this.endCall(run, 'dropped', this.dropReason(run)); this.drop(run); return; }
     run.t.t2 = this.now();
     const usable = this.package.status === 'usable';
     this.set({ ...EMPTY, status: usable ? 'shown' : 'general', focusVersion: run.version, ...value,
       reason: usable ? null : reasonOf(this.package.status) });
     this.publish(this.view(), this.seq);
+    this.endCall(run, 'question');
     this.audit('answer_accepted', { sessionId: this.sessionId, focusVersion: run.version, durationMs: run.t.t2 - run.t.t1, attempts: run.attempts });
     this.recordShown(run.version, run.t.t2 - run.t.t0);
   }
@@ -114,15 +142,17 @@ export class AnswerArea {
     this.audit('answer_failed', { sessionId: this.sessionId, focusVersion: run.version, attempts: 2, code: failureCode(error) });
     this.record('answer_failed', { focusVersion: run.version, attempts: 2, code: failureCode(error) });
     this.finishTiming(run, 'failed');
+    this.stage(run.version, {}, 'failed');
   }
 
   drop(run) {
     if (run.dropped) return;
     run.dropped = true;
-    const reason = this.stopped ? 'stopped' : run.version !== this.currentVersion() ? 'stale-version' : 'superseded';
+    const reason = this.dropReason(run);
     this.audit('answer_dropped', { sessionId: this.sessionId, focusVersion: run.version, reason });
     this.record('answer_dropped', { focusVersion: run.version, reason });
     this.finishTiming(run, reason);
+    this.stage(run.version, {}, reason === 'stopped' ? 'stopped' : 'superseded');
   }
 
   // tS: the first voiced packet after t0, from any speaker.
@@ -158,6 +188,7 @@ export class AnswerArea {
     const run = this.run;
     this.finishTiming(run, 'stopped');
     // Recorded now, not when the aborted request settles: by then the meeting log is closed (ML-8).
+    if (run) this.endCall(run, 'dropped', 'stopped');
     if (run && !run.dropped && this.proposed.status === 'preparing') this.drop(run);
     run?.abort.abort('stopped');
     const { status } = this.proposed;

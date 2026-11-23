@@ -37,10 +37,13 @@ export class MeetingLog {
     try { this.onFail(); } catch { /* reporting must never throw */ }
   }
 
+  // Milliseconds since this log started: the `ms` of every line, and the clock of the times inside `model_call` and `question_timing`.
+  elapsed() { return Math.max(0, Math.round(this.mono() - this.start)); }
+
   // Queues one event line. Never awaits and never throws.
   write(type, data = {}) {
     if (this.closed || this.full || this.failed) return;
-    const event = { t: new Date(this.wallNow()).toISOString(), ms: Math.max(0, Math.round(this.mono() - this.start)), type, ...data };
+    const event = { t: new Date(this.wallNow()).toISOString(), ms: this.elapsed(), type, ...data };
     let line = `${JSON.stringify(event)}\n`;
     let size = Buffer.byteLength(line);
     if (this.bytes + size + FULL_RESERVE > this.maxBytes) {

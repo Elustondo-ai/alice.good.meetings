@@ -1,7 +1,22 @@
 {
-  "status": "inactive",
-  "sprint_id": null,
-  "objective": null,
-  "scope": [],
-  "acceptance_criteria": []
+  "status": "active",
+  "sprint_id": "SPRINT-005",
+  "objective": "Cut the time from the end of Pablo's speech to the Question and bullets on screen, and the model calls that show nothing, with cheap fixes only (no local models, no two-lane redesign, no new UI), and prove it on the same live questions.",
+  "scope": [
+    "index.html",
+    "index.md",
+    "app.js",
+    "app.md",
+    "poc/",
+    "openspec/changes/"
+  ],
+  "acceptance_criteria": [
+    "S005-FINAL: the reader is called on final words only, never on partial text; a fixture shows no call before the final transcript.",
+    "S005-WASTE: model calls that show nothing fall measurably on the same question list, against the baseline of 16 of 23; 04 sets the threshold before the change.",
+    "S005-SMALLER: each call carries less (unused reply fields dropped, package first for caching); tokens and cached tokens per call are logged and lower; the change is kept only if the measurement shows a gain.",
+    "S005-TIME: the same question list (about ten questions, three runs each) is measured before and after: median and worst time from the end of speech to the Question and to the first bullets; 04 sets the pass rule against the 8.6 s mean baseline.",
+    "S005-QUALITY: Pablo marks each answer usable or not; a speed gain with worse answers fails.",
+    "S005-STOP: Stop loses no untranscribed speech; the idle-pause guard is added only if S005-WASTE shows it helps.",
+    "S005-CARRY: SPRINT-004's open evidence: one live session on this sprint's code with an uploaded package and a downloaded log, 04's statement check rerun on the final poc/README.md, and 10 reviews the final revision."
+  ]
 }

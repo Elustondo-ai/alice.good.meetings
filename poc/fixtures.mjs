@@ -29,9 +29,9 @@ export function createFixtures() {
     emit({ type: 'conversation.item.input_audio_transcription.completed', item_id: id, transcript: text });
     return id;
   };
-  const generate = (request, { signal } = {}) => new Promise((resolve, reject) => {
+  const generate = (request, { signal, meter } = {}) => new Promise((resolve, reject) => {
     calls.push({ request: structuredClone(request), signal });
-    const entry = { resolve, reject };
+    const entry = { resolve, reject, meter };
     waiting.push(entry);
     signal?.addEventListener('abort', () => {
       const i = waiting.indexOf(entry);
@@ -46,7 +46,8 @@ export function createFixtures() {
   };
   return {
     connect, generate, say, calls,
-    release: result => take().resolve(result),
+    // `usage`, when given, is reported as the call's token counts before the result (RT5-4); without it there is none.
+    release: (result, usage) => { const entry = take(); if (usage) entry.meter?.(usage); entry.resolve(result); },
     fail: error => take().reject(error ?? new Error('fixture failure')),
     waiting: () => waiting.length,
     upstream: () => state.upstream,

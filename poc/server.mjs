@@ -179,7 +179,7 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
     let upstream, ready = false, speech = false, silentMs = 0, bufferedMs = 0, closed = false, mlog = null;
     // Pause tracking: the signal that Pablo is thinking and waiting for help is PAUSE_MS of silence after speech.
     let pauseMs = 0, heardSpeech = false;
-    const session = new InterviewSession({ reason, audit, record: (type, data) => mlog?.write(type, data), canAsk: () => !requirePause || (heardSpeech && pauseMs >= PAUSE_MS), delayMs: reasonDelayMs, autoFocus, generate, now, answerTimeoutMs, print, emit: event => {
+    const session = new InterviewSession({ reason, audit, record: (type, data) => mlog?.write(type, data), elapsed: () => mlog?.elapsed(), canAsk: () => !requirePause || (heardSpeech && pauseMs >= PAUSE_MS), delayMs: reasonDelayMs, autoFocus, generate, now, answerTimeoutMs, print, emit: event => {
       if (client.readyState === WebSocket.OPEN && client.bufferedAmount < 65536) client.send(JSON.stringify(event));
       else cleanup();
     } });

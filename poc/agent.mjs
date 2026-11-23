@@ -49,19 +49,62 @@ Use only what the documents say about the person; never invent employers, projec
 With no documents, or when covered is false, give general points that say nothing about the person.
 For any other intent return covered false, bullets as an empty list.`;
 
-export function createReasoner(model = process.env.OPENAI_MODEL || 'gpt-6-astra') {
+// RT5-4: the reasoning effort both model calls ask for; it is logged with each call.
+export const EFFORT = 'low';
+
+// The runner is a seam for tests, as in the answer generator; the service uses the default.
+export function createReasoner(model = process.env.OPENAI_MODEL || 'gpt-6-astra', { runner = new Runner({ tracingDisabled: true }) } = {}) {
   const agent = new Agent({
     name: 'Alice.Good.Meetings POC',
     model,
     instructions: READER_INSTRUCTIONS,
     outputType: modelSchema,
-    modelSettings: { store: false, maxTokens: 1600, reasoning: { effort: 'low' } },
+    modelSettings: { store: false, maxTokens: 1600, reasoning: { effort: EFFORT } },
   });
-  const runner = new Runner({ tracingDisabled: true });
-  return async (snapshot, signal, context) => {
+  // `meter`, when given, receives the call's token counts before the reply is checked (RT5-4).
+  const reason = async (snapshot, signal, context, meter) => {
     const result = await runner.run(agent, readerInput(snapshot, context), { signal, maxTurns: 1 });
+    meter?.(usageOf(result));
     return proposalSchema.parse(result.finalOutput);
   };
+  return Object.assign(reason, { model, effort: EFFORT });
+}
+
+// RT5-4: the token counts of one run. The Responses API reports them in `usage` (input_tokens,
+// input_tokens_details.cached_tokens, output_tokens) and the Agents SDK copies them to each raw response's `usage`.
+// With no usage the SDK gives zeros, which become null here. Never throws: a count must not fail a reading.
+export function usageOf(result) {
+  const none = { inputTokens: null, cachedTokens: null, outputTokens: null };
+  try {
+    const all = (result?.rawResponses ?? []).map(response => response?.usage).filter(Boolean);
+    const sum = pick => all.reduce((total, usage) => total + (Number(pick(usage)) || 0), 0);
+    const inputTokens = sum(u => u.inputTokens), outputTokens = sum(u => u.outputTokens);
+    if (!inputTokens && !outputTokens) return none;
+    const cached = all.flatMap(u => u.inputTokensDetails ?? []).map(d => d?.cached_tokens).filter(Number.isFinite);
+    return { inputTokens, cachedTokens: cached.length ? cached.reduce((a, b) => a + b, 0) : null, outputTokens };
+  } catch { return none; }
+}
+
+// RT5-4: a fixed code word for a model call that failed; never the provider's message.
+export function failureReason(error) {
+  const status = error?.status;
+  const code = error?.code || error?.error?.code;
+  if (code === 'invalid-result') return `invalid-result:${error.detail}`;
+  if (status === 401 || code === 'invalid_api_key') return 'auth';
+  if (status === 429 || code === 'insufficient_quota') return 'rate-limit';
+  if (status === 403 || code === 'model_not_found') return 'model-access';
+  if (error?.name === 'TimeoutError') return 'timeout';
+  if (error?.name === 'AbortError') return 'aborted';
+  return 'error';
+}
+
+// RT5-4: the one `model_call` line of a finished call. Numbers and fixed code words only: whatever a caller passes,
+// no prompt, reply or package text can get in.
+export function callEvent({ kind, callId, startMs, model, effort, usage }, endMs, outcome, reason = null) {
+  const count = value => (Number.isFinite(value) ? value : null);
+  const word = value => (typeof value === 'string' ? value.slice(0, 80) : null);
+  return { kind, callId, startMs, durationMs: Math.max(0, endMs - startMs), outcome, reason: word(reason), model: word(model), effort: word(effort),
+    inputTokens: count(usage?.inputTokens), cachedTokens: count(usage?.cachedTokens), outputTokens: count(usage?.outputTokens) };
 }
 
 export function publicError(error) {

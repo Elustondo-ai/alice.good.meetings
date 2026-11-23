@@ -25,6 +25,8 @@ We need evidence that Alice.Good.Meetings follows the conversation correctly, wo
 | [03.5 SPRINT-003 evaluation review](03.5-sprint-003-evaluation-review.md) | See how each SPRINT-003 commitment could be shown to pass or fail, and which criteria were missing on the first pass. |
 | [03.6 SPRINT-003 evaluation plan](03.6-sprint-003-evaluation-plan.md) | Decide whether service tests, the page check, the preview and one live session are enough for the new layout and the proposed answer. |
 | [03.13 SPRINT-004 statement check result](03.13-sprint-004-statement-check-result.md) | See which data statements in the root `AGENTS.md` and `poc/README.md` pass the check and what to correct (draft). |
+| [03.14 SPRINT-005 measurement plan](03.14-sprint-005-measurement-plan.md) | See the question list, method and pass rules for waste, time and quality before the speed change (draft). |
+| [03.15 SPRINT-005 evaluation review](03.15-sprint-005-evaluation-review.md) | See how 04 judged the sprint's evidence, the gaps and the verdict (draft). |
 | [03.12 SPRINT-004 evaluation review](03.12-sprint-004-evaluation-review.md) | See how each SPRINT-004 commitment could be shown to pass or fail, and what is missing (draft first pass). |
 | [03.10 SPRINT-004 upload, log and screen checks](03.10-sprint-004-upload-log-and-screen-checks.md) | See what a pass looks like for the package upload, the meeting log and the new screen, and who runs each check (draft). |
 | [03.11 SPRINT-004 live session and statement check](03.11-sprint-004-live-session-and-statement-check.md) | Agree the live pass rule, the log review and the statement check (draft). |

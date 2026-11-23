@@ -1911,7 +1911,8 @@ test('version 1 holds no cue events and no transcription confidence', async t =>
   await until(() => session.events.some(e => e.type === 'transcript' && e.final));
   await stopped(ctx, session);
   const lines = await readLines(ctx);
-  const allowed = new Set(['log_started', 'package', 'speech_start', 'pause', 'transcript', 'live_question', 'live_cleared', 'focus_changed', 'control', 'answer_shown', 'answer_failed', 'answer_dropped', 'error', 'session_stopped', 'log_full']);
+  const allowed = new Set(['log_started', 'package', 'speech_start', 'pause', 'transcript', 'live_question', 'live_cleared', 'focus_changed', 'control', 'answer_shown', 'answer_failed', 'answer_dropped', 'error', 'session_stopped', 'log_full',
+    'model_call', 'question_timing']);
   assert.ok(lines.every(l => allowed.has(l.type)), JSON.stringify(typesOf(lines)));
   assert.ok(!typesOf(lines).some(type => /cue/.test(type)));
   assert.ok(!JSON.stringify(lines).match(/confidence|logprob/));
@@ -2212,4 +2213,216 @@ test('the publish list holds what the hosted service imports and serves, and not
   const dockerfile = await readFile(new URL('./deploy/Dockerfile', import.meta.url), 'utf8');
   assert.match(dockerfile, /--prod --frozen-lockfile --ignore-scripts/);
   assert.doesNotMatch(dockerfile, /OPENAI_API_KEY=|ALICE_ACCESS_CODE=/, 'no secret is set in the image');
+});
+
+// ---- SPRINT-005, logging alone (RT5-4, RT5-5, RT5-8): ST5-5, ST5-6, ST5-7 and ST5-11. Fixtures and invented text only; no OpenAI. ----
+import { Runner, OpenAIResponsesModel } from '@openai/agents';
+import { createReasoner, usageOf, failureReason, callEvent, EFFORT } from './agent.mjs';
+import { LOG_VERSION } from './meeting-log.mjs';
+
+const CALL_FIELDS = ['cachedTokens', 'callId', 'durationMs', 'effort', 'inputTokens', 'kind', 'model', 'outcome', 'outputTokens', 'reason', 'startMs'];
+const TIMING_FIELDS = ['answerEndMs', 'answerStartMs', 'bulletsMs', 'finalMs', 'focusVersion', 'outcome', 'questionMs', 'readerEndMs', 'readerStartMs', 'speechEndMs', 'toBulletsMs', 'toQuestionMs'];
+const USAGE = { inputTokens: 5000, cachedTokens: 4096, outputTokens: 120 };
+const NO_TOKENS = { inputTokens: null, cachedTokens: null, outputTokens: null };
+const READER = { kind: 'reader', model: 'reader-model-x', effort: 'low' };
+const ANSWER = { kind: 'answer', model: 'answer-model-x', effort: 'low' };
+const NO_FOCUS = { focusVersion: null, questionMs: null, answerStartMs: null, answerEndMs: null, bulletsMs: null, toQuestionMs: null, toBulletsMs: null };
+
+// A session on a hand-moved clock. Its reader calls wait in `readings` until the test answers them, and every
+// meeting-log line it writes is kept in `lines`.
+function measured(t, options = {}) {
+  const lines = [], readings = [], clock = clockAt();
+  const reason = Object.assign((snapshot, signal, context, meter) => new Promise((resolve, reject) => readings.push({ meter, resolve, reject })), { model: READER.model, effort: READER.effort });
+  const generate = options.generate && Object.assign(options.generate, { model: ANSWER.model, effort: ANSWER.effort });
+  const s = new InterviewSession({ reason, emit: () => {}, delayMs: 0, now: clock.now, record: (type, data) => lines.push({ type, ...structuredClone(data) }), ...options, generate });
+  t.after(() => s.stop());
+  const of = type => lines.filter(l => l.type === type).map(({ type: _type, ...data }) => data);
+  // Speech ends at `at`, and its final transcript arrives at `finalAt`; resolves when the reader call for it has started.
+  const hear = async (at, id, text, finalAt = at) => {
+    clock.t = at; s.voiced();
+    clock.t = finalAt; s.observe(id, text, true);
+    await until(() => readings.length === 1);
+  };
+  // Answers the reading in flight at clock time `at`, with token counts when `usage` is given.
+  const read = async (at, reply, usage) => {
+    const before = of('model_call').length, reading = readings.shift();
+    clock.t = at;
+    if (usage) reading.meter(usage);
+    if (reply instanceof Error) reading.reject(reply); else reading.resolve(reply);
+    await until(() => of('model_call').length > before);
+  };
+  return { s, lines, clock, readings, of, hear, read };
+}
+
+test('ST5-5 ST5-7 a reading thrown away for changed words and the one kept: two model_call lines and one question_timing', async t => {
+  const { s, lines, clock, readings, of, read } = measured(t);
+  s.answers.setPackage(packageOf(fixturePackage));
+  clock.t = 1000; s.voiced();
+  clock.t = 1900; s.observe('a', 'Tell me about the moon', false);
+  await until(() => readings.length === 1);
+  clock.t = 2600; s.observe('a', 'Tell me about your work at Aurora Bank.', true);
+  await read(4000, oneCall({ question: 'Tell me about the moon', evidenceIds: ['a'] }), USAGE);
+  await until(() => readings.length === 1);
+  assert.deepEqual(of('question_timing'), [], 'the turn is not over while more of the same pause waits to be read');
+  await read(7000, oneCall({ question: 'Tell me about your work at Aurora Bank.', evidenceIds: ['a'] }));
+  const calls = of('model_call');
+  assert.deepEqual(calls.map(c => Object.keys(c).sort()), [CALL_FIELDS, CALL_FIELDS]);
+  assert.deepEqual(calls, [
+    { ...READER, callId: 1, startMs: 1900, durationMs: 2100, outcome: 'rejected', reason: 'corrected-evidence', ...USAGE },
+    { ...READER, callId: 2, startMs: 4000, durationMs: 3000, outcome: 'question', reason: null, ...NO_TOKENS }]);
+  const timing = of('question_timing');
+  assert.deepEqual(timing.map(q => Object.keys(q).sort()), [TIMING_FIELDS]);
+  assert.deepEqual(timing, [{ speechEndMs: 1000, finalMs: 2600, readerStartMs: 4000, readerEndMs: 7000, focusVersion: 1, questionMs: 7000,
+    answerStartMs: null, answerEndMs: null, bulletsMs: 7000, outcome: 'bullets', toQuestionMs: 6000, toBulletsMs: 6000 }]);
+  assert.deepEqual(typesOf(lines).slice(-5), ['model_call', 'live_question', 'focus_changed', 'answer_shown', 'question_timing'], 'a call is logged before what it changed');
+});
+
+test('ST5-6 ST5-7 a turn with no Focus has no Focus version, no question time and no differences, and without usage the tokens are null', async t => {
+  const { of, hear, read } = measured(t);
+  await hear(10000, 'b', 'So I worked there for three years.', 11000);
+  await read(13000, proposal({ intent: 'answer', question: null, evidenceIds: ['b'] }));
+  assert.deepEqual(of('model_call'), [{ ...READER, callId: 1, startMs: 11000, durationMs: 2000, outcome: 'no-question', reason: null, ...NO_TOKENS }]);
+  assert.deepEqual(of('question_timing'), [{ speechEndMs: 10000, finalMs: 11000, readerStartMs: 11000, readerEndMs: 13000, ...NO_FOCUS, outcome: 'no-question' }]);
+});
+
+test('ST5-5 ST5-7 each attempt of the answer request is one model_call, and the turn has its answer times', async t => {
+  const f = createFixtures();
+  const { lines, clock, of, hear, read } = measured(t, { generate: f.generate });
+  await hear(1000, 'a', 'Why this company?', 2000);
+  await read(5000, proposal({ question: 'Why this company?', evidenceIds: ['a'] }), USAGE);
+  await until(() => f.waiting() === 1);
+  clock.t = 6000; f.fail(Object.assign(new Error('PROVIDER-DETAIL-SENTINEL'), { status: 429 }));
+  await until(() => f.calls.length === 2 && f.waiting() === 1);
+  clock.t = 8000; f.release(answerOk(), { inputTokens: 4800, cachedTokens: 0, outputTokens: 60 });
+  await until(() => of('question_timing').length === 1);
+  assert.deepEqual(of('model_call'), [
+    { ...READER, callId: 1, startMs: 2000, durationMs: 3000, outcome: 'question', reason: null, ...USAGE },
+    { ...ANSWER, callId: 2, startMs: 5000, durationMs: 1000, outcome: 'failed', reason: 'rate-limit', ...NO_TOKENS },
+    { ...ANSWER, callId: 3, startMs: 6000, durationMs: 2000, outcome: 'question', reason: null, inputTokens: 4800, cachedTokens: 0, outputTokens: 60 }]);
+  assert.deepEqual(of('question_timing'), [{ speechEndMs: 1000, finalMs: 2000, readerStartMs: 2000, readerEndMs: 5000, focusVersion: 1, questionMs: 5000,
+    answerStartMs: 5000, answerEndMs: 8000, bulletsMs: 8000, outcome: 'bullets', toQuestionMs: 4000, toBulletsMs: 7000 }]);
+  // No text: the two new events hold numbers, null and fixed words, and nothing of the question, the answer or the error.
+  const added = lines.filter(l => ['model_call', 'question_timing'].includes(l.type));
+  for (const line of added) for (const [key, value] of Object.entries(line)) assert.ok(value === null || Number.isFinite(value) || /^[a-z][a-z_0-9:.-]*$/.test(value), `${key}=${value}`);
+  for (const text of ['company', 'First point', 'PROVIDER-DETAIL-SENTINEL']) assert.equal(JSON.stringify(added).includes(text), false, text);
+});
+
+test('ST5-5 ST5-7 a failed reading, an answer overtaken by a new question and Stop are logged as failed, dropped and stopped', async t => {
+  const f = createFixtures();
+  const { s, clock, readings, of, hear, read } = measured(t, { generate: f.generate });
+  await hear(1000, 'a', 'Tell me about your last project.');
+  await read(1500, Object.assign(new Error('PROVIDER-DETAIL-SENTINEL'), { name: 'TimeoutError' }));
+  await hear(2000, 'b', 'Why this company?');
+  await read(2500, proposal({ question: 'Why this company?', evidenceIds: ['b'] }));
+  await until(() => f.waiting() === 1);
+  await hear(3000, 'c', 'And why this team?');
+  await read(3500, proposal({ question: 'And why this team?', evidenceIds: ['c'] }));
+  await until(() => f.calls.length === 2 && of('question_timing').length === 2);
+  await hear(4000, 'd', 'What would you change?');
+  clock.t = 4200; s.stop();
+  await new Promise(resolve => setTimeout(resolve, 30));
+  assert.deepEqual(of('model_call').map(c => [c.kind, c.callId, c.startMs, c.durationMs, c.outcome, c.reason]), [
+    ['reader', 1, 1000, 500, 'failed', 'timeout'], ['reader', 2, 2000, 500, 'question', null], ['reader', 4, 3000, 500, 'question', null],
+    ['answer', 3, 2500, 1000, 'dropped', 'stale-version'], ['answer', 5, 3500, 700, 'dropped', 'stopped'], ['reader', 6, 4000, 200, 'dropped', 'stopped']]);
+  assert.ok(of('model_call').every(c => c.outcome === 'question' || c.inputTokens === null));
+  assert.deepEqual(of('question_timing'), [
+    { speechEndMs: 1000, finalMs: 1000, readerStartMs: 1000, readerEndMs: 1500, ...NO_FOCUS, outcome: 'failed' },
+    { speechEndMs: 2000, finalMs: 2000, readerStartMs: 2000, readerEndMs: 2500, focusVersion: 1, questionMs: 2500, answerStartMs: 2500, answerEndMs: 3500, bulletsMs: null, outcome: 'superseded', toQuestionMs: 500, toBulletsMs: null },
+    { speechEndMs: 3000, finalMs: 3000, readerStartMs: 3000, readerEndMs: 3500, focusVersion: 2, questionMs: 3500, answerStartMs: 3500, answerEndMs: 4200, bulletsMs: null, outcome: 'stopped', toQuestionMs: 500, toBulletsMs: null },
+    { speechEndMs: 4000, finalMs: 4000, readerStartMs: 4000, readerEndMs: null, ...NO_FOCUS, outcome: 'stopped' }]);
+  assert.equal(readings.length, 1, 'the reading in flight at Stop was never answered, and nothing was written for it twice');
+});
+
+test('ST5-7 in the manual flow the turn waits for Confirm, and a candidate left unconfirmed ends as superseded', async t => {
+  const f = createFixtures();
+  const { s, clock, of, hear, read } = measured(t, { generate: f.generate, autoFocus: false });
+  await hear(1000, 'a', 'Why this company?');
+  await read(2000, proposal({ question: 'Why this company?', evidenceIds: ['a'] }));
+  assert.equal(of('model_call')[0].outcome, 'question', 'a candidate on the screen is something shown');
+  assert.deepEqual(of('question_timing'), []);
+  clock.t = 5000;
+  s.control({ type: 'question.confirm', sessionId: s.id, requestId: 'c1', liveId: s.state.live.id, liveVersion: s.state.live.version, expectedFocusVersion: 0, text: s.state.live.text });
+  await until(() => f.waiting() === 1);
+  clock.t = 6000; f.release(answerOk());
+  await until(() => of('question_timing').length === 1);
+  assert.deepEqual(of('question_timing')[0], { speechEndMs: 1000, finalMs: 1000, readerStartMs: 1000, readerEndMs: 2000, focusVersion: 1, questionMs: 5000,
+    answerStartMs: 5000, answerEndMs: 6000, bulletsMs: 6000, outcome: 'bullets', toQuestionMs: 4000, toBulletsMs: 5000 });
+  await hear(7000, 'b', 'And why this team?');
+  await read(7500, proposal({ question: 'And why this team?', evidenceIds: ['b'] }));
+  await hear(9000, 'c', 'Thanks, that is all for today.');
+  assert.deepEqual(of('question_timing')[1], { speechEndMs: 7000, finalMs: 7000, readerStartMs: 7000, readerEndMs: 7500, ...NO_FOCUS, outcome: 'superseded' });
+});
+
+test('ST5-6 token counts are null when a reply carries no usage, a count never throws, and no text can enter a model_call', () => {
+  const broken = { get rawResponses() { throw new Error('unreadable'); } };
+  const zero = { rawResponses: [{ usage: { inputTokens: 0, outputTokens: 0, inputTokensDetails: [{}] } }] };
+  for (const none of [undefined, null, {}, { rawResponses: [] }, { rawResponses: [{}] }, zero, broken]) assert.deepEqual(usageOf(none), NO_TOKENS);
+  assert.deepEqual(usageOf({ rawResponses: [{ usage: { inputTokens: 5000, outputTokens: 120, inputTokensDetails: [{ cached_tokens: 4096 }] } }] }), USAGE);
+  assert.deepEqual(usageOf({ rawResponses: [{ usage: { inputTokens: 900, outputTokens: 40, inputTokensDetails: [{}] } }] }),
+    { inputTokens: 900, cachedTokens: null, outputTokens: 40 }, 'usage with no cache count');
+  const event = callEvent({ kind: 'reader', callId: 1, startMs: 10, model: { text: 'SENTINEL' }, effort: 7, usage: { inputTokens: 'SENTINEL', cachedTokens: NaN, outputTokens: 5, prompt: 'SENTINEL' } },
+    30, 'failed', { message: 'SENTINEL' });
+  assert.deepEqual(event, { kind: 'reader', callId: 1, startMs: 10, durationMs: 20, outcome: 'failed', reason: null, model: null, effort: null, inputTokens: null, cachedTokens: null, outputTokens: 5 });
+  const reasons = [[{ status: 401 }, 'auth'], [{ code: 'insufficient_quota' }, 'rate-limit'], [{ status: 403 }, 'model-access'], [{ name: 'TimeoutError' }, 'timeout'], [{ name: 'AbortError' }, 'aborted'],
+    [{ code: 'invalid-result', detail: 'bullets-count' }, 'invalid-result:bullets-count'], [new Error('PROVIDER-DETAIL-SENTINEL'), 'error'], ['superseded', 'error'], [undefined, 'error']];
+  for (const [error, word] of reasons) assert.equal(failureReason(error), word);
+});
+
+test('ST5-5 the Agents SDK passes the usage of a Responses reply to the meter: input, cached and output tokens (stub client, no network)', async () => {
+  const sent = [];
+  const reply = (text, usage) => ({ id: 'resp_stub', object: 'response', created_at: 0, status: 'completed', model: 'stub', ...(usage ? { usage } : {}),
+    output: [{ id: 'msg_stub', type: 'message', role: 'assistant', status: 'completed', content: [{ type: 'output_text', text, annotations: [] }] }] });
+  const runnerFor = (text, usage) => new Runner({ tracingDisabled: true, modelProvider: { getModel: async name => new OpenAIResponsesModel(
+    { baseURL: 'http://stub.invalid', responses: { create: async body => { sent.push(body); return reply(text, usage); } } }, name) } });
+  const usage = { input_tokens: 5000, input_tokens_details: { cached_tokens: 4096 }, output_tokens: 120, output_tokens_details: { reasoning_tokens: 64 }, total_tokens: 5120 };
+  const reading = { reply: 'ok', phase: 'QUESTION', question: null, intent: 'none', evidenceIds: [], covered: false, bullets: [] };
+  const metered = [];
+  const reason = createReasoner('stub-reader', { runner: runnerFor(JSON.stringify(reading), usage) });
+  assert.deepEqual(await reason({ observations: [] }, undefined, {}, counts => metered.push(counts)), reading);
+  assert.deepEqual(metered, [USAGE]);
+  assert.deepEqual([reason.model, reason.effort, sent[0].model, sent[0].reasoning.effort], ['stub-reader', EFFORT, 'stub-reader', EFFORT], 'the model and effort logged are the ones sent');
+  assert.deepEqual(await reason({ observations: [] }), reading, 'and a call without a meter is unchanged');
+  const generate = createGenerator({ model: 'stub-answer', runner: runnerFor('{"bullets":["One."]}') });
+  const request = buildRequest({ sessionId: 's', focusVersion: 1, question: 'Why?', documents: [] });
+  assert.deepEqual(await generate(request, { meter: counts => metered.push(counts) }), { bullets: ['One.'] });
+  assert.deepEqual(metered[1], NO_TOKENS, 'a reply with no usage gives null, not zero');
+  assert.deepEqual([generate.model, generate.effort, sent[2].model, sent[2].reasoning.effort], ['stub-answer', EFFORT, 'stub-answer', EFFORT]);
+});
+
+test('ST5-7 ST5-11 on the service the new lines use the log clock, each turn writes one question_timing and the header stays at version 1', async t => {
+  const ctx = await liveServer(t, { autoFocus: true, files: { 'a.md': 'Some package text.' } });
+  const session = await ctx.open();
+  await sendPackets(session, true, 0, 5);
+  await sendPackets(session, false, 5, 9);
+  ctx.f.say('Why this company?');
+  await until(() => ctx.f.waiting() === 1);
+  ctx.f.release(answerOk(), USAGE);
+  await until(() => session.events.some(e => e.type === 'proposed' && e.proposed.status === 'shown'));
+  await stopped(ctx, session);
+  const lines = await readLines(ctx);
+  assert.deepEqual([LOG_VERSION, lines[0].type, lines[0].version], [1, 'log_started', 1]);
+  const calls = lines.filter(l => l.type === 'model_call'), timing = lines.filter(l => l.type === 'question_timing');
+  assert.deepEqual(calls.map(c => [c.kind, c.callId, c.outcome, c.inputTokens, c.cachedTokens, c.outputTokens]),
+    [['reader', 1, 'no-question', null, null, null], ['reader', 2, 'question', null, null, null], ['answer', 3, 'question', 5000, 4096, 120]]);
+  assert.deepEqual(calls.map(c => Object.keys(c).sort()), calls.map(() => [...CALL_FIELDS, 'ms', 't', 'type'].sort()));
+  assert.equal(timing.length, 1, 'the call at the start of the session reads no speech and is no turn');
+  const [q] = timing, ms = type => lines.find(l => l.type === type).ms, near = (a, b) => Math.abs(a - b) <= 3;
+  assert.deepEqual(Object.keys(q).sort(), [...TIMING_FIELDS, 'ms', 't', 'type'].sort());
+  assert.ok(ms('speech_start') <= q.speechEndMs && q.speechEndMs <= q.finalMs && q.finalMs <= q.readerStartMs && q.readerStartMs <= q.readerEndMs, JSON.stringify(q));
+  assert.ok(q.readerEndMs <= q.questionMs && q.questionMs <= q.answerStartMs && q.answerStartMs <= q.answerEndMs && q.answerEndMs <= q.bulletsMs && q.bulletsMs <= q.ms, JSON.stringify(q));
+  assert.ok(near(q.finalMs, ms('transcript')) && near(q.questionMs, ms('focus_changed')) && near(q.bulletsMs, ms('answer_shown')), 'the times are on the clock of each line');
+  assert.deepEqual([q.focusVersion, q.outcome, q.toQuestionMs, q.toBulletsMs], [1, 'bullets', q.questionMs - q.speechEndMs, q.bulletsMs - q.speechEndMs]);
+  assert.ok(near(calls[1].startMs, q.readerStartMs) && near(calls[2].startMs, q.answerStartMs) && near(calls[2].startMs + calls[2].durationMs, q.answerEndMs));
+  for (const line of [...calls, ...timing]) for (const [key, value] of Object.entries(line)) if (key !== 't') assert.ok(value === null || Number.isFinite(value) || /^[a-z][a-z_0-9:.-]*$/.test(value), `${key}=${value}`);
+});
+
+test('ST5-11 a line of an unknown type or with an unknown field does not stop the log being read', async t => {
+  const store = createLogStore({ dir: await tempDir(t) });
+  const log = store.start('dddddddd-0000-0000');
+  log.write('log_started', { version: LOG_VERSION });
+  log.write('event_of_a_later_version', { anything: { nested: [1, 2] } });
+  log.write('transcript', { itemId: 'i1', text: 'Words.', fieldOfALaterVersion: 7 });
+  await log.close();
+  const read = (await store.read()).text.trim().split('\n').map(line => JSON.parse(line));
+  assert.deepEqual(read.map(l => [l.type, l.version ?? l.fieldOfALaterVersion ?? l.anything.nested.length]), [['log_started', 1], ['event_of_a_later_version', 2], ['transcript', 7]]);
 });

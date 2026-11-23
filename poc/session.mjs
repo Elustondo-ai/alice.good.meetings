@@ -1,11 +1,11 @@
 import { randomUUID } from 'node:crypto';
-import { proposalSchema, publicError } from './agent.mjs';
+import { proposalSchema, publicError, callEvent, failureReason } from './agent.mjs';
 import { AnswerArea } from './answer-area.mjs';
 import { validateResult } from './answer.mjs';
 
 // Each connection owns its controller and at most one in-flight reasoning request.
 export class InterviewSession {
-  constructor({ reason, emit, audit = () => {}, delayMs = 2500, generate, now = Date.now, answerTimeoutMs, print, canAsk = () => true, autoFocus = true, record = () => {} }) {
+  constructor({ reason, emit, audit = () => {}, delayMs = 2500, generate, now = Date.now, answerTimeoutMs, print, canAsk = () => true, autoFocus = true, record = () => {}, elapsed }) {
     // Text events for the meeting log (poc/meeting-log.mjs); it never blocks and never reaches the audit.
     // While a control runs, its effects are held so the `control` line is written before them (ML-12).
     this.sink = record;
@@ -13,6 +13,20 @@ export class InterviewSession {
     this.record = (type, data) => { if (this.held) this.held.push([type, data]); else this.sink(type, data); };
     this.clock = now;
     this.startedAt = now();
+    // RT5-4, RT5-5: the measurement events. Their times are on the meeting log's clock when the service gives it, so they
+    // match each line's `ms`. Nothing here is read back: no decision of the session depends on it.
+    this.elapsed = () => elapsed?.() ?? this.clock() - this.startedAt;
+    this.calls = 0;             // model calls of both kinds, numbered in the order they start
+    this.call = null;           // the reader call in flight
+    this.turn = null;           // the speech turn being read, or waiting for Confirm
+    this.answering = new Map(); // turns that have their Focus and wait for bullets, by Focus version
+    this.speechEndMs = null;    // when the last voiced packet arrived
+    this.finalAt = new Map();   // when each item became final
+    // A fault in this bookkeeping must never disturb the session, so each of its steps drops its own errors.
+    for (const step of ['openTurn', 'turnRead', 'focused', 'answerStage', 'endTurn', 'endCall']) {
+      const body = this[step].bind(this);
+      this[step] = (...args) => { try { return body(...args); } catch { return null; } };
+    }
     this.seen = new Map();
     this.spans = [];
     this.spanOf = new Map();
@@ -50,7 +64,8 @@ export class InterviewSession {
     this.abort = new AbortController();
     // The proposed answer is kept apart from `state`: never in snapshots, cached results or revisions.
     this.answers = new AnswerArea({ sessionId: this.id, generate, now, timeoutMs: answerTimeoutMs, audit, print,
-      focusVersion: () => this.state.focusVersion,
+      focusVersion: () => this.state.focusVersion, elapsed: this.elapsed, callId: () => ++this.calls,
+      stage: (version, times, outcome) => this.answerStage(version, times, outcome),
       record: this.record, publish: (proposed, proposedSeq) => this.send('proposed', { proposed, proposedSeq }) });
   }
 
@@ -59,7 +74,7 @@ export class InterviewSession {
   answerFields() { return { proposed: this.answers.view(), proposedSeq: this.answers.seq }; }
 
   // Service hooks: the first voiced packet (tS) and the page's render report (t3).
-  voiced() { this.answers.voiced(); }
+  voiced() { this.speechEndMs = this.elapsed(); this.answers.voiced(); }
 
   rendered(message) { this.answers.rendered(message); }
 
@@ -92,7 +107,7 @@ export class InterviewSession {
     const previous = this.order.indexOf(previousId);
     if (previous >= 0) this.order.splice(previous + 1, 0, id);
     else this.order.push(id);
-    while (this.order.length > 32) { const old = this.order.shift(); this.observations.delete(old); this.seen.delete(old); this.spanOf.delete(old); }
+    while (this.order.length > 32) { const old = this.order.shift(); this.observations.delete(old); this.seen.delete(old); this.spanOf.delete(old); this.finalAt.delete(old); }
   }
 
   observe(id, text, final) {
@@ -105,6 +120,7 @@ export class InterviewSession {
     this.observations.set(id, value);
     // Timing evidence only: the audit never receives transcript text.
     if (final) {
+      this.finalAt.set(id, this.elapsed());
       this.audit('transcript_final', { sessionId: this.id, itemId: id, revision: this.state.revision });
       this.record('transcript', { itemId: id, text: value.text, ...this.spanOf.get(id) });
     }
@@ -154,9 +170,14 @@ export class InterviewSession {
     if (p.evidenceIds.some(id => !ids.has(id))) return { reason: 'unknown-evidence' };
     if (ids.size && !p.evidenceIds.length) return { reason: 'missing-evidence' };
     // A late correction to evidence must not establish a question from obsolete text.
-    if (snapshot.observations.some(o => this.observations.get(o.id)?.final && this.observations.get(o.id).text !== o.text)) return { reason: 'corrected-evidence' };
+    if (this.corrected(snapshot)) return { reason: 'corrected-evidence' };
     if (p.phase === 'GREETINGS' && ['QUESTION', 'ANSWER', 'CLOSING'].includes(this.state.phase)) return { reason: 'greetings-after-question' };
     return { p };
+  }
+
+  // True when an item of the snapshot has since become final with other words.
+  corrected(snapshot) {
+    return snapshot.observations.some(o => this.observations.get(o.id)?.final && this.observations.get(o.id).text !== o.text);
   }
 
   // Model output can change the reply, the phase and Live. No path here writes Focus.
@@ -176,7 +197,7 @@ export class InterviewSession {
     const before = this.state;
     this.state = next;
     this.recordChanges(before, next, 'pause');
-    if (this.adopted) this.startAnswer(p);
+    if (this.adopted) { this.focused(this.turn?.reading ? this.turn : null); this.startAnswer(p); }
     this.send('answer', { ...this.state, audioCutoffSamples: snapshot.audioCutoffSamples, ...this.answerFields() });
     return true;
   }
@@ -263,6 +284,7 @@ export class InterviewSession {
     this.liveCutoff = new Set(this.order);
     this.record('live_cleared', { by: 'confirm' });
     this.record('focus_changed', { focusVersion: this.state.focusVersion, text: this.state.focus, exchangeId, source: via === 'space' ? 'confirm-space' : 'confirm-button' });
+    this.focused(this.turn?.candidate ? this.turn : null);
     this.answers.begin(this.state.focus, this.state.focusVersion);
     return { status: 'confirmed', changed: true, liveId, liveVersion, focusVersion: this.state.focusVersion };
   }
@@ -321,20 +343,43 @@ export class InterviewSession {
     this.running = true;
     this.lastRun = Date.now();
     const snapshot = this.snapshot();
+    // RT5-4, RT5-5: log bookkeeping only; the call itself is made exactly as before.
+    const call = this.call = { kind: 'reader', callId: ++this.calls, startMs: this.elapsed(), model: this.reason?.model, effort: this.reason?.effort, usage: null };
+    const turn = this.openTurn(snapshot, call.startMs);
     this.send('agent', { status: 'thinking' });
     this.audit('agent_started', { sessionId: this.id, packets: this.packets });
     try {
       const signal = AbortSignal.any([this.abort.signal, AbortSignal.timeout(30000)]);
-      const proposal = await this.reason(snapshot, signal, this.context);
+      const proposal = await this.reason(snapshot, signal, this.context, usage => { call.usage = usage; });
       if (this.active) {
-        const accepted = this.accept(proposal, snapshot);
+        const endMs = this.elapsed(), live = this.state.live;
+        if (turn && this.turn === turn) turn.readerEndMs = endMs;
+        // The log lines of what the reading changed are held, so its own `model_call` line comes first.
+        this.held = [];
+        let accepted, outcome;
+        try {
+          accepted = this.accept(proposal, snapshot);
+          outcome = !accepted ? 'rejected' : this.adopted || this.state.live !== live ? 'question' : 'no-question';
+        } finally {
+          const held = this.held; this.held = null;
+          // A reading thrown away because its words changed is always `corrected-evidence`, whichever check refused it first.
+          this.endCall(call, endMs, outcome ?? 'failed', outcome !== 'rejected' ? null : this.corrected(snapshot) ? 'corrected-evidence' : this.lastRejection?.reason);
+          for (const [type, data] of held) this.record(type, data);
+        }
         this.send('agent', { status: !accepted ? 'proposal rejected; keeping previous answer'
           : this.adopted || this.proposalIntent === 'answer' ? 'ready' : 'no question heard; keeping the last answer' });
         this.audit('agent_finished', { sessionId: this.id, accepted, ...(accepted ? {} : { rejection: this.lastRejection }), durationMs: Date.now() - this.lastRun, packets: this.packets });
+        this.turnRead(turn, outcome);
       }
     } catch (error) {
       // ML-10: a failed reading is an error with its public message; an abort at Stop is not.
-      if (this.active) this.record('error', { code: 'reader', message: publicError(error) });
+      if (this.active) {
+        const endMs = this.elapsed();
+        if (turn && this.turn === turn) turn.readerEndMs = endMs;
+        this.endCall(call, endMs, 'failed', failureReason(error));
+        this.record('error', { code: 'reader', message: publicError(error) });
+        this.turnRead(turn, 'failed');
+      }
       this.send('agent', { status: publicError(error) });
       this.audit('agent_failed', { sessionId: this.id, status: error?.status || null, code: publicError(error) });
     } finally {
@@ -343,8 +388,68 @@ export class InterviewSession {
     }
   }
 
+  // RT5-4: the `model_call` line of the reader call; a call already written (at Stop) writes nothing.
+  endCall(call, endMs, outcome, reason = null) {
+    if (this.call !== call) return;
+    this.call = null;
+    this.record('model_call', callEvent(call, endMs, outcome, reason));
+  }
+
+  // RT5-5: a reader call belongs to the speech turn that ended at the last voiced packet. Calls made in the same pause
+  // continue one turn; a call after newer speech ends the turn before it. The call at the start of a session reads no speech.
+  openTurn(snapshot, startMs) {
+    if (!snapshot.observations.length) return null;
+    let turn = this.turn;
+    if (turn && turn.speechEndMs !== this.speechEndMs) { this.endTurn(turn, restOf(turn, 'superseded')); turn = null; }
+    turn ??= this.turn = { speechEndMs: this.speechEndMs, itemId: null, readerStartMs: null, readerEndMs: null, focusVersion: null, questionMs: null,
+      answerStartMs: null, answerEndMs: null, bulletsMs: null, reading: false, candidate: false, rest: null, ended: false };
+    // The stage times are those of the turn's last reader call; the item is the newest one that call read.
+    return Object.assign(turn, { itemId: snapshot.observations.at(-1).id, readerStartMs: startMs, readerEndMs: null, reading: true });
+  }
+
+  // After a reader result. A turn that got its Focus has moved on already; one with a candidate waits for Confirm;
+  // any other ends now, unless more of this pause is waiting to be read.
+  turnRead(turn, outcome) {
+    if (!turn || this.turn !== turn) return;
+    turn.reading = false;
+    if (outcome === 'question') turn.candidate = true; else turn.rest = outcome;
+    if (!turn.candidate && !this.pending) this.endTurn(turn, outcome);
+  }
+
+  // The turn gets its Focus, by the automatic flow or by Confirm, and waits for its bullets.
+  focused(turn) {
+    if (!turn || this.turn !== turn) return;
+    this.turn = null;
+    Object.assign(turn, { reading: false, candidate: false, focusVersion: this.state.focusVersion, questionMs: this.elapsed() });
+    this.answering.set(turn.focusVersion, turn);
+  }
+
+  // What the answer area reports for a Focus version: stage times, and the outcome when its answer is settled.
+  answerStage(version, times, outcome) {
+    const turn = this.answering.get(version);
+    if (!turn) return;
+    for (const [key, value] of Object.entries(times)) if (key !== 'answerStartMs' || turn[key] === null) turn[key] = value;
+    if (outcome) this.endTurn(turn, outcome);
+  }
+
+  // RT5-5: the one `question_timing` line of a turn. Times only; a stage that did not happen is null.
+  endTurn(turn, outcome) {
+    if (turn.ended) return;
+    turn.ended = true;
+    if (this.turn === turn) this.turn = null;
+    if (turn.focusVersion !== null) this.answering.delete(turn.focusVersion);
+    const { speechEndMs, readerStartMs, readerEndMs, focusVersion, questionMs, answerStartMs, answerEndMs, bulletsMs } = turn;
+    const since = time => (time === null || speechEndMs === null ? null : time - speechEndMs);
+    this.record('question_timing', { speechEndMs, finalMs: this.finalAt.get(turn.itemId) ?? null, readerStartMs, readerEndMs, focusVersion, questionMs,
+      answerStartMs, answerEndMs, bulletsMs, outcome, toQuestionMs: since(questionMs), toBulletsMs: since(bulletsMs) });
+  }
+
   stop() {
     this.answers.stop();
+    // RT5-4, RT5-5: a reading in flight is dropped and every open turn ends, while the log is still open.
+    if (this.call) this.endCall(this.call, this.elapsed(), 'dropped', 'stopped');
+    if (this.turn) this.endTurn(this.turn, restOf(this.turn, 'stopped'));
+    for (const turn of [...this.answering.values()]) this.endTurn(turn, 'stopped');
     this.active = false;
     clearTimeout(this.timer);
     this.abort.abort();
@@ -355,8 +460,13 @@ export class InterviewSession {
     this.liveIds.clear();
     this.retiredLiveIds.clear();
     this.requests.clear();
+    this.finalAt.clear();
   }
 }
+
+// RT5-5: how a turn ends when a newer one starts or the session stops: with its last reader result if it has one and
+// nothing else was under way, otherwise with `ending`.
+const restOf = (turn, ending) => (turn.reading || turn.candidate || !turn.rest ? ending : turn.rest);
 
 const CONTROLS = { 'question.confirm': 'confirm', 'question.reset': 'clear' };
 const PROPOSAL_FIELDS = new Set(['reply', 'phase', 'question', 'intent', 'evidenceIds', 'covered', 'bullets']);

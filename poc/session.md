@@ -30,7 +30,8 @@ flowchart LR
 | `control(message)` | Validates a `question.reset` or `question.confirm` control, emits one `question.result`, then any state broadcast |
 | `schedule()` / `run()` | Coalesces input into one pending run while audio proceeds; request timeout is 30 seconds |
 | `stop()` | Publishes the answer area as last known, aborts reasoning and any answer request, clears scheduling and discards observations; late results cannot emit |
-| `voiced()` / `rendered(message)` | Service hooks: the first voiced packet after Confirm (`tS`) and the page's render report (`t3`), passed to the answer area |
+| `voiced()` / `rendered(message)` | Service hooks: the first voiced packet after Confirm (`tS`) and the page's render report (`t3`), passed to the answer area. `voiced()` also notes when the last voiced packet arrived |
+| Measurement lines (SPRINT-005) | Log bookkeeping that no decision reads. `run()` writes one `model_call` per reader call and passes the reader a fourth argument that receives its token counts; `openTurn`, `turnRead`, `focused`, `answerStage` and `endTurn` keep each speech turn and write its one `question_timing`. Times come from the optional `elapsed()`, which the service points at the log's clock. `stop()` writes a reading in flight as `dropped` and ends the open turns. See [the measurement lines](docs/09-measurement-events.md) |
 
 Events carry session identity and server wall-clock time. Accepted answers have increasing revisions. Browser acknowledgements are separate evidence.
 State holds `focus` (confirmed text or null), `focusVersion` (0 until the first confirmation), `exchangeId` and `live`, which is null or `{id, version, text, kind}` with `kind` `new` or `restatement`. The [UC-04 design](../docs/asdg/08-low-level-design/03.2-uc-04-state-and-rules.md) defines these rules.
@@ -38,8 +39,7 @@ A result in the ANSWER phase without a Focus question keeps the current phase bu
 Only `clarify` and `new-question` proposals with text change Live, and only when they cite an observation newer than the Live cutoff: the observations present at the last Confirm or Clear live. A new Live gets a fresh id and version 1; text changes add 1; `new-question` sets kind `new`. With Live empty, a `clarify` opens a `restatement`, and text equal to Focus is ignored.
 Confirm sets Focus to the Live text, adds 1 to `focusVersion`, sets phase QUESTION, clears Live and moves the cutoff. A confirmed restatement keeps the exchange; anything else starts one. A retired Live id is `stale`, an id never issued is `invalid`, and Live text equal to Focus is `unavailable`.
 Each live session caches up to 256 well-formed controls by `requestId`. An identical retry re-sends the original result; a changed payload is `invalid`; a new request beyond the cap is `limit`. Malformed or wrong-session controls are `invalid` and are not cached. Every reply is audited as `question_control`, and each final transcript as `transcript_final`, without text. A rejected agent result's `agent_finished` event adds `rejection`: `reason` is `stopped`, `wrong-session`, `stale-revision`, `schema` (with the failing field names), `length`, `unknown-evidence`, `missing-evidence`, `corrected-evidence` or `greetings-after-question`.
-These checks constrain updates; they do not establish semantic accuracy or speaker identity.
-Network failure keeps the last result in the browser. A new connection starts a new session rather than silently reconstructing missing audio.
+These checks constrain updates; they do not establish semantic accuracy or speaker identity. Network failure keeps the last result in the browser. A new connection starts a new session rather than silently reconstructing missing audio.
 
 The proposed answer lives in `answers` (an [AnswerArea](answer-area.md)), apart from `state`: it is not in snapshots or cached results and never changes `revision`. `answer` messages also carry `proposed` and `proposedSeq`; a finished result is published as one `proposed` message. The interview agent never sees the answer or the package.
 
@@ -52,12 +52,9 @@ The answer comes from the same call: `startAnswer` checks its bullets (and any `
 
 The constructor takes `record(type, data)`, which the service points at the [meeting log](meeting-log.md); the default does nothing. The session records `transcript` (final items only, with the audio span `audioStartMs`/`audioEndMs` from the commit the service sent), `live_question`, `live_cleared` (`clear` or `confirm`), `focus_changed` (source `pause`, `confirm-button` or `confirm-space`) and `control` (how it was used: the optional `via` of a question control is `button`, `space` or `escape`, default `button`; replays are not logged). `commitSent()` and `bufferCleared()` are called by the service so each item knows its span. The `transcript` message now carries `items`, a snapshot that replaces the last: the last 30 s, at most 8 items and 1,500 characters, each `{id, text, final, at}` with `at` in ms from the session start (SA-17); the older `text` and `final` stay for the current page. Nothing here reaches the audit.
 
-## Fix after the review of 21 November 2026
+## Fixes of 21 and 22 November 2026
 
-`items()` skips an item whose text is empty or white space (a noise-only commit comes back empty) and no longer stops at it, so the snapshot keeps the earlier items of the last 30 seconds. The empty final item is still logged as a `transcript` event (ML-4) and still given to the reader as an observation.
-
-## Fixes of 22 November 2026
-
+- **Empty items (21 November).** `items()` skips an item whose text is empty or white space (a noise-only commit comes back empty) and no longer stops at it, so the snapshot keeps the earlier items of the last 30 seconds. The empty final item is still logged as a `transcript` event (ML-4) and still given to the reader as an observation.
 - **Control order.** While a Confirm or Clear runs, the events it causes are held; the `control` line is written first, then `live_cleared` and `focus_changed` (ML-12).
 - **Refused controls.** A malformed Confirm or Clear, a retry with a changed payload and a request over the 256 limit are each logged as `control` with result `invalid` (ML-7). An identical retry is still not logged again.
 - **Reader failures.** A reading that fails writes an `error` event with code `reader` and the public message (ML-10); the abort at Stop does not.
