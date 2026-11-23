@@ -9,7 +9,7 @@ flowchart LR
     P["Upload package<br/>status before Start"] --> S["Meeting screen<br/>question, candidate, two columns"]
     S --> L["Meeting log<br/>poc/logs/, Git-ignored"]
     L --> D["Download log"]
-    K["Keys G L S Esc Space"] --> S
+    K["Keys Esc, Space and A"] --> S
 ```
 
 *Three streams meet in one recorded live session: the package, the screen and the log.*
@@ -19,7 +19,7 @@ flowchart LR
 - **Upload and status.** Several `.md` or `.txt` files replace the package from the page, in memory only, with `GET /package` for status, `DELETE /package` for Remove, and refusals that keep the old package.
 - **Meeting log.** One JSON Lines file per listening session in Git-ignored `poc/logs/`, with a header (the schema version once, in the first line), two clocks, complete up to 5 MB, and `GET /log` for Download log.
 - **New screen.** A cue-coloured bar with the avatar and the small name on the left, an empty centre reserved for a later "Alice says" area and the buttons, cue word and monitor line on the right, one very big question, a smaller candidate line, "Alice suggests" and "What I hear", with states for not listening, listening, candidate, pending, error and package missing; the page scrolls and nothing is clipped.
-- **Keys.** G, L and S set the cue and hold it 10 seconds, Esc clears, Space confirms; the three cue buttons leave the screen.
+- **Keys.** Esc clears and Space confirms; the three cue buttons leave the screen. **Changed on 22 November 2026 by Pablo's decision:** the keys G, L and S and their 10-second manual cue hold, which this change first added, are removed, and the cue comes from the timer only (08 rules SC-2, SC-7, SC-10, SC-11 and SS-11).
 - **Avatar.** A small animated face of Alice in the bar, on by default, as Pablo's named exception to the no-motion rule, with a visible toggle and the key A, vendored and failing silently.
 - **Bullets only.** Both the post-pause reader call and the fallback answer request return at most three bullets and no details.
 - **BREAKING** for the paired page and service only: new routes, a `transcript` message with items, a `proposed` message without `details`, and a log.
@@ -32,7 +32,7 @@ flowchart LR
 - `meeting-log`: the per-session log, its content, format, storage and retention.
 - `log-download`: `GET /log` and the Download log button.
 - `meeting-screen`: areas, sizes, bold, contrast, scrolling, states and wording of the screen.
-- `screen-controls`: the buttons, the keys, Space and Esc, and the 10-second manual cue.
+- `screen-controls`: the buttons, the keys Space, Esc and A, and the cue from the timer only, with no cue key and no manual hold.
 - `avatar` (S004-AVATAR, plan criterion 11): the small animated avatar of Alice in the bar, its states, limits, toggle and quiet failure.
 - `bullets-only-answer`: the answer without details in the reader call and the fallback request.
 
@@ -46,7 +46,7 @@ Touches `index.html`, `app.js`, `index.md`, `app.md`, `poc/server.mjs`, `poc/ses
 
 ## Decisions and source baseline
 
-On 19 November 2026 Pablo decided, as relayed by 00 Governance: the log is in Git-ignored `poc/logs/` and he deletes the files; bullets shown are logged; every meeting is logged; keys G, L and S, Esc and Space; a manual cue holds 10 seconds; the avatar is on by default as an explicit exception to the no-motion rule, with a visible toggle, the key A and the CC0 example model first; no details are requested; files only; the 20,000 limit stays. 05 decided 12's suggestions on 19 November 2026: a schema version, two clocks and a session header are in; cue events and transcription confidence are not. No source below has a recorded human acceptance, so each is a draft or relayed direction, never an accepted requirement. The exact rules are the 81 of the 08 [specification](../../../docs/asdg/08-low-level-design/03.7-sprint-004-screen-specification.md); this change links to them and does not copy them.
+On 19 November 2026 Pablo decided, as relayed by 00 Governance: the log is in Git-ignored `poc/logs/` and he deletes the files; bullets shown are logged; every meeting is logged; keys G, L and S, Esc and Space; a manual cue holds 10 seconds (both withdrawn on 22 November, see the next sentence); the avatar is on by default as an explicit exception to the no-motion rule, with a visible toggle, the key A and the CC0 example model first; no details are requested; files only; the 20,000 limit stays. On 22 November 2026, during his live session and as relayed by the Team Lead, Pablo removed the keys G, L and S and the manual cue hold, saying there is no point in telling himself good, land it or stop; Esc and Space stay and the cue comes from the timer only. 05 decided 12's suggestions on 19 November 2026: a schema version, two clocks and a session header are in; cue events and transcription confidence are not. No source below has a recorded human acceptance, so each is a draft or relayed direction, never an accepted requirement. The exact rules are the 81 of the 08 [specification](../../../docs/asdg/08-low-level-design/03.7-sprint-004-screen-specification.md); this change links to them and does not copy them.
 
 | Source (SHA-256 of bytes read, 19 Nov 2026) | Claim used | Status |
 | --- | --- | --- |

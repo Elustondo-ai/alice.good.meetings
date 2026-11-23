@@ -7,17 +7,23 @@ import { join, relative } from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import http from 'node:http';
+import net from 'node:net';
 import vm from 'node:vm';
 import WebSocket from 'ws';
 import { InterviewSession } from './session.mjs';
 import { createPocServer as createRealServer } from './server.mjs';
 import { createFixtures } from './fixtures.mjs';
 import { loadPackage, DEFAULT_PACKAGE_DIR } from './package-loader.mjs';
-import { createGenerator, answerModel, buildRequest, modelInput, validateResult, INSTRUCTIONS, BULLET_MAX, DETAILS_MAX } from './answer.mjs';
+import { MeetingLog, createLogStore, DEFAULT_LOG_DIR } from './meeting-log.mjs';
+import { readFile as readFileAsync, stat, appendFile } from 'node:fs/promises';
+import { createStateMachine, TIMES as AVATAR_TIMES, MOODS as AVATAR_MOODS } from './avatar.js';
+import { VENDOR_ASSETS, listenHost } from './server.mjs';
+import { createGenerator, answerModel, buildRequest, modelInput, validateResult, INSTRUCTIONS, BULLET_MAX, answerSchema } from './answer.mjs';
 
 // The existing cases never read a real preparation package: every server gets an empty temporary folder.
 const noPackage = await mkdtemp(join(tmpdir(), 'alice-nopkg-'));
-const createPocServer = (options = {}) => createRealServer({ packageDir: noPackage, log: () => {}, requirePause: false, ...options });
+const noLogs = await mkdtemp(join(tmpdir(), 'alice-nologs-'));
+const createPocServer = (options = {}) => createRealServer({ packageDir: noPackage, logDir: noLogs, revision: 'test', log: () => {}, requirePause: false, ...options });
 
 const proposal = (changes = {}) => ({ reply: 'I heard the question.', phase: 'QUESTION', question: 'Tell me about yourself.', intent: 'new-question', evidenceIds: ['one'], ...changes });
 const clarify = (question, evidenceIds) => proposal({ intent: 'clarify', question, evidenceIds });
@@ -392,7 +398,7 @@ test('WebSocket question controls answer per request while audio continues and l
 });
 
 // ---- SPRINT-003 service tests (T27): fixtures only, invented text, no OpenAI ----
-const answerOk = (changes = {}) => ({ bullets: ['First point.', 'Second point.'], details: 'Invented details.', ...changes });
+const answerOk = (changes = {}) => ({ bullets: ['First point.', 'Second point.'], ...changes });
 const packageOf = (documents, status = 'usable') => ({ status, documents: status === 'usable' ? documents : [], files: [], chars: 0, skipped: [] });
 const docs = () => [{ name: 'a.txt', text: 'Alpha sample text.' }, { name: 'b.md', text: 'Beta sample text.' }];
 let obsCount = 0;
@@ -462,7 +468,7 @@ test('model input holds only instructions, question and document text', async t 
 test('interview agent input never holds an answer or package text', async t => {
   const { f, s, confirm, events } = setup(t);
   confirm(); await until(() => f.calls.length === 1);
-  f.release(answerOk({ bullets: ['Bullet sentinel.'], details: 'Details sentinel.' }));
+  f.release(answerOk({ bullets: ['Bullet sentinel.'] }));
   await until(() => s.answers.proposed.status === 'shown');
   const seen = JSON.stringify(s.snapshot());
   for (const absent of ['Bullet sentinel', 'Details sentinel', 'Alpha sample text', 'proposed']) assert.equal(seen.includes(absent), false, absent);
@@ -492,16 +498,17 @@ test('generator makes one call per attempt with no tools and its own model setti
   }
 });
 
-test('result keeps bullets and details as separate fields', async t => {
+test('ST4-33 the result and the proposed message hold bullets and no details', async t => {
   assert.deepEqual(validateResult(answerOk(), { hasDocuments: true }), { ok: true, value: answerOk() });
   const { f, confirm, proposed } = setup(t);
   confirm(); await until(() => f.calls.length === 1);
   f.release(answerOk()); await until(() => proposed().length === 1);
-  assert.deepEqual([proposed()[0].proposed.bullets, proposed()[0].proposed.details], [answerOk().bullets, answerOk().details]);
+  assert.deepEqual(proposed()[0].proposed.bullets, answerOk().bullets);
+  assert.equal('details' in proposed()[0].proposed, false);
 });
 
 test('bullets accept one to three single-line items within the length limit', () => {
-  const ok = bullets => validateResult({ bullets, details: 'd' }, { hasDocuments: false }).ok;
+  const ok = bullets => validateResult({ bullets }, { hasDocuments: false }).ok;
   assert.equal(ok(['one']), true);
   assert.equal(ok(['a', 'b', 'c']), true);
   assert.equal(ok('x'.repeat(BULLET_MAX).split('\n')), true);
@@ -510,16 +517,12 @@ test('bullets accept one to three single-line items within the length limit', ()
   }
 });
 
-test('details respect the limit and are required only with documents', () => {
-  const check = (details, hasDocuments) => validateResult({ bullets: ['a'], details }, { hasDocuments }).ok;
-  assert.equal(check('x'.repeat(DETAILS_MAX), true), true);
-  assert.equal(check('x'.repeat(DETAILS_MAX + 1), true), false);
-  assert.equal(check('', false), true);
-  assert.equal(check('', true), false);
-  assert.equal(check('   ', true), false);
-  assert.equal(check('line one\nline two', true), true);
-  assert.equal(check('bell\u0007', true), false);
-  assert.equal(check(7, false), false);
+test('ST4-32 a result with a details field is rejected whole and no details limit exists', async () => {
+  const answer = await import('./answer.mjs');
+  assert.equal('DETAILS_MAX' in answer, false);
+  assert.equal(validateResult({ bullets: ['a'], details: 'x' }, { hasDocuments: true }).code, 'unknown-field');
+  assert.equal(validateResult({ bullets: ['a'], details: '' }, { hasDocuments: false }).ok, false);
+  assert.equal(validateResult({ bullets: ['a'] }, { hasDocuments: true }).ok, true);
 });
 
 test('malformed or oversized results are rejected whole and never cut', async t => {
@@ -527,12 +530,12 @@ test('malformed or oversized results are rejected whole and never cut', async t 
   confirm(); await until(() => f.calls.length === 1);
   f.release(answerOk({ bullets: ['x'.repeat(BULLET_MAX + 1), 'ok'] }));
   await until(() => f.calls.length === 2);
-  f.release({ bullets: ['fine'], details: 'fine', extra: 'unknown field' });
+  f.release({ bullets: ['fine'], extra: 'unknown field' });
   await until(() => s.answers.proposed.status === 'failed');
-  assert.deepEqual([s.answers.proposed.bullets, s.answers.proposed.details], [[], '']);
+  assert.deepEqual(s.answers.proposed.bullets, []);
   assert.equal(proposed().at(-1).proposed.status, 'failed');
   assert.deepEqual(audits.filter(a => a.name === 'answer_failed').map(a => [a.attempts, a.code]), [[2, 'invalid-result:unknown-field']]);
-  assert.equal(validateResult({ bullets: ['x'.repeat(BULLET_MAX + 1)], details: '' }, { hasDocuments: false }).ok, false);
+  assert.equal(validateResult({ bullets: ['x'.repeat(BULLET_MAX + 1)] }, { hasDocuments: false }).ok, false);
 });
 
 test('answer area is empty at ready and uses only the six controller statuses', async t => {
@@ -544,7 +547,7 @@ test('answer area is empty at ready and uses only the six controller statuses', 
   f.release(answerOk()); await until(() => s.answers.proposed.status === 'shown'); watch();
   s.stop(); watch();
   for (const status of seen) assert.ok(['empty', 'preparing', 'shown', 'general', 'failed', 'last-known'].includes(status), status);
-  assert.deepEqual(keysOf(s.answers.view()), ['bullets', 'details', 'focusVersion', 'lastKnown', 'lastStatus', 'reason', 'status']);
+  assert.deepEqual(keysOf(s.answers.view()), ['bullets', 'focusVersion', 'lastKnown', 'lastStatus', 'reason', 'status']);
 });
 
 test('answer area is kept apart from state, snapshots and revision', async t => {
@@ -568,7 +571,7 @@ test('Confirm sets Focus, preparing and one request in one update, result first'
   assert.ok(result >= 0 && answer > result);
   assert.deepEqual([events[answer].focus, events[answer].focusVersion, events[answer].proposed.status, events[answer].proposed.focusVersion],
     ['Why this company?', 1, 'preparing', 1]);
-  assert.deepEqual([events[answer].proposed.bullets, events[answer].proposed.details], [[], '']);
+  assert.deepEqual(events[answer].proposed.bullets, []);
   assert.equal(f.calls.length, 1);
   assert.equal(s.state.focus, 'Why this company?');
 });
@@ -602,7 +605,7 @@ test('accepted result is shown with a package and general with each loader reaso
   for (const [status, shown, reason] of cases) {
     const { f, s, confirm } = setup(t, { pkg: packageOf(docs(), status) });
     confirm(); await until(() => f.calls.length === 1);
-    f.release(answerOk({ details: status === 'usable' ? 'Needed details.' : '' }));
+    f.release(answerOk());
     await until(() => s.answers.proposed.status === shown);
     assert.equal(s.answers.proposed.reason, reason, status);
     assert.equal(f.calls[0].request.documents.length, status === 'usable' ? 2 : 0);
@@ -619,7 +622,7 @@ test('result is published as one proposed message with a rising sequence', async
   assert.deepEqual(keysOf(one), ['proposed', 'proposedSeq', 'serverAt', 'sessionId', 'type']);
   assert.equal(one.sessionId, s.id);
   assert.ok(two.proposedSeq > one.proposedSeq);
-  assert.deepEqual([one.proposed.status, one.proposed.bullets.length, one.proposed.details], ['shown', 2, 'Invented details.']);
+  assert.deepEqual([one.proposed.status, one.proposed.bullets.length], ['shown', 2]);
   assert.equal(two.proposed.focusVersion, 2);
 });
 
@@ -649,7 +652,7 @@ test('two failed attempts give failed and the next Confirm starts afresh', async
   confirm('First question here?'); await until(() => f.calls.length === 1);
   f.fail(new Error('first')); await until(() => f.calls.length === 2);
   f.fail(new Error('second')); await until(() => s.answers.proposed.status === 'failed');
-  assert.deepEqual([s.answers.proposed.bullets, s.answers.proposed.details], [[], '']);
+  assert.deepEqual(s.answers.proposed.bullets, []);
   confirm('Second question here?'); await until(() => f.calls.length === 3);
   assert.equal(s.answers.proposed.status, 'preparing');
   f.release(answerOk()); await until(() => s.answers.proposed.status === 'shown');
@@ -662,7 +665,7 @@ test('Stop drops the pending result and keeps content as last known', async t =>
   assert.deepEqual([pending.s.answers.proposed.status, pending.s.answers.proposed.lastStatus, pending.s.answers.proposed.bullets], ['last-known', 'preparing', []]);
   assert.equal(pending.f.calls[0].signal.aborted, true);
   assert.equal(pending.proposed().at(-1).proposed.status, 'last-known');
-  const kept = [['shown', answerOk()], ['general', answerOk({ details: '' })], ['failed', null]];
+  const kept = [['shown', answerOk()], ['general', answerOk()], ['failed', null]];
   for (const [status, result] of kept) {
     const w = setup(t, { pkg: packageOf(docs(), status === 'general' ? 'none' : 'usable') });
     w.confirm(); await until(() => w.f.calls.length === 1);
@@ -671,8 +674,8 @@ test('Stop drops the pending result and keeps content as last known', async t =>
     const content = w.s.answers.view();
     w.s.stop();
     const last = w.s.answers.proposed;
-    assert.deepEqual([last.status, last.lastKnown, last.lastStatus, last.bullets, last.details, last.reason],
-      ['last-known', true, status, content.bullets, content.details, content.reason]);
+    assert.deepEqual([last.status, last.lastKnown, last.lastStatus, last.bullets, last.reason],
+      ['last-known', true, status, content.bullets, content.reason]);
   }
 });
 
@@ -695,8 +698,9 @@ async function tempDir(t, files = {}) {
 async function liveServer(t, { files = {}, ...options } = {}) {
   const f = createFixtures(), audits = [], logs = [];
   const packageDir = await tempDir(t, files);
+  const logDir = await tempDir(t);
   let connects = 0;
-  const server = createRealServer({ apiKey: 'sk-test-sentinel', connect: () => { connects += 1; return f.connect(); }, generate: f.generate, packageDir,
+  const server = createRealServer({ apiKey: 'sk-test-sentinel', connect: () => { connects += 1; return f.connect(); }, generate: f.generate, packageDir, logDir, revision: 'test',
     audit: (name, data) => audits.push({ name, ...data }), log: line => logs.push(line), reasonDelayMs: 0, requirePause: false, autoFocus: false,
     reason: async snapshot => proposal({ question: snapshot.observations.at(-1)?.text ?? null, evidenceIds: snapshot.observations.map(o => o.id) }), ...options });
   server.listen(0, '127.0.0.1'); await once(server, 'listening'); t.after(() => server.shutdown());
@@ -717,7 +721,7 @@ async function liveServer(t, { files = {}, ...options } = {}) {
     return { socket, events, sessionId, confirm };
   };
   const health = async () => (await fetch(origin + '/health')).json();
-  return { f, audits, logs, origin, open, health, packageDir, connects: () => connects };
+  return { f, audits, logs, origin, open, health, packageDir, logDir, connects: () => connects };
 }
 const loudPacket = sequence => {
   const buffer = packet(sequence);
@@ -755,7 +759,7 @@ test('package folder is a setting and defaults to poc/context/interview', async 
   const saved = process.env.ALICE_PACKAGE_DIR;
   process.env.ALICE_PACKAGE_DIR = dir;
   try {
-    const server = createRealServer({ apiKey: 'k', log: () => {} });
+    const server = createRealServer({ apiKey: 'k', logDir: noLogs, log: () => {} });
     server.listen(0, '127.0.0.1'); await once(server, 'listening'); t.after(() => server.shutdown());
     const body = await (await fetch(`http://127.0.0.1:${server.address().port}/health`)).json();
     assert.deepEqual(body.package, { found: true, chars: 'Setting sample.'.length });
@@ -989,7 +993,7 @@ test('answer_timing event holds the derived delays once per version', async t =>
 test('answer audit events carry no text', async t => {
   const { f, s, confirm, audits } = setup(t, { pkg: packageOf([{ name: 'a.txt', text: `Doc ${SENTINEL}` }]) });
   confirm('Question QSENTINEL here?'); await until(() => f.calls.length === 1);
-  f.release(answerOk({ bullets: ['Bullet ASENTINEL.'], details: 'Details ASENTINEL.' }));
+  f.release(answerOk({ bullets: ['Bullet ASENTINEL.'] }));
   await until(() => s.answers.proposed.status === 'shown');
   const names = ['answer_requested', 'answer_accepted', 'answer_dropped', 'answer_failed', 'answer_timing'];
   const text = JSON.stringify(audits.filter(a => names.includes(a.name)));
@@ -1173,7 +1177,7 @@ test('guidance is asked only after a one-second pause; no commit or request happ
     }
     close() { this.readyState = WebSocket.CLOSED; this.emit('close'); }
   }
-  const server = createRealServer({ apiKey: 'test-only', connect: () => new Upstream(), audit: () => {}, packageDir: noPackage, log: () => {}, reasonDelayMs: 0,
+  const server = createRealServer({ apiKey: 'test-only', connect: () => new Upstream(), audit: () => {}, packageDir: noPackage, logDir: noLogs, log: () => {}, reasonDelayMs: 0,
     reason: async () => { asks += 1; return proposal(); } });
   server.listen(0, '127.0.0.1'); await once(server, 'listening'); t.after(() => server.shutdown());
   const socket = new WebSocket(`ws://127.0.0.1:${server.address().port}/session`, { origin: `http://127.0.0.1:${server.address().port}` });
@@ -1204,10 +1208,10 @@ test('guidance is asked only after a one-second pause; no commit or request happ
 
 // ---- Contextual interpretation and the automatic one-call flow (fixture package only, never the private one) ----
 import { extractTerms, hintPrompt, MAX_TERMS, MAX_HINT_CHARS } from './vocabulary.mjs';
-import { readerInput, modelSchema, proposalSchema } from './agent.mjs';
+import { readerInput, modelSchema, proposalSchema, READER_INSTRUCTIONS } from './agent.mjs';
 
 const fixturePackage = [{ name: 'brief.md', text: 'Aurora Bank hired Pat for the CIBC project. The CIBC team and the CPPIB team use OpenData daily. Pat led the Harbor Platform work.' }];
-const oneCall = (changes = {}) => proposal({ covered: true, bullets: ['Led the Harbor Platform work.', 'Worked with the CIBC team.'], details: 'Invented fixture detail.', ...changes });
+const oneCall = (changes = {}) => proposal({ covered: true, bullets: ['Led the Harbor Platform work.', 'Worked with the CIBC team.'], ...changes });
 
 test('vocabulary hints come from the package locally: acronyms, camel-case words and names, ranked and capped', () => {
   const terms = extractTerms(fixturePackage);
@@ -1249,7 +1253,7 @@ test('reader input is the bare snapshot without context and carries the package 
   assert.equal(readerInput(snapshot), JSON.stringify(snapshot));
   const input = JSON.parse(readerInput(snapshot, { terms: ['CIBC'], documents: fixturePackage }));
   assert.deepEqual(input.preparationPackage, { terms: ['CIBC'], documents: fixturePackage });
-  assert.deepEqual(Object.keys(modelSchema.shape).sort(), ['bullets', 'covered', 'details', 'evidenceIds', 'intent', 'phase', 'question', 'reply']);
+  assert.deepEqual(Object.keys(modelSchema.shape).sort(), ['bullets', 'covered', 'evidenceIds', 'intent', 'phase', 'question', 'reply']);
   assert.equal(proposalSchema.safeParse(proposal()).success, true, 'a reading without an answer stays valid');
 });
 
@@ -1300,8 +1304,912 @@ test('automatic flow: an invalid answer in the one call falls back to the separa
   const s = new InterviewSession({ reason: async () => proposal(), emit: () => {}, delayMs: 0, generate: f.generate });
   s.answers.setPackage(packageOf(fixturePackage));
   s.observe('o1', 'Tell me about CIBC.', true);
-  s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o1'], bullets: [], details: '' }), s.snapshot());
+  s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o1'], bullets: [] }), s.snapshot());
   assert.equal(s.answers.view().status, 'preparing');
   await until(() => f.calls.length === 1);
   s.stop();
+});
+
+test('ST4-31 the reader call asks for bullets only in its instructions and reply schema', () => {
+  assert.doesNotMatch(READER_INSTRUCTIONS, /details/i);
+  assert.match(READER_INSTRUCTIONS, /covered and bullets/);
+  assert.equal('details' in modelSchema.shape, false);
+});
+
+test('ST4-32 a reader reply with a details field gives its reading but not its answer, which falls back', async () => {
+  const f = createFixtures();
+  const s = new InterviewSession({ reason: async () => proposal(), emit: () => {}, delayMs: 0, generate: f.generate });
+  s.answers.setPackage(packageOf(fixturePackage));
+  s.observe('o1', 'Tell me about CIBC.', true);
+  s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o1'], details: 'extra' }), s.snapshot());
+  assert.equal(s.state.focus, 'Tell me about CIBC.');
+  assert.equal(s.answers.view().status, 'preparing');
+  await until(() => f.calls.length === 1);
+  s.stop();
+});
+
+test('ST4-38 the fallback request asks for bullets only', () => {
+  assert.doesNotMatch(INSTRUCTIONS, /details/i);
+  assert.equal(answerSchema.safeParse({ bullets: ['a'] }).success, true);
+  assert.equal(answerSchema.safeParse({ bullets: ['a'], details: 'x' }).success, false);
+});
+
+test('ST4-39 a fallback result with a details field is rejected whole', async t => {
+  const { f, s, confirm, audits } = setup(t);
+  confirm(); await until(() => f.calls.length === 1);
+  f.release({ bullets: ['fine'], details: 'x' }); await until(() => f.calls.length === 2);
+  f.release({ bullets: ['fine'], details: 'x' });
+  await until(() => s.answers.proposed.status === 'failed');
+  assert.deepEqual(audits.filter(a => a.name === 'answer_failed').map(a => a.code), ['invalid-result:unknown-field']);
+});
+
+// SPRINT-004: package status, upload and Remove (ST4-01 to ST4-08, ST4-29, ST4-35 to ST4-37, ST4-40).
+const putPackage = (ctx, body, { headers = {}, raw } = {}) => fetch(ctx.origin + '/package', { method: 'PUT',
+  headers: { 'Content-Type': 'application/json', Origin: ctx.origin, ...headers }, body: raw ?? JSON.stringify(body) }).then(async r => ({ status: r.status, body: await r.json() }));
+const getPackage = ctx => fetch(ctx.origin + '/package').then(r => r.json());
+const deletePackage = ctx => fetch(ctx.origin + '/package', { method: 'DELETE', headers: { Origin: ctx.origin } }).then(async r => ({ status: r.status, body: await r.json() }));
+const upload = (...files) => ({ files: files.map(([name, text]) => ({ name, text })) });
+
+test('GET package returns source, counts and terms but no text', async t => {
+  const none = await liveServer(t);
+  assert.deepEqual(await getPackage(none), { source: 'none', status: 'none', files: 0, chars: 0, terms: 0 });
+  const ctx = await liveServer(t, { files: { 'a.md': 'Worked at CIBC on TrustCore.', 'b.txt': 'More text.' } });
+  const status = await getPackage(ctx);
+  assert.deepEqual([status.source, status.status, status.files, status.chars], ['folder', 'usable', 2, 38]);
+  assert.ok(status.terms >= 1);
+  assert.deepEqual(Object.keys(status).sort(), ['chars', 'files', 'source', 'status', 'terms']);
+  assert.ok(!JSON.stringify(status).includes('CIBC') && !JSON.stringify(status).includes('a.md'));
+});
+
+test('PUT package loads several md and txt files and replaces the package', async t => {
+  const ctx = await liveServer(t, { files: { 'old.md': 'Folder text.' } });
+  const first = await putPackage(ctx, upload(['b.md', 'Hello CIBC'], ['a.txt', 'World'], ['README.md', 'skip me'], ['.hidden.md', 'x'], ['pic.png', 'x']));
+  assert.equal(first.status, 200);
+  assert.deepEqual([first.body.result, first.body.reason, first.body.package.source, first.body.package.files, first.body.package.chars], ['loaded', null, 'uploaded', 2, 15]);
+  assert.deepEqual(first.body.skipped.map(s => s.name).sort(), ['.hidden.md', 'README.md', 'pic.png']);
+  const second = await putPackage(ctx, upload(['c.md', 'Only this.']));
+  assert.deepEqual([second.body.package.files, second.body.package.chars], [1, 10]);
+  assert.deepEqual(await getPackage(ctx), second.body.package);
+});
+
+test('upload limits for body, files, types, names, README and total characters', async t => {
+  const ctx = await liveServer(t);
+  const many = upload(...Array.from({ length: 21 }, (_, i) => [`f${i}.md`, 'x']));
+  assert.equal((await putPackage(ctx, many)).body.reason, 'too-many-files');
+  assert.equal((await putPackage(ctx, upload(...Array.from({ length: 20 }, (_, i) => [`f${i}.md`, 'x'])))).body.result, 'loaded');
+  const big = await putPackage(ctx, upload(['a.md', 'a'.repeat(10001)], ['b.md', 'b'.repeat(10000)]));
+  assert.deepEqual([big.status, big.body.reason, big.body.chars], [422, 'too-large', 20001]);
+  assert.equal((await putPackage(ctx, upload(['a.md', 'a'.repeat(10000)], ['b.md', 'b'.repeat(10000)]))).body.result, 'loaded');
+  const huge = await putPackage(ctx, null, { raw: JSON.stringify(upload(['a.md', 'x'.repeat(210000)])) });
+  assert.deepEqual([huge.status, huge.body.reason], [413, 'body-too-large']);
+  assert.equal((await putPackage(ctx, upload(['README.md', 'x'], ['n.png', 'x']))).body.reason, 'empty');
+  assert.equal((await putPackage(ctx, upload(['a.md', '  \n']))).body.reason, 'empty');
+  assert.equal((await putPackage(ctx, null, { raw: 'not json' })).body.reason, 'refused');
+  assert.equal((await putPackage(ctx, { files: 'nope' })).body.reason, 'refused');
+});
+
+test('refused upload keeps the previous package and gives its reason', async t => {
+  const ctx = await liveServer(t);
+  const good = (await putPackage(ctx, upload(['keep.md', 'Keep this text.']))).body.package;
+  for (const body of [upload(['x.md', 'a'.repeat(20001)]), upload(['../x.md', 'a']), upload(['x.md', 'bad�']), { files: [] }]) {
+    const refused = await putPackage(ctx, body);
+    assert.equal(refused.body.result, 'refused');
+    assert.ok(refused.body.reason);
+    assert.deepEqual(refused.body.package, good);
+    assert.deepEqual(await getPackage(ctx), good);
+  }
+});
+
+test('upload while listening is refused with the listening reason', async t => {
+  const ctx = await liveServer(t, { files: { 'a.md': 'Folder text.' } });
+  const before = await getPackage(ctx);
+  const session = await ctx.open();
+  const refused = await putPackage(ctx, upload(['x.md', 'new']));
+  assert.deepEqual([refused.status, refused.body.result, refused.body.reason], [409, 'refused', 'listening']);
+  assert.deepEqual(await getPackage(ctx), before);
+  session.socket.close();
+});
+
+test('uploaded package survives Stop and is replaced by the next upload', async t => {
+  const ctx = await liveServer(t);
+  await putPackage(ctx, upload(['one.md', 'First package about CIBC.']));
+  const session = await ctx.open();
+  assert.equal(ctx.audits.find(a => a.name === 'package_loaded').source, 'uploaded', 'the session takes the uploaded package at Start');
+  session.socket.send(JSON.stringify({ type: 'stop' }));
+  await until(async () => (await ctx.health()).sessions === 0);
+  assert.deepEqual((await getPackage(ctx)).source, 'uploaded');
+  const next = await putPackage(ctx, upload(['two.md', 'Second.']));
+  assert.deepEqual([next.status, next.body.package.files, next.body.package.chars], [200, 1, 7]);
+});
+
+test('package text is never returned, written or logged, and no uploaded file name reaches the audit or console', async t => {
+  const sentinel = 'SENTINEL-PACKAGE-TEXT-7731';
+  const ctx = await liveServer(t);
+  const loaded = await putPackage(ctx, upload(['secret-name.md', `Alice ${sentinel} details.`], ['skipped-secret.pdf', 'x'], ['README.md', 'y']));
+  assert.deepEqual(loaded.body.skipped.map(s => s.name).sort(), ['README.md', 'skipped-secret.pdf'], 'names appear only in the answer to the page');
+  assert.ok(!JSON.stringify(loaded.body).includes(sentinel));
+  assert.ok(!JSON.stringify(await getPackage(ctx)).includes(sentinel));
+  const session = await ctx.open();
+  session.socket.close();
+  await new Promise(r => setTimeout(r, 60));
+  assert.ok(!JSON.stringify(ctx.audits).includes(sentinel) && !ctx.logs.join('\n').includes(sentinel));
+  assert.ok(!JSON.stringify(session.events).includes(sentinel));
+  // SU-9: counts and reasons only; no name of an uploaded file, kept or skipped, in the audit or on the console.
+  for (const name of ['secret-name', 'skipped-secret', 'README.md']) {
+    assert.ok(!JSON.stringify(ctx.audits).includes(name), `audit holds ${name}`);
+    assert.ok(!ctx.logs.join('\n').includes(name), `console holds ${name}`);
+  }
+  const started = named(ctx.audits, 'package_loaded')[0];
+  assert.deepEqual([started.source, started.files, started.skipped, started.chars > 0], ['uploaded', 1, 2, true]);
+  assert.ok(ctx.logs.some(line => /^package: status=usable files=1 chars=\d+ skipped=2$/.test(line)), ctx.logs.join(' | '));
+  assert.deepEqual(await readdir(ctx.packageDir), [], 'nothing is written to the package folder');
+  // PK-9 is unchanged: the folder package's start-up audit keeps its names.
+  const folder = await liveServer(t, { files: { 'folder-name.txt': 'Folder text.', 'README.md': 'not used' } });
+  (await folder.open()).socket.close();
+  await new Promise(r => setTimeout(r, 60));
+  const fromFolder = named(folder.audits, 'package_loaded')[0];
+  assert.deepEqual([fromFolder.source, fromFolder.files.map(f => f.name), fromFolder.skipped], ['folder', ['folder-name.txt'], ['README.md']]);
+});
+
+test('package and log routes refuse a wrong Host or Origin', async t => {
+  const ctx = await liveServer(t);
+  const port = new URL(ctx.origin).port;
+  const call = (method, headers, path = '/package') => new Promise(resolve => {
+    const req = http.request({ host: '127.0.0.1', port, path, method, headers }, res => { res.resume(); res.on('end', () => resolve(res.statusCode)); });
+    req.on('error', () => resolve('error')); req.end(method === 'PUT' ? JSON.stringify(upload(['a.md', 'x'])) : undefined);
+  });
+  const json = { 'Content-Type': 'application/json' };
+  assert.equal(await call('GET', { Host: 'evil.test' }), 403);
+  assert.equal(await call('GET', { Host: `127.0.0.1:${port}`, Origin: 'http://evil.test' }), 403);
+  assert.equal(await call('PUT', { ...json, Host: `127.0.0.1:${port}`, Origin: 'http://evil.test' }), 403);
+  assert.equal(await call('PUT', { ...json, Host: `127.0.0.1:${port}` }), 403, 'a change without an Origin is refused');
+  assert.equal(await call('DELETE', { Host: `127.0.0.1:${port}`, Origin: 'http://evil.test' }), 403);
+  assert.equal(await call('PUT', { ...json, Host: `127.0.0.1:${port}`, Origin: ctx.origin }), 200);
+  assert.equal(await call('GET', { Host: 'evil.test' }, '/log'), 403);
+});
+
+test('DELETE package clears the loaded package, folder one included, until restart and is refused while listening', async t => {
+  const ctx = await liveServer(t, { files: { 'a.md': 'Folder text.' } });
+  assert.equal((await getPackage(ctx)).source, 'folder');
+  const session = await ctx.open();
+  const refused = await deletePackage(ctx);
+  assert.deepEqual([refused.status, refused.body.reason], [409, 'listening']);
+  session.socket.send(JSON.stringify({ type: 'stop' }));
+  await until(async () => (await ctx.health()).sessions === 0);
+  const removed = await deletePackage(ctx);
+  assert.deepEqual([removed.status, removed.body.result, removed.body.package.source], [200, 'removed', 'none']);
+  assert.deepEqual(await getPackage(ctx), { source: 'none', status: 'none', files: 0, chars: 0, terms: 0 });
+  await putPackage(ctx, upload(['u.md', 'Uploaded.']));
+  assert.equal((await deletePackage(ctx)).body.package.source, 'none', 'Remove clears an uploaded package and the folder one stays cleared');
+});
+
+test('a name with a slash, backslash, dot-dot, drive letter, control character or over 255 characters refuses the whole upload as refused and names the file', async t => {
+  const ctx = await liveServer(t);
+  const good = (await putPackage(ctx, upload(['keep.md', 'Keep.']))).body.package;
+  for (const name of ['a/b.md', 'a\\b.md', '..md', 'x..y.md', 'C:evil.md', 'bad\u0001.md', 'nul\u0000.md', `${'n'.repeat(256)}.md`]) {
+    const refused = await putPackage(ctx, upload(['fine.md', 'ok'], [name, 'x']));
+    assert.deepEqual([refused.status, refused.body.result, refused.body.reason], [400, 'refused', 'refused'], JSON.stringify(name));
+    assert.equal(refused.body.name, name.slice(0, 80));
+    assert.deepEqual(refused.body.package, good);
+  }
+});
+
+test('an upload without the JSON content type is refused as content-type', async t => {
+  const ctx = await liveServer(t);
+  for (const type of ['text/plain', 'multipart/form-data', 'application/zip', '']) {
+    const refused = await putPackage(ctx, null, { headers: { 'Content-Type': type }, raw: JSON.stringify(upload(['a.md', 'x'])) });
+    assert.deepEqual([refused.status, refused.body.reason], [415, 'content-type'], type);
+  }
+  assert.equal((await putPackage(ctx, upload(['a.md', 'x']), { headers: { 'Content-Type': 'application/json; charset=utf-8' } })).body.result, 'loaded');
+});
+
+test('text holding U+FFFD or NUL is refused as unreadable', async t => {
+  const ctx = await liveServer(t);
+  for (const text of ['broken � text', 'nul \u0000 text']) {
+    const refused = await putPackage(ctx, upload(['good.md', 'fine'], ['bad.md', text]));
+    assert.deepEqual([refused.status, refused.body.reason, refused.body.name], [422, 'unreadable', 'bad.md']);
+  }
+  assert.equal((await getPackage(ctx)).status, 'none');
+});
+
+test('after a restart the status shows the folder package or no package', async t => {
+  const ctx = await liveServer(t, { files: { 'a.md': 'Folder text.' } });
+  await deletePackage(ctx);
+  await putPackage(ctx, upload(['u.md', 'Uploaded.']));
+  assert.equal((await getPackage(ctx)).source, 'uploaded');
+  const again = await liveServer(t, { packageDir: ctx.packageDir });
+  assert.deepEqual([(await getPackage(again)).source, (await getPackage(again)).files], ['folder', 1]);
+  const empty = await liveServer(t);
+  assert.equal((await getPackage(empty)).source, 'none');
+});
+
+// SPRINT-004: the meeting log and its download (ST4-09 to ST4-28, ST4-30, ST4-34, ST4-41, ST4-42, ST4-11).
+const getLog = ctx => fetch(ctx.origin + '/log');
+const readLines = async ctx => {
+  const res = await getLog(ctx);
+  assert.equal(res.status, 200);
+  const text = await res.text();
+  return text.split('\n').filter(Boolean).map(line => JSON.parse(line));
+};
+const stopped = async (ctx, session) => {
+  session.socket.send(JSON.stringify({ type: 'stop' }));
+  await until(async () => true);
+  await until(() => ctx.audits.some(a => a.name === 'session_stopped'));
+};
+const sendPackets = async (session, voiced, from, count) => {
+  for (let i = from; i < from + count; i += 1) session.socket.send(voiced ? loudPacket(i) : packet(i));
+  await new Promise(r => setTimeout(r, 40));
+};
+const control = (session, message) => session.socket.send(JSON.stringify({ sessionId: session.sessionId, ...message }));
+const typesOf = lines => lines.map(l => l.type);
+
+test('GET log returns the current log with its headers, complete lines only', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  const res = await getLog(ctx);
+  assert.equal(res.status, 200);
+  assert.equal(res.headers.get('content-type'), 'text/plain; charset=utf-8');
+  assert.match(res.headers.get('content-disposition'), /^attachment; filename="alice-meeting-\d{8}T\d{6}Z\.jsonl"$/);
+  assert.equal(res.headers.get('cache-control'), 'no-store');
+  assert.ok((await res.text()).endsWith('\n'));
+  await stopped(ctx, session);
+  const name = (await readdir(ctx.logDir)).find(n => n.endsWith('.jsonl'));
+  await appendFile(join(ctx.logDir, name), '{"t":"partial');
+  const text = await (await getLog(ctx)).text();
+  assert.ok(text.endsWith('\n') && !text.includes('partial'), 'an unfinished line is left out');
+  assert.ok(text.split('\n').filter(Boolean).every(line => JSON.parse(line).type));
+});
+
+test('GET log answers 404 with no log', async t => {
+  const ctx = await liveServer(t);
+  const res = await getLog(ctx);
+  assert.deepEqual([res.status, await res.text()], [404, 'No meeting log yet.']);
+});
+
+test('transcript message is a replace-whole snapshot of the last 30 seconds with item ids and ms offsets within limits', () => {
+  const clock = clockAt(); const sent = [];
+  const s = makeSession({ now: clock.now, emit: m => sent.push(m) });
+  const last = () => sent.filter(m => m.type === 'transcript').at(-1);
+  s.observe('one', 'First item.', true);
+  clock.t = 5000; s.observe('two', 'Second', false);
+  clock.t = 6000; s.observe('two', ' still going', false);
+  assert.deepEqual(last().items.map(i => [i.id, i.text, i.final, i.at]), [['one', 'First item.', true, 0], ['two', 'Second still going', false, 5000]]);
+  clock.t = 31000; s.observe('three', 'Third.', true);
+  assert.deepEqual(last().items.map(i => i.id), ['two', 'three'], 'items older than 30 seconds leave the snapshot');
+  for (let i = 0; i < 12; i += 1) { clock.t += 100; s.observe(`n${i}`, `Item ${i}.`, true); }
+  assert.ok(last().items.length <= 8);
+  clock.t += 100; s.observe('long', 'x'.repeat(2000), true);
+  const total = last().items.reduce((sum, i) => sum + i.text.length, 0);
+  assert.ok(total <= 1500 && last().items.at(-1).id === 'long');
+  assert.ok(last().items.every(i => Number.isInteger(i.at) && typeof i.final === 'boolean'));
+  s.stop();
+});
+
+test('log starts with log_started holding the version and every line has time, ms and type', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  ctx.f.say('Why this company?');
+  await until(() => session.events.some(e => e.live));
+  await stopped(ctx, session);
+  const lines = await readLines(ctx);
+  assert.equal(lines[0].type, 'log_started');
+  assert.equal(lines[0].version, 1);
+  assert.deepEqual(lines.filter(l => 'version' in l && l.type !== 'live_question').map(l => l.type), ['log_started'], 'the schema version is in the first line only');
+  for (const l of lines) {
+    assert.match(l.t, /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z$/);
+    assert.ok(Number.isFinite(l.ms) && l.ms >= 0 && typeof l.type === 'string');
+  }
+});
+
+test('session stop event with its reason and seconds, and no separate session_started', async t => {
+  const ctx = await liveServer(t);
+  const one = await ctx.open();
+  await sendPackets(one, false, 0, 20);
+  await stopped(ctx, one);
+  let lines = await readLines(ctx);
+  assert.ok(!typesOf(lines).includes('session_started'));
+  assert.deepEqual([lines.at(-1).type, lines.at(-1).reason, lines.at(-1).seconds], ['session_stopped', 'user', 2]);
+  ctx.audits.length = 0;
+  const two = await ctx.open();
+  two.socket.close();
+  await until(() => ctx.audits.some(a => a.name === 'session_stopped'));
+  lines = await readLines(ctx);
+  assert.equal(lines.at(-1).reason, 'disconnect');
+  const three = await ctx.open();
+  ctx.audits.length = 0;
+  ctx.f.upstream().emit('message', Buffer.from(JSON.stringify({ type: 'error', error: { code: 'x' } })));
+  await until(() => ctx.audits.some(a => a.name === 'session_stopped'));
+  lines = await readLines(ctx);
+  assert.equal(lines.at(-1).reason, 'error');
+  assert.ok(three);
+});
+
+test('speech start and pause events for silences of 800 ms or more', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  await sendPackets(session, true, 0, 5);
+  await sendPackets(session, false, 5, 7);
+  await sendPackets(session, true, 12, 2);
+  await sendPackets(session, false, 14, 10);
+  await sendPackets(session, true, 24, 1);
+  await stopped(ctx, session);
+  const lines = (await readLines(ctx)).filter(l => ['speech_start', 'pause'].includes(l.type));
+  assert.deepEqual(lines.map(l => l.type), ['speech_start', 'pause', 'speech_start']);
+  const pause = lines.find(l => l.type === 'pause');
+  assert.deepEqual([pause.startMs, pause.durationMs], [1400, 1000]);
+});
+
+test('only final transcript items are logged', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  ctx.f.upstream().emit('message', Buffer.from(JSON.stringify({ type: 'conversation.item.input_audio_transcription.delta', item_id: 'p1', delta: 'PARTIAL-ONLY-TEXT' })));
+  ctx.f.say('A final sentence about the project.');
+  await until(() => session.events.some(e => e.type === 'transcript' && e.final));
+  await stopped(ctx, session);
+  const text = JSON.stringify(await readLines(ctx));
+  assert.ok(!text.includes('PARTIAL-ONLY-TEXT'));
+  const items = (await readLines(ctx)).filter(l => l.type === 'transcript');
+  assert.equal(items.length, 1);
+  assert.deepEqual([items[0].text, typeof items[0].itemId, Number.isInteger(items[0].audioStartMs), Number.isInteger(items[0].audioEndMs)], ['A final sentence about the project.', 'string', true, true]);
+});
+
+test('live question and cleared events', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  ctx.f.say('Why this company?');
+  await until(() => session.events.some(e => e.live));
+  const { live } = session.events.find(e => e.live);
+  control(session, { type: 'question.reset', requestId: 'r1', via: 'escape' });
+  await until(() => session.events.some(e => e.type === 'question.result'));
+  await stopped(ctx, session);
+  const lines = await readLines(ctx);
+  const q = lines.find(l => l.type === 'live_question');
+  assert.deepEqual([q.liveId, q.version, q.kind, q.text], [live.id, 1, 'new', 'Why this company?']);
+  assert.deepEqual(lines.find(l => l.type === 'live_cleared').by, 'clear');
+});
+
+test('focus changes log their source', async t => {
+  const auto = await liveServer(t, { autoFocus: true });
+  const one = await auto.open();
+  auto.f.say('Tell me about your last project.');
+  await until(() => one.events.some(e => e.focusVersion === 1));
+  await stopped(auto, one);
+  const focus = (await readLines(auto)).find(l => l.type === 'focus_changed');
+  assert.deepEqual([focus.source, focus.focusVersion, focus.text, typeof focus.exchangeId], ['pause', 1, 'Tell me about your last project.', 'number']);
+  const manual = await liveServer(t);
+  const two = await manual.open();
+  await two.confirm('First question here?');
+  await stopped(manual, two);
+  assert.equal((await readLines(manual)).find(l => l.type === 'focus_changed').source, 'confirm-button');
+});
+
+test('confirm and clear controls log how they were used: button, space or escape', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  const say = async text => { const n = session.events.filter(e => e.live).length; ctx.f.say(text); await until(() => session.events.filter(e => e.live).length > n); return session.events.filter(e => e.live).at(-1); };
+  let e = await say('First question here?');
+  control(session, { type: 'question.confirm', requestId: 'c1', via: 'space', liveId: e.live.id, liveVersion: e.live.version, expectedFocusVersion: e.focusVersion, text: e.live.text });
+  await until(() => session.events.some(m => m.requestId === 'c1'));
+  e = await say('Second question there?');
+  control(session, { type: 'question.reset', requestId: 'c2', via: 'escape' });
+  await until(() => session.events.some(m => m.requestId === 'c2'));
+  control(session, { type: 'question.confirm', requestId: 'c3', liveId: 'nope', liveVersion: 1, expectedFocusVersion: 1, text: 'x' });
+  await until(() => session.events.some(m => m.requestId === 'c3'));
+  await stopped(ctx, session);
+  const controls = (await readLines(ctx)).filter(l => l.type === 'control');
+  assert.deepEqual(controls.map(c => [c.control, c.via, c.result]), [['confirm', 'space', 'confirmed'], ['clear', 'escape', 'reset'], ['confirm', 'button', 'invalid']]);
+  assert.equal((await readLines(ctx)).find(l => l.type === 'focus_changed').source, 'confirm-space');
+});
+
+test('answer shown, failed and dropped events', async t => {
+  const ctx = await liveServer(t, { files: { 'a.md': 'Some package text.' } });
+  const session = await ctx.open();
+  await session.confirm('First question here?');
+  await until(() => ctx.f.waiting() === 1);
+  await session.confirm('Second question there?');
+  await until(() => ctx.f.waiting() === 1);
+  ctx.f.release(answerOk({ bullets: ['Quoted bullet one.', 'Bullet two.'] }));
+  await until(() => session.events.some(e => e.type === 'proposed' && e.proposed.status === 'shown'));
+  await session.confirm('Third question here?');
+  await until(() => ctx.f.waiting() === 1);
+  ctx.f.fail(); await until(() => ctx.f.waiting() === 1); ctx.f.fail();
+  await until(() => session.events.some(e => e.type === 'proposed' && e.proposed.status === 'failed'));
+  await stopped(ctx, session);
+  const lines = await readLines(ctx);
+  const shown = lines.find(l => l.type === 'answer_shown');
+  assert.deepEqual([shown.focusVersion, shown.status, shown.bullets, Number.isFinite(shown.delayMs)], [2, 'shown', ['Quoted bullet one.', 'Bullet two.'], true]);
+  assert.equal(lines.find(l => l.type === 'answer_dropped').reason, 'stale-version');
+  assert.deepEqual([lines.find(l => l.type === 'answer_failed').focusVersion, lines.find(l => l.type === 'answer_failed').attempts], [3, 2]);
+  assert.ok(!JSON.stringify(lines.filter(l => l.type === 'answer_failed')).includes('fixture failure'));
+});
+
+test('package and upload events hold counts and no names', async t => {
+  const ctx = await liveServer(t, { files: { 'secret-resume-name.md': 'Worked at ExampleCorp on TrustCore.', 'notes-file.txt': 'More.' } });
+  const session = await ctx.open();
+  await stopped(ctx, session);
+  const lines = await readLines(ctx);
+  const pkg = lines.find(l => l.type === 'package');
+  assert.deepEqual([pkg.source, pkg.status, pkg.files, pkg.chars, typeof pkg.terms, pkg.skipped], ['folder', 'usable', 2, 40, 'number', 0]);
+  assert.deepEqual(lines[0].package, { source: 'folder', status: 'usable', files: 2, chars: 40, terms: pkg.terms });
+  const text = JSON.stringify(lines);
+  assert.ok(!text.includes('secret-resume-name') && !text.includes('notes-file'));
+  const up = await liveServer(t);
+  await putPackage(up, upload(['named-upload.md', 'Uploaded text.']));
+  const two = await up.open();
+  await stopped(up, two);
+  const upLines = await readLines(up);
+  assert.equal(upLines.find(l => l.type === 'package').source, 'uploaded');
+  assert.ok(!JSON.stringify(upLines).includes('named-upload'));
+});
+
+test('error events hold the public message', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  ctx.f.upstream().emit('message', Buffer.from(JSON.stringify({ type: 'error', error: { status: 429, message: 'SECRET-PROVIDER-DETAIL' } })));
+  await until(() => session.events.some(e => e.type === 'status' && /OpenAI|rate|request/i.test(e.status)));
+  await until(() => ctx.audits.some(a => a.name === 'session_stopped'));
+  const shown = session.events.filter(e => e.type === 'status').at(-1).status;
+  const lines = await readLines(ctx);
+  const error = lines.find(l => l.type === 'error');
+  assert.equal(error.message, shown);
+  assert.ok(error.code);
+  assert.ok(!JSON.stringify(lines).includes('SECRET-PROVIDER-DETAIL'));
+});
+
+test('log never holds the key, prompts, replies, package text or audio', async t => {
+  const ctx = await liveServer(t, { files: { 'a.md': 'Package sentence SENTINEL-PKG-9917 about Harbor Platform.' },
+    reason: async snapshot => proposal({ reply: 'SENTINEL-AGENT-REPLY', question: snapshot.observations.at(-1)?.text ?? null, evidenceIds: snapshot.observations.map(o => o.id) }) });
+  const session = await ctx.open();
+  await sendPackets(session, true, 0, 3);
+  await session.confirm('Tell me about Harbor Platform.');
+  await until(() => ctx.f.waiting() === 1);
+  ctx.f.release(answerOk({ bullets: ['A point.'] }));
+  await until(() => session.events.some(e => e.type === 'proposed' && e.proposed.status === 'shown'));
+  await stopped(ctx, session);
+  const text = (await (await getLog(ctx)).text());
+  for (const banned of ['sk-test-sentinel', 'SENTINEL-PKG-9917', 'SENTINEL-AGENT-REPLY', 'Names and terms that may be spoken', 'Invented details', 'instructions', 'audio/pcm']) assert.ok(!text.includes(banned), banned);
+  const base64 = Buffer.from(loudPacket(0).subarray(8)).toString('base64').slice(0, 40);
+  assert.ok(!text.includes(base64));
+});
+
+test('log is complete and ordered, and a write failure does not stop the session', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  for (let i = 0; i < 6; i += 1) { ctx.f.say(`Sentence number ${i} here.`); await new Promise(r => setTimeout(r, 5)); }
+  await stopped(ctx, session);
+  const lines = await readLines(ctx);
+  assert.equal(lines.filter(l => l.type === 'transcript').length, 6);
+  assert.ok(lines.every((l, i) => i === 0 || l.ms >= lines[i - 1].ms), 'ms never goes back');
+  assert.ok(lines.every((l, i) => i === 0 || l.t >= lines[i - 1].t));
+  const blocker = join(await tempDir(t), 'file-not-folder');
+  await writeFile(blocker, 'x');
+  const broken = await liveServer(t, { logDir: join(blocker, 'logs') });
+  const second = await broken.open();
+  await until(() => second.events.some(e => e.type === 'log' && e.status === 'not saved'));
+  await sendPackets(second, true, 0, 3);
+  broken.f.say('Still working?');
+  await until(() => second.events.some(e => e.type === 'transcript' && e.final));
+  assert.ok(second.events.some(e => e.type === 'ready'));
+  assert.equal((await getLog(broken)).status, 404);
+  // A slow disk never holds the caller: 50 writes return at once and still land in order.
+  const dir = await tempDir(t);
+  const log = new MeetingLog({ dir, sessionId: 'abcdef012345' });
+  await log.chain;
+  const append = log.handle.appendFile.bind(log.handle);
+  log.handle.appendFile = async line => { await new Promise(r => setTimeout(r, 5)); return append(line); };
+  const start = performance.now();
+  for (let i = 0; i < 50; i += 1) log.write('event', { i });
+  assert.ok(performance.now() - start < 50, 'write returns without waiting for the disk');
+  await log.close();
+  const written = (await readFileAsync(log.path, 'utf8')).trim().split('\n').map(l => JSON.parse(l).i);
+  assert.deepEqual(written, Array.from({ length: 50 }, (_, i) => i));
+});
+
+test('log folder defaults to poc/logs, is moved by a setting and file names follow the pattern', async t => {
+  assert.ok(DEFAULT_LOG_DIR.replace(/\\/g, '/').endsWith('/poc/logs/'));
+  const moved = await tempDir(t);
+  const before = process.env.ALICE_LOG_DIR;
+  process.env.ALICE_LOG_DIR = moved;
+  try { assert.equal(createLogStore().dir, moved); } finally { if (before === undefined) delete process.env.ALICE_LOG_DIR; else process.env.ALICE_LOG_DIR = before; }
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  await stopped(ctx, session);
+  const [name] = (await readdir(ctx.logDir)).filter(n => n.endsWith('.jsonl'));
+  assert.match(name, /^meeting-\d{8}T\d{6}Z-[0-9a-f]{8}\.jsonl$/);
+  assert.equal(name.slice(-14, -6), session.sessionId.slice(0, 8));
+});
+
+test('log folder and files have modes 0700 and 0600', async t => {
+  const dir = join(await tempDir(t), 'fresh', 'logs');
+  const ctx = await liveServer(t, { logDir: dir });
+  const session = await ctx.open();
+  await stopped(ctx, session);
+  assert.equal((await stat(dir)).mode & 0o777, 0o700);
+  const [name] = (await readdir(dir)).filter(n => n.endsWith('.jsonl'));
+  assert.equal((await stat(join(dir, name))).mode & 0o777, 0o600);
+});
+
+test('a log is complete up to its cap and then ends with one log_full event', async t => {
+  const dir = await tempDir(t);
+  const log = new MeetingLog({ dir, sessionId: 'fedcba987654', maxBytes: 1500 });
+  for (let i = 0; i < 100; i += 1) log.write('transcript', { itemId: `i${i}`, text: 'Sample words for the cap.', n: i });
+  await log.close();
+  const lines = (await readFileAsync(log.path, 'utf8')).trim().split('\n').map(l => JSON.parse(l));
+  assert.equal(lines.at(-1).type, 'log_full');
+  assert.equal(lines.filter(l => l.type === 'log_full').length, 1);
+  assert.ok(lines.slice(0, -1).every((l, i) => l.n === i), 'nothing before the cap is lost or reordered');
+  assert.ok((await stat(log.path)).size <= 1500);
+  assert.equal(log.write('x'), undefined);
+  assert.equal((await readFileAsync(log.path, 'utf8')).trim().split('\n').length, lines.length);
+  assert.equal((await stat(log.path)).mode & 0o777, 0o600);
+});
+
+test('only the service writes logs and no route lists or deletes them', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  await stopped(ctx, session);
+  const name = (await readdir(ctx.logDir)).find(n => n.endsWith('.jsonl'));
+  for (const path of ['/logs', '/log/', `/poc/logs/${name}`, '/poc/logs/', `/${name}`]) assert.equal((await fetch(ctx.origin + path)).status, 404, path);
+  for (const method of ['PUT', 'POST', 'DELETE', 'PATCH']) assert.equal((await fetch(ctx.origin + '/log', { method, headers: { Origin: ctx.origin } })).status, 405, method);
+  assert.equal((await readdir(ctx.logDir)).filter(n => n.endsWith('.jsonl')).length, 1);
+});
+
+test('nothing from a log is sent to OpenAI', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  await session.confirm('Tell me about the project.');
+  await until(() => ctx.f.waiting() === 1);
+  ctx.f.release(answerOk());
+  await stopped(ctx, session);
+  const sent = JSON.stringify([ctx.f.calls, ctx.f.upstream().sent]);
+  for (const marker of ['log_started', 'tzOffsetMin', 'answer_shown', 'session_stopped', 'meeting-', '.jsonl']) assert.ok(!sent.includes(marker), marker);
+  const read = await Promise.all(['server.mjs', 'session.mjs', 'answer.mjs', 'answer-area.mjs', 'agent.mjs'].map(f => readFileAsync(new URL(f, import.meta.url), 'utf8')));
+  assert.ok(read.every(src => !/readFile\(.*log/i.test(src)), 'no module but the log store reads a log file');
+});
+
+test('old logs are never deleted, rotated or expired by a new session', async t => {
+  const ctx = await liveServer(t);
+  const old = ['meeting-20250101T000000Z-aaaaaaaa.jsonl', 'meeting-20250102T000000Z-bbbbbbbb.jsonl', 'notes-by-pablo.txt'];
+  for (const name of old) await writeFile(join(ctx.logDir, name), `old ${name}\n`);
+  for (let i = 0; i < 2; i += 1) { const s = await ctx.open(); ctx.audits.length = 0; await stopped(ctx, s); }
+  const names = await readdir(ctx.logDir);
+  for (const name of old) assert.equal(await readFileAsync(join(ctx.logDir, name), 'utf8'), `old ${name}\n`);
+  assert.equal(names.filter(n => n.startsWith('meeting-2026') || /^meeting-\d{8}T\d{6}Z-[0-9a-f]{8}/.test(n)).length, 4);
+});
+
+test('every listening session writes a log and there is no way to turn logging off', async t => {
+  const saved = { a: process.env.ALICE_LOG, b: process.env.ALICE_LOG_OFF, c: process.env.ALICE_NO_LOG };
+  Object.assign(process.env, { ALICE_LOG: 'off', ALICE_LOG_OFF: '1', ALICE_NO_LOG: '1' });
+  try {
+    const ctx = await liveServer(t);
+    for (let i = 0; i < 2; i += 1) { const s = await ctx.open(); ctx.audits.length = 0; await stopped(ctx, s); }
+    const files = (await readdir(ctx.logDir)).filter(n => n.endsWith('.jsonl'));
+    assert.equal(files.length, 2);
+    for (const file of files) assert.equal(JSON.parse((await readFileAsync(join(ctx.logDir, file), 'utf8')).split('\n')[0]).type, 'log_started');
+  } finally { for (const [k, v] of [['ALICE_LOG', saved.a], ['ALICE_LOG_OFF', saved.b], ['ALICE_NO_LOG', saved.c]]) if (v === undefined) delete process.env[k]; else process.env[k] = v; }
+});
+
+test('the header holds version, session, UTC start and offset, revision, models, key state, pause setting and package source with counts, and no cue thresholds', async t => {
+  const ctx = await liveServer(t, { files: { 'a.md': 'Some package text.' } });
+  const session = await ctx.open();
+  await stopped(ctx, session);
+  const [head] = await readLines(ctx);
+  assert.deepEqual(Object.keys(head).sort(), ['keyConfigured', 'models', 'ms', 'package', 'pauseMs', 'revision', 'sessionId', 'startedAt', 't', 'type', 'tzOffsetMin', 'version']);
+  assert.deepEqual([head.version, head.sessionId, head.revision, head.keyConfigured, head.pauseMs], [1, session.sessionId, 'test', true, 800]);
+  assert.ok(Math.abs(Date.parse(head.t) - Date.parse(head.startedAt)) < 100, 'the header line is written at the start');
+  assert.ok(Number.isInteger(head.tzOffsetMin));
+  assert.deepEqual(Object.keys(head.models).sort(), ['answer', 'reader', 'transcription']);
+  assert.deepEqual([head.package.source, head.package.files, head.package.chars], ['folder', 1, 18]);
+  assert.ok(!/cue|hold|threshold|limit/i.test(JSON.stringify(Object.keys(head))));
+});
+
+test('version 1 holds no cue events and no transcription confidence', async t => {
+  const ctx = await liveServer(t, { autoFocus: true });
+  const session = await ctx.open();
+  await sendPackets(session, true, 0, 3);
+  ctx.f.upstream().emit('message', Buffer.from(JSON.stringify({ type: 'conversation.item.input_audio_transcription.completed', item_id: 'c1', transcript: 'Tell me about it?', logprobs: [{ logprob: -0.1 }], confidence: 0.9 })));
+  await until(() => session.events.some(e => e.type === 'transcript' && e.final));
+  await stopped(ctx, session);
+  const lines = await readLines(ctx);
+  const allowed = new Set(['log_started', 'package', 'speech_start', 'pause', 'transcript', 'live_question', 'live_cleared', 'focus_changed', 'control', 'answer_shown', 'answer_failed', 'answer_dropped', 'error', 'session_stopped', 'log_full']);
+  assert.ok(lines.every(l => allowed.has(l.type)), JSON.stringify(typesOf(lines)));
+  assert.ok(!typesOf(lines).some(type => /cue/.test(type)));
+  assert.ok(!JSON.stringify(lines).match(/confidence|logprob/));
+});
+
+// SPRINT-004 avatar: ST4-43 (fixed file list) and the pinned hashes of SH4-3, and the avatar's state machine (AV-2, AV-3).
+test('ST4-43 the fixed file list serves poc/vendor files, poc/avatar.js and nothing else new', async t => {
+  const { origin } = await liveServer(t);
+  const status = async path => { const r = await fetch(origin + path); await r.body?.cancel(); return [r.status, r.headers.get('content-type')]; };
+  assert.deepEqual(await status('/poc/avatar.js'), [200, 'text/javascript; charset=utf-8']);
+  for (const path of VENDOR_ASSETS) {
+    const [code, type] = await status(path);
+    assert.equal(code, 200, path);
+    assert.equal(type, path.endsWith('.glb') ? 'model/gltf-binary' : 'text/javascript; charset=utf-8', path);
+  }
+  assert.equal(VENDOR_ASSETS.length, 19);
+  for (const path of ['/poc/vendor/', '/poc/vendor/models/mpfb.LICENSE.txt', '/poc/vendor/VENDOR.md', '/poc/vendor/three/LICENSE', '/poc/vendor/../server.mjs',
+    '/poc/vendor/%2e%2e/server.mjs', '/poc/server.mjs', '/poc/vendor/talkinghead/playback-worklet.js']) assert.equal((await status(path))[0], 404, path);
+});
+
+test('SH4-3 every vendored file matches its recorded SHA-256 and each group has its licence beside it', async () => {
+  const record = await readFile(new URL('./vendor/VENDOR.md', import.meta.url), 'utf8');
+  const hashes = new Map([...record.matchAll(/^\| `([^`]+)` \| [\d,]+ \| `([0-9a-f]{64})` \|$/gm)].map(m => [m[1], m[2]]));
+  for (const path of VENDOR_ASSETS) {
+    const file = path.replace('/poc/vendor/', '');
+    const bytes = await readFile(new URL(`./vendor/${file}`, import.meta.url));
+    assert.equal(hashes.get(file), createHash('sha256').update(bytes).digest('hex'), file);
+  }
+  for (const licence of ['talkinghead/LICENSE', 'three/LICENSE', 'models/mpfb.LICENSE.txt']) assert.ok((await readFile(new URL(`./vendor/${licence}`, import.meta.url))).length > 100, licence);
+  await readFile(new URL('./avatar.md', import.meta.url));
+});
+
+const avatarClock = () => { const clock = { t: 0 }; return { clock, machine: createStateMachine(() => clock.t) }; };
+const snap = (changes = {}) => ({ listening: false, candidate: false, focusVersion: 0, answerStatus: 'empty', errorCause: false, ...changes });
+
+test('avatar states follow the screen states with the closest built-in mood (AV-2)', () => {
+  const { clock, machine } = avatarClock();
+  assert.equal(machine.update(snap()), 'idle');
+  assert.equal(machine.update(snap({ listening: true })), 'listening');
+  assert.equal(machine.update(snap({ listening: true, focusVersion: 1, answerStatus: 'preparing' })), 'researching');
+  assert.equal(machine.update(snap({ listening: true, focusVersion: 1, errorCause: true })), 'error');
+  clock.t = 10000;
+  assert.equal(machine.update(snap({ listening: false, focusVersion: 1, answerStatus: 'last-known' })), 'idle');
+  assert.deepEqual(Object.keys(AVATAR_MOODS).sort(), ['error', 'idle', 'listening', 'question', 'ready', 'researching']);
+});
+
+test('question lasts 1.5 s, ready 2.5 s, a failed answer shows error for 3 s and none restarts within 3 s (AV-3)', () => {
+  assert.deepEqual([AVATAR_TIMES.question, AVATAR_TIMES.ready, AVATAR_TIMES.error, AVATAR_TIMES.gap], [1500, 2500, 3000, 3000]);
+  let { clock, machine } = avatarClock();
+  machine.update(snap({ listening: true }));
+  assert.equal(machine.update(snap({ listening: true, candidate: true })), 'question');
+  clock.t = 1499; assert.equal(machine.update(snap({ listening: true, candidate: true })), 'question');
+  clock.t = 1500; assert.equal(machine.update(snap({ listening: true, candidate: true })), 'listening');
+  ({ clock, machine } = avatarClock());
+  machine.update(snap({ listening: true, focusVersion: 1, answerStatus: 'preparing' }));
+  clock.t = 4000; assert.equal(machine.update(snap({ listening: true, focusVersion: 1, answerStatus: 'shown' })), 'ready');
+  clock.t = 6499; assert.equal(machine.update(snap({ listening: true, focusVersion: 1, answerStatus: 'shown' })), 'ready');
+  clock.t = 6500; assert.equal(machine.update(snap({ listening: true, focusVersion: 1, answerStatus: 'shown' })), 'listening');
+  ({ clock, machine } = avatarClock());
+  machine.update(snap({ listening: true, focusVersion: 1, answerStatus: 'preparing' }));
+  clock.t = 4000; assert.equal(machine.update(snap({ listening: true, focusVersion: 1, answerStatus: 'failed' })), 'error');
+  clock.t = 6999; assert.equal(machine.update(snap({ listening: true, focusVersion: 1, answerStatus: 'failed' })), 'error');
+  clock.t = 7000; assert.equal(machine.update(snap({ listening: true, focusVersion: 1, answerStatus: 'failed' })), 'listening');
+  // No restart within 3 s of the last timed start: a candidate 1 s after a ready shows no question state.
+  ({ clock, machine } = avatarClock());
+  clock.t = 10000; machine.update(snap({ listening: true, answerStatus: 'shown' }));
+  clock.t = 12600; assert.equal(machine.update(snap({ listening: true, answerStatus: 'shown', candidate: true })), 'listening');
+});
+
+test('error outranks researching, which outranks a timed state (AV-3)', () => {
+  const { clock, machine } = avatarClock();
+  clock.t = 5000; machine.update(snap({ listening: true, candidate: true }));
+  assert.equal(machine.update(snap({ listening: true, candidate: true, answerStatus: 'preparing' })), 'researching');
+  assert.equal(machine.update(snap({ listening: true, candidate: true, answerStatus: 'preparing', errorCause: true })), 'error');
+});
+
+// Fixes from the review of 21 November 2026: empty transcript items, an upload cut off mid-body, and cross-site GET.
+test('an item with no words is skipped and does not cut the transcript snapshot (SA-17)', () => {
+  const clock = clockAt(); const sent = [];
+  const s = makeSession({ now: clock.now, emit: m => sent.push(m) });
+  const last = () => sent.filter(m => m.type === 'transcript').at(-1);
+  s.observe('one', 'First real words.', true);
+  clock.t = 1000; s.observe('two', 'Second real words.', true);
+  clock.t = 2000; s.observe('noise', '', true);
+  assert.deepEqual(last().items.map(i => i.id), ['one', 'two'], 'an empty final item');
+  clock.t = 3000; s.observe('blank', ' \n', true);
+  assert.deepEqual(last().items.map(i => i.id), ['one', 'two'], 'a final item of white space');
+  clock.t = 4000; s.observe('open', '', false);
+  assert.deepEqual(last().items.map(i => i.id), ['one', 'two'], 'an open item with no text yet');
+  clock.t = 5000; s.observe('three', 'Third.', true);
+  assert.deepEqual(last().items.map(i => i.id), ['one', 'two', 'three']);
+  s.stop();
+});
+
+test('an upload cut off mid-body does not end the service', async t => {
+  const ctx = await liveServer(t);
+  const port = Number(new URL(ctx.origin).port);
+  await new Promise((resolve, reject) => {
+    const socket = net.connect(port, '127.0.0.1', () => {
+      socket.write(`PUT /package HTTP/1.1\r\nHost: 127.0.0.1:${port}\r\nOrigin: ${ctx.origin}\r\nContent-Type: application/json\r\nContent-Length: 1000\r\n\r\n{"files":[`);
+      setTimeout(() => { socket.destroy(); resolve(); }, 100);
+    });
+    socket.on('error', reject);
+  });
+  await new Promise(resolve => setTimeout(resolve, 200));
+  assert.equal((await fetch(ctx.origin + '/health')).status, 200, 'the service still answers');
+  assert.equal((await getPackage(ctx)).source, 'none', 'and nothing was loaded');
+});
+
+test('a browser GET from another site is refused on log and package; this page and the address bar are not (SD-3)', async t => {
+  const ctx = await liveServer(t);
+  const get = (path, site) => new Promise((resolve, reject) => {
+    http.get(ctx.origin + path, { headers: site ? { 'Sec-Fetch-Site': site } : {} }, res => { res.resume(); resolve(res.statusCode); }).on('error', reject);
+  });
+  for (const site of ['cross-site', 'same-site']) assert.deepEqual([await get('/log', site), await get('/package', site)], [403, 403], site);
+  for (const site of ['same-origin', 'none', undefined]) assert.deepEqual([await get('/log', site), await get('/package', site)], [404, 200], String(site));
+});
+
+// Second pass of review fixes (22 November 2026): the log's last line, missing events, control order, unknown reader fields, older logs.
+test('the log_full line holds nothing of the event that did not fit and the file stays under its cap (MS-4)', async t => {
+  const dir = await tempDir(t);
+  const log = new MeetingLog({ dir, sessionId: 'abcdef12-0000-0000', maxBytes: 1500 });
+  log.write('log_started', { version: 1 });
+  log.write('transcript', { itemId: 'big', text: 'x'.repeat(2000) });
+  log.write('transcript', { itemId: 'later', text: 'never written' });
+  await log.close();
+  const text = await readFile(log.path, 'utf8');
+  const lines = text.trim().split('\n').map(line => JSON.parse(line));
+  assert.deepEqual(lines.map(l => l.type), ['log_started', 'log_full']);
+  assert.deepEqual(Object.keys(lines[1]).sort(), ['maxBytes', 'ms', 't', 'type']);
+  assert.ok(Buffer.byteLength(text) <= 1500, `file is ${Buffer.byteLength(text)} bytes`);
+});
+
+test('an answer still being prepared at Stop is logged as dropped before the last line (ML-8)', async t => {
+  const ctx = await liveServer(t, { files: { 'a.md': 'Some package text.' } });
+  const session = await ctx.open();
+  await session.confirm('Why this company?');
+  await until(() => ctx.f.calls.length === 1);
+  await stopped(ctx, session);
+  const lines = await readLines(ctx), types = typesOf(lines);
+  assert.deepEqual(lines.filter(l => l.type === 'answer_dropped').map(l => l.reason), ['stopped']);
+  assert.ok(types.indexOf('answer_dropped') < types.indexOf('session_stopped'));
+  assert.equal(types.at(-1), 'session_stopped');
+  assert.equal(named(ctx.audits, 'answer_dropped').length, 1, 'and it is audited once');
+});
+
+test('a failed reading is logged as an error with its public message only (ML-10)', async t => {
+  const ctx = await liveServer(t, { reason: async () => { throw Object.assign(new Error('PROVIDER-DETAIL-SENTINEL'), { status: 429 }); } });
+  const session = await ctx.open();
+  ctx.f.say('Tell me about this project please.');
+  await until(() => ctx.audits.some(a => a.name === 'agent_failed'));
+  await stopped(ctx, session);
+  const lines = await readLines(ctx);
+  // The reader may also be asked once at the start of the session, so there can be more than one failure.
+  const errors = lines.filter(l => l.type === 'error');
+  assert.ok(errors.length >= 1 && errors.every(l => l.code === 'reader' && l.message === 'OpenAI quota or rate limit reached'), JSON.stringify(errors));
+  assert.equal(JSON.stringify(lines).includes('PROVIDER-DETAIL-SENTINEL'), false);
+});
+
+test('a control is logged before its own effects, and a refused one is logged as invalid (ML-7, ML-12)', async t => {
+  const ctx = await liveServer(t);
+  const session = await ctx.open();
+  ctx.f.say('First question here?');
+  await until(() => session.events.some(e => e.live));
+  const e = session.events.filter(m => m.live).at(-1);
+  const results = () => session.events.filter(m => m.type === 'question.result');
+  control(session, { type: 'question.confirm', requestId: 'c1', liveId: e.live.id, liveVersion: e.live.version, expectedFocusVersion: e.focusVersion, text: e.live.text });
+  await until(() => results().length === 1);
+  control(session, { type: 'question.confirm', requestId: 'c1', liveId: 'other', liveVersion: 9, expectedFocusVersion: 9, text: 'a changed retry' });
+  await until(() => results().length === 2);
+  control(session, { type: 'question.reset', via: 'escape' });
+  await until(() => results().length === 3);
+  assert.deepEqual(results().map(r => r.status), ['confirmed', 'invalid', 'invalid']);
+  await stopped(ctx, session);
+  const lines = await readLines(ctx), types = typesOf(lines);
+  assert.ok(types.indexOf('control') < types.indexOf('live_cleared') && types.indexOf('control') < types.indexOf('focus_changed'), types.join(','));
+  assert.deepEqual(lines.filter(l => l.type === 'control').map(c => [c.control, c.via, c.result]),
+    [['confirm', 'button', 'confirmed'], ['confirm', 'button', 'invalid'], ['clear', 'escape', 'invalid']]);
+});
+
+test('a reader reply with any unknown field gives its reading but not its answer, which falls back (AD-3)', async () => {
+  const f = createFixtures();
+  const s = new InterviewSession({ reason: async () => proposal(), emit: () => {}, delayMs: 0, generate: f.generate });
+  s.answers.setPackage(packageOf(fixturePackage));
+  s.observe('o1', 'Tell me about CIBC.', true);
+  s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o1'], notes: 'not in the contract' }), s.snapshot());
+  assert.equal(s.state.focus, 'Tell me about CIBC.');
+  assert.equal(s.answers.view().status, 'preparing', 'the bullets were not shown');
+  await until(() => f.calls.length === 1);
+  s.stop();
+});
+
+test('GET log offers the most recent older log when the newest file is gone (SD-1)', async t => {
+  const dir = await tempDir(t, { 'meeting-20261101T000000Z-aaaaaaaa.jsonl': '{"type":"log_started","older":1}\n', 'meeting-20261102T000000Z-bbbbbbbb.jsonl': '{"type":"log_started","older":2}\n' });
+  const store = createLogStore({ dir });
+  const log = store.start('cccccccc-0000-0000');
+  log.write('log_started', { version: 1 });
+  await log.close();
+  assert.match((await store.read()).text, /"version":1/);
+  await rm(log.path);
+  const older = await store.read();
+  assert.deepEqual([older.filename, older.text], ['alice-meeting-20261102T000000Z.jsonl', '{"type":"log_started","older":2}\n']);
+});
+
+// Hosted mode (ALICE_PUBLIC_HOST, ALICE_ACCESS_CODE, ALICE_LOG, ALICE_AVATAR). With none of them set the service is local,
+// as every case above shows; these cases turn one setting on at a time.
+const HOSTED = 'alice-test-abc.a.run.app';
+const hostedRequest = (ctx, path, { host = HOSTED, proto = 'https', headers = {}, method = 'GET', body } = {}) => new Promise((resolve, reject) => {
+  const req = http.request({ host: '127.0.0.1', port: new URL(ctx.origin).port, path, method, headers: { Host: host, ...(proto ? { 'X-Forwarded-Proto': proto } : {}), ...headers } }, res => {
+    let text = ''; res.on('data', chunk => { text += chunk; }); res.on('end', () => resolve({ status: res.statusCode, text }));
+  });
+  req.on('error', reject); req.end(body);
+});
+// Resolves with {ready, protocol} when the session is ready, or {status} when the handshake is refused.
+const socketOutcome = (ctx, { protocols = [], origin = ctx.origin, headers = {} } = {}) => new Promise(resolve => {
+  const ws = new WebSocket(ctx.origin.replace('http:', 'ws:') + '/session', protocols, { origin, headers });
+  ws.on('unexpected-response', (req, res) => { resolve({ status: res.statusCode }); req.destroy(); });
+  ws.on('message', raw => { if (JSON.parse(raw).type === 'ready') { resolve({ ready: true, protocol: ws.protocol }); ws.close(); } });
+  ws.on('error', () => {});
+});
+
+test('hosted: the public host is served over https only, beside the local one, and the socket takes its https origin', async t => {
+  assert.deepEqual([listenHost({}), listenHost({ ALICE_PUBLIC_HOST: '  ' }), listenHost({ ALICE_PUBLIC_HOST: HOSTED })], ['127.0.0.1', '127.0.0.1', '0.0.0.0']);
+  const ctx = await liveServer(t, { publicHost: `${HOSTED}, second.example.run.app` });
+  assert.equal((await hostedRequest(ctx, '/')).status, 200);
+  assert.equal((await hostedRequest(ctx, '/', { host: 'second.example.run.app' })).status, 200, 'a second named host');
+  assert.equal((await hostedRequest(ctx, '/', { proto: 'http' })).status, 403, 'plain http on the public host');
+  assert.equal((await hostedRequest(ctx, '/', { proto: null })).status, 403, 'no scheme reported');
+  assert.equal((await hostedRequest(ctx, '/', { host: 'evil.example' })).status, 403, 'another host');
+  assert.equal((await fetch(ctx.origin + '/')).status, 200, 'the local address still works');
+  const body = JSON.stringify(upload(['a.md', 'Hosted text.']));
+  const put = origin => hostedRequest(ctx, '/package', { method: 'PUT', body, headers: { 'Content-Type': 'application/json', Origin: origin } });
+  assert.deepEqual([(await put(`http://${HOSTED}`)).status, (await put('https://evil.example')).status, (await put(`https://${HOSTED}`)).status], [403, 403, 200]);
+  const hosted = { headers: { Host: HOSTED, 'X-Forwarded-Proto': 'https' } };
+  assert.deepEqual(await socketOutcome(ctx, { ...hosted, origin: `http://${HOSTED}` }), { status: 403 });
+  assert.deepEqual(await socketOutcome(ctx, { ...hosted, origin: `https://${HOSTED}` }), { ready: true, protocol: '' });
+});
+
+test('hosted: with an access code the package, the log and the session need it; the code is never logged or echoed', async t => {
+  const code = 'correct horse 42';
+  const ctx = await liveServer(t, { accessCode: ` ${code}\n` });
+  const withCode = value => ({ 'X-Alice-Code': value });
+  const status = async (path, init) => (await fetch(ctx.origin + path, init)).status;
+  assert.deepEqual([await status('/'), await status('/app.js'), await status('/health')], [200, 200, 200], 'the page itself needs no code');
+  assert.deepEqual([await status('/package'), await status('/package', { headers: withCode('wrong') }), await status('/package', { headers: withCode(code) })], [401, 401, 200]);
+  assert.deepEqual([await status('/log'), await status('/log', { headers: withCode(code) })], [401, 404]);
+  const change = (method, headers) => status('/package', { method, headers: { 'Content-Type': 'application/json', Origin: ctx.origin, ...headers }, body: method === 'PUT' ? JSON.stringify(upload(['a.md', 'Text.'])) : undefined });
+  assert.deepEqual([await change('PUT', {}), await change('DELETE', {}), await change('PUT', withCode(code)), await change('DELETE', withCode(code))], [401, 401, 200, 200]);
+  const offer = value => ['alice', `alice-code.${Buffer.from(value).toString('base64url')}`];
+  assert.deepEqual(await socketOutcome(ctx), { status: 401 }, 'no code');
+  assert.deepEqual(await socketOutcome(ctx, { protocols: offer('wrong') }), { status: 401 });
+  assert.deepEqual(await socketOutcome(ctx, { protocols: offer(code) }), { ready: true, protocol: 'alice' }, 'only the plain subprotocol is echoed');
+  await new Promise(resolve => setTimeout(resolve, 60));
+  const written = JSON.stringify(ctx.audits) + ctx.logs.join('\n') + JSON.stringify(await (await fetch(ctx.origin + '/health')).json());
+  for (const secret of [code, Buffer.from(code).toString('base64url')]) assert.equal(written.includes(secret), false);
+});
+
+test('hosted: ALICE_LOG=off writes no meeting log and Download log answers 404; on a local service it changes nothing', async t => {
+  const hosted = await liveServer(t, { publicHost: HOSTED, logOff: true });
+  const session = await hosted.open();
+  hosted.f.say('Words that would have been logged.');
+  await until(() => session.events.some(e => e.type === 'transcript'));
+  await stopped(hosted, session);
+  const res = await getLog(hosted);
+  assert.deepEqual([res.status, await res.text()], [404, 'No meeting log yet.']);
+  assert.deepEqual(await readdir(hosted.logDir), [], 'no file is created');
+  assert.equal(session.events.some(e => e.type === 'log'), false);
+  const local = await liveServer(t, { logOff: true });
+  await stopped(local, await local.open());
+  assert.equal((await readdir(local.logDir)).filter(n => n.endsWith('.jsonl')).length, 1, 'a local service logs every session (ML-13)');
+});
+
+test('ALICE_AVATAR=off serves no avatar file, and the rest of the page is served', async t => {
+  const ctx = await liveServer(t, { avatarOff: true });
+  const status = async path => { const r = await fetch(ctx.origin + path); await r.body?.cancel(); return r.status; };
+  assert.deepEqual([await status('/poc/avatar.js'), await status(VENDOR_ASSETS[0]), await status(VENDOR_ASSETS.at(-1))], [404, 404, 404]);
+  assert.deepEqual([await status('/'), await status('/app.js'), await status('/poc/audio-worklet.js')], [200, 200, 200]);
+});
+
+test('the publish list holds what the hosted service imports and serves, and nothing private or test-only', async () => {
+  const root = new URL('../', import.meta.url);
+  const list = (await readFile(new URL('./deploy/publish-files.txt', import.meta.url), 'utf8')).split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#'));
+  for (const path of list) await stat(new URL(path, root));
+  // Every module reachable from the service by a relative import is listed.
+  const seen = new Set(), queue = ['poc/server.mjs'];
+  while (queue.length) {
+    const file = queue.pop();
+    if (seen.has(file)) continue;
+    seen.add(file);
+    const source = await readFile(new URL(file, root), 'utf8');
+    for (const match of source.matchAll(/from\s+'(\.\/[^']+)'/g)) queue.push(`poc/${match[1].slice(2)}`);
+  }
+  assert.deepEqual([...seen].filter(file => !list.includes(file)), [], 'modules missing from the list');
+  for (const needed of ['index.html', 'app.js', 'poc/audio-worklet.js', 'poc/avatar.js', 'poc/vendor', 'poc/package.json', 'poc/pnpm-lock.yaml']) assert.ok(list.includes(needed), needed);
+  // The benchmark folder's name is put together here, because no poc source may name it.
+  const banned = new RegExp(['\\.env', 'context', 'logs', 'docs', 'asdg', 'openspec', 'eval' + '-data', '\\.test\\.', 'browser-', 'fixtures', 'live-capture', 'node_modules', 'preview', '\\.\\.', '^/'].join('|'));
+  for (const path of list) assert.doesNotMatch(path, banned, path);
+  const dockerfile = await readFile(new URL('./deploy/Dockerfile', import.meta.url), 'utf8');
+  assert.match(dockerfile, /--prod --frozen-lockfile --ignore-scripts/);
+  assert.doesNotMatch(dockerfile, /OPENAI_API_KEY=|ALICE_ACCESS_CODE=/, 'no secret is set in the image');
 });

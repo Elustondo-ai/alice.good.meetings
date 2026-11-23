@@ -5,7 +5,18 @@ import { validateResult } from './answer.mjs';
 
 // Each connection owns its controller and at most one in-flight reasoning request.
 export class InterviewSession {
-  constructor({ reason, emit, audit = () => {}, delayMs = 2500, generate, now = Date.now, answerTimeoutMs, print, canAsk = () => true, autoFocus = true }) {
+  constructor({ reason, emit, audit = () => {}, delayMs = 2500, generate, now = Date.now, answerTimeoutMs, print, canAsk = () => true, autoFocus = true, record = () => {} }) {
+    // Text events for the meeting log (poc/meeting-log.mjs); it never blocks and never reaches the audit.
+    // While a control runs, its effects are held so the `control` line is written before them (ML-12).
+    this.sink = record;
+    this.held = null;
+    this.record = (type, data) => { if (this.held) this.held.push([type, data]); else this.sink(type, data); };
+    this.clock = now;
+    this.startedAt = now();
+    this.seen = new Map();
+    this.spans = [];
+    this.spanOf = new Map();
+    this.bufferStart = 0;
     // true: a clear question read after a pause becomes Focus with no Confirm. false: the manual Live then Confirm path only.
     this.autoFocus = autoFocus;
     this.id = randomUUID();
@@ -40,7 +51,7 @@ export class InterviewSession {
     // The proposed answer is kept apart from `state`: never in snapshots, cached results or revisions.
     this.answers = new AnswerArea({ sessionId: this.id, generate, now, timeoutMs: answerTimeoutMs, audit, print,
       focusVersion: () => this.state.focusVersion,
-      publish: (proposed, proposedSeq) => this.send('proposed', { proposed, proposedSeq }) });
+      record: this.record, publish: (proposed, proposedSeq) => this.send('proposed', { proposed, proposedSeq }) });
   }
 
   setContext(context) { this.context = context; }
@@ -67,12 +78,21 @@ export class InterviewSession {
     return buffer.subarray(8);
   }
 
+  // The server calls these when it sends a commit or clears the buffer, so each item knows its audio span (ML-4).
+  commitSent() {
+    this.spans.push({ audioStartMs: Math.round(this.bufferStart / 24), audioEndMs: Math.round(this.samples / 24) });
+    this.bufferStart = this.samples;
+  }
+
+  bufferCleared() { this.bufferStart = this.samples; }
+
   committed(id, previousId) {
     if (this.order.includes(id)) return;
+    this.spanOf.set(id, this.spans.shift() ?? { audioStartMs: Math.round(this.bufferStart / 24), audioEndMs: Math.round(this.samples / 24) });
     const previous = this.order.indexOf(previousId);
     if (previous >= 0) this.order.splice(previous + 1, 0, id);
     else this.order.push(id);
-    while (this.order.length > 32) this.observations.delete(this.order.shift());
+    while (this.order.length > 32) { const old = this.order.shift(); this.observations.delete(old); this.seen.delete(old); this.spanOf.delete(old); }
   }
 
   observe(id, text, final) {
@@ -80,12 +100,33 @@ export class InterviewSession {
     const previous = this.observations.get(id);
     if (previous?.final) return;
     if (!this.order.includes(id)) this.committed(id);
+    if (!this.seen.has(id)) this.seen.set(id, this.clock() - this.startedAt);
     const value = { id, text: (final ? text : (previous?.text || '') + text).slice(-4000), final };
     this.observations.set(id, value);
     // Timing evidence only: the audit never receives transcript text.
-    if (final) this.audit('transcript_final', { sessionId: this.id, itemId: id, revision: this.state.revision });
-    this.send('transcript', { text: this.snapshot().observations.map(o => o.text).join(' ').slice(-1500), final });
+    if (final) {
+      this.audit('transcript_final', { sessionId: this.id, itemId: id, revision: this.state.revision });
+      this.record('transcript', { itemId: id, text: value.text, ...this.spanOf.get(id) });
+    }
+    this.send('transcript', { text: this.snapshot().observations.map(o => o.text).join(' ').slice(-1500), final, items: this.items() });
     if (value.text.trim().length >= 8) this.schedule();
+  }
+
+  // SA-17: the last 30 seconds, at most 8 items and 1,500 characters; each message replaces the last. `at` is ms from the session start.
+  items() {
+    const nowMs = this.clock() - this.startedAt;
+    const items = [];
+    let chars = 0;
+    for (const id of [...this.order].reverse()) {
+      const o = this.observations.get(id), at = this.seen.get(id);
+      // An item with no words (a noise-only commit comes back empty) is skipped; it must not cut the list.
+      if (!o || at === undefined || nowMs - at > 30000 || !o.text.trim()) continue;
+      if (items.length >= 8 || chars >= 1500) break;
+      const text = o.text.slice(-(1500 - chars));
+      items.unshift({ id, text, final: o.final, at });
+      chars += text.length;
+    }
+    return items;
   }
 
   snapshot() {
@@ -132,10 +173,22 @@ export class InterviewSession {
       this.adopted = this.adopt(next, p);
       if (!this.adopted) this.updateLive(next, p);
     }
+    const before = this.state;
     this.state = next;
+    this.recordChanges(before, next, 'pause');
     if (this.adopted) this.startAnswer(p);
     this.send('answer', { ...this.state, audioCutoffSamples: snapshot.audioCutoffSamples, ...this.answerFields() });
     return true;
+  }
+
+  // Live and Focus wording changes, with where a Focus change came from (ML-5, ML-6).
+  recordChanges(before, next, source) {
+    if (next.live && (next.live.id !== before.live?.id || next.live.version !== before.live?.version)) {
+      this.record('live_question', { liveId: next.live.id, version: next.live.version, kind: next.live.kind, text: next.live.text });
+    }
+    if (next.focusVersion > before.focusVersion) {
+      this.record('focus_changed', { focusVersion: next.focusVersion, text: next.focus, exchangeId: next.exchangeId, source });
+    }
   }
 
   // The automatic flow: a clear question read after a pause becomes the Focus question at once, with no Confirm.
@@ -157,7 +210,9 @@ export class InterviewSession {
 
   // One call produced the reading and the answer. A valid answer is shown as it is; anything else uses the answer request.
   startAnswer(p) {
-    const check = validateResult({ bullets: p.bullets, details: p.details }, { hasDocuments: this.answers.package.documents.length > 0 });
+    // AD-3: a reply with `details` or any other field the contract does not name gives its reading but not its answer.
+    const extra = Object.keys(p).some(key => !PROPOSAL_FIELDS.has(key));
+    const check = extra ? { ok: false } : validateResult({ bullets: p.bullets }, { hasDocuments: this.answers.package.documents.length > 0 });
     const { focus, focusVersion } = this.state;
     if (check.ok) this.answers.present(focus, focusVersion, check.value, p.covered !== false);
     else this.answers.begin(focus, focusVersion);
@@ -183,14 +238,14 @@ export class InterviewSession {
   // Clears Live and moves its cutoff so only later speech can refill it. Never touches Focus.
   resetLive() {
     if (!this.active) return { status: 'unavailable' };
-    if (this.state.live) this.retiredLiveIds.add(this.state.live.id);
+    if (this.state.live) { this.retiredLiveIds.add(this.state.live.id); this.record('live_cleared', { by: 'clear' }); }
     this.state = { ...this.state, revision: this.state.revision + 1, live: null };
     this.liveCutoff = new Set(this.order);
     return { status: 'reset', changed: true };
   }
 
   // The only writer of Focus: commits exactly the Live wording the browser displayed, or says why not.
-  confirm({ liveId, liveVersion, expectedFocusVersion, text }) {
+  confirm({ liveId, liveVersion, expectedFocusVersion, text, via }) {
     const { live, focus, focusVersion } = this.state;
     if (!this.active) return { status: 'unavailable' };
     if (!this.liveIds.has(liveId)) return { status: 'invalid' };
@@ -206,6 +261,8 @@ export class InterviewSession {
       focus: live.text, focusVersion: focusVersion + 1, exchangeId, live: null,
     };
     this.liveCutoff = new Set(this.order);
+    this.record('live_cleared', { by: 'confirm' });
+    this.record('focus_changed', { focusVersion: this.state.focusVersion, text: this.state.focus, exchangeId, source: via === 'space' ? 'confirm-space' : 'confirm-button' });
     this.answers.begin(this.state.focus, this.state.focusVersion);
     return { status: 'confirmed', changed: true, liveId, liveVersion, focusVersion: this.state.focusVersion };
   }
@@ -221,14 +278,27 @@ export class InterviewSession {
       this.audit('question_control', { sessionId: this.id, requestId, type: request?.type ?? null, status: result.status,
         replayed, liveVersion: request?.liveVersion ?? null, focusVersion: this.state.focusVersion, revision: this.state.revision });
     };
-    if (!request) return reply({ requestId, status: 'invalid', state: { ...this.state } });
+    // ML-7: every Confirm or Clear is logged with its result; a refused one (malformed, changed retry, over the limit) is `invalid`.
+    const kind = CONTROLS[request?.type ?? message?.type];
+    const refused = status => {
+      if (kind) this.record('control', { control: kind, via: request?.via ?? viaOf(message), result: 'invalid' });
+      return reply({ requestId, status, state: { ...this.state } });
+    };
+    if (!request) return refused('invalid');
     const cached = this.requests.get(request.requestId);
     if (cached) {
       if (cached.fingerprint === request.fingerprint) return reply(cached.result, true);
-      return reply({ requestId, status: 'invalid', state: { ...this.state } });
+      return refused('invalid');
     }
-    if (this.requests.size >= 256) return reply({ requestId, status: 'limit', state: { ...this.state } });
-    const { changed, ...outcome } = request.type === 'question.reset' ? this.resetLive() : this.confirm(request);
+    if (this.requests.size >= 256) return refused('limit');
+    this.held = [];
+    let changed, outcome;
+    try { ({ changed, ...outcome } = request.type === 'question.reset' ? this.resetLive() : this.confirm(request)); }
+    finally {
+      const held = this.held; this.held = null;
+      if (outcome) this.record('control', { control: kind, via: request.via, result: outcome.status });
+      for (const [type, data] of held) this.record(type, data);
+    }
     const result = { requestId, ...outcome, state: { ...this.state } };
     this.requests.set(request.requestId, { fingerprint: request.fingerprint, result });
     reply(result);
@@ -263,6 +333,8 @@ export class InterviewSession {
         this.audit('agent_finished', { sessionId: this.id, accepted, ...(accepted ? {} : { rejection: this.lastRejection }), durationMs: Date.now() - this.lastRun, packets: this.packets });
       }
     } catch (error) {
+      // ML-10: a failed reading is an error with its public message; an abort at Stop is not.
+      if (this.active) this.record('error', { code: 'reader', message: publicError(error) });
       this.send('agent', { status: publicError(error) });
       this.audit('agent_failed', { sessionId: this.id, status: error?.status || null, code: publicError(error) });
     } finally {
@@ -286,18 +358,22 @@ export class InterviewSession {
   }
 }
 
+const CONTROLS = { 'question.confirm': 'confirm', 'question.reset': 'clear' };
+const PROPOSAL_FIELDS = new Set(['reply', 'phase', 'question', 'intent', 'evidenceIds', 'covered', 'bullets']);
+const viaOf = message => (['button', 'space', 'escape'].includes(message?.via) ? message.via : 'button');
 const boundedId = value => typeof value === 'string' && value.length > 0 && value.length <= 100;
 const version = value => Number.isSafeInteger(value) && value >= 0;
 
 // Returns null for any malformed or wrong-session control; otherwise the fields that identify it.
 function parseControl(message, sessionId) {
   if (!message || message.sessionId !== sessionId || !boundedId(message.requestId)) return null;
+  const via = viaOf(message);
   if (message.type === 'question.reset') {
-    return { type: message.type, requestId: message.requestId, fingerprint: message.type };
+    return { type: message.type, requestId: message.requestId, via, fingerprint: message.type };
   }
   const { liveId, liveVersion, expectedFocusVersion, text } = message;
   if (message.type !== 'question.confirm' || !boundedId(liveId) || !version(liveVersion) ||
     !version(expectedFocusVersion) || typeof text !== 'string' || !text || text.length > 600) return null;
   const fields = { liveId, liveVersion, expectedFocusVersion, text };
-  return { type: message.type, requestId: message.requestId, ...fields, fingerprint: JSON.stringify([message.type, fields]) };
+  return { type: message.type, requestId: message.requestId, via, ...fields, fingerprint: JSON.stringify([message.type, fields]) };
 }

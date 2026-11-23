@@ -3,114 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meeting Helper</title>
+  <title>Alice Good Meetings</title>
+  <script type="importmap">{"imports":{"three":"/poc/vendor/three/build/three.module.js","three/addons/":"/poc/vendor/three/examples/jsm/"}}</script>
   <style>
-    :root { --cue-bg: green; --cue-fg: white; --ink: #111; --paper: #f4f4f4; --line: #555; --accent: #ffd54a; }
+    :root { --cue-bg: #1b7f2a; --cue-fg: #fff; --ink: #111; --paper: #f4f4f4; --line: #555; --accent: #a35c00; --focus: #ffd54a; --bullet-size: clamp(22px, 3.4vh, 32px); }
     *, *::before, *::after { box-sizing: border-box; animation: none !important; transition: none !important; }
     html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: sans-serif; }
     [hidden] { display: none !important; }
-    /* Layout B, cue first. Fixed row heights keep the four glance rows still (PG-15); only details scroll. */
-    .page { height: 100vh; display: grid; grid-template-rows: 160px 124px 96px 232px minmax(0, 1fr); gap: 8px; padding: 8px; overflow: hidden; }
-    .card { background: #fff; border: 1.5px solid var(--line); border-radius: 6px; padding: 8px 12px; min-height: 0; overflow: hidden; }
-    .label { font-size: 14.85px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.85; }
-    .tag { text-transform: none; letter-spacing: 0; color: #8a5a00; font-weight: bold; }
-    .reason { font-size: 16px; margin: 4px 0 0; }
-    .cue-band { background: var(--cue-bg); color: var(--cue-fg); border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; overflow: hidden; }
-    .cue-word { font-size: min(8rem, 20vw, 20vh); font-weight: bold; white-space: nowrap; line-height: 1; }
-    .controls { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-    .controls .row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-    .controls button { font-size: 14px; padding: 5px 10px; cursor: pointer; }
-    .controls .reason { font-size: 14px; margin: 0; max-width: 360px; text-align: right; }
-    /* Subtle monitor line: one fixed-height line, so it never moves the glance rows. */
-    .controls .monitor { font-size: 17px; line-height: 21px; height: 42px; margin: 0; max-width: 520px; opacity: 0.9; text-align: right; }
-    .monitor div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; gap: 8px; padding: 0 8px 8px; }
+    /* SA-3: the bar is the cue colour, sticky, 80 px (56 px in a short window), and grows rather than clips. */
+    .bar { position: sticky; top: 0; z-index: 3; min-height: 80px; margin: 0 -8px; padding: 6px 16px; background: var(--cue-bg); color: var(--cue-fg);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+    .bar-left { display: flex; align-items: center; min-width: 0; }
+    .bar-name { font-size: 20px; font-weight: 700; }
+    /* AV-1, SA-5: with the avatar the name is a small caption under its head; without it the name is 20 px bold. */
+    .avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; background: #dfe7e0; flex: none; }
+    .avatar canvas { display: block; width: 100% !important; height: 100% !important; }
+    .bar-left.has-avatar { flex-direction: column; justify-content: center; gap: 2px; }
+    .has-avatar .bar-name { font-size: 11px; font-weight: 400; text-align: center; white-space: nowrap; }
+    .avatar.loading { position: absolute; visibility: hidden; }
+    #avatar-toggle { width: 32px; height: 32px; padding: 0; font-size: 18px; line-height: 1; }
+    @media (max-width: 899px) { .avatar { width: 48px; height: 48px; } }
+    @media (max-width: 499px) { .avatar { width: 36px; height: 36px; } .has-avatar .bar-name { white-space: normal; max-width: 6em; } }
+    @media (max-height: 639px) { .avatar { width: 40px; height: 40px; } .has-avatar .bar-name { display: none; } }
+    .bar-centre { flex: 1 1 25%; min-width: 0; } /* SA-19: reserved, empty in this sprint */
+    .bar-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; min-width: 0; }
+    .bar-buttons { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+    .bar-buttons button { font-size: 14px; min-height: 32px; padding: 4px 10px; cursor: pointer; }
+    .bar-status { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; justify-content: flex-end; }
+    .cue-word { font-size: 16px; font-weight: 700; white-space: nowrap; }
+    .monitor { font-size: 15px; margin: 0; text-align: right; overflow-wrap: anywhere; }
     .monitor .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: currentColor; margin-right: 7px; opacity: 0.35; }
     .monitor .dot.on { opacity: 1; }
-    .focus, .live { font-size: clamp(14px, 2.2vmin, 20px); }
-    .focus-text { font-weight: bold; margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; overflow: auto; max-height: calc(100% - 22px); }
-    .focus-text.historical { opacity: 0.6; }
-    .live { display: flex; gap: 12px; align-items: stretch; justify-content: space-between; border-left: 3px solid var(--accent); }
-    .live-text-area { min-width: 0; flex: 1; overflow: hidden; display: flex; flex-direction: column; }
-    .live-text { font-style: italic; margin: 4px 0 0; overflow-wrap: anywhere; overflow: auto; flex: 1 1 auto; min-height: 0; white-space: pre-wrap; }
-    .live-meta { flex: none; margin: 2px 0 0; font-size: 0.85em; max-height: 2.6em; overflow: auto; }
-    .live-meta:empty { display: none; }
-    .live-buttons { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
-    .live-buttons button { font-size: 16.83px; padding: 4px 10px; cursor: pointer; }
-    .live-buttons button.primary:enabled { font-weight: bold; }
-    .live-buttons button:focus-visible, .controls button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    @media (max-width: 899px) { .bar-right { flex: 1 1 100%; align-items: flex-start; } .bar-buttons, .bar-status { justify-content: flex-start; } .monitor { text-align: left; } .bar-centre { display: none; } }
+    @media (max-height: 639px) { .bar { min-height: 56px; } }
     button:disabled { cursor: not-allowed; }
-    .answer { background: #e8f0fe; border-color: #7a9cd6; }
-    .answer-message { font-size: 24px; margin: 6px 0 0; }
-    .bullets { margin: 6px 0 0; padding-left: 26px; font-size: 24px; line-height: 1.25; }
-    .bullets li { margin-bottom: 4px; overflow-wrap: anywhere; }
-    .answer.failed { background: #fbe9e7; border-color: #c0392b; }
-    .answer.unavailable { background: #eceff1; border-color: #455a64; border-style: dashed; }
-    .answer.last-known .bullets, .answer.last-known .answer-message { opacity: 0.8; }
-    .details { display: flex; flex-direction: column; }
-    .details-text { flex: 1; min-height: 0; overflow-y: auto; margin-top: 4px; font-size: 18px; line-height: 1.4; white-space: pre-wrap; overflow-wrap: anywhere; }
-    /* Diagnostic readouts are off the glance layout; add #diagnostics to the address to show them. */
-    #debug, #server { position: fixed; margin: 0; background: rgba(0, 0, 0, 0.72); color: #fff; font-family: monospace; padding: 8px; border-radius: 6px; white-space: pre-wrap; overflow-wrap: anywhere; z-index: 2; }
-    #debug { top: 8px; left: 8px; font-size: 14px; }
+    button:focus-visible { outline: 3px solid #111; outline-offset: 2px; }
+    .bar button:focus-visible { outline-color: #fff; }
+    .error-row { margin: 0; padding: 8px 12px; background: #fbe9e7; border: 1.5px solid #b3261e; color: #7a1410; font-weight: 700; font-size: 18px; }
+    .box { background: #fff; border: 1.5px solid var(--line); border-radius: 6px; padding: 8px 12px; min-width: 0; }
+    .label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .tag { text-transform: none; letter-spacing: 0; font-weight: 700; color: #7a4600; }
+    .question { border: 3px solid #111; }
+    /* SA-8 gives a size by length; SA-13's floor of 1.5 times the bullet size wins where it is larger, which today is every medium and long question. */
+    .question-text { --by-length: clamp(34px, 6.2vh, 64px); margin: 4px 0 0; font-weight: 700; white-space: pre-wrap; overflow-wrap: anywhere; font-size: max(var(--by-length), calc(1.5 * var(--bullet-size))); line-height: 1.15; }
+    .question-text.medium { --by-length: clamp(28px, 4.8vh, 48px); }
+    .question-text.long { --by-length: clamp(24px, 3.8vh, 36px); }
+    .question-text.idle { font-weight: 400; opacity: 0.7; }
+    .question-text.historical { opacity: 0.7; }
+    .candidate { border-left: 4px solid var(--accent); display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; }
+    .candidate-text-area { flex: 1 1 280px; min-width: 0; }
+    .candidate-text { margin: 4px 0 0; font-style: italic; font-size: 22px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .candidate-note { margin: 2px 0 0; font-size: 14px; }
+    .candidate-note:empty { display: none; }
+    .candidate-buttons { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .hint { font-size: 14px; }
+    .candidate-buttons button { font-size: 16px; padding: 4px 12px; cursor: pointer; }
+    #confirm-question:enabled { font-weight: 700; }
+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; min-height: 300px; }
+    @media (max-width: 799px) { .columns { grid-template-columns: 1fr; } }
+    .column { display: flex; flex-direction: column; }
+    .bullets { margin: 6px 0 0; padding-left: 1.1em; font-size: var(--bullet-size); line-height: 1.22; font-weight: 700; }
+    .bullets li { margin-bottom: 6px; overflow-wrap: anywhere; }
+    .answer-message { margin: 6px 0 0; font-size: 22px; overflow-wrap: anywhere; }
+    .answer-reason { margin: 6px 0 0; font-size: 16px; }
+    .answer.last-known .bullets, .answer.last-known .answer-message { opacity: 0.85; }
+    .foot { margin: auto 0 0; padding-top: 8px; font-size: 12px; }
+    .foot-line { margin: 0; }
+    .foot button { font-size: 12px; padding: 1px 8px; cursor: pointer; }
+    .package-line.bold, .package-notice { font-weight: 700; }
+    .package-notice { font-size: 14px; margin: 4px 0 0; }
+    .package-notice:empty { display: none; }
+    .hear-text { margin: 6px 0 0; font-size: clamp(22px, 2.9vh, 28px); line-height: 1.3; overflow-wrap: anywhere; }
+    .hear-text .old { font-weight: 400; opacity: 0.6; }
+    .hear-text .new { font-weight: 700; }
+    .hear-text .idle { font-weight: 400; opacity: 0.7; }
+    .hear-text p { margin: 0 0 6px; }
+    .hear-spacer { flex: 1 1 auto; }
+    #debug, #server { position: fixed; margin: 0; background: rgba(0, 0, 0, 0.72); color: #fff; font-family: monospace; padding: 8px; border-radius: 6px; white-space: pre-wrap; overflow-wrap: anywhere; z-index: 5; }
+    #debug { top: 90px; left: 8px; font-size: 14px; }
     #server { bottom: 8px; left: 8px; max-width: min(760px, 96vw); max-height: 34vh; overflow: auto; font-size: 14px; }
-    @media (max-width: 700px) {
-      .page { height: auto; min-height: 100vh; grid-template-rows: 188px 190px 196px 460px 260px; overflow: visible; }
-      .cue-band { flex-direction: column; align-items: flex-start; justify-content: center; padding: 8px 12px; gap: 6px; }
-      .controls { align-items: flex-start; }
-      .controls .row { justify-content: flex-start; }
-      .controls .reason { text-align: left; }
-      .live { flex-direction: column; }
-      .live-buttons { flex-direction: row; justify-content: flex-start; }
-      .answer-message, .bullets { font-size: 20px; }
-    }
   </style>
 </head>
 <body>
   <div id="page" class="page">
-    <section id="cue-band" class="cue-band" aria-label="Cue">
-      <div id="panel" class="cue-word">GOOD</div>
-      <div id="controls" class="controls" aria-label="Listening and cue buttons">
-        <div class="row">
+    <header id="cue-band" class="bar" aria-label="Cue: GOOD">
+      <div id="bar-left" class="bar-left"><div id="avatar" class="avatar" aria-hidden="true" data-avatar-state="idle" hidden></div><span id="bar-name" class="bar-name">Alice Good Meetings</span></div>
+      <div class="bar-centre"></div>
+      <div class="bar-right">
+        <div id="controls" class="bar-buttons">
           <button id="listen" type="button" disabled>Start listening</button>
           <button id="stop-listen" type="button" disabled>Stop listening</button>
+          <button id="upload-package" type="button" disabled>Upload package</button>
+          <button id="download-log" type="button">Download log</button>
+          <button id="avatar-toggle" type="button" aria-pressed="true" aria-label="Avatar" title="Avatar" hidden>&#9786;</button>
+          <input id="package-file" type="file" multiple accept=".md,.txt,text/markdown,text/plain" hidden>
         </div>
-        <div class="row">
-          <button type="button" data-state="good">Good</button>
-          <button type="button" data-state="land">Land it</button>
-          <button type="button" data-state="stop">Stop</button>
+        <div class="bar-status">
+          <span id="panel" class="cue-word">GOOD</span>
+          <p id="monitor" class="monitor">not listening</p>
         </div>
-        <p id="listen-reason" class="reason" role="status"></p>
-        <p id="monitor" class="monitor" aria-hidden="true"></p>
+      </div>
+    </header>
+
+    <p id="error-row" class="error-row" role="alert" hidden></p>
+
+    <section id="focus" class="box question" aria-label="Question">
+      <div class="label">Question <span id="focus-status" class="tag"></span></div>
+      <p id="focus-question" class="question-text idle">No question yet</p>
+    </section>
+
+    <section id="live" class="box candidate" aria-label="Candidate question">
+      <div class="candidate-text-area">
+        <div class="label">Candidate <span id="live-tag" class="tag"></span></div>
+        <p id="live-question" class="candidate-text">Not listening</p>
+        <p id="live-meta" class="candidate-note"><span id="live-note"></span> <span id="question-feedback" role="status" aria-live="polite"></span></p>
+      </div>
+      <div class="candidate-buttons">
+        <span id="confirm-hint" class="hint"></span>
+        <button id="confirm-question" type="button" disabled aria-describedby="confirm-hint">Confirm</button>
+        <button id="clear-live" type="button" disabled>Clear</button>
       </div>
     </section>
 
-    <section id="focus" class="card focus" aria-label="Focus question">
-      <div class="label">Focus question <span id="focus-status" class="tag"></span></div>
-      <p id="focus-question" class="focus-text">No focus question yet</p>
-    </section>
-
-    <section id="live" class="card live" aria-label="Live question">
-      <div class="live-text-area">
-        <div class="label">Live question <span id="live-tag" class="tag"></span></div>
-        <p id="live-question" class="live-text">Not listening</p>
-        <p id="live-meta" class="live-meta"><span id="live-note"></span> <span id="question-feedback" role="status" aria-live="polite"></span> <span id="confirm-hint"></span></p>
-      </div>
-      <div class="live-buttons">
-        <button id="confirm-question" class="primary" type="button" disabled aria-describedby="confirm-hint">Confirm</button>
-        <button id="clear-live" type="button" disabled>Clear live</button>
-      </div>
-    </section>
-
-    <section id="answer" class="card answer" aria-label="Proposed answer">
-      <div class="label">Proposed answer <span id="answer-tag" class="tag"></span></div>
-      <p id="answer-message" class="answer-message"></p>
-      <ul id="bullets" class="bullets"></ul>
-      <p id="answer-reason" class="reason"></p>
-    </section>
-
-    <section id="details" class="card details" aria-label="Details">
-      <div class="label">Details</div>
-      <div id="details-text" class="details-text" tabindex="0"></div>
-    </section>
+    <div class="columns">
+      <section id="answer" class="box column answer" aria-label="Alice suggests">
+        <div class="label">Alice suggests <span id="answer-tag" class="tag"></span></div>
+        <p id="answer-message" class="answer-message"></p>
+        <ul id="bullets" class="bullets"></ul>
+        <p id="answer-reason" class="answer-reason"></p>
+        <div class="foot">
+          <p id="package-line" class="foot-line package-line"><span id="package-text"></span> <button id="remove-package" type="button" hidden>Remove</button></p>
+          <p id="package-notice" class="package-notice" role="status"></p>
+        </div>
+      </section>
+      <section id="hear" class="box column" aria-label="What I hear">
+        <div class="label">What I hear <span class="tag">live, last 30 s</span></div>
+        <div class="hear-spacer"></div>
+        <div id="hear-text" class="hear-text"><span class="idle">Not listening</span></div>
+        <div class="foot"></div>
+      </section>
+    </div>
   </div>
   <pre id="debug" hidden></pre>
   <pre id="server" role="status" aria-label="Server and agent responses" hidden></pre>

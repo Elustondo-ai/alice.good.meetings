@@ -6,6 +6,12 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["poc/start.sh"],
       "port": 3000
+    },
+    {
+      "name": "alice-poc-check",
+      "runtimeExecutable": "env",
+      "runtimeArgs": ["PORT=3001", "bash", "poc/start.sh"],
+      "port": 3001
     }
   ]
 }

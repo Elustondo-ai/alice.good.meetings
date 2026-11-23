@@ -25,6 +25,7 @@ The scenarios help us discuss interruptions, overlapping speech, changing questi
 - [Keep a Focus question](01.4-confirm-current-question.md): a pause sets Focus; Confirm question and Clear live stay optional.
 - [Input channels](01.6-inputs-and-future-channels.md): speech and buttons now, gestures and video planned, none removed.
 - [Load the preparation package](01.7-load-preparation-package.md): upload several files, see the status, Stop and Remove.
+- [Prepare a meeting](01.10-prepare-a-meeting.md): the preparation agent expands the package into a knowledge base and presets; [exceptions and live use](01.10.1-prepare-exceptions-and-live-use.md).
 - [Meeting log](01.8-meeting-log-and-download.md): a time-stamped log of each session, downloadable.
 - [New screen](01.9-new-screen.md): the SPRINT-004 screen, its inputs and six situations.
 - [See a proposed answer for the Focus question](01.5-proposed-answer.md): short points and details after the pause, replaced whenever Focus changes.

@@ -1,30 +1,12 @@
-# Meeting Helper browser page
+# Alice Good Meetings browser page
 
 [Source: index.html](index.html)
 
 ## What this page is for
 
-Meeting Helper is the screen a person keeps open, on a second monitor or phone, while they answer questions in an interview or meeting. It tells them at a glance whether they are fine to keep talking or should wrap up, so they don't have to watch a clock or lose track of time mid-answer.
+Alice Good Meetings is the screen a person keeps open on a second monitor while they are in a meeting. A slim bar at the top is the cue: green for GOOD, amber for LAND IT after about 25 seconds of speaking, red for STOP after about 35 seconds. Below it sit the confirmed Question in very large bold type, a smaller candidate question, Alice's suggested bullets and, beside them, the last 30 seconds of what Alice hears. The old screen's Details box and the Good, Land it and Stop buttons are gone, and no key sets the cue: it follows the speaking timer alone. Space confirms the candidate and Esc clears it.
 
-The page listens through the microphone and times how long the person has been speaking. The large word in the middle changes as the answer goes on:
-
-- **GOOD** (green): keep going.
-- **LAND IT** (yellow): after about 25 seconds of speaking, start concluding.
-- **STOP** (red): after about 35 seconds, finish now.
-
-The small panels are for whoever is testing the prototype, not for the speaker during a real conversation. The top-left panel shows the microphone level and how long the current turn has lasted. The bottom-left panel shows what the local server heard and what the reasoning agent replied. The buttons in the bottom-right corner start and stop listening, or set the signal by hand.
-
-![The Meeting Helper page while listening: a full-screen green GOOD signal, a microphone panel at top left, a server panel at bottom left showing the transcribed interview question and answer plus the agent's reply, and Stop listening, Good, Land it and Stop buttons at bottom right.](docs/images/meeting-helper-page.png)
-
-*Screenshot of the actual page, captured on 30 October 2026 at 1280 × 720 in headless Chrome driven by Playwright, connected to the local POC server. The microphone was fake: Chrome played a synthetic speech file made with macOS `say` (a short interview question and answer), and real OpenAI transcription and agent calls produced the text shown. In this run the controller rejected a later agent proposal and kept its earlier reply, so no `question:` line appears. The screenshot shows how the page looks, not that it works; that evidence comes from `poc/browser-smoke.mjs`, which passed the same day. The yellow and red states are not shown.*
-
-The panel at top right shows two questions at all times. The **Focus question** is the main question you are answering; it changes only when you press **Confirm question**. The **Live question** is what the page currently hears as the question, updated automatically, with a small tag saying whether it sounds like a new question or a restatement. When an answer is done and a new question appears in Live, Confirm question makes it the new Focus. **Clear live** clears Live if it picked up the wrong words; nothing automatic ever changes Focus.
-
-![The question panel at top right: FOCUS QUESTION in bold, a divider, then LIVE QUESTION tagged "new question" with a yellow-edged three-part question in full, and the Confirm question and Clear live buttons; the green GOOD signal stays visible behind it.](poc/docs/images/uc04-question-panel-desktop.png)
-
-*Screenshot captured on 4 November 2026 at 1280 × 900 in headless Chrome by `poc/browser-protocol.mjs`. The page and its scripts are real, but the server side was scripted: no local service, transcription or OpenAI call produced this text. It shows the layout, not live recognition. A 390 × 844 capture is in [poc/docs/images](poc/docs/images/uc04-question-panel-narrow.png).*
-
-This prototype times how long someone talks. It doesn't identify who is speaking or judge whether an answer is good. See [Purpose](docs/asdg/02-purpose/01-purpose.md) for the longer-term goals.
+This prototype times how long someone talks. It does not identify who is speaking or judge whether an answer is good. See [Purpose](docs/asdg/02-purpose/01-purpose.md). The older screenshots were of the previous layout and are not repeated here; the page check of S4-19 will take new ones.
 
 ## Responsibilities and collaborators
 
@@ -36,29 +18,30 @@ Owns document structure, responsive inline CSS and the initial GOOD appearance; 
 
 ## Interface and data
 
-DOM contract: layout B, cue first, in a `#page` grid of five rows. `#cue-band` holds `#panel` (the cue word) and `#controls` with `#listen` (Start listening), `#stop-listen`, the `button[data-state]` cue buttons (good, land, stop) and the reason line `#listen-reason`. `#focus` holds `#focus-question` and `#focus-status`. `#live` holds `#live-question`, `#live-tag`, a small line with `#live-note`, `#question-feedback` and `#confirm-hint`, and the native `#confirm-question` (label Confirm) and `#clear-live` buttons, which start disabled. `#answer` holds `#answer-tag`, `#answer-message`, the `#bullets` list and `#answer-reason`; `#details` holds `#details-text`. `#debug` and `#server` are hidden pre elements, shown with `#diagnostics` in the address. There are no exported programming functions.
-
-![The new page at 1280 x 900 with the longest sample answer: cue band with listening and cue buttons, Focus, Live with Confirm and Clear live, three bullets and scrolling details.](poc/docs/images/alice-page-shown-long-desktop.png)
-
-*Screenshot of the page at 1280 × 900, taken by `poc/browser-protocol.mjs` against the real service with fixtures and invented text, no OpenAI. A 390 × 844 capture is [alice-page-shown-long-narrow.png](poc/docs/images/alice-page-shown-long-narrow.png).*
+SPRINT-004 screen (rules SA, SS and SC of [08](docs/asdg/08-low-level-design/03.7-sprint-004-screen-specification.md)). Five areas stack in `#page`: the sticky bar `#cue-band`, an error row `#error-row` (hidden unless there is a cause), the Question `#focus`, the candidate line `#live`, and two columns, `#answer` ("Alice suggests") and `#hear` ("What I hear").
 
 | Callable or interface | Contract |
 | --- | --- |
-| `Document load` | Initializes a green GOOD cue and loads app.js after the DOM elements. |
-| `Manual state controls` | Supply data-state values consumed by the script. |
-| `Viewport layout` | The approved preview's values: row heights 160, 124, 96 and 232 px at desktop (188, 190, 196 and 460 px up to 700 px wide), details taking the rest and scrolling inside itself, 8 px padding and gap; see [03.5.11](docs/asdg/08-low-level-design/03.5.11-s003-fixed-layout-values.md). No animation or transition. |
-| `Answer card and details` | Show the seven states of the proposed answer as plain text; no button, link or collapse control. |
-| `Monitor line` | `#monitor`, two fixed-height lines under the listening buttons: a dot that lights while audio arrives, the current speaking turn in seconds and the total speaking time since Start listening (m:ss); then seconds of audio sent, the agent state and the last words heard. Empty when not listening. |
-| `Diagnostic readouts` | `#debug` and `#server` stay off the glance layout and are shown only with `#diagnostics`. |
+| `#cue-band` | The bar: left `#bar-name` ("Alice Good Meetings", 20 px bold), an empty centre reserved for a later message area, and on the right the buttons `#listen`, `#stop-listen`, `#upload-package`, `#download-log`, then the cue word `#panel` and the monitor line `#monitor`. Its colour is the cue (GOOD `#1b7f2a`, LAND IT `#a35c00`, STOP `#b3261e`, white text) and its `aria-label` carries it. |
+| `#error-row` | One bold row with the cause (no service, no key, key refused, microphone refused, connection lost, session limit); hidden when there is none. |
+| `#focus` | The Question: `#focus-question` in bold, sized by length (`medium` over 90 characters, `long` over 180) and never under 1.5 times the bullet size (SA-13), so medium and long questions show at that floor; with `#focus-status` ("confirmed 10:42:07 · by pause", or "Last known, not live"). |
+| `#live` | The candidate: `#live-question`, its tag `#live-tag`, the note and feedback line, the hint `#confirm-hint` ("Space confirms" or the reason Confirm is off), `#confirm-question` and `#clear-live`. |
+| `#answer` | "Alice suggests": tag, at most three bullets `#bullets` (no details area), message and reason lines, and the foot with `#package-line`, `#remove-package` and `#package-notice`. |
+| `#hear` | "What I hear", live, last 30 s: `#hear-text` shows the service's `items`; the newest is bold, earlier ones are faded. |
+| Cue | Follows the speaking timer alone. No key and no button sets it; the G, L and S keys were removed on 22 November 2026 at Pablo's request. |
+| `#debug`, `#server` | Hidden unless the address ends in `#diagnostics`. |
+
+Bold is only on the cue word, the Question, tags, bullets, the newest words, an enabled Confirm, the error row and the package notice. Content changes in place with no animation. All visible text says "meeting", never "interview".
 
 ## Effects and failure behavior
 
-Changing element IDs or data-state values requires a matching JavaScript change. The visible page title is Meeting Helper. Small-window readability and microphone availability depend on the browser and need runtime checks.
+Changing element IDs requires a matching JavaScript change. The page scrolls in a short window and no area clips its text. The measured sizes (SA-8 to SA-13), the window sizes and the keyboard and focus behavior are covered by the [page check](poc/browser-protocol.md). The bullet size is the variable `--bullet-size`; the Question's floor is computed from it, so changing one keeps the size order.
 
 ## Example
 
 Run `bash poc/alice-run.sh` (or `bash poc/start.sh`) and open http://127.0.0.1:3000. See [POC results](poc/RESULTS.md).
 
-## Confirm and Clear live stay as a second tool (18 November 2026)
 
-A clear question read after a pause now becomes the Focus question by itself, but the Confirm and Clear live buttons stay on the page for use when Pablo wants them, for example in an online meeting. Live shows `Listening for a question…` between questions. The empty answer text reads `An answer appears when Alice hears a question and you pause.` and a General answer can say `Your documents do not cover this question.` The server still understands the Confirm and reset messages.
+## The avatar box (SPRINT-004)
+
+`#avatar` is a round box at the left end of the bar (56 px; 48 px under 900 px wide, 36 px under 500, 40 px in a window under 640 px high with no caption), `aria-hidden`, with `data-avatar-state` (idle, listening, question, researching, ready or error) and `data-avatar-frames` (a draw counter). `#avatar-toggle` (32 × 32 px, `aria-pressed`, label "Avatar") follows Download log. An import map in the head maps `three` and `three/addons/` to the vendored copy under `/poc/vendor/three/`; the page asks only its own origin for the avatar's files.

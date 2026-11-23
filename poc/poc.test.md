@@ -28,3 +28,35 @@ The original 19 cases run against `createPocServer` wrapped to use an empty temp
 ## Added 18 November 2026
 
 Eight offline cases, with an invented fixture package only: vocabulary extraction and caps; the transcription prompt with and without a package; the reader receiving terms and documents and the audit holding only a count; the reader input shape; the automatic flow (Focus and answer from one call, no second request); repeated, unrelated and already-used readings changing nothing; a later pause replacing the earlier reading and `covered` false giving a general answer; and an invalid one-call answer falling back to the answer request. The older Confirm cases run with `autoFocus` off.
+
+## SPRINT-004 package cases (20 November 2026)
+
+Twelve cases with the exact titles of ST4-01 to ST4-08, ST4-29, ST4-35 to ST4-37 and ST4-40 cover `GET`, `PUT` and `DELETE /package`: counts only, replacement, every limit, refusals keeping the previous package, the listening refusal, survival after Stop and the Start snapshot, no sentinel text in any reply, audit, log or frame, wrong Host or Origin, Remove including the folder package, unsafe names, the content type, unreadable text and a restart. Helpers `putPackage`, `getPackage`, `deletePackage` and `upload` drive them with `liveServer` and synthetic text only. `node --test poc/poc.test.mjs` now runs 98 cases.
+
+## SPRINT-004 log cases
+
+Twenty cases with the exact titles of ST4-09 to ST4-28, ST4-30, ST4-34, ST4-41, ST4-42 and ST4-11 (the `transcript` snapshot, run on the session alone with a controllable clock) cover the log: the headers of `GET /log` and the 404, complete lines only, the header, every event type and its source or `via`, no text that must stay out, the 800 ms pause rule, the 5 MB cap with one `log_full`, modes 0700 and 0600, the folder setting, no list or delete route, no log text sent to OpenAI, no deletion, no off switch, and a failing or slow disk. Every `createPocServer` in the tests now gets a temporary log folder, so no test writes to `poc/logs/`. `node --test poc/poc.test.mjs` now runs 122 cases.
+
+## Bullets only (S4-15)
+
+ST4-31, 32, 33, 38 and 39 check that neither the reader nor the fallback asks for details, that a `details` field refuses the answer whole, and that the proposed message holds bullets only. The older answer cases no longer pass `details`.
+
+## Avatar (SPRINT-004)
+
+ST4-43 checks that the 19 vendored files and `/poc/avatar.js` are served with the right types and that nothing else under `poc/vendor` is. SH4-3's hash part compares each served file with its SHA-256 in `poc/vendor/VENDOR.md` and checks the licences and `poc/avatar.md`. Three more cases drive `createStateMachine` with a controlled clock for the six states, the 1.5, 2.5 and 3 second times, the 3 second gap and the priority order (AV-2, AV-3).
+
+## Review fixes (21 November 2026)
+
+Three cases: an item with no words is skipped and does not cut the transcript snapshot; an upload cut off mid-body leaves the service running; a browser GET marked `cross-site` or `same-site` is refused on `/log` and `/package` while `same-origin`, `none` and no header are served.
+
+## Second pass of review fixes (22 November 2026)
+
+Six cases, one per fix: the `log_full` line holds no event data and the file stays under its cap; an answer in flight at Stop is logged as dropped before the last line; a failed reading is logged as an `error` with its public message only; a control is logged before its effects and a refused one as `invalid`; a reader reply with any unknown field falls back; Download log offers an older log when the newest file is gone.
+
+## Uploaded file names (ST4-07 as amended)
+
+The package-text case now carries the amended name and also checks that no name of an uploaded file, kept or skipped, reaches the audit or the console (counts only), and that the folder package's start-up audit still keeps its names (PK-9).
+
+## Hosted mode (22 November 2026)
+
+Five cases. The public host is served over https only, beside the local address, and the socket takes its https origin; with an access code the package, the log and the session need it and the code is never logged or echoed; `ALICE_LOG=off` writes no log on a hosted service and changes nothing on a local one; `ALICE_AVATAR=off` serves no avatar file; and the publish list holds every module the service imports and nothing private or test-only.

@@ -1,0 +1,18 @@
+# The only files that go into the hosted image. One path per line, from the repository root; a folder is copied whole.
+# stage.sh copies exactly these, and poc/poc.test.mjs checks the list against what the service imports and serves.
+index.html
+app.js
+poc/package.json
+poc/pnpm-lock.yaml
+poc/server.mjs
+poc/session.mjs
+poc/agent.mjs
+poc/answer.mjs
+poc/answer-area.mjs
+poc/package-loader.mjs
+poc/package-store.mjs
+poc/meeting-log.mjs
+poc/vocabulary.mjs
+poc/audio-worklet.js
+poc/avatar.js
+poc/vendor

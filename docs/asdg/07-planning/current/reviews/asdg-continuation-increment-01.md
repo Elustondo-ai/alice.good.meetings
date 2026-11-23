@@ -41,5 +41,5 @@ No new application permissions or guard exceptions were introduced.
 
 The [bounded source diff](asdg-continuation-increment-01.diff) compares this increment with the inspected dirty worktree, excluding earlier unrelated edits.
 The [technical evidence](asdg-continuation-evidence-01.json) records baseline revision, hashes, checks and preservation; receipt additions are in the existing methodology ledger.
-The [task list](asdg-evolution-tasks.md) retains the full requested order and review pauses.
+The [task list](../../03-asdg-evolution-tasks.md) retains the full requested order and review pauses.
 Recommend increment 2: extend continuation to Governance, Context and Use Cases, using the validated Purpose pattern to improve domain-specific next steps and advisory handoffs.

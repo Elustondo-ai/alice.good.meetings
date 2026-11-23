@@ -46,4 +46,19 @@ The proposed answer lives in `answers` (an [AnswerArea](answer-area.md)), apart 
 ## Automatic flow (18 November 2026)
 
 With `autoFocus` on (the default), a clear question read after a pause becomes the Focus question at once; there is no Confirm. `adopt` sets Focus, raises the Focus version, keeps Live showing the reading (its id is retired, so Confirm stays disabled while Live matches Focus) and moves the Live cutoff so the same speech cannot be used twice. A question that repeats the Focus wording, or cites only speech already used, changes nothing. A reading with no clear question keeps the last answer and the agent status says `no question heard; keeping the last answer`. A later clear question replaces the earlier reading, and a `clarify` keeps the exchange.
-The answer comes from the same call: `startAnswer` checks its bullets and details with `validateResult` and shows them through `AnswerArea.present`; if they are not valid it falls back to the separate answer request (`begin`). `setContext` gives the package terms and documents to the reader. With `autoFocus` off only the manual Live then Confirm path exists; the tests use it for the older cases.
+The answer comes from the same call: `startAnswer` checks its bullets (and any `details` field the reader added, which makes the answer invalid) with `validateResult` and shows them through `AnswerArea.present`; if they are not valid it falls back to the separate answer request (`begin`). `setContext` gives the package terms and documents to the reader. With `autoFocus` off only the manual Live then Confirm path exists; the tests use it for the older cases.
+
+## Meeting log events and transcript items (SPRINT-004)
+
+The constructor takes `record(type, data)`, which the service points at the [meeting log](meeting-log.md); the default does nothing. The session records `transcript` (final items only, with the audio span `audioStartMs`/`audioEndMs` from the commit the service sent), `live_question`, `live_cleared` (`clear` or `confirm`), `focus_changed` (source `pause`, `confirm-button` or `confirm-space`) and `control` (how it was used: the optional `via` of a question control is `button`, `space` or `escape`, default `button`; replays are not logged). `commitSent()` and `bufferCleared()` are called by the service so each item knows its span. The `transcript` message now carries `items`, a snapshot that replaces the last: the last 30 s, at most 8 items and 1,500 characters, each `{id, text, final, at}` with `at` in ms from the session start (SA-17); the older `text` and `final` stay for the current page. Nothing here reaches the audit.
+
+## Fix after the review of 21 November 2026
+
+`items()` skips an item whose text is empty or white space (a noise-only commit comes back empty) and no longer stops at it, so the snapshot keeps the earlier items of the last 30 seconds. The empty final item is still logged as a `transcript` event (ML-4) and still given to the reader as an observation.
+
+## Fixes of 22 November 2026
+
+- **Control order.** While a Confirm or Clear runs, the events it causes are held; the `control` line is written first, then `live_cleared` and `focus_changed` (ML-12).
+- **Refused controls.** A malformed Confirm or Clear, a retry with a changed payload and a request over the 256 limit are each logged as `control` with result `invalid` (ML-7). An identical retry is still not logged again.
+- **Reader failures.** A reading that fails writes an `error` event with code `reader` and the public message (ML-10); the abort at Stop does not.
+- **Unknown fields.** `startAnswer` refuses the answer part of a reply that carries any field outside reply, phase, question, intent, evidenceIds, covered and bullets, and falls back to the answer request (AD-3). Before, only `details` was refused.

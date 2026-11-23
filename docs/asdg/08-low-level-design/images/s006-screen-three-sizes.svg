@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 430" role="img" aria-labelledby="t d" font-family="sans-serif">
+<title id="t">SPRINT-006 draft screen, three sizes</title>
+<desc id="d">The SPRINT-004 screen with a touch strip, ten preset buttons and a pen writing field added below it, at iPad landscape, iPad portrait and laptop sizes.</desc>
+<rect width="1250" height="430" fill="#f2f2f2"/>
+<text x="20.0" y="22.0" font-size="12" fill="#111" text-anchor="start" font-weight="700">iPad landscape 1366 x 920</text>
+<rect x="20.0" y="30.0" width="520.0" height="350.0" rx="6" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="24.0" y="34.0" width="512.0" height="30.4" rx="3" fill="#2e9e5b" stroke="#2e9e5b" stroke-width="1"/>
+<text x="32.0" y="53.8" font-size="12" fill="#fff" text-anchor="start" font-weight="700">GOOD</text>
+<text x="280.0" y="53.8" font-size="8" fill="#fff" text-anchor="middle">(Alice says)</text>
+<text x="533.0" y="43.0" font-size="9" fill="#a00" text-anchor="end" font-weight="700">A</text>
+<rect x="24.0" y="67.5" width="512.0" height="70.0" rx="3" fill="#f6f6f6" stroke="#999" stroke-width="1"/>
+<text x="533.0" y="76.5" font-size="9" fill="#a00" text-anchor="end" font-weight="700">B</text>
+<rect x="24.0" y="140.4" width="512.0" height="22.8" rx="3" fill="#f6f6f6" stroke="#999" stroke-width="1"/>
+<text x="533.0" y="149.4" font-size="9" fill="#a00" text-anchor="end" font-weight="700">C</text>
+<rect x="24.0" y="166.2" width="245.8" height="105.0" rx="3" fill="#fff" stroke="#555" stroke-width="1"/>
+<rect x="290.2" y="166.2" width="245.8" height="105.0" rx="3" fill="#fff" stroke="#555" stroke-width="1"/>
+<text x="28.0" y="177.2" font-size="8" fill="#555" text-anchor="start">Alice suggests</text>
+<text x="294.2" y="177.2" font-size="8" fill="#555" text-anchor="start">What I hear</text>
+<text x="533.0" y="175.2" font-size="9" fill="#a00" text-anchor="end" font-weight="700">D</text>
+<rect x="24.0" y="274.2" width="82.8" height="24.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="65.4" y="289.4" font-size="7" fill="#222" text-anchor="middle">Confirm</text>
+<rect x="109.8" y="274.2" width="82.8" height="24.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="151.2" y="289.4" font-size="7" fill="#222" text-anchor="middle">Clear</text>
+<rect x="195.7" y="274.2" width="82.8" height="24.5" rx="3" fill="#d9f0e2" stroke="#7a9cd6" stroke-width="1"/>
+<text x="237.1" y="289.4" font-size="7" fill="#222" text-anchor="middle">GOOD</text>
+<rect x="281.5" y="274.2" width="82.8" height="24.5" rx="3" fill="#f6e3c4" stroke="#7a9cd6" stroke-width="1"/>
+<text x="322.9" y="289.4" font-size="7" fill="#222" text-anchor="middle">LAND IT</text>
+<rect x="367.3" y="274.2" width="82.8" height="24.5" rx="3" fill="#f5cfcf" stroke="#7a9cd6" stroke-width="1"/>
+<text x="408.8" y="289.4" font-size="7" fill="#222" text-anchor="middle">STOP</text>
+<rect x="453.2" y="274.2" width="82.8" height="24.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="494.6" y="289.4" font-size="7" fill="#222" text-anchor="middle">Avatar</text>
+<text x="533.0" y="283.2" font-size="9" fill="#a00" text-anchor="end" font-weight="700">E</text>
+<rect x="24.0" y="301.7" width="48.5" height="28.0" rx="3" fill="#fff3d6" stroke="#7a9cd6" stroke-width="1"/>
+<text x="27.0" y="309.7" font-size="6" fill="#666" text-anchor="start">1</text>
+<text x="48.2" y="317.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">About</text>
+<text x="48.2" y="325.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">me</text>
+<rect x="75.5" y="301.7" width="48.5" height="28.0" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="78.5" y="309.7" font-size="6" fill="#666" text-anchor="start">2</text>
+<text x="99.8" y="319.9" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Conflict</text>
+<rect x="127.0" y="301.7" width="48.5" height="28.0" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="130.0" y="309.7" font-size="6" fill="#666" text-anchor="start">3</text>
+<text x="151.2" y="317.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Biggest</text>
+<text x="151.2" y="325.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">failure</text>
+<rect x="178.5" y="301.7" width="48.5" height="28.0" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="181.5" y="309.7" font-size="6" fill="#666" text-anchor="start">4</text>
+<text x="202.8" y="317.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Why</text>
+<text x="202.8" y="325.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">us</text>
+<rect x="230.0" y="301.7" width="48.5" height="28.0" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="233.0" y="309.7" font-size="6" fill="#666" text-anchor="start">5</text>
+<text x="254.2" y="319.9" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Strengths</text>
+<rect x="281.5" y="301.7" width="48.5" height="28.0" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="284.5" y="309.7" font-size="6" fill="#666" text-anchor="start">6</text>
+<text x="305.8" y="319.9" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Weakness</text>
+<rect x="333.0" y="301.7" width="48.5" height="28.0" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="336.0" y="309.7" font-size="6" fill="#666" text-anchor="start">7</text>
+<text x="357.2" y="319.9" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Leadership</text>
+<rect x="384.5" y="301.7" width="48.5" height="28.0" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="387.5" y="309.7" font-size="6" fill="#666" text-anchor="start">8</text>
+<text x="408.8" y="319.9" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Salary</text>
+<rect x="436.0" y="301.7" width="48.5" height="28.0" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="439.0" y="309.7" font-size="6" fill="#666" text-anchor="start">9</text>
+<text x="460.2" y="317.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Why</text>
+<text x="460.2" y="325.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">leave</text>
+<rect x="487.5" y="301.7" width="48.5" height="28.0" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="490.5" y="309.7" font-size="6" fill="#666" text-anchor="start">0</text>
+<text x="511.8" y="319.9" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Questions</text>
+<text x="533.0" y="310.7" font-size="9" fill="#a00" text-anchor="end" font-weight="700">F</text>
+<rect x="24.0" y="332.7" width="430.1" height="52.5" rx="3" fill="#fff" stroke="#c27c00" stroke-width="1.5"/>
+<text x="30.0" y="344.7" font-size="8" fill="#777" text-anchor="start">pen writes here</text>
+<rect x="464.3" y="332.7" width="71.7" height="52.5" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="500.2" y="358.9" font-size="7" fill="#222" text-anchor="middle">Send</text>
+<text x="533.0" y="341.7" font-size="9" fill="#a00" text-anchor="end" font-weight="700">G</text>
+<text x="570.0" y="22.0" font-size="12" fill="#111" text-anchor="start" font-weight="700">iPad portrait 1024 x 1260</text>
+<rect x="570.0" y="30.0" width="270.0" height="360.0" rx="6" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="574.0" y="34.0" width="262.0" height="23.4" rx="3" fill="#2e9e5b" stroke="#2e9e5b" stroke-width="1"/>
+<text x="582.0" y="49.2" font-size="12" fill="#fff" text-anchor="start" font-weight="700">GOOD</text>
+<text x="705.0" y="49.2" font-size="8" fill="#fff" text-anchor="middle">(Alice says)</text>
+<text x="833.0" y="43.0" font-size="9" fill="#a00" text-anchor="end" font-weight="700">A</text>
+<rect x="574.0" y="60.4" width="262.0" height="54.0" rx="3" fill="#f6f6f6" stroke="#999" stroke-width="1"/>
+<text x="833.0" y="69.4" font-size="9" fill="#a00" text-anchor="end" font-weight="700">B</text>
+<rect x="574.0" y="117.4" width="262.0" height="18.0" rx="3" fill="#f6f6f6" stroke="#999" stroke-width="1"/>
+<text x="833.0" y="126.4" font-size="9" fill="#a00" text-anchor="end" font-weight="700">C</text>
+<rect x="574.0" y="138.4" width="125.8" height="97.2" rx="3" fill="#fff" stroke="#555" stroke-width="1"/>
+<rect x="710.2" y="138.4" width="125.8" height="97.2" rx="3" fill="#fff" stroke="#555" stroke-width="1"/>
+<text x="578.0" y="149.4" font-size="8" fill="#555" text-anchor="start">Alice suggests</text>
+<text x="714.2" y="149.4" font-size="8" fill="#555" text-anchor="start">What I hear</text>
+<text x="833.0" y="147.4" font-size="9" fill="#a00" text-anchor="end" font-weight="700">D</text>
+<rect x="574.0" y="238.6" width="41.2" height="18.0" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="594.6" y="249.8" font-size="7" fill="#222" text-anchor="middle">Confirm</text>
+<rect x="618.2" y="238.6" width="41.2" height="18.0" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="638.8" y="249.8" font-size="7" fill="#222" text-anchor="middle">Clear</text>
+<rect x="662.3" y="238.6" width="41.2" height="18.0" rx="3" fill="#d9f0e2" stroke="#7a9cd6" stroke-width="1"/>
+<text x="682.9" y="249.8" font-size="7" fill="#222" text-anchor="middle">GOOD</text>
+<rect x="706.5" y="238.6" width="41.2" height="18.0" rx="3" fill="#f6e3c4" stroke="#7a9cd6" stroke-width="1"/>
+<text x="727.1" y="249.8" font-size="7" fill="#222" text-anchor="middle">LAND IT</text>
+<rect x="750.7" y="238.6" width="41.2" height="18.0" rx="3" fill="#f5cfcf" stroke="#7a9cd6" stroke-width="1"/>
+<text x="771.2" y="249.8" font-size="7" fill="#222" text-anchor="middle">STOP</text>
+<rect x="794.8" y="238.6" width="41.2" height="18.0" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="815.4" y="249.8" font-size="7" fill="#222" text-anchor="middle">Avatar</text>
+<text x="833.0" y="247.6" font-size="9" fill="#a00" text-anchor="end" font-weight="700">E</text>
+<rect x="574.0" y="259.6" width="50.0" height="25.5" rx="3" fill="#fff3d6" stroke="#7a9cd6" stroke-width="1"/>
+<text x="577.0" y="267.6" font-size="6" fill="#666" text-anchor="start">1</text>
+<text x="599.0" y="273.6" font-size="7" fill="#222" text-anchor="middle" font-weight="700">About</text>
+<text x="599.0" y="281.6" font-size="7" fill="#222" text-anchor="middle" font-weight="700">me</text>
+<rect x="627.0" y="259.6" width="50.0" height="25.5" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="630.0" y="267.6" font-size="6" fill="#666" text-anchor="start">2</text>
+<text x="652.0" y="276.2" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Conflict</text>
+<rect x="680.0" y="259.6" width="50.0" height="25.5" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="683.0" y="267.6" font-size="6" fill="#666" text-anchor="start">3</text>
+<text x="705.0" y="273.6" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Biggest</text>
+<text x="705.0" y="281.6" font-size="7" fill="#222" text-anchor="middle" font-weight="700">failure</text>
+<rect x="733.0" y="259.6" width="50.0" height="25.5" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="736.0" y="267.6" font-size="6" fill="#666" text-anchor="start">4</text>
+<text x="758.0" y="273.6" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Why</text>
+<text x="758.0" y="281.6" font-size="7" fill="#222" text-anchor="middle" font-weight="700">us</text>
+<rect x="786.0" y="259.6" width="50.0" height="25.5" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="789.0" y="267.6" font-size="6" fill="#666" text-anchor="start">5</text>
+<text x="811.0" y="276.2" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Strengths</text>
+<rect x="574.0" y="288.1" width="50.0" height="25.5" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="577.0" y="296.1" font-size="6" fill="#666" text-anchor="start">6</text>
+<text x="599.0" y="304.7" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Weakness</text>
+<rect x="627.0" y="288.1" width="50.0" height="25.5" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="630.0" y="296.1" font-size="6" fill="#666" text-anchor="start">7</text>
+<text x="652.0" y="304.7" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Leadership</text>
+<rect x="680.0" y="288.1" width="50.0" height="25.5" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="683.0" y="296.1" font-size="6" fill="#666" text-anchor="start">8</text>
+<text x="705.0" y="304.7" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Salary</text>
+<rect x="733.0" y="288.1" width="50.0" height="25.5" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="736.0" y="296.1" font-size="6" fill="#666" text-anchor="start">9</text>
+<text x="758.0" y="302.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Why</text>
+<text x="758.0" y="310.1" font-size="7" fill="#222" text-anchor="middle" font-weight="700">leave</text>
+<rect x="786.0" y="288.1" width="50.0" height="25.5" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="789.0" y="296.1" font-size="6" fill="#666" text-anchor="start">0</text>
+<text x="811.0" y="304.7" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Questions</text>
+<text x="833.0" y="268.6" font-size="9" fill="#a00" text-anchor="end" font-weight="700">F</text>
+<rect x="574.0" y="316.6" width="220.1" height="64.8" rx="3" fill="#fff" stroke="#c27c00" stroke-width="1.5"/>
+<text x="580.0" y="328.6" font-size="8" fill="#777" text-anchor="start">pen writes here</text>
+<rect x="799.3" y="316.6" width="36.7" height="64.8" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="817.7" y="349.0" font-size="7" fill="#222" text-anchor="middle">Send</text>
+<text x="833.0" y="325.6" font-size="9" fill="#a00" text-anchor="end" font-weight="700">G</text>
+<text x="870.0" y="22.0" font-size="12" fill="#111" text-anchor="start" font-weight="700">Laptop 1440 x 800 (no touch strip)</text>
+<rect x="870.0" y="30.0" width="360.0" height="225.0" rx="6" fill="#fff" stroke="#333" stroke-width="2"/>
+<rect x="874.0" y="34.0" width="352.0" height="22.5" rx="3" fill="#2e9e5b" stroke="#2e9e5b" stroke-width="1"/>
+<text x="882.0" y="48.6" font-size="12" fill="#fff" text-anchor="start" font-weight="700">GOOD</text>
+<text x="1050.0" y="48.6" font-size="8" fill="#fff" text-anchor="middle">(Alice says)</text>
+<text x="1223.0" y="43.0" font-size="9" fill="#a00" text-anchor="end" font-weight="700">A</text>
+<rect x="874.0" y="59.5" width="352.0" height="45.0" rx="3" fill="#f6f6f6" stroke="#999" stroke-width="1"/>
+<text x="1223.0" y="68.5" font-size="9" fill="#a00" text-anchor="end" font-weight="700">B</text>
+<rect x="874.0" y="107.5" width="352.0" height="15.8" rx="3" fill="#f6f6f6" stroke="#999" stroke-width="1"/>
+<text x="1223.0" y="116.5" font-size="9" fill="#a00" text-anchor="end" font-weight="700">C</text>
+<rect x="874.0" y="126.2" width="169.0" height="67.5" rx="3" fill="#fff" stroke="#555" stroke-width="1"/>
+<rect x="1057.0" y="126.2" width="169.0" height="67.5" rx="3" fill="#fff" stroke="#555" stroke-width="1"/>
+<text x="878.0" y="137.2" font-size="8" fill="#555" text-anchor="start">Alice suggests</text>
+<text x="1061.0" y="137.2" font-size="8" fill="#555" text-anchor="start">What I hear</text>
+<text x="1223.0" y="135.2" font-size="9" fill="#a00" text-anchor="end" font-weight="700">D</text>
+<rect x="874.0" y="196.8" width="32.5" height="19.1" rx="3" fill="#fff3d6" stroke="#7a9cd6" stroke-width="1"/>
+<text x="877.0" y="204.8" font-size="6" fill="#666" text-anchor="start">1</text>
+<text x="890.2" y="207.3" font-size="7" fill="#222" text-anchor="middle" font-weight="700">About</text>
+<text x="890.2" y="215.3" font-size="7" fill="#222" text-anchor="middle" font-weight="700">me</text>
+<rect x="909.5" y="196.8" width="32.5" height="19.1" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="912.5" y="204.8" font-size="6" fill="#666" text-anchor="start">2</text>
+<text x="925.8" y="209.2" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Conflict</text>
+<rect x="945.0" y="196.8" width="32.5" height="19.1" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="948.0" y="204.8" font-size="6" fill="#666" text-anchor="start">3</text>
+<text x="961.2" y="207.3" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Biggest</text>
+<text x="961.2" y="215.3" font-size="7" fill="#222" text-anchor="middle" font-weight="700">failure</text>
+<rect x="980.5" y="196.8" width="32.5" height="19.1" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="983.5" y="204.8" font-size="6" fill="#666" text-anchor="start">4</text>
+<text x="996.8" y="207.3" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Why</text>
+<text x="996.8" y="215.3" font-size="7" fill="#222" text-anchor="middle" font-weight="700">us</text>
+<rect x="1016.0" y="196.8" width="32.5" height="19.1" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="1019.0" y="204.8" font-size="6" fill="#666" text-anchor="start">5</text>
+<text x="1032.2" y="209.2" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Strengths</text>
+<rect x="1051.5" y="196.8" width="32.5" height="19.1" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="1054.5" y="204.8" font-size="6" fill="#666" text-anchor="start">6</text>
+<text x="1067.8" y="209.2" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Weakness</text>
+<rect x="1087.0" y="196.8" width="32.5" height="19.1" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="1090.0" y="204.8" font-size="6" fill="#666" text-anchor="start">7</text>
+<text x="1103.2" y="209.2" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Leadership</text>
+<rect x="1122.5" y="196.8" width="32.5" height="19.1" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="1125.5" y="204.8" font-size="6" fill="#666" text-anchor="start">8</text>
+<text x="1138.8" y="209.2" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Salary</text>
+<rect x="1158.0" y="196.8" width="32.5" height="19.1" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="1161.0" y="204.8" font-size="6" fill="#666" text-anchor="start">9</text>
+<text x="1174.2" y="207.3" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Why</text>
+<text x="1174.2" y="215.3" font-size="7" fill="#222" text-anchor="middle" font-weight="700">leave</text>
+<rect x="1193.5" y="196.8" width="32.5" height="19.1" rx="3" fill="#eef3fb" stroke="#7a9cd6" stroke-width="1"/>
+<text x="1196.5" y="204.8" font-size="6" fill="#666" text-anchor="start">0</text>
+<text x="1209.8" y="209.2" font-size="7" fill="#222" text-anchor="middle" font-weight="700">Questions</text>
+<text x="1223.0" y="205.8" font-size="9" fill="#a00" text-anchor="end" font-weight="700">F</text>
+<rect x="874.0" y="218.9" width="295.7" height="38.2" rx="3" fill="#fff" stroke="#c27c00" stroke-width="1.5"/>
+<text x="880.0" y="230.9" font-size="8" fill="#777" text-anchor="start">pen writes here</text>
+<rect x="1176.7" y="218.9" width="49.3" height="38.2" rx="3" fill="#e8f0fe" stroke="#7a9cd6" stroke-width="1"/>
+<text x="1201.4" y="238.0" font-size="7" fill="#222" text-anchor="middle">Send</text>
+<text x="1223.0" y="227.9" font-size="9" fill="#a00" text-anchor="end" font-weight="700">G</text>
+<text x="870.0" y="290.0" font-size="11" fill="#222" text-anchor="start">A bar (existing, sticky)</text>
+<text x="870.0" y="306.0" font-size="11" fill="#222" text-anchor="start">B Question (existing)</text>
+<text x="870.0" y="322.0" font-size="11" fill="#222" text-anchor="start">C candidate (existing)</text>
+<text x="870.0" y="338.0" font-size="11" fill="#222" text-anchor="start">D two columns (existing)</text>
+<text x="870.0" y="354.0" font-size="11" fill="#222" text-anchor="start">E touch strip: touch screens only (new)</text>
+<text x="870.0" y="370.0" font-size="11" fill="#222" text-anchor="start">F presets: label + small number (new)</text>
+<text x="870.0" y="386.0" font-size="11" fill="#222" text-anchor="start">G write field and Send (new)</text>
+<text x="20.0" y="410.0" font-size="10" fill="#555" text-anchor="start">Red letters mark areas; everything above E is unchanged from SPRINT-004. Not to scale; the preview fixes sizes.</text>
+</svg>
