@@ -21,7 +21,7 @@ These are proposed, unchecked tasks for SPRINT-004; they are not execution evide
 ## 4. The screen and the keys (S004-SCREEN, S004-CUE, S004-MEETING)
 
 - [ ] 4.1 Build `index.html` and `app.js` with the five areas, sizes, bold, contrast, scrolling and the six states, per SA-1 to SA-19 and SS-1 to SS-10, with `index.md` and `app.md`. Verify: PC4-01 to PC4-26, PC4-49 and PC4-60 pass at 1280 × 900, 1280 × 500 and 390 × 844.
-- [ ] 4.2 Add the keys, the 10-second hold on the page clock, Remove, Upload and Download buttons, per SC-1 to SC-11, SS-11 and SU-1 to SU-8. Verify: PC4-27 to PC4-48 pass.
+- [ ] 4.2 Add the keys Space and Esc and the Remove, Upload and Download buttons, per SC-1 to SC-11, SS-11 and SU-1 to SU-8, with the cue from the timer only. The keys G, L and S and the 10-second hold on the page clock, built first, were removed on 22 November 2026 by Pablo's decision (SC-2, SC-7, SC-10, SC-11): pressing them changes nothing. Verify: PC4-27 to PC4-48 pass.
 
 ## 5. Checks and companions
 

@@ -4,8 +4,6 @@ const STATES = {
   land: { text: 'LAND IT', bg: '#a35c00' },
   stop: { text: 'STOP', bg: '#b3261e' },
 };
-const CUE_KEYS = { g: 'good', l: 'land', s: 'stop' };
-const CUE_HOLD_MS = 10000;
 
 const LAND_AFTER_S = 25;
 const STOP_AFTER_S = 35;
@@ -352,14 +350,11 @@ function endQuestionSession(reason) {
   }
 }
 
-// SC-2, SS-11: a key holds its cue for 10 seconds on the page's own clock; then the timer's cue returns.
-const cueHold = { name: null, until: 0 };
+// The cue follows the speaking timer alone. No key or button sets it: Pablo removed the G, L and S keys on 22 November 2026.
 let cueShown = null;
 const timerCue = () => (mic.turnS > STOP_AFTER_S ? 'stop' : mic.turnS > LAND_AFTER_S ? 'land' : 'good');
 function renderCue() {
-  const held = cueHold.name && performance.now() < cueHold.until;
-  const name = held ? cueHold.name : timerCue();
-  if (!held) cueHold.name = null;
+  const name = timerCue();
   if (name === cueShown) return;
   cueShown = name;
   const s = STATES[name];
@@ -368,7 +363,6 @@ function renderCue() {
   bandEl.style.setProperty('--cue-fg', '#fff');
   bandEl.setAttribute('aria-label', `Cue: ${s.text}`);
 }
-function holdCue(name) { cueHold.name = name; cueHold.until = performance.now() + CUE_HOLD_MS; renderCue(); }
 setInterval(() => { renderCue(); updateAvatar(); }, 250);
 
 const mic = {
@@ -747,13 +741,13 @@ async function downloadLog() {
 }
 downloadBtn.addEventListener('click', () => { void downloadLog(); downloadBtn.blur(); });
 
-// SC-3, SC-10: Space and Esc act only while a candidate is present; G, L and S in every state; never in a button, link or field, or with a modifier.
+// SC-3, SC-10: Space and Esc act only while a candidate is present and A switches the avatar; never in a button, link or field, or with a modifier.
+// Every other key, G, L and S included, does nothing.
 document.addEventListener('keydown', event => {
   if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey || event.repeat && event.key === ' ') return;
   const target = event.target;
   if (target instanceof Element && target.closest('button, a, input, textarea, select, [contenteditable]')) return;
   const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
-  if (CUE_KEYS[key]) { holdCue(CUE_KEYS[key]); return; }
   if (key === 'a' || key === 'A') { if (avatar.api && !avatar.failed) toggleAvatar(); return; }
   if ((key === ' ' || key === 'Spacebar') && candidatePresent() && !confirmBtn.disabled) { event.preventDefault(); confirmQuestion('space'); }
   else if (key === 'Escape' && candidatePresent() && !clearLiveBtn.disabled) { event.preventDefault(); resetLive('escape'); }

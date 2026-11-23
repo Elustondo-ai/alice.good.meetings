@@ -47,7 +47,7 @@ flowchart LR
 | `service(options)` | A fresh service with a temporary package folder and a temporary `logDir` (the default `poc/logs/` is never used) |
 | `reach(browser, state, options)` / `withState` | A fresh service and page in `idle`, `listening`, `candidate`, `preparing`, `shown`, `failed` or `last-known`; `withState` also reports page errors and, with `PC_PROGRESS`, the visible state of a failed case |
 | `textFacts` (run in the page) | Every visible text with its computed weight, size and effective contrast, used by the bold, contrast and wording cases |
-| `page.clock` | Controls the page clock for the 10-second hold (PC4-46), the pause notice (PC4-18) and the avatar timing (PC4-52) |
+| `page.clock` | Controls the page clock for the speaking timer's cue (PC4-46), the pause notice (PC4-18) and the avatar timing (PC4-52) |
 
 Window sizes are 1280 × 900, 1280 × 500 (short), 390 × 844 and 1280 × 1200. Playwright is a dev dependency of `poc/` (see `package.json`, exact version, installed with scripts off and no browser download); `CHROME_PATH` points at an installed Chrome. A run takes about two minutes.
 
@@ -56,3 +56,5 @@ What it does not show: the real microphone, recognition, OpenAI, the live feel o
 ## Additions after the review of 21 November 2026
 
 The first run of these checks drove Confirm by hand, so the automatic flow was not covered. Added: PC4-20 also runs with automatic Focus and expects the candidate area cleared with Space and Esc sending nothing; PC4-12 sends an empty item and expects the words to stay; PC4-22 refuses the microphone for real and shows a service error that has no wording of its own; PC4-24 expects the words to stay after Stop; PC4-18 expects the pause notice only after 4 seconds and not while the reader works. The UC-04 part expects a reading equal to the Question to show no candidate.
+
+Added on 22 November 2026, after 10's review found the size order (SA-13) unmet for medium questions: PC4-13 now measures the Question-to-bullet ratio for a short, a medium and a long question at each of the three heights, nine measurements, and `PC_PROGRESS=1` prints them. PC4-08 expects SA-8's size by length raised to the SA-13 floor of 1.5 times the bullet size. The same day Pablo removed the G, L and S cue keys: PC4-43 now expects those keys to change nothing, idle and while listening with the cue at LAND IT; PC4-46 and PC4-47 check that the cue follows the speaking timer alone and that Stop returns GOOD; PC4-04, 05, 32, 44 and 48 no longer press a cue key and reach LAND IT or STOP by moving the start of the speaking turn back.

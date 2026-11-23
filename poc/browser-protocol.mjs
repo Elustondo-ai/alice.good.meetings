@@ -173,7 +173,13 @@ async function sprint004Checks(browser) {
       throw error;
     } finally { await closeAll(r); }
   };
-  const cues = { g: ['GOOD', 'rgb(27, 127, 42)'], l: ['LAND IT', 'rgb(163, 92, 0)'], s: ['STOP', 'rgb(179, 38, 30)'] };
+  // The cue follows the speaking timer alone (the G, L and S keys were removed on 22 November 2026). A check reaches LAND IT
+  // (over 25 s) or STOP (over 35 s) by moving the start of the speaking turn back; the synthetic tone keeps the turn open.
+  const CUES = [[0, 'GOOD', 'rgb(27, 127, 42)'], [27, 'LAND IT', 'rgb(163, 92, 0)'], [40, 'STOP', 'rgb(179, 38, 30)']];
+  const speakingFor = async (page, seconds, word) => {
+    await page.evaluate(s => { mic.turnStart = performance.now() - s * 1000; }, seconds);
+    await wait(page, w => document.getElementById('panel').textContent === w, word);
+  };
 
   // ---- areas (03.8.2) ----
   await check('PC4-01', 'the five areas appear in order and none of the removed ones', async () => withState('shown', {}, async ({ page }) => {
@@ -209,20 +215,20 @@ async function sprint004Checks(browser) {
     });
   });
   await check('PC4-04', 'the bar colour follows the cue and its text keeps the contrast', async () => withState('listening', {}, async ({ page }) => {
-    for (const [k, [word, color]] of Object.entries(cues)) {
-      await key(page, k);
+    for (const [seconds, word, color] of CUES) {
+      await speakingFor(page, seconds, word);
       assert.deepEqual([await cueName(page), await cueColor(page)], [word, color]);
       const facts = (await page.evaluate(textFacts)).filter(f => f.id === 'panel');
       assert.ok(facts[0].ratio >= 4.5, `${word} contrast ${facts[0].ratio}`);
     }
   }));
-  await check('PC4-05', 'the 20 px bold name shows when the avatar is absent, the cue word is 16 px bold and the bar has the cue as its accessible name', async () => withState('idle', { page: { reducedMotion: 'reduce' } }, async ({ page }) => {
+  await check('PC4-05', 'the 20 px bold name shows when the avatar is absent, the cue word is 16 px bold and the bar has the cue as its accessible name', async () => withState('listening', { page: { reducedMotion: 'reduce' } }, async ({ page }) => {
     const name = await style(page, '#bar-name', ['fontSize', 'fontWeight']);
     assert.deepEqual([name.fontSize, name.fontWeight], ['20px', '700']);
     const word = await style(page, '#panel', ['fontSize', 'fontWeight']);
     assert.deepEqual([word.fontSize, word.fontWeight], ['16px', '700']);
     assert.equal(await page.locator('#cue-band').getAttribute('aria-label'), 'Cue: GOOD');
-    await key(page, 'l');
+    await speakingFor(page, 27, 'LAND IT');
     assert.equal(await page.locator('#cue-band').getAttribute('aria-label'), 'Cue: LAND IT');
   }));
   await check('PC4-06', 'the monitor line is 15 px regular, sits under the buttons after the cue word and wraps', async () => withState('listening', {}, async ({ page }) => {
@@ -236,15 +242,18 @@ async function sprint004Checks(browser) {
     assert.deepEqual(buttons.map(b => b.text), ['Start listening', 'Stop listening', 'Upload package', 'Download log']);
     assert.ok(buttons.every((b, i) => i === 0 || b.x > buttons[i - 1].x) && buttons.every(b => b.size >= 14 && b.h >= 32), JSON.stringify(buttons));
   }));
-  await check('PC4-08', 'the Question box border, bold text and size class by length, never truncated', async () => {
-    for (const [question, lo, vh, hi] of [[SHORT_Q, 34, 6.2, 64], [MEDIUM_Q, 28, 4.8, 48], [LONG_Q, 24, 3.8, 36]]) {
+  await check('PC4-08', 'the Question box border, bold text and size by length with the SA-13 floor, never truncated', async () => {
+    // SA-8's size by length, raised to SA-13's floor of 1.5 times the bullet size where the floor is larger.
+    const floor = 1.5 * clamp(22, 900 * 0.034, 32);
+    for (const [question, cls, lo, vh, hi] of [[SHORT_Q, '', 34, 6.2, 64], [MEDIUM_Q, 'medium', 28, 4.8, 48], [LONG_Q, 'long', 24, 3.8, 36]]) {
       await withState('listening', {}, async ({ svc, page }) => {
         await ask(page, svc, question);
         const box = await style(page, '#focus', ['borderTopWidth', 'borderTopColor']);
         assert.deepEqual([box.borderTopWidth, box.borderTopColor], ['3px', 'rgb(17, 17, 17)']);
         const t = await style(page, '#focus-question', ['fontSize', 'fontWeight']);
         assert.equal(t.fontWeight, '700');
-        assert.ok(Math.abs(px(t.fontSize) - clamp(lo, vh * 9, hi)) < 0.6, `${question.length} chars: ${t.fontSize}`);
+        assert.equal(await page.locator('#focus-question').evaluate((e, c) => ['medium', 'long'].filter(n => e.classList.contains(n)).join(' ') === c, cls), true, `${question.length} chars: size class`);
+        assert.ok(Math.abs(px(t.fontSize) - Math.max(clamp(lo, vh * 9, hi), floor)) < 0.6, `${question.length} chars: ${t.fontSize}`);
         assert.equal(await textOf(page, '#focus-question'), question);
         assert.equal((await measure(page)).clipped.includes('focus-question'), false);
       });
@@ -290,12 +299,19 @@ async function sprint004Checks(browser) {
     assert.deepEqual(await page.locator('#hear-text p').evaluateAll(list => list.map(p => [p.textContent, p.className])), [['First heard words.', 'old'], ['Second heard words.', 'new']]);
   }));
   await check('PC4-13', 'the size order holds at 500, 900 and 1200 px of window height', async () => {
+    // Measured for a short, a medium and a long question: the Question is at least 1.5 times the bullets, then bullets, speech, candidate.
+    const ratios = [];
     for (const size of [SIZES.short, SIZES.desktop, SIZES.tall]) {
-      await withState('shown', { size, result: SHORT }, async ({ page }) => {
-        const [q, bl, hear, cand] = await Promise.all([['#focus-question'], ['#bullets'], ['#hear-text'], ['#live-question']].map(async ([s]) => px((await style(page, s, ['fontSize'])).fontSize)));
-        assert.ok(q >= 1.5 * bl && bl >= hear && hear >= 22 && 22 >= 22 && cand === 22, `h=${size.height}: ${[q, bl, hear, cand]}`);
-      });
+      for (const question of [SHORT_Q, MEDIUM_Q, LONG_Q]) {
+        await withState('shown', { size, question, result: SHORT }, async ({ page }) => {
+          const [q, bl, hear, cand] = await Promise.all(['#focus-question', '#bullets', '#hear-text', '#live-question'].map(async s => px((await style(page, s, ['fontSize'])).fontSize)));
+          ratios.push(`${size.height}/${question.length}: ${(q / bl).toFixed(3)}`);
+          // 0.001 allows for the browser's rounding of a size that is exactly 1.5 times another.
+          assert.ok(q / bl >= 1.5 - 0.001 && bl >= hear && hear >= cand && cand === 22, `h=${size.height}, ${question.length} chars: ${[q, bl, hear, cand]}`);
+        });
+      }
     }
+    if (process.env.PC_PROGRESS) process.stderr.write(`  PC4-13 question-to-bullet ratios (height/characters): ${ratios.join(', ')}\n`);
   });
   await check('PC4-14', 'computed weight is 700 on the bold set, the name only without the avatar, and below 700 on every other text', async () => withState('shown', { page: { reducedMotion: 'reduce' } }, async ({ page }) => {
     const facts = await page.evaluate(textFacts);
@@ -516,11 +532,12 @@ async function sprint004Checks(browser) {
     } finally { await page.ctx.close(); }
   });
   autoSvc.close();
-  await check('PC4-32', 'the input inventory has Start, Stop, Confirm, Clear, Space, Esc, G, L, S, A, the avatar toggle, Upload, Remove and Download', async () => withState('candidate', {}, async ({ page }) => {
+  await check('PC4-32', 'the input inventory has Start, Stop, Confirm, Clear, Space, Esc, A, the avatar toggle, Upload, Remove and Download, and no cue key', async () => withState('candidate', {}, async ({ page }) => {
     const ids = await page.evaluate(() => ['listen', 'stop-listen', 'confirm-question', 'clear-live', 'upload-package', 'remove-package', 'download-log', 'avatar-toggle'].map(id => Boolean(document.getElementById(id))));
     assert.deepEqual(ids.slice(0, 7), [true, true, true, true, true, true, true]);
     for (const k of ['g', 'l', 's']) { await key(page, k); }
-    assert.equal(await cueName(page), 'STOP');
+    await page.waitForTimeout(300);
+    assert.equal(await cueName(page), 'GOOD', 'G, L and S are not inputs');
     await page.evaluate(() => { const o = []; document.addEventListener('keydown', e => o.push(e.key)); window.__keys = o; });
     await key(page, 'a');
   }));
@@ -611,17 +628,33 @@ async function sprint004Checks(browser) {
     await page.evaluate(() => { const e = new MessageEvent('message', { data: JSON.stringify({ type: 'log', status: 'not saved', sessionId: remote.sessionId }) }); current.socket.dispatchEvent(e); });
     await wait(page, () => document.getElementById('monitor').textContent.includes('log not saved'));
   }));
-  await check('PC4-43', 'the keys G, L and S set the cue and the bar and cue word change at once', async () => withState('idle', {}, async ({ page }) => {
-    for (const [k, [word, color]] of Object.entries(cues)) { await key(page, k); assert.deepEqual([await cueName(page), await cueColor(page)], [word, color]); }
-  }));
-  await check('PC4-44', 'Space, Esc, G, L, S and A do nothing in a button, link or text field or with a modifier key', async () => withState('candidate', {}, async ({ page }) => {
+  await check('PC4-43', 'the keys G, L and S change nothing: the cue, the bar, the question areas and what is sent stay as they were', async () => {
+    const facts = page => page.evaluate(() => { const t = id => document.getElementById(id).textContent, bar = document.getElementById('cue-band');
+      return { word: t('panel'), color: getComputedStyle(bar).backgroundColor, label: bar.getAttribute('aria-label'), question: t('focus-question'), candidate: t('live-question'), bullets: t('bullets') }; });
+    const pressAll = async page => { for (const k of ['g', 'l', 's', 'Shift+G', 'Shift+L', 'Shift+S']) await key(page, k); await page.waitForTimeout(400); };
+    await withState('idle', {}, async ({ page }) => {
+      const before = await facts(page); await pressAll(page);
+      assert.deepEqual(await facts(page), before, 'not listening');
+      assert.equal(before.word, 'GOOD');
+    });
+    await withState('candidate', {}, async ({ page }) => {
+      await speakingFor(page, 27, 'LAND IT');
+      const controls = () => page.sent.filter(f => !f.includes('"type":"rendered"')).length;
+      const before = await facts(page), sent = controls(); await pressAll(page);
+      assert.deepEqual(await facts(page), before, 'listening with a candidate and the cue at LAND IT');
+      assert.equal(controls(), sent, 'nothing was sent to the service');
+    });
+  });
+  await check('PC4-44', 'Space, Esc and A do nothing in a text field, and Space and Esc do nothing with a modifier key', async () => withState('candidate', {}, async ({ page }) => {
+    const controls = () => page.sent.filter(f => f.includes('question.')).length;
     await page.evaluate(() => { const i = document.createElement('input'); i.id = 'probe'; document.body.append(i); });
-    await page.focus('#probe'); for (const k of ['l', 's', ' ', 'Escape']) await key(page, k);
-    assert.equal(await cueName(page), 'GOOD');
-    assert.equal(page.sent.filter(f => f.includes('question.')).length, 0);
+    await page.focus('#probe'); for (const k of [' ', 'Escape', 'a']) await key(page, k);
+    assert.equal(controls(), 0);
     await page.evaluate(() => document.activeElement.blur());
-    await key(page, 'Control+l'); await key(page, 'Meta+s'); await key(page, 'Alt+l');
-    assert.equal(await cueName(page), 'GOOD');
+    for (const k of ['Control+Space', 'Alt+Space', 'Shift+Space', 'Control+Escape', 'Shift+Escape']) await key(page, k);
+    await page.waitForTimeout(200);
+    assert.equal(controls(), 0);
+    assert.equal(await textOf(page, '#live-question'), SHORT_Q, 'the candidate is still there');
   }));
   await check('PC4-45', 'Remove clears an uploaded package, shows the folder package or none, and is disabled while listening', async () => withState('idle', { files: { 'f.md': 'Folder.' } }, async ({ page }) => {
     await wait(page, () => document.getElementById('package-text').textContent !== '');
@@ -631,25 +664,27 @@ async function sprint004Checks(browser) {
     await page.click('#remove-package'); await wait(page, () => document.getElementById('package-notice').textContent === 'Package removed.');
     assert.equal(await textOf(page, '#package-text'), 'No package', 'Remove clears the folder package too until restart');
   }));
-  await check('PC4-46', 'with the page clock controlled, a held cue ignores the timer for 10 seconds, the latest key restarts the hold and then the timer cue returns', async () => withState('listening', { page: { clock: true } }, async ({ page }) => {
-    await page.evaluate(() => { mic.turnStart = performance.now() - 30000; });
-    await key(page, 'g'); await page.clock.runFor(50); assert.equal(await cueName(page), 'GOOD', 'held over a LAND IT timer');
-    await page.clock.runFor(9000); assert.equal(await cueName(page), 'GOOD');
-    await key(page, 'l'); await page.clock.runFor(9000); assert.equal(await cueName(page), 'LAND IT', 'restarted by the later key, still held over the STOP timer');
-    await page.clock.runFor(1500); assert.equal(await cueName(page), 'STOP', 'the timer cue returns');
+  await check('PC4-46', 'with the page clock controlled, the cue follows the speaking timer alone, LAND IT above 25 s and STOP above 35 s, and no key holds or changes it', async () => withState('listening', { page: { clock: true } }, async ({ page }) => {
+    await page.evaluate(() => { mic.turnStart = performance.now() - 20000; });
+    await page.clock.runFor(300); assert.equal(await cueName(page), 'GOOD', '20 s of speaking');
+    await key(page, 's'); await page.clock.runFor(300); assert.equal(await cueName(page), 'GOOD', 'S does not set STOP');
+    await page.clock.runFor(6000); assert.equal(await cueName(page), 'LAND IT', 'over 25 s');
+    await key(page, 'g'); await page.clock.runFor(300); assert.equal(await cueName(page), 'LAND IT', 'G does not set GOOD');
+    await page.clock.runFor(10000); assert.equal(await cueName(page), 'STOP', 'over 35 s');
+    await key(page, 'l'); await page.clock.runFor(300); assert.equal(await cueName(page), 'STOP', 'L does not set LAND IT');
   }));
-  await check('PC4-47', 'a new question, a Focus change, Start or Stop does not end a held cue', async () => withState('listening', {}, async ({ svc, page }) => {
-    await key(page, 'l');
+  await check('PC4-47', 'a new question and a Focus change leave the timer cue as it is, and Stop returns it to GOOD', async () => withState('listening', {}, async ({ svc, page }) => {
+    await speakingFor(page, 27, 'LAND IT');
     await candidate(page, svc, SHORT_Q); assert.equal(await cueName(page), 'LAND IT');
     await page.click('#confirm-question'); await wait(page, () => document.getElementById('focus-question').textContent !== 'No question yet');
     assert.equal(await cueName(page), 'LAND IT');
-    await page.click('#stop-listen'); await page.waitForTimeout(200);
-    assert.equal(await cueName(page), 'LAND IT');
+    await page.click('#stop-listen'); await wait(page, () => document.getElementById('panel').textContent === 'GOOD');
   }));
-  await check('PC4-48', 'while a button has focus G, L, S and Esc do nothing and Space presses the button', async () => withState('candidate', {}, async ({ page }) => {
+  await check('PC4-48', 'while a button has focus Esc and A do nothing and Space presses the button', async () => withState('candidate', {}, async ({ page }) => {
     await page.focus('#clear-live');
-    for (const k of ['g', 'l', 's', 'a']) await key(page, k);
-    assert.equal(await cueName(page), 'GOOD');
+    for (const k of ['Escape', 'a']) await key(page, k);
+    await page.waitForTimeout(200);
+    assert.equal(page.sent.filter(f => f.includes('question.')).length, 0, 'Esc on a focused button sends nothing');
     await key(page, ' ');
     await until(() => page.sent.some(f => f.includes('question.reset')));
     assert.equal(JSON.parse(page.sent.find(f => f.includes('question.reset'))).via, 'button', 'Space pressed the focused Clear button');
@@ -730,7 +765,7 @@ async function sprint004Checks(browser) {
       await wait(page, () => !document.getElementById('avatar'));
       assert.deepEqual([await page.locator('#avatar-toggle').count(), await page.locator('#error-row').isHidden()], [0, true]);
       assert.deepEqual(Object.values(await style(page, '#bar-name', ['fontSize', 'fontWeight'])), ['20px', '700']);
-      await key(page, 'l'); assert.equal(await cueName(page), 'LAND IT');
+      assert.equal(await cueName(page), 'GOOD');
       assert.equal(await page.locator('#listen').isEnabled(), true);
       assert.deepEqual(errors, []);
     } finally { await context.close(); svc.close(); }
@@ -759,7 +794,7 @@ async function sprint004Checks(browser) {
       await page.goto(svc.origin); await listen(page);
       await wait(page, () => window.__wrote !== undefined || !document.getElementById('avatar'));
       assert.deepEqual(await page.evaluate(() => window.__wrote || []), ['blocked', 'blocked']);
-      await key(page, 'l'); assert.equal(await cueName(page), 'LAND IT');
+      await speakingFor(page, 27, 'LAND IT');
       await wait(page, () => document.getElementById('monitor').textContent.includes('heard'));
       await page.click('#stop-listen');
       assert.deepEqual(errors, []);

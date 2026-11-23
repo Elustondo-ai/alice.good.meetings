@@ -4,7 +4,7 @@
 
 ## What this page is for
 
-Alice Good Meetings is the screen a person keeps open on a second monitor while they are in a meeting. A slim bar at the top is the cue: green for GOOD, amber for LAND IT after about 25 seconds of speaking, red for STOP after about 35 seconds. Below it sit the confirmed Question in very large bold type, a smaller candidate question, Alice's suggested bullets and, beside them, the last 30 seconds of what Alice hears. The old screen's Details box and the Good, Land it and Stop buttons are gone; the keys G, L and S set the cue for 10 seconds, Space confirms the candidate and Esc clears it.
+Alice Good Meetings is the screen a person keeps open on a second monitor while they are in a meeting. A slim bar at the top is the cue: green for GOOD, amber for LAND IT after about 25 seconds of speaking, red for STOP after about 35 seconds. Below it sit the confirmed Question in very large bold type, a smaller candidate question, Alice's suggested bullets and, beside them, the last 30 seconds of what Alice hears. The old screen's Details box and the Good, Land it and Stop buttons are gone, and no key sets the cue: it follows the speaking timer alone. Space confirms the candidate and Esc clears it.
 
 This prototype times how long someone talks. It does not identify who is speaking or judge whether an answer is good. See [Purpose](docs/asdg/02-purpose/01-purpose.md). The older screenshots were of the previous layout and are not repeated here; the page check of S4-19 will take new ones.
 
@@ -24,18 +24,18 @@ SPRINT-004 screen (rules SA, SS and SC of [08](docs/asdg/08-low-level-design/03.
 | --- | --- |
 | `#cue-band` | The bar: left `#bar-name` ("Alice Good Meetings", 20 px bold), an empty centre reserved for a later message area, and on the right the buttons `#listen`, `#stop-listen`, `#upload-package`, `#download-log`, then the cue word `#panel` and the monitor line `#monitor`. Its colour is the cue (GOOD `#1b7f2a`, LAND IT `#a35c00`, STOP `#b3261e`, white text) and its `aria-label` carries it. |
 | `#error-row` | One bold row with the cause (no service, no key, key refused, microphone refused, connection lost, session limit); hidden when there is none. |
-| `#focus` | The Question: `#focus-question` in bold, sized by length (`medium` over 90 characters, `long` over 180), with `#focus-status` ("confirmed 10:42:07 · by pause", or "Last known, not live"). |
+| `#focus` | The Question: `#focus-question` in bold, sized by length (`medium` over 90 characters, `long` over 180) and never under 1.5 times the bullet size (SA-13), so medium and long questions show at that floor; with `#focus-status` ("confirmed 10:42:07 · by pause", or "Last known, not live"). |
 | `#live` | The candidate: `#live-question`, its tag `#live-tag`, the note and feedback line, the hint `#confirm-hint` ("Space confirms" or the reason Confirm is off), `#confirm-question` and `#clear-live`. |
 | `#answer` | "Alice suggests": tag, at most three bullets `#bullets` (no details area), message and reason lines, and the foot with `#package-line`, `#remove-package` and `#package-notice`. |
 | `#hear` | "What I hear", live, last 30 s: `#hear-text` shows the service's `items`; the newest is bold, earlier ones are faded. |
-| Cue keys | G, L and S set the cue for 10 seconds; no cue button is on the page. |
+| Cue | Follows the speaking timer alone. No key and no button sets it; the G, L and S keys were removed on 22 November 2026 at Pablo's request. |
 | `#debug`, `#server` | Hidden unless the address ends in `#diagnostics`. |
 
 Bold is only on the cue word, the Question, tags, bullets, the newest words, an enabled Confirm, the error row and the package notice. Content changes in place with no animation. All visible text says "meeting", never "interview".
 
 ## Effects and failure behavior
 
-Changing element IDs requires a matching JavaScript change. The page scrolls in a short window and no area clips its text. The measured sizes (SA-8 to SA-13), the three window sizes and the keyboard and focus behavior still need the page check of S4-19; they were seen only in the built-in browser.
+Changing element IDs requires a matching JavaScript change. The page scrolls in a short window and no area clips its text. The measured sizes (SA-8 to SA-13), the window sizes and the keyboard and focus behavior are covered by the [page check](poc/browser-protocol.md). The bullet size is the variable `--bullet-size`; the Question's floor is computed from it, so changing one keeps the size order.
 
 ## Example
 

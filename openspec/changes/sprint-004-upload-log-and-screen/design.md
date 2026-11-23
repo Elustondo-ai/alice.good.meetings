@@ -21,7 +21,7 @@ See the [proposal](proposal.md) for why. The exact rules, with IDs, are the 91 r
 
 **Log in the project, Git-ignored.** `poc/logs/` with its own `.gitignore`, as Pablo decided for this unsynced copy; `ALICE_LOG_DIR` moves it. Alternative: a folder outside the project; Pablo chose this one.
 
-**The cue stays in the page.** Keys set it in `app.js` with a 10-second hold on the page's standard clock, so the page check controls time with its clock emulation. The service never learns the cue, so the log has no cue events.
+**The cue stays in the page and comes from the timer only.** `app.js` sets it from the speaking timer (LAND IT after 25 seconds, STOP after 35, GOOD when not listening) on the page's standard clock, so the page check controls time with its clock emulation. No key sets it: the keys G, L and S and their 10-second hold, built first, were removed on 22 November 2026 by Pablo's decision (SC-2, SC-11), and pressing them changes nothing. The service never learns the cue, so the log has no cue events.
 
 **The avatar is an optional adapter.** One separate file, `poc/avatar.js` (with `poc/avatar.md`), loaded after the page is ready by a dynamic import, reads a frozen copy of the page state and publishes only `data-avatar-state` and a frame counter on its box; any failure removes the box and the toggle, so the page is as before. TalkingHead, three.js and the model are vendored in `poc/vendor/` with their licences and listed in the service's fixed file list, because a CDN script would run in the page that holds the microphone (05 01.11). Alternative: a CDN; rejected for that reason. The exception to SA-16 is Pablo's and is confined to the box.
 

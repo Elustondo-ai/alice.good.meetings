@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "prepared_at": "2026-11-22T23:09:03Z",
+  "sprint_sha256": "1c372fce78c388a0094881138d3f72df7c4c98df93facb099f14186046f5b24c",
+  "sprint_snapshot": {
+    "status": "active",
+    "sprint_id": "SPRINT-004",
+    "objective": "Let Pablo load his package from the page, see what is loaded, work from the new screen, and keep a complete local log of each meeting that he can download.",
+    "scope": [
+      "index.html",
+      "index.md",
+      "app.js",
+      "app.md",
+      "poc/",
+      "openspec/changes/"
+    ],
+    "acceptance_criteria": [
+      "S004-STATUS: before Start and after a reload the page shows the package file count, characters and source, or 'no package'; GET /package returns the same without package text.",
+      "S004-UPLOAD: several .md or .txt files replace the package within 05's limits and stay in memory; skipped files are named; a small Remove sits in the package line; over-limit, unreadable or refused uploads keep the old package; none during listening; the package survives Stop.",
+      "S004-LOG: a time-stamped log of each listening session is written as it goes, one file per session, to Git-ignored poc/logs/; complete up to 5 MB then one log_full event; no package file content copied into it; Alice deletes nothing.",
+      "S004-DOWNLOAD: Download log saves the current or last session's file; local callers only.",
+      "S004-SCREEN: the screen follows 08's design: slim bar with name, cue word, Start, Stop, Upload package, Download log; one very big question; smaller candidate line; Alice suggests (three bullets) left and What I hear (newest words per item) right; no hide control for the monitor line.",
+      "S004-CUE: keys G, L and S set the cue with nothing on screen and it holds 10 seconds before the timer resumes; Esc clears; every existing input stays.",
+      "S004-MEETING: pages, statements and screen say 'meeting' with interviews as one case; Purpose lists 'review a past meeting' as an outcome.",
+      "S004-CARRY: an answer follows a pause, Confirm is optional, package text goes to the post-pause request and only terms go to transcription.",
+      "S004-STATEMENTS: root AGENTS.md and poc/README.md carry the new statements; 04's statement check passes; tests, page check and bash poc/alice-run.sh are re-run and recorded.",
+      "S004-CARRY: one recorded live session with an uploaded package and a downloaded log; then 10 reviews that exact revision.",
+      "S004-AVATAR: avatar at the left end of the bar as a logo with 'Alice Good Meetings' caption, on by default, six states through one adapter, centre of the bar empty; library, three.js and mpfb.glb vendored and pinned in poc/vendor/ and added to the asset list in poc/server.mjs; visible toggle and key A; reduced motion and any failure turn it off silently; no speech, AI call, log or state write, or off-origin request."
+    ]
+  },
+  "review": {
+    "assessed_at": "2026-11-22T23:09:03Z",
+    "revision": "9326d67",
+    "working_tree": "Uncommitted at close: AGENTS.md, app.js, app.md, index.html, index.md, poc/README.md, poc/browser-protocol.mjs/.md, SPRINT-004 openspec change (4 files), stage 04 pages (03.10, 03.11, 03.13 new, README), stage 08 pages (03.5.1, 03.6.1, 03.7, 03.7.1-3, 03.7.7, 03.8.2-3, SPRINT-006 drafts 03.9.x and 03.10.x), stage 03 UC-10 drafts, stage 07 SPRINT-005/006 drafts, .asdg/lifecycle.json, .claude/launch.json. Changes attributed to ASDG-09, ASDG-08, ASDG-04, ASDG-07, ASDG-03 and the coordinator from their session reports.",
+    "criteria": [
+      {
+        "criterion": "S004-STATUS: before Start and after a reload the page shows the package file count, characters and source, or 'no package'; GET /package returns the same without package text.",
+        "result": "PASS",
+        "evidence": [
+          "docs/asdg/10-document-review-and-release/03.6-sprint-004-review-record.md row 1 (Met)",
+          "poc/browser-protocol.mjs: SPRINT-004 page check 60/60 on the working tree, run by ASDG-09 on 22 Nov 2026"
+        ],
+        "gap": null
+      },
+      {
+        "criterion": "S004-UPLOAD: several .md or .txt files replace the package within 05's limits and stay in memory; skipped files are named; a small Remove sits in the package line; over-limit, unreadable or refused uploads keep the old package; none during listening; the package survives Stop.",
+        "result": "PASS",
+        "evidence": [
+          "docs/asdg/10-document-review-and-release/03.6-sprint-004-review-record.md row 2 (Met)",
+          "poc/browser-protocol.mjs: SPRINT-004 page check 60/60 on the working tree, run by ASDG-09 on 22 Nov 2026",
+          "Pablo reported upload working in his 22 Nov session"
+        ],
+        "gap": null
+      },
+      {
+        "criterion": "S004-LOG: a time-stamped log of each listening session is written as it goes, one file per session, to Git-ignored poc/logs/; complete up to 5 MB then one log_full event; no package file content copied into it; Alice deletes nothing.",
+        "result": "PASS",
+        "evidence": [
+          "docs/asdg/10-document-review-and-release/03.6-sprint-004-review-record.md row 3",
+          "08 rule change MS-3 folder mode left as found, accepted in stage 08 on 22 Nov 2026",
+          "poc/logs/meeting-20261122T223324Z-b2e12b1f.jsonl: one file, ms never decreases (structure only, text not read)"
+        ],
+        "gap": "Log folder is 0755 by recorded 08 rule change; files are 0600."
+      },
+      {
+        "criterion": "S004-DOWNLOAD: Download log saves the current or last session's file; local callers only.",
+        "result": "PASS",
+        "evidence": [
+          "docs/asdg/10-document-review-and-release/03.6-sprint-004-review-record.md row 4 (Met)",
+          "poc/browser-protocol.mjs: SPRINT-004 page check 60/60 on the working tree, run by ASDG-09 on 22 Nov 2026",
+          "Downloaded logs from 21 Nov 2026 in ~/Downloads (file names only)"
+        ],
+        "gap": "No download on the final revision."
+      },
+      {
+        "criterion": "S004-SCREEN: the screen follows 08's design: slim bar with name, cue word, Start, Stop, Upload package, Download log; one very big question; smaller candidate line; Alice suggests (three bullets) left and What I hear (newest words per item) right; no hide control for the monitor line.",
+        "result": "PASS",
+        "evidence": [
+          "ASDG-09: SA-13 ratio now >= 1.5 for short, medium and long questions at 500/900/1200 px; PC4-13 measures nine ratios",
+          "poc/browser-protocol.mjs: SPRINT-004 page check 60/60 on the working tree, run by ASDG-09 on 22 Nov 2026",
+          "08 amended SA-8 and PC4-08 to match (22 Nov 2026)"
+        ],
+        "gap": "Not re-reviewed by 10 after the fix; not tried in Safari."
+      },
+      {
+        "criterion": "S004-CUE: keys G, L and S set the cue with nothing on screen and it holds 10 seconds before the timer resumes; Esc clears; every existing input stays.",
+        "result": "FAIL",
+        "evidence": [
+          "Pablo, 22 Nov 2026: \"These buttons should be eliminated. There is no point for me to tell myself good landing or stop\", then \"remove [them] for now\"",
+          "ASDG-09 removed G, L, S and the 10-second hold; PC4-43/46 check the keys do nothing; 08 amended SC-2, SC-7, SC-10, SC-11 and openspec change updated (validate --strict passes)"
+        ],
+        "gap": "Criterion as written (keys G, L and S set the cue) is intentionally not met: withdrawn by Pablo's decision. Esc and every other input stay; cue follows the timer only."
+      },
+      {
+        "criterion": "S004-MEETING: pages, statements and screen say 'meeting' with interviews as one case; Purpose lists 'review a past meeting' as an outcome.",
+        "result": "PASS",
+        "evidence": [
+          "docs/asdg/10-document-review-and-release/03.6-sprint-004-review-record.md row 7 (Partly met: root statements missing)",
+          "Root AGENTS.md updated on Pablo's yes, 22 Nov 2026",
+          "docs/asdg/04-benchmarks-and-eval-strategy/03.13-sprint-004-statement-check-result.md (PASS)"
+        ],
+        "gap": "Not re-reviewed by 10."
+      },
+      {
+        "criterion": "S004-CARRY: an answer follows a pause, Confirm is optional, package text goes to the post-pause request and only terms go to transcription.",
+        "result": "PASS",
+        "evidence": [
+          "docs/asdg/10-document-review-and-release/03.6-sprint-004-review-record.md row 8 (Met)"
+        ],
+        "gap": null
+      },
+      {
+        "criterion": "S004-STATEMENTS: root AGENTS.md and poc/README.md carry the new statements; 04's statement check passes; tests, page check and bash poc/alice-run.sh are re-run and recorded.",
+        "result": "UNVERIFIED",
+        "evidence": [
+          "Root AGENTS.md: three statement lines added on Pablo's yes, 22 Nov 2026",
+          "docs/asdg/04-benchmarks-and-eval-strategy/03.13-sprint-004-statement-check-result.md: PASS on AGENTS.md 0c0b722c and poc/README.md f10...",
+          "ASDG-09 re-runs on the final working tree: node --test 145/145, page check 60/60, alice-run.sh start/reuse/Ctrl+C pass"
+        ],
+        "gap": "poc/README.md changed after 04's PASS (one line: no key sets the cue); 04 recheck not run. Test re-runs are recorded only in ASDG-09's session report, not in a project file."
+      },
+      {
+        "criterion": "S004-CARRY: one recorded live session with an uploaded package and a downloaded log; then 10 reviews that exact revision.",
+        "result": "FAIL",
+        "evidence": [
+          "poc/logs/meeting-20261122T223324Z-b2e12b1f.jsonl: revision 9326d67 plus uncommitted SA-13 changes, package source folder (3 files), 11 turns, answer shown, session stopped; structure only"
+        ],
+        "gap": "Package at Start came from the folder, not an upload; no log downloaded (Pablo: \"I forgot to download the logs\"); session ran before the G/L/S removal; 10 has not reviewed the final revision."
+      },
+      {
+        "criterion": "S004-AVATAR: avatar at the left end of the bar as a logo with 'Alice Good Meetings' caption, on by default, six states through one adapter, centre of the bar empty; library, three.js and mpfb.glb vendored and pinned in poc/vendor/ and added to the asset list in poc/server.mjs; visible toggle and key A; reduced motion and any failure turn it off silently; no speech, AI call, log or state write, or off-origin request.",
+        "result": "PASS",
+        "evidence": [
+          "docs/asdg/10-document-review-and-release/03.6-sprint-004-review-record.md row 11 (Met, one item open)",
+          "Avatar canvas renders on the final code at http://127.0.0.1:3000, no console errors (22 Nov 2026)"
+        ],
+        "gap": "Vendored files not compared with upstream releases (needs download permission)."
+      }
+    ],
+    "limitations": [
+      "Reviewed by the coordinator (ASDG-COORDINATOR), not independently; 10's last review was on 57aebd0.",
+      "Meeting-log text and package text were not read; only structure and file names.",
+      "No run in Safari or on the iPad.",
+      "Stage 08 acceptance is stale after SA-8, RQ-5 and cue-rule amendments."
+    ]
+  },
+  "outcome": "unfinished",
+  "carry_forward": [
+    "S004-CARRY live evidence: one session on the committed final revision with an uploaded package and a downloaded log, then 10 reviews that exact revision.",
+    "04 re-runs the statement check on the final poc/README.md; record the test, page-check and alice-run re-runs in a project file.",
+    "Pablo re-accepts stage 08 (stale after SA-8, RQ-5 and cue-rule changes).",
+    "SPRINT-006 touch strip (08 03.9.3, 03.9, 03.9.5) still has GOOD, LAND IT and STOP buttons that point to the removed manual cue.",
+    "08 ML-13 amendment for hosted mode (ALICE_LOG=off) and the Cloud Run deployment (Pablo's gcloud steps), planned with SPRINT-005.",
+    "Vendored avatar files compared with upstream releases (needs Pablo's permission to download).",
+    "Commit the uncommitted SPRINT-004 work (Pablo's decision).",
+    "B-22: upload a folder or .zip as the package (07 backlog draft)."
+  ],
+  "human_decision": "Pablo, 22 Nov 2026: \"Sorry, I forgot to download the logs, but I have seen the logs download working before. So let's close it for now. I think it's going to work fine.\"",
+  "closure_observations": [
+    {
+      "observed_at": "2026-11-22T23:09:13Z",
+      "command": "python3 asdg/scripts/cli.py sprint stop",
+      "exit_code": 0,
+      "observed_state": {
+        "status": "inactive",
+        "sprint_id": null,
+        "objective": null,
+        "scope": [],
+        "acceptance_criteria": []
+      },
+      "result": "closed"
+    }
+  ]
+}

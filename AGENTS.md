@@ -44,6 +44,7 @@ Steps with commands are in the [README](README.md) (Initialize, Run); detail is 
 - Check the install with `node --test poc/poc.test.mjs`; these tests do not call OpenAI.
 - Start from the repository root with `bash poc/start.sh`, then open http://127.0.0.1:3000; open the page through the service, not as a file.
 - Press **Start Listening**, allow the microphone and wait for **listening on server** before speaking; press **Stop listening** to end, and Ctrl+C in the terminal to stop the server.
+- **Upload package** chooses the preparation files for the session and **Remove** clears them; **Download log** saves the meeting log to the Downloads folder, outside the project.
 - [`poc/start.sh`](poc/start.md) uses `ALICE_GOOD_MEETINGS_NODE` if set, then `node` on PATH, then the bundled Codex Node runtime; `PORT` changes the port from 3000.
 - If startup or tests fail with `Cannot find package`, the package links in `poc/node_modules` are broken; repeat the install in `poc/` on that machine.
 - Google Drive sync breaks `poc/node_modules` and makes Node need minutes to load packages. Run from a working copy outside Drive, for example `~/dev/alice.good.meetings` holding `index.html`, `app.js` and `poc/` without `node_modules`, install there, and re-copy changed source files when needed.
@@ -54,6 +55,8 @@ Steps with commands are in the [README](README.md) (Initialize, Run); detail is 
 - Preserve the user's attention: brief, glanceable visual cues; spoken coaching previously interrupted his thinking ([Purpose](docs/asdg/02-purpose/01-purpose.md)).
 - The OpenAI key lives only in `poc/.env.local`, which Git ignores; do not print it or commit it ([.env.example](poc/.env.example)).
 - While the POC listens, microphone audio and selected transcript text go to OpenAI ([POC README](poc/README.md)).
+- The preparation package (Pablo's résumé and other documents) is added on the page and held only in the service's memory, or is read from `poc/context/interview/`, which Git ignores; its text and file names go to OpenAI after each pause, and its text is never written to the log. Do not print it, commit it, or copy it into documents, logs or tests.
+- Each listening session writes a time-stamped meeting log to `poc/logs/`, which Git ignores (`ALICE_LOG_DIR` moves it), in files only Pablo's account can read; it holds transcript text, including what other people said, and the answers shown, which can quote the package. It is never sent to OpenAI, stays on this Mac until Pablo deletes it, and must not be committed, zipped, shared or copied with the project.
 - [`poc/browser-smoke.mjs`](poc/browser-smoke.md) makes billable OpenAI requests and uses synthetic speech, never a private benchmark recording.
 - No analysis component may access future audio, private transcripts, evaluator labels or reference answers ([evaluation strategy](docs/asdg/04-benchmarks-and-eval-strategy/01-evaluation-strategy.md)).
 - The benchmark transcript and timestamps in `eval-data/` are evaluation references, not live-agent inputs, and have been kept unchanged ([analysis guide](eval-data/interview-analysis-2026-10-25/README.md)).

@@ -6,7 +6,7 @@
   <title>Alice Good Meetings</title>
   <script type="importmap">{"imports":{"three":"/poc/vendor/three/build/three.module.js","three/addons/":"/poc/vendor/three/examples/jsm/"}}</script>
   <style>
-    :root { --cue-bg: #1b7f2a; --cue-fg: #fff; --ink: #111; --paper: #f4f4f4; --line: #555; --accent: #a35c00; --focus: #ffd54a; }
+    :root { --cue-bg: #1b7f2a; --cue-fg: #fff; --ink: #111; --paper: #f4f4f4; --line: #555; --accent: #a35c00; --focus: #ffd54a; --bullet-size: clamp(22px, 3.4vh, 32px); }
     *, *::before, *::after { box-sizing: border-box; animation: none !important; transition: none !important; }
     html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: sans-serif; }
     [hidden] { display: none !important; }
@@ -45,9 +45,10 @@
     .label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
     .tag { text-transform: none; letter-spacing: 0; font-weight: 700; color: #7a4600; }
     .question { border: 3px solid #111; }
-    .question-text { margin: 4px 0 0; font-weight: 700; white-space: pre-wrap; overflow-wrap: anywhere; font-size: clamp(34px, 6.2vh, 64px); line-height: 1.15; }
-    .question-text.medium { font-size: clamp(28px, 4.8vh, 48px); }
-    .question-text.long { font-size: clamp(24px, 3.8vh, 36px); }
+    /* SA-8 gives a size by length; SA-13's floor of 1.5 times the bullet size wins where it is larger, which today is every medium and long question. */
+    .question-text { --by-length: clamp(34px, 6.2vh, 64px); margin: 4px 0 0; font-weight: 700; white-space: pre-wrap; overflow-wrap: anywhere; font-size: max(var(--by-length), calc(1.5 * var(--bullet-size))); line-height: 1.15; }
+    .question-text.medium { --by-length: clamp(28px, 4.8vh, 48px); }
+    .question-text.long { --by-length: clamp(24px, 3.8vh, 36px); }
     .question-text.idle { font-weight: 400; opacity: 0.7; }
     .question-text.historical { opacity: 0.7; }
     .candidate { border-left: 4px solid var(--accent); display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; }
@@ -62,7 +63,7 @@
     .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; min-height: 300px; }
     @media (max-width: 799px) { .columns { grid-template-columns: 1fr; } }
     .column { display: flex; flex-direction: column; }
-    .bullets { margin: 6px 0 0; padding-left: 1.1em; font-size: clamp(22px, 3.4vh, 32px); line-height: 1.22; font-weight: 700; }
+    .bullets { margin: 6px 0 0; padding-left: 1.1em; font-size: var(--bullet-size); line-height: 1.22; font-weight: 700; }
     .bullets li { margin-bottom: 6px; overflow-wrap: anywhere; }
     .answer-message { margin: 6px 0 0; font-size: 22px; overflow-wrap: anywhere; }
     .answer-reason { margin: 6px 0 0; font-size: 16px; }

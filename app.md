@@ -20,7 +20,7 @@ Owns audio sampling, detected-turn timing, the cue (timer or held key), display 
 
 | Callable or interface | Contract |
 | --- | --- |
-| `renderCue()` / `holdCue(name)` | The bar shows a held cue for `CUE_HOLD_MS` (10,000) on `performance.now()`, else the timer's cue (LAND IT above 25 s, STOP above 35 s, GOOD when not listening). A later key restarts the hold; nothing else ends it. A 250 ms timer lets the hold expire when idle. |
+| `renderCue()` | The bar shows the speaking timer's cue: LAND IT above 25 s, STOP above 35 s, GOOD otherwise and when not listening. No key or button sets the cue; the G, L and S keys and their 10-second hold were removed on 22 November 2026 at Pablo's request. A 250 ms timer redraws it when idle. |
 | `renderDebug(durationS: number): void` | Renders mic state, elapsed seconds and RMS level. |
 | `tick(analyser: AnalyserNode, buf: Float32Array): void` | Reads samples, updates mic state, ends turns after silence, and renders feedback. |
 | `startListening(): Promise<void>` | Requests audio access, resumes AudioContext, schedules tick every 100 ms and starts server connection setup. |
@@ -40,7 +40,7 @@ Owns audio sampling, detected-turn timing, the cue (timer or held key), display 
 
 ## Effects and failure behavior
 
-The DOM must exist before this script runs. RMS must exceed 0.02; short pauses count toward elapsed time. LAND IT begins above 25 s, STOP above 35 s; silence ends a turn above 2500 ms. A key holds its cue for 10 seconds; after that the timer's cue returns.
+The DOM must exist before this script runs. RMS must exceed 0.02; short pauses count toward elapsed time. LAND IT begins above 25 s, STOP above 35 s; silence ends a turn above 2500 ms. No key changes the cue.
 The local analyser runs independently of OpenAI requests. Audio transmission starts only after server readiness; a two-second send backlog stops transmission with visible degraded status.
 Stop preserves the displayed reply, labelled stopped. A new Start resets remote results and counters. Capture generation checks prevent an older permission request or socket from updating a newer session.
 Focus changes only from a `confirmed` result. Confirm needs `ready`, no unsettled request, and Live text that differs from Focus; a hint names the missing condition. While pending, the submitted wording stays on screen and a note marks newer Live wording. After 5000 ms without a result the page says the confirmation is uncertain and offers an identical retry; it never assumes approval.
@@ -71,7 +71,7 @@ A `log` message with status `not saved` adds "log not saved" to the monitor line
 
 | Callable or interface | Contract |
 | --- | --- |
-| keydown handler | G, L and S hold the cue in every state; Space confirms and Esc clears only while a candidate is present. Nothing acts in a button, link or text field or with Ctrl, Meta, Alt or Shift; Space then presses the focused button. Start, Stop, Confirm, Clear, Upload and Download release their focus after a press so Space is free. |
+| keydown handler | Space confirms and Esc clears only while a candidate is present, and A switches the avatar. Every other key, G, L and S included, does nothing. Nothing acts in a button, link or text field or with Ctrl, Meta, Alt or Shift; Space then presses the focused button. Start, Stop, Confirm, Clear, Upload and Download release their focus after a press so Space is free. |
 | `confirmQuestion(via)` / `resetLive(via)` | Send `question.confirm` and `question.reset` with the field `via` (`button`, `space` or `escape`), used only by the meeting log. The request is otherwise identical. |
 | `renderQuestion()` | The Question (size by length; tag "confirmed HH:MM:SS · by pause, by Confirm or by Space", or "Last known, not live"), the candidate with its hint ("Space confirms" or the reason), and the answer, hear and cue areas. "No new question heard." shows after 4 seconds without voice, with no candidate and the reader not working. |
 | `errorCause()` | The one cause shown in the bold error row, from the health result, the microphone, or the status text. |
