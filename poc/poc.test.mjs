@@ -23,9 +23,10 @@ import { createGenerator, answerModel, buildRequest, modelInput, validateResult,
 // The existing cases never read a real preparation package: every server gets an empty temporary folder.
 const noPackage = await mkdtemp(join(tmpdir(), 'alice-nopkg-'));
 const noLogs = await mkdtemp(join(tmpdir(), 'alice-nologs-'));
-const createPocServer = (options = {}) => createRealServer({ packageDir: noPackage, logDir: noLogs, revision: 'test', log: () => {}, requirePause: false, ...options });
+// The fixtures never answer a commit, so Stop would wait the full 3 seconds for the last words (RT5-6); the cases use a short wait.
+const createPocServer = (options = {}) => createRealServer({ packageDir: noPackage, logDir: noLogs, revision: 'test', log: () => {}, requirePause: false, drainMs: 40, ...options });
 
-const proposal = (changes = {}) => ({ reply: 'I heard the question.', phase: 'QUESTION', question: 'Tell me about yourself.', intent: 'new-question', evidenceIds: ['one'], ...changes });
+const proposal = (changes = {}) => ({ phase: 'QUESTION', question: 'Tell me about yourself.', intent: 'new-question', evidenceIds: ['one'], ...changes });
 const clarify = (question, evidenceIds) => proposal({ intent: 'clarify', question, evidenceIds });
 const makeSession = (options = {}) => new InterviewSession({ reason: async () => proposal(), emit: () => {}, delayMs: 0, autoFocus: false, ...options });
 const packet = sequence => {
@@ -57,21 +58,23 @@ test('model output fills Live but never writes Focus; without Focus, ANSWER hold
   assert.deepEqual([s.state.focus, s.state.focusVersion], [null, 0]);
   assert.deepEqual([s.state.live.text, s.state.live.version, s.state.live.kind], ['Tell me about yourself.', 1, 'new']);
   s.observe('two', 'I have worked as a developer. Why this company?', true);
-  const answer = proposal({ phase: 'ANSWER', question: 'Why this company?', evidenceIds: ['two'], reply: 'New reply.' });
+  const answer = proposal({ phase: 'ANSWER', question: 'Why this company?', evidenceIds: ['two'] });
   assert.equal(s.accept(answer, s.snapshot()), true, 'a result in ANSWER is no longer rejected whole');
-  assert.deepEqual([s.state.phase, s.state.live.text, s.state.reply, s.state.focus], ['QUESTION', 'Why this company?', 'New reply.', null]);
+  assert.deepEqual([s.state.phase, s.state.live.text, s.state.focus], ['QUESTION', 'Why this company?', null]);
   s.stop();
 });
 
 test('controller rejects stale revisions, unknown evidence and corrected text', () => {
   const s = makeSession();
   s.observe('one', 'Tell me about the moon.', false);
-  const partial = s.snapshot();
+  assert.deepEqual(s.snapshot().observations, [], 'words still being transcribed are not in the snapshot (RT5-1)');
   s.observe('one', 'Tell me about your work.', true);
-  assert.equal(s.accept(proposal(), partial), false);
   const current = s.snapshot();
+  // A snapshot holds final words only, so one with other words is built by hand; the guard still refuses it.
+  assert.equal(s.accept(proposal(), { ...current, observations: [{ ...current.observations[0], text: 'Tell me about the moon.' }] }), false);
+  assert.equal(s.lastRejection.reason, 'corrected-evidence');
   assert.equal(s.accept(proposal({ evidenceIds: ['future'] }), current), false);
-  assert.equal(s.accept({ reply: 'bad schema' }, current), false);
+  assert.equal(s.accept({ note: 'bad schema' }, current), false);
   assert.equal(s.accept(proposal(), current), true);
   assert.equal(s.accept(proposal(), current), false);
   s.stop();
@@ -248,7 +251,7 @@ test('audit records final transcripts and question controls without any text', (
 
 test('a rejected agent result is audited with a text-free reason', async () => {
   const audits = [];
-  const replies = [proposal({ reply: 'Secret reply', question: 'Secret question?', evidenceIds: ['future'] }), { reply: 'Secret' }];
+  const replies = [proposal({ question: 'Secret question?', evidenceIds: ['future'] }), { note: 'Secret' }];
   const s = makeSession({ audit: (event, data) => audits.push({ event, ...data }), reason: async () => replies.shift() });
   s.observe('one', 'Secret final wording.', true);
   s.schedule(); await until(() => audits.filter(a => a.event === 'agent_finished').length === 1);
@@ -256,9 +259,9 @@ test('a rejected agent result is audited with a text-free reason', async () => {
   const finished = audits.filter(a => a.event === 'agent_finished');
   assert.deepEqual(finished.map(a => [a.accepted, a.rejection]), [
     [false, { reason: 'unknown-evidence' }], [false, { reason: 'schema', fields: ['phase', 'question', 'intent', 'evidenceIds'] }]]);
-  s.observe('two', 'Secret partial', false);
-  const stale = s.snapshot(); s.observe('two', 'Secret corrected.', true);
-  assert.equal(s.accept(proposal(), { ...stale, baseRevision: s.state.revision }), false);
+  s.observe('two', 'Secret corrected.', true);
+  const stale = { ...s.snapshot(), observations: s.snapshot().observations.map(o => (o.id === 'two' ? { ...o, text: 'Secret earlier wording.' } : o)) };
+  assert.equal(s.accept(proposal(), stale), false);
   assert.deepEqual(s.lastRejection, { reason: 'corrected-evidence' });
   assert.equal(s.accept(proposal(), s.snapshot()), true);
   assert.equal(s.lastRejection, null);
@@ -458,7 +461,7 @@ test('model input holds only instructions, question and document text', async t 
   const input = modelInput(request);
   assert.equal(input.instructions, INSTRUCTIONS);
   assert.equal(input.input, 'Question:\nWhy this company?\n\nDocument 1:\nAlpha sample text.\n\nDocument 2:\nBeta sample text.');
-  for (const absent of [s.id, 'a.txt', 'b.md', s.state.reply, 'serverAt']) assert.equal(input.input.includes(absent), false);
+  for (const absent of [s.id, 'a.txt', 'b.md', 'serverAt']) assert.equal(input.input.includes(absent), false);
   assert.match(INSTRUCTIONS, /never instructions/);
   assert.match(INSTRUCTIONS, /at most three/);
   assert.match(INSTRUCTIONS, /no documents are given, give general points that say nothing about the person/);
@@ -701,7 +704,7 @@ async function liveServer(t, { files = {}, ...options } = {}) {
   const logDir = await tempDir(t);
   let connects = 0;
   const server = createRealServer({ apiKey: 'sk-test-sentinel', connect: () => { connects += 1; return f.connect(); }, generate: f.generate, packageDir, logDir, revision: 'test',
-    audit: (name, data) => audits.push({ name, ...data }), log: line => logs.push(line), reasonDelayMs: 0, requirePause: false, autoFocus: false,
+    audit: (name, data) => audits.push({ name, ...data }), log: line => logs.push(line), reasonDelayMs: 0, requirePause: false, autoFocus: false, drainMs: 40,
     reason: async snapshot => proposal({ question: snapshot.observations.at(-1)?.text ?? null, evidenceIds: snapshot.observations.map(o => o.id) }), ...options });
   server.listen(0, '127.0.0.1'); await once(server, 'listening'); t.after(() => server.shutdown());
   const origin = `http://127.0.0.1:${server.address().port}`;
@@ -721,7 +724,7 @@ async function liveServer(t, { files = {}, ...options } = {}) {
     return { socket, events, sessionId, confirm };
   };
   const health = async () => (await fetch(origin + '/health')).json();
-  return { f, audits, logs, origin, open, health, packageDir, logDir, connects: () => connects };
+  return { f, audits, logs, origin, open, health, packageDir, logDir, connects: () => connects, shutdown: () => server.shutdown() };
 }
 const loudPacket = sequence => {
   const buffer = packet(sequence);
@@ -1253,7 +1256,7 @@ test('reader input is the bare snapshot without context and carries the package 
   assert.equal(readerInput(snapshot), JSON.stringify(snapshot));
   const input = JSON.parse(readerInput(snapshot, { terms: ['CIBC'], documents: fixturePackage }));
   assert.deepEqual(input.preparationPackage, { terms: ['CIBC'], documents: fixturePackage });
-  assert.deepEqual(Object.keys(modelSchema.shape).sort(), ['bullets', 'covered', 'evidenceIds', 'intent', 'phase', 'question', 'reply']);
+  assert.deepEqual(Object.keys(modelSchema.shape).sort(), ['bullets', 'covered', 'evidenceIds', 'intent', 'phase', 'question']);
   assert.equal(proposalSchema.safeParse(proposal()).success, true, 'a reading without an answer stays valid');
 });
 
@@ -1912,7 +1915,7 @@ test('version 1 holds no cue events and no transcription confidence', async t =>
   await stopped(ctx, session);
   const lines = await readLines(ctx);
   const allowed = new Set(['log_started', 'package', 'speech_start', 'pause', 'transcript', 'live_question', 'live_cleared', 'focus_changed', 'control', 'answer_shown', 'answer_failed', 'answer_dropped', 'error', 'session_stopped', 'log_full',
-    'model_call', 'question_timing']);
+    'model_call', 'question_timing', 'speech_lost']);
   assert.ok(lines.every(l => allowed.has(l.type)), JSON.stringify(typesOf(lines)));
   assert.ok(!typesOf(lines).some(type => /cue/.test(type)));
   assert.ok(!JSON.stringify(lines).match(/confidence|logprob/));
@@ -2254,21 +2257,19 @@ function measured(t, options = {}) {
   return { s, lines, clock, readings, of, hear, read };
 }
 
-test('ST5-5 ST5-7 a reading thrown away for changed words and the one kept: two model_call lines and one question_timing', async t => {
-  const { s, lines, clock, readings, of, read } = measured(t);
+test('ST5-5 ST5-7 a reading refused and the one kept in the same pause: two model_call lines and one question_timing', async t => {
+  const { s, lines, clock, readings, of, hear, read } = measured(t);
   s.answers.setPackage(packageOf(fixturePackage));
-  clock.t = 1000; s.voiced();
-  clock.t = 1900; s.observe('a', 'Tell me about the moon', false);
-  await until(() => readings.length === 1);
-  clock.t = 2600; s.observe('a', 'Tell me about your work at Aurora Bank.', true);
-  await read(4000, oneCall({ question: 'Tell me about the moon', evidenceIds: ['a'] }), USAGE);
+  await hear(1000, 'a', 'Tell me about your work', 1900);
+  clock.t = 2600; s.observe('b', 'at Aurora Bank.', true);
+  await read(4000, oneCall({ question: 'Tell me about your work', evidenceIds: ['not-heard'] }), USAGE);
   await until(() => readings.length === 1);
   assert.deepEqual(of('question_timing'), [], 'the turn is not over while more of the same pause waits to be read');
-  await read(7000, oneCall({ question: 'Tell me about your work at Aurora Bank.', evidenceIds: ['a'] }));
+  await read(7000, oneCall({ question: 'Tell me about your work at Aurora Bank.', evidenceIds: ['a', 'b'] }));
   const calls = of('model_call');
   assert.deepEqual(calls.map(c => Object.keys(c).sort()), [CALL_FIELDS, CALL_FIELDS]);
   assert.deepEqual(calls, [
-    { ...READER, callId: 1, startMs: 1900, durationMs: 2100, outcome: 'rejected', reason: 'corrected-evidence', ...USAGE },
+    { ...READER, callId: 1, startMs: 1900, durationMs: 2100, outcome: 'rejected', reason: 'unknown-evidence', ...USAGE },
     { ...READER, callId: 2, startMs: 4000, durationMs: 3000, outcome: 'question', reason: null, ...NO_TOKENS }]);
   const timing = of('question_timing');
   assert.deepEqual(timing.map(q => Object.keys(q).sort()), [TIMING_FIELDS]);
@@ -2375,7 +2376,7 @@ test('ST5-5 the Agents SDK passes the usage of a Responses reply to the meter: i
   const runnerFor = (text, usage) => new Runner({ tracingDisabled: true, modelProvider: { getModel: async name => new OpenAIResponsesModel(
     { baseURL: 'http://stub.invalid', responses: { create: async body => { sent.push(body); return reply(text, usage); } } }, name) } });
   const usage = { input_tokens: 5000, input_tokens_details: { cached_tokens: 4096 }, output_tokens: 120, output_tokens_details: { reasoning_tokens: 64 }, total_tokens: 5120 };
-  const reading = { reply: 'ok', phase: 'QUESTION', question: null, intent: 'none', evidenceIds: [], covered: false, bullets: [] };
+  const reading = { phase: 'QUESTION', question: null, intent: 'none', evidenceIds: [], covered: false, bullets: [] };
   const metered = [];
   const reason = createReasoner('stub-reader', { runner: runnerFor(JSON.stringify(reading), usage) });
   assert.deepEqual(await reason({ observations: [] }, undefined, {}, counts => metered.push(counts)), reading);
@@ -2425,4 +2426,240 @@ test('ST5-11 a line of an unknown type or with an unknown field does not stop th
   await log.close();
   const read = (await store.read()).text.trim().split('\n').map(line => JSON.parse(line));
   assert.deepEqual(read.map(l => [l.type, l.version ?? l.fieldOfALaterVersion ?? l.anything.nested.length]), [['log_started', 1], ['event_of_a_later_version', 2], ['transcript', 7]]);
+});
+
+// ---- SPRINT-005, step S5-08 (RT5-3): the package comes first in the reader's input. ST5-4. ----
+// Kept apart from the steps after it, so this step can be reverted alone if the measurement shows no gain.
+import { packagePart } from './agent.mjs';
+
+test('ST5-4 two reader inputs of one session share the same package part byte for byte, and the snapshot comes after it', async t => {
+  const inputs = [];
+  const files = { 'b-notes.md': 'Pat led the Harbor Platform work.', 'a-brief.md': 'Aurora Bank hired Pat for the CIBC project.' };
+  const ctx = await liveServer(t, { files, reason: async (snapshot, signal, context) => { inputs.push(readerInput(snapshot, context)); return proposal({ question: snapshot.observations.at(-1)?.text ?? null, evidenceIds: snapshot.observations.map(o => o.id) }); } });
+  const session = await ctx.open();
+  ctx.f.say('Tell me about the CIBC project.');
+  await until(() => inputs.length === 2);
+  ctx.f.say('And who led the Harbor Platform work?');
+  await until(() => inputs.length === 3);
+  const part = JSON.stringify(packagePart({ terms: JSON.parse(inputs[0]).preparationPackage.terms, documents: Object.entries(files).map(([name, text]) => ({ name, text })) }));
+  const head = `{"preparationPackage":${part},`;
+  for (const input of inputs) assert.ok(input.startsWith(head), 'every input starts with the same package bytes');
+  assert.deepEqual(JSON.parse(part).documents.map(d => d.name), ['a-brief.md', 'b-notes.md'], 'documents in name order');
+  assert.ok(head.length > 100 && new Set(inputs.map(input => input.slice(head.length))).size === 3, 'and only what follows differs');
+  for (const input of inputs) assert.deepEqual(Object.keys(JSON.parse(input)), ['preparationPackage', 'sessionId', 'baseRevision', 'event', 'audioCutoffSamples', 'state', 'observations']);
+  assert.equal(JSON.parse(inputs[2]).sessionId, session.sessionId);
+  // An upload of the same files in another order gives the same bytes, and the content is what it was before.
+  const other = { terms: ['CIBC'], documents: [{ name: 'b.md', text: 'Bee.', sha256: 'x' }, { name: 'a.md', text: 'Ay.' }] };
+  assert.equal(JSON.stringify(packagePart(other)), '{"terms":["CIBC"],"documents":[{"name":"a.md","text":"Ay."},{"name":"b.md","text":"Bee."}]}');
+  assert.deepEqual(other.documents.map(d => d.name), ['b.md', 'a.md'], 'the caller\'s list is not reordered');
+  assert.equal(readerInput({ sessionId: 's' }), '{"sessionId":"s"}', 'with no package the input is the bare snapshot');
+});
+
+test('ST5-4 the request sent through the Agents SDK begins with the instructions and then the package (stub client, no network)', async () => {
+  const sent = [];
+  const text = JSON.stringify({ phase: 'QUESTION', question: null, intent: 'none', evidenceIds: [], covered: false, bullets: [] });
+  const runner = new Runner({ tracingDisabled: true, modelProvider: { getModel: async name => new OpenAIResponsesModel({ baseURL: 'http://stub.invalid', responses: { create: async body => {
+    sent.push(body); return { id: 'resp_stub', object: 'response', created_at: 0, status: 'completed', model: 'stub', output: [{ id: 'msg_stub', type: 'message', role: 'assistant', status: 'completed', content: [{ type: 'output_text', text, annotations: [] }] }] };
+  } } }, name) } });
+  const reason = createReasoner('stub-reader', { runner });
+  const context = { terms: ['CIBC'], documents: fixturePackage };
+  await reason({ sessionId: 's', baseRevision: 0, observations: [] }, undefined, context);
+  await reason({ sessionId: 's', baseRevision: 4, observations: [{ id: 'o1', text: 'Tell me about CIBC.', final: true }] }, undefined, context);
+  const head = `{"preparationPackage":${JSON.stringify(packagePart(context))},`;
+  for (const body of sent) {
+    assert.equal(body.instructions, READER_INSTRUCTIONS);
+    assert.deepEqual([body.input.length, body.input[0].role], [1, 'user']);
+    assert.ok(body.input[0].content.startsWith(head));
+  }
+  assert.notEqual(sent[0].input[0].content, sent[1].input[0].content);
+});
+
+// ---- SPRINT-005, step S5-06 (RT5-1): the reader starts on final words only. ST5-1 and ST5-2. ----
+test('ST5-1 partial words start no reading; the final transcript starts exactly one', async t => {
+  const snapshots = [];
+  const ctx = await liveServer(t, { reason: async snapshot => { snapshots.push(snapshot); return proposal({ question: snapshot.observations.at(-1)?.text ?? null, evidenceIds: snapshot.observations.map(o => o.id) }); } });
+  const session = await ctx.open();
+  await until(() => snapshots.length === 1);
+  const up = event => ctx.f.upstream().emit('message', Buffer.from(JSON.stringify(event)));
+  up({ type: 'input_audio_buffer.committed', item_id: 'q1' });
+  for (const delta of ['Tell me about ', 'the project you ', 'are most proud of']) up({ type: 'conversation.item.input_audio_transcription.delta', item_id: 'q1', delta });
+  await until(() => session.events.filter(e => e.type === 'transcript').length === 3);
+  await new Promise(resolve => setTimeout(resolve, 80));
+  assert.equal(snapshots.length, 1, 'no reading while the words are partial');
+  const shown = session.events.filter(e => e.type === 'transcript').at(-1);
+  assert.deepEqual([shown.final, shown.text, shown.items.map(i => [i.text, i.final])], [false, 'Tell me about the project you are most proud of', [['Tell me about the project you are most proud of', false]]], 'the page still gets the partial words (SA-17)');
+  up({ type: 'conversation.item.input_audio_transcription.completed', item_id: 'q1', transcript: 'Tell me about the project you are most proud of.' });
+  await until(() => snapshots.length === 2);
+  await new Promise(resolve => setTimeout(resolve, 80));
+  assert.equal(snapshots.length, 2, 'exactly one reading after the final transcript');
+  assert.deepEqual(snapshots[1].observations, [{ id: 'q1', text: 'Tell me about the project you are most proud of.', final: true }]);
+  up({ type: 'input_audio_buffer.committed', item_id: 'q2' });
+  up({ type: 'conversation.item.input_audio_transcription.completed', item_id: 'q2', transcript: 'Yes.' });
+  await new Promise(resolve => setTimeout(resolve, 80));
+  assert.equal(snapshots.length, 2, 'a final item under 8 characters starts none');
+});
+
+test('ST5-2 the snapshot for the reader holds final items only, and the corrected-evidence guard stays', async t => {
+  const { s, readings, of, read } = measured(t);
+  s.observe('a', 'A first final sentence.', true);
+  s.observe('b', 'Words still being', false);
+  assert.deepEqual(s.snapshot().observations.map(o => [o.id, o.final]), [['a', true]]);
+  assert.deepEqual(s.recent().map(o => o.id), ['a', 'b'], 'the page text still has both');
+  for (let i = 0; i < 7; i += 1) s.observe(`f${i}`, `Final sentence number ${i}.`, true);
+  assert.deepEqual(s.snapshot().observations.map(o => o.id), ['f1', 'f2', 'f3', 'f4', 'f5', 'f6'], 'the last six final items');
+  assert.equal(s.snapshot().event, 'audio');
+  assert.equal(makeSession().snapshot().event, 'connected');
+  // The guard: a snapshot whose words differ from the final ones is refused, in accept() and in the call's log line.
+  const current = s.snapshot();
+  assert.equal(s.accept(proposal({ evidenceIds: ['f6'] }), { ...current, observations: current.observations.map(o => ({ ...o, text: `${o.text} changed` })) }), false);
+  assert.equal(s.lastRejection.reason, 'corrected-evidence');
+  await until(() => readings.length === 1);
+  s.observations.set('f6', { id: 'f6', text: 'Other words, set by this test.', final: true });
+  await read(500, proposal({ evidenceIds: ['not-heard'] }));
+  assert.deepEqual([of('model_call')[0].outcome, of('model_call')[0].reason, s.lastRejection.reason], ['rejected', 'corrected-evidence', 'unknown-evidence']);
+});
+
+// ---- SPRINT-005, step S5-07 (RT5-2): the model is not asked for a reply. ST5-3. ----
+test('ST5-3 no reply in the schema, the instructions, the state or the page messages; the Question and bullets are shown as before', async () => {
+  assert.equal('reply' in modelSchema.shape, false);
+  assert.equal(proposalSchema.safeParse(oneCall()).success, true, 'a reading without a reply is valid');
+  assert.doesNotMatch(READER_INSTRUCTIONS, /reply|event connected|agent is ready/i);
+  const f = createFixtures(), events = [];
+  const s = new InterviewSession({ reason: async () => proposal(), emit: e => events.push(e), delayMs: 0, generate: f.generate });
+  s.answers.setPackage(packageOf(fixturePackage));
+  s.observe('o1', 'Tell me about CIBC.', true);
+  assert.equal(s.accept(oneCall({ question: 'Tell me about CIBC.', evidenceIds: ['o1'] }), s.snapshot()), true);
+  const answer = events.filter(e => e.type === 'answer').at(-1);
+  assert.deepEqual([answer.focus, answer.focusVersion, answer.proposed.status, answer.proposed.bullets], ['Tell me about CIBC.', 1, 'shown', ['Led the Harbor Platform work.', 'Worked with the CIBC team.']]);
+  assert.deepEqual(['reply' in answer, 'reply' in s.state, 'reply' in s.snapshot().state], [false, false, false]);
+  assert.equal(f.calls.length, 0, 'still one call for the reading and the answer');
+  // A reading that still carries a reply has a field the contract does not name: its reading is kept and its answer falls back (AD-3).
+  s.observe('o2', 'And the Harbor Platform work?', true);
+  assert.equal(s.accept(oneCall({ reply: 'Not asked for.', question: 'And the Harbor Platform work?', evidenceIds: ['o2'] }), s.snapshot()), true);
+  assert.deepEqual([s.state.focus, s.answers.view().status], ['And the Harbor Platform work?', 'preparing']);
+  await until(() => f.calls.length === 1);
+  s.stop();
+});
+
+// ---- SPRINT-005, step S5-09 (RT5-6): Stop loses no speech. ST5-8 and ST5-9. ----
+import { DRAIN_MS } from './server.mjs';
+const commits = ctx => ctx.f.upstream().sent.filter(e => e.type === 'input_audio_buffer.commit').length;
+const ended = ctx => ctx.audits.some(a => a.name === 'session_stopped');
+
+test('ST5-8 Stop with buffered speech sends a final commit and logs its transcript before session_stopped, with no reading, Focus or answer from it', async t => {
+  const snapshots = [];
+  const ctx = await liveServer(t, { autoFocus: true, drainMs: 2000,
+    reason: async snapshot => { snapshots.push(snapshot); return oneCall({ question: snapshot.observations.at(-1)?.text ?? null, evidenceIds: snapshot.observations.map(o => o.id) }); } });
+  const session = await ctx.open();
+  await until(() => snapshots.length === 1);
+  await sendPackets(session, true, 0, 6);
+  assert.equal(commits(ctx), 0, 'he is still speaking: nothing is committed yet');
+  const at = Date.now();
+  session.socket.send(JSON.stringify({ type: 'stop' }));
+  await until(() => commits(ctx) === 1);
+  await new Promise(resolve => setTimeout(resolve, 120));
+  assert.deepEqual([session.socket.readyState, ended(ctx)], [WebSocket.OPEN, false], 'the service waits for the last words');
+  // While it waits, more audio is not taken and a control changes nothing.
+  session.socket.send(loudPacket(6));
+  control(session, { type: 'question.reset', requestId: 'late' });
+  await until(() => session.events.some(e => e.requestId === 'late'));
+  assert.equal(session.events.find(e => e.requestId === 'late').status, 'unavailable');
+  ctx.f.say('And my last words were about the launch date?');
+  await until(() => ended(ctx));
+  assert.ok(Date.now() - at < 1500, 'it closes when the words arrive, not after the full wait');
+  await until(() => session.socket.readyState === WebSocket.CLOSED);
+  const lines = await readLines(ctx), types = typesOf(lines);
+  assert.deepEqual(lines.filter(l => l.type === 'transcript').map(l => [l.text, l.audioStartMs, l.audioEndMs]), [['And my last words were about the launch date?', 0, 600]]);
+  assert.ok(types.indexOf('transcript') < types.indexOf('session_stopped') && types.at(-1) === 'session_stopped');
+  assert.deepEqual([lines.at(-1).reason, lines.at(-1).seconds], ['user', 0.6]);
+  for (const absent of ['speech_lost', 'focus_changed', 'live_question', 'answer_shown', 'question_timing']) assert.equal(types.includes(absent), false, absent);
+  assert.deepEqual([snapshots.length, lines.filter(l => l.type === 'model_call').length, ctx.f.calls.length], [1, 1, 0], 'no reading and no answer request from the last words');
+  const shown = session.events.filter(e => e.type === 'transcript').at(-1);
+  assert.deepEqual([shown.final, shown.items.at(-1).text], [true, 'And my last words were about the launch date?'], 'the page is sent the last words');
+  assert.equal(session.events.some(e => e.focus), false);
+});
+
+test('ST5-8 the session limit waits for the last words in the same way', async t => {
+  const ctx = await liveServer(t, { drainMs: 2000, sessionLimitMs: 250 });
+  const session = await ctx.open();
+  await sendPackets(session, true, 0, 4);
+  await until(() => commits(ctx) === 1, 3000);
+  assert.equal(session.events.filter(e => e.type === 'status').at(-1).status, 'POC session limit reached (30 minutes); stop and restart');
+  assert.equal(ended(ctx), false);
+  ctx.f.say('The last thing said before the limit.');
+  await until(() => ended(ctx));
+  const lines = await readLines(ctx);
+  assert.deepEqual(lines.filter(l => ['error', 'transcript', 'session_stopped'].includes(l.type)).map(l => [l.type, l.code ?? l.reason ?? l.text]),
+    [['error', 'limit'], ['transcript', 'The last thing said before the limit.'], ['session_stopped', 'limit']]);
+});
+
+test('ST5-9 when the last words do not arrive in time, speech_lost with its audio is logged and the session ends', async t => {
+  assert.equal(DRAIN_MS, 3000, 'the service waits 3 seconds');
+  const ctx = await liveServer(t, { drainMs: 200 });
+  const session = await ctx.open();
+  await sendPackets(session, true, 0, 6);
+  const at = Date.now();
+  session.socket.send(JSON.stringify({ type: 'stop' }));
+  await until(() => ended(ctx));
+  assert.ok(Date.now() - at >= 180, 'after the wait, not before');
+  await until(() => session.socket.readyState === WebSocket.CLOSED);
+  let lines = await readLines(ctx);
+  assert.deepEqual(lines.slice(-2).map(l => [l.type, l.audioMs ?? l.reason]), [['speech_lost', 600], ['session_stopped', 'user']]);
+  assert.deepEqual(Object.keys(lines.at(-2)).sort(), ['audioMs', 'ms', 't', 'type']);
+  assert.equal(session.events.some(e => /lost|captured/i.test(JSON.stringify(e))), false, 'the page is told nothing (Pablo: log only)');
+  // A disconnect and an error cannot wait: what was spoken and not transcribed is logged as lost at once.
+  for (const [reason, end] of [['disconnect', s => s.socket.close()], ['error', () => ctx.f.upstream().emit('message', Buffer.from(JSON.stringify({ type: 'error', error: { code: 'x' } })))]]) {
+    ctx.audits.length = 0;
+    const next = await ctx.open();
+    await sendPackets(next, true, 0, 3);
+    end(next);
+    await until(() => ended(ctx));
+    lines = await readLines(ctx);
+    assert.deepEqual(lines.slice(-2).map(l => [l.type, l.audioMs ?? l.reason]), [['speech_lost', 300], ['session_stopped', reason]], reason);
+  }
+  // Nothing spoken, nothing lost.
+  ctx.audits.length = 0;
+  const quiet = await ctx.open();
+  await sendPackets(quiet, false, 0, 5);
+  await stopped(ctx, quiet);
+  assert.equal(typesOf(await readLines(ctx)).includes('speech_lost'), false);
+});
+
+test('ST5-8 ST5-9 the session counts what is still awaited, and a page that leaves during the wait frees its place', async t => {
+  const s = makeSession();
+  assert.deepEqual(s.awaited(), { items: 0, audioMs: 0 });
+  for (let i = 0; i < 5; i += 1) s.audio(packet(i));
+  s.commitSent();
+  assert.deepEqual(s.awaited(), { items: 1, audioMs: 500 }, 'a commit the transcription service has not answered');
+  s.committed('one'); s.observe('one', 'Half a sent', false);
+  assert.deepEqual(s.awaited(), { items: 1, audioMs: 500 }, 'an item still being transcribed');
+  s.drain();
+  assert.deepEqual([s.attending, s.active, s.accept(proposal(), s.snapshot()), s.lastRejection.reason], [false, true, false, 'stopped']);
+  s.observe('one', 'Half a sentence, now whole.', true);
+  assert.deepEqual([s.awaited(), s.pending, s.state.revision], [{ items: 0, audioMs: 0 }, false, 0], 'the final words are taken and start nothing');
+  s.stop();
+  const ctx = await liveServer(t, { drainMs: 600 });
+  const first = await ctx.open();
+  await sendPackets(first, true, 0, 3);
+  first.socket.send(JSON.stringify({ type: 'stop' }));
+  first.socket.close();
+  await until(async () => true);
+  await new Promise(resolve => setTimeout(resolve, 80));
+  assert.deepEqual([ended(ctx), (await ctx.health()).sessions], [false, 0], 'still waiting, but no longer counted as listening');
+  const second = await ctx.open();
+  assert.ok(second.sessionId && second.sessionId !== first.sessionId, 'a new session can start at once');
+  await until(() => named(ctx.audits, 'session_stopped').length === 1);
+  // Shutting the service down does not wait: the session ends at once and what was not transcribed is logged as lost.
+  const long = await liveServer(t, { drainMs: 60000 });
+  const third = await long.open();
+  await sendPackets(third, true, 0, 3);
+  third.socket.send(JSON.stringify({ type: 'stop' }));
+  await until(() => commits(long) === 1);
+  long.shutdown();
+  await until(() => ended(long));
+  const name = (await readdir(long.logDir)).find(n => n.endsWith('.jsonl'));
+  await until(async () => true);
+  await new Promise(resolve => setTimeout(resolve, 50));
+  const last = (await readFileAsync(join(long.logDir, name), 'utf8')).trim().split('\n').map(line => JSON.parse(line)).slice(-2);
+  assert.deepEqual(last.map(l => [l.type, l.audioMs ?? l.reason]), [['speech_lost', 300], ['session_stopped', 'user']]);
 });

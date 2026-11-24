@@ -10,8 +10,8 @@ Node.js 22+ is required. The launcher can also find the installed Codex Node run
 From the repository root, run `bash poc/start.sh`, then open [the page](http://127.0.0.1:3000).
 For a fresh checkout, install dependencies inside `poc/` with `pnpm install --ignore-scripts` and configure an ignored `poc/.env.local`; use [.env.example](../.env.example) for variable names.
 Press **Start Listening**, grant microphone access and wait for **listening on server** before speaking.
-Watch local level and duration, then the server's received-audio count, transcript and input-dependent reply.
-Press **Stop listening** to release capture; use Ctrl+C in the server terminal to stop the service. After a connection error, restart listening explicitly.
+Watch local level and duration, then the server's received-audio count, transcript, Question and answer.
+Press **Stop listening** to release capture (the page then waits up to 4 seconds for the last words); use Ctrl+C in the server terminal to stop the service. After a connection error, restart listening explicitly.
 
 | Variable | Current default / purpose |
 | --- | --- |

@@ -18,11 +18,11 @@ HTTP Host and WebSocket Origin must match localhost or 127.0.0.1 and the listeni
 
 The upstream connection uses `session.update` for 24 kHz PCM transcription. Start sending browser audio after the `ready` event; audio spoken during connection setup is not transmitted.
 Server RMS above 0.012 marks speech. A turn commits only after 800 ms of silence following speech (tune with `ALICE_PAUSE_MS`, 300 to 5000 in steps of 100); continuous speech is never cut (a 120-second backstop protects the upstream buffer limit). The agent is asked for guidance only while Pablo is pausing (speech heard, then the pause): a transcript that arrives mid-speech waits for the next pause, and the `requirePause` option (default on) exists so tests can turn the gate off. Pure silence buffers clear every five seconds.
-Agent reasoning can start from partial transcription. Audio intake continues while that request runs.
+Agent reasoning starts from a final transcript only, never from partial words (RT5-1, 22 November 2026). Audio intake continues while that request runs.
 Audio send backlog above two seconds closes the connection with a degraded status. Sessions have a 30-minute POC limit and must be explicitly restarted after failures.
 At session start, before `ready`, the server loads the package, audits `package_loaded` and logs one status line: names, sizes and digests for the folder package, counts only for an uploaded one, never text. A refused key (an `error` event or a 401 handshake) ends the session with `OpenAI authentication failed`. Voiced packets and the page's `rendered` report (with `answerFocusVersion` and `answerStatus`) feed the answer timing events. With `ALICE_PRINT_REQUEST=1` the assembled model input is printed to standard error only, after a private-text warning at startup and before each request.
 Text controls `question.reset` and `question.confirm` go to [the session](session.md), which replies with `question.result`; a malformed question control returns `invalid` and leaves the session open. Other unknown controls still close it. See [the protocol guide](docs/04-server-and-protocol.md) for payloads.
-`stop`, socket closure, SIGINT and SIGTERM release sessions and pending work. Public errors omit provider request details and credentials.
+Socket closure, SIGINT and SIGTERM release sessions and pending work at once; `stop` first waits for the last words (see the last section). Public errors omit provider request details and credentials.
 Audit stdout contains event names, times, counts and revisions, without audio, transcripts or API keys. `transcript_final` records an item ID when its transcript completes; `question_control` records each question request's ID, type, status, whether it was a replay, and versions, never wording. `browser_rendered` is a client acknowledgement, not a human acceptance decision; when it names a Live id and version it records display, never consent.
 See [live transcription guidance](https://developers.openai.com/api/docs/guides/realtime-transcription).
 
@@ -68,6 +68,7 @@ Four settings, read as options of `createPocServer` and from the environment. Wi
 
 The access code travels in a header and not in the socket's address, because a hosting platform records request addresses in its own logs. The files and commands for Google Cloud Run are in [deploy](deploy/README.md).
 
-## Measurement clock (SPRINT-005)
+## SPRINT-005: the measurement clock and Stop
 
-The service gives each session `elapsed`, the clock of its meeting log, so the times inside `model_call` and `question_timing` match the `ms` of the lines around them. Nothing else changed here; see [the measurement lines](docs/09-measurement-events.md).
+The service gives each session `elapsed`, the clock of its meeting log, so the times inside `model_call` and `question_timing` match the `ms` of the lines around them; see [the measurement lines](docs/09-measurement-events.md).
+On a `stop` message, and at the 30-minute limit, the service ends the reading and the answer, commits buffered speech and waits up to `DRAIN_MS` (3 seconds; option `drainMs`) for the final transcript of every committed item. Each is logged and sent to the page, then `session_stopped` is written and the socket closes; audio and controls that arrive meanwhile change nothing. Speech whose words do not arrive, or that a disconnect or an error cuts off, is logged as `speech_lost` with `audioMs`, and the page is told nothing. A page that leaves during the wait frees its place at once, and `shutdown()` ends every session without waiting (RT5-6).

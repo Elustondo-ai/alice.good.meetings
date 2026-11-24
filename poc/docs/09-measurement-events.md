@@ -28,7 +28,7 @@ flowchart LR
 
 ## `question_timing`: one line per turn
 
-A turn is the speech that ended at the last voiced packet before a reader call. Calls made in the same pause belong to one turn, so a reading thrown away and the reading kept give two `model_call` lines and one `question_timing`. The line is written when the turn ends, and `outcome` says how:
+A turn is the speech that ended at the last voiced packet before a reader call. Calls made in the same pause belong to one turn, so a reading refused and the reading kept give two `model_call` lines and one `question_timing`. Since the reader starts on final words only (RT5-1), a turn usually has one call. The line is written when the turn ends, and `outcome` says how:
 
 - `bullets`: the answer was published.
 - `no-question`, `rejected` or `failed` with no Focus: the turn's last reading gave no Question.
@@ -45,5 +45,6 @@ With no Focus, `focusVersion`, `questionMs` and both differences are `null`. Whe
 - **A reader call made before any speech** has a `model_call` and no turn. It happens only with the pause rule off, as in the tests; in real use the first reading waits for the first pause.
 - **Token counts were checked against a stubbed reply, not a live one.** The first real log will show whether the provider reports cached tokens for these calls.
 - **A hosted service with `ALICE_LOG=off`** has no log, so neither line is written.
+- **`speech_lost`** is a third line of the same sprint: `audioMs` of speech whose words never arrived, written before `session_stopped` (RT5-6). A Stop that got its last words writes none.
 
 Code: [session](../session.md) (`openTurn`, `endTurn`), [answer area](../answer-area.md) (`endCall`) and [agent](../agent.md) (`usageOf`, `callEvent`). Tests: ST5-5, ST5-6, ST5-7 and ST5-11 in the [test guide](../poc.test.md). Back to the [guide index](README.md).

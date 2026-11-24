@@ -19,6 +19,9 @@ const root = new URL('../', import.meta.url);
 const PAUSE_MS = (value => Number.isFinite(value) ? Math.min(5000, Math.max(300, Math.round(value / 100) * 100)) : 800)(Number(process.env.ALICE_PAUSE_MS || NaN));
 // Backstop only (upstream audio buffer limit); a turn never commits mid-speech before this.
 const MAX_BUFFER_MS = 120000;
+// RT5-6: after Stop, and at the session limit, the service waits this long for the final transcript of the last words.
+export const DRAIN_MS = 3000;
+const SESSION_LIMIT_MS = 30 * 60000;
 const PRIVATE_WARNING = 'WARNING: ALICE_PRINT_REQUEST is on. The text below is private (question and preparation documents); other tools may read this terminal. Clear it afterwards.';
 const assets = new Map([
   ['/', ['index.html', 'text/html']], ['/index.html', ['index.html', 'text/html']],
@@ -48,10 +51,13 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
   // Hosted mode. All unset, the service behaves exactly as a local one: loopback only, no code, every session logged.
   publicHost = process.env.ALICE_PUBLIC_HOST, accessCode = process.env.ALICE_ACCESS_CODE,
   logOff = process.env.ALICE_LOG === 'off', avatarOff = process.env.ALICE_AVATAR === 'off',
+  drainMs = DRAIN_MS, sessionLimitMs = SESSION_LIMIT_MS,
   connect = () => new WebSocket('wss://api.openai.com/v1/realtime?intent=transcription', {
     headers: { Authorization: `Bearer ${apiKey}` }, handshakeTimeout: 15000,
   }), audit = (event, data) => console.log(JSON.stringify({ event, at: Date.now(), ...data })) } = {}) {
   const sessions = new Set();
+  // Every open connection's way to end at once; shutdown uses it so a session waiting for its last words does not hold the process.
+  const enders = new Set();
   // ALICE_PUBLIC_HOST names the host or hosts (comma-separated) this service is published under, behind a platform that ends TLS.
   const publicHosts = new Set(String(publicHost || '').split(',').map(h => h.trim().toLowerCase()).filter(Boolean));
   const isPublic = host => publicHosts.has(String(host || '').toLowerCase());
@@ -177,22 +183,35 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
 
   wss.on('connection', client => {
     let upstream, ready = false, speech = false, silentMs = 0, bufferedMs = 0, closed = false, mlog = null;
+    // RT5-6: why the session is ending ('user' or 'limit') while it still waits for the last words; null otherwise.
+    let draining = null, drainTimer = null;
     // Pause tracking: the signal that Pablo is thinking and waiting for help is PAUSE_MS of silence after speech.
     let pauseMs = 0, heardSpeech = false;
     const session = new InterviewSession({ reason, audit, record: (type, data) => mlog?.write(type, data), elapsed: () => mlog?.elapsed(), canAsk: () => !requirePause || (heardSpeech && pauseMs >= PAUSE_MS), delayMs: reasonDelayMs, autoFocus, generate, now, answerTimeoutMs, print, emit: event => {
       if (client.readyState === WebSocket.OPEN && client.bufferedAmount < 65536) client.send(JSON.stringify(event));
-      else cleanup();
+      else if (!draining) cleanup();
     } });
     sessions.add(session);
+    enders.add(end);
     const readyTimer = setTimeout(() => fail('Transcription connection timed out; stop and restart'), 20000);
-    const lifetime = setTimeout(() => fail('POC session limit reached (30 minutes); stop and restart', 'limit'), 30 * 60000);
+    const lifetime = setTimeout(() => {
+      const message = 'POC session limit reached (30 minutes); stop and restart';
+      session.send('status', { status: message });
+      mlog?.write('error', { code: 'limit', message });
+      drain('limit');
+    }, sessionLimitMs);
+    function end() { cleanup(draining ?? 'disconnect'); }
     function cleanup(reason = 'disconnect') {
       if (closed) return;
       closed = true;
-      clearTimeout(readyTimer); clearTimeout(lifetime);
+      enders.delete(end);
+      clearTimeout(readyTimer); clearTimeout(lifetime); clearTimeout(drainTimer);
+      // RT5-6: speech whose words never arrived: committed items still waiting, and voiced audio not yet committed.
+      const lostMs = session.awaited().audioMs + (speech ? bufferedMs : 0);
       // The session stops first, so what it records on stopping (an answer dropped in flight) is in the log before its last line.
       session.stop(); sessions.delete(session);
       if (mlog) {
+        if (lostMs > 0) mlog.write('speech_lost', { audioMs: lostMs });
         if (heardSpeech && pauseMs >= 800) mlog.write('pause', { startMs: session.packets * 100 - pauseMs, durationMs: pauseMs });
         mlog.write('session_stopped', { reason, seconds: Math.round(session.samples / 240) / 100 });
         mlog.close();
@@ -202,7 +221,25 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
       client.close();
       audit('session_stopped', { sessionId: session.id, packets: session.packets });
     }
+    // RT5-6: Stop and the session limit end the reading and the answer at once, but not the listening for words already
+    // spoken. Buffered speech is committed and the session waits, up to drainMs, for the final transcript of every committed
+    // item; each is logged and sent to the page. A disconnect or an error cannot wait: cleanup() logs what was lost.
+    function drain(reason) {
+      if (closed || draining) return;
+      draining = reason;
+      clearTimeout(lifetime);
+      session.drain();
+      if (ready && speech && upstream?.readyState === WebSocket.OPEN) {
+        upstream.send(JSON.stringify({ type: 'input_audio_buffer.commit' }));
+        session.commitSent();
+        speech = false; bufferedMs = 0; silentMs = 0;
+      }
+      if (!session.awaited().items) { cleanup(reason); return; }
+      drainTimer = setTimeout(() => cleanup(reason), drainMs);
+    }
     function fail(message, reason = 'error') {
+      // A failure while the last words are awaited ends the wait; cleanup() logs what did not arrive.
+      if (draining) { cleanup(draining); return; }
       session.send('status', { status: message });
       mlog?.write('error', { code: reason, message });
       cleanup(reason);
@@ -232,6 +269,7 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
           session.observe(event.item_id, event.delta, false);
         } else if (event.type === 'conversation.item.input_audio_transcription.completed') {
           session.observe(event.item_id, event.transcript, true);
+          if (draining && !session.awaited().items) cleanup(draining);
         } else if (event.type === 'error' || event.type === 'conversation.item.input_audio_transcription.failed') {
           audit('transcription_failed', { code: event.error?.code || 'unknown' });
           fail(publicError(event.error));
@@ -274,7 +312,7 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
       if (!binary) {
         try {
           const message = JSON.parse(raw.toString());
-          if (message.type === 'stop') cleanup('user');
+          if (message.type === 'stop') drain('user');
           else if (message.type === 'rendered' && Number.isSafeInteger(message.revision)) {
             // Display evidence only; a rendered Live question is never consent to confirm it.
             const live = typeof message.liveId === 'string' && Number.isSafeInteger(message.liveVersion)
@@ -290,6 +328,8 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
         } catch { fail('Invalid control message'); }
         return;
       }
+      // RT5-6: audio that arrives after Stop or the limit is not taken.
+      if (draining) return;
       if (!ready) { fail('Audio arrived before transcription was ready'); return; }
       if (upstream.bufferedAmount > 96000) { fail('Audio backlog exceeded two seconds; stop and restart'); return; }
       try {
@@ -321,10 +361,13 @@ export function createPocServer({ reason = createReasoner(), apiKey = process.en
         }
       } catch (error) { fail(error.message); }
     });
-    client.on('close', () => cleanup());
-    client.on('error', () => cleanup());
+    // A page that leaves while its last words are awaited frees its place at once; the wait still ends in the log.
+    const gone = () => { if (draining) sessions.delete(session); else cleanup(); };
+    client.on('close', gone);
+    client.on('error', gone);
   });
   server.shutdown = () => {
+    for (const end of [...enders]) end();
     for (const client of wss.clients) client.close();
     wss.close(); server.close();
   };

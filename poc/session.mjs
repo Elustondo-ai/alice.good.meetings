@@ -42,7 +42,7 @@ export class InterviewSession {
     this.delayMs = delayMs;
     // Focus is the question Pablo confirmed; Live is the agent's current reading of the question.
     this.state = {
-      revision: 0, phase: 'STARTED', reply: '',
+      revision: 0, phase: 'STARTED',
       focus: null, focusVersion: 0, exchangeId: null, live: null,
     };
     this.exchanges = 0;
@@ -58,6 +58,8 @@ export class InterviewSession {
     this.packets = 0;
     this.samples = 0;
     this.active = true;
+    // RT5-6: after Stop the session reads and answers no more, but still takes the final transcripts of words already spoken.
+    this.draining = false;
     this.running = false;
     this.pending = false;
     this.lastRun = 0;
@@ -70,6 +72,9 @@ export class InterviewSession {
   }
 
   setContext(context) { this.context = context; }
+
+  // True until Stop or a disconnect: only then may a reading, a control or an answer change anything.
+  get attending() { return this.active && !this.draining; }
 
   answerFields() { return { proposed: this.answers.view(), proposedSeq: this.answers.seq }; }
 
@@ -124,9 +129,13 @@ export class InterviewSession {
       this.audit('transcript_final', { sessionId: this.id, itemId: id, revision: this.state.revision });
       this.record('transcript', { itemId: id, text: value.text, ...this.spanOf.get(id) });
     }
-    this.send('transcript', { text: this.snapshot().observations.map(o => o.text).join(' ').slice(-1500), final, items: this.items() });
-    if (value.text.trim().length >= 8) this.schedule();
+    // The page gets the words as they arrive (SA-17). Only final words start a reading (RT5-1).
+    this.send('transcript', { text: this.recent().map(o => o.text).join(' ').slice(-1500), final, items: this.items() });
+    if (final && value.text.trim().length >= 8) this.schedule();
   }
+
+  // The last six items heard, final or still being transcribed, for the page's `transcript` message.
+  recent() { return this.order.slice(-6).map(id => this.observations.get(id)).filter(Boolean); }
 
   // SA-17: the last 30 seconds, at most 8 items and 1,500 characters; each message replaces the last. `at` is ms from the session start.
   items() {
@@ -145,20 +154,23 @@ export class InterviewSession {
     return items;
   }
 
+  // RT5-1: what the reader is given holds final words only: the last six final items. An item still being
+  // transcribed is left out, so a reading can no longer be thrown away because its words changed.
   snapshot() {
+    const observations = this.order.map(id => this.observations.get(id)).filter(o => o?.final).slice(-6);
     return {
       sessionId: this.id,
       baseRevision: this.state.revision,
-      event: this.observations.size ? 'audio' : 'connected',
+      event: observations.length ? 'audio' : 'connected',
       audioCutoffSamples: this.samples,
       state: { ...this.state },
-      observations: this.order.slice(-6).map(id => this.observations.get(id)).filter(Boolean),
+      observations,
     };
   }
 
   // Returns the checked proposal, or a text-free reason for the audit log.
   validate(proposal, snapshot) {
-    if (!this.active) return { reason: 'stopped' };
+    if (!this.attending) return { reason: 'stopped' };
     if (snapshot.sessionId !== this.id) return { reason: 'wrong-session' };
     if (snapshot.baseRevision !== this.state.revision) return { reason: 'stale-revision' };
     const parsed = proposalSchema.safeParse(proposal);
@@ -166,7 +178,7 @@ export class InterviewSession {
     const p = parsed.data;
     this.proposalIntent = p.intent;
     const ids = new Set(snapshot.observations.map(o => o.id));
-    if (!p.reply.trim() || p.reply.length > 500 || (p.question?.length || 0) > 600) return { reason: 'length' };
+    if ((p.question?.length || 0) > 600) return { reason: 'length' };
     if (p.evidenceIds.some(id => !ids.has(id))) return { reason: 'unknown-evidence' };
     if (ids.size && !p.evidenceIds.length) return { reason: 'missing-evidence' };
     // A late correction to evidence must not establish a question from obsolete text.
@@ -180,16 +192,16 @@ export class InterviewSession {
     return snapshot.observations.some(o => this.observations.get(o.id)?.final && this.observations.get(o.id).text !== o.text);
   }
 
-  // Model output can change the reply, the phase and Live. No path here writes Focus.
+  // Model output can change the phase and Live. No path here writes Focus.
   accept(proposal, snapshot) {
     const { p, ...rejection } = this.validate(proposal, snapshot);
     this.lastRejection = p ? null : rejection;
     if (!p) return false;
-    const next = { ...this.state, revision: this.state.revision + 1, reply: p.reply.trim() };
+    const next = { ...this.state, revision: this.state.revision + 1 };
     this.adopted = false;
     if (!snapshot.observations.length) next.phase = 'STARTED';
     else {
-      // ANSWER needs a Focus question. Without one the phase is held, but the Live update and reply still apply.
+      // ANSWER needs a Focus question. Without one the phase is held, but the Live update still applies.
       next.phase = p.phase === 'ANSWER' && !this.state.focus ? this.state.phase : p.phase;
       this.adopted = this.adopt(next, p);
       if (!this.adopted) this.updateLive(next, p);
@@ -258,7 +270,7 @@ export class InterviewSession {
 
   // Clears Live and moves its cutoff so only later speech can refill it. Never touches Focus.
   resetLive() {
-    if (!this.active) return { status: 'unavailable' };
+    if (!this.attending) return { status: 'unavailable' };
     if (this.state.live) { this.retiredLiveIds.add(this.state.live.id); this.record('live_cleared', { by: 'clear' }); }
     this.state = { ...this.state, revision: this.state.revision + 1, live: null };
     this.liveCutoff = new Set(this.order);
@@ -268,7 +280,7 @@ export class InterviewSession {
   // The only writer of Focus: commits exactly the Live wording the browser displayed, or says why not.
   confirm({ liveId, liveVersion, expectedFocusVersion, text, via }) {
     const { live, focus, focusVersion } = this.state;
-    if (!this.active) return { status: 'unavailable' };
+    if (!this.attending) return { status: 'unavailable' };
     if (!this.liveIds.has(liveId)) return { status: 'invalid' };
     if (this.retiredLiveIds.has(liveId) || live?.id !== liveId) return { status: 'stale' };
     if (live.version !== liveVersion || focusVersion !== expectedFocusVersion) return { status: 'stale' };
@@ -328,7 +340,7 @@ export class InterviewSession {
   }
 
   schedule() {
-    if (!this.active) return;
+    if (!this.attending) return;
     this.pending = true;
     if (this.running || this.timer) return;
     const wait = Math.max(0, this.lastRun + this.delayMs - Date.now());
@@ -336,7 +348,7 @@ export class InterviewSession {
   }
 
   async run() {
-    if (!this.active || this.running || !this.pending) return;
+    if (!this.attending || this.running || !this.pending) return;
     // Not pausing: keep the request pending; the next transcript after a pause schedules it again.
     if (!this.canAsk()) return;
     this.pending = false;
@@ -351,7 +363,7 @@ export class InterviewSession {
     try {
       const signal = AbortSignal.any([this.abort.signal, AbortSignal.timeout(30000)]);
       const proposal = await this.reason(snapshot, signal, this.context, usage => { call.usage = usage; });
-      if (this.active) {
+      if (this.attending) {
         const endMs = this.elapsed(), live = this.state.live;
         if (turn && this.turn === turn) turn.readerEndMs = endMs;
         // The log lines of what the reading changed are held, so its own `model_call` line comes first.
@@ -373,18 +385,18 @@ export class InterviewSession {
       }
     } catch (error) {
       // ML-10: a failed reading is an error with its public message; an abort at Stop is not.
-      if (this.active) {
+      if (this.attending) {
         const endMs = this.elapsed();
         if (turn && this.turn === turn) turn.readerEndMs = endMs;
         this.endCall(call, endMs, 'failed', failureReason(error));
         this.record('error', { code: 'reader', message: publicError(error) });
         this.turnRead(turn, 'failed');
       }
-      this.send('agent', { status: publicError(error) });
+      if (!this.draining) this.send('agent', { status: publicError(error) });
       this.audit('agent_failed', { sessionId: this.id, status: error?.status || null, code: publicError(error) });
     } finally {
       this.running = false;
-      if (this.active && this.pending) this.schedule();
+      if (this.attending && this.pending) this.schedule();
     }
   }
 
@@ -444,16 +456,36 @@ export class InterviewSession {
       answerStartMs, answerEndMs, bulletsMs, outcome, toQuestionMs: since(questionMs), toBulletsMs: since(bulletsMs) });
   }
 
-  stop() {
+  // RT5-6: committed speech whose final transcript has not arrived: how many items, and how much audio they hold.
+  awaited() {
+    const open = this.order.filter(id => !this.observations.get(id)?.final).map(id => this.spanOf.get(id)).filter(Boolean);
+    const spans = [...open, ...this.spans];
+    return { items: spans.length, audioMs: spans.reduce((sum, span) => sum + span.audioEndMs - span.audioStartMs, 0) };
+  }
+
+  // RT5-6: Stop ends the reading and the answer at once. The session then only takes the final transcripts of words
+  // already spoken, for the log and the page, until the service stops it: they start no reading, Focus or answer.
+  drain() {
+    if (!this.active || this.draining) return;
+    this.quiet();
+    this.draining = true;
+  }
+
+  // Ends everything that reads or answers. Safe to call twice.
+  quiet() {
     this.answers.stop();
     // RT5-4, RT5-5: a reading in flight is dropped and every open turn ends, while the log is still open.
     if (this.call) this.endCall(this.call, this.elapsed(), 'dropped', 'stopped');
     if (this.turn) this.endTurn(this.turn, restOf(this.turn, 'stopped'));
     for (const turn of [...this.answering.values()]) this.endTurn(turn, 'stopped');
-    this.active = false;
     clearTimeout(this.timer);
     this.abort.abort();
     this.pending = false;
+  }
+
+  stop() {
+    this.quiet();
+    this.active = false;
     this.observations.clear();
     this.order = [];
     this.liveCutoff.clear();
@@ -469,7 +501,8 @@ export class InterviewSession {
 const restOf = (turn, ending) => (turn.reading || turn.candidate || !turn.rest ? ending : turn.rest);
 
 const CONTROLS = { 'question.confirm': 'confirm', 'question.reset': 'clear' };
-const PROPOSAL_FIELDS = new Set(['reply', 'phase', 'question', 'intent', 'evidenceIds', 'covered', 'bullets']);
+// RT5-2: `reply` left the contract, so a reading that still carries one is treated like any other unknown field.
+const PROPOSAL_FIELDS = new Set(['phase', 'question', 'intent', 'evidenceIds', 'covered', 'bullets']);
 const viaOf = message => (['button', 'space', 'escape'].includes(message?.via) ? message.via : 'button');
 const boundedId = value => typeof value === 'string' && value.length > 0 && value.length <= 100;
 const version = value => Number.isSafeInteger(value) && value >= 0;

@@ -79,6 +79,10 @@ const emptyAnswer = (status = 'empty', focusVersion = 0) => ({ status, focusVers
 // `answer` is the proposed answer area; `unavailable` is a page state (no-key, no-service, key-rejected) before or after a session.
 const view = { answer: emptyAnswer(), seq: 0, unavailable: null, healthKnown: false };
 let current = null;
+// RT5-6: after Stop the microphone is off and the page is not listening, but the socket stays open until the service has
+// collected the last words. `stopping` holds that session until the service closes it, or STOP_WAIT_MS at the latest.
+const STOP_WAIT_MS = 4000;
+let stopping = null;
 const freshRemote = () => ({
   status: 'not connected', agent: 'idle', packets: 0, seconds: 0, revision: 0, transcript: '', items: [], reply: '', focusAt: null, focusSource: null, focusPerf: 0, answerMs: null,
   sessionId: null, logNotSaved: false, focus: null, focusVersion: 0, live: null, historical: false,
@@ -193,8 +197,10 @@ function errorCause() {
 function renderControls() {
   const listening = Boolean(current);
   renderPackage();
-  listenBtn.disabled = listening || !view.healthKnown || Boolean(view.unavailable) || access.needed;
+  // While the last words are collected Start stays disabled and Stop says so (RT5-6).
+  listenBtn.disabled = listening || Boolean(stopping) || !view.healthKnown || Boolean(view.unavailable) || access.needed;
   stopBtn.disabled = !listening;
+  stopBtn.textContent = stopping ? 'Stopping…' : 'Stop listening';
   const cause = errorCause();
   errorRowEl.textContent = cause;
   errorRowEl.hidden = !cause;
@@ -484,12 +490,17 @@ async function connectServer(resources, source) {
       socket.send(packet); resources.sequence += 1;
     };
     socket.onmessage = event => {
-      if (current !== resources) return;
+      if (current !== resources && stopping !== resources) return;
       let message;
       try { message = JSON.parse(event.data); } catch { return; }
       // One socket is one server session; events naming another session are ignored.
       remote.sessionId ??= message.sessionId;
       if (message.sessionId !== remote.sessionId) return;
+      // RT5-6: after Stop only the last words are taken, for "What I hear"; nothing else on the page changes.
+      if (stopping === resources) {
+        if (message.type === 'transcript') { remote.transcript = message.text; if (Array.isArray(message.items)) remote.items = message.items; renderServer(); }
+        return;
+      }
       if (message.type === 'ready') { resources.ready = true; remote.status = message.status; }
       if (message.type === 'question.result') questionResult(message);
       if (message.type === 'status') remote.status = message.status;
@@ -511,6 +522,7 @@ async function connectServer(resources, source) {
     };
     socket.onclose = () => {
       resources.ready = false;
+      if (stopping === resources) finishStop(resources);
       if (current !== resources) return;
       remote.agent = 'disconnected';
       markLastKnown();
@@ -525,31 +537,47 @@ async function connectServer(resources, source) {
   }
 }
 
-function stopListening() {
+// Stop: the microphone and the reading end at once and the page shows the Stopped state. With `wait`, a session that was
+// listening keeps its socket open so the service can still send the last words (RT5-6); finishStop() then closes it.
+function stopListening({ wait = true } = {}) {
   const resources = current;
   current = null;
+  let waiting = false;
   if (resources) {
     clearInterval(resources.timer);
     resources.capture?.disconnect();
     if (resources.capture) resources.capture.port.onmessage = null;
     resources.stream?.getTracks().forEach(track => track.stop());
     if (resources.ctx && resources.ctx.state !== 'closed') void resources.ctx.close();
-    if (resources.socket?.readyState === WebSocket.OPEN) resources.socket.send(JSON.stringify({ type: 'stop' }));
-    resources.socket?.close();
+    const open = resources.socket?.readyState === WebSocket.OPEN;
+    if (open) resources.socket.send(JSON.stringify({ type: 'stop' }));
+    waiting = wait && open && resources.ready;
+    if (waiting) { stopping = resources; resources.stopTimer = setTimeout(() => finishStop(resources), STOP_WAIT_MS); }
+    else resources.socket?.close();
   }
   Object.assign(mic, { status: 'off', paused: false, speaking: false, level: 0, turnStart: null, lastVoice: -Infinity, turnS: 0, totalMs: 0, lastTickAt: null });
   remote.status = 'stopped'; remote.agent = 'stopped';
   markLastKnown();
   endQuestionSession('Stopped');
   renderDebug(0); renderServer();
+  if (!waiting) void readPackage();
+}
+
+// The service closed the socket, or STOP_WAIT_MS passed: Start, Upload and Remove are available again (SS-8).
+function finishStop(resources) {
+  if (stopping !== resources) return;
+  stopping = null;
+  clearTimeout(resources.stopTimer);
+  resources.socket?.close();
+  renderServer();
   void readPackage();
 }
 
-listenBtn.addEventListener('click', () => { if (!current) void startListening(); listenBtn.blur(); });
+listenBtn.addEventListener('click', () => { if (!current && !stopping) void startListening(); listenBtn.blur(); });
 stopBtn.addEventListener('click', () => { if (current) stopListening(); stopBtn.blur(); });
 clearLiveBtn.addEventListener('click', () => { resetLive('button'); clearLiveBtn.blur(); });
 confirmBtn.addEventListener('click', () => { confirmQuestion('button'); confirmBtn.blur(); });
-window.addEventListener('beforeunload', stopListening);
+window.addEventListener('beforeunload', () => stopListening({ wait: false }));
 if (location.hash === '#diagnostics') { debugEl.hidden = false; serverEl.hidden = false; }
 renderDebug(0);
 renderServer();
@@ -641,13 +669,14 @@ function packageLine() {
 }
 
 function renderPackage() {
-  const listening = Boolean(current);
+  // The service refuses a package change until the session has closed, so the wait after Stop counts as listening here.
+  const listening = Boolean(current || stopping);
   packageTextEl.textContent = packageLine();
   const loaded = Boolean(packageState.info) && packageState.info.source !== 'none';
   removeBtn.hidden = !loaded;
   removeBtn.disabled = listening || packageState.busy;
   uploadBtn.disabled = listening || packageState.busy || !view.healthKnown || Boolean(view.unavailable) || access.needed;
-  packageNoticeEl.textContent = listening && !packageState.notice ? 'Stop listening to load a package.' : packageState.notice;
+  packageNoticeEl.textContent = current && !packageState.notice ? 'Stop listening to load a package.' : packageState.notice;
 }
 
 async function readPackage() {
@@ -677,7 +706,7 @@ function refusalText(body, status) {
 
 async function uploadPackage(fileList) {
   const files = [...fileList];
-  if (!files.length || current) return;
+  if (!files.length || current || stopping) return;
   packageState.busy = true; packageState.notice = ''; renderPackage();
   const read = await readTextFiles(files);
   if (read.failed) {

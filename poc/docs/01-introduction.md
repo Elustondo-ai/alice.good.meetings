@@ -9,8 +9,8 @@ A second path sends that microphone audio to a local Node.js service, which uses
 ## What you see
 
 The upper diagnostic panel reports local microphone status, speaking activity, elapsed time and level.
-The lower panel reports the server connection, received audio count, transcript, retained question and latest agent reply.
-An initial model-generated readiness reply proves that reasoning is connected. An audio-dependent reply proves that speech has reached the model path.
+The lower panel reports the server connection, received audio count, transcript and retained question.
+Until 22 November 2026 the model also wrote a short reply, which proved that speech had reached it; the Question and its bullets now show that, and the reply is no longer asked for (RT5-2).
 Neither a green panel nor a successful health response alone establishes that cloud transcription and reasoning work.
 
 ## Why the pieces are separate

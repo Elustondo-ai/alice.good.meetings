@@ -30,4 +30,4 @@ Never written: package text or names, the key, prompts, hints, replies, audio. B
 
 ## Measurement lines (SPRINT-005)
 
-Two event types were added, `model_call` and `question_timing`; [the guide](docs/09-measurement-events.md) explains their fields. They hold times, counts, the model name and fixed code words, and no text. `LOG_VERSION` stays 1: a new event type changes no existing meaning, and a reader skips the types and fields it does not know (RT5-8, ML-1).
+Two event types were added, `model_call` and `question_timing`; [the guide](docs/09-measurement-events.md) explains their fields. They hold times, counts, the model name and fixed code words, and no text. A third, `speech_lost` with `audioMs`, is written before `session_stopped` when speech was heard and its words never arrived (RT5-6). `LOG_VERSION` stays 1: a new event type changes no existing meaning, and a reader skips the types and fields it does not know (RT5-8, ML-1).

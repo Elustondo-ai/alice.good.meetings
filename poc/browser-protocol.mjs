@@ -65,11 +65,12 @@ async function service({ files = {}, apiKey = 'sk-test-fixture', requirePause = 
   const packageDir = await mkdtemp(join(tmpdir(), 'alice-pagecheck-'));
   const logDir = await mkdtemp(join(tmpdir(), 'alice-pagecheck-logs-'));
   for (const [name, content] of Object.entries(files)) await writeFile(join(packageDir, name), content);
-  const server = createPocServer({ apiKey, connect: f.connect, generate: f.generate, packageDir, logDir, revision: 'pagecheck', log: () => {}, reasonDelayMs: 0, requirePause, autoFocus,
+  // The tone never pauses, so at Stop there is always speech the fixture will not transcribe: the wait for it is kept short (RT5-6).
+  const server = createPocServer({ apiKey, connect: f.connect, generate: f.generate, packageDir, logDir, revision: 'pagecheck', log: () => {}, reasonDelayMs: 0, requirePause, autoFocus, drainMs: 150,
     audit: (name, data) => audits.push({ name, ...data }),
     reason: async snap => snap.observations.length
-      ? { reply: 'ok', phase: 'QUESTION', question: snap.observations.at(-1).text, intent: 'new-question', evidenceIds: snap.observations.map(o => o.id) }
-      : { reply: 'ok', phase: 'GREETINGS', question: null, intent: 'none', evidenceIds: [] }, ...options });
+      ? { phase: 'QUESTION', question: snap.observations.at(-1).text, intent: 'new-question', evidenceIds: snap.observations.map(o => o.id) }
+      : { phase: 'GREETINGS', question: null, intent: 'none', evidenceIds: [] }, ...options });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   return { f, audits, server, packageDir, logDir, origin: `http://127.0.0.1:${server.address().port}`, close: () => server.shutdown() };
 }
@@ -79,10 +80,10 @@ async function openPage(browser, origin, size = SIZES.desktop, { path = '/', mic
   if (mic) await context.addInitScript(FAKE_MIC);
   if (init) await context.addInitScript(init);
   const page = await context.newPage();
-  Object.assign(page, { requests: [], frames: [], errors: [], ctx: context, sent: [] });
+  Object.assign(page, { requests: [], frames: [], errors: [], ctx: context, sent: [], sockets: [] });
   page.on('request', r => page.requests.push(r.url()));
   page.on('pageerror', e => page.errors.push(e.message));
-  page.on('websocket', ws => { page.requests.push(ws.url()); ws.on('framesent', e => { if (typeof e.payload === 'string') page.sent.push(e.payload); page.frames.push(String(e.payload).slice(0, 4000)); }); ws.on('framereceived', e => page.frames.push(String(e.payload).slice(0, 4000))); });
+  page.on('websocket', ws => { page.sockets.push(ws); page.requests.push(ws.url()); ws.on('framesent', e => { if (typeof e.payload === 'string') page.sent.push(e.payload); page.frames.push(String(e.payload).slice(0, 4000)); }); ws.on('framereceived', e => page.frames.push(String(e.payload).slice(0, 4000))); });
   if (clock) await page.clock.install();
   await page.goto(origin + path);
   return page;
@@ -121,7 +122,8 @@ async function reach(browser, state, { size = SIZES.desktop, question = SHORT_Q,
   if (state === 'failed') { svc.f.fail(new Error('x')); await waitCalls(svc, 2); svc.f.fail(new Error('y')); await wait(page, () => document.getElementById('answer-message').textContent.startsWith('No proposed')); return { svc, page }; }
   svc.f.release(result);
   await wait(page, () => document.querySelectorAll('#bullets li').length > 0);
-  if (state === 'last-known') { await page.click('#stop-listen'); await wait(page, () => document.getElementById('answer-tag').textContent.includes('Last known')); }
+  // Stop is finished when the service has closed the session and Start is enabled again (RT5-6).
+  if (state === 'last-known') { await page.click('#stop-listen'); await wait(page, () => document.getElementById('answer-tag').textContent.includes('Last known') && !document.getElementById('listen').disabled); }
   return { svc, page };
 }
 const closeAll = async ({ svc, page }) => { await page.ctx.close(); svc.close(); };
@@ -801,6 +803,71 @@ async function sprint004Checks(browser) {
     } finally { await context.close(); svc.close(); }
   });
 
+  // ---- SPRINT-005 (RT5-6): Stop waits for the last words ----
+  const stopFacts = page => page.evaluate(() => ({ stop: document.getElementById('stop-listen').textContent, stopOff: document.getElementById('stop-listen').disabled,
+    startOff: document.getElementById('listen').disabled, uploadOff: document.getElementById('upload-package').disabled, monitor: document.getElementById('monitor').textContent,
+    live: document.getElementById('live-question').textContent, focusStatus: document.getElementById('focus-status').textContent, tag: document.getElementById('answer-tag').textContent,
+    hear: [...document.querySelectorAll('#hear-text p')].map(p => [p.textContent, p.className]), error: document.getElementById('error-row').textContent }));
+  await check('PC5-1', 'pressing Stop sends stop and keeps the socket open; while the service waits the Stop button reads Stopping… and Start is disabled', async () => withState('shown', { drainMs: 3000 }, async ({ svc, page }) => {
+    await wait(page, () => document.getElementById('monitor').textContent.includes('heard'));
+    await page.click('#stop-listen');
+    await until(() => page.sent.some(frame => frame.includes('"type":"stop"')));
+    await page.waitForTimeout(300);
+    const during = await stopFacts(page);
+    assert.equal(page.sockets.at(-1).isClosed(), false, 'the socket stays open');
+    assert.deepEqual([during.stop, during.stopOff, during.startOff, during.uploadOff], ['Stopping…', true, true, true]);
+    assert.deepEqual([during.monitor, during.live, during.focusStatus, during.error], ['not listening', 'Not listening', 'Last known, not live', ''], 'the page is no longer listening');
+    assert.match(during.tag, /Last known, not live/);
+    assert.equal(await cueName(page), 'GOOD');
+    // The last words arrive: they show in "What I hear" only, faded, and change nothing else.
+    const sentBefore = page.sent.length;
+    svc.f.say('And these were my very last words?');
+    await wait(page, () => [...document.querySelectorAll('#hear-text p')].some(p => p.textContent === 'And these were my very last words?'));
+    const after = await stopFacts(page);
+    assert.deepEqual(after.hear.at(-1), ['And these were my very last words?', 'old']);
+    assert.deepEqual([after.live, after.focusStatus, await textOf(page, '#focus-question'), await page.locator('#bullets li').allTextContents()], ['Not listening', 'Last known, not live', SHORT_Q, SHORT.bullets]);
+    assert.equal(svc.f.calls.length, 1, 'no answer request from the last words');
+    assert.equal(page.sent.slice(sentBefore).some(frame => frame.includes('"rendered"')), false);
+  }));
+  await check('PC5-2', 'the page closes when the service closes, or after about 4 seconds if it does not, and then shows the Stopped state with Start enabled', async () => {
+    const stoppedState = async page => {
+      const facts = await stopFacts(page);
+      assert.deepEqual([facts.stop, facts.stopOff, facts.startOff, facts.uploadOff, facts.monitor, facts.focusStatus, facts.error], ['Stop listening', true, false, false, 'not listening', 'Last known, not live', '']);
+      assert.equal(await page.locator('#hear-text .new').count(), 0);
+      assert.equal(await page.locator('#download-log').isEnabled(), true);
+    };
+    // The service closes as soon as the last words are in: the page follows at once.
+    await withState('shown', { drainMs: 3000 }, async ({ svc, page }) => {
+      await wait(page, () => document.getElementById('monitor').textContent.includes('heard'));
+      await page.click('#stop-listen');
+      await wait(page, () => document.getElementById('stop-listen').textContent === 'Stopping…');
+      const at = Date.now();
+      svc.f.say('The last words.');
+      await wait(page, () => !document.getElementById('listen').disabled);
+      assert.ok(Date.now() - at < 1500, 'well before the 3 seconds of the service and the 4 of the page');
+      await until(() => page.sockets.at(-1).isClosed());
+      await stoppedState(page);
+      assert.equal(svc.audits.filter(a => a.name === 'session_stopped').length, 1);
+    });
+    // The service does not close: the page closes the socket itself after about 4 seconds.
+    await withState('shown', { drainMs: 60000 }, async ({ svc, page }) => {
+      await wait(page, () => document.getElementById('monitor').textContent.includes('heard'));
+      const at = Date.now();
+      await page.click('#stop-listen');
+      await page.waitForTimeout(3000);
+      assert.deepEqual([(await stopFacts(page)).stop, page.sockets.at(-1).isClosed()], ['Stopping…', false], 'still waiting after 3 seconds');
+      await wait(page, () => !document.getElementById('listen').disabled);
+      const took = Date.now() - at;
+      assert.ok(took >= 3800 && took < 5500, `the page waited ${took} ms`);
+      await until(() => page.sockets.at(-1).isClosed());
+      await stoppedState(page);
+      assert.equal(svc.audits.filter(a => a.name === 'session_stopped').length, 0, 'the service was still waiting');
+      // A new session can start at once.
+      await page.click('#listen');
+      await wait(page, () => document.getElementById('monitor').textContent.includes('listening on server'));
+    });
+  });
+
   return { outcome };
 }
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || undefined, headless: true,
@@ -830,7 +897,7 @@ try {
   const disabled = selector => page.locator(selector).isDisabled();
   const emit = (socket, type, data = {}, sessionId = socket.id) =>
     socket.ws.send(JSON.stringify({ type, sessionId, serverAt: Date.now(), ...data }));
-  const state = (revision, changes = {}) => ({ revision, phase: 'QUESTION', reply: 'ok', focus: null,
+  const state = (revision, changes = {}) => ({ revision, phase: 'QUESTION', focus: null,
     focusVersion: 0, exchangeId: null, live: null, ...changes });
   const live = (id, version, value, kind = 'new') => ({ id, version, text: value, kind });
   const lastControl = socket => socket.controls.at(-1);
