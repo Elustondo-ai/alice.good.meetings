@@ -1,0 +1,123 @@
+{
+  "requester": "User",
+  "acting_role": "ASDG-ADMIN",
+  "agent": "AI assistant using Copilot SDK in VS Code",
+  "session_id": "8e55c33f-6506-4df3-94ba-dba9ab484335",
+  "starting_revision": "673c3bd7d465d5ecf809ba92734d49b625f78c7c",
+  "starting_worktree": "Dirty; unrelated work preserved.",
+  "scope": "Create asdg-team-create2, its shared discovery template, directly required policy/navigation/package references and review records. No live team creation.",
+  "authorization": {
+    "skill_request": "the skill is going to be called asdg-team-create2",
+    "invocation_requirement": "and is not necessary human noly.",
+    "admin_selection": "User answered true to selecting ASDG Admin for this bounded skill-authoring task."
+  },
+  "status": "REVIEW_REQUIRED",
+  "verification": {
+    "portable_check": "PASS",
+    "agent_invocable_adapter_rendering": "PASS",
+    "regression_suite": "290 tests: 283 passed, 6 skipped, 1 failure in the Help skill-name regex; fixed to allow digits. Full suite not rerun after the targeted fix.",
+    "affected_distribution_tests_after_fix": "9 tests passed",
+    "client_adapter_installation": "APPLIED_AND_VERIFIED",
+    "repeat_integration_preview": "PASS: zero writes",
+    "generated_adapters_match_templates": "PASS",
+    "diff_whitespace_check": "PASS",
+    "new_workflow_live_execution": "NOT_RUN",
+    "rendered_visual_inspection": "NOT_RUN",
+    "independent_review": "NOT_PERFORMED"
+  },
+  "observed_prior_evidence": {
+    "date": "2026-11-26",
+    "client": "Copilot Agents window in VS Code",
+    "operations": [
+      "Created a current-session chat and promoted it with move_session relationship independent.",
+      "Created twelve current-session specialist chats and moved them by returned IDs into the original Team 1.",
+      "Read back one coordinator main chat and twelve exact specialist titles in the intended team.",
+      "Direct messaging previously reported Unknown chat owner; a UI handoff did not establish delivery to the intended session."
+    ],
+    "limit": "These observations support individual operations, not end-to-end acceptance of the newly authored workflow."
+  },
+  "adapter_plan": {
+    "id": "2026-11-26T18:28:33Z.66cc26315daf6250a49630c8c5659ba583b32b8a78c005330e562e72f6bb9563",
+    "user_decision": "APPROVE",
+    "new_files": 3,
+    "modified_files": [
+      ".asdg/document-reviews.json"
+    ],
+    "team_actions": [],
+    "scope": "File installation only; no team creation, full initialization or native invocation claimed."
+  },
+  "files": [
+    {
+      "path": "asdg/skills/asdg-team-create2/SKILL.md",
+      "sha256": "ea7e89aec8a75731376d7046174079c6d4df9d339ea093dc1aaee323af84be55"
+    },
+    {
+      "path": "asdg/skills/asdg-team-create2/session-protocol.md",
+      "sha256": "2bd7b7334430147f2ceb32ad8d49b143fb455e9d8fab2f02fd69ab24fe86dbd8"
+    },
+    {
+      "path": "asdg/skills/asdg-team-create2/activation.md",
+      "sha256": "e4f66b8056b05a38e44e9e6309ed700959a1df4ac3f152f95da1fb4b9e064b0d"
+    },
+    {
+      "path": "asdg/skills/asdg-team-create2/TRY-IT.md",
+      "sha256": "12c520dcd0c367930acd50bc482a601043e244788f2df2c3692c192ede194cf5"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-team-create2/SKILL.md",
+      "sha256": "5207c4d6267bff85d9aa66121c46a81f5471907070df7e0ba595ad0d96796064"
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-team-create2/agents/openai.yaml",
+      "sha256": "f708092e995001b5535f8213eba3c34974ecdcda5e0ace613b99b7eb7963777a"
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "30a7cbe384f246729ce6e97c32157f1e24fa4232921b2df31f12ecc8eee6d98d"
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "5622a68764a2769454364f07c19da29aa13946a1236e1fc2053dffbf04617d61"
+    },
+    {
+      "path": "asdg/skills/asdg-help/command-reference.md",
+      "sha256": "b3294a6b9e263a83f3542aa77a29241f35a25ada7952de280210c0ab3002d125"
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "90b16f25491c0f967801aa5ed14bc51919c71ae79ef7dd0604837b104906e8f4"
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "1d2e21b51cfc9c50b689dd11abe0d82dadb3dc35771697fb91d282be58c63025"
+    },
+    {
+      "path": "asdg/metadata/package-files.json",
+      "sha256": "a25a9952ce6948bd9e4e945e0c545fcd51530a12a700f125e29a14580a5138ef"
+    },
+    {
+      "path": "asdg/tests/test_distribution.py",
+      "sha256": "dd3832822e5f7b8e49902021422a59f461cc6f1e92de32ff9b257093116ee018"
+    },
+    {
+      "path": "asdg/tests/test_distribution.md",
+      "sha256": "a1dac679953c32bb0a1322b81c08a2dd2485f04b6e7110ab35e631b9b29a358a"
+    },
+    {
+      "path": ".agents/skills/asdg-team-create2/SKILL.md",
+      "sha256": "5207c4d6267bff85d9aa66121c46a81f5471907070df7e0ba595ad0d96796064"
+    },
+    {
+      "path": ".agents/skills/asdg-team-create2/agents/openai.yaml",
+      "sha256": "f708092e995001b5535f8213eba3c34974ecdcda5e0ace613b99b7eb7963777a"
+    },
+    {
+      "path": ".claude/skills/asdg-team-create2/SKILL.md",
+      "sha256": "5207c4d6267bff85d9aa66121c46a81f5471907070df7e0ba595ad0d96796064"
+    },
+    {
+      "path": "docs/asdg/07-planning/02.27-review-team-create2.md",
+      "sha256": "2a5116530029dabf166255439e19881fa82c0a8a74d0fc4d2ac73466c86571d0"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ This folder connects desired outcomes to selected release and sprint work. A use
 
 ## Alice.Good.Meetings today
 
-As of 20 November 2026, SPRINT-004 is active on branch `sprint-04`, started by Pablo (observed this day) after the alignment in the [report](03.16-sprint-004-alignment-report.md); its record is `.asdg/sprint.json` and its plan is [03.14](03.14-sprint-004-working-plan.md). SPRINT-003 was closed as unfinished and no release is declared. The older review reports concern documentation and ASDG evolution; they should not be mistaken for a committed product delivery plan.
+As of 23 November 2026 no sprint is active (`.asdg/sprint.json` is inactive). SPRINT-004 was closed as unfinished by Pablo on 22 November 2026 (closeout `.asdg/sprint-closeouts/acc3497d-a261-4ad9-865a-0f7d213eabf0.json`; plan [03.14](03.14-sprint-004-working-plan.md), alignment [report](03.16-sprint-004-alignment-report.md)), and SPRINT-003 on 19 November 2026; no release is declared. [SPRINT-005](03.18-sprint-005-plan.md) and [SPRINT-006](03.19-sprint-006-outline.md) are unapproved drafts of 22 November; Pablo has not chosen the next sprint. The older review reports concern documentation and ASDG evolution; they should not be mistaken for a committed product delivery plan.
 
 ## What belongs here as we develop
 

@@ -8,6 +8,7 @@ Canonical workflows live here; native discovery adapters remain thin references.
 | [Help](asdg-help/SKILL.md) | Explain all ASDG commands, examples and invocation syntax without executing them |
 | [Initialize](asdg-init/SKILL.md) | Bootstrap the explicitly identified client |
 | [Create team](asdg-create-team/SKILL.md) | Set up governance and twelve specialist chats, or the next numbered team in its own worktree and branch |
+| [Team create2](asdg-team-create2/SKILL.md) | Human- or agent-invoked Copilot setup: one independent top-level team and twelve specialist chats, no worktree or project work |
 | [Create team admin](asdg-create-team-admin/SKILL.md) | On explicit request, create one ASDG Admin chat in its own numbered worktree and branch for changes to ASDG |
 | [Focus](asdg-focus/SKILL.md) | Select a role; use `subject` to change its topic independently |
 | [Attitude](asdg-attitude/SKILL.md) | Choose a thinking approach, temporary scope, NoAttitude or read-only status |

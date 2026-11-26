@@ -20028,7 +20028,7 @@
       "recorded_at": "2026-10-29T00:49:43.250418+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
       },
       "previous_state": {
         "sha256": "765d988e01a7b8cc2eb775972719f6b670c7b6b0a090c96f9c50b859e1adcb89",
@@ -20043,7 +20043,7 @@
       "recorded_at": "2026-10-29T00:49:43.261832+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
       },
       "previous_state": {
         "sha256": "77b3331728354b14cef6ca9013672f7f3410ec41ec53e50fd32e252a90b08f08",
@@ -20058,7 +20058,7 @@
       "recorded_at": "2026-10-29T00:49:43.270997+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
       },
       "previous_state": {
         "sha256": "04c12cbdfd880ed4ecc364903263d0b0bae2339d63fdeca20d3b1c2d60e66524",
@@ -20073,7 +20073,7 @@
       "recorded_at": "2026-10-29T00:49:43.281238+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -20083,7 +20083,7 @@
       "recorded_at": "2026-10-29T00:49:43.290907+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -20093,7 +20093,7 @@
       "recorded_at": "2026-10-29T00:49:43.300049+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -20103,7 +20103,7 @@
       "recorded_at": "2026-10-29T00:49:43.309146+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -20113,7 +20113,7 @@
       "recorded_at": "2026-10-29T00:49:43.319702+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -36079,6 +36079,401 @@
         "sha256": "8ed14adaae8436e9989361ab8fd577e5f2e8db583c229c12257a261d19fb9cb1",
         "visible_review_markers": [],
         "approval_binding": "No approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/push-replace.md",
+      "sha256": "040bf6c20f3833f4f4e37f6ec1c2e9e808bf9d2dad89ee59e37258613907c734",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli.md",
+      "sha256": "e876025a526e196f14b77b1c49e79db0d48b5f2a462284eb0e9757c77abe126b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      },
+      "previous_state": {
+        "sha256": "e82c7f037b229d6f39369a7a775a4161f39567380e162ce047a79680c10fec93",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_project.md",
+      "sha256": "6baa9bf7fdb7bc8ec94d8937c3b490bfa089266031ff0146deed607ec5f7b420",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      },
+      "previous_state": {
+        "sha256": "b45455969e84a410e809f2e12719fbfb6fe4c8f75e798583e683c00312d1a482",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_push.md",
+      "sha256": "ef628c92b9e957cff604386beedfd6ab28aaa314594082dfa88dcc5dd6026274",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_push_integrations.md",
+      "sha256": "ef391ba6638eafc9bccfb5beab394f0dcc0aafe73a64eb5b43c5c4167f0d5103",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_push_inventory.md",
+      "sha256": "040f89c403395323700e2d44148248ab0a59009d368a6f0fa905355b193b0723",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_push_transaction.md",
+      "sha256": "d9e9c2f5b875d6ea9df5598c8dd3793530d076b0b18df91fad84f60d878e7aaa",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_replace.md",
+      "sha256": "b246c95f8c087e07c22bdcf607efd5f718df142a0b0dccbe0060f6d0cc775bb0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_integrations.md",
+      "sha256": "725a48d53772c61d59b1daead5704a5d617162a62953bfff0364574e320c9a32",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_inventory.md",
+      "sha256": "6a3a89e4e2c3649fd362dfdb5ef452388c94e491f2d6086c83ce0209ebd46309",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_transaction.md",
+      "sha256": "d35f34940e1e1e875e56535506a8e23f34053ce0d3e7fe0506506ab3d0d2e72d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:20:23.185428+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Complete deterministic push-replace command for Claude Code and Codex"
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "7339b122025b1902f006cb43384842399dfeeef6777c88bc77e25be09cc00071",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:21:52.063148+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Document explicit replacement command and preserved integration selection"
+      },
+      "previous_state": {
+        "sha256": "d8e3edd6a3c0a62166b8e685e527fca70b3c39295e6f735cc8b58ca07642e897",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/synchronization.md",
+      "sha256": "f2606b2da6f453d8dca1d9f356961a9d8036fd2183d4f944e57a3b2dbaebeff6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:21:52.063148+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Document explicit replacement command and preserved integration selection"
+      },
+      "previous_state": {
+        "sha256": "9260e5179003c20972fb4efd87e9f9ce1d789f88b07265155fa9db5ac8791f6f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "3794357ea85ca0396f9cd7521f2b6a62bac22278a31546388a5b8163630f4f12",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:21:52.063148+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Document explicit replacement command and preserved integration selection"
+      },
+      "previous_state": {
+        "sha256": "126607b5a20c788b945375105a2e185826d613ac62f23535b9c425fcf10e1154",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/README.md",
+      "sha256": "d59397d1f42cb4ec5264331d6d478a88c62305055da4e8dfb444a1fbb4f2bef1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:21:52.063148+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Document explicit replacement command and preserved integration selection"
+      },
+      "previous_state": {
+        "sha256": "7ad3a5a1b51c245c9edce944913beab0fe0d5b3de3a0cb81e44102ddba6ac3d8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/command-reference.md",
+      "sha256": "783b001aab48ade0eea903c608c14f58f16b597859e476c4e40ca52fff8fa7cf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-24T21:21:52.063148+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-ADMIN",
+        "requester": "Pablo",
+        "scope": "Document explicit replacement command and preserved integration selection"
+      },
+      "previous_state": {
+        "sha256": "ee2055185b3615773370ecc0dfb81ea2863788bb29733dbce5b5ffda472937df",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-create2/SKILL.md",
+      "sha256": "ea7e89aec8a75731376d7046174079c6d4df9d339ea093dc1aaee323af84be55",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-create2/session-protocol.md",
+      "sha256": "2bd7b7334430147f2ceb32ad8d49b143fb455e9d8fab2f02fd69ab24fe86dbd8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-create2/activation.md",
+      "sha256": "e4f66b8056b05a38e44e9e6309ed700959a1df4ac3f152f95da1fb4b9e064b0d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-create2/TRY-IT.md",
+      "sha256": "12c520dcd0c367930acd50bc482a601043e244788f2df2c3692c192ede194cf5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-team-create2/SKILL.md",
+      "sha256": "5207c4d6267bff85d9aa66121c46a81f5471907070df7e0ba595ad0d96796064",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-team-create2/agents/openai.yaml",
+      "sha256": "f708092e995001b5535f8213eba3c34974ecdcda5e0ace613b99b7eb7963777a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "30a7cbe384f246729ce6e97c32157f1e24fa4232921b2df31f12ecc8eee6d98d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "5622a68764a2769454364f07c19da29aa13946a1236e1fc2053dffbf04617d61",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/command-reference.md",
+      "sha256": "b3294a6b9e263a83f3542aa77a29241f35a25ada7952de280210c0ab3002d125",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "90b16f25491c0f967801aa5ed14bc51919c71ae79ef7dd0604837b104906e8f4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "1d2e21b51cfc9c50b689dd11abe0d82dadb3dc35771697fb91d282be58c63025",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/metadata/package-files.json",
+      "sha256": "a25a9952ce6948bd9e4e945e0c545fcd51530a12a700f125e29a14580a5138ef",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/tests/test_distribution.py",
+      "sha256": "dd3832822e5f7b8e49902021422a59f461cc6f1e92de32ff9b257093116ee018",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+      }
+    },
+    {
+      "path": "asdg/tests/test_distribution.md",
+      "sha256": "a1dac679953c32bb0a1322b81c08a2dd2485f04b6e7110ab35e631b9b29a358a",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T18:34:37Z",
+      "human_approval": null,
+      "provenance": {
+        "actor": "ASDG-ADMIN",
+        "generator": "Copilot",
+        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
       }
     }
   ],

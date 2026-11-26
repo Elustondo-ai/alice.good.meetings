@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Helvetica, Arial, sans-serif">
+<rect width="1280" height="720" fill="#ffffff"/>
+<rect width="1280" height="64" fill="#1f3a5f"/>
+<text x="40" y="42" font-size="24" font-weight="700" fill="#fff">Alice.Good.Meetings</text>
+<text x="1240" y="42" text-anchor="end" font-size="22" fill="#cbd5e1">Stage 02 · Purpose</text>
+<rect x="40" y="92" width="160" height="40" rx="20" fill="#1f3a5f"/>
+<text x="120" y="119" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">Planned</text>
+<rect x="216" y="92" width="110" height="40" rx="20" fill="#b7791f"/>
+<text x="271.0" y="119" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">DRAFT</text>
+<text x="40" y="190" font-size="40" font-weight="700" fill="#1a202c">Two sprints are drafted; neither is approved</text>
+<circle cx="52" cy="274" r="7" fill="#b7791f"/>
+<text x="76" y="282" font-size="26" fill="#2d3748">SPRINT-005: a faster Alice, measured on the</text>
+<text x="76" y="314" font-size="26" fill="#2d3748">same live questions</text>
+<circle cx="52" cy="364" r="7" fill="#b7791f"/>
+<text x="76" y="372" font-size="26" fill="#2d3748">SPRINT-006: iPad with pen, plus prepared</text>
+<text x="76" y="404" font-size="26" fill="#2d3748">answers</text>
+<circle cx="52" cy="454" r="7" fill="#b7791f"/>
+<text x="76" y="462" font-size="26" fill="#2d3748">Purpose will need to align each before a start</text>
+<rect x="760" y="290" width="480" height="340" rx="16" fill="#f3f5f9" stroke="#d6dbe5"/>
+<rect x="800" y="314.0" width="400" height="52" rx="12" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+<text x="1000.0" y="349.0" text-anchor="middle" font-size="24" fill="#1f3a5f">SPRINT-005</text>
+<path d="M1000.0 369.0 L1000.0 389.0 M992.0 380.0 L1000.0 389.0 L1008.0 380.0" stroke="#1f3a5f" stroke-width="3" fill="none"/>
+<rect x="800" y="394.0" width="400" height="52" rx="12" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+<text x="1000.0" y="429.0" text-anchor="middle" font-size="24" fill="#1f3a5f">faster, measured</text>
+<path d="M1000.0 449.0 L1000.0 469.0 M992.0 460.0 L1000.0 469.0 L1008.0 460.0" stroke="#1f3a5f" stroke-width="3" fill="none"/>
+<rect x="800" y="474.0" width="400" height="52" rx="12" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+<text x="1000.0" y="509.0" text-anchor="middle" font-size="24" fill="#1f3a5f">SPRINT-006</text>
+<path d="M1000.0 529.0 L1000.0 549.0 M992.0 540.0 L1000.0 549.0 L1008.0 540.0" stroke="#1f3a5f" stroke-width="3" fill="none"/>
+<rect x="800" y="554.0" width="400" height="52" rx="12" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+<text x="1000.0" y="589.0" text-anchor="middle" font-size="24" fill="#1f3a5f">iPad + presets</text>
+<text x="40" y="690" font-size="18" fill="#6b7280">Snapshot 673c3bd · as of 2026-11-23 · main · evidence: draft</text>
+<text x="1240" y="690" text-anchor="end" font-size="18" fill="#6b7280">6 of 36</text>
+</svg>

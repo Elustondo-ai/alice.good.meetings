@@ -1,7 +1,7 @@
 {
-  "sprint_id": "SPRINT-004",
-  "state": "Active on branch sprint-04 (observed 20 November 2026) with 11 criteria from plan v7; alignment report 03.16 version 8 records READY_FOR_09; no document approval recorded",
-  "objective": "Let Pablo load his package from the page, see what is loaded, work from the new screen, and keep a complete local log of each meeting that he can download.",
-  "plan": "docs/asdg/07-planning/03.14-sprint-004-working-plan.md",
-  "previous": "SPRINT-003 closed (unfinished)"
+  "sprint_id": null,
+  "state": "No next sprint chosen. SPRINT-004 closed unfinished on 22 November 2026 and no sprint is active. SPRINT-005 (03.18) and SPRINT-006 (03.19) are unapproved drafts of 22 November 2026; Pablo decides which comes next",
+  "objective": null,
+  "plan": null,
+  "previous": "SPRINT-004 closed (unfinished, 22 November 2026); SPRINT-003 closed (unfinished, 19 November 2026)"
 }

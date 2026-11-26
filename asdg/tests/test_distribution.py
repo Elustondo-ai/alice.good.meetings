@@ -73,7 +73,7 @@ class DistributionTests(unittest.TestCase):
         help_file = self.core / 'skills/asdg-help/SKILL.md'
         text = help_file.read_text()
         documented = set()
-        for name, link in re.findall(r'\[/(asdg-[a-z-]+)\]\(([^)]+)\)', text):
+        for name, link in re.findall(r'\[/(asdg-[a-z0-9-]+)\]\(([^)]+)\)', text):
             target = (help_file.parent / link).resolve()
             self.assertEqual(target, (self.core / 'skills' / name / 'SKILL.md').resolve())
             self.assertTrue(target.is_file(), name)

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Helvetica, Arial, sans-serif">
+<rect width="1280" height="720" fill="#ffffff"/>
+<rect width="1280" height="64" fill="#1f3a5f"/>
+<text x="40" y="42" font-size="24" font-weight="700" fill="#fff">Alice.Good.Meetings</text>
+<text x="1240" y="42" text-anchor="end" font-size="22" fill="#cbd5e1">Stage 05 · Architecture</text>
+<rect x="40" y="92" width="160" height="40" rx="20" fill="#1f3a5f"/>
+<text x="120" y="119" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">Actual</text>
+<rect x="216" y="92" width="138" height="40" rx="20" fill="#2f7d4f"/>
+<text x="285.0" y="119" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">CURRENT</text>
+<text x="40" y="190" font-size="40" font-weight="700" fill="#1a202c">The built service passes all 145 offline tests</text>
+<text x="40" y="238" font-size="40" font-weight="700" fill="#1a202c">at 673c3bd</text>
+<circle cx="52" cy="322" r="7" fill="#2f7d4f"/>
+<text x="76" y="330" font-size="26" fill="#2d3748">Upload, log, hosted-mode and avatar-off cases</text>
+<text x="76" y="362" font-size="26" fill="#2d3748">are among the tests</text>
+<circle cx="52" cy="412" r="7" fill="#2f7d4f"/>
+<text x="76" y="420" font-size="26" fill="#2d3748">Cloud Run hosted mode is built, not deployed</text>
+<circle cx="52" cy="470" r="7" fill="#2f7d4f"/>
+<text x="76" y="478" font-size="26" fill="#2d3748">02-current-architecture.md not re-read for</text>
+<text x="76" y="510" font-size="26" fill="#2d3748">this run</text>
+<rect x="760" y="290" width="480" height="340" rx="16" fill="#f3f5f9" stroke="#d6dbe5"/>
+<text x="1000.0" y="470.0" text-anchor="middle" font-size="84" font-weight="700" fill="#1f3a5f">145/145</text>
+<text x="1000.0" y="520.0" text-anchor="middle" font-size="22" fill="#4a5568">offline tests pass today</text>
+<text x="40" y="690" font-size="18" fill="#6b7280">Snapshot 673c3bd · as of 2026-11-23 · main · evidence: current</text>
+<text x="1240" y="690" text-anchor="end" font-size="18" fill="#6b7280">14 of 36</text>
+</svg>

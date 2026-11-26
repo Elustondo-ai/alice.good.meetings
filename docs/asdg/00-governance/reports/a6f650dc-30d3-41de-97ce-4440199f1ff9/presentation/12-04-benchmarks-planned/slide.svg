@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Helvetica, Arial, sans-serif">
+<rect width="1280" height="720" fill="#ffffff"/>
+<rect width="1280" height="64" fill="#1f3a5f"/>
+<text x="40" y="42" font-size="24" font-weight="700" fill="#fff">Alice.Good.Meetings</text>
+<text x="1240" y="42" text-anchor="end" font-size="22" fill="#cbd5e1">Stage 04 · Benchmarks</text>
+<rect x="40" y="92" width="160" height="40" rx="20" fill="#1f3a5f"/>
+<text x="120" y="119" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">Planned</text>
+<rect x="216" y="92" width="110" height="40" rx="20" fill="#b7791f"/>
+<text x="271.0" y="119" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">DRAFT</text>
+<text x="40" y="190" font-size="40" font-weight="700" fill="#1a202c">Carry-forward: one recorded live session, then</text>
+<text x="40" y="238" font-size="40" font-weight="700" fill="#1a202c">re-run the checks</text>
+<circle cx="52" cy="322" r="7" fill="#b7791f"/>
+<text x="76" y="330" font-size="26" fill="#2d3748">04 re-runs the statement check on the final</text>
+<text x="76" y="362" font-size="26" fill="#2d3748">README</text>
+<circle cx="52" cy="412" r="7" fill="#b7791f"/>
+<text x="76" y="420" font-size="26" fill="#2d3748">Test, page-check and run-script re-runs get</text>
+<text x="76" y="452" font-size="26" fill="#2d3748">recorded in a project file</text>
+<circle cx="52" cy="502" r="7" fill="#b7791f"/>
+<text x="76" y="510" font-size="26" fill="#2d3748">SPRINT-005 baseline: 7 questions, mean 8.6 s,</text>
+<text x="76" y="542" font-size="26" fill="#2d3748">16 of 23 calls showed nothing</text>
+<rect x="760" y="290" width="480" height="340" rx="16" fill="#f3f5f9" stroke="#d6dbe5"/>
+<text x="1000.0" y="470.0" text-anchor="middle" font-size="84" font-weight="700" fill="#1f3a5f">8.6 s</text>
+<text x="1000.0" y="520.0" text-anchor="middle" font-size="22" fill="#4a5568">mean wait, 7 live</text>
+<text x="1000.0" y="550.0" text-anchor="middle" font-size="22" fill="#4a5568">questions</text>
+<text x="40" y="690" font-size="18" fill="#6b7280">Snapshot 673c3bd · as of 2026-11-23 · main · evidence: draft</text>
+<text x="1240" y="690" text-anchor="end" font-size="18" fill="#6b7280">12 of 36</text>
+</svg>

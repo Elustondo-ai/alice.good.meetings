@@ -1,0 +1,6 @@
+interface:
+  display_name: "ASDG team create2"
+  short_description: "Create a top-level team with twelve specialist chats"
+  default_prompt: "Use $asdg-team-create2 to create a separate top-level team with twelve ASDG specialists, preserving this caller."
+policy:
+  allow_implicit_invocation: true

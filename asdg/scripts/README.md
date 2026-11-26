@@ -11,5 +11,6 @@ Run these entry points from the client Git root using Python 3.9+:
 | [build_distribution.py](build_distribution.md) | Build a verified ZIP from the explicit portable file list |
 
 Each link opens the script's purpose and interface guide.
+The CLI also provides [push replacement](../docs/push-replace.md) for explicitly resetting ASDG-owned client entities, with backups and recovery.
 Browse the [runtime modules](lib/README.md) or the [test guides](../tests/README.md).
 The old root-level Python launchers are intentionally removed.

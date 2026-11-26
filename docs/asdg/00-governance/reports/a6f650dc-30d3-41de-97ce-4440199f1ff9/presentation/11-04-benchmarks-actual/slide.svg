@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Helvetica, Arial, sans-serif">
+<rect width="1280" height="720" fill="#ffffff"/>
+<rect width="1280" height="64" fill="#1f3a5f"/>
+<text x="40" y="42" font-size="24" font-weight="700" fill="#fff">Alice.Good.Meetings</text>
+<text x="1240" y="42" text-anchor="end" font-size="22" fill="#cbd5e1">Stage 04 · Benchmarks</text>
+<rect x="40" y="92" width="160" height="40" rx="20" fill="#1f3a5f"/>
+<text x="120" y="119" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">Actual</text>
+<rect x="216" y="92" width="138" height="40" rx="20" fill="#2f7d4f"/>
+<text x="285.0" y="119" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">CURRENT</text>
+<text x="40" y="190" font-size="40" font-weight="700" fill="#1a202c">SPRINT-004: 8 of 11 criteria pass, 2 fail, 1</text>
+<text x="40" y="238" font-size="40" font-weight="700" fill="#1a202c">unverified</text>
+<circle cx="52" cy="322" r="7" fill="#2f7d4f"/>
+<text x="76" y="330" font-size="26" fill="#2d3748">145 of 145 offline tests pass at 673c3bd (my</text>
+<text x="76" y="362" font-size="26" fill="#2d3748">run, 23 Nov)</text>
+<circle cx="52" cy="412" r="7" fill="#2f7d4f"/>
+<text x="76" y="420" font-size="26" fill="#2d3748">Failed: the cue keys, and the recorded live</text>
+<text x="76" y="452" font-size="26" fill="#2d3748">session</text>
+<circle cx="52" cy="502" r="7" fill="#2f7d4f"/>
+<text x="76" y="510" font-size="26" fill="#2d3748">Statement check passed on rerun bytes, still</text>
+<text x="76" y="542" font-size="26" fill="#2d3748">marked unverified at close</text>
+<rect x="760" y="290" width="480" height="340" rx="16" fill="#f3f5f9" stroke="#d6dbe5"/>
+<text x="790" y="337.0" font-size="20" fill="#4a5568">pass</text>
+<rect x="790" y="345.0" width="400" height="54" rx="8" fill="#2f7d4f"/>
+<text x="1180" y="381.0" font-size="28" font-weight="700" fill="#fff">8</text>
+<text x="790" y="425.0" font-size="20" fill="#4a5568">fail</text>
+<rect x="790" y="433.0" width="100" height="54" rx="8" fill="#b83a3a"/>
+<text x="900.0" y="469.0" font-size="28" font-weight="700" fill="#1f3a5f">2</text>
+<text x="790" y="513.0" font-size="20" fill="#4a5568">unverified</text>
+<rect x="790" y="521.0" width="50" height="54" rx="8" fill="#6b7280"/>
+<text x="850.0" y="557.0" font-size="28" font-weight="700" fill="#1f3a5f">1</text>
+<text x="40" y="690" font-size="18" fill="#6b7280">Snapshot 673c3bd · as of 2026-11-23 · main · evidence: current</text>
+<text x="1240" y="690" text-anchor="end" font-size="18" fill="#6b7280">11 of 36</text>
+</svg>

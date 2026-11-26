@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Helvetica, Arial, sans-serif">
+<rect width="1280" height="720" fill="#ffffff"/>
+<rect width="1280" height="64" fill="#1f3a5f"/>
+<text x="40" y="42" font-size="24" font-weight="700" fill="#fff">Alice.Good.Meetings</text>
+<text x="1240" y="42" text-anchor="end" font-size="22" fill="#cbd5e1">Stage 12 · Observability</text>
+<rect x="40" y="92" width="160" height="40" rx="20" fill="#1f3a5f"/>
+<text x="120" y="119" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">Actual</text>
+<rect x="216" y="92" width="138" height="40" rx="20" fill="#6b7280"/>
+<text x="285.0" y="119" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">UNKNOWN</text>
+<text x="40" y="190" font-size="40" font-weight="700" fill="#1a202c">A log is built, but no insight has been drawn</text>
+<text x="40" y="238" font-size="40" font-weight="700" fill="#1a202c">from it</text>
+<circle cx="52" cy="322" r="7" fill="#6b7280"/>
+<text x="76" y="330" font-size="26" fill="#2d3748">SPRINT-004 log criteria pass; one file per</text>
+<text x="76" y="362" font-size="26" fill="#2d3748">session, local and Git-ignored</text>
+<circle cx="52" cy="412" r="7" fill="#6b7280"/>
+<text x="76" y="420" font-size="26" fill="#2d3748">10 inspected three live logs for structure</text>
+<text x="76" y="452" font-size="26" fill="#2d3748">only</text>
+<circle cx="52" cy="502" r="7" fill="#6b7280"/>
+<text x="76" y="510" font-size="26" fill="#2d3748">No telemetry or analytics, and no learning</text>
+<text x="76" y="542" font-size="26" fill="#2d3748">assessment documented</text>
+<rect x="760" y="290" width="480" height="340" rx="16" fill="#f3f5f9" stroke="#d6dbe5"/>
+<text x="1000.0" y="360" text-anchor="middle" font-size="22" fill="#4a5568">Insights recorded</text>
+<text x="1000.0" y="470.0" text-anchor="middle" font-size="46" font-weight="700" fill="#1f3a5f">NONE</text>
+<text x="1000.0" y="570" text-anchor="middle" font-size="20" fill="#4a5568">structure checked only</text>
+<text x="40" y="690" font-size="18" fill="#6b7280">Snapshot 673c3bd · as of 2026-11-23 · main · evidence: unknown</text>
+<text x="1240" y="690" text-anchor="end" font-size="18" fill="#6b7280">35 of 36</text>
+</svg>

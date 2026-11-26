@@ -27,6 +27,7 @@ For “all commands,” include the terminal commands in [the reference](command
 | [/asdg-update](../asdg-update/SKILL.md) | As selected Admin, preview a distribution update and separate adapter refresh; approve each plan before apply. |
 | [/asdg-init](../asdg-init/SKILL.md) | Preview installation; apply only after explicit approval of the exact preview. |
 | [/asdg-create-team](../asdg-create-team/SKILL.md) | Reuse/create the thirteen role chats, or the next numbered team in its own worktree and branch; shared sorting changes need approval. |
+| [/asdg-team-create2](../asdg-team-create2/SKILL.md) | Copilot session tools: human or agent creates an independent top-level team with twelve specialists from any caller; no worktree or project work. |
 | [/asdg-create-team-admin](../asdg-create-team-admin/SKILL.md) | Create one ASDG Admin chat in its own numbered worktree and branch; authorizes no rule change. |
 | [/asdg-focus](../asdg-focus/SKILL.md) | Select a role, or use `subject` to change its topic independently. |
 | [/asdg-attitude](../asdg-attitude/SKILL.md) | Select a thinking attitude and scope, clear it, or report it. |

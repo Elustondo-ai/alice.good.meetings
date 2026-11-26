@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Helvetica, Arial, sans-serif">
+<rect width="1280" height="720" fill="#ffffff"/>
+<rect width="1280" height="64" fill="#1f3a5f"/>
+<text x="40" y="42" font-size="24" font-weight="700" fill="#fff">Alice.Good.Meetings</text>
+<text x="1240" y="42" text-anchor="end" font-size="22" fill="#cbd5e1">Stage 07 · Planning</text>
+<rect x="40" y="92" width="160" height="40" rx="20" fill="#1f3a5f"/>
+<text x="120" y="119" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">Actual</text>
+<rect x="216" y="92" width="110" height="40" rx="20" fill="#c05621"/>
+<text x="271.0" y="119" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">STALE</text>
+<text x="40" y="190" font-size="40" font-weight="700" fill="#1a202c">Two sprints closed unfinished; none is active;</text>
+<text x="40" y="238" font-size="40" font-weight="700" fill="#1a202c">two pages say otherwise</text>
+<circle cx="52" cy="322" r="7" fill="#c05621"/>
+<text x="76" y="330" font-size="26" fill="#2d3748">SPRINT-003 closed unfinished 19 Nov;</text>
+<text x="76" y="362" font-size="26" fill="#2d3748">SPRINT-004 closed unfinished 22 Nov</text>
+<circle cx="52" cy="412" r="7" fill="#c05621"/>
+<text x="76" y="420" font-size="26" fill="#2d3748">.asdg/sprint.json is inactive</text>
+<circle cx="52" cy="470" r="7" fill="#c05621"/>
+<text x="76" y="478" font-size="26" fill="#2d3748">07 README and proposed-sprint.json still call</text>
+<text x="76" y="510" font-size="26" fill="#2d3748">SPRINT-004 active</text>
+<rect x="760" y="290" width="480" height="340" rx="16" fill="#f3f5f9" stroke="#d6dbe5"/>
+<rect x="800" y="354.0" width="400" height="52" rx="12" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+<text x="1000.0" y="389.0" text-anchor="middle" font-size="24" fill="#1f3a5f">SPRINT-003 unfinished</text>
+<path d="M1000.0 409.0 L1000.0 429.0 M992.0 420.0 L1000.0 429.0 L1008.0 420.0" stroke="#1f3a5f" stroke-width="3" fill="none"/>
+<rect x="800" y="434.0" width="400" height="52" rx="12" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+<text x="1000.0" y="469.0" text-anchor="middle" font-size="24" fill="#1f3a5f">SPRINT-004 unfinished</text>
+<path d="M1000.0 489.0 L1000.0 509.0 M992.0 500.0 L1000.0 509.0 L1008.0 500.0" stroke="#1f3a5f" stroke-width="3" fill="none"/>
+<rect x="800" y="514.0" width="400" height="52" rx="12" fill="#fff" stroke="#1f3a5f" stroke-width="2"/>
+<text x="1000.0" y="549.0" text-anchor="middle" font-size="24" fill="#1f3a5f">none active</text>
+<text x="40" y="690" font-size="18" fill="#6b7280">Snapshot 673c3bd · as of 2026-11-23 · main · evidence: stale</text>
+<text x="1240" y="690" text-anchor="end" font-size="18" fill="#6b7280">20 of 36</text>
+</svg>

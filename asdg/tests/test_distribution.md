@@ -9,7 +9,7 @@ They exercise the developer promise without relying on a sibling provider or glo
 | --- | --- |
 | Repeated builds | Stable bytes and checksum; every member comes from the explicit file list. |
 | Approval instructions | ZIP contains the exact current canonical Init, Status, Suggestion and Create team skills, its creation procedure and both reusable prompts. |
-| Command help | Every portable discovery command has a resolving canonical Help entry; ZIP retains exact Help/reference bytes. |
+| Command help | Every portable discovery command, including names with digits, has a resolving canonical Help entry; ZIP retains exact Help/reference bytes. |
 | Post-upgrade integration | A separately approved init adds missing Help/Update adapters for both clients, preserves project bytes and prior review events, appends modification receipts without approval, and repeats without changes. |
 | Exclusions | Unlisted provider files never enter the archive. |
 | Stale or missing bytes | Build fails before creating an artifact. |
