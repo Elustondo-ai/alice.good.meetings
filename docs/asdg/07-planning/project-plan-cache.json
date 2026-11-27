@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "repository": "Elustondo-ai/alice.good.meetings",
+  "project": {
+    "owner": "Elustondo-ai",
+    "number": null,
+    "title": "ASDG Plan — Elustondo-ai/alice.good.meetings"
+  },
+  "items": [
+    {
+      "id": "B-01",
+      "issue_number": null,
+      "fields": {
+        "title": "B-01: As Pablo I want to upload my preparation package from the page, several files first and a zip later, so that I need no files on the machine",
+        "body": "**Story:** As Pablo I want to upload my preparation package from the page, several files first and a zip later, so that I need no files on the machine\n\n**Acceptance idea:** Pick `.md` or `.txt` files; they replace the package, stay in memory, never written to disk, skipped files named\n\n**Size:** M\n\n**Needs:** B-02; 05 questions Q1 to Q4 (Q5 for zip); 03 UC-07 accepted\n\n**Source:** [UC-07](../03-system-model-and-use-cases/01.7-load-preparation-package.md), [05 01.8](../05-high-level-design-and-architecture/01.8-package-upload-and-vocabulary.md), [01.8.1](../05-high-level-design-and-architecture/01.8.1-upload-limits-and-statements.md)\n\nQuoted unchanged from backlog row B-01 in `docs/asdg/07-planning/03.12-product-backlog.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12-product-backlog.md",
+        "state": "CLOSED",
+        "status": "Done",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "Delivered in SPRINT-004 (closeout acc3497d..., criterion PASS); Pablo chose Closed/Done on 2026-11-27.",
+      "sources": [
+        "docs/asdg/07-planning/03.12-product-backlog.md"
+      ]
+    },
+    {
+      "id": "B-02",
+      "issue_number": null,
+      "fields": {
+        "title": "B-02: As Pablo I want the page and the service to show the package (name, files, characters, terms, source) so that a missing or wrong package is obvious before I press Start listening",
+        "body": "**Story:** As Pablo I want the page and the service to show the package (name, files, characters, terms, source) so that a missing or wrong package is obvious before I press Start listening\n\n**Acceptance idea:** Before Start the page names what is loaded or says \"no package\"; the service returns the same without package text\n\n**Size:** S to M\n\n**Needs:** 05 `GET /package` accepted\n\n**Source:** UC-07 (the 18 November wrong-package failure), 05 01.8\n\nQuoted unchanged from backlog row B-02 in `docs/asdg/07-planning/03.12-product-backlog.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12-product-backlog.md",
+        "state": "CLOSED",
+        "status": "Done",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "Delivered in SPRINT-004 (closeout acc3497d..., criterion PASS); Pablo chose Closed/Done on 2026-11-27.",
+      "sources": [
+        "docs/asdg/07-planning/03.12-product-backlog.md"
+      ]
+    },
+    {
+      "id": "B-03",
+      "issue_number": null,
+      "fields": {
+        "title": "B-03: As Pablo I want a list of my own terms (for example Simplii, CIBC Simplii) so that names in no document reach the transcription hint",
+        "body": "**Story:** As Pablo I want a list of my own terms (for example Simplii, CIBC Simplii) so that names in no document reach the transcription hint\n\n**Acceptance idea:** Up to 40 terms, shown \"3 yours\", ahead of package terms; never cut by the existing hint limits\n\n**Size:** S\n\n**Needs:** B-02; Q3 (remember in the browser)\n\n**Source:** 05 01.8; `poc/vocabulary.mjs`\n\nQuoted unchanged from backlog row B-03 in `docs/asdg/07-planning/03.12-product-backlog.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12-product-backlog.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12-product-backlog.md"
+      ]
+    },
+    {
+      "id": "B-04",
+      "issue_number": null,
+      "fields": {
+        "title": "B-04: As Pablo I want the 20,000-character package limit reconsidered so that my real package fits",
+        "body": "**Story:** As Pablo I want the 20,000-character package limit reconsidered so that my real package fits\n\n**Acceptance idea:** A recorded decision: raise, summarize, pick files or read subfolders; the CPPIB package is about 130 KB in 32 files and a 3-file subset was installed by hand\n\n**Size:** M\n\n**Needs:** Pablo's decision; 04 cost and recall; a new data statement\n\n**Source:** UC-07; 01.8.1; this backlog\n\nQuoted unchanged from backlog row B-04 in `docs/asdg/07-planning/03.12-product-backlog.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12-product-backlog.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12-product-backlog.md"
+      ]
+    },
+    {
+      "id": "B-05",
+      "issue_number": null,
+      "fields": {
+        "title": "B-05: As Pablo I want a local record of each meeting so that I can review my own performance later",
+        "body": "**Story:** As Pablo I want a local record of each meeting so that I can review my own performance later\n\n**Acceptance idea:** After each turn and at the end, a Git-ignored record with timestamped segments, pauses, Focus changes and source, answers shown, cue state over time, package name and size, never its text\n\n**Size:** L\n\n**Needs:** B-06 source tag; data statement and retention rule; 12, 05, 04\n\n**Source:** [12 Observability](../12-observability-insights-and-learning/README.md) (empty today); 05 audit\n\nQuoted unchanged from backlog row B-05 in `docs/asdg/07-planning/03.12-product-backlog.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12-product-backlog.md",
+        "state": "CLOSED",
+        "status": "Done",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "Delivered in SPRINT-004 (closeout acc3497d..., criterion PASS); Pablo chose Closed/Done on 2026-11-27.",
+      "sources": [
+        "docs/asdg/07-planning/03.12-product-backlog.md"
+      ]
+    },
+    {
+      "id": "B-06",
+      "issue_number": null,
+      "fields": {
+        "title": "B-06: As Pablo I want 05's small code changes so that what is sent is visible and idle pauses cost nothing",
+        "body": "**Story:** As Pablo I want 05's small code changes so that what is sent is visible and idle pauses cost nothing\n\n**Acceptance idea:** Print covers the post-pause request and hint; source tag (speech or button) on Focus and audit; no request when no new speech; term list and count in print and audit\n\n**Size:** S to M\n\n**Needs:** none\n\n**Source:** [05 03.4](../05-high-level-design-and-architecture/03.4-18-november-code-assessment.md) C1 to C3, C5\n\nQuoted unchanged from backlog row B-06 in `docs/asdg/07-planning/03.12-product-backlog.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12-product-backlog.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12-product-backlog.md"
+      ]
+    },
+    {
+      "id": "B-07",
+      "issue_number": null,
+      "fields": {
+        "title": "B-07: As Pablo I want a new answer held while I am speaking so that text does not move under my eyes",
+        "body": "**Story:** As Pablo I want a new answer held while I am speaking so that text does not move under my eyes\n\n**Acceptance idea:** Answer waits for the next pause; the cue is unchanged; a flag turns it off\n\n**Size:** M\n\n**Needs:** Pablo's decision on flag F2; 03 scenario; 04 check\n\n**Source:** 05 03.4 C4, F2\n\nQuoted unchanged from backlog row B-07 in `docs/asdg/07-planning/03.12-product-backlog.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12-product-backlog.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12-product-backlog.md"
+      ]
+    },
+    {
+      "id": "B-08",
+      "issue_number": null,
+      "fields": {
+        "title": "B-08: As Pablo I want to know where the wait after a question goes, and to adjust the pause, so that answers come when I need them",
+        "body": "**Story:** As Pablo I want to know where the wait after a question goes, and to adjust the pause, so that answers come when I need them\n\n**Acceptance idea:** The three parts (800 ms pause, fixed 2.5 s `reasonDelayMs`, model call) are measured; the pause is adjustable from the page or one setting (`ALICE_PAUSE_MS` exists). He finds the wait \"a little long but acceptable\"\n\n**Size:** S to M\n\n**Needs:** a live session; 04 definition\n\n**Source:** [05 03.2](../05-high-level-design-and-architecture/03.2-answer-delay-question.md), 05 03.4 F4, `HANDOFF-2026-11-18.md`\n\nQuoted unchanged from backlog row B-08 in `docs/asdg/07-planning/03.12.1-product-backlog-later.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.1-product-backlog-later.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.1-product-backlog-later.md"
+      ]
+    },
+    {
+      "id": "B-09",
+      "issue_number": null,
+      "fields": {
+        "title": "B-09: As Pablo I want clear wording so that nothing sounds like an error when it is not",
+        "body": "**Story:** As Pablo I want clear wording so that nothing sounds like an error when it is not\n\n**Acceptance idea:** \"agent proposal rejected; keeping previous answer\" becomes \"no new question heard\"; the details area shows it scrolls; his list of what is \"a bit clumsy\" is added when he gives it\n\n**Size:** S\n\n**Needs:** his list\n\n**Source:** page monitor line; [SPRINT-003 spec](../08-low-level-design/03.5.3-s003-answer-labels.md)\n\nQuoted unchanged from backlog row B-09 in `docs/asdg/07-planning/03.12.1-product-backlog-later.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.1-product-backlog-later.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.1-product-backlog-later.md"
+      ]
+    },
+    {
+      "id": "B-10",
+      "issue_number": null,
+      "fields": {
+        "title": "B-10: As Pablo I want the monitor line behind the cue and hideable so that it never competes with the cue",
+        "body": "**Story:** As Pablo I want the monitor line behind the cue and hideable so that it never competes with the cue\n\n**Acceptance idea:** Monitor is smaller than the cue, Focus and bullets; one control hides it and the choice stays\n\n**Size:** S\n\n**Needs:** 05 flag F3\n\n**Source:** 05 03.4\n\nQuoted unchanged from backlog row B-10 in `docs/asdg/07-planning/03.12.1-product-backlog-later.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.1-product-backlog-later.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.1-product-backlog-later.md"
+      ]
+    },
+    {
+      "id": "B-11",
+      "issue_number": null,
+      "fields": {
+        "title": "B-11: As Pablo I want gesture and video clues as new input channels so that I can steer Alice without speaking",
+        "body": "**Story:** As Pablo I want gesture and video clues as new input channels so that I can steer Alice without speaking\n\n**Acceptance idea:** A new channel feeds Focus through the same rules; speech and buttons still work\n\n**Size:** L\n\n**Needs:** 03 and 05 channel design; 06 feasibility\n\n**Source:** [03 01.6](../03-system-model-and-use-cases/01.6-inputs-and-future-channels.md), [05 01.6](../05-high-level-design-and-architecture/01.6-input-channels.md)\n\nQuoted unchanged from backlog row B-11 in `docs/asdg/07-planning/03.12.1-product-backlog-later.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.1-product-backlog-later.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.1-product-backlog-later.md"
+      ]
+    },
+    {
+      "id": "B-12",
+      "issue_number": null,
+      "fields": {
+        "title": "B-12: As Pablo I want to use Alice from my phone over Tailscale so that I need not be at the laptop",
+        "body": "**Story:** As Pablo I want to use Alice from my phone over Tailscale so that I need not be at the laptop\n\n**Acceptance idea:** The page opens from the phone over the tailnet and works as on the laptop\n\n**Size:** M\n\n**Needs:** B-13 decision; 05\n\n**Source:** this backlog\n\nQuoted unchanged from backlog row B-12 in `docs/asdg/07-planning/03.12.1-product-backlog-later.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.1-product-backlog-later.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.1-product-backlog-later.md"
+      ]
+    },
+    {
+      "id": "B-13",
+      "issue_number": null,
+      "fields": {
+        "title": "B-13: As Pablo I want sign-in and security for a shared server so that others can use it safely",
+        "body": "**Story:** As Pablo I want sign-in and security for a shared server so that others can use it safely\n\n**Acceptance idea:** Parked by Pablo: \"security later\". No story detail until it is selected\n\n**Size:** L\n\n**Needs:** his go\n\n**Source:** this backlog\n\nQuoted unchanged from backlog row B-13 in `docs/asdg/07-planning/03.12.1-product-backlog-later.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.1-product-backlog-later.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.1-product-backlog-later.md"
+      ]
+    },
+    {
+      "id": "B-14",
+      "issue_number": null,
+      "fields": {
+        "title": "B-14: As Pablo I want a Whisper POC so that I can compare transcription",
+        "body": "**Story:** As Pablo I want a Whisper POC so that I can compare transcription\n\n**Acceptance idea:** Parked. A bounded experiment, if selected, framed by 06\n\n**Size:** M\n\n**Needs:** 06 decision\n\n**Source:** this backlog\n\nQuoted unchanged from backlog row B-14 in `docs/asdg/07-planning/03.12.1-product-backlog-later.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.1-product-backlog-later.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.1-product-backlog-later.md"
+      ]
+    },
+    {
+      "id": "B-15",
+      "issue_number": null,
+      "fields": {
+        "title": "B-15: As Pablo I want a small Alice avatar (a state-driven talking head, V0) so that the page shows Alice's state in a friendly way",
+        "body": "**Story:** As Pablo I want a small Alice avatar (a state-driven talking head, V0) so that the page shows Alice's state in a friendly way\n\n**Acceptance idea:** Six states drive closest built-in moods and gestures through one isolated adapter; no backend change, no speech; the page works if it fails to load\n\n**Size:** M\n\n**Needs:** 02, 05, 08 answers (pending); [TalkingHead](https://github.com/met4citizen/TalkingHead)\n\n**Source:** Pablo's request of 19 November 2026 via 00 Governance; [story page](03.14.2-sprint-004-avatar-story.md); added to SPRINT-004\n\nQuoted unchanged from backlog row B-15 in `docs/asdg/07-planning/03.12.1-product-backlog-later.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.1-product-backlog-later.md",
+        "state": "CLOSED",
+        "status": "Done",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "Delivered in SPRINT-004 (closeout acc3497d..., criterion PASS); Pablo chose Closed/Done on 2026-11-27.",
+      "sources": [
+        "docs/asdg/07-planning/03.12.1-product-backlog-later.md"
+      ]
+    },
+    {
+      "id": "B-16",
+      "issue_number": null,
+      "fields": {
+        "title": "B-16: As Pablo I want the empty middle of the bar to show Alice's advice so that she can talk to me in the page",
+        "body": "**Story:** As Pablo I want the empty middle of the bar to show Alice's advice so that she can talk to me in the page\n\n**Acceptance idea:** Pablo: \"the empty space in the middle will be used later for Alice to talk or say something: we are going to write her advice\". Reserved in SPRINT-004 (08 SA-19), nothing shown; text, source and rules are for a later sprint\n\n**Size:** to size\n\n**Needs:** B-15 placement; his advice texts; 02, 03, 05\n\n**Source:** 19 November 2026 via 00 Governance; SPRINT-005 candidate\n\nQuoted unchanged from backlog row B-16 in `docs/asdg/07-planning/03.12.1-product-backlog-later.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.1-product-backlog-later.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.1-product-backlog-later.md"
+      ]
+    },
+    {
+      "id": "B-17",
+      "issue_number": null,
+      "fields": {
+        "title": "B-17: As Pablo I want Alice faster and more efficient, \"without local LLM or anything special\", so that the Question and bullets appear while the question is fresh",
+        "body": "**Story:** As Pablo I want Alice faster and more efficient, \"without local LLM or anything special\", so that the Question and bullets appear while the question is fresh\n\n**Acceptance idea:** Same questions before and after; a measured gain from today's mean of 8.6 s (6.4 to 10.3 s over 7 live questions); cheap fixes only\n\n**Size:** M\n\n**Needs:** 04 question list and pass rule; 08 log fields\n\n**Source:** 09's [response-time analysis](../../../poc/docs/08-response-time.md), [08.5](../../../poc/docs/08.5-plan-and-experiments.md); narrows B-08\n\nQuoted unchanged from backlog row B-17 in `docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md"
+      ]
+    },
+    {
+      "id": "B-18",
+      "issue_number": null,
+      "fields": {
+        "title": "B-18: As Pablo I want no Question set from half a sentence and no speech lost at Stop",
+        "body": "**Story:** As Pablo I want no Question set from half a sentence and no speech lost at Stop\n\n**Acceptance idea:** The reader acts on final words only; Stop does not drop untranscribed speech\n\n**Size:** S to M\n\n**Needs:** 05 and 09 confirm the findings\n\n**Source:** Deferred findings (relayed); [08.2](../../../poc/docs/08.2-causes.md)\n\nQuoted unchanged from backlog row B-18 in `docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md"
+      ]
+    },
+    {
+      "id": "B-19",
+      "issue_number": null,
+      "fields": {
+        "title": "B-19: As Pablo I want the idle-pause guard (S004-GUARD, B-06 C1 and C3) if it saves calls",
+        "body": "**Story:** As Pablo I want the idle-pause guard (S004-GUARD, B-06 C1 and C3) if it saves calls\n\n**Acceptance idea:** No request when no new speech; print covers the post-pause request\n\n**Size:** S\n\n**Needs:** B-17 measurement shows it helps\n\n**Source:** [03.14](03.14-sprint-004-working-plan.md), B-06\n\nQuoted unchanged from backlog row B-19 in `docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md"
+      ]
+    },
+    {
+      "id": "B-20",
+      "issue_number": null,
+      "fields": {
+        "title": "B-20: As Pablo I want Alice on the iPad with the pen, so that I can use her in meetings without a Mac keyboard",
+        "body": "**Story:** As Pablo I want Alice on the iPad with the pen, so that I can use her in meetings without a Mac keyboard\n\n**Acceptance idea:** A big writing field below all else; touch buttons for what the keys do; the hosted mode deployed\n\n**Size:** L\n\n**Needs:** 05, 06; security decision; relates B-11, B-12, B-13\n\n**Source:** [poc/deploy](../../../poc/deploy/README.md), built, not deployed\n\nQuoted unchanged from backlog row B-20 in `docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md"
+      ]
+    },
+    {
+      "id": "B-21",
+      "issue_number": null,
+      "fields": {
+        "title": "B-21: As Pablo I want Alice to prepare likely questions and answers (about ten), with buttons like car-radio presets, so that I can rehearse and perform with them",
+        "body": "**Story:** As Pablo I want Alice to prepare likely questions and answers (about ten), with buttons like car-radio presets, so that I can rehearse and perform with them\n\n**Acceptance idea:** Button 1 is \"Tell me about yourself\"; a press shows its prepared answer; one list serves preparing and performing\n\n**Size:** L\n\n**Needs:** 02, 03, 04, 05; builds on B-01, B-16\n\n**Source:** Pablo's direction of 22 November\n\nQuoted unchanged from backlog row B-21 in `docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md"
+      ]
+    },
+    {
+      "id": "B-22",
+      "issue_number": null,
+      "fields": {
+        "title": "B-22: As Pablo I want to upload a whole folder or one .zip as the package, \"easier\" than selecting every .md file",
+        "body": "**Story:** As Pablo I want to upload a whole folder or one .zip as the package, \"easier\" than selecting every .md file\n\n**Acceptance idea:** Same limits as today (20,000 characters, .md and .txt only, skipped files named); a folder pick or a .zip replaces the package like a file pick; desktop Chrome and Safari take a folder, the iPad takes a .zip from the Files app\n\n**Size:** M\n\n**Needs:** 05 limits and zip safety; 04 cases; pairs with B-20\n\n**Source:** Pablo's feedback in the SPRINT-004 live session; narrows B-04 and B-01's \"no zip\"\n\nQuoted unchanged from backlog row B-22 in `docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md` (07 Planning draft; nothing approved). Relative links resolve from that page: https://github.com/Elustondo-ai/alice.good.meetings/blob/main/docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md",
+        "state": "OPEN",
+        "status": "Todo",
+        "priority": "",
+        "team": "Alice",
+        "sprint": ""
+      },
+      "base": null,
+      "notes": "",
+      "sources": [
+        "docs/asdg/07-planning/03.12.2-product-backlog-sprints-005-006.md"
+      ]
+    }
+  ]
+}
