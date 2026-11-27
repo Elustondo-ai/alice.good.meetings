@@ -13,7 +13,7 @@
 
 ## Interface
 
-`preview(source_path, target_path)` returns a timeless plan with exact bytes, hashes, conflicts, audit intent and verification inputs. `replace(..., apply=False, expected_plan=None)` previews or requires the exact digest, rechecks under the lock and executes.
+`preview(source_path, target_path)` returns a timeless plan with exact bytes, hashes, conflicts, audit intent and verification inputs. The source is the canonical Git root; its package may sit at that root or in its `asdg/` folder, and both produce the same plan apart from the records that name the source commit. `replace(..., apply=False, expected_plan=None)` previews or requires the exact digest, rechecks under the lock and executes.
 
 `recover(target, transaction_id, mode)` resumes the saved transaction or requests guarded rollback. `verify_payload(root, verification)` checks bytes/modes, preserved evidence, target identity and integrations before publication. `verify_installed(target)` checks recorded ownership and client structure.
 

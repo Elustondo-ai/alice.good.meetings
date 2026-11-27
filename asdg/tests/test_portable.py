@@ -286,6 +286,19 @@ runpy.run_path(entry, run_name='__main__')
             self.assertEqual((self.root / path).read_bytes(), data)
         self.assertFalse((self.root / 'openspec/changes').exists())
 
+    def test_each_role_entry_is_headed_with_its_catalogue_title(self):
+        sys.path.insert(0, str(CORE / 'scripts'))
+        import check
+        self.assertEqual([issue for issue in check.validate() if 'Role heading' in issue], [])
+        core = Path(tempfile.mkdtemp(prefix='asdg-heading-')) / 'asdg'
+        self.addCleanup(shutil.rmtree, core.parent)
+        shutil.copytree(CORE, core, ignore=shutil.ignore_patterns('.git', '__pycache__'))
+        entry = core / '05-high-level-design-and-architecture/AGENTS.md'
+        entry.write_text(entry.read_text().replace('# High-Level Architecture Agent', '# Architecture Agent', 1))
+        found = [issue for issue in check.validate(core) if 'Role heading' in issue]
+        self.assertEqual(len(found), 1)
+        self.assertIn('High-Level Architecture Agent', found[0])
+
     def test_gui_visual_rule_is_shared_by_all_role_entry_points(self):
         self.init()
         self.root = self.root.rename(self.root.parent / 'relocated gui client')
@@ -503,7 +516,7 @@ runpy.run_path(entry, run_name='__main__')
             self.assertEqual((self.root / '.codex').exists(), 'codex' in expected)
             self.assertEqual((self.root / '.agents').exists(), 'codex' in expected)
             self.assertEqual((self.root / '.claude/skills').is_dir(), 'claude' in expected)
-            self.assertFalse((self.root / 'CLAUDE.md').exists())
+            self.assertEqual((self.root / 'CLAUDE.md').exists(), 'claude' in expected)
             self.assertEqual(self.statuses(), {n: 'COMPLETE' if n in expected else 'NOT_SELECTED' for n in ('codex', 'claude')})
             guard = json.loads(self.run_cli('status', '--json').stdout)['guard']['configuration']
             self.assertEqual(guard, 'PRESENT' if 'codex' in expected else 'NOT_INSTALLED')
@@ -567,9 +580,11 @@ runpy.run_path(entry, run_name='__main__')
             targets = set()
             for folder in ('.agents/skills', '.claude/skills'):
                 adapter = self.root / folder / name / 'SKILL.md'
-                link = re.search(r'\]\(([^)]*asdg/skills/[^)]+)\)', adapter.read_text()).group(1)
+                link = re.search(r'\]\(([^)]*asdg/(?:skills|07-planning/skills)/[^)]+)\)', adapter.read_text()).group(1)
                 targets.add((adapter.parent / link).resolve())
-            self.assertEqual(targets, {(self.root / 'asdg/skills' / name / 'SKILL.md').resolve()}, name)
+            # A role-owned skill (Project Plan Sync belongs to Planning) keeps its one canonical file in the role folder.
+            canonical = 'asdg/07-planning/skills/project-plan-sync' if name == 'asdg-project-plan-sync' else f'asdg/skills/{name}'
+            self.assertEqual(targets, {(self.root / canonical / 'SKILL.md').resolve()}, name)
         self.run_cli('verify', cwd=self.root / 'docs')
 
     def test_claude_invocation_controls_mirror_the_codex_policy(self):
@@ -601,15 +616,20 @@ runpy.run_path(entry, run_name='__main__')
         after = snapshot(self.root)
         self.assertEqual({k: after[k] for k in codex}, codex)
 
-    def test_claude_bridge_is_added_only_when_claude_md_would_hide_agents_md(self):
-        # Assumes no CLAUDE.md in the fixture's parent folders, which would itself require the bridge.
+    def test_claude_bridge_is_always_ensured_and_never_duplicates_a_user_import(self):
+        # One rule shared with push-replace: the outcome never depends on files in parent folders.
+        block = '<!-- ASDG:BEGIN claude-bridge-v1 -->\n@AGENTS.md\n<!-- ASDG:END claude-bridge -->\n'
         self.init('--client', 'claude')
-        self.assertFalse((self.root / 'CLAUDE.md').exists())
+        self.assertEqual((self.root / 'CLAUDE.md').read_text(), block)
+        self.assertEqual(self.statuses()['claude'], 'COMPLETE')
         notes = '# Team Claude notes\nUse plan mode.\n'
+        (self.root / 'CLAUDE.md').write_text(notes + '\n' + block)  # where push-replace used to write it
+        before = snapshot(self.root)
+        self.init('--client', 'claude')
+        self.assertEqual(snapshot(self.root), before)
         (self.root / 'CLAUDE.md').write_text(notes)
         self.assertEqual(self.statuses(expect=1)['claude'], 'DAMAGED')
         self.init('--client', 'claude')
-        block = '<!-- ASDG:BEGIN claude-bridge-v1 -->\n@AGENTS.md\n<!-- ASDG:END claude-bridge -->\n'
         self.assertEqual((self.root / 'CLAUDE.md').read_text(), block + '\n' + notes)
         self.assertIn(notes, [b.read_text() for b in (self.root / '.asdg/backups').glob('CLAUDE-before-*.md')])
         before = snapshot(self.root)

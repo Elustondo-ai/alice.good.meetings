@@ -1,7 +1,7 @@
 # Build and verify the portable distribution
 
 The canonical repository produces one ZIP with one top-level `asdg/` folder.
-The recommended [repository-URL Quick Start](https://github.com/Elustondo-ai/asdg#quick-start--give-your-agent-the-repository-url) delegates acquisition and initialization to an agent; manual extraction and a pinned clone remain alternatives.
+The recommended [repository-URL Quick Start](../README.md#quick-start--give-your-agent-the-repository-url) delegates acquisition and initialization to an agent; manual extraction and a pinned clone remain alternatives.
 
 ![The provider selects portable files, validates hashes and builds a ZIP; the client extracts it and initializes local integrations and state.](images/distribution-flow.svg)
 
@@ -29,12 +29,12 @@ The selected package includes `skills/asdg-init/SKILL.md`, the single owner of t
 Version `0.3.0-pilot.4` adds role-based write ownership to Status-owned onboarding, Help, Update and stable team ordering; preserve existing pilot.1, pilot.2 and pilot.3 assets. Publication requires explicit human authorization.
 Review `metadata/package-files.json`, the explicit portable file list, when adding a capability.
 Repository-only presentation tools, legacy provider code, application evidence and builds are excluded.
-Before every commit/push, after changes and documentation receipts are ready, run from the standalone source root:
+Before every commit/push, after changes and documentation receipts are ready, run from the root of the workshop repository:
 
 ```sh
-python3 -B scripts/build_distribution.py --refresh-manifest
-python3 -B scripts/check.py --integrity
-python3 -B -m unittest discover -s tests -v
+python3 -B asdg/scripts/build_distribution.py --refresh-manifest
+python3 -B asdg/scripts/check.py --integrity
+python3 -B -m unittest discover -s asdg/tests -v
 ```
 
 The builder refreshes the candidate manifest and writes a ZIP and SHA-256 sidecar under ignored `build/distributions/`. There is no enclosing provider wrapper in this source repository.
@@ -51,7 +51,7 @@ Source repository commits and the candidate version live in `metadata/distributi
 This candidate supports fresh embedded installations, repeat setup and [reviewed local promote/upgrade](synchronization.md).
 Existing linked providers still require explicit migration. Version upgrades use an adoption record; init does not silently change versions.
 Synchronization preserves `.asdg/`, client documents, installed adapters and hooks; changed templates need separately reviewed integration work.
-Contributors invoke `python3 scripts/cli.py`; consumers invoke their installed `python3 asdg/scripts/cli.py`. Source maintenance uses the checks above, not client initialization.
+Contributors invoke `python3 asdg/scripts/cli.py` from the workshop root; consumers invoke their installed `python3 asdg/scripts/cli.py`. Source maintenance uses the checks above, not client initialization.
 Historical installer, namespace migration and baseline code are retained for separate reconciliation; they are not a second active source or installer.
 The preserved presentation/component tools are outside this core package and its acceptance claim.
 Publishing an artifact and granting exact-state human acceptance are separate decisions.

@@ -17,7 +17,6 @@ MODS = Path('asdg/mods')
 # A mod's runtime files. Its companions and tests stay in the distribution and are never installed.
 MOD_FILES = ('.claude-plugin/plugin.json', 'hooks/hooks.json', 'hooks/register.tsx', 'types/index.d.ts')
 # Any of these, in the project or a parent folder, makes Claude Code skip its native AGENTS.md read.
-SUPPRESSORS = ('CLAUDE.md', '.claude/CLAUDE.md', 'CLAUDE.local.md')
 BRIDGE_BEGIN, BRIDGE_END = '<!-- ASDG:BEGIN claude-bridge-v1 -->', '<!-- ASDG:END claude-bridge -->'
 
 
@@ -122,17 +121,6 @@ def claude_files(repo: Path) -> list[tuple[Path, bytes]]:
     return adapters + [row for name in mod_names(repo) for row in claude_mod(repo, name)]
 
 
-def suppressors(root: Path) -> list[str]:
-    """Instruction files that would make Claude skip AGENTS.md, here or in any parent folder."""
-    found = []
-    for directory in (root, *root.resolve().parents):
-        for name in SUPPRESSORS:
-            path = directory / name
-            if path.is_file() or path.is_symlink():
-                found.append(name if directory == root else str(path))
-    return found
-
-
 def _imports_agents(text: str, line: str) -> bool:
     """True when the file already imports the root AGENTS.md outside code, so no second import is added."""
     prose = re.sub(r'```.*?```|~~~.*?~~~', '', text, flags=re.DOTALL)
@@ -142,30 +130,48 @@ def _imports_agents(text: str, line: str) -> bool:
     return re.search(pattern, prose) is not None
 
 
-def claude_bridge(root: Path) -> tuple[str, bytes] | None:
-    """Return (path, new bytes) that keep Claude loading AGENTS.md, or None when nothing is needed."""
-    if not suppressors(root):
-        return None
+def claude_bridge_rule(root: Path) -> tuple[str, str, str]:
+    """The one bridge rule shared by setup and push-replace: destination, import line and exact block.
+
+    A selected Claude integration always gets the bridge, so the outcome never depends on
+    instruction files in parent folders. See bridge_needed for the single exception.
+    """
     target = '.claude/CLAUDE.md' if not (root / 'CLAUDE.md').exists() and (root / '.claude/CLAUDE.md').exists() else 'CLAUDE.md'
     line = '@AGENTS.md' if target == 'CLAUDE.md' else '@../AGENTS.md'
+    return target, line, f'{BRIDGE_BEGIN}\n{line}\n{BRIDGE_END}\n'
+
+
+def bridge_needed(text: str, line: str) -> bool:
+    """False only when marker-free text already imports AGENTS.md itself; that import is left alone."""
+    return BRIDGE_BEGIN in text or BRIDGE_END in text or not _imports_agents(text, line)
+
+
+def bridge_bytes(old: bytes | None, block: str) -> bytes:
+    """A new bridge goes first, one blank line above whatever the file already held."""
+    return block.encode() if old is None else (block + '\n' + old.decode('utf-8')).encode()
+
+
+def claude_bridge(root: Path) -> tuple[str, bytes] | None:
+    """Return (path, new bytes) that keep Claude loading AGENTS.md, or None when nothing is needed."""
+    target, line, block = claude_bridge_rule(root)
     path = root / target
     if path.is_symlink():
         if path.resolve() == (root / 'AGENTS.md').resolve():
             return None
         raise Conflict(f'{target} is a symlink; add {line} to its target manually.')
-    block = f'{BRIDGE_BEGIN}\n{line}\n{BRIDGE_END}\n'
     old = read_bytes(safe_path(root, target))
     if old is None:
-        return target, block.encode()
+        return target, bridge_bytes(None, block)
     text = old.decode('utf-8')
     markers = (text.count(BRIDGE_BEGIN), text.count(BRIDGE_END))
-    if markers == (1, 1) and text.startswith(block):
+    # The exact block is accepted wherever it sits; push-replace once wrote it at the end.
+    if markers == (1, 1) and (text.startswith(block) or text.endswith(block) or '\n' + block in text):
         return None
     if markers != (0, 0):
         raise Conflict(f'Edited, moved or duplicated ASDG Claude bridge in {target}; reconcile it manually.')
-    if _imports_agents(text, line):
+    if not bridge_needed(text, line):
         return None
-    return target, (block + '\n' + text).encode()
+    return target, bridge_bytes(old, block)
 
 
 def claude_bridge_problems(root: Path) -> list[str]:
@@ -175,5 +181,5 @@ def claude_bridge_problems(root: Path) -> list[str]:
         return [str(exc)]
     if change is None:
         return []
-    return [f"{change[0]}: Claude would skip AGENTS.md because of {', '.join(suppressors(root))}; "
+    return [f'{change[0]}: the ASDG bridge that makes Claude load AGENTS.md is missing; '
             'run setup with --client claude to add the @AGENTS.md import']

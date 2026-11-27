@@ -5,6 +5,8 @@ These tests exercise the read-only ownership boundary before a replacement plan 
 | Fixture collaborator | What the fixture supplies | Boundary asserted |
 | --- | --- | --- |
 | Canonical Git source | Manifest-bound package and canonical origin. | Altered bytes fail integrity; a resealed dirty snapshot loses commit attribution. |
+| The same source in the workshop layout | The package moved into an `asdg/` folder of the Git root. | Same files, same package digest and exact commit attribution; the folder alone or a nested repository is refused. |
+| The former repository name as origin | The same package, reached under the name it was first published with. | Accepted and recorded under that name; receipts from before the rename stay valid; look-alike names are refused; neither name can be a client; the package declares the same names the check accepts. |
 | Legacy embedded client | Exact old index plus an unknown adjacent document. | Only indexed candidates are returned; changing the inventory breaks its manifest binding. |
 | Local filesystem | Hard links, symlinks and a nested Git marker. | Every unsafe managed path fails before mutation. |
 | Ownership JSON | Both clients, unexpected fields and forged selectors. | Schema validity alone cannot widen writable category scope or move ownership to another project. |

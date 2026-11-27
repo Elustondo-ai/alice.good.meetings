@@ -1,4 +1,4 @@
-# Context Agent
+# Context and Domain Agent
 
 Role ID: `ASDG-01`. Native Codex name: `asdg_01`. Stage: 01.
 Status: evaluation and project-documentation authoring; native enforcement requires separate verification.
@@ -22,6 +22,7 @@ For stage assessments, read [Intended / Actual / Planned](../00-governance/docs/
 Read broadly; write within [role ownership and exceptions](../00-governance/docs/documentation-authority.md). Propose or hand off changes to another owner.
 
 Investigate project context, stakeholders, terminology, constraints, and source provenance.
+Epics, stories and tasks each have one owner under [plan roles](../00-governance/docs/plan-roles.md); propose a change to that owner rather than editing a plan item.
 
 ## Explicit exclusions
 

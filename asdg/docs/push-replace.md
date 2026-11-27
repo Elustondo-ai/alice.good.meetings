@@ -11,10 +11,12 @@ The [catalog](../metadata/push-replace-catalog.json) defines ownership categorie
 Run the selected canonical checkout's CLI with Python 3.9 or newer. Codex shared TOML configuration additionally needs Python 3.11's `tomllib` or an installed `tomli` parser; unsupported interpreters stop before writes.
 
 ```sh
-python3 scripts/cli.py push-replace --source /path/to/asdg --target /path/to/client --dry-run --json
-python3 scripts/cli.py push-replace --source /path/to/asdg --target /path/to/client --apply --plan DIGEST
-python3 scripts/cli.py push-replace --target /path/to/client --verify --json
+python3 asdg/scripts/cli.py push-replace --source /path/to/asdg2 --target /path/to/client --dry-run --json
+python3 asdg/scripts/cli.py push-replace --source /path/to/asdg2 --target /path/to/client --apply --plan DIGEST
+python3 asdg/scripts/cli.py push-replace --target /path/to/client --verify --json
 ```
+
+Run these from the root of the workshop repository and pass that root as `--source`; the package is its `asdg/` folder. The source's `origin` must be the canonical repository, `Elustondo-ai/asdg2`, or its former name, `Elustondo-ai/asdg`.
 
 The preview includes exact proposed bytes in base64, before/after hashes, clients and conflicts. Apply requires its exact digest. Changes to source, destination, ownership evidence or review history invalidate the plan. No network lookup selects a version; an uncommitted source snapshot is never attributed to an older commit.
 
@@ -27,8 +29,8 @@ Shared files retain unrelated content. The bootstrap remains first in `AGENTS.md
 Changed runs save original bytes, modes and intended output in `.asdg/backups/push-replace/TRANSACTION_ID/`, then journal progress. A successful no-op creates no backup, event or successor receipt. Existing backups are retained.
 
 ```sh
-python3 scripts/cli.py push-replace --target /path/to/client --recover TRANSACTION_ID --recovery rollback --json
-python3 scripts/cli.py push-replace --target /path/to/client --recover TRANSACTION_ID --recovery resume --json
+python3 asdg/scripts/cli.py push-replace --target /path/to/client --recover TRANSACTION_ID --recovery rollback --json
+python3 asdg/scripts/cli.py push-replace --target /path/to/client --recover TRANSACTION_ID --recovery resume --json
 ```
 
 Resume uses the saved transaction and verification contract. Rollback restores only files still matching recorded transaction states. Later user edits, unsafe paths or tampered backups stop recovery. The cooperative lock coordinates this command; it cannot stop arbitrary external editors.

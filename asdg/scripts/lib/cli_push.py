@@ -106,7 +106,7 @@ def preview(source_path, target_path):
     if not clients:
         raise Conflict('No recorded integration; initialize the client separately.')
     prior = load_ownership(root, target=target, clients=clients)
-    legacy = legacy_distribution_inventory(root, origin) if prior is None else None
+    legacy = legacy_distribution_inventory(root, source['core']) if prior is None else None
     owned = {entry['path'] for entry in prior['entries'] if entry['entity_id'] == 'distribution'} if prior else set(legacy['paths'])
     desired, entries, conflicts, observations = {}, [], [], {}
     for name, data in sorted(source['files'].items()):
@@ -120,7 +120,7 @@ def preview(source_path, target_path):
                         'generator': {'id': 'package_manifest_files', 'version': '1'}})
     for path in sorted(owned - set(desired)):
         desired[path] = None
-    integration = integration_plan(root, origin, clients, prior['entries'] if prior else [])
+    integration = integration_plan(root, source['core'], clients, prior['entries'] if prior else [])
     desired.update(integration['desired'])
     entries.extend(integration['entries'])
     conflicts.extend(integration['conflicts'])
@@ -141,7 +141,8 @@ def preview(source_path, target_path):
     desired[SYNC] = encoded(state)
     build = None
     if source['identity']['commit']:
-        build = commit_build(origin, source['identity']['commit'], descriptor['version'], source['files'])
+        build = commit_build(origin, source['identity']['commit'], descriptor['version'], source['files'],
+                             source['prefix'])
     desired[BUILD] = record_bytes(build) if build else None
     entries.sort(key=lambda entry: (entry['path'], canonical(entry.get('selector', {}))))
     ledger_raw = read_safe(root, LEDGER)

@@ -37,7 +37,7 @@ class InstallTests(unittest.TestCase):
         self.source = self.root / 'canonical clone'
         self.source.mkdir()
         git(self.source, 'init', '-q')
-        git(self.source, 'remote', 'add', 'origin', 'https://github.com/Elustondo-ai/asdg.git')
+        git(self.source, 'remote', 'add', 'origin', 'https://github.com/Elustondo-ai/asdg2.git')
         for p in package_files(CORE):
             target = self.source / 'asdg' / p.relative_to(CORE)
             target.parent.mkdir(parents=True, exist_ok=True)

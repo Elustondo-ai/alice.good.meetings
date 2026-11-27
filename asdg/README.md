@@ -3,20 +3,20 @@
 ASDG initialization installs the methodology and prepares the project’s ASDG team through the [canonical init workflow](skills/asdg-init/SKILL.md). Codex gets Governance and twelve specialist chats; Claude gets role adapters with manual specialist selection. One complete-plan APPROVE covers setup; native capability failures remain incomplete initialization.
 
 Twelve specialists maintain the project’s engineering artifacts. Stage 07 integrates priorities and progress. The [project assessment](00-governance/docs/stage-perspectives.md) draws on approved artifacts, observed results and current plans.
-The canonical repository is [asdg](https://github.com/Elustondo-ai/asdg).
+The canonical repository is [asdg2](https://github.com/Elustondo-ai/asdg2). It was first published as `Elustondo-ai/asdg`; the tools still accept that name for projects installed from it.
 This consolidated pilot is a review candidate; packaging does not establish human approval or native enforcement.
 
 ![A verified ZIP carries one asdg folder into the developer's Git repository, where initialization creates local integrations and state.](docs/images/distribution-flow.svg)
 
-## Standalone source and contributions
+## Canonical source and contributions
 
-This repository root is the intended canonical development and distribution source; consumers receive it under `<project>/asdg/`.
-The prepared cutover is pending human review and commit. No release assets are published here by this migration.
-For a reviewed local clone, follow [Clone + Prompt](docs/install-clone-prompt.md); the source entry point is `scripts/init.py`.
+The canonical source is the `asdg/` folder of the workshop repository; consumers receive the same folder as `<project>/asdg/`.
+The workshop root holds the maintainers' own instructions and tools, which are never shipped. No release assets are published by this layout change.
+For a reviewed local clone, follow [Clone + Prompt](docs/install-clone-prompt.md); the source entry point is `asdg/scripts/init.py` in the workshop repository.
 Source-only migration evidence is retained under `docs/migration/`; review it before cutover.
 Maintainers change definitions here, run the [build and verification commands](docs/distribution-build.md), review the resulting manifest and propose a focused change for human review.
-Do not initialize the source checkout as an application. Source checks use `scripts/check.py`; installed-client checks use `asdg/scripts/cli.py verify`.
-The catalogue's `asdg/` paths describe installed consumers, not a nested source directory.
+Do not initialize the workshop as an application. Source checks use `asdg/scripts/check.py` from the workshop root; installed-client checks use `asdg/scripts/cli.py verify`.
+The catalogue's `asdg/` paths are the same in the workshop and in installed consumers.
 
 ## Quick Start — give your agent the repository URL
 

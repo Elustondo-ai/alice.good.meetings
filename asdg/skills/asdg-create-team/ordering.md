@@ -22,9 +22,10 @@ Creation and ordering must not start project work or a sprint; editing this poli
 ## In Claude
 
 Use this part only on a surface with native sidebar tools, such as the Claude desktop app, after the roster is confirmed.
-Role chats started from the team lead chat are listed under it, and role titles begin with 01–12, so sorting the sidebar by name shows lifecycle order. No drag order, pin or numeric prefix on the lead is needed.
+Role chats are listed under the chat that started them, and each team's own lead starts its role chats, as [the team tree](create-chats.md#the-team-tree) says.
+Role titles begin with 01–12, so sorting the sidebar by name shows each team in lifecycle order under its own lead. No drag order, pin or numeric prefix on the lead is needed.
 Read the current sidebar sort first. If it is already by name, change nothing and say so.
 Otherwise offer this as the default step, once: set the sort to name (`sort_by: alpha` in the desktop app's sidebar view tool). Say that the setting is shared by every project in the sidebar, and change it only on the user's yes; a no leaves it as it is.
-Title the calling chat as the [team lead](../asdg-focus/rename-chat.md#team-lead-title).
+Title the project chat and each lead as the [title contract](../asdg-focus/rename-chat.md#team-lead-title) says.
 Report the setting's readback separately from what was visually verified; a readback of `alpha` does not prove the visible order.
 

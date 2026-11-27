@@ -13,7 +13,7 @@ A help request explains commands only: do not execute the listed workflows, insp
 ## Explain invocation and availability
 
 In Claude Code use `/asdg-help`; in Codex use `$asdg-help`. Apply that prefix distinction to every skill below; these are chat skills, not terminal subcommands.
-If native discovery is unavailable, ask the agent to read and follow `asdg/skills/asdg-help/SKILL.md`; do not claim the command is installed or working from source presence alone.
+If native discovery is unavailable, ask the agent to read and follow `asdg/skills/asdg-help/SKILL.md`; do not claim the command is installed or working from source presence alone. In Claude Code, commands that only the human may start (`disable-model-invocation: true`, such as `asdg-focus` and `asdg-status`) are absent from the agent's own skill list but still appear in the human's `/` menu. Judge availability from `.claude/skills/<name>/SKILL.md`, never from the agent's own list.
 With no topic, show the complete portable command table below, a few useful examples, and a link to the terminal reference. With a named command or task, explain the relevant entry first; show the full list when requested.
 Read the relevant linked canonical skill before explaining arguments, prerequisites or effects in detail. Descriptions below are navigation, not replacement policy.
 Keep missing client capabilities and optional dependencies visible: automated team setup and development panes require supported native tools; OpenSpec needs its separately installed workflow.
@@ -29,6 +29,8 @@ For “all commands,” include the terminal commands in [the reference](command
 | [/asdg-create-team](../asdg-create-team/SKILL.md) | Reuse/create the thirteen role chats, or the next numbered team in its own worktree and branch; shared sorting changes need approval. |
 | [/asdg-team-create2](../asdg-team-create2/SKILL.md) | Copilot session tools: human or agent creates an independent top-level team with twelve specialists from any caller; no worktree or project work. |
 | [/asdg-create-team-admin](../asdg-create-team-admin/SKILL.md) | Create one ASDG Admin chat in its own numbered worktree and branch; authorizes no rule change. |
+| [/asdg-team-create](../asdg-team-create/SKILL.md) | Claude desktop app: type it in a fresh chat; it becomes the team lead and creates the twelve role chats; asks nothing. |
+| [/asdg-team-members-create](../asdg-team-members-create/SKILL.md) | In a team lead chat, create the missing role chats 01–12. |
 | [/asdg-focus](../asdg-focus/SKILL.md) | Select a role, or use `subject` to change its topic independently. |
 | [/asdg-attitude](../asdg-attitude/SKILL.md) | Select a thinking attitude and scope, clear it, or report it. |
 | [/asdg-status](../asdg-status/SKILL.md) | Report project/session facts and one project-wide next step; facts-only omits advice. |
@@ -38,6 +40,7 @@ For “all commands,” include the terminal commands in [the reference](command
 | [/asdg-approve](../asdg-approve/SKILL.md) | Record explicit human acceptance of a previously presented exact documentation bundle. |
 | [/asdg-sprint-start](../asdg-sprint-start/SKILL.md) | Start a human-requested scoped sprint from clean Git on a new sprint branch. |
 | [/asdg-sprint-align](../asdg-sprint-align/SKILL.md) | Have the team check a sprint from purpose to specifications before coding; reports readiness only. |
+| [/asdg-project-plan-sync](../../07-planning/skills/project-plan-sync/SKILL.md) | Synchronize the local planner cache and GitHub Projects/Issues on request; preserves notes and separate sprint authority. |
 | [/asdg-pre-code-review](../asdg-pre-code-review/SKILL.md) | Build a pre-code review PowerPoint with speaker notes from stages 01 to 08. |
 | [/asdg-sprint-review](../asdg-sprint-review/SKILL.md) | Assess the active sprint's evidence without changing its state. |
 | [/asdg-sprint-close](../asdg-sprint-close/SKILL.md) | Preserve review/unfinished work and end the explicitly selected sprint. |

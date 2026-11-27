@@ -15,7 +15,7 @@ It plans local distribution edits, retains local differences and applies only a 
 
 | Callable | Contract |
 | --- | --- |
-| `endpoints(operation, source, target)` | Requires separate, nonnested Git roots, canonical origin identity and a valid embedded pilot binding; raises `Conflict`. |
+| `endpoints(operation, source, target)` | Requires separate, nonnested Git roots, canonical origin identity and a valid embedded pilot binding; a pilot whose distribution names a declared former name of the canonical repository is accepted. Raises `Conflict`. |
 | `classify(old, incoming, local)` | Accepts SHA-256 strings or None and returns `(status, reason)`; equal bytes are unchanged, source-only changes can apply, target-only changes remain local. |
 | `preview(operation, source_path, target_path)` | Returns `(report, changes, source, target)` with no writes; checks actual destination bytes even for unlisted addition collisions. |
 | `synchronize(operation, source_path, target_path, *, apply=False, expected_plan=None)` | Returns a JSON-ready report; apply requires matching digest, zero conflicts and, for upgrade, a current canonical delivery manifest. |

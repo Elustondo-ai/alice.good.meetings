@@ -9,6 +9,7 @@ This folder owns the specialization, not the consuming project's results.
 | [types](types/contract.md) | Input/output contract; no mandated type language |
 | [tests](tests/acceptance.md) | Role interview and negative-boundary acceptance cases |
 | [local skill](skills/prepare-plan/SKILL.md) | Bounded procedure, explicitly loaded by this agent |
+| [sync skill](skills/project-plan-sync/SKILL.md) | GitHub plan sync on explicit request; also registered as `/asdg-project-plan-sync` |
 
 Shared [documentation](../skills/asdg-documentation/SKILL.md) remains single-source.
 Using a capability does not grant its caller a new responsibility or write authority.

@@ -39,9 +39,9 @@ A skill whose Codex policy forbids implicit invocation gets `disable-model-invoc
 
 ## Claude and AGENTS.md
 
-Claude Code skips its native `AGENTS.md` read when a `CLAUDE.md`, `.claude/CLAUDE.md` or `CLAUDE.local.md` exists in the project or any parent folder.
-Only then does setup add a minimal managed `@AGENTS.md` import: at the top of the existing `CLAUDE.md` or `.claude/CLAUDE.md`, otherwise in a new `CLAUDE.md` holding just that import. An existing import is never duplicated.
-Versions before 2.1.277 need the same import, added by hand. Check loaded files with `/memory` or `/context`. There is no separate Claude policy.
+Claude Code reads `AGENTS.md` natively, but skips it when a `CLAUDE.md`, `.claude/CLAUDE.md` or `CLAUDE.local.md` exists in the project or any parent folder.
+Setup and push-replace therefore always ensure a minimal managed `@AGENTS.md` import, by one shared rule: at the top of the existing `CLAUDE.md` or `.claude/CLAUDE.md`, otherwise in a new `CLAUDE.md` holding just that import. The result never depends on parent folders, and an import you wrote yourself is never duplicated.
+Versions before 2.1.277 have no native read and rely on this import. Check loaded files with `/memory` or `/context`. There is no separate Claude policy.
 
 ## Repeat setup and verification
 

@@ -16,7 +16,7 @@ except ImportError:
         tomllib = None
 
 from cli_files import Conflict, read_bytes, safe_path
-from cli_clients import BRIDGE_BEGIN, BRIDGE_END, MOD_FILES, _imports_agents
+from cli_clients import BRIDGE_BEGIN, BRIDGE_END, MOD_FILES, bridge_bytes, bridge_needed, claude_bridge_rule
 from cli_project import BRIDGE, BEGIN, END, IGNORE, IGNORE_BEGIN, IGNORE_END, LEGACY_BRIDGES, hook_config
 from distribution_files import package_files
 
@@ -354,20 +354,21 @@ def integration_plan(root: Path, source: Path, clients: list[str], prior_entries
         attempt(hooks)
     if 'claude' in clients:
         def bridge():
-            # Always ensure the selected Claude integration imports AGENTS. This avoids an
-            # unbound dependency on mutable parent-folder CLAUDE files and preserves user imports.
-            path = '.claude/CLAUDE.md' if not (root / 'CLAUDE.md').exists() and (root / '.claude/CLAUDE.md').exists() else 'CLAUDE.md'
+            # Setup and replacement share one rule (cli_clients.claude_bridge_rule): always ensure
+            # the import, so nothing depends on mutable parent-folder CLAUDE files, keep user imports.
+            path, line, block = claude_bridge_rule(root)
             old_bridges = [entry for entry in prior_entries if entry.get('entity_id') == 'claude-bridge']
             if len(old_bridges) > 1 or (old_bridges and old_bridges[0]['path'] != path):
                 raise Conflict('Claude bridge destination changed; reconcile prior owned import first.')
             raw = _read(root, path, observations)
-            line = '@../AGENTS.md' if path.startswith('.claude/') else '@AGENTS.md'
-            block = f'{BRIDGE_BEGIN}\n{line}\n{BRIDGE_END}\n'
             prior = _prior(prior_entries, path, 'claude-bridge')
             text = (raw or b'').decode('utf-8')
-            if not prior and BRIDGE_BEGIN not in text and BRIDGE_END not in text and _imports_agents(text, line):
+            if not prior and not bridge_needed(text, line):
                 return
-            data, original = _block(raw, block, BRIDGE_BEGIN, BRIDGE_END, prior, path)
+            if not prior and BRIDGE_BEGIN not in text and BRIDGE_END not in text:
+                data, original = bridge_bytes(raw, block), {'present': False}  # Same bytes setup writes.
+            else:
+                data, original = _block(raw, block, BRIDGE_BEGIN, BRIDGE_END, prior, path)
             desired[path] = data
             entries.append(_entry('claude-bridge', 'claude', path, 'marked_block', block.encode(),
                                   {'start': BRIDGE_BEGIN, 'end': BRIDGE_END}, original))

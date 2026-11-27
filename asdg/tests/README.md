@@ -15,6 +15,8 @@ They describe the maintained code; an execution result must come from an actual 
 - [OpenSpec setup tests](test_openspec_setup.md): Checks that setup adds OpenSpec's missing project files for the selected clients, add-only, and never depends on that tool.
 - [Pre-code review skill tests](test_pre_code_review.md): Checks outline parsing, validation, packaging and, when `python-pptx` is present, that every rendered slide has notes.
 - [Numbered team tests](test_numbered_teams.md): Checks the next team's number, branch and worktree in disposable Git repositories, and that both team skills are packaged.
+- [Team create tests](test_team_create.md): Checks that Team create and Team members create are packaged, short and human-only, and that the members page is a loop the program drives; no chat is started.
+- [Team members tests](test_team_members.md): Runs the step program against a pretend app with the two observed limits: order, checks, waits, cards, denials and a second run.
 - [Sprint align skill tests](test_sprint_align_skill.md): Checks the skill's pages, cross-references, scenario list and both client adapters; no workflow is executed.
 - [Synchronization tests](test_sync.md): Exercises promote/upgrade, conflicts, deletion protection, dry runs and adopted versions in disposable Git repositories.
 

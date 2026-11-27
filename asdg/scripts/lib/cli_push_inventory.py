@@ -18,7 +18,11 @@ DESCRIPTOR = 'metadata/distribution.json'
 CATALOG = 'metadata/push-replace-catalog.json'
 SCHEMA = 'metadata/push-replace-ownership.schema.json'
 OWNERSHIP = '.asdg/installation-ownership.json'
-CANONICAL = 'github.com/elustondo-ai/asdg'
+CANONICAL = 'github.com/elustondo-ai/asdg2'
+# The repository was first published under this name. It stays accepted so that existing
+# installations and their receipts keep working; metadata/distribution.json lists the same names.
+FORMER = ('github.com/elustondo-ai/asdg',)
+CANONICAL_SOURCES = (CANONICAL, *FORMER)
 HASH = re.compile(r'[0-9a-f]{64}')
 ENTRY_KINDS = {
     'distribution': ('shared', 'whole_file'), 'codex-skills': ('codex', 'whole_file'),
@@ -168,16 +172,22 @@ def validated_source(source: Path) -> dict:
     head = git_value(root, 'rev-parse', 'HEAD')
     remote = git_value(root, 'remote', 'get-url', 'origin')
     if not git_root or Path(git_root).resolve() != root or not head or not remote:
-        raise Conflict('Source must be a standalone canonical Git root with a committed HEAD and origin.')
-    if repository_id(remote) != CANONICAL:
+        raise Conflict('Source must be the canonical Git root with a committed HEAD and origin.')
+    origin = repository_id(remote)
+    if origin not in CANONICAL_SOURCES:
         raise Conflict('Source Git origin is not the canonical ASDG repository.')
-    names = _package_index(read_safe(root, INDEX))
-    files = {name: read_safe(root, name) for name in names}
+    # The package is the Git root itself, or its asdg/ folder in the workshop layout.
+    prefix = '' if read_safe(root, INDEX) is not None else 'asdg/'
+    core = root / 'asdg' if prefix else root
+    if prefix and os.path.lexists(core / '.git'):
+        raise Conflict('Source package folder must not be a nested repository.')
+    names = _package_index(read_safe(core, INDEX))
+    files = {name: read_safe(core, name) for name in names}
     if any(value is None for value in files.values()):
         raise Conflict('Missing file in source package inventory.')
     descriptor = _distribution(files[DESCRIPTOR])
     identity = repository_id(descriptor.get('canonical_repository', ''))
-    if identity != CANONICAL:
+    if identity not in CANONICAL_SOURCES:
         raise Conflict('Source does not identify the canonical ASDG repository.')
     hashes = _manifest(files[MANIFEST], names, descriptor['version'])
     if hashes != {name: digest(raw) for name, raw in files.items() if name != MANIFEST}:
@@ -207,13 +217,13 @@ def validated_source(source: Path) -> dict:
                                          'ASDG-%02d' % role['stage']) for role in roles)):
         raise Conflict('Source must preserve governance 00 and all twelve specialists.')
     from build_identity import commit_mismatch
-    commit = head if commit_mismatch(root, head, files) is None else None
+    commit = head if commit_mismatch(root, head, files, prefix) is None else None
     generator_files = {name: digest(raw) for name, raw in files.items()
                        if name.startswith('scripts/') and name.endswith('.py')}
-    return {'root': root, 'files': files, 'descriptor': descriptor, 'catalog': catalog,
+    return {'root': root, 'core': core, 'prefix': prefix, 'files': files, 'descriptor': descriptor, 'catalog': catalog,
             'catalog_sha256': digest(files[CATALOG]),
             'generator_sha256': digest(canonical(generator_files)),
-            'identity': {'repository': identity, 'commit': commit,
+            'identity': {'repository': origin, 'commit': commit,
                          'package_sha256': digest(canonical({name: digest(raw) for name, raw in files.items()})),
                          'manifest_sha256': digest(files[MANIFEST])}}
 
@@ -231,7 +241,7 @@ def target_identity(root: Path) -> dict:
     if not remote:
         raise Conflict('Target needs an identifiable origin repository.')
     repository = repository_id(remote)
-    if repository == CANONICAL:
+    if repository in CANONICAL_SOURCES:
         raise Conflict('The canonical source cannot be initialized/replaced as a client.')
     raw = read_safe(root, '.asdg/project.json')
     binding = _object(raw, '.asdg/project.json')
@@ -393,7 +403,7 @@ def validate_ownership(value, target=None, clients=None) -> dict:
     schema = _object(read_safe(CORE, SCHEMA), SCHEMA)
     if not _schema_matches(value, schema, schema):
         raise Conflict('Invalid or unsupported installation ownership receipt.')
-    if value['source']['repository'].lower() != CANONICAL:
+    if value['source']['repository'].lower() not in CANONICAL_SOURCES:
         raise Conflict('Ownership receipt has a foreign source repository.')
     if target is not None and value['target'] != target:
         raise Conflict('Ownership receipt belongs to another project binding or worktree.')

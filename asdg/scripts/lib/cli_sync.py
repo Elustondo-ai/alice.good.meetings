@@ -7,7 +7,7 @@ from pathlib import Path
 from build_identity import BUILD, commit_build, record_bytes
 from cli_files import Conflict, apply as apply_changes, plan, read_bytes, safe_path
 from cli_sync_manifest import (PROVIDER, STATE, MANIFEST, adopted_binding, baseline, digest,
-                               encoded, methodology_path, repository_id, snapshot)
+                               encoded, former_names, methodology_path, repository_id, snapshot)
 
 
 def endpoints(operation: str, source: dict, target: dict) -> None:
@@ -23,7 +23,7 @@ def endpoints(operation: str, source: dict, target: dict) -> None:
     if pilot['info']['repository'] == canonical['info']['repository']:
         raise Conflict('Pilot origin must differ from the canonical repository.')
     pilot_canonical = pilot['descriptor'].get('canonical_repository')
-    if pilot_canonical and repository_id(pilot_canonical) != canonical['info']['repository']:
+    if pilot_canonical and repository_id(pilot_canonical) not in (canonical['info']['repository'], *former_names(canonical)):
         raise Conflict('Pilot belongs to a different canonical distribution.')
     binding = json.loads(pilot['binding_raw'] or b'null')
     if (not isinstance(binding, dict) or binding.get('schema_version') != 1

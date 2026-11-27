@@ -75,7 +75,8 @@ class DistributionTests(unittest.TestCase):
         documented = set()
         for name, link in re.findall(r'\[/(asdg-[a-z0-9-]+)\]\(([^)]+)\)', text):
             target = (help_file.parent / link).resolve()
-            self.assertEqual(target, (self.core / 'skills' / name / 'SKILL.md').resolve())
+            owned = {'asdg-project-plan-sync': '07-planning/skills/project-plan-sync'}  # role-owned canonical skill
+            self.assertEqual(target, (self.core / owned.get(name, f'skills/{name}') / 'SKILL.md').resolve())
             self.assertTrue(target.is_file(), name)
             documented.add(name)
         installed = {p.parent.name for p in

@@ -1,6 +1,6 @@
 # Iterate with local Codex and a reviewer
 
-The canonical `Elustondo-ai/asdg` repository owns reusable methodology and distribution builds.
+The canonical `Elustondo-ai/asdg2` repository owns reusable methodology and distribution builds.
 Each client keeps its embedded version; propose reusable pilot improvements upstream with source commits and validation.
 An iteration changes this baseline only through a visible, bounded diff and suitable validation.
 

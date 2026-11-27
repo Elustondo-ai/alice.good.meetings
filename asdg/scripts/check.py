@@ -32,6 +32,11 @@ def validate(core=CORE, integrity=False):
         for field in ('entry', 'skill'):
             if not (core / row[field].removeprefix('asdg/')).is_file():
                 issues.append('Missing role source: ' + row[field])
+        entry = core / row['entry'].removeprefix('asdg/')
+        if entry.is_file():  # Agents compare these names; one name per role keeps them from guessing.
+            heading = next((line[2:].strip() for line in entry.read_text().splitlines() if line.startswith('# ')), None)
+            if heading != row['title']:
+                issues.append(f"Role heading differs from catalogue title: {row['entry']}: {heading!r} vs {row['title']!r}")
         adapter = core / 'templates' / row['adapter']
         try:
             obj = loads(adapter.read_text())

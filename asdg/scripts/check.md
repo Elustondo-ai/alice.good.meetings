@@ -6,7 +6,7 @@ Checks reusable ASDG files for structural problems before they are used or packa
 
 ## Responsibilities and collaborators
 
-Validates the selected portable catalogue/rules, role adapters, Python 3.9 syntax, Markdown size/links and optional candidate hashes.
+Validates the selected portable catalogue/rules, role adapters, that each role entry's heading equals its catalogue title, Python 3.9 syntax, Markdown size/links and optional candidate hashes.
 
 ![Embedded files + optional manifest → Static package checks → Issue list / exit status](images/check-flow.svg)
 

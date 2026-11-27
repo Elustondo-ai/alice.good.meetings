@@ -1,0 +1,10 @@
+{
+  "attribution": "PACKAGE_MATCHES_COMMIT",
+  "build_id": "20261127T041723Z-edcee44",
+  "commit": "edcee447a2cfeea9fc59d090cef4a7fc02c2a1a0",
+  "commit_short": "edcee44",
+  "committed_at": "2026-11-27T04:17:23Z",
+  "release": "0.3.0-pilot.4",
+  "schema_version": 1,
+  "snapshot_sha256": "d46b648f09b2b951d4dfaf73f182441157e8cc4ec99f0645fa1756dcef3f4715"
+}

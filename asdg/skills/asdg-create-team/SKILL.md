@@ -10,6 +10,7 @@ These are user-owned chats sharing one repository; creating them does not assign
 For initialization, follow [init integration](initialization.md); it reuses this workflow, never a second team implementation.
 Read client instructions and [session policy](../asdg-focus/session-policy.md); preserve this chat's focus.
 A request to create the team, including invoking this skill for setup, authorizes the missing chats, their initial Focus prompts, a later team's worktree and local branch, and project-local ordering below, subject to the shared-preference approval gate.
+In Claude it also covers the role chats a new team's lead creates, when the project chat that starts the lead quotes it word for word in the lead's first prompt; no other relayed message authorizes creation.
 An exact approved Init plan explicitly including team effects also authorizes those effects; discovery, status or editing this skill does not.
 
 ## Client mode
@@ -32,11 +33,11 @@ If the target is ambiguous, ask the user to select it before creating chats. Do 
 
 ## Reuse before creating
 
-Reuse completes one team; it never fills a new team with another team's chats. When the project's last team is already complete, this request creates the next one under [numbered teams](numbered-teams.md): a new worktree, a new branch and thirteen new chats.
+Reuse completes one team; it never fills a new team with another team's chats. When the project's last team is already complete, this request creates the next one under [numbered teams](numbered-teams.md): a new worktree, a new branch and thirteen new chats. In Claude the project chat starts each team's lead, team 1 included, and each lead starts its own twelve, as [the team tree](create-chats.md#the-team-tree) says.
 Call `list_threads` with enough results to inspect this project's active chats, including pinned entries.
 Use titles only to find candidates; read candidate chats for an explicit Focus selection and successful activation.
 Reuse only after verifying project, role receipt, subject and stable thread ID; a title alone is not confirmation. Keep distinct subject/attitude sessions independent.
-The calling chat may fill its own role when its thread ID and retained activation receipt are known.
+In Codex the calling chat may fill its own role when its thread ID and retained activation receipt are known; in Claude it leads no team.
 If several chats remain plausible for a role/subject, ask which to reuse; do not silently choose the first or newest, merge their state, or create another to evade ambiguity.
 If likely matches have unresolved focus or the inventory is incomplete, mark those roles unresolved and ask only about those gaps.
 Preserve existing chats: no messages, focus changes, renaming, archiving or worktree moves merely to reuse them.

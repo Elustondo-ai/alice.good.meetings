@@ -13,7 +13,7 @@ For an intentional reset of proven ASDG-owned package and integration files, use
 
 Use Python 3.9+ and Git. Run the current project-local entry point; no global command or model is required.
 Supply absolute Git roots, each with an identifiable HTTP(S)/SSH `origin`, a HEAD commit and a versioned distribution (canonical source at repository root; consumers under `asdg/`).
-The canonical descriptor's `canonical_repository` must match its origin. The pilot must have a valid `.asdg/project.json` binding.
+The canonical descriptor's `canonical_repository` must match its origin. A pilot installed under a name listed in that descriptor's `former_repositories` is the same distribution and keeps its adoption record. The pilot must have a valid `.asdg/project.json` binding.
 
 ```sh
 python3 -B asdg/scripts/cli.py promote --source /path/to/pilot --target /path/to/canonical --dry-run

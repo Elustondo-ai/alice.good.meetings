@@ -20028,7 +20028,7 @@
       "recorded_at": "2026-10-29T00:49:43.250418+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
       },
       "previous_state": {
         "sha256": "765d988e01a7b8cc2eb775972719f6b670c7b6b0a090c96f9c50b859e1adcb89",
@@ -20043,7 +20043,7 @@
       "recorded_at": "2026-10-29T00:49:43.261832+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
       },
       "previous_state": {
         "sha256": "77b3331728354b14cef6ca9013672f7f3410ec41ec53e50fd32e252a90b08f08",
@@ -20058,7 +20058,7 @@
       "recorded_at": "2026-10-29T00:49:43.270997+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
       },
       "previous_state": {
         "sha256": "04c12cbdfd880ed4ecc364903263d0b0bae2339d63fdeca20d3b1c2d60e66524",
@@ -20073,7 +20073,7 @@
       "recorded_at": "2026-10-29T00:49:43.281238+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -20083,7 +20083,7 @@
       "recorded_at": "2026-10-29T00:49:43.290907+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -20093,7 +20093,7 @@
       "recorded_at": "2026-10-29T00:49:43.300049+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -20103,7 +20103,7 @@
       "recorded_at": "2026-10-29T00:49:43.309146+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -20113,7 +20113,7 @@
       "recorded_at": "2026-10-29T00:49:43.319702+00:00",
       "human_approval": null,
       "provenance": {
-        "reason": "Explicit first ASDG\u2013OpenSpec integration increment: thin planning wrapper and verification"
+        "reason": "Explicit first ASDG–OpenSpec integration increment: thin planning wrapper and verification"
       }
     },
     {
@@ -36309,171 +36309,2383 @@
       }
     },
     {
+      "path": "asdg/00-governance/docs/plan-roles.md",
+      "sha256": "060dae95c66bb280955b723216893ef7cd1c1c6c7c54fbe2e3eca148f92cd61d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      }
+    },
+    {
+      "path": "asdg/02-purpose/AGENTS.md",
+      "sha256": "869f1812dac6b008c86183f560767761d8053488ac98733f9f9407e5420c3c55",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "4fbd3f18fad3c79fac563c48b9e7407458ee693f5aedb50fda16fa54adcbf8b4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/03-system-model-and-use-cases/AGENTS.md",
+      "sha256": "a284c1ff56ea300822ca200e9f8c8b9d1061365901073618b236e0dbb1a6a54b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "9cffe11872a8cc451ac05ef0bf755a763011d6de2f90801b75e6cfce5408c8b8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/04-benchmarks-and-eval-strategy/AGENTS.md",
+      "sha256": "58e6d9a8fb7d2f97e4661539935c6d8b29fba1960553f94ad8e5cb0a5172e34e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "e17be3acd1bd5725dfa27ce0db6a4787e7a099dd5625a2f7a77d583d0be43046",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/05-high-level-design-and-architecture/AGENTS.md",
+      "sha256": "cee437f01489f788df3dd65b89103b0d1dc15305eb9fc94886ff77f9f8183ab1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "00763e6864f25d716005d7c6ccbe368f57d0154ff9bb39e7ef1b7e3384b35c21",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/07-planning/AGENTS.md",
+      "sha256": "4297208ea0f7fc8b883b5c2da6d564f8a98aa745b87feff7bdf4cf7d0fc88f6c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "9bf1d4e956a3a66494f84c335acb4834de4bef02eac33a755a4129da198178b3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/07-planning/types/contract.md",
+      "sha256": "ab3fbfb6c45d5fee87cc95f125eeed0900a2e976f01211f14c61ec7498bb9c93",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "7963eb70fa38237c399ee16ef37b12fced04e49c48ada9903d732dfde606adbd",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/07-planning/skills/prepare-plan/SKILL.md",
+      "sha256": "bac45e4374ba784d9132f59a648a668c2885185be892caf628d796b935c551f2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "895a3ad5e89efe77becb9c6be090adfbf711204ad33d5997dd7650c5a31a28ab",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.codex/agents/asdg_07.toml",
+      "sha256": "03e38b52b36ab156a089ebb0b65105b1febd9d14c05412b70efc4e3423508b08",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "27a882bd35ff3da660adc8f22b82f31e89b96f87a275a15d8e6d0b380d661f4c",
+        "visible_review_markers": [
+          "# AI-MODIFIED - 2026-10-10T04:17:45Z"
+        ],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/08-low-level-design/AGENTS.md",
+      "sha256": "687084bb052d45bc227e19846ef3826085724793924a453b8b26dd91fc2586b0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "839f6e9e04d4c8d7c58ab1bc91cb44077acead80e6118480716aa42d0bd5f7b3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/08-low-level-design/types/contract.md",
+      "sha256": "f1dfb4d99e8695904978602ea82dcf7b4bdabdb865ef91ea8d79c3586b6e5657",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "50ec96dd998c91a57cfe86704aef312a15d9b40f1a04bb414a90fd42f998e3da",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/AGENTS.md",
+      "sha256": "9bf26768812e637bfdf42d0be031384cb4ea306a20c0452ea069d2bb852091c2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "52fc4ed5d01eb88205b99f419020b91c52dfe61230e44caa85fec1d0f4506bcf",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/09-build-and-test-cycle/types/contract.md",
+      "sha256": "00cbf08a1a240e85d5e01fbb9c568cbf060784a22e949865c20713170be4e500",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "425e18cffcec8c6d81f80e6a5f2377a469149868ba950e876a2e7c80629862b3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/01-context-and-domain-analysis/AGENTS.md",
+      "sha256": "23e292968e9e863ccadede80921eca23cb49ab1cc2f9dbc6221bc474ca1074b5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "40f215f45326be4745e578635693ee1e4bcbb1acecdf50132953755aaa8f181d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/06-viable-proof-of-concept/AGENTS.md",
+      "sha256": "9583ffc807d40ae4e54050d2a4910ea279d18324f775f1e28c7ddd62e1c67e0d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "147df3732e1137fc287dbc7989172cb227cc1fa9c5a43c5cdec6b8884a8b210d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/10-document-review-and-release/AGENTS.md",
+      "sha256": "c48fd6ae1a18329c468350d70aca40d755d25a6c7c08a2fe28e4b1ed9a9b03be",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "d1e78f9dcf306cfa3cadec12548cc958fbbd97c723cc98a7bad3162bc3f03f67",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/11-operational-reality-devops-and-user-acceptance/AGENTS.md",
+      "sha256": "d464614965a84c2215d1484cf4daaf27c77f1c0910236efd6ea2ed431ec38a87",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "d7b86483472f62ef9f1610a6c339c4998503d3b4a00b3090a5c9e37ddb375fc6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/12-observability-insights-and-learning/AGENTS.md",
+      "sha256": "32b81600e4594406321f2776afbf129294e4b8d4095198819f9d77238569eac2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "3e360bc56529f058d617a3dcb90f2d54d9ed1b772bd6b50c0decb01175030dac",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/AGENTS.md",
+      "sha256": "e0a4eed20442aecdf80739a404489560cf9d99848be1c949e6205f05dd71426e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T14:09:06.714082+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "ASDG-COORDINATOR",
+        "requester": "Pablo",
+        "scope": "Plan vocabulary and ownership of epics, stories and tasks across all roles",
+        "authority": "Developer-directed methodology edit; ASDG Admin was not selected because the developer stated it is not required in the canonical repository"
+      },
+      "previous_state": {
+        "sha256": "bd34bd6b4aac193ea65f2bd1a2741db72d71f3eeea23cc1267b189909766be84",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "f0975f1e70fffc1e0827e21f90561bf8eec46e3b073b9988d9917fd97e504ef1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T15:25:11.517054+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Describe the workshop layout: the product lives in asdg/ and does not govern its maintainers",
+        "authority": "Workshop maintenance on the developer's instruction; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "7339b122025b1902f006cb43384842399dfeeef6777c88bc77e25be09cc00071",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "fd1cf02dcc24cc5207df6ba49e1a538f3828e38e0f9b49ed2b889c9ad7b90ce3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T15:25:11.517054+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Describe the workshop layout: the product lives in asdg/ and does not govern its maintainers",
+        "authority": "Workshop maintenance on the developer's instruction; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "6a2c895a356a08ac93e3ff1a5b275e466a1989977a98368bb59b118afacf2668",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_push_inventory.md",
+      "sha256": "da4c8a5445b9194b33fec79206fadc633f23f273c71e6edb1d3853aa1c55f5a5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T15:51:29.401475+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "push-replace reads its source from either layout: package at the Git root or in its asdg folder",
+        "authority": "Workshop maintenance on the developer's instruction; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "040f89c403395323700e2d44148248ab0a59009d368a6f0fa905355b193b0723",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_push.md",
+      "sha256": "d876ba9fddacad8ce3b70a88cace92c51a7dc7e3c3ad6358335424ddc0a55064",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T15:51:29.401475+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "push-replace reads its source from either layout: package at the Git root or in its asdg folder",
+        "authority": "Workshop maintenance on the developer's instruction; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "ef628c92b9e957cff604386beedfd6ab28aaa314594082dfa88dcc5dd6026274",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_inventory.md",
+      "sha256": "29d991ce98dfba1b0b4ecfeee1717ca1e12709218c337dda0e04d7bb8a39ec7c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T15:51:29.401475+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "push-replace reads its source from either layout: package at the Git root or in its asdg folder",
+        "authority": "Workshop maintenance on the developer's instruction; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "6a3a89e4e2c3649fd362dfdb5ef452388c94e491f2d6086c83ce0209ebd46309",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_replace.md",
+      "sha256": "dd7985fb25d14e292e9ab71bf780611947fe50fc95f2ae0701dbd7a9bc5f875c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T15:51:29.401475+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "push-replace reads its source from either layout: package at the Git root or in its asdg folder",
+        "authority": "Workshop maintenance on the developer's instruction; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "b246c95f8c087e07c22bdcf607efd5f718df142a0b0dccbe0060f6d0cc775bb0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/push-replace.md",
+      "sha256": "e0e42a20a24baa035931148ec2dbe8e6a65a0a9b55c809b61791cf0d4111cdd3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T15:51:29.401475+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "push-replace reads its source from either layout: package at the Git root or in its asdg folder",
+        "authority": "Workshop maintenance on the developer's instruction; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "040bf6c20f3833f4f4e37f6ec1c2e9e808bf9d2dad89ee59e37258613907c734",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_push_inventory.md",
+      "sha256": "fbd3ed468632511d3107b479c15e5b469f2f665c025049ae8173fa6f430fc0e2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:15:04.217344+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "push-replace accepts the workshop repository asdg2 as a canonical source during the move",
+        "authority": "Workshop maintenance on the developer's instruction (\"accept asdg2\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "da4c8a5445b9194b33fec79206fadc633f23f273c71e6edb1d3853aa1c55f5a5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_inventory.md",
+      "sha256": "8c49c83a952534323c2026446f88d5b2619631aca8a406fcf7a2bb6ab093a1dc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:15:04.217344+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "push-replace accepts the workshop repository asdg2 as a canonical source during the move",
+        "authority": "Workshop maintenance on the developer's instruction (\"accept asdg2\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "29d991ce98dfba1b0b4ecfeee1717ca1e12709218c337dda0e04d7bb8a39ec7c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_replace.md",
+      "sha256": "842fb2c09451cd915d05f33d37e32bbeb31d9380f6bcbb502354f400306c0ea6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:15:04.217344+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "push-replace accepts the workshop repository asdg2 as a canonical source during the move",
+        "authority": "Workshop maintenance on the developer's instruction (\"accept asdg2\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "dd7985fb25d14e292e9ab71bf780611947fe50fc95f2ae0701dbd7a9bc5f875c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/push-replace.md",
+      "sha256": "121492e17436d2411faa572db29ee69d3669a8f94feef31c64129fe4f7e5de34",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:15:04.217344+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "push-replace accepts the workshop repository asdg2 as a canonical source during the move",
+        "authority": "Workshop maintenance on the developer's instruction (\"accept asdg2\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "e0e42a20a24baa035931148ec2dbe8e6a65a0a9b55c809b61791cf0d4111cdd3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/client-integrations.md",
+      "sha256": "5ebd54d3f231e561c411c166f0416671bd46af905ff17787b2b6bd3dff548a50",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:42:35.064211+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Setup and push-replace share one rule for the Claude bridge: always ensured, placed first",
+        "authority": "Workshop maintenance on the developer's instruction (\"One shared rule, used by both\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "3794357ea85ca0396f9cd7521f2b6a62bac22278a31546388a5b8163630f4f12",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "sha256": "faf1296f37bafdf41d81cd63014aa2368ec1f3b392afac38227642a54a868145",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:42:35.064211+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Setup and push-replace share one rule for the Claude bridge: always ensured, placed first",
+        "authority": "Workshop maintenance on the developer's instruction (\"One shared rule, used by both\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "c0c7eb1a06e81363eaf2bcaf8efcfbdb685130c1037d802f8648f9d79f618722",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_clients.md",
+      "sha256": "875dc1328926ed637d0f93718773afb98a21f1969370274dd164c4d2c0d9dcf5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:42:35.064211+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Setup and push-replace share one rule for the Claude bridge: always ensured, placed first",
+        "authority": "Workshop maintenance on the developer's instruction (\"One shared rule, used by both\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "3f98774dae1aadeb251a14d8112b98556ac33daf2fa7581283a7ec82803f9574",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_push_integrations.md",
+      "sha256": "e7fc166ac8d2fd0f26cf6f110be7adb8cb3ab24491bb0988709bf4d0ba687880",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:42:35.064211+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Setup and push-replace share one rule for the Claude bridge: always ensured, placed first",
+        "authority": "Workshop maintenance on the developer's instruction (\"One shared rule, used by both\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "ef391ba6638eafc9bccfb5beab394f0dcc0aafe73a64eb5b43c5c4167f0d5103",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_portable-cases-clients.md",
+      "sha256": "bbfb1b3b81e541482d0de5d45d97b5ff2fbe208ff34855a12d9ee9dcaacce3d9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:42:35.064211+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Setup and push-replace share one rule for the Claude bridge: always ensured, placed first",
+        "authority": "Workshop maintenance on the developer's instruction (\"One shared rule, used by both\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "7722ebd8e1283f4b87a6342d7147d676901534300626790dda45cd9ca7445dea",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_replace.md",
+      "sha256": "f3422d1e2dbd2bdecac093fb706917c2fd36eccf40ea3239f7030f72e3fff079",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T17:42:35.064211+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Setup and push-replace share one rule for the Claude bridge: always ensured, placed first",
+        "authority": "Workshop maintenance on the developer's instruction (\"One shared rule, used by both\"); no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "842fb2c09451cd915d05f33d37e32bbeb31d9380f6bcbb502354f400306c0ea6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/AGENTS.md",
+      "sha256": "bbb8fc2f5af6173707d7085816f217f638efda4bf2a38af14a27eb9d346d8e47",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "f0975f1e70fffc1e0827e21f90561bf8eec46e3b073b9988d9917fd97e504ef1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/README.md",
+      "sha256": "9702a385ad856d0e3fbb98530b2a8963d160523ec3ec19163e287238eccceca6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "fd1cf02dcc24cc5207df6ba49e1a538f3828e38e0f9b49ed2b889c9ad7b90ce3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/distribution-build.md",
+      "sha256": "78f7cba2e359c7ddcbc1f3edddd47966943753fb2f9767f6806cf398aadc04ee",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "9dff6197f759bfd8d608c3bed4c652c2bc3248f706eb620567a9cccfd2c76c07",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/install-clone-prompt.md",
+      "sha256": "1a382d5fdb73c015a5e2a1e182a4f26bf22061758dbf339754ad67809f29b6ba",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "6ee7fc0f556db1b05fdf0db831cc5baffe3877f02bf404c1a1aaf02c080b90ba",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/installation.md",
+      "sha256": "7653c0ea24c668ce79ee224e64cffc2d70a1e3f8ed2ffc0fd3dae05de9b04e9d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "faf1296f37bafdf41d81cd63014aa2368ec1f3b392afac38227642a54a868145",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/push-replace.md",
+      "sha256": "76e64c8ba4e718437bf123448eae2ed46c462beaa2c1aff2e26c527f437253e8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "121492e17436d2411faa572db29ee69d3669a8f94feef31c64129fe4f7e5de34",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/review-loop.md",
+      "sha256": "e6555e8cf064c3f18e5c1db46ee99dd842721347549e9cf227c6cefd015f8c8e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "974697aac988cb366123e6a948d9d4b38c44c008c336c15a015b4c36cacf28f6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/synchronization.md",
+      "sha256": "453d4a891404894ea05c1c9286c7047ac50a684ce31666d1212f8141427b3b13",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "f2606b2da6f453d8dca1d9f356961a9d8036fd2183d4f944e57a3b2dbaebeff6",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_push_inventory.md",
+      "sha256": "62bfc5bbac2aea72f095783aae0abd28cffaeec9d0ce762c5ee394b3268a43ae",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "fbd3ed468632511d3107b479c15e5b469f2f665c025049ae8173fa6f430fc0e2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_sync.md",
+      "sha256": "9e8a938b39637f340abf3ca9053a8d64623fc1bac71311a86d8301d2865c5097",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "d6b3e754d24ed46dc3e289690b3bb082910afb1d7e1b4f053983e51ba25d2e9e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_sync_manifest.md",
+      "sha256": "3ab7d57e563d793f6feb8fd960fc5d0a3a79c2ec7c89ffcc1eba941a3ac46904",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "7cdaaf2c03227f297d1af67dca2a9110438926dc4010100baf90cb2b0362a664",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_inventory.md",
+      "sha256": "6e7745d3f0006861a67bb5a7b1d1b1b12b5e33d375775a6c037a42e7518e6b9c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "8c49c83a952534323c2026446f88d5b2619631aca8a406fcf7a2bb6ab093a1dc",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_push_replace.md",
+      "sha256": "5d0999a29965625e891fbad5cba6960643cd08577b807afada0ae8d97846d009",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "f3422d1e2dbd2bdecac093fb706917c2fd36eccf40ea3239f7030f72e3fff079",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_sync.md",
+      "sha256": "91e9040e6ab2e607d2d4f5449fd95757bb8510b5bde784bad18d105baf85f6ed",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T18:45:26.046633+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "asdg2 is the canonical repository; Elustondo-ai/asdg stays accepted as its former name",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "150d047193d3552bcb5dbe6516528ea43205cb9205ae3f5b3d41fc61861a6be2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "ba92c5cb75c6275ea0cb3668131a79481781d4422ff3f3c031d9d71cbf8e6060",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T20:22:03.967262+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Help explains that user-only commands are missing from the agent's own skill list in Claude Code",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "b5c8f550bdfb40a31595767b99d202cbae5fe16d63956ece25135a128dcb4b9f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-status/status-format.md",
+      "sha256": "32015fa685818b4fcc8ba4679e106f91aeef8dfe8c50f31430407b0a8a7c8320",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T20:30:42.691450+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Repoint two links to the renamed Status section on team readiness",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "37200c661bb7aca591938ef0486856fc8838595d4618f9db333c829aa0eb0d8a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-suggestion/SKILL.md",
+      "sha256": "924e59e159ca73077f572262ea378b628481db97c77b0a38610c83f6abe7aeab",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T20:30:42.691450+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Repoint two links to the renamed Status section on team readiness",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "175e26873427bd6410bc4ffcc1c4bb5d2135472ace9bf786e511e420012de326",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/01-context-and-domain-analysis/AGENTS.md",
+      "sha256": "ca7a48b2b370ef9e563008e5d2cf9a17cb8d3eb0d0eb4074a467223a0df35bb7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "23e292968e9e863ccadede80921eca23cb49ab1cc2f9dbc6221bc474ca1074b5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/03-system-model-and-use-cases/AGENTS.md",
+      "sha256": "9694fd0045bfcc113fdc6e77150484bc87fe5c36c520279c0da043872ba70e97",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "a284c1ff56ea300822ca200e9f8c8b9d1061365901073618b236e0dbb1a6a54b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/04-benchmarks-and-eval-strategy/AGENTS.md",
+      "sha256": "87486d676d2ea763bfd451faad536de70a9dcc11f48bc4f9c58aebd902676f48",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "58e6d9a8fb7d2f97e4661539935c6d8b29fba1960553f94ad8e5cb0a5172e34e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/05-high-level-design-and-architecture/AGENTS.md",
+      "sha256": "13ed365404f573376a7497f64e0289a650a7185c78f38f0cf1db26d9e9b0e308",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "cee437f01489f788df3dd65b89103b0d1dc15305eb9fc94886ff77f9f8183ab1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/06-viable-proof-of-concept/AGENTS.md",
+      "sha256": "9d6ed028f53541051dd8300d7fc835237142dee1d2e1556eae1a8e85df5005e4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "9583ffc807d40ae4e54050d2a4910ea279d18324f775f1e28c7ddd62e1c67e0d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/08-low-level-design/AGENTS.md",
+      "sha256": "90a62542ae8de511538079444bfa7e98017e3d6d811ee27fbf2ce8af1b0133e4",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "687084bb052d45bc227e19846ef3826085724793924a453b8b26dd91fc2586b0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/10-document-review-and-release/AGENTS.md",
+      "sha256": "fecbede3e6d1f1ab21869ba945ad9b1837c29c43db630aef3e7a10efaf029461",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "c48fd6ae1a18329c468350d70aca40d755d25a6c7c08a2fe28e4b1ed9a9b03be",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/11-operational-reality-devops-and-user-acceptance/AGENTS.md",
+      "sha256": "9e452857b2ddd09ca00261a3b729eb73ffcb0ff5ccd0026f14cd60aad890f89c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "d464614965a84c2215d1484cf4daaf27c77f1c0910236efd6ea2ed431ec38a87",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/12-observability-insights-and-learning/AGENTS.md",
+      "sha256": "b99231c11c3a6f8a71ca0f32b088912ab64a27b2289d80f2e51db03710d720a0",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "32b81600e4594406321f2776afbf129294e4b8d4095198819f9d77238569eac2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/check.md",
+      "sha256": "962405359eed6f4e1a8d175ac9b470692b9da74205f9f82de410c2451b1ed4c1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-25T22:48:06.312572+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Role entry headings use the catalogue's full role titles, checked by the structural check",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "36b199c33032e9269efc2ae7c4b5ca6b0c9590e407bbb856469c3f5ec46c5ca1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team-admin/SKILL.md",
+      "sha256": "983e0ce8d1ecbba17387d6cb02ea8eb2bc4b301bf03e40d5586fae2507be81d5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T00:00:25.121250+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, each numbered team's chats are started by that team's own lead, so a later team is no longer listed under, or archived with, the first team's lead.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "1e3b70c8e32b3f957b0d78ec87ef3e6a6f167e711b4b8da545d94339b945ca6e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "2c205e866547406608c402417b53fcd63fcb2128f344865562389c200d77779e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T00:00:25.121250+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, each numbered team's chats are started by that team's own lead, so a later team is no longer listed under, or archived with, the first team's lead.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "42a95ad79331faca5a90d16ec8a0d7cd6433870ff6bb545776b955946d519ee8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "67ce5e2e7610e4ca372c5d1cbf7e0b8e5fc1ad1085700b876d4855e168c8ed13",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T00:00:25.121250+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, each numbered team's chats are started by that team's own lead, so a later team is no longer listed under, or archived with, the first team's lead.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "f2f4b32d549bb4968f310c39ca965134fe05ca546087bf1eac7946e47c08e3a4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/numbered-teams.md",
+      "sha256": "b780d9c83ff35cda487b277c4df6dd93b96c88bd574d3dc1071ac9d2b867e496",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T00:00:25.121250+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, each numbered team's chats are started by that team's own lead, so a later team is no longer listed under, or archived with, the first team's lead.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "2ca0aa2faecf4ac28d0851e6bb859e73901f0324f6554445a63b1237289bbbc4",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/ordering.md",
+      "sha256": "fcb6337a7ca4d928137700380f1ff58ab188310819211381f013e524ac5f6bab",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T00:00:25.121250+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, each numbered team's chats are started by that team's own lead, so a later team is no longer listed under, or archived with, the first team's lead.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "fc1ff279110f0fe0a0e548511ce448283c9a94bf3ee0de8c8e2ef719a4b918b0",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_numbered_teams.md",
+      "sha256": "ac762be719218461be661f4057c3734d33e19254cb613cc5f7192275cc13a2f9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T00:00:25.121250+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, each numbered team's chats are started by that team's own lead, so a later team is no longer listed under, or archived with, the first team's lead.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "93f1ed836320e91a455bdae618db2bfbf4b63a237d7fea01b48a7770a288fd8c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team-admin/SKILL.md",
+      "sha256": "719049183bcecdd21342db1b962af0f90eeffdeecd0db609a5c6f12fadd5ced1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T00:53:19.015270+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Create team: the new team lead stays nested under the calling chat and starts its own twelve members; the detach step is removed",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "983e0ce8d1ecbba17387d6cb02ea8eb2bc4b301bf03e40d5586fae2507be81d5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/numbered-teams.md",
+      "sha256": "215674acda689466fd2443c33afdbcd49d7a3326155cf61b4459192a627b67a7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T00:53:19.015270+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Create team: the new team lead stays nested under the calling chat and starts its own twelve members; the detach step is removed",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "b780d9c83ff35cda487b277c4df6dd93b96c88bd574d3dc1071ac9d2b867e496",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_numbered_teams.md",
+      "sha256": "bd72104187bd4072c8175ee17963b3a06f6228f55ef7e622e458faf8eb9a7957",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T00:53:19.015270+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Create team: the new team lead stays nested under the calling chat and starts its own twelve members; the detach step is removed",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "ac762be719218461be661f4057c3734d33e19254cb613cc5f7192275cc13a2f9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "de85a1513db30cfd18da87b0fabb05fdeaeb9fc79da3f898f3e5035ba653b857",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T01:13:32.721551+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "A new team lead creates its twelve chats only when the user asks for Create team there, and asks the user for a second go when the app refuses further starts.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "67ce5e2e7610e4ca372c5d1cbf7e0b8e5fc1ad1085700b876d4855e168c8ed13",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/numbered-teams.md",
+      "sha256": "93144e78a8bc66f9fe0dccca53a11b6ba1f76833001bb6a2c8ac23648d0c2cf9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T01:13:32.721551+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "A new team lead creates its twelve chats only when the user asks for Create team there, and asks the user for a second go when the app refuses further starts.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "215674acda689466fd2443c33afdbcd49d7a3326155cf61b4459192a627b67a7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_numbered_teams.md",
+      "sha256": "9fd09151a658b8aa7585f4cffed73cb489099d79ff0404ccc831d16679d80fe5",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T01:13:32.721551+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "A new team lead creates its twelve chats only when the user asks for Create team there, and asks the user for a second go when the app refuses further starts.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "bd72104187bd4072c8175ee17963b3a06f6228f55ef7e622e458faf8eb9a7957",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "210698bb6b049e5c6619ce441e141f196d1b1d92156dc3732d5f516ab401cdb3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T01:33:04.675637+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, a project chat at the top starts every team's lead, team 1 included, and each lead starts its own twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "2c205e866547406608c402417b53fcd63fcb2128f344865562389c200d77779e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "3cf0d59ce45bea61592c3b81f2df0bf95d19ab7a5a35a0f287b4d9cdcf70e72b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T01:33:04.675637+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, a project chat at the top starts every team's lead, team 1 included, and each lead starts its own twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "de85a1513db30cfd18da87b0fabb05fdeaeb9fc79da3f898f3e5035ba653b857",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/numbered-teams.md",
+      "sha256": "8dba05375c0342184f7f0a0b261203b4e9bb0bb6fb8a0dfd5bd697f72749f1f8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T01:33:04.675637+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, a project chat at the top starts every team's lead, team 1 included, and each lead starts its own twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "93144e78a8bc66f9fe0dccca53a11b6ba1f76833001bb6a2c8ac23648d0c2cf9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/ordering.md",
+      "sha256": "3585ea5dc9d26dfbcd55cc8a487bb4e3a397ac7c71b3750329f992c6fd11f47b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T01:33:04.675637+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, a project chat at the top starts every team's lead, team 1 included, and each lead starts its own twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "fcb6337a7ca4d928137700380f1ff58ab188310819211381f013e524ac5f6bab",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/rename-chat.md",
+      "sha256": "f9c7e64d5c51185933fd17a110664b525dfea3f30af33157861ca79a38d79832",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T01:33:04.675637+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, a project chat at the top starts every team's lead, team 1 included, and each lead starts its own twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "14f7779cd5de02efdaa70ae5c83dd1d6ce300e0757abb2a3e0e7ac282ebd345a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_numbered_teams.md",
+      "sha256": "dc3197632ae01346ee2088e13d5f3b0a6c467cce7c473a11155d83f5300d4a97",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T01:33:04.675637+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, a project chat at the top starts every team's lead, team 1 included, and each lead starts its own twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "9fd09151a658b8aa7585f4cffed73cb489099d79ff0404ccc831d16679d80fe5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/SKILL.md",
+      "sha256": "192f84991e58cffb5e34afd42d5c0b544ad2cffae0df746d165748e7b382a78b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:09:52.614502+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, the project chat quotes the user's Create team request to each new team lead, which then creates its own twelve role chats, asking for a go only if the app refuses.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "210698bb6b049e5c6619ce441e141f196d1b1d92156dc3732d5f516ab401cdb3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "036ab5c20358ac010016981392c307e93d7288cf3b717a9c550aba7d4d0b42bf",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:09:52.614502+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, the project chat quotes the user's Create team request to each new team lead, which then creates its own twelve role chats, asking for a go only if the app refuses.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "3cf0d59ce45bea61592c3b81f2df0bf95d19ab7a5a35a0f287b4d9cdcf70e72b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/numbered-teams.md",
+      "sha256": "1518daa0d4316c41a8c83511107ea7c625e4a74eb87dcd30d5e6c7c04fb13ff9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:09:52.614502+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, the project chat quotes the user's Create team request to each new team lead, which then creates its own twelve role chats, asking for a go only if the app refuses.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "8dba05375c0342184f7f0a0b261203b4e9bb0bb6fb8a0dfd5bd697f72749f1f8",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_numbered_teams.md",
+      "sha256": "c66c437c07a473631847ecf8e0ef0220e461b6ddd59e60721c5c4d589f6d2eff",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:09:52.614502+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "In Claude, the project chat quotes the user's Create team request to each new team lead, which then creates its own twelve role chats, asking for a go only if the app refuses.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "dc3197632ae01346ee2088e13d5f3b0a6c467cce7c473a11155d83f5300d4a97",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-create-team/create-chats.md",
+      "sha256": "45019e7025f3a7d1d2cc66ef848039e042c0ceb3c1218ccb6608377660e77011",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:10:37.876597+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Chat creation records that a chat's first turn was seen starting a chat, and keeps the go fallback for automatic follow-up turns.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "3cf0d59ce45bea61592c3b81f2df0bf95d19ab7a5a35a0f287b4d9cdcf70e72b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "4fde45b990c5a11ccacd9683036d7854148619ffc8d1a17b236c6f8e05674f1f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "49f7dc04a6bbd289d1eeabb88f73ca2c6040bee005a9bd71859b90a1aa144c13",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "56d45e7a5dc72f6fac96dd492b5f1fe4c044e65d6222341fe81e55117e5c1218",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "6d31cac948b9b03fa07a2fe9968ac1a5dda21116184e889ef433fa6c811b4e45",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "5dd52f6def8f187162fa2133dc0b2143b05aff748f78325c6d86e263a8fb1209",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "cfed2204ce19d0c721845ba8ef050d24a1aeacac344c5f3a5a96cc40d124e47a",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "7790ec0f040e0cb93fec610001ad131acb246708475f0b1c41d7d1739654a591",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "ba92c5cb75c6275ea0cb3668131a79481781d4422ff3f3c031d9d71cbf8e6060",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-create/SKILL.md",
+      "sha256": "3447ca3d86f3f5bd2d7a175b1c33b34ccb7d59009c2f4d16cbc8518a1dd39020",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-members-create/SKILL.md",
+      "sha256": "bc4149d8b7ec30b794e08c610f14d93b208cd290a749bc61dff2331a22978818",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-team-create/SKILL.md",
+      "sha256": "cfb20f352d5b20269e5ebc053e877cedeb5b6eac385797b6cd09c505ad82e29e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-team-members-create/SKILL.md",
+      "sha256": "860a2a566aa3bbbdbab5248a6d8ed0fb85cfef700746272da7cf402575f420b7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "b49208d3c13bec5fe60042e8147f130e356b9d8b169ef353b58c7f1288d8c6d3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "febb19b99641eb96d4cd723aaf3637c178780d43c8e0df0217de6b6cf92b052f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_team_create.md",
+      "sha256": "b765534ad5d548baa1ed198b38eee98d95470f753a914b9971b5cfe7f69707a2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:31:15.956771+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Two new skills for the Claude desktop app: Team create starts a team's lead chat in the right folder, and Team members create starts its twelve role chats.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-members-create/SKILL.md",
+      "sha256": "3260a304cfabebdf6033c764b4db964cd55b8e828fc27d4ae3a85b9ba7a3d1f9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:43:38.163132+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team members create starts role chats in rounds of five, continues when the app wakes the lead, and skips a refused or denied role.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "bc4149d8b7ec30b794e08c610f14d93b208cd290a749bc61dff2331a22978818",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_team_create.md",
+      "sha256": "8ab3e2427b50a0a35dd6381e286465cc8cbfaf76c09d70b4ebf6416a94ec19f7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T02:43:38.163132+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team members create starts role chats in rounds of five, continues when the app wakes the lead, and skips a refused or denied role.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "b765534ad5d548baa1ed198b38eee98d95470f753a914b9971b5cfe7f69707a2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-members-create/SKILL.md",
+      "sha256": "fc4f01b55fc352d43785024ac3aa44507ad844c61cc625091d3a504e0432c2c9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T03:40:11.615797+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team members create is now a loop driven by a step program that decides one action at a time, checks each role chat in the app's list, and plans for the app's limits.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "3260a304cfabebdf6033c764b4db964cd55b8e828fc27d4ae3a85b9ba7a3d1f9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-members-create/team_members.md",
+      "sha256": "f494a86e2f5db6fcfc7ffc3477674fb19c553070c42b95963e86bd174195c172",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T03:40:11.615797+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team members create is now a loop driven by a step program that decides one action at a time, checks each role chat in the app's list, and plans for the app's limits.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/tests/README.md",
+      "sha256": "a94357a5db516d7999e6088d336a752cea14e6192740d934cd5b3db4d1fb4c31",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T03:40:11.615797+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team members create is now a loop driven by a step program that decides one action at a time, checks each role chat in the app's list, and plans for the app's limits.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "b49208d3c13bec5fe60042e8147f130e356b9d8b169ef353b58c7f1288d8c6d3",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_team_create.md",
+      "sha256": "de1606a8673d17594703392baf12dda166f27e86de1b29a90736ccea01075465",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T03:40:11.615797+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team members create is now a loop driven by a step program that decides one action at a time, checks each role chat in the app's list, and plans for the app's limits.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "8ab3e2427b50a0a35dd6381e286465cc8cbfaf76c09d70b4ebf6416a94ec19f7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_team_members.md",
+      "sha256": "514201c4c7e6fcd2a6728e5e9ef7748e87f3bb7b4e6a2d95cb17d36ff0f0d5bb",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T03:40:11.615797+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team members create is now a loop driven by a step program that decides one action at a time, checks each role chat in the app's list, and plans for the app's limits.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "079956167b5d6437c66f64c5e3f7f8ae056e647428e68cbe138dafceb211fa1f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T06:05:27.822588+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team create makes the fresh chat the human types into the team lead and has it create the twelve role chats, since only chats the human typed into start them without caps or denials.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "56d45e7a5dc72f6fac96dd492b5f1fe4c044e65d6222341fe81e55117e5c1218",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "4bb9f927d8799f26d45642ae4e83d18b3914c4060ef5ab710b66239c2a9623a7",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T06:05:27.822588+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team create makes the fresh chat the human types into the team lead and has it create the twelve role chats, since only chats the human typed into start them without caps or denials.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "7790ec0f040e0cb93fec610001ad131acb246708475f0b1c41d7d1739654a591",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-create/SKILL.md",
+      "sha256": "bde2f480f8d0dc2e5183f63b744f2cdd21879e87f4a0cec54a93119d0c208f90",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T06:05:27.822588+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team create makes the fresh chat the human types into the team lead and has it create the twelve role chats, since only chats the human typed into start them without caps or denials.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "3447ca3d86f3f5bd2d7a175b1c33b34ccb7d59009c2f4d16cbc8518a1dd39020",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-members-create/SKILL.md",
+      "sha256": "50cc80987bed382dc4b6cf36afeb94198c4c4867e2e49a2fffa61575166feb30",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T06:05:27.822588+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team create makes the fresh chat the human types into the team lead and has it create the twelve role chats, since only chats the human typed into start them without caps or denials.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "fc4f01b55fc352d43785024ac3aa44507ad844c61cc625091d3a504e0432c2c9",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-members-create/team_members.md",
+      "sha256": "a6e2b55c967449e0bc3d1d5b40cfcfe56a240d7b0714bcf56173661d0b7c9237",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T06:05:27.822588+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team create makes the fresh chat the human types into the team lead and has it create the twelve role chats, since only chats the human typed into start them without caps or denials.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "f494a86e2f5db6fcfc7ffc3477674fb19c553070c42b95963e86bd174195c172",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-team-create/SKILL.md",
+      "sha256": "03136cf5af9e257b8c2fa60e43ae62bf5859f4a312f25af154e654cc12d0678b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T06:05:27.822588+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team create makes the fresh chat the human types into the team lead and has it create the twelve role chats, since only chats the human typed into start them without caps or denials.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "cfb20f352d5b20269e5ebc053e877cedeb5b6eac385797b6cd09c505ad82e29e",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_team_create.md",
+      "sha256": "196b0078c87c6d112cf5a3eb574dfc7f5ffab3a2ee12a25ea189488b7499043e",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T06:05:27.822588+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team create makes the fresh chat the human types into the team lead and has it create the twelve role chats, since only chats the human typed into start them without caps or denials.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "de1606a8673d17594703392baf12dda166f27e86de1b29a90736ccea01075465",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/tests/test_team_members.md",
+      "sha256": "52b0189f642965b1680a291ae595839ec4990adaa69e3ba5b79a28e3065b8d7f",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T06:05:27.822588+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Team create makes the fresh chat the human types into the team lead and has it create the twelve role chats, since only chats the human typed into start them without caps or denials.",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "514201c4c7e6fcd2a6728e5e9ef7748e87f3bb7b4e6a2d95cb17d36ff0f0d5bb",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "f7702c757e1ee96dd77bc71487ef0bec337131507a34879c1dfff2a91dd7f7a2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "4fde45b990c5a11ccacd9683036d7854148619ffc8d1a17b236c6f8e05674f1f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/README.md",
+      "sha256": "61805ebfac946f5b40dd9f6b52091eb04d4f3a1792c18c747ef5b13898d323b3",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "079956167b5d6437c66f64c5e3f7f8ae056e647428e68cbe138dafceb211fa1f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-focus/session-policy.md",
+      "sha256": "387ed5b2748c68063853b427a21b1f31ccc7e2f9e7564c79efd7100ffe7a4abc",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "5dd52f6def8f187162fa2133dc0b2143b05aff748f78325c6d86e263a8fb1209",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "528cf53c6037346891c34bbea7eeb30d3a36cab0de259b35b74d6150c30cc1af",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "4bb9f927d8799f26d45642ae4e83d18b3914c4060ef5ab710b66239c2a9623a7",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/command-reference.md",
+      "sha256": "e1b88d9a9f95f90217afd9b9f803db8ebe4685b511c4b1766d0347fc29f6bcac",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "d11771805d6798090a000d60f77e091a283a3ae16b366f120b48b1b4edf2efe5",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
       "path": "asdg/skills/asdg-team-create2/SKILL.md",
       "sha256": "ea7e89aec8a75731376d7046174079c6d4df9d339ea093dc1aaee323af84be55",
       "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
       "human_approval": null,
       "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/skills/asdg-team-create2/session-protocol.md",
-      "sha256": "2bd7b7334430147f2ceb32ad8d49b143fb455e9d8fab2f02fd69ab24fe86dbd8",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/skills/asdg-team-create2/activation.md",
-      "sha256": "e4f66b8056b05a38e44e9e6309ed700959a1df4ac3f152f95da1fb4b9e064b0d",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
       }
     },
     {
       "path": "asdg/skills/asdg-team-create2/TRY-IT.md",
       "sha256": "12c520dcd0c367930acd50bc482a601043e244788f2df2c3692c192ede194cf5",
       "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
       "human_approval": null,
       "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-create2/activation.md",
+      "sha256": "e4f66b8056b05a38e44e9e6309ed700959a1df4ac3f152f95da1fb4b9e064b0d",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-team-create2/session-protocol.md",
+      "sha256": "2bd7b7334430147f2ceb32ad8d49b143fb455e9d8fab2f02fd69ab24fe86dbd8",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
       }
     },
     {
       "path": "asdg/templates/.agents/skills/asdg-team-create2/SKILL.md",
       "sha256": "5207c4d6267bff85d9aa66121c46a81f5471907070df7e0ba595ad0d96796064",
       "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
       "human_approval": null,
       "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/templates/.agents/skills/asdg-team-create2/agents/openai.yaml",
-      "sha256": "f708092e995001b5535f8213eba3c34974ecdcda5e0ace613b99b7eb7963777a",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/skills/README.md",
-      "sha256": "30a7cbe384f246729ce6e97c32157f1e24fa4232921b2df31f12ecc8eee6d98d",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/skills/asdg-help/SKILL.md",
-      "sha256": "5622a68764a2769454364f07c19da29aa13946a1236e1fc2053dffbf04617d61",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/skills/asdg-help/command-reference.md",
-      "sha256": "b3294a6b9e263a83f3542aa77a29241f35a25ada7952de280210c0ab3002d125",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/skills/asdg-focus/session-policy.md",
-      "sha256": "90b16f25491c0f967801aa5ed14bc51919c71ae79ef7dd0604837b104906e8f4",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/00-governance/docs/runtime-contract.md",
-      "sha256": "1d2e21b51cfc9c50b689dd11abe0d82dadb3dc35771697fb91d282be58c63025",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/metadata/package-files.json",
-      "sha256": "a25a9952ce6948bd9e4e945e0c545fcd51530a12a700f125e29a14580a5138ef",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
-      }
-    },
-    {
-      "path": "asdg/tests/test_distribution.py",
-      "sha256": "dd3832822e5f7b8e49902021422a59f461cc6f1e92de32ff9b257093116ee018",
-      "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
-      "human_approval": null,
-      "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
       }
     },
     {
       "path": "asdg/tests/test_distribution.md",
       "sha256": "a1dac679953c32bb0a1322b81c08a2dd2485f04b6e7110ab35e631b9b29a358a",
       "event": "AI-MODIFIED",
-      "recorded_at": "2026-11-26T18:34:37Z",
+      "recorded_at": "2026-11-26T22:26:11.831503+00:00",
       "human_approval": null,
       "provenance": {
-        "actor": "ASDG-ADMIN",
-        "generator": "Copilot",
-        "record": "docs/asdg/07-planning/02.27-review-team-create2.json"
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Promote the validated Copilot asdg-team-create2 workflow and registration into the ASDG product",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "6345646f08aedcbefa714d9b4a96b052099e139b8226b461418a187a44d7082f",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/plan-roles.md",
+      "sha256": "0826e9745e62e9a66dd9648f588a3934ce5fdc4ec366c95bc71606ae12675873",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "060dae95c66bb280955b723216893ef7cd1c1c6c7c54fbe2e3eca148f92cd61d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/runtime-contract.md",
+      "sha256": "d2b19fb73691efaa5d774d23079cd4d765c23019f69c4d9ac403d6a76fc8a242",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "f7702c757e1ee96dd77bc71487ef0bec337131507a34879c1dfff2a91dd7f7a2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/write-controls.md",
+      "sha256": "17dc3138ed42173ecd0f3ea3bd245bf6513bd509240ddfbd227af7756b984da2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "233940dc3b7a310a7b331303be00b305e26822cb52192ebd0ac6ac05b7b4d023",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/write-exceptions.md",
+      "sha256": "dcdf03cd642021cd395bcecd7080d2ca287fb2d0bce4d5a507ab1d4d935794af",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "1d898c37d62ef6ba1a469bbd7ddd588ae7a2629ebff1257ccb595077c1015cb1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/07-planning/AGENTS.md",
+      "sha256": "25387ab379fa3e0fa18b93484a6e9587904d86fcf0c81548ea02b44d1ece227c",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "4297208ea0f7fc8b883b5c2da6d564f8a98aa745b87feff7bdf4cf7d0fc88f6c",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/07-planning/README.md",
+      "sha256": "da52d54ad3284563c259062bb675cfac7171d0f1a73a9b666a8a3cd7eb2fd888",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "4d217d93ea476f9ffc04afd14a80006f0709c9b0d7b829856dafd835e7155ff1",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/07-planning/skills/prepare-plan/SKILL.md",
+      "sha256": "53c3d88345cf691109a4d35db07da5832795ada6033ab045b57e61dad21415fd",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "bac45e4374ba784d9132f59a648a668c2885185be892caf628d796b935c551f2",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/07-planning/skills/project-plan-sync/SKILL.md",
+      "sha256": "f1389f145d3c23843461e0d324da202942b777ca3d32212b57c7d58eb193ff4b",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      }
+    },
+    {
+      "path": "asdg/07-planning/tests/acceptance.md",
+      "sha256": "dd06994569371706cbb895aafd3cd47979749f983e647dc4bfde941dc379b467",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "59697049f082817a9f62d4ada6ff5ef735d522b3bcfa0731a4680f1b26b791ae",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/docs/project-plan-sync.md",
+      "sha256": "4a9c1d6c12ac4fb0c246004ad9a088ee3f920b26a27dd52605bb9552de02f7e9",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "71c8d98ac23e65c38d50a27dd46591ee4703081c6561e3f77f48b8e848fda8ad",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/scripts/lib/cli_ownership.md",
+      "sha256": "6613f0161c5358ef144f40ed60f39c9fc7415778fcffa322763f1379c6a5a504",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "bad0a94d14338d54c23b9075fb7ce58567e0d95e4786669572fa64b12665c776",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/skills/asdg-help/SKILL.md",
+      "sha256": "a3ee204d7654acdfd8d0bfd31d97331409b92a015ee525e6897fea007b1777d6",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "528cf53c6037346891c34bbea7eeb30d3a36cab0de259b35b74d6150c30cc1af",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/templates/.agents/skills/asdg-project-plan-sync/SKILL.md",
+      "sha256": "ef94988fb8783015741c7ab6bf7b95040212a8a7a917e381bb6d3a0499e324d2",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T00:37:02.073070+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: canonical skill moved to 07-planning, cache-write exception limited to 07, routing and direct plan reading stated",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "7acf29c170655a867d6f3f44211660072df0dfd03d3060af578707d3b602ec2b",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
+      }
+    },
+    {
+      "path": "asdg/00-governance/docs/plan-roles.md",
+      "sha256": "332e0c04f83c33f644dabf15f42716c68d4c447ebb5ccb90c40f8b7e0d0f86d1",
+      "event": "AI-MODIFIED",
+      "recorded_at": "2026-11-27T03:55:47.232796+00:00",
+      "human_approval": null,
+      "provenance": {
+        "role_id": "MAINTAINER",
+        "requester": "Pablo",
+        "scope": "Planning (ASDG-07) owns Project Plan Sync: freshness wording",
+        "authority": "Workshop maintenance; no ASDG role applies in the workshop"
+      },
+      "previous_state": {
+        "sha256": "060dae95c66bb280955b723216893ef7cd1c1c6c7c54fbe2e3eca148f92cd61d",
+        "visible_review_markers": [],
+        "approval_binding": "Legacy declarations only; no approval inferred or transferred."
       }
     }
   ],

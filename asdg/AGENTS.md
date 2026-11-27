@@ -1,8 +1,8 @@
 # Using and maintaining embedded ASDG
 
-This repository root is the standalone ASDG methodology development and distribution source (`Elustondo-ai/asdg`).
+This folder is the ASDG methodology as distributed; its canonical source is the `asdg/` folder of the workshop repository (`Elustondo-ai/asdg2`).
 When installed under a consumer's `asdg/`, the client root bootstrap loads this file; follow that project's guidance and the user's explicit task.
-For source maintenance, use `python3 scripts/check.py --integrity` and `python3 -B -m unittest discover -s tests -v`; do not initialize this source repository as a client.
+In the workshop repository this folder is the product under maintenance: maintainers follow the workshop's root `AGENTS.md` and nothing below governs them. Never initialize the workshop as a client.
 Read [the lifecycle baseline](docs/lifecycle-baseline.md); preserve governance 00 and stages 01–12. No external provider checkout is required.
 Use [the catalogue](00-governance/types/agent-catalog.json) for identities and paths; Stage 02 is Purpose.
 

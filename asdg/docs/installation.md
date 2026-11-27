@@ -2,7 +2,7 @@
 
 ASDG initialization installs the methodology and prepares the project’s ASDG team.
 
-The recommended [repository-URL Quick Start](https://github.com/Elustondo-ai/asdg#quick-start--give-your-agent-the-repository-url) lets the agent acquire the ZIP safely. Manual ZIP + Prompt and Clone + Prompt remain alternatives using one Python 3.9+ engine on macOS/Linux. The prompts select inputs, show the plan and wait for approval; they never implement a second installer.
+The recommended [repository-URL Quick Start](../README.md#quick-start--give-your-agent-the-repository-url) lets the agent acquire the ZIP safely. Manual ZIP + Prompt and Clone + Prompt remain alternatives using one Python 3.9+ engine on macOS/Linux. The prompts select inputs, show the plan and wait for approval; they never implement a second installer.
 
 ![Both acquisitions use one integrity, approval and verification engine; the approved team workflow prepares Governance before the final Status assessment.](images/installation-engine.svg)
 
@@ -40,7 +40,7 @@ Claude prepares role/skill sources and adapters with Governance available by def
 | `.asdg/` | Target binding/provenance, inactive initial sprint, lifecycle, integration selection and append-only document receipts; existing state preserved |
 | `.agents/`, `.codex/` | Selected Codex adapters/configuration/hooks; collisions block, trust is separate |
 | `.claude/skills/` | Selected Claude adapters; existing files preserved or reported as conflicts |
-| `AGENTS.md`, optional `CLAUDE.md`, `.gitignore` | Managed integration plus preserved project text; instruction changes appear in preview, with instruction backups |
+| `AGENTS.md`, `CLAUDE.md` with the Claude integration, `.gitignore` | Managed integration plus preserved project text; instruction changes appear in preview, with instruction backups |
 | `docs/asdg/`, `logs/` | Missing generic stage introductions and log marker only; authored project content preserved |
 
 Existing incompatible versions, edited adapters or legacy linked installations require explicit repair/upgrade. Initialization does not reconcile them or grant lifecycle acceptance.

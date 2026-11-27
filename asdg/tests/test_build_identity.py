@@ -21,7 +21,7 @@ from cli_sync import synchronize
 from distribution_files import package_files
 
 STAMP = '2026-11-09T12:34:56+00:00'
-CANONICAL = 'https://github.com/Elustondo-ai/asdg.git'
+CANONICAL = 'https://github.com/Elustondo-ai/asdg2.git'
 os.environ.setdefault('ASDG_OPENSPEC', '0')  # Hermetic: setup's OpenSpec step would run a separately installed command.
 
 

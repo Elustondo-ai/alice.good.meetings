@@ -29,6 +29,7 @@ Read client instructions, [session policy](../asdg-focus/session-policy.md) and 
 1. Resolve the client root as `../../..` from this directory and verify the Admin sources that the [Admin entry](../../admin/AGENTS.md) lists under "Load on role invocation".
 2. An admin team always takes a number and a worktree, even when it is the first admin team: follow [numbered teams](../asdg-create-team/numbered-teams.md) from "Create the worktree and branch", including the plan shown to the user and the offer about files not carried.
 3. Start one fresh chat with the new worktree as its working folder, using the surface's native tools as [missing-chat creation](../asdg-create-team/create-chats.md) describes. Create no specialist chats.
+   In Claude it stays nested under this chat, as [who starts the chats](../asdg-create-team/numbered-teams.md#who-starts-the-chats) says.
 4. Its initial prompt names the worktree as project root, quotes the human's request word for word with its date as the explicit Admin selection, asks the chat to follow [the Admin skill](../asdg-admin/SKILL.md), to confirm the role briefly and then to wait.
 5. The prompt passes no maintenance scope unless the human gave one; a scope the human did give is quoted, never paraphrased into something wider.
 6. Retain the returned chat ID. A started chat is not an activated role: confirm its first report shows ASDG Admin loaded, or report activation pending or failed.

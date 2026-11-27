@@ -28,8 +28,8 @@ The record is `{"schema_version": 1, "clients": {"<client>": {"recorded_from": "
 | `claude_adapter(repo, name) -> bytes` | Copies the template's name, description and body, adding `disable-model-invocation: true` for explicit-only skills. |
 | `mod_names(repo)` / `claude_mod(repo, name)` | Mods are folders under `asdg/mods` holding `.claude-plugin/plugin.json`. Returns the four `MOD_FILES` unchanged for `.claude/skills/<name>/`; a missing file, a manifest name unlike the folder or a name shared with a skill raises `Conflict`. |
 | `claude_files(repo)` | Every Claude adapter, then every mod's runtime files. |
-| `suppressors(root)` | Lists `CLAUDE.md`, `.claude/CLAUDE.md` or `CLAUDE.local.md` here or in parent folders. |
-| `claude_bridge(root)` / `claude_bridge_problems(root)` | Returns the managed `@AGENTS.md` import to add only when a suppressor exists, or None; reports a missing or edited bridge. |
+| `claude_bridge_rule(root)` / `bridge_needed(text, line)` / `bridge_bytes(old, block)` | The one bridge rule, shared with [push-replace](cli_push_integrations.md): destination, import line and exact block; needed unless marker-free text already imports `AGENTS.md`; a new bridge goes first, above existing text. |
+| `claude_bridge(root)` / `claude_bridge_problems(root)` | Returns the managed `@AGENTS.md` import to add for a selected Claude integration, or None when the exact block is already present anywhere in the file; reports a missing or edited bridge. |
 
 ## Effects and failure behavior
 

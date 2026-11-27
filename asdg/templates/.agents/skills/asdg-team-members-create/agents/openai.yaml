@@ -1,0 +1,6 @@
+interface:
+  display_name: "ASDG team members create"
+  short_description: "Create a team's twelve role chats"
+  default_prompt: "Use $asdg-team-members-create to add this team's missing role chats."
+policy:
+  allow_implicit_invocation: false

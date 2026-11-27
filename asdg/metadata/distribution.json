@@ -14,7 +14,10 @@
   "native_runtime_enforcement": "NOT_VERIFIED",
   "layout": "organized-v1",
   "previous_version": "0.3.0-pilot.3",
-  "canonical_repository": "https://github.com/Elustondo-ai/asdg",
+  "canonical_repository": "https://github.com/Elustondo-ai/asdg2",
+  "former_repositories": [
+    "https://github.com/Elustondo-ai/asdg"
+  ],
   "distribution_status": "candidate-for-review",
   "sources": [
     {

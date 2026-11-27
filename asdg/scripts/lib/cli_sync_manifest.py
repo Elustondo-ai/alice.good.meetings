@@ -185,14 +185,24 @@ def snapshot(location: str | Path) -> dict:
                      'selection': 'package-files' if index_raw is not None else 'legacy-git-tracked'}}
 
 
+def former_names(item: dict) -> list[str]:
+    """Earlier names of the canonical repository, declared by its own distribution; empty for a client."""
+    declared = item['descriptor'].get('canonical_repository')
+    if not isinstance(declared, str) or repository_id(declared) != item['info']['repository']:
+        return []
+    former = item['descriptor'].get('former_repositories', [])
+    return [repository_id(name) for name in former if isinstance(name, str)] if isinstance(former, list) else []
+
+
 def baseline(source: dict, target: dict) -> tuple[dict, str]:
-    source_id, target_id = source['info']['repository'], target['info']['repository']
-    for owner, other in ((target, source_id), (source, target_id)):
-        entry = owner['state']['upstreams'].get(other)
-        if entry:
-            if entry.get('target_repository') != owner['info']['repository']:
-                raise Conflict('Adoption record belongs to another repository.')
-            return entry['files'], 'adopted snapshot from ' + other
+    for owner, other in ((target, source), (source, target)):
+        # A client adopted under a former name of the canonical repository keeps that record.
+        for name in (other['info']['repository'], *former_names(other)):
+            entry = owner['state']['upstreams'].get(name)
+            if entry:
+                if entry.get('target_repository') not in (owner['info']['repository'], *former_names(owner)):
+                    raise Conflict('Adoption record belongs to another repository.')
+                return entry['files'], 'adopted snapshot from ' + name
     for client, canonical in ((target, source), (source, target)):
         found = installed_baseline(client, canonical)
         if found:

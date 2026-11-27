@@ -230,6 +230,38 @@ class SyncTests(unittest.TestCase):
             with self.subTest(source=source), self.assertRaises((Conflict, OSError)):
                 synchronize('promote', source, self.canonical)
 
+    def test_a_client_adopted_under_a_former_name_keeps_its_baseline_after_the_rename(self):
+        self.edit(self.pilot, 'docs/c.md', 'Pilot improvement\n')
+        self.apply()  # The canonical records this promotion under its own current name.
+        self.edit(self.canonical, 'docs/a.md', 'Canonical A v2\n')
+        self.apply('upgrade')  # The pilot records its adoption under the canonical's current name.
+        renamed = 'https://example.test/team/asdg2.git'
+        descriptor = self.canonical / 'asdg' / DESCRIPTOR
+        value = json.loads(descriptor.read_text())
+        value['canonical_repository'] = renamed
+        descriptor.write_bytes(encoded(value))
+        git(self.canonical, 'remote', 'set-url', 'origin', renamed)
+        self.edit(self.canonical, 'docs/b.md', 'Canonical B v2\n')
+        with self.assertRaisesRegex(Conflict, 'different canonical distribution'):
+            self.preview('upgrade')  # A rename the package does not declare looks like a foreign source.
+        value['former_repositories'] = [CANONICAL]
+        descriptor.write_bytes(encoded(value))
+        self.refresh(self.canonical)
+        report = self.preview('upgrade')
+        self.assertEqual(report['baseline'], 'adopted snapshot from example.test/team/asdg')
+        self.assertEqual(report['counts']['conflicting'], 0)
+        self.assertEqual(self.row(report, 'docs/b.md')['status'], 'modified')
+        self.assertEqual(self.row(report, 'docs/a.md')['status'], 'unchanged')
+        self.apply('upgrade')
+        self.assertEqual((self.pilot / 'asdg/docs/b.md').read_text(), 'Canonical B v2\n')
+        again = self.preview('upgrade')  # The next run finds the record made under the new name.
+        self.assertEqual(again['baseline'], 'adopted snapshot from example.test/team/asdg2')
+        self.assertTrue(all(r['status'] == 'unchanged' for r in again['files']))
+        self.edit(self.pilot, 'docs/c.md', 'Pilot improvement v2\n')
+        promotion = self.preview()  # The promotion record made before the rename is still accepted.
+        self.assertEqual(promotion['baseline'], 'adopted snapshot from example.test/team/pilot')
+        self.assertEqual(self.row(promotion, 'docs/c.md')['status'], 'modified')
+
     def test_identity_version_and_binding_fail_closed(self):
         git(self.canonical, 'remote', 'set-url', 'origin', 'https://example.test/wrong/repo.git')
         with self.assertRaisesRegex(Conflict, 'Canonical repository'):

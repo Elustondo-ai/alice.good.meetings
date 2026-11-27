@@ -20,6 +20,7 @@ Owns CLI argument validation, command routing and exit status; optional advice i
 - [cli_dashboard](cli_dashboard.md): Serves the local dashboard.
 - [cli_sync](cli_sync.md): Previews or explicitly applies promote/upgrade file synchronization between two Git roots.
 - [cli_push](cli_push.md): Plans, applies, verifies or recovers ASDG-owned replacement.
+- [cli_plan_sync](cli_plan_sync.md): Explicit, recoverable synchronization with GitHub Projects and Issues; no Git or sprint transitions.
 
 ## Interface and data
 
@@ -35,6 +36,7 @@ Plain status may call the optional model runtime; status --json and --facts-only
 Init defaults to preview, accepts --source/--commit/--target for a local clone, and requires --apply --plan after review; it dispatches before caller-root resolution.
 Promote/upgrade require explicit source/target and either --dry-run or --apply; apply also requires --plan. These dispatch without resolving the caller's project or invoking agents.
 `push-replace` adds exact-plan replacement, read-only `--verify`, and `--recover TRANSACTION_ID --recovery resume|rollback`; see the [operator guide](../../docs/push-replace.md).
+`project-plan-sync` requires `--dry-run`, `--apply --plan DIGEST`, `--resume`, or `--abandon --plan DIGEST`; target selection and explicit uncertain-outcome acknowledgement follow the [planning sync guide](../../docs/project-plan-sync.md).
 
 ## Example
 

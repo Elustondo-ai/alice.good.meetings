@@ -18,7 +18,7 @@ Missing/invalid/nested roots, missing origins, identity/version/binding errors, 
 Dry runs preserve tree bytes and Git index; stale/missing plan digests and stale canonical manifests block apply.
 Manifest freshness tests distinguish working snapshots from manifest-matched content in JSON, console and adoption records without inferring validation or approval.
 Upgrade writes the client's `metadata/build.json` only when the canonical bytes equal HEAD and removes a stale record otherwise.
-Repeated apply is idempotent. Source and target are exercised in both directions; application files, client evidence, workflow state and integrations remain intact.
+A canonical repository that changes its name and declares the former one keeps a pilot's adoption and promotion records; an undeclared rename is refused as a foreign source. Repeated apply is idempotent. Source and target are exercised in both directions; application files, client evidence, workflow state and integrations remain intact.
 Older tracked-only pilots use exact shared delivery manifests; absent or ambiguous historical ancestry blocks different existing content. Current endpoint manifests take precedence over older archives.
 The full-package fixture explicitly previews and approves initialization before testing synchronization.
 A full-package upgrade changes version metadata and runtime version, then runs the target's own `verify` while preserving all non-distribution bytes.

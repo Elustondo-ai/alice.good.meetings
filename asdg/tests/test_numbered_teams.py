@@ -73,6 +73,30 @@ class NumberedTeams(unittest.TestCase):
         self.assertEqual(team_worktree.main(['--folder', self.temp.name]), 2)
         self.assertFalse((self.clone / '.claude').exists())
 
+    def test_in_claude_a_project_chat_starts_every_team_lead(self):
+        chats = (CORE / 'skills/asdg-create-team/create-chats.md').read_text()
+        self.assertIn('### The team tree', chats)
+        self.assertIn('leads no team itself', chats)
+        self.assertIn("quotes the user's Create team request word for word", chats)
+        self.assertNotIn('The user then asks for Create team in that lead', chats)
+        self.assertNotIn('first sends a message', chats)
+        self.assertIn('ask the user to say go', chats)
+        skill = (CORE / 'skills/asdg-create-team/SKILL.md').read_text()
+        self.assertIn('quotes it word for word', skill)
+        self.assertNotIn('detach_session', chats)
+        rule = (CORE / 'skills/asdg-create-team/numbered-teams.md').read_text()
+        self.assertIn('## Who starts the chats', rule)
+        self.assertNotIn('team 1 lead"] -- "starts"', rule)
+        for page in ('skills/asdg-create-team/SKILL.md', 'skills/asdg-create-team/numbered-teams.md',
+                     'skills/asdg-create-team/ordering.md', 'skills/asdg-focus/rename-chat.md'):
+            self.assertIn('create-chats.md#the-team-tree', (CORE / page).read_text(), page)
+        admin = (CORE / 'skills/asdg-create-team-admin/SKILL.md').read_text()
+        self.assertIn('numbered-teams.md#who-starts-the-chats', admin)
+        ordering = (CORE / 'skills/asdg-create-team/ordering.md').read_text()
+        self.assertNotIn('Title the calling chat as the [team lead]', ordering)
+        titles = (CORE / 'skills/asdg-focus/rename-chat.md').read_text()
+        self.assertIn('`<Project Nickname> ASDG [<focus>] [<attitude>]`', titles)
+
     def test_both_team_skills_are_packaged_indexed_and_linked(self):
         packaged = {path.relative_to(CORE).as_posix() for path in package_files(CORE)}
         for name in ('skills/asdg-create-team/numbered-teams.md', 'skills/asdg-create-team/team_worktree.py',

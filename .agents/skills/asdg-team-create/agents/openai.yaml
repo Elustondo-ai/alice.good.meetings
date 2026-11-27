@@ -1,0 +1,6 @@
+interface:
+  display_name: "ASDG team create"
+  short_description: "Start one team from a single request"
+  default_prompt: "Use $asdg-team-create to start my project team in the Claude desktop app."
+policy:
+  allow_implicit_invocation: false

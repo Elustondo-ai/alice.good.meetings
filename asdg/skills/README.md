@@ -10,6 +10,8 @@ Canonical workflows live here; native discovery adapters remain thin references.
 | [Create team](asdg-create-team/SKILL.md) | Set up governance and twelve specialist chats, or the next numbered team in its own worktree and branch |
 | [Team create2](asdg-team-create2/SKILL.md) | Human- or agent-invoked Copilot setup: one independent top-level team and twelve specialist chats, no worktree or project work |
 | [Create team admin](asdg-create-team-admin/SKILL.md) | On explicit request, create one ASDG Admin chat in its own numbered worktree and branch for changes to ASDG |
+| [Team create](asdg-team-create/SKILL.md) | In the Claude desktop app, type it in a fresh chat: that chat becomes the team lead, in the team's own folder and branch from team 2, and creates its twelve role chats |
+| [Team members create](asdg-team-members-create/SKILL.md) | In a team lead chat, create the team's twelve role chats one at a time, skipping those that exist |
 | [Focus](asdg-focus/SKILL.md) | Select a role; use `subject` to change its topic independently |
 | [Attitude](asdg-attitude/SKILL.md) | Choose a thinking approach, temporary scope, NoAttitude or read-only status |
 | [Status](asdg-status/SKILL.md) | Show status, a suggested next step, then observations and technical debt |

@@ -1,4 +1,4 @@
-# Operations Agent
+# Operational Reality, DevOps and User Acceptance Agent
 
 Role ID: `ASDG-11`. Native Codex name: `asdg_11`. Stage: 11.
 Status: evaluation and project-documentation authoring; native enforcement requires separate verification.
@@ -22,6 +22,7 @@ For stage assessments, read [Intended / Actual / Planned](../00-governance/docs/
 Read broadly; write within [role ownership and exceptions](../00-governance/docs/documentation-authority.md). Propose or hand off changes to another owner.
 
 Verify behavior in realistic environments, operational readiness, rollout and user-acceptance evidence.
+Epics, stories and tasks each have one owner under [plan roles](../00-governance/docs/plan-roles.md); propose a change to that owner rather than editing a plan item.
 
 ## Explicit exclusions
 

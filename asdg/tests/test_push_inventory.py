@@ -54,7 +54,7 @@ class InventoryTests(unittest.TestCase):
         self.source = self.root / 'source'
         self.source.mkdir()
         git(self.source, 'init', '-q')
-        git(self.source, 'remote', 'add', 'origin', 'https://github.com/Elustondo-ai/asdg.git')
+        git(self.source, 'remote', 'add', 'origin', 'https://github.com/Elustondo-ai/asdg2.git')
         design = ROOT / 'docs/asdg/07-planning'
         for name, old in ((inventory.CATALOG, '02.25-push-replace-catalog.json'),
                           (inventory.SCHEMA, '02.25-push-replace-ownership.schema.json')):
@@ -99,6 +99,59 @@ class InventoryTests(unittest.TestCase):
             inventory.validated_source(self.source)
         with self.assertRaises(Conflict):
             inventory.validated_source(self.source / 'metadata')
+
+    def test_the_former_repository_name_stays_accepted_and_neither_name_is_a_client(self):
+        former = inventory.FORMER[0]
+        self.assertEqual(inventory.validated_source(self.source)['identity']['repository'], inventory.CANONICAL)
+        git(self.source, 'remote', 'set-url', 'origin', 'https://' + former + '.git')
+        source = inventory.validated_source(self.source)
+        self.assertEqual(source['identity']['repository'], former)  # Records name where the commit lives.
+        self.assertEqual(source['identity']['commit'], git(self.source, 'rev-parse', 'HEAD'))
+        value = receipt()
+        for name in (inventory.CANONICAL, former):  # Receipts written before the rename stay valid.
+            value['source']['repository'] = name
+            self.validate(value)
+        for foreign in ('github.com/elustondo-ai/asdg3', 'github.com/example/asdg2'):
+            git(self.source, 'remote', 'set-url', 'origin', 'https://' + foreign + '.git')
+            with self.assertRaisesRegex(Conflict, 'origin'):
+                inventory.validated_source(self.source)
+            value['source']['repository'] = foreign
+            with self.assertRaisesRegex(Conflict, 'foreign source'):
+                self.validate(value)
+        for name in (inventory.CANONICAL, former):
+            client = self.root / ('as-client-' + name.rsplit('/', 1)[1])
+            client.mkdir()
+            git(client, 'init', '-q')
+            git(client, 'remote', 'add', 'origin', 'git@github.com:' + name.split('/', 1)[1] + '.git')
+            with self.assertRaisesRegex(Conflict, 'cannot be initialized/replaced as a client'):
+                inventory.target_identity(client)
+
+    def test_the_package_declares_the_same_repository_names_as_the_source_check(self):
+        # Two commands read these names from the package and one from a constant; they must agree.
+        descriptor = inventory.strict_json((ROOT / inventory.DESCRIPTOR).read_bytes())
+        self.assertEqual(inventory.repository_id(descriptor['canonical_repository']), inventory.CANONICAL)
+        self.assertEqual(tuple(inventory.repository_id(n) for n in descriptor['former_repositories']), inventory.FORMER)
+
+    def test_source_may_keep_the_package_in_an_asdg_folder(self):
+        standalone = inventory.validated_source(self.source)
+        package = self.source / 'asdg'
+        package.mkdir()
+        for entry in sorted(p.name for p in self.source.iterdir() if p.name not in ('.git', 'asdg')):
+            git(self.source, 'mv', entry, 'asdg/' + entry)
+        git(self.source, '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'workshop layout')
+        nested = inventory.validated_source(self.source)
+        self.assertEqual((nested['core'], nested['prefix']), (package, 'asdg/'))
+        self.assertEqual(nested['files'], standalone['files'])
+        self.assertEqual(nested['identity']['commit'], git(self.source, 'rev-parse', 'HEAD'))
+        self.assertEqual(nested['identity']['package_sha256'], standalone['identity']['package_sha256'])
+        with self.assertRaises(Conflict):  # The Git root is the source, never the package folder itself.
+            inventory.validated_source(package)
+        write(package, 'AGENTS.md', b'changed methodology')
+        with self.assertRaisesRegex(Conflict, 'integrity'):
+            inventory.validated_source(self.source)
+        (package / '.git').mkdir()
+        with self.assertRaisesRegex(Conflict, 'nested repository'):
+            inventory.validated_source(self.source)
 
     def test_strict_json_rejects_duplicate_keys_and_nonfinite_values(self):
         for value in ('{"a":1,"a":2}', '{"a":NaN}', '{"a":Infinity}'):

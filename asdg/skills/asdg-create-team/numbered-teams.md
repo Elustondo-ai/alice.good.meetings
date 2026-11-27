@@ -29,11 +29,14 @@ Both kinds of team, project and admin, share one sequence of numbers.
 
 The request that creates the team authorizes this worktree and local branch. It authorizes no commit, push, branch deletion or worktree removal.
 
-## Start the chats inside the team folder
+## Who starts the chats
 
 Start every chat of the team with the team's worktree as its working folder, and name that folder as the project root in each initial prompt.
 Do not start a chat in the clone and move it afterwards: on 20 November 2026 a chat moved that way kept showing its old branch in the Claude phone app.
 Where the surface cannot start a chat in a chosen folder, say so, keep the created worktree, and give the user the folder path to open by hand.
+
+In Codex the calling chat creates the team's chats as [missing-chat creation](create-chats.md) describes.
+In Claude the project chat starts the new team's lead in the team's worktree, or the one ASDG Admin chat of an admin team. That lead then starts its own twelve, as [the team tree](create-chats.md#the-team-tree) describes.
 
 ## Number in titles and receipts
 
@@ -45,4 +48,4 @@ Routing still verifies project folder, role and stable thread ID; a number in a 
 
 Each team has its own lead under 00 Governance, or under ASDG Admin for an admin team. A team number grants no role and no authority.
 Sprint state is a file in each team's folder, so two teams can show different sprint state until their branches are merged; merging is the human's decision.
-Creating a team starts no project work and no sprint. Worktree creation was done by hand on 20 November 2026; a full numbered team has not yet been observed on any surface.
+Creating a team starts no project work and no sprint. The worktree script and team 2's folders worked in the Claude desktop app on 25 November 2026. The same day in a sandbox, one chat started all twelve role chats beneath it in one go; a project chat above the team leads is not yet observed.
